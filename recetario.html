@@ -208,7 +208,7 @@ function vMenu(){
   <div><small>Personas que cubre el presupuesto</small><strong>${maxP}</strong></div></div>
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
-  <div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Recalculando…":S.super?`Recalcular precios para ${esc(S.super)}`:"Recalcular precios"}</button></div>
+  <div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket. Escalados a ${n} personas.`:`Precios según los que pusiste en cada receta (cantidad base), escalados a ${n} personas.`}</p></div>
   <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(cost(r)*factor(r,n))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
@@ -305,7 +305,7 @@ ${JSON.stringify(items)}`,{cache:false});
     S.priceInfo={super:S.super,date:new Date().toLocaleDateString("es-ES")};persist();
     U.prMsg=`Precios actualizados en ${hit} de ${items.length} ingredientes. Se guardan también en cada receta.`;U.prErr=false;
   }catch(err){
-    U.prMsg=err&&err.code==="not_granted"?"Necesitas dar permiso para que Claude estime los precios.":"No se pudieron recalcular los precios ahora. Puedes ajustarlos a mano en cada receta.";U.prErr=true;
+    U.prMsg=err&&err.code==="not_granted"?"Necesitas dar permiso para que Claude estime los precios.":"No se pudieron calcular los precios ahora. Puedes ajustarlos a mano en cada receta.";U.prErr=true;
   }
   U.prBusy=false;render();
 }
