@@ -288,12 +288,12 @@ function vFuegoAnio(){
   <div class="anio-m">${"EFMAMJJASOND".split("").map(m=>`<span>${m}</span>`).join("")}</div>
   <div class="leg2"><span><b class="sw" style="background:${col.bajo}"></b>Peligro bajo</span><span><b class="sw" style="background:${col.medio}"></b>Medio</span><span><b class="sw" style="background:${col.alto}"></b>Alto</span><span>▼ hoy</span></div></div>`;
 }
-const NORMAS=[["no","¿Fuego en el monte o área recreativa?","Prohibido todo el año, también la franja de 400 m alrededor del monte si no es suelo urbano. Solo con autorización expresa."],
+const NORMAS=[["no","¿Fuego en el monte o área recreativa?","Prohibido todo el año, también en las barbacoas de obra de las áreas recreativas y en la franja de 400 m alrededor del monte si no es suelo urbano. Solo con autorización expresa."],
   ["ojo","¿Hornillo o camping-gas en el monte?","La norma no lo nombra: habla de «fuego». Trátalo como fuego y confírmalo antes."],
   ["si","¿En casa, en un camping o en el pueblo, lejos del monte?","Esta prohibición no aplica. El camping puede tener sus normas."],
   ["ojo","¿Suelo urbano a menos de 50 m del monte?","Avisa un día antes: usofuego@madrid.org o 900 720 300."],
   ["no","¿Parque natural o nacional (p. ej. Guadarrama)?","Normas propias más estrictas: ni fuego ni acampada libre."],
-  ["ojo","¿Barbacoa en un camping?","Solo las fijas, a 15 m o más de las parcelas."]];
+  ["ojo","¿Barbacoa en un camping autorizado?","Solo las fijas del camping, a 15 m o más de las parcelas. No vale para las áreas recreativas."]];
 const ICO={si:["✓","Sí"],no:["✕","No"],ojo:["!","Ojo"]};
 function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div class="norma"><span class="ico ${k}" aria-label="${ICO[k][1]}">${ICO[k][0]}</span><div><b>${q}</b><small>${a}</small></div></div>`).join("")}</div>`}
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
