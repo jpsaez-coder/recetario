@@ -240,7 +240,12 @@ const HEAT={
 const heatName=()=>HEAT[S.heat]?S.heat:"vitro";
 function cTime(t,k){
   const h=heatName();
-  if(k==="h")return t+HEAT[h].rec;
+  if(k==="h"){
+    /* se suma lo que tarda en volver a hervir: «15-20 min» con +2-4 queda «≈ 17-24 min» */
+    const m=HEAT[h].rec.match(/(\d+)-(\d+)/),r=t.match(/(\d+)(?:-(\d+))?/);
+    if(!m||!r)return t;
+    const a=+r[1]+ +m[1],b=+(r[2]||r[1])+ +m[2];return `≈ ${a}-${b} min`;
+  }
   if(k==="p")return h==="vitro"?t:h==="hornillo"?t+" por tanda":t+" o más, según brasas";
   return h==="vitro"?t+" (horno)":h==="hornillo"?"Sin horno: mejor guisado en olla":t+" o más, en brasas suaves";
 }
@@ -250,7 +255,7 @@ function heatNote(){
   return `<div class="stats"><div><small>Hervir ${L} l (pasta para ${S.people})</small><strong>${a}-${b} min</strong></div>
   <div><small>Volver a hervir al echarla</small><strong>${v.rec?"+"+v.rec.replace(/[()+]/g,"").trim():"al momento"}</strong></div>
   <div><small>Por encima de 1.500 m</small><strong>tarda más</strong></div></div>
-  <p class="msg">${L>6&&heatName()==="hornillo"?"Con tanta agua, mejor dos ollas o dos hornillos. ":""}${esc(v.tip)}${v.rec?" Lo que va entre paréntesis en la tabla es lo que tarda en volver a hervir.":""} En altura, las legumbres secas tardan mucho más: mejor de bote.</p>`;
+  <p class="msg">${L>6&&heatName()==="hornillo"?"Con tanta agua, mejor dos ollas o dos hornillos. ":""}${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""} En altura, las legumbres secas tardan mucho más: mejor de bote.</p>`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
 const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
