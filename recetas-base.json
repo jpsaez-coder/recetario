@@ -52,7 +52,13 @@
     "price": "0.3"
    }
   ],
-  "steps": "En un táper grande, cubre el cuscús con el mismo volumen de agua (unos 250 ml) y una pizca de sal\nCon agua fría tarda unos 30 min; con agua caliente, 5 min. No hace falta fuego\nTrocea el tomate y el pepino; escurre el atún y las aceitunas\nMezcla todo con el zumo del limón y el aceite\nCierra bien el táper: aguanta la mañana en la mochila, a la sombra"
+  "steps": "En un táper grande, cubre el cuscús con el mismo volumen de agua (unos 250 ml) y una pizca de sal\nCon agua fría tarda unos 30 min; con agua caliente, 5 min. No hace falta fuego\nTrocea el tomate y el pepino; escurre el atún y las aceitunas\nMezcla todo con el zumo del limón y el aceite\nCierra bien el táper: aguanta la mañana en la mochila, a la sombra",
+  "foto": "fotos/ej-cuscus.jpg",
+  "fotoCredito": {
+   "autor": "Suzette - www.suzette.nu from Arnhem, Netherlands",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Couscous_salad_(8863796237).jpg"
+  }
  },
  {
   "id": "ej-arroz",
@@ -164,7 +170,13 @@
     "price": ""
    }
   ],
-  "steps": "Corta el pan en rebanadas; si hay sartén o parrilla, tuéstalo\nParte los tomates por la mitad y frótalos sobre el pan, o rállalos antes\nEcha un chorro de aceite, una pizca de sal y, si quieres, orégano o pimentón\nSolo con aceite: en el menú, «Ajustar» y quita el tomate (para la mochila, el aceite en un bote bien cerrado)"
+  "steps": "Corta el pan en rebanadas; si hay sartén o parrilla, tuéstalo\nParte los tomates por la mitad y frótalos sobre el pan, o rállalos antes\nEcha un chorro de aceite, una pizca de sal y, si quieres, orégano o pimentón\nSolo con aceite: en el menú, «Ajustar» y quita el tomate (para la mochila, el aceite en un bote bien cerrado)",
+  "foto": "fotos/ej-pan-tomate.jpg",
+  "fotoCredito": {
+   "autor": "David",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pa_amb_tom%C3%A0quet_(bread_with_tomato).jpg"
+  }
  },
  {
   "id": "ej-tostadas-mermelada",
@@ -196,7 +208,13 @@
     "price": "0.40"
    }
   ],
-  "steps": "Tuesta las rebanadas en la sartén o en la parrilla\nUnta la mantequilla en caliente y después la mermelada"
+  "steps": "Tuesta las rebanadas en la sartén o en la parrilla\nUnta la mantequilla en caliente y después la mermelada",
+  "foto": "fotos/ej-tostadas-mermelada.jpg",
+  "fotoCredito": {
+   "autor": "Harry Wood",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Jam_and_toast.jpg"
+  }
  },
  {
   "id": "ej-leche-cacao",
@@ -265,7 +283,13 @@
     "price": ""
    }
   ],
-  "steps": "Pon la leche y la avena en la olla a fuego medio\nRemueve unos 5 min hasta que espese\nSirve con el plátano en rodajas y una pizca de canela"
+  "steps": "Pon la leche y la avena en la olla a fuego medio\nRemueve unos 5 min hasta que espese\nSirve con el plátano en rodajas y una pizca de canela",
+  "foto": "fotos/ej-gachas-avena.jpg",
+  "fotoCredito": {
+   "autor": "Shisma",
+   "licencia": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Banana_oatmeal.jpg"
+  }
  },
  {
   "id": "ej-yogur-cereales",
@@ -295,7 +319,13 @@
     "price": "0.65"
    }
   ],
-  "steps": "Pon el yogur en un cuenco\nAñade la avena y la manzana troceada"
+  "steps": "Pon el yogur en un cuenco\nAñade la avena y la manzana troceada",
+  "foto": "fotos/ej-yogur-cereales.jpg",
+  "fotoCredito": {
+   "autor": "T.Tseng",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Yogurt,_fruit,_granola_bowl_(34999358091).jpg"
+  }
  },
  {
   "id": "ej-bocadillo-chorizo",
@@ -321,7 +351,13 @@
     "price": "1.14"
    }
   ],
-  "steps": "Corta cada barra en dos y ábrelas\nReparte el chorizo en rodajas finas\nEnvuelve en papel de aluminio o en una bolsa: aguanta la mañana sin nevera"
+  "steps": "Corta cada barra en dos y ábrelas\nReparte el chorizo en rodajas finas\nEnvuelve en papel de aluminio o en una bolsa: aguanta la mañana sin nevera",
+  "foto": "fotos/ej-bocadillo-chorizo.jpg",
+  "fotoCredito": {
+   "autor": "Tamorlan",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bocadillo_de_chorizo_(Brea).JPG"
+  }
  },
  {
   "id": "ej-bocadillo-jamon-queso",
@@ -354,7 +390,13 @@
     "price": "0.95"
    }
   ],
-  "steps": "Corta cada barra en dos y ábrelas\nReparte el jamón y el queso\nCon calor y sin nevera, mejor cómelo pronto"
+  "steps": "Corta cada barra en dos y ábrelas\nReparte el jamón y el queso\nCon calor y sin nevera, mejor cómelo pronto",
+  "foto": "fotos/ej-bocadillo-jamon-queso.jpg",
+  "fotoCredito": {
+   "autor": "Peachyeung316",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:A_Ham_and_Cheese_Baguette_Sandwiches_from_The_Mandarin_Cake_Shop.jpg"
+  }
  },
  {
   "id": "ej-pan-chocolate",
@@ -418,7 +460,13 @@
     "price": "0.16"
    }
   ],
-  "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso"
+  "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso",
+  "foto": "fotos/ej-sandwich-mixto.jpg",
+  "fotoCredito": {
+   "autor": "24 WA GN 24",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Grilled_ham_and_cheese_sandwich.jpg"
+  }
  },
  {
   "id": "mr-crepes-pavo-queso",
@@ -471,6 +519,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-crepes-pavo-queso.jpg",
+  "fotoCredito": {
+   "autor": "Benoît Prieur",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cr%C3%AApe_jambon_fromage_(Le_Bouchon_Breton).jpg"
   }
  },
  {
@@ -587,6 +641,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-pasta-magro.jpg",
+  "fotoCredito": {
+   "autor": "Silar",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:04668_Polish_spaghetti_pasta_with_sauce_made_of_pork_meat,_tomatoes,_garlic_and_olive.JPG"
   }
  },
  {
@@ -624,6 +684,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-molde-cacahuete.jpg",
+  "fotoCredito": {
+   "autor": "Daderot",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Peanut_butter_and_banana_sandwich_on_homemade_bread_-_Massachusetts.jpg"
   }
  },
  {
@@ -684,6 +750,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-ensalada-garbanzos.jpg",
+  "fotoCredito": {
+   "autor": "Juan Emilio Prades Bel",
+   "licencia": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ensalada_de_garbanzos.jpg"
   }
  },
  {
@@ -714,6 +786,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-sopa-fideos-cocido.jpg",
+  "fotoCredito": {
+   "autor": "Daniel Lobo",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Sopa_de_fideos-2008.jpg"
   }
  },
  {
@@ -761,6 +839,12 @@
   "source": {
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
+  },
+  "foto": "fotos/mr-fajitas-lomo.jpg",
+  "fotoCredito": {
+   "autor": "Horacio Cambeiro",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Fajitas_texanas.jpg"
   }
  },
  {
@@ -797,7 +881,13 @@
     "price": ""
    }
   ],
-  "steps": "Lava las patatas sin pelarlas y pínchalas con un tenedor\nUnta cada una con un poco de aceite y sal y envuélvela bien en papel de aluminio\nEntiérralas en las brasas, no muy vivas, y dales la vuelta de vez en cuando\nEstán cuando el cuchillo entra sin esfuerzo: unos 30-45 min según el tamaño"
+  "steps": "Lava las patatas sin pelarlas y pínchalas con un tenedor\nUnta cada una con un poco de aceite y sal y envuélvela bien en papel de aluminio\nEntiérralas en las brasas, no muy vivas, y dales la vuelta de vez en cuando\nEstán cuando el cuchillo entra sin esfuerzo: unos 30-45 min según el tamaño",
+  "foto": "fotos/tr-patatas-brasa.jpg",
+  "fotoCredito": {
+   "autor": "Dan Papworth",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Chestnuts_and_potatoes_roasting_on_an_open_fire.jpg"
+  }
  },
  {
   "id": "tr-huevo-patata",
@@ -893,7 +983,13 @@
     "price": ""
    }
   ],
-  "steps": "Corta la carne y las verduras en trozos parecidos\nAlíñalo todo con aceite, sal y pimentón u orégano\nEnsarta alternando carne y verdura en brochetas o en ramas verdes limpias y peladas\nÁsalos sobre las brasas, sin llama, girándolos hasta que la carne esté hecha por dentro (10-15 min)"
+  "steps": "Corta la carne y las verduras en trozos parecidos\nAlíñalo todo con aceite, sal y pimentón u orégano\nEnsarta alternando carne y verdura en brochetas o en ramas verdes limpias y peladas\nÁsalos sobre las brasas, sin llama, girándolos hasta que la carne esté hecha por dentro (10-15 min)",
+  "foto": "fotos/tr-pinchitos.jpg",
+  "fotoCredito": {
+   "autor": "Home Cooking Secrets",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Dawn%27s_Kabob_Skewers!.jpg"
+  }
  },
  {
   "id": "tr-pescado-papillote",
@@ -941,7 +1037,13 @@
     "price": ""
    }
   ],
-  "steps": "Pon cada trozo de pescado sobre papel de aluminio con sal, perejil, rodajas de limón y un chorrito de aceite\nCierra bien el paquete doblando los bordes para que no se escape el jugo\nColócalo en la parrilla o sobre brasas no muy fuertes\nUnos 15 min para trozos de 150-200 g: el pescado se separa en láminas"
+  "steps": "Pon cada trozo de pescado sobre papel de aluminio con sal, perejil, rodajas de limón y un chorrito de aceite\nCierra bien el paquete doblando los bordes para que no se escape el jugo\nColócalo en la parrilla o sobre brasas no muy fuertes\nUnos 15 min para trozos de 150-200 g: el pescado se separa en láminas",
+  "foto": "fotos/tr-pescado-papillote.jpg",
+  "fotoCredito": {
+   "autor": "Blue Lotus. from Tokio",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Orata_al_Cartoccio.jpg"
+  }
  },
  {
   "id": "ej-pescado-patatas-aluminio",
@@ -1003,7 +1105,13 @@
     "price": ""
    }
   ],
-  "steps": "Corta las patatas en rodajas finas (medio centímetro) para que se hagan a la vez que el pescado, y la cebolla en aros\nPrepara un paquete por persona con doble capa de papel de aluminio: una cama de patata y cebolla, con sal y un chorro de aceite\nPon encima el pescado con sal, ajo picado, perejil y rodajas de limón\nCierra bien el paquete doblando los bordes, dejando un poco de aire dentro\nEntre brasas no muy vivas, 25-30 min; ábrelo con cuidado, sale vapor\nEn casa: al horno a 200 °C, unos 25 min"
+  "steps": "Corta las patatas en rodajas finas (medio centímetro) para que se hagan a la vez que el pescado, y la cebolla en aros\nPrepara un paquete por persona con doble capa de papel de aluminio: una cama de patata y cebolla, con sal y un chorro de aceite\nPon encima el pescado con sal, ajo picado, perejil y rodajas de limón\nCierra bien el paquete doblando los bordes, dejando un poco de aire dentro\nEntre brasas no muy vivas, 25-30 min; ábrelo con cuidado, sale vapor\nEn casa: al horno a 200 °C, unos 25 min",
+  "foto": "fotos/ej-pescado-patatas-aluminio.jpg",
+  "fotoCredito": {
+   "autor": "10Rosso",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Branzino_al_cartoccio.jpg"
+  }
  },
  {
   "id": "tr-platano-chocolate",
@@ -1098,6 +1206,12 @@
   "source": {
    "name": "guiasparaguias · Entrantes",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  },
+  "foto": "fotos/gpg-ensalada-de-patata.jpg",
+  "fotoCredito": {
+   "autor": "Zeamays",
+   "licencia": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Potato_salad_with_egg_and_mayonnaise.jpg"
   }
  },
  {
@@ -1184,6 +1298,12 @@
   "source": {
    "name": "guiasparaguias · Entrantes",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  },
+  "foto": "fotos/gpg-ensalada-vosgiana.jpg",
+  "fotoCredito": {
+   "autor": "Arnaud 25",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Salade_vosgienne.jpg"
   }
  },
  {
@@ -1230,6 +1350,12 @@
   "source": {
    "name": "guiasparaguias · Entrantes",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  },
+  "foto": "fotos/gpg-raita-de-pepino.jpg",
+  "fotoCredito": {
+   "autor": "Sonia Goyal",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cucumber-raita.jpg"
   }
  },
  {
@@ -1475,6 +1601,12 @@
   "source": {
    "name": "guiasparaguias · Entrantes",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  },
+  "foto": "fotos/gpg-pepinos-a-la-crema.jpg",
+  "fotoCredito": {
+   "autor": "Mariuszjbie",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mizeria.jpg"
   }
  },
  {
@@ -1540,6 +1672,12 @@
   "source": {
    "name": "guiasparaguias · Entrantes",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  },
+  "foto": "fotos/gpg-pizza-fria-de-verano-al-queso-de-cabra.jpg",
+  "fotoCredito": {
+   "autor": "jeffreyw",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pizza_with_goat_cheese_and_roasted_tomatoes.jpg"
   }
  },
  {
@@ -1650,6 +1788,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-pollo-al-ajillo.jpg",
+  "fotoCredito": {
+   "autor": "Juan Emilio Prades Bel",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pollo_al_ajillo.jpg"
   }
  },
  {
@@ -1720,6 +1864,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-fabada-asturiana-rapida.jpg",
+  "fotoCredito": {
+   "autor": "Cariyandres",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Fabada_Asturiana.jpg"
   }
  },
  {
@@ -1866,6 +2016,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-paella-de-campamento.jpg",
+  "fotoCredito": {
+   "autor": "Jan Harenburg",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:01_Paella_Valenciana_original.jpg"
   }
  },
  {
@@ -2006,6 +2162,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-san-jacobo-de-pavo.jpg",
+  "fotoCredito": {
+   "autor": "Christian Michelides",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cordon_bleu_mit_gemischtem_Salat.jpg"
   }
  },
  {
@@ -2130,7 +2292,13 @@
     "price": "0.05"
    }
   ],
-  "steps": "Sala la carne, divídela en 4 bolas y aplánalas a un dedo de grosor; un hoyo en el centro evita que se abomben\nEn brasas sin llama, sobre parrilla, o en sartén con unas gotas de aceite: 4-5 min por lado, dando la vuelta una sola vez\nPon el queso encima el último minuto para que se funda\nTuesta el pan un momento sobre la parrilla\nMonta con lechuga, tomate y cebolla en rodajas y la salsa\nLa carne picada, bien hecha por dentro: sin rosa en el centro\nFuego solo donde esté permitido; si no, sartén en hornillo"
+  "steps": "Sala la carne, divídela en 4 bolas y aplánalas a un dedo de grosor; un hoyo en el centro evita que se abomben\nEn brasas sin llama, sobre parrilla, o en sartén con unas gotas de aceite: 4-5 min por lado, dando la vuelta una sola vez\nPon el queso encima el último minuto para que se funda\nTuesta el pan un momento sobre la parrilla\nMonta con lechuga, tomate y cebolla en rodajas y la salsa\nLa carne picada, bien hecha por dentro: sin rosa en el centro\nFuego solo donde esté permitido; si no, sartén en hornillo",
+  "foto": "fotos/ej-hamburguesas.jpg",
+  "fotoCredito": {
+   "autor": "Horacio Cambeiro",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hamburguesa_casera_argentina.jpg"
+  }
  },
  {
   "id": "ej-pimientos-rellenos",
@@ -2204,7 +2372,13 @@
     "price": ""
    }
   ],
-  "steps": "Corta la tapa de los pimientos y quítales las semillas\nPica la cebolla, la zanahoria y los champiñones y sofríelos en la sartén con el aceite, 5 min\nAñade la carne picada, sal y pimienta u orégano, y dórala; mezcla con el tomate frito\nRellena los pimientos, pon queso rallado encima y tápalos con su tapa\nAl fuego: envuélvelos en papel de aluminio de pie y déjalos entre brasas no muy vivas 30-40 min, hasta que el pimiento esté blando\nEn casa: al horno a 180 °C, unos 35 min, con el queso gratinado al final"
+  "steps": "Corta la tapa de los pimientos y quítales las semillas\nPica la cebolla, la zanahoria y los champiñones y sofríelos en la sartén con el aceite, 5 min\nAñade la carne picada, sal y pimienta u orégano, y dórala; mezcla con el tomate frito\nRellena los pimientos, pon queso rallado encima y tápalos con su tapa\nAl fuego: envuélvelos en papel de aluminio de pie y déjalos entre brasas no muy vivas 30-40 min, hasta que el pimiento esté blando\nEn casa: al horno a 180 °C, unos 35 min, con el queso gratinado al final",
+  "foto": "fotos/ej-pimientos-rellenos.jpg",
+  "fotoCredito": {
+   "autor": "MiguelAlanCS",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pimientos_rellenos_2019.jpg"
+  }
  },
  {
   "id": "gpg-arroz-a-la-cubana-de-campamento",
@@ -2292,6 +2466,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-arroz-a-la-cubana-de-campamento.jpg",
+  "fotoCredito": {
+   "autor": "Larra Jungle Princess from Kuala Lumpur, Malaysia",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Arroz_a_la_cubana_en_LLanes.jpg"
   }
  },
  {
@@ -2351,6 +2531,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-sopa-de-ajo-castellana.jpg",
+  "fotoCredito": {
+   "autor": "G M",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:00_Sopa_de_Ajo.jpg"
   }
  },
  {
@@ -2439,6 +2625,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-patatas-a-la-riojana.jpg",
+  "fotoCredito": {
+   "autor": "Lorena Suárez",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Patatas_a_la_riojana.jpg"
   }
  },
  {
@@ -2591,6 +2783,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-tortilla-de-patatas-tradicional.jpg",
+  "fotoCredito": {
+   "autor": "Mentxuwiki",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Tortilla_de_patatas_con_cebolla.jpg"
   }
  },
  {
@@ -2695,6 +2893,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-truffade-del-delfinado.jpg",
+  "fotoCredito": {
+   "autor": "Sebleouf",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Truffade_gratin%C3%A9e_d%C3%A9gust%C3%A9e_%C3%A0_Clermont-Ferrand_(juil_2020).jpg"
   }
  },
  {
@@ -2747,6 +2951,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-escalope-a-la-crema-al-estilo-normando.jpg",
+  "fotoCredito": {
+   "autor": "Kaissm10",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Escalope_%C3%A0_la_normande.jpg"
   }
  },
  {
@@ -2869,6 +3079,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-galettes-de-patata.jpg",
+  "fotoCredito": {
+   "autor": "Photo made by Daniel Spils and uploaded to flickr.com",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Potato_pancakes.jpg"
   }
  },
  {
@@ -2946,6 +3162,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-croque-monsieur-al-aluminio.jpg",
+  "fotoCredito": {
+   "autor": "Michael Brewer",
+   "licencia": "CC BY-SA 2.5",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Croque_monsieur.jpg"
   }
  },
  {
@@ -3075,6 +3297,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-entrecot-a-la-parrilla-a-la-nizarda.jpg",
+  "fotoCredito": {
+   "autor": "HungryHuy",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ribeye_steak,_hot_off_the_grill.jpg"
   }
  },
  {
@@ -3163,6 +3391,12 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  },
+  "foto": "fotos/gpg-fricase-de-cerdo.jpg",
+  "fotoCredito": {
+   "autor": "Koshelek1",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Fricassee_of_pork.jpg"
   }
  },
  {
@@ -3210,6 +3444,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-pan-casero.jpg",
+  "fotoCredito": {
+   "autor": "Tomascastelazo",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Home_made_sour_dough_bread.jpg"
   }
  },
  {
@@ -3344,6 +3584,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-bunuelos-de-campamento.jpg",
+  "fotoCredito": {
+   "autor": "Juan Mejuto",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bu%C3%B1uelos_-_juantiagues.jpg"
   }
  },
  {
@@ -3396,6 +3642,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-crepes-de-trigo-sarraceno.jpg",
+  "fotoCredito": {
+   "autor": "JeanLed11",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Galette_de_sarrasin_(bl%C3%A9_noir).jpg"
   }
  },
  {
@@ -3430,6 +3682,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-toffee-de-las-antillas.jpg",
+  "fotoCredito": {
+   "autor": "youngthousands from usa",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Peanut_Brittle_(2120149832).jpg"
   }
  },
  {
@@ -3510,6 +3768,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-tejas-de-almendra.jpg",
+  "fotoCredito": {
+   "autor": "Andy Li",
+   "licencia": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Tuiles_aux_amandes_-_Biscuiterie_Astruc_2026-05-11.jpg"
   }
  },
  {
@@ -3654,6 +3918,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-bourdelot-normando.jpg",
+  "fotoCredito": {
+   "autor": "Antiguide",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bourdelots.jpg"
   }
  },
  {
@@ -3706,6 +3976,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-melocotones-a-la-plancha.jpg",
+  "fotoCredito": {
+   "autor": "Tony Webster from Minneapolis, Minnesota, United States",
+   "licencia": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Grilled_Peach_at_Minnesota_State_Fair_(48659750766).jpg"
   }
  },
  {
@@ -3856,6 +4132,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-torrijas.jpg",
+  "fotoCredito": {
+   "autor": "Juan Emilio Prades Bel",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Torrijas,_postre.jpg"
   }
  },
  {
@@ -3908,6 +4190,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-crema-pastelera-rapida.jpg",
+  "fotoCredito": {
+   "autor": "SKopp",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pastry_cream.jpg"
   }
  },
  {
@@ -3954,6 +4242,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-crema-inglesa-tradicional.jpg",
+  "fotoCredito": {
+   "autor": "David Monniaux",
+   "licencia": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Creme_anglaise_p1050168.jpg"
   }
  },
  {
@@ -4052,6 +4346,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-ensalada-de-frutas-campestre.jpg",
+  "fotoCredito": {
+   "autor": "Gaurav Dhwaj Khadka",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Fruit_Salad_4.jpg"
   }
  },
  {
@@ -4086,6 +4386,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-crema-de-chocolate-rapida.jpg",
+  "fotoCredito": {
+   "autor": "Ginny",
+   "licencia": "CC BY-SA 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Chocolate_pudding_in_glasses.jpg"
   }
  },
  {
@@ -4138,6 +4444,12 @@
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  },
+  "foto": "fotos/gpg-tarta-fria-de-galleta-y-chocolate.jpg",
+  "fotoCredito": {
+   "autor": "pk2802",
+   "licencia": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Choco_Marie_Cake.jpg"
   }
  },
  {

@@ -104,6 +104,12 @@ T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/gr
 // fotos: la ruta de una foto base pasa por cleanRecipe; una ruta rara, no
 caso("foto base se conserva",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,"fotos/ej-arroz.jpg");
 caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
+// fotos base: el fichero existe, tiene crédito con enlace a Commons y está en la lista del modo sin conexión
+{const conF=base.filter(r=>r.foto);const lista=fs.readFileSync(path.join(raiz,"fotos/lista.js"),"utf8");
+caso("fotos base: el fichero existe",conF.filter(r=>!fs.existsSync(path.join(raiz,r.foto))).map(r=>r.id),[]);
+caso("fotos base: con crédito de Commons",conF.filter(r=>!(r.fotoCredito&&/^https:\/\/commons\.wikimedia\.org\//.test(r.fotoCredito.pagina)&&r.fotoCredito.licencia)).map(r=>r.id),[]);
+caso("fotos base: en la lista sin conexión",conF.filter(r=>!lista.includes(r.foto)).map(r=>r.id),[]);
+caso("hay fotos base",conF.length>40,true);}
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);

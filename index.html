@@ -259,7 +259,8 @@ function cleanRecipe(r){
     categories:migCats((Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean)).slice(0,8),
     ingredients:r.ingredients.slice(0,60).map(i=>({name:String(i&&i.name||"").slice(0,80),qty:String(i&&i.qty!=null?i.qty:""),unit:UNITS.includes(i&&i.unit)?i.unit:"ud",price:String(i&&i.price!=null?i.price:"")})),
     steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000),
-    ...(typeof r.foto==="string"&&/^fotos\/[a-z0-9-]+\.jpg$/.test(r.foto)?{foto:r.foto}:{})};
+    ...(typeof r.foto==="string"&&/^fotos\/[a-z0-9-]+\.jpg$/.test(r.foto)?{foto:r.foto,
+      ...(r.fotoCredito&&typeof r.fotoCredito.pagina==="string"&&/^https:\/\/commons\.wikimedia\.org\//.test(r.fotoCredito.pagina)?{fotoCredito:{autor:String(r.fotoCredito.autor||"").slice(0,80),licencia:String(r.fotoCredito.licencia||"").slice(0,30),pagina:r.fotoCredito.pagina}}:{})}:{})};
 }
 /* ---------- fotos ----------
    Base: r.foto = "fotos/<id>.jpg" (vienen con la app). Tuyas: r.foto = "idb", la imagen va en IndexedDB
