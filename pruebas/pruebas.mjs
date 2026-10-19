@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -92,6 +92,9 @@ caso("precios recientes, sin aviso",/más de 3 meses/.test(T.vMenu()),false);
 const pr=JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8"));pr.fecha="2020-01-01";T.setPrecios(pr);
 caso("precios de hace años, con aviso",/más de 3 meses/.test(T.vMenu()),true);
 T.setPrecios(JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8")));T.S.super="";T.S.menu=[];
+// lista para WhatsApp: casillas ☐ y ☑ (lo que ya está en el carro)
+{T.S.super="";T.S.have={};const its=T.shopList([T.getR("ej-arroz")],4);T.S.bought={[its[0].key]:true};const tx=T.compraTexto(its);
+caso("WhatsApp: casilla vacía",/^☐ /m.test(tx),true);caso("WhatsApp: lo comprado, marcado",/^☑ /m.test(tx),true);caso("WhatsApp: sin viñetas",/^- /m.test(tx),false);T.S.bought={};}
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);

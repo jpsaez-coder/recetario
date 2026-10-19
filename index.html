@@ -983,7 +983,7 @@ function vCompra(items){
 function compraTexto(items){
   const vivos=items.filter(i=>!i.have);
   const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,vivos.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
-  return "Lista de la compra ("+grupoTxt()+((S.dias||1)>1?", "+S.dias+" días":"")+")\n"+grupos.map(([s,xs])=>"\n*"+s+"*\n"+xs.map(i=>"- "+i.name+(i.pk?": "+i.k+" × "+fmtQ(i.pk.size,i.unit):i.q>0?": "+fmtQ(i.q,i.unit):" (al gusto)")).join("\n")).join("\n");
+  return "Lista de la compra ("+grupoTxt()+((S.dias||1)>1?", "+S.dias+" días":"")+")\n"+grupos.map(([s,xs])=>"\n*"+s+"*\n"+xs.map(i=>(S.bought&&S.bought[i.key]?"☑ ":"☐ ")+i.name+(i.pk?": "+i.k+" × "+fmtQ(i.pk.size,i.unit):i.q>0?": "+fmtQ(i.q,i.unit):" (al gusto)")).join("\n")).join("\n");
 }
 async function compartirCompra(items){
   const t=compraTexto(items);
