@@ -39,6 +39,7 @@ nav.tabs button[aria-selected="true"]{color:var(--pine);background:var(--bg)}
 .chip[aria-pressed="true"]{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
 .card h2{font-size:20px}
+.card a{color:var(--pine);font-weight:600;line-height:1.9}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .tag{font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--mute)}
 .cost{font-weight:600;color:var(--ochre)}
@@ -77,9 +78,19 @@ const CAT_DESC={Rutas:"Comida para cocinar o comer durante una ruta: ligera, que
 const catsTxt=()=>JSON.stringify(allCats())+". Significado de las categorías: "+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ");
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
+const norm=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const SINON={couscous:"cuscus",cous:"cuscus",kuskus:"cuscus"};
+function matches(r,q){
+  const hay=norm([r.name,...r.categories,...r.ingredients.map(i=>i.name),r.steps].join(" "));
+  const flat=hay.replace(/[^a-z0-9ñ]/g,"");
+  const qf=norm(q).replace(/[^a-z0-9ñ]/g,"");
+  if(qf&&flat.includes(SINON[qf]||qf))return true;
+  const ws=norm(q).split(/[^a-z0-9ñ]+/).filter(Boolean);
+  return ws.length>0&&ws.every(w=>hay.includes(SINON[w]||w));
+}
 const UNITS=["g","kg","ml","l","ud","cda","cdta"];
 let S={recipes:[],cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null};
-let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false};
+let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:""};
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
 const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -109,6 +120,20 @@ function vGuia(){
   <div class="card"><h2>Tiempos de cocción</h2>${tbl(COCC)}</div>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV)}</div>
   <div class="card"><h2>Básicos de intendencia</h2><ul>${BASICOS.map(b=>`<li>${esc(b)}</li>`).join("")}</ul></div>
+  <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
+  <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017, modificado por el 83/2018), revisado el 19-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
+  <ul><li><b>En monte o terreno forestal está prohibido todo el año usar fuego para cocinar o calentarse</b>, salvo autorización expresa. Incluye áreas recreativas y el entorno del monte (franja de hasta 400 m si no es suelo urbano).</li>
+  <li><b>Hornillo o camping-gas:</b> la norma no lo menciona aparte; habla de «fuego». Trátalo como fuego y no lo enciendas en el monte sin confirmarlo. En casa, en un camping o en suelo urbano lejos del monte no aplica esta prohibición (el camping puede tener sus propias normas).</li>
+  <li><b>Épocas de peligro:</b> alto del 15 de junio al 30 de septiembre; medio del 16 de mayo al 14 de junio y en octubre; bajo del 1 de noviembre al 15 de mayo. Con riesgo extremo, Emergencias puede suspender además cualquier autorización.</li>
+  <li><b>Suelo urbano a menos de 50 m del monte:</b> avisa con un día de antelación a usofuego@madrid.org o al 900 720 300.</li>
+  <li><b>Parques naturales y nacionales</b> (p. ej. Guadarrama) tienen normas propias más estrictas: no hay acampada libre ni fuego.</li>
+  <li><b>Barbacoas en campings:</b> solo las fijas, a 15 m o más de las parcelas.</li></ul>
+  <p><a href="https://idem.comunidad.madrid/visor/?v=ambiental&l=orto-mosaico-20cm-rgb-2022.ecw,IDEM_ES_PROVINCIAS,IDEM_MA_FISIOGRAFIA_500M,IDEM_MA_AREAS_RECREA&share&ZONE=430000,4485000,8" target="_blank" rel="noopener">Mapa oficial de áreas recreativas (visor IDEM)</a><br>
+  <a href="https://www.comunidad.madrid/medio-ambiente/areas-recreativas" target="_blank" rel="noopener">Áreas recreativas: normas y listado</a><br>
+  <a href="https://sede.comunidad.madrid/autorizaciones-licencias-permisos-carnes/regulacion-distintos-usos-fuego" target="_blank" rel="noopener">Regulación de los usos del fuego</a><br>
+  <a href="https://www.comunidad.madrid/seguridad-emergencias-asem-112/infoma26" target="_blank" rel="noopener">Avisos y suspensiones de este año (INFOMA)</a><br>
+  <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
+  <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></div>
   <div class="card"><h2>Fuego y seguridad</h2><ul><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul></div>`;
 }
 /* ---------- guardado ---------- */
@@ -144,10 +169,10 @@ function render(){
 }
 function vList(){
   const cats=["Todas",...allCats()];
-  const list=S.recipes.filter(r=>U.filter==="Todas"||r.categories.includes(U.filter));
-  let h=`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`;
+  const list=S.recipes.filter(r=>(U.filter==="Todas"||r.categories.includes(U.filter))&&(!U.q.trim()||matches(r,U.q)));
+  let h=`<input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, crema, chocolate, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`;
   if(CAT_DESC[U.filter])h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[U.filter])}</p>`;
-  if(!list.length)h+=`<div class="empty">${S.recipes.length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button></div>`;
+  if(!list.length)h+=`<div class="empty">${U.q.trim()&&S.recipes.length?`Ninguna receta coincide con «${esc(U.q.trim())}»${U.filter!=="Todas"?" en "+esc(U.filter):""}.`:S.recipes.length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${S.recipes.length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
     const open=U.open===r.id,f=factor(r,S.people),inMenu=S.menu.includes(r.id);
     let d="";
@@ -227,6 +252,7 @@ function sync(){
   const q=$("#aiq");if(q)U.aiQ=q.value;const m=$("#imp");if(m)U.impQ=m.value;
 }
 document.addEventListener("input",e=>{
+  if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
   if(e.target.dataset.act==="super"){S.super=e.target.value;U.prMsg="";persist();render();return}
   if(e.target.dataset.act==="budget"){S.budget=num(e.target.value);persist();
     const keep=e.target.selectionStart;render();const b=$("#bud");if(b){b.focus();try{b.setSelectionRange(keep,keep)}catch(_){}}}
