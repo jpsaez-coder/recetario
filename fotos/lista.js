@@ -1,0 +1,1 @@
+self.FOTOS_LISTA = [];

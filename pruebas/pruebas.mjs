@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -95,6 +95,15 @@ T.setPrecios(JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8")))
 // lista para WhatsApp: casillas ☐ y ☑ (lo que ya está en el carro)
 {T.S.super="";T.S.have={};const its=T.shopList([T.getR("ej-arroz")],4);T.S.bought={[its[0].key]:true};const tx=T.compraTexto(its);
 caso("WhatsApp: casilla vacía",/^☐ /m.test(tx),true);caso("WhatsApp: lo comprado, marcado",/^☑ /m.test(tx),true);caso("WhatsApp: sin viñetas",/^- /m.test(tx),false);T.S.bought={};}
+// orden de las recetas: por plato, con su título y de la A a la Z
+{T.U.f={};T.U.q="";T.S.recipes=[];T.U.ord="plato";const h=T.vList();
+const tit=[...h.matchAll(/<h3 class="secc grp-t">([^<]+)<\/h3>/g)].map(m=>m[1]);
+caso("grupos en el orden de Plato",tit,T.FACETS[0].v.filter(p=>tit.includes(p)));
+caso("hay grupo de Desayuno y de Principal",tit.includes("Desayuno")&&tit.includes("Principal"),true);
+T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/grp-t/.test(h2),false);T.U.ord="plato";}
+// fotos: la ruta de una foto base pasa por cleanRecipe; una ruta rara, no
+caso("foto base se conserva",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,"fotos/ej-arroz.jpg");
+caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);
