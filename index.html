@@ -103,7 +103,7 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .ico{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff}
 .ico.si{background:#0ca30c}.ico.no{background:#d03b3b}.ico.ojo{background:#fab219;color:#1F2B23}
 .chkb{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px}
-.chkb input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--pine)}
+.chkb input{width:16px;height:16px;flex:none;margin-top:1px;accent-color:var(--pine)}
 .chkb.bas input:checked+span{color:var(--mute);text-decoration:line-through}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:6px;margin:8px 0}.stats div{background:var(--bg);border-radius:10px;padding:8px}
 .stats small{display:block;font-size:12px;color:var(--mute);line-height:1.25}.stats strong{font:700 17px "Bricolage Grotesque",sans-serif}
@@ -360,7 +360,7 @@ function heatNote(r){
   ${L>6&&h==="hornillo"?`<p class="msg">Con tanta agua, mejor dos ollas o dos hornillos.</p>`:""}${tip}`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
-const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
+const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Especias: pimienta, pimentón, orégano, pastillas de caldo, ajos, cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
 const EQUIV=[["Arroz: agua","2 vasos por 1 de arroz (paella, 2,5-3)"],["Pasta: agua","1 l por cada 100 g"],["Cuscús: agua","el mismo volumen que de cuscús"],
  ["Taza de campamento (250 ml): harina","130 g"],["Taza: azúcar glas","130 g"],["Taza: arroz","230 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],
  ["Brik de leche (1 l)","5 vasos"],["Cucharada de aceite","10-15 ml"],["Cucharadita de sal","5 g"],
@@ -413,19 +413,19 @@ function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div cla
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
-  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary><h2>Básicos de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
+  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary><h2>Checklist de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
   ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</details>`;
 }
 function vGuia(){
   const n=RAC();
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
-  return `${vCuatro()}
+  return `${vBasicos()}
+  ${vCuatro()}
   <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 12 años, ración entera; hasta los 11, el 70 % de una ración.</p>${tbl(prop)}</details>
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
   <details class="card plg" data-k="med"${U.det&&U.det.med?" open":""}><summary><h2>Medidas útiles</h2></summary>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</details>
-  ${vBasicos()}
   <details class="card plg" data-k="fue"${U.det&&U.det.fue?" open":""}><summary><h2>Fuego en la Comunidad de Madrid</h2></summary>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017, modificado por el 83/2018), revisado el 19-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
   <label class="f">Épocas de peligro</label>${vFuegoAnio()}
