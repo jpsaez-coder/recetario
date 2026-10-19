@@ -141,8 +141,8 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={recipes:[],over:{},cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
-let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false};
+let S={recipes:[],over:{},packs:{},have:{},cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
@@ -273,29 +273,97 @@ function vMenu(){
   const rs=S.menu.map(getR).filter(Boolean);
   if(!rs.length)return `<div class="empty">Añade recetas al menú desde la pestaña Recetas para ver la lista de la compra y el presupuesto.</div>`;
   const n=S.people;
-  const total=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
-  const perPerson=total/n,maxP=perPerson>0?Math.floor(S.budget/perPerson):0;
+  const used=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
+  const items=shopList(rs,n);
+  const total=items.reduce((a,i)=>a+i.cost,0);
+  const perPerson=total/n,usedPP=used/n,maxP=usedPP>0?Math.floor(S.budget/usedPP):0;
   const left=S.budget-total;
-  const agg={};
-  rs.forEach(r=>r.ingredients.forEach(i=>{
-    const k=i.name.trim().toLowerCase()+"|"+i.unit;
-    agg[k]=agg[k]||{name:i.name.trim(),unit:i.unit,q:0,p:0};
-    agg[k].q+=num(i.qty)*factor(r,n);agg[k].p+=sPrice(i,factor(r,n));
-  }));
-  const items=Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es"));
   return `<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto total (€)</label>
   <input id="bud" type="number" min="0" step="1" inputmode="decimal" value="${S.budget}" data-act="budget">
-  <div class="sum"><div><small>Coste del menú para ${n}</small><strong>${eur(total)}</strong></div>
+  <div class="sum"><div><small>Pagas en la tienda (${n} pers.)</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona</small><strong>${eur(perPerson)}</strong></div>
   <div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>
-  <div><small>Personas que cubre el presupuesto</small><strong>${maxP}</strong></div></div>
+  <div><small>Personas que cubre (aprox.)</small><strong>${maxP}</strong></div></div>
+  <p class="msg">Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa${total-used>0.5?" (mira «sobran» en la lista)":""}.</p>
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
-  <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket. Escalados a ${n} personas.`:`Precios según los que pusiste en cada receta (cantidad base), escalados a ${n} personas.`}</p></div>
+  <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${n} personas.`}</p></div>
   <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(costF(r,factor(r,n)))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
-  <div class="card"><h2>Lista de la compra</h2><table>${items.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(i.q,i.unit)}</td><td class="p">${i.p?eur(i.p):""}</td></tr>`).join("")}</table></div>`;
+  <div class="card"><h2>Lista de la compra</h2>
+  <p class="msg">Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato» y cámbialo; se recuerda para la próxima vez.</p>
+  <table>${items.map(shopRow).join("")}</table></div>${vAmortiza(items,rs)}`;
+}
+/* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
+function vAmortiza(items,rs){
+  const over=items.filter(i=>i.pk&&i.left>=i.pk.size*0.2);
+  const left=over.filter(i=>!STAPLE.test(norm(i.name))),pantry=over.filter(i=>STAPLE.test(norm(i.name)));
+  if(!over.length)return "";
+  const pantryTxt=pantry.length?`<p class="msg">Para la despensa (dura meses): ${pantry.map(i=>esc(i.name.toLowerCase())).join(", ")}. Si ya lo tienes en casa, márcalo con «Lo tengo» y no cuenta en el presupuesto.</p>`:"";
+  if(!left.length)return `<div class="card"><h2>Para aprovechar lo que sobra</h2>${pantryTxt}</div>`;
+  const inMenu=new Set(rs.map(r=>r.id));
+  const sug=all().filter(r=>!inMenu.has(r.id)).map(r=>{
+    const uses=left.filter(i=>r.ingredients.some(x=>packKey(x.name,toBase(1,x.unit,x.name)[1])===i.key));
+    return {r,uses};
+  }).filter(x=>x.uses.length).sort((a,b)=>b.uses.length-a.uses.length).slice(0,5);
+  return `<div class="card"><h2>Para aprovechar lo que sobra</h2>
+  <p class="msg">Sobra: ${left.map(i=>`${esc(i.name.toLowerCase())} (${fmtQ(i.left,i.unit)})`).join(", ")}.${sug.length?" Estas recetas lo usan: añadirlas al menú sale casi gratis en esos ingredientes.":" Ninguna otra receta tuya lo usa: guárdalo para la próxima salida, o baja a un formato más pequeño con «Formato»."}</p>
+  ${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}</div>`;
+}
+/* ---------- compra por formatos de venta ---------- */
+/* Formato orientativo en que se vende cada cosa; cada persona lo cambia en la lista (S.packs). */
+const PACKS=[[["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
+  [["lenteja","garbanzo","alubia"],1000,"g"],[["atun","sardina","caballa"],3,"lata"],[["tomate triturado","tomate frito"],400,"g"],
+  [["leche"],1000,"ml"],[["huevo"],12,"ud"],[["aceite"],1000,"ml"],[["vinagre"],1000,"ml"],[["sal"],1000,"g"],[["azucar"],1000,"g"],
+  [["harina"],1000,"g"],[["chorizo","salchichon"],250,"g"],[["pastilla de caldo","pastillas de caldo"],10,"ud"],[["pimenton"],75,"g"],
+  [["oregano"],10,"g"],[["aceituna"],150,"g"],[["patata"],2000,"g"],[["cebolla"],1000,"g"],[["chocolate"],100,"g"],[["galleta"],500,"g"]];
+const STAPLE=/aceite|(^|[^a-z])sal([^a-z]|$)|azucar|pimenton|pimienta|oregano|comino|especia|caldo|vinagre|harina|levadura/;
+const LIQ=/aceite|vinagre|leche|agua|zumo|salsa|caldo liquido/;
+function toBase(q,u,name){
+  if(u==="kg")return [q*1000,"g"];if(u==="l")return [q*1000,"ml"];
+  if(u==="cda"||u==="cdta"){const liq=LIQ.test(norm(name));return [q*(u==="cda"?(liq?15:10):(liq?5:3)),liq?"ml":"g"]}
+  return [q,u];
+}
+const packKey=(name,u)=>norm(name).trim()+"|"+u;
+function packFor(name,u){
+  const own=S.packs&&S.packs[packKey(name,u)];if(own)return {...own,own:true};
+  const nm=norm(name);
+  /* palabra entera (con plural): «sal» no debe atrapar «salchichas» */
+  for(const [keys,size,pu] of PACKS)if(pu===u&&keys.some(k=>new RegExp("(^|[^a-z])"+k+"(s|es)?([^a-z]|$)").test(nm)))return {size,price:null};
+  return null;
+}
+function shopList(rs,n){
+  const agg={};
+  rs.forEach(r=>{const f=factor(r,n);r.ingredients.forEach(i=>{
+    if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return; // el agua no se compra
+    const [q,u]=toBase(num(i.qty)*f,i.unit,i.name),k=packKey(i.name,u);
+    agg[k]=agg[k]||{key:k,name:i.name.trim(),unit:u,q:0,p:0};
+    agg[k].q+=q;agg[k].p+=num(i.price)*f;
+  })});
+  return Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es")).map(it=>{
+    if(S.have&&S.have[it.key])return {...it,have:true,pk:null,k:0,cost:0,left:0};
+    const pk=packFor(it.name,it.unit),per=it.q>0?it.p/it.q:0;
+    if(pk&&pk.size>0){
+      const k=Math.max(1,Math.ceil(it.q/pk.size-0.02)),unitCost=pk.price!=null?pk.price:per*pk.size;
+      return {...it,pk,k,cost:unitCost*k,left:k*pk.size-it.q};
+    }
+    const whole=WHOLE[it.unit]?Math.max(1,Math.ceil(it.q-0.05)):it.q;
+    return {...it,pk:null,k:0,cost:per*whole,left:0};
+  });
+}
+function shopRow(i){
+  const need=fmtQ(i.q,i.unit),edit=U.packEdit===i.key;
+  if(i.have)return `<tr><td><b style="color:var(--mute)">${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · lo tienes en casa</small></td><td class="p"><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button></td></tr>`;
+  const buy=i.pk?`compras ${i.k} × ${fmtQ(i.pk.size,i.unit)}${i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?` · sobran ${fmtQ(i.left,i.unit)}`:""}`:"a granel o por unidades";
+  let h=`<tr><td><b>${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}</small></td>
+  <td class="p">${i.cost?eur(i.cost):""}<br><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button></td></tr>`;
+  if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="2"><div class="row" style="padding:4px 0 8px">
+    <label class="f" style="margin:0">Se vende en</label><input id="pkSize" inputmode="decimal" value="${esc(pk.size)}" style="width:80px"> ${esc(i.unit)}
+    <label class="f" style="margin:0">a</label><input id="pkPrice" inputmode="decimal" value="${pk.price!=null?esc(pk.price):""}" placeholder="€ (opcional)" style="width:110px">
+    <button class="btn sm" data-act="packSave" data-k="${esc(i.key)}">Guardar</button>${i.pk&&i.pk.own?`<button class="btn ghost sm" data-act="packDel" data-k="${esc(i.key)}">Quitar el mío</button>`:""}
+    <button class="btn ghost sm" data-act="packEdit" data-k="">Cancelar</button></div></td></tr>`}
+  return h;
 }
 function ingRow(i,k){
   return `<div class="ing" data-row="${k}"><input data-f="name" value="${esc(i.name)}" placeholder="Ingrediente" aria-label="Ingrediente">
@@ -347,6 +415,11 @@ document.addEventListener("click",async e=>{
   else if(a==="pm"){S.people=Math.max(1,S.people+num(b.dataset.d));persist()}
   else if(a==="filter")U.filter=b.dataset.c;
   else if(a==="heat"){S.heat=b.dataset.k;persist()}
+  else if(a==="have"){S.have=S.have||{};if(S.have[b.dataset.k])delete S.have[b.dataset.k];else S.have[b.dataset.k]=true;persist()}
+  else if(a==="packEdit")U.packEdit=U.packEdit===b.dataset.k?"":b.dataset.k;
+  else if(a==="packSave"){const size=num($("#pkSize")?.value),pr=$("#pkPrice")?.value.trim();
+    if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
+  else if(a==="packDel"){if(S.packs)delete S.packs[b.dataset.k];persist();U.packEdit=""}
   else if(a==="open")U.open=U.open===b.dataset.id?null:b.dataset.id;
   else if(a==="menu"){const id=b.dataset.id;S.menu=S.menu.includes(id)?S.menu.filter(x=>x!==id):[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){S.recipes=S.recipes.filter(r=>r.id!==b.dataset.id);S.menu=S.menu.filter(x=>x!==b.dataset.id);persist()}}
