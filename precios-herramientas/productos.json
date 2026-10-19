@@ -1,0 +1,369 @@
+[
+ {
+  "k": "mantequilla",
+  "n": "Mantequilla",
+  "u": "g",
+  "q": "mantequilla",
+  "inc": "^mantequilla",
+  "exc": "sin lactosa|ligera|untar|ajo|hierbas|cacahuete"
+ },
+ {
+  "k": "huevo",
+  "n": "Huevos",
+  "u": "ud",
+  "q": "huevos",
+  "inc": "^huevos?( (frescos|camperos|medianos|grandes|clase|l|m)|$)",
+  "exc": "codorniz|liquid|cocid|chocolate|pasta|duro"
+ },
+ {
+  "k": "azucar",
+  "n": "Azúcar",
+  "u": "g",
+  "q": "azucar",
+  "inc": "^az[uú]car (blanc|blanquilla)|az[uú]car$|az[uú]car blanco",
+  "exc": "moreno|glas|caña|vainill|sobres|edulcor"
+ },
+ {
+  "k": "aceite de oliva",
+  "n": "Aceite de oliva",
+  "u": "ml",
+  "q": "aceite de oliva",
+  "inc": "^aceite de oliva( virgen extra| 0| suave| intenso|$)",
+  "exc": "orujo|spray|lata pequeña"
+ },
+ {
+  "k": "aceite de girasol",
+  "n": "Aceite de girasol",
+  "u": "ml",
+  "q": "aceite girasol",
+  "inc": "^aceite de girasol",
+  "exc": "alto oleico|spray"
+ },
+ {
+  "k": "leche",
+  "n": "Leche",
+  "u": "ml",
+  "q": "leche semidesnatada",
+  "inc": "^leche (semidesnatada|entera)",
+  "exc": "sin lactosa|polvo|condensada|evaporada|cacao|batido|calcio|fresca|avena|soja|almendra|cabra|oveja",
+  "max": 6000
+ },
+ {
+  "k": "leche sin lactosa",
+  "n": "Leche sin lactosa",
+  "u": "ml",
+  "q": "leche sin lactosa",
+  "inc": "^leche .*sin lactosa",
+  "exc": "polvo|batido|cacao",
+  "max": 6000
+ },
+ {
+  "k": "ajo",
+  "n": "Ajos",
+  "u": "g",
+  "q": "ajos",
+  "inc": "^ajos?( morados?| blancos?| malla|$)|^cabezas? de ajo",
+  "exc": "pelad|picad|negro|polvo|tierno|aceite|salsa|granulado|perejil|ali[ñn]ad|frito|laminad"
+ },
+ {
+  "k": "harina",
+  "n": "Harina de trigo",
+  "u": "g",
+  "q": "harina de trigo",
+  "inc": "harina de trigo|harina (para todo|común)",
+  "exc": "integral|fuerza|reposter|tempura|freir|fre[ií]r|maiz|ma[ií]z|garbanzo|sin gluten|bizcocho"
+ },
+ {
+  "k": "cebolla",
+  "n": "Cebollas",
+  "u": "g",
+  "q": "cebolla",
+  "inc": "^cebollas?( |$)|cebolla (dulce|amarilla|blanca)",
+  "exc": "frita|crujiente|morada|roja|tierna|cebolleta|congelad|picada|caramel|polvo",
+  "max": 3000
+ },
+ {
+  "k": "tomate",
+  "n": "Tomates",
+  "u": "g",
+  "q": "tomate",
+  "inc": "^tomates? (redondo|pera|rama|maduro|ensalada)|^tomates?$",
+  "exc": "frito|triturado|natural|cherry|seco|zumo|ketchup|conserva|salsa",
+  "max": 3000
+ },
+ {
+  "k": "patata",
+  "n": "Patatas",
+  "u": "g",
+  "q": "patatas",
+  "inc": "^patatas?( |$)|patata (nueva|lavada|blanca|roja|guisar|freir)",
+  "exc": "frita|chips|congelad|prefrit|asad|cocid|pur[eé]|gajo|paja|bolsa de patatas fritas|snack",
+  "max": 5000
+ },
+ {
+  "k": "nata",
+  "n": "Nata para cocinar",
+  "u": "ml",
+  "q": "nata cocinar",
+  "inc": "nata (para cocinar|cocinar|l[ií]quida|para montar)|crema de leche",
+  "exc": "spray|vegetal|montada|soja|avena"
+ },
+ {
+  "k": "pimenton",
+  "n": "Pimentón",
+  "u": "g",
+  "q": "pimenton",
+  "inc": "^piment[oó]n",
+  "exc": "chorizo|aceite"
+ },
+ {
+  "k": "arroz",
+  "n": "Arroz",
+  "u": "g",
+  "q": "arroz redondo",
+  "inc": "^arroz (redondo|extra|largo|bomba)?",
+  "exc": "vaso|cocido|basmati|integral|vaporizado|tres delicias|leche|preparado|salvaje|jazm[ií]n|sushi|risotto|tortitas|harina|bebida|con "
+ },
+ {
+  "k": "vinagre",
+  "n": "Vinagre",
+  "u": "ml",
+  "q": "vinagre",
+  "inc": "vinagre de (vino|manzana|jerez)",
+  "exc": "balsamico|bals[aá]mico|crema|modena|m[oó]dena|spray"
+ },
+ {
+  "k": "limon",
+  "n": "Limones",
+  "u": "g",
+  "q": "limon",
+  "inc": "^limon(es)?( |$)|^lim[oó]n( |$)",
+  "exc": "zumo|exprimido|refresco|t[eé]|helado|piel|bebida|galleta|tarta|yogur|lima"
+ },
+ {
+  "k": "pepino",
+  "n": "Pepino",
+  "u": "ud",
+  "q": "pepino",
+  "inc": "^pepinos?( |$)",
+  "exc": "encurtid|vinagre|pepinillo|crema"
+ },
+ {
+  "k": "chorizo",
+  "n": "Chorizo",
+  "u": "g",
+  "q": "chorizo",
+  "inc": "^chorizo",
+  "exc": "lonchas|loncheado|taquitos|pizza|bocadillo|ib[eé]rico|bellota|pamplona|para cocinar|fresco|criollo"
+ },
+ {
+  "k": "lechuga",
+  "n": "Lechuga",
+  "u": "ud",
+  "q": "lechuga",
+  "inc": "^lechugas?( |$)|lechuga (iceberg|romana|hoja de roble)",
+  "exc": "bolsa|ensalada|mezcla|brotes|cogollo"
+ },
+ {
+  "k": "platano",
+  "n": "Plátanos",
+  "u": "g",
+  "q": "platano",
+  "inc": "^pl[aá]tanos?( |$)|banana",
+  "exc": "chips|zumo|batido|deshidrat|frito|macho"
+ },
+ {
+  "k": "maicena",
+  "n": "Harina fina de maíz",
+  "u": "g",
+  "q": "harina fina de maiz",
+  "inc": "harina fina de ma[ií]z|maicena",
+  "exc": ""
+ },
+ {
+  "k": "tomate triturado",
+  "n": "Tomate triturado",
+  "u": "g",
+  "q": "tomate triturado",
+  "inc": "tomate triturado",
+  "exc": "frito|albahaca|ajo"
+ },
+ {
+  "k": "tomate frito",
+  "n": "Tomate frito",
+  "u": "g",
+  "q": "tomate frito",
+  "inc": "tomate frito",
+  "exc": "albahaca|casero estilo|aceite de oliva virgen|sin az|light|0%"
+ },
+ {
+  "k": "pollo",
+  "n": "Pollo troceado",
+  "u": "g",
+  "q": "pollo troceado",
+  "inc": "^pollo (troceado|entero|cuartos)|^muslos de pollo|^contramuslos",
+  "exc": "asado|empanado|nugget|marinad|caldo|pechuga|alitas|hamburguesa|salchicha|fiambre|filete"
+ },
+ {
+  "k": "pechuga",
+  "n": "Pechuga de pollo",
+  "u": "g",
+  "q": "pechuga de pollo",
+  "inc": "^(filetes? (de )?)?pechugas? de pollo|^filetes? (de )?pechuga",
+  "exc": "empanad|lonchas|fiambre|asad|marinad|pavo|nugget|tiras crujientes|rellen"
+ },
+ {
+  "k": "guisantes",
+  "n": "Guisantes",
+  "u": "g",
+  "q": "guisantes",
+  "inc": "guisantes",
+  "exc": "wasabi|snack|jam[oó]n|tortilla"
+ },
+ {
+  "k": "jamon cocido",
+  "n": "Jamón cocido",
+  "u": "g",
+  "q": "jamon cocido",
+  "inc": "jam[oó]n cocido",
+  "exc": "pizza|sandwich|croqueta|rollito|pavo|taquitos"
+ },
+ {
+  "k": "pan rallado",
+  "n": "Pan rallado",
+  "u": "g",
+  "q": "pan rallado",
+  "inc": "pan rallado",
+  "exc": "panko|sin gluten|ajo|perejil"
+ },
+ {
+  "k": "pimiento",
+  "n": "Pimiento rojo",
+  "u": "g",
+  "q": "pimiento rojo",
+  "inc": "^pimientos? (rojos?|california|asar)",
+  "exc": "asado|lata|piquillo|conserva|tiras|morr[oó]n|pimentón|congelad|relleno"
+ },
+ {
+  "k": "pan",
+  "n": "Pan (barra)",
+  "u": "ud",
+  "q": "barra de pan",
+  "inc": "barra|baguette|pistola",
+  "exc": "congelad|chocolate|cereales|sin gluten|integral|semillas|tostad|bocadillo|helado"
+ },
+ {
+  "k": "levadura",
+  "n": "Levadura química",
+  "u": "g",
+  "q": "levadura quimica",
+  "inc": "^levadura (qu[ií]mica|en polvo|royal)|^impulsor|^gasificante",
+  "exc": "fresca|panadera|nutricional|seca de panader"
+ },
+ {
+  "k": "manzana",
+  "n": "Manzanas",
+  "u": "g",
+  "q": "manzana",
+  "inc": "^manzanas?( |$)|manzana (golden|fuji|gala|royal|pink|reineta|roja|verde)",
+  "exc": "zumo|compota|tarta|chips|deshidrat|asada|pur[eé]|bebida|sidra|vinagre|galleta|yogur|batido",
+  "max": 3000
+ },
+ {
+  "k": "naranja",
+  "n": "Naranjas",
+  "u": "g",
+  "q": "naranja",
+  "inc": "^naranjas?( |$)|naranja (de mesa|de zumo|navel)",
+  "exc": "zumo|refresco|mermelada|bebida|helado|galleta|chocolate",
+  "max": 3000
+ },
+ {
+  "k": "chocolate",
+  "n": "Chocolate negro",
+  "u": "g",
+  "q": "chocolate negro",
+  "inc": "^chocolate (negro|fondant|postres|para fundir|reposter|negro extrafino)",
+  "exc": "leche|blanco|almendra|naranja|menta|sal|bombones|galleta|cacao puro 9|bebida|crema|untar|relleno|0%|sin az"
+ },
+ {
+  "k": "aceitunas",
+  "n": "Aceitunas",
+  "u": "g",
+  "q": "aceitunas sin hueso",
+  "inc": "aceitunas? (verdes |negras |manzanilla |)?(sin hueso|deshuesadas)",
+  "exc": "rellen|anchoa|pate|paté|rodajas"
+ },
+ {
+  "k": "atun",
+  "n": "Atún en aceite",
+  "u": "lata",
+  "q": "atun en aceite",
+  "inc": "^at[uú]n claro (en )?aceite",
+  "exc": "natural|escabeche|tomate|ensalada|ventresca|ib[eé]rico|bonito"
+ },
+ {
+  "k": "sardinas",
+  "n": "Sardinas en lata",
+  "u": "lata",
+  "q": "sardinas",
+  "inc": "^sardin(illa)?s (en )?(aceite|tomate)",
+  "exc": "escabeche|picante|ahumad|reducid"
+ },
+ {
+  "k": "cuscus",
+  "n": "Cuscús",
+  "u": "g",
+  "q": "cuscus",
+  "inc": "^cusc[uú]s|^couscous|^s[eé]mola de trigo",
+  "exc": "verduras|preparado|integral|vaso|con "
+ },
+ {
+  "k": "caldo",
+  "n": "Pastillas de caldo",
+  "u": "ud",
+  "q": "pastillas caldo",
+  "inc": "^caldo .*(pastillas|cubitos)|^pastillas de caldo|^cubitos de caldo",
+  "exc": "lavavajillas|chocolate|jabón|caramelo|juego"
+ },
+ {
+  "k": "pasta",
+  "n": "Pasta (macarrones)",
+  "u": "g",
+  "q": "macarrones",
+  "inc": "macarr[oó]n|macarrones",
+  "exc": "gratinad|preparad|integral|sin gluten|lentejas|garbanzo|fresc|rellen|ensalada|queso|bolo"
+ },
+ {
+  "k": "garbanzos cocidos",
+  "n": "Garbanzos cocidos",
+  "u": "g",
+  "q": "garbanzos cocidos",
+  "inc": "garbanzos? cocidos?",
+  "exc": "espinacas|chorizo|ensalada|hummus|crujientes|tostados"
+ },
+ {
+  "k": "galletas",
+  "n": "Galletas María",
+  "u": "g",
+  "q": "galletas maria",
+  "inc": "^galletas? (mar[ií]a|tipo mar[ií]a)",
+  "exc": "chocolate|integral|sin az|rellen|dorada sin|fibra|0%"
+ },
+ {
+  "k": "yogur",
+  "n": "Yogur natural",
+  "u": "ud",
+  "q": "yogur natural",
+  "inc": "yogur natural",
+  "exc": "az[uú]car|azucarado|desnatado|griego|bebible|l[ií]quido|soja|coco|ecol|cabra|oveja|vainilla|fresa|lim[oó]n"
+ },
+ {
+  "k": "queso rallado",
+  "n": "Queso rallado",
+  "u": "g",
+  "q": "queso rallado",
+  "inc": "queso rallado",
+  "exc": "parmesano|grana|vegano|ensalada|pizza|light"
+ }
+]

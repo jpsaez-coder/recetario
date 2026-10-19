@@ -2,3 +2,5 @@ tmp/
 retirados/
 .DS_Store
 .claude/
+precios-herramientas/*.json
+!precios-herramientas/productos.json
