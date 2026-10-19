@@ -139,6 +139,7 @@ details.inf>.msg{flex-basis:100%;margin:2px 0 6px;background:var(--bg);border-ra
 details.inf[open]>summary{color:var(--ink)}
 tr.rowd td{padding-top:0;border-bottom:1px dashed var(--line)}tr.rowd small{color:var(--mute)}tr.home b{color:var(--mute)}
 details.plg3>summary{list-style:none;cursor:pointer}details.plg3>summary::-webkit-details-marker{display:none}
+button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:underline;font:inherit;cursor:pointer}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -347,7 +348,8 @@ function heatNote(r){
   const v=HEAT[heatName()],h=heatName();
   /* en la Guía (sin receta), la referencia es la pasta del grupo: 80 g por persona */
   const ag=r?aguaReceta(r):{l:Math.max(1,Math.round(RAC()*0.8)),ref:true};
-  const tip=inf("fue",`${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""} En altura todo tarda más; las legumbres secas, mucho más: mejor de bote.`);
+  const tabla=r?`<button class="lnk" data-act="verTiempos">tabla de tiempos</button>`:"tabla";
+  const tip=inf("fue",`${esc(v.tip)}${v.rec?` Los tiempos de la ${tabla} ya suman lo que tarda en volver a hervir.`:r?` Tiempos de cada alimento en la ${tabla}.`:""} En altura todo tarda más; las legumbres secas, mucho más: mejor de bote.`);
   if(!ag)return tip;
   const L=ag.l,a=Math.round(L*v.perL[0]),b=Math.round(L*v.perL[1]);
   const etq=ag.ref?`Hervir ${L} l de agua (${Math.round(RAC()*80)} g de pasta para ${grupoTxt()} · 1 l por cada 100 g)`:`Hervir unos ${String(L).replace(".",",")} l de agua${ag.que.length?" (para "+ag.que.join(", ")+")":""}`;
@@ -1055,6 +1057,7 @@ document.addEventListener("click",async e=>{
   else if(a==="salida"){S.salida=b.dataset.k;persist()}
   else if(a==="nevera"){S.nevera=!S.nevera;persist()}
   else if(a==="row"){U.row=U.row===b.dataset.k?"":b.dataset.k}
+  else if(a==="verTiempos"){U.tab="guia";U.det=U.det||{};U.det.tiempos=true;render();document.querySelector('details[data-k=tiempos]')?.scrollIntoView({block:"start"});return}
   else if(a==="packEdit")U.packEdit=U.packEdit===b.dataset.k?"":b.dataset.k;
   else if(a==="packSave"){const size=num($("#pkSize")?.value),pr=$("#pkPrice")?.value.trim();
     if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
