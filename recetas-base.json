@@ -301,6 +301,7 @@
   "servings": 4,
   "categories": [
    "Merienda",
+   "Principal",
    "Ruta",
    "Acampada"
   ],
@@ -326,6 +327,7 @@
   "servings": 4,
   "categories": [
    "Merienda",
+   "Principal",
    "Ruta",
    "Acampada",
    "Casa"
@@ -384,6 +386,7 @@
   "servings": 4,
   "categories": [
    "Merienda",
+   "Principal",
    "Acampada",
    "Casa"
   ],

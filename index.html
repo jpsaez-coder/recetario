@@ -160,7 +160,7 @@ textarea{min-height:90px;resize:vertical}
 <script>
 /* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
    Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
-const FACETS=[{k:"plato",n:"Plato",one:true,v:["Desayuno","Merienda","Entrante","Principal","Postre y masas"]},
+const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Merienda","Entrante","Principal","Postre y masas"]},
   {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa"]},
   {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
 const BASE_CATS=FACETS.flatMap(f=>f.v);
