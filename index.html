@@ -131,6 +131,8 @@ tr.got b{color:var(--mute);text-decoration:line-through}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
 details.plg>summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}details.plg[open]>summary::after{transform:rotate(180deg)}
+details.plg2{border-top:1px solid var(--line);margin-top:8px}details.plg2>summary{list-style:none;cursor:pointer;padding:10px 0;font-weight:600;color:var(--pine);display:flex}
+details.plg2>summary::-webkit-details-marker{display:none}details.plg2>summary::after{content:"▾";margin-left:auto;color:var(--mute)}details.plg2[open]>summary::after{transform:rotate(180deg)}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -404,11 +406,6 @@ function vGuia(){
   const n=RAC();
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
   return `${vCuatro()}
-  <div class="card"><h2>Tus recetas</h2>
-  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican.</p>
-  <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
-  <input id="impfile" type="file" accept=".json,application/json" hidden>
-  ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</div>
   <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 12 años, ración entera; hasta los 11, el 70 % de una ración.</p>${tbl(prop)}</details>
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
@@ -425,8 +422,9 @@ function vGuia(){
   <a href="https://sede.comunidad.madrid/autorizaciones-licencias-permisos-carnes/regulacion-distintos-usos-fuego" target="_blank" rel="noopener">Regulación de los usos del fuego</a><br>
   <a href="https://www.comunidad.madrid/seguridad-emergencias-asem-112/infoma26" target="_blank" rel="noopener">Avisos y suspensiones de este año (INFOMA)</a><br>
   <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
+  <label class="f">Al encender, donde esté permitido</label><ul style="margin-top:0"><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul>
   <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></div>
-  <div class="card"><h2>Fuego y seguridad</h2><ul><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul></div>
+
   <p class="msg" style="text-align:center">Recetario ${esc(APP_VERSION)}</p>`;
 }
 /* ---------- guardado ---------- */
@@ -454,7 +452,7 @@ async function initStorage(){
 
 /* ---------- vistas ---------- */
 function render(){
-  const tabs=[["recetas","Recetas"],["menu","Menú ("+planIds().length+")"],["nueva",U.draft&&U.draft.id?"Editar":"Nueva"],["guia","Guía"]];
+  const tabs=[["recetas","Recetas"],["menu","Menú ("+planIds().length+")"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top"><div><h1>Recetario</h1><p>Rutas, campamentos y cocina de casa</p></div>
   <div class="grp"><div class="people" aria-label="12 años o más"><small>≥ 12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
@@ -468,7 +466,7 @@ function vList(){
   const list=all().filter(r=>FACETS.every(f=>!U.f[f.k]||r.categories.includes(U.f[f.k]))&&(!U.q.trim()||matches(r,U.q))&&!(U.apta&&etiquetas(r).alerg.some(a=>al.includes(a))));
   const fil=`<div class="fsel">${FACETS.map(f=>`<label class="dd${U.f[f.k]?" on":""}"><span>${f.n}</span><select data-act="ffacet" data-k="${f.k}" aria-label="${f.n}"><option value="">Todos</option>${f.v.map(c=>`<option ${U.f[f.k]===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label>`).join("")}</div>`;
   const sel=FACETS.map(f=>U.f[f.k]).filter(Boolean);
-  let h=`<input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
+  let h=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
   sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
   if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
@@ -476,11 +474,12 @@ function vList(){
     let d="";
     if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
+    ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
+    <details class="plg2" data-k="n-${esc(r.id)}"${U.det&&U.det["n-"+r.id]?" open":""}><summary>Nutrición y cocina</summary>
     <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
     <label class="f">Reparto del plato</label>${vPlato(r)}
     ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
-    ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
-    <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}
+    <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
@@ -489,6 +488,11 @@ function vList(){
     <button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button></div>
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
+  h+=`<details class="card plg" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Tus recetas: copia e importar</h2></summary>
+  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican.</p>
+  <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
+  <input id="impfile" type="file" accept=".json,application/json" hidden>
+  ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
   return h;
 }
 /* Sueltos: lo que se compra sin receta (una sandía, barritas para media mañana). Fijos o por persona. */
@@ -532,8 +536,6 @@ function vMenu(){
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   ${cadena()?`<p class="msg">Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}${PRECIOS.cadenas[cadena()].cp?", CP "+esc(PRECIOS.cadenas[cadena()].cp):""}). Lo que no está en su catálogo va con el precio estimado. Los precios cambian: compáralos con el ticket.</p>`:S.super?`<p class="msg">Aún no hay precios de ${esc(S.super)} en la app: se usan los estimados.</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${grupoTxt()}.`}</p></div>
-  ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:ms.flatMap(m=>m.sin),sinQ:ms.flatMap(m=>m.sinQ),gusto:ms.flatMap(m=>m.gusto)};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});const D=S.dias||1;["kcal","p","c","f"].forEach(k=>t[k]/=D);
-    return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona${(S.dias||1)>1?" de media al día":""}, sueltos incluidos.</p>${macroBlock(t,(S.dias||1)>1?"por persona y día":"por persona")}</div>`})()}
   ${vSueltos(n,H)}
   ${vCompra(items)}${vAmortiza(items,rs)}`;
 }
@@ -1117,7 +1119,7 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
 }
 /* que una ficha abierta siga abierta al repintar */
 document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details[data-k]")){U.det=U.det||{};U.det[d.dataset.k]=d.open}},true);
-document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="guia";render()})}});
+document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
 initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render);
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
 if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){
