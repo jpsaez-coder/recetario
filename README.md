@@ -13,7 +13,7 @@ cada persona guarda sus recetas en su dispositivo.
 1. Editar y probar en local: `python3 -m http.server 8790` y abrir <http://localhost:8790>.
 2. **Subir la versión** (obligatorio: si no, los móviles siguen con la copia guardada):
    `bin/version MAYOR.MENOR.PARCHE`
-3. Commit, etiqueta `vX.Y.Z` y publicar.
+3. O todo de una vez: `bin/publicar X.Y.Z "qué cambia"` (pruebas, versión, commit, etiqueta, push y comprobación). Las pruebas solas: `node pruebas/pruebas.mjs`.
 
 ## Datos
 

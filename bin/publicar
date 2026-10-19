@@ -1,0 +1,19 @@
+#!/bin/sh
+# Publica una versión nueva: pruebas → versión → commit → etiqueta → push → comprueba la web.
+# Si las pruebas fallan, no se publica nada. Uso: bin/publicar 1.13.0 "qué cambia"
+set -eu
+cd "$(dirname "$0")/.." || exit 1
+v="${1:?uso: bin/publicar MAYOR.MENOR.PARCHE \"mensaje\"}"; msg="${2:-Versión $v}"
+NODE="$(command -v node || echo /usr/local/bin/node)"
+"$NODE" pruebas/pruebas.mjs || { echo "✗ Las pruebas fallan: no se publica." >&2; exit 1; }
+git remote get-url origin | grep -q 'jpsaez-coder/recetario' || { echo "✗ el remoto no es jpsaez-coder/recetario" >&2; exit 1; }
+bin/version "$v"
+git add -A
+git commit -qm "$msg" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+git tag "v$v"
+git push -q origin master --tags
+for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+  if curl -s "https://jpsaez-coder.github.io/recetario/version.js?x=$i$$" | grep -q "\"$v\""; then echo "✓ publicada $v"; exit 0; fi
+  sleep 15
+done
+echo "✗ la web aún no sirve $v (mira GitHub Pages)" >&2; exit 1

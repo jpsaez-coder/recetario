@@ -143,6 +143,7 @@ button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:
 .sumx{margin-left:auto;margin-right:8px;color:var(--mute);font-size:13px}
 .people input.cnt{width:34px;padding:3px 0;text-align:center;font-size:17px;font-weight:700;border:1px solid var(--line);background:var(--surface);-moz-appearance:textfield}
 .people input.cnt::-webkit-inner-spin-button,.people input.cnt::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.remind{background:var(--ochre-bg);border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:14px}.remind .row{margin-top:6px}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -482,7 +483,10 @@ function vList(){
   const list=all().filter(r=>FACETS.every(f=>!U.f[f.k]||r.categories.includes(U.f[f.k]))&&(!U.q.trim()||matches(r,U.q))&&!(U.apta&&etiquetas(r).alerg.some(a=>al.includes(a))));
   const fil=`<div class="fsel">${FACETS.map(f=>`<label class="dd${U.f[f.k]?" on":""}"><span>${f.n}</span><select data-act="ffacet" data-k="${f.k}" aria-label="${f.n}"><option value="">Todos</option>${f.v.map(c=>`<option ${U.f[f.k]===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label>`).join("")}</div>`;
   const sel=FACETS.map(f=>U.f[f.k]).filter(Boolean);
-  let h=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, proteína…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
+  /* tus recetas solo viven en este móvil: si hace más de 30 días sin copia, un aviso (se puede posponer 7 días) */
+  const DIA=864e5,dias=S.lastExport?Math.floor((Date.now()-S.lastExport)/DIA):null;
+  const aviso=S.recipes.length&&(dias===null||dias>30)&&!(S.remindAt&&Date.now()<S.remindAt);
+  let h=`${aviso?`<div class="remind"><span>💾 ${S.recipes.length} receta${S.recipes.length===1?"":"s"} tuya${S.recipes.length===1?"":"s"} ${dias===null?"sin copia todavía":`sin copia desde hace ${dias} días`}. Solo están en este móvil.</span><div class="row"><button class="btn sm" data-act="export">Exportar</button><button class="btn ghost sm" data-act="remindLater">Luego</button></div></div>`:""}<div class="row" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, proteína…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
   sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
   if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
@@ -549,6 +553,7 @@ function vMenu(){
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona${(S.dias||1)>1?" y día":""}</small><strong>${eur(perPerson/(S.dias||1))}</strong></div>
   ${B>0?`<div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>`:""}</div>
+  ${cadena()&&(Date.now()-new Date(PRECIOS.fecha))>90*864e5?`<p class="msg warn">⚠ Los precios de ${esc(cadena())} son de hace más de 3 meses (${esc(PRECIOS.fecha)}): tómalos como orientativos.</p>`:""}
   ${fl("Sobre los precios","pre",`Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa. ${cadena()?`Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}); lo que no está en su catálogo, estimado. Compáralos con el ticket.`:S.super?`Aún no hay precios de ${esc(S.super)}: se usan los estimados.`:`Precios estimados de cada receta.`}`)}
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
@@ -678,9 +683,7 @@ function plato(r){
     t[g]+=gr*(g!=="V"&&SECO.test(nm)&&!/cocid|bote/.test(nm)?2.5:1)}
   return t;
 }
-const OBJ={Comida:{H:60,P:20,V:20,txt:"plato único: 60 % hidrato fuerte, 20 % proteína, 20 % verdura fresca"},
-           Activo:{H:50,P:25,V:25,txt:"plato de día activo: la mitad hidrato, un cuarto proteína y un cuarto verdura"},
-           Cena:{H:40,P:30,V:30,txt:"de día activo: 40 % hidrato para reponer, 30 % proteína fácil de digerir, 30 % verdura cocinada"}};
+const OBJ={Activo:{H:50,P:25,V:25,txt:"plato de día activo: la mitad hidrato, un cuarto proteína y un cuarto verdura"}};
 function vPlato(r){
   const t=plato(r);
   let mom=r.categories.includes("Desayuno")?"Desayuno":r.categories.includes("Principal")?null:"-";
@@ -799,13 +802,6 @@ function planEntries(){
   return out;
 }
 const planIds=()=>planEntries().map(e=>e.id);
-function fitMomento(r){
-  return null; // ya no se usa: ver vPlato
-  if(!r.categories.includes("Principal"))return null;
-  const t=plato(r),sum=t.H+t.P+t.V;if(!sum)return null;
-  const dist=m=>["H","P","V"].reduce((a,k)=>a+Math.abs(t[k]/sum*100-OBJ[m][k]),0);
-  return dist("Comida")<=dist("Cena")?"Comida":"Cena";
-}
 function addPlan(id,d,m){S.plan=S.plan||{};const k=d+"|"+m;S.plan[k]=[...(S.plan[k]||[]),id];persist()}
 function optRecetas(m){
   /* solo las elegidas para el menú; primero las que pegan con ese momento */
@@ -851,8 +847,8 @@ function vDias(){
       const ids=(S.plan&&S.plan[d+"|"+m])||[];
       const cs=costeSlot(d,m);
       h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
-        const fit=(m==="Comida"||m==="Cena")?fitMomento(r):null,warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
-        return `<span class="pl">${esc(r.name)}${fit&&fit!==m?`<small> · encaja mejor de ${fit.toLowerCase()}</small>`:""}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
+        const warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
+        return `<span class="pl">${esc(r.name)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>`;
     }
     const cd=MOMS.reduce((a,m)=>a+costeSlot(d,m),0);
@@ -880,7 +876,7 @@ function vSalida(rs){
   const fr=s==="reunion"?[]:ent.filter(e=>!(s==="finde"&&e.d===1)).flatMap(({r,d})=>r.ingredients.filter(i=>FRIO.test(norm(i.name))).map(i=>`${i.name.trim()} (${d?"día "+d+", ":""}${r.name})`));
   /* en la mochila no hay nevera, la marques o no */
   const sinFrio=s==="ruta"||!S.nevera;
-  const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva",largo:"mejor conserva o secos"}[s];
+  const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva"}[s];
   const warn=fr.length&&sinFrio?`<p class="msg warn">❄ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
   return `${fl("¿Qué salida es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
   ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div>${warn}`;
@@ -1095,7 +1091,9 @@ document.addEventListener("click",async e=>{
   else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=cleanRecipe(r);await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]})}return}
   else if(a==="export"){if(!S.recipes.length){U.ioMsg="Aún no tienes recetas propias que exportar.";render();return}
     const res=await saveFile("mis-recetas-"+new Date().toISOString().slice(0,10)+".json",{app:"recetario",version:APP_VERSION,exported:new Date().toISOString(),recipes:S.recipes.map(cleanRecipe),cats:S.cats});
+    if(res!=="cancelado"){S.lastExport=Date.now();persist()}
     U.ioMsg=res==="cancelado"?"":`Copia ${res}: ${S.recipes.length} receta${S.recipes.length===1?"":"s"}. Guárdala fuera del móvil.`}
+  else if(a==="remindLater"){S.remindAt=Date.now()+7*864e5;persist()}
   else if(a==="import"){$("#impfile")?.click();return}
   else if(a==="dcat"){const c=b.dataset.c,d=U.draft,f=facetOf(c);
     if(d.categories.includes(c))d.categories=d.categories.filter(x=>x!==c);
