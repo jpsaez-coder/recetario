@@ -15,9 +15,9 @@
 <style>
 @font-face{font-family:"Bricolage Grotesque";font-weight:500 700;font-display:swap;src:url(fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Source Sans 3";font-weight:400 600;font-display:swap;src:url(fonts/source-sans-3.woff2) format("woff2")}
-:root{--bg:#EDF0E8;--surface:#FBFCF9;--ink:#1F2B23;--mute:#5E6D63;--line:#D3DBCC;--pine:#2E4B3A;--pine-ink:#F3F7F0;--ochre:#B97A12;--ochre-bg:#F6E8C8;--danger:#A33A2B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}
+:root{--m1:#2a78d6;--m2:#eb6834;--m3:#1baf7a;--bg:#EDF0E8;--surface:#FBFCF9;--ink:#1F2B23;--mute:#5E6D63;--line:#D3DBCC;--pine:#2E4B3A;--pine-ink:#F3F7F0;--ochre:#B97A12;--ochre-bg:#F6E8C8;--danger:#A33A2B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m1:#3987e5;--m2:#d95926;--m3:#199e70;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}}
+:root[data-theme="dark"]{--m1:#3987e5;--m2:#d95926;--m3:#199e70;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Source Sans 3",system-ui,sans-serif}
@@ -55,6 +55,14 @@ nav.tabs button[aria-selected="true"]{color:var(--pine);background:var(--bg)}
 .spread{justify-content:space-between}
 table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
 td{padding:6px 0;border-bottom:1px dashed var(--line);vertical-align:top}
+.macro{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.macro svg{flex:none}
+.kcal strong{font:700 26px "Bricolage Grotesque",sans-serif}
+.kcal small{color:var(--mute)}
+.leg{list-style:none;padding:0;margin:6px 0 0}
+.leg li{display:grid;grid-template-columns:12px 62px 44px auto;gap:5px;align-items:center;font-size:15px}
+.leg b{text-align:right}.leg small{color:var(--mute)}
+.sw{width:12px;height:12px;border-radius:3px}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -260,6 +268,7 @@ function vList(){
     let d="";
     if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
+    <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/S.people)}/pers.</span></div>
@@ -290,6 +299,8 @@ function vMenu(){
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${n} personas.`}</p></div>
+  ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:[...new Set(ms.flatMap(m=>m.sin))]};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});
+    return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona con todas las recetas del menú juntas.</p>${macroBlock(t,"por persona")}</div>`})()}
   <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(costF(r,factor(r,n)))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
   <div class="card"><h2>Lista de la compra</h2>
   <p class="msg">Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato» y cámbialo; se recuerda para la próxima vez.</p>
@@ -310,6 +321,73 @@ function vAmortiza(items,rs){
   return `<div class="card"><h2>Para aprovechar lo que sobra</h2>
   <p class="msg">Sobra: ${left.map(i=>`${esc(i.name.toLowerCase())} (${fmtQ(i.left,i.unit)})`).join(", ")}.${sug.length?" Estas recetas lo usan: añadirlas al menú sale casi gratis en esos ingredientes.":" Ninguna otra receta tuya lo usa: guárdalo para la próxima salida, o baja a un formato más pequeño con «Formato»."}</p>
   ${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}</div>`;
+}
+/* ---------- macros ----------
+   Valores orientativos por 100 g (kcal, proteína, hidratos, grasa), redondeados de tablas de composición
+   habituales (BEDCA/USDA). Se busca por palabra entera, en orden: lo más concreto primero. */
+const NUTRI=[
+ [["garbanzos cocidos","lentejas cocidas","alubias cocidas","legumbre cocida"],110,7,15,1.5],
+ [["pasta","macarron","espagueti","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
+ [["lenteja","garbanzo","alubia"],330,22,50,3],[["patata"],80,2,17,0.1],[["pan"],260,9,51,2.5],[["harina"],350,10,73,1.2],
+ [["tomate frito"],80,1.5,10,3.5],[["tomate triturado","tomate natural"],30,1.3,5,0.2],[["tomate"],18,0.9,3.9,0.2],
+ [["pepino"],12,0.6,2.2,0.1],[["lechuga"],15,1.3,2,0.2],[["pimiento"],25,1,4.5,0.3],[["cebolla"],40,1.1,9,0.1],
+ [["zanahoria"],41,0.9,9.6,0.2],[["calabaza"],26,1,6.5,0.1],[["calabacin"],17,1.2,3.1,0.3],[["ajo"],149,6.4,33,0.5],[["limon"],29,1.1,9,0.3],
+ [["manzana","fruta"],52,0.3,14,0.2],[["platano"],89,1.1,23,0.3],
+ [["atun","sardina","caballa"],200,26,0,10],[["aceituna"],145,1,4,15],[["aceite"],900,0,0,100],[["mantequilla"],740,0.7,0.6,82],
+ [["chorizo","salchichon"],455,24,2,38],[["salchicha"],300,12,2,27],[["jamon"],240,30,0,13],[["pechuga"],110,23,0,1.5],[["pollo"],215,18,0,15],
+ [["ternera"],190,20,0,12],[["cerdo","chuleta","lomo"],230,18,0,17],[["pescado","merluza","bacalao"],80,18,0,1],[["huevo"],145,12.5,0.7,10],
+ [["leche"],47,3.2,4.8,1.6],[["queso"],350,25,1,28],[["yogur"],60,4,5,3],[["nata"],300,2,3,30],
+ [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","almendra","cacahuete"],600,20,15,52],
+ [["mermelada","compota"],250,0.4,62,0],[["miel"],305,0.3,82,0]];
+/* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
+const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo)([^a-z]|$)/;
+/* gramos por unidad de lo que se cuenta en piezas */
+const PIEZA=[[["huevo"],60],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
+ [["patata"],200],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
+const wordRe=k=>new RegExp("(^|[^a-z])"+k+"(s|es)?([^a-z]|$)");
+const findIn=(tab,nm)=>tab.find(([keys])=>keys.some(k=>wordRe(k).test(nm)));
+function grams(i){
+  const q=num(i.qty),nm=norm(i.name);if(!(q>0))return null;
+  const u=i.unit;
+  if(u==="g")return q;if(u==="kg")return q*1000;
+  if(u==="ml")return q*(/aceite/.test(nm)?0.92:1);if(u==="l")return q*1000*(/aceite/.test(nm)?0.92:1);
+  if(u==="cda")return q*(/aceite/.test(nm)?13.5:10);if(u==="cdta")return q*(/aceite/.test(nm)?4.5:3);
+  if(u==="barra")return q*250;if(u==="diente")return q*5;
+  if(u==="lata")return q*(/atun|sardina|caballa/.test(nm)?56:/tomate/.test(nm)?400:250);
+  if(u==="ud"){const p=findIn(PIEZA,nm);return p?q*p[1]:null}
+  return null;
+}
+/* macros de una receta para UNA persona; «sin» = ingredientes sin datos */
+function macros(r){
+  const t={kcal:0,p:0,c:0,f:0},sin=[];
+  for(const i of r.ingredients){
+    if(!i.name.trim())continue;const nm=norm(i.name);
+    if(NADA.test(nm))continue;
+    const n=findIn(NUTRI,nm),g=grams(i);
+    if(!n||g==null){sin.push(i.name.trim());continue}
+    t.kcal+=n[1]*g/100;t.p+=n[2]*g/100;t.c+=n[3]*g/100;t.f+=n[4]*g/100;
+  }
+  const s=Math.max(1,r.servings);return {kcal:t.kcal/s,p:t.p/s,c:t.c/s,f:t.f/s,sin};
+}
+function pie(m,label){
+  const parts=[["Proteína",m.p*4,m.p,"var(--m1)"],["Hidratos",m.c*4,m.c,"var(--m2)"],["Grasa",m.f*9,m.f,"var(--m3)"]];
+  const tot=parts.reduce((a,x)=>a+x[1],0);
+  if(tot<=0)return `<p class="msg">Sin datos para calcular los macros.</p>`;
+  let a0=-Math.PI/2,arcs="";const R=50,C=60;
+  for(const [name,kc,g,col] of parts){
+    const fr=kc/tot;if(fr<=0)continue;
+    const a1=a0+fr*2*Math.PI,big=fr>0.5?1:0;
+    const d=fr>=0.999?`M${C} ${C-R}A${R} ${R} 0 1 1 ${C-0.01} ${C-R}Z`:`M${C} ${C}L${C+R*Math.cos(a0)} ${C+R*Math.sin(a0)}A${R} ${R} 0 ${big} 1 ${C+R*Math.cos(a1)} ${C+R*Math.sin(a1)}Z`;
+    arcs+=`<path d="${d}" fill="${col}" stroke="var(--surface)" stroke-width="2" stroke-linejoin="round"><title>${name}: ${Math.round(g)} g · ${Math.round(fr*100)} % de las kcal</title></path>`;
+    a0=a1;
+  }
+  const leg=parts.map(([name,kc,g,col])=>`<li><span class="sw" style="background:${col}"></span>${name}<b>${Math.round(g)} g</b><small>${Math.round(kc/tot*100)} %</small></li>`).join("");
+  return `<div class="macro" role="img" aria-label="${esc(label)}: ${Math.round(m.kcal)} kcal; ${parts.map(([n,kc,g])=>`${n} ${Math.round(g)} gramos, ${Math.round(kc/tot*100)} por ciento`).join("; ")}">
+  <svg viewBox="0 0 120 120" width="96" height="96" aria-hidden="true">${arcs}</svg>
+  <div><div class="kcal"><strong>${Math.round(m.kcal)}</strong> kcal <small>${esc(label)}</small></div><ul class="leg">${leg}</ul></div></div>`;
+}
+function macroBlock(m,label){
+  return `${pie(m,label)}${m.sin.length?`<p class="msg">Sin datos (no cuentan): ${esc(m.sin.join(", "))}.</p>`:""}<p class="msg">Valores orientativos; el % es de las kcal.</p>`;
 }
 /* ---------- compra por formatos de venta ---------- */
 /* Formato orientativo en que se vende cada cosa; cada persona lo cambia en la lista (S.packs). */
