@@ -944,6 +944,68 @@
   "steps": "Pon cada trozo de pescado sobre papel de aluminio con sal, perejil, rodajas de limón y un chorrito de aceite\nCierra bien el paquete doblando los bordes para que no se escape el jugo\nColócalo en la parrilla o sobre brasas no muy fuertes\nUnos 15 min para trozos de 150-200 g: el pescado se separa en láminas"
  },
  {
+  "id": "ej-pescado-patatas-aluminio",
+  "name": "Pescado con patatas en papel de aluminio",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pescado blanco (merluza)",
+    "qty": "600",
+    "unit": "g",
+    "price": "6.00"
+   },
+   {
+    "name": "Patatas",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Limón",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta las patatas en rodajas finas (medio centímetro) para que se hagan a la vez que el pescado, y la cebolla en aros\nPrepara un paquete por persona con doble capa de papel de aluminio: una cama de patata y cebolla, con sal y un chorro de aceite\nPon encima el pescado con sal, ajo picado, perejil y rodajas de limón\nCierra bien el paquete doblando los bordes, dejando un poco de aire dentro\nEntre brasas no muy vivas, 25-30 min; ábrelo con cuidado, sale vapor\nEn casa: al horno a 200 °C, unos 25 min"
+ },
+ {
   "id": "tr-platano-chocolate",
   "name": "Plátano con chocolate en las brasas",
   "servings": 4,
@@ -2069,6 +2131,80 @@
    }
   ],
   "steps": "Sala la carne, divídela en 4 bolas y aplánalas a un dedo de grosor; un hoyo en el centro evita que se abomben\nEn brasas sin llama, sobre parrilla, o en sartén con unas gotas de aceite: 4-5 min por lado, dando la vuelta una sola vez\nPon el queso encima el último minuto para que se funda\nTuesta el pan un momento sobre la parrilla\nMonta con lechuga, tomate y cebolla en rodajas y la salsa\nLa carne picada, bien hecha por dentro: sin rosa en el centro\nFuego solo donde esté permitido; si no, sartén en hornillo"
+ },
+ {
+  "id": "ej-pimientos-rellenos",
+  "name": "Pimientos rellenos de carne, champiñones y zanahoria",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pimientos rojos grandes",
+    "qty": "4",
+    "unit": "ud",
+    "price": "2.80"
+   },
+   {
+    "name": "Carne picada mixta",
+    "qty": "400",
+    "unit": "g",
+    "price": "2.80"
+   },
+   {
+    "name": "Champiñones",
+    "qty": "250",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Zanahoria",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Queso rallado",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.85"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta u orégano",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la tapa de los pimientos y quítales las semillas\nPica la cebolla, la zanahoria y los champiñones y sofríelos en la sartén con el aceite, 5 min\nAñade la carne picada, sal y pimienta u orégano, y dórala; mezcla con el tomate frito\nRellena los pimientos, pon queso rallado encima y tápalos con su tapa\nAl fuego: envuélvelos en papel de aluminio de pie y déjalos entre brasas no muy vivas 30-40 min, hasta que el pimiento esté blando\nEn casa: al horno a 180 °C, unos 35 min, con el queso gratinado al final"
  },
  {
   "id": "gpg-arroz-a-la-cubana-de-campamento",
