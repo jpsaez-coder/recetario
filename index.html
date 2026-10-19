@@ -287,7 +287,7 @@ function fmtQ(q,u){
 /* precio escalado; lo que se compra entero se paga entero (4,5 latas son 5) */
 const sPrice=(i,f)=>WHOLE[i.unit]&&num(i.qty)>0?num(i.price)/num(i.qty)*Math.max(1,Math.ceil(num(i.qty)*f-0.05)):num(i.price)*f;
 const costF=(r,f)=>r.ingredients.reduce((a,i)=>a+sPrice(i,f),0);
-/* Raciones por edad: S.people = mayores (11 años o más), S.kids = niños (hasta 10 años, ~70 % de ración).
+/* Raciones por edad: S.people = mayores (12 años o más), S.kids = niños (hasta 11 años, ~70 % de ración).
    RAC() = raciones de comida (cantidades, compra); HEADS() = cabezas (lo que es «uno por persona» y el gasto por persona). */
 const KID=0.7;
 const HEADS=()=>S.people+(S.kids||0);
@@ -369,7 +369,7 @@ function vCuatro(){
     <p class="msg">La guía original ponía en la cena 50 % proteína y 20 % hidrato, un reparto pensado para quien quiere perder peso. En días de ruta las recomendaciones deportivas (ACSM 2016) piden reponer hidratos, así que aquí va 40 / 30 / 30.</p>
     <label class="f">Lo que pide cada día (por ración de adulto)</label>
     <div class="p3">${Object.values(ACT).map(a=>`<div class="p3-g">${esc(a.n)}</div><div class="p3-si">≈ ${a.kcal} kcal</div><div class="p3-si">${a.ch*PESO} g hidratos · ${Math.round(PROT*PESO)} g proteína</div>`).join("")}</div>
-    <p class="msg">Orientativo, para un adulto de unos 65 kg; un niño de hasta 10 años, sobre el 70 %. No sustituye a un dietista-nutricionista, sobre todo con niños o dietas especiales.</p>`,true)}
+    <p class="msg">Orientativo, para un adulto de unos 65 kg; un niño de hasta 11 años, sobre el 70 %. No sustituye a un dietista-nutricionista, sobre todo con niños o dietas especiales.</p>`,true)}
   ${step(3,"Platos económicos","Qué comprar y qué no",`<div class="p3">${P3.map(([g,si,no])=>`<div class="p3-g">${g}</div><div class="p3-si"><b>Sí</b> ${esc(si)}</div><div class="p3-no"><b>Mejor no</b> ${esc(no)}</div>`).join("")}</div>
     <p class="msg">Para ir bien al baño: fibra (fruta con piel, verdura, integrales, legumbre) y mucha agua. Días fuera (gran juego, exploración): comida que no se estropee, categoría Ruta.</p>`)}
   ${step(4,"Aprovechamiento seguro","Lo que sobra, sin riesgos",`<div class="tiles">${P4.map(([t,d])=>`<div class="tile"><b>${esc(t)}</b><small>${esc(d)}</small></div>`).join("")}</div>`)}
@@ -408,7 +408,7 @@ function vGuia(){
   <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
   <input id="impfile" type="file" accept=".json,application/json" hidden>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</div>
-  <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 11 años, ración entera; hasta los 10, el 70 % de una ración.</p>${tbl(prop)}</details>
+  <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 12 años, ración entera; hasta los 11, el 70 % de una ración.</p>${tbl(prop)}</details>
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
@@ -456,8 +456,8 @@ function render(){
   const tabs=[["recetas","Recetas"],["menu","Menú ("+planIds().length+")"],["nueva",U.draft&&U.draft.id?"Editar":"Nueva"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top"><div><h1>Recetario</h1><p>Rutas, campamentos y cocina de casa</p></div>
-  <div class="grp"><div class="people" aria-label="Mayores de 10 años"><small>≥ 11 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
-  <div class="people" aria-label="Niños hasta 10 años"><small>≤ 10 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
+  <div class="grp"><div class="people" aria-label="12 años o más"><small>≥ 12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
+  <div class="people" aria-label="Hasta 11 años"><small>≤ 11 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></header>`;
   $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
 }
@@ -671,8 +671,15 @@ function vPlato(r){
   /* comida y cena de día activo se parecen: una sola referencia (decir «encaja como cena» marcaba a todos) */
   const o=OBJ.Activo;
   const rows=[["Hidratos","H"],["Proteína","P"],["Verdura","V"]].map(([n,k])=>{const pc=Math.round(t[k]/sum*100),d=pc-o[k];
-    return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${pc} % (objetivo ${o[k]} %)"><i style="width:${pc}%"></i><b style="left:${o[k]}%"></b></div><span>${pc} %<small> / ${o[k]}</small></span></div>${Math.abs(d)>15?`<p class="msg warn">${k==="H"?(d<0?"Le faltan":"Le sobran"):(d<0?"Le falta":"Le sobra")} ${n.toLowerCase()}.</p>`:""}`}).join("");
-  return `<p class="msg">Referencia, ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}`;
+    return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${pc} % (objetivo ${o[k]} %)"><i style="width:${pc}%"></i><b style="left:${o[k]}%"></b></div><span>${pc} %<small> / ${o[k]}</small></span></div>`}).join("");
+  /* un solo aviso, con qué hacer: lo que más sobra y lo que más falta (si suman 100, cuando algo sobra, algo falta) */
+  const d={H:t.H/sum*100-o.H,P:t.P/sum*100-o.P,V:t.V/sum*100-o.V};
+  const MUCHO={H:"Mucho hidrato",P:"Mucha proteína",V:"Mucha verdura"},POCO={H:"poco hidrato",P:"poca proteína",V:"poca verdura"};
+  const ARREGLO={H:"añade pan, pasta, arroz o patata",P:"añade huevo, atún, legumbre o carne",V:"añade verdura o una ensalada"};
+  const ks=["H","P","V"],sob=ks.reduce((a,k)=>d[k]>d[a]?k:a,"H"),fal=ks.reduce((a,k)=>d[k]<d[a]?k:a,"H");
+  const aviso=d[sob]<=15&&d[fal]>=-15?`<p class="msg">✓ Reparto equilibrado para un día activo.</p>`
+    :`<p class="msg warn">${MUCHO[sob]} y ${POCO[fal]}: ${ARREGLO[fal]}.</p>`;
+  return `<p class="msg">Referencia, ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}${aviso}`;
 }
 /* Paso 3: lo que la guía desaconseja por precio o porque se estropea, con su alternativa */
 const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco","merluza","dorada","salmon"],"atún, caballa o sardinas en lata"],
@@ -748,7 +755,7 @@ function optRecetas(m){
   return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
 }
 /* ---------- energía según la actividad del día ----------
-   Objetivos orientativos por ración de adulto (≥ 11 años, ~65 kg); un niño come ~70 %.
+   Objetivos orientativos por ración de adulto (≥ 12 años, ~65 kg); un niño come ~70 %.
    Hidratos en g/kg y proteína 1,2-1,6 g/kg según la postura ACSM/AND/DC 2016; kcal, valores habituales de gasto. */
 const ACT={descanso:{n:"Descanso o reunión",kcal:2200,ch:4},suave:{n:"Ruta suave (hasta 4 h)",kcal:2800,ch:6},exigente:{n:"Ruta exigente (5 h o más)",kcal:3500,ch:8}};
 const PESO=65,PROT=1.3;
