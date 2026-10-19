@@ -374,7 +374,8 @@ function vBasicos(){
 function vGuia(){
   const n=RAC();
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
-  return `<div class="card"><h2>Tus recetas</h2>
+  return `${vCuatro()}
+  <div class="card"><h2>Tus recetas</h2>
   <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican.</p>
   <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
   <input id="impfile" type="file" accept=".json,application/json" hidden>
@@ -384,7 +385,6 @@ function vGuia(){
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></div>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</div>
-  ${vCuatro()}
   ${vBasicos()}
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017, modificado por el 83/2018), revisado el 19-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
