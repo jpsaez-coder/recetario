@@ -1,7 +1,7 @@
 // versión 1.6.1 — la escribe bin/version; si no cambia este fichero, el navegador no ve la actualización
 importScripts("version.js");
 const CACHE = "recetario-" + self.APP_VERSION;
-const FILES = ["./", "index.html", "version.js", "recetas-base.json", "manifest.webmanifest",
+const FILES = ["./", "index.html", "version.js", "recetas-base.json", "precios.json", "manifest.webmanifest",
   "fonts/bricolage-grotesque.woff2", "fonts/source-sans-3.woff2",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 

@@ -285,7 +285,8 @@ function fmtQ(q,u){
   return r.toLocaleString("es-ES",{maximumFractionDigits:1})+" "+u;
 }
 /* precio escalado; lo que se compra entero se paga entero (4,5 latas son 5) */
-const sPrice=(i,f)=>WHOLE[i.unit]&&num(i.qty)>0?num(i.price)/num(i.qty)*Math.max(1,Math.ceil(num(i.qty)*f-0.05)):num(i.price)*f;
+const sPrice=(i,f)=>{const cp=prodDe(i.name);if(cp&&num(i.qty)>0){const [q,u]=enUnidadDe(cp,i,f);if(u===cp.unit)return q*cp.precio/cp.size}return sPrice0(i,f)};
+const sPrice0=(i,f)=>WHOLE[i.unit]&&num(i.qty)>0?num(i.price)/num(i.qty)*Math.max(1,Math.ceil(num(i.qty)*f-0.05)):num(i.price)*f;
 const costF=(r,f)=>r.ingredients.reduce((a,i)=>a+sPrice(i,f),0);
 /* Raciones por edad: S.people = mayores (12 años o más), S.kids = niños (hasta 11 años, ~70 % de ración).
    RAC() = raciones de comida (cantidades, compra); HEADS() = cabezas (lo que es «uno por persona» y el gasto por persona). */
@@ -529,6 +530,7 @@ function vMenu(){
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
+  ${cadena()?`<p class="msg">Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}${PRECIOS.cadenas[cadena()].cp?", CP "+esc(PRECIOS.cadenas[cadena()].cp):""}). Lo que no está en su catálogo va con el precio estimado. Los precios cambian: compáralos con el ticket.</p>`:S.super?`<p class="msg">Aún no hay precios de ${esc(S.super)} en la app: se usan los estimados.</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${grupoTxt()}.`}</p></div>
   ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:ms.flatMap(m=>m.sin),sinQ:ms.flatMap(m=>m.sinQ),gusto:ms.flatMap(m=>m.gusto)};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});const D=S.dias||1;["kcal","p","c","f"].forEach(k=>t[k]/=D);
     return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona${(S.dias||1)>1?" de media al día":""}, sueltos incluidos.</p>${macroBlock(t,(S.dias||1)>1?"por persona y día":"por persona")}</div>`})()}
@@ -820,6 +822,26 @@ function vSalida(rs){
   return `<label class="f">¿Qué salida es?</label><div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
   ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div><p class="msg">${esc(SALIDAS[s].txt)}</p>${warn}`;
 }
+/* ---------- precios reales por cadena (precios.json, con fecha) ----------
+   Si el súper elegido en Menú tiene catálogo, la compra usa su producto, su formato y su precio;
+   lo que no está en el catálogo sigue con el precio estimado de la receta. */
+let PRECIOS=null;
+async function loadPrecios(){try{const r=await fetch("precios.json",{cache:"no-cache"});if(r.ok)PRECIOS=await r.json()}catch(e){}}
+const cadena=()=>PRECIOS&&PRECIOS.cadenas&&PRECIOS.cadenas[S.super]?S.super:null;
+function prodDe(name){
+  const c=cadena();if(!c)return null;
+  if(!PRECIOS._map){const m={};for(const [k,ns] of Object.entries(PRECIOS.claves||{}))for(const n of ns)m[n]=k;PRECIOS._map=m}
+  /* el trozo más largo del principio del nombre que sea una clave: «aceite de oliva virgen extra» → aceite de oliva; «tomate frito» → tomate frito */
+  const w=norm(name).replace(/[^a-z0-9ñ ]/g," ").trim().split(/\s+/);
+  for(let n=w.length;n>0;n--){const k=PRECIOS._map[w.slice(0,n).join(" ")];if(k){const p=PRECIOS.cadenas[c].productos[k];return p?{...p,k,cadena:c}:null}}
+  return null;
+}
+/* lleva la cantidad de un ingrediente a la unidad del producto (dientes de ajo → g, barra → ud) */
+function enUnidadDe(cp,i,f){
+  let [q,u]=toBase(num(i.qty)*f,i.unit,i.name);
+  if(cp&&cp.unit!==u){if(cp.unit==="g"){const g=grams(i);if(g!=null){q=g*f;u="g"}}else if(cp.unit==="ud"&&u==="barra")u="ud"}
+  return [q,u];
+}
 /* ---------- compra por formatos de venta ---------- */
 /* Formato orientativo en que se vende cada cosa; cada persona lo cambia en la lista (S.packs). */
 const PACKS=[[["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
@@ -837,6 +859,7 @@ function toBase(q,u,name){
 const packKey=(name,u)=>norm(name).trim()+"|"+u;
 function packFor(name,u){
   const own=S.packs&&S.packs[packKey(name,u)];if(own)return {...own,own:true};
+  const cp=prodDe(name);if(cp&&cp.unit===u&&!cp.granel)return {size:cp.size,price:cp.precio,cadena:cp.cadena,producto:cp.producto};
   const nm=norm(name);
   /* palabra entera (con plural): «sal» no debe atrapar «salchichas» */
   for(const [keys,size,pu] of PACKS)if(pu===u&&keys.some(k=>new RegExp("(^|[^a-z])"+k+"(s|es)?([^a-z]|$)").test(nm)))return {size,price:null};
@@ -847,13 +870,15 @@ function shopList(rs,n){
   rs.forEach(r=>{const f=factor(r,n);r.ingredients.forEach(i=>{
     if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return; // el agua no se compra
     if((S.alergias||[]).includes("Lactosa")&&/^leche( (entera|semidesnatada|desnatada|fresca))?$/.test(norm(i.name).trim()))i={...i,name:"Leche sin lactosa"};
-    const [q,u]=toBase(num(i.qty)*f,i.unit,i.name),k=packKey(i.name,u);
+    const [q,u]=enUnidadDe(prodDe(i.name),i,f),k=packKey(i.name,u);
     agg[k]=agg[k]||{key:k,name:i.name.trim(),unit:u,q:0,p:0};
     agg[k].q+=q;agg[k].p+=num(i.price)*f;
   })});
   return Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es")).map(it=>{
     if(S.have&&S.have[it.key])return {...it,have:true,pk:null,k:0,cost:0,left:0};
-    const pk=packFor(it.name,it.unit),per=it.q>0?it.p/it.q:0;
+    const pk=packFor(it.name,it.unit),cp=prodDe(it.name),gr=cp&&cp.granel&&cp.unit===it.unit;
+    const per=gr?cp.precio/cp.size:it.q>0?it.p/it.q:0; // a granel: precio por kilo o por pieza de la cadena
+    if(gr)it.granel=cp;
     if(pk&&pk.size>0){
       const k=Math.max(1,Math.ceil(it.q/pk.size-0.02)),unitCost=pk.price!=null?pk.price:per*pk.size;
       return {...it,pk,k,cost:unitCost*k,left:k*pk.size-it.q};
@@ -892,9 +917,9 @@ async function compartirCompra(items){
 function shopRow(i){
   const need=i.q>0?fmtQ(i.q,i.unit):"al gusto",edit=U.packEdit===i.key;
   if(i.have)return `<tr><td><b style="color:var(--mute)">${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · lo tienes en casa</small></td><td class="p"><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button></td></tr>`;
-  const buy=i.pk?`compras ${i.k} × ${fmtQ(i.pk.size,i.unit)}${i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?` · sobran ${fmtQ(i.left,i.unit)}`:""}`:"a granel o por unidades";
+  const buy=i.granel?`a granel · ${esc(i.granel.cadena)}: ${esc(i.granel.producto)}`:i.pk?`compras ${i.k} × ${fmtQ(i.pk.size,i.unit)}${i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?` · sobran ${fmtQ(i.left,i.unit)}`:""}`:"a granel o por unidades";
   const got=S.bought&&S.bought[i.key];
-  let h=`<tr class="${got?"got":""}"><td><label class="buy"><input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro"><b>${esc(i.name)}</b></label><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}</small></td>
+  let h=`<tr class="${got?"got":""}"><td><label class="buy"><input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro"><b>${esc(i.name)}</b></label><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}${i.pk&&i.pk.producto?` · ${esc(i.pk.cadena)}: ${esc(i.pk.producto)}`:""}</small></td>
   <td class="p">${i.cost?eur(i.cost):""}<br><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button></td></tr>`;
   if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="2"><div class="row" style="padding:4px 0 8px">
     <label class="f" style="margin:0">Se vende en</label><input id="pkSize" inputmode="decimal" value="${esc(pk.size)}" style="width:80px"> ${esc(i.unit)}
@@ -1093,9 +1118,14 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
 /* que una ficha abierta siga abierta al repintar */
 document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details[data-k]")){U.det=U.det||{};U.det[d.dataset.k]=d.open}},true);
 document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="guia";render()})}});
-initStorage().then(loadBase);
+initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render);
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
-if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){
+  /* si ya había una versión guardada y entra otra, recargar una vez para verla ya (si no, salía la vieja hasta la siguiente apertura) */
+  const habia=!!navigator.serviceWorker.controller;let recargado=false;
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(habia&&!recargado){recargado=true;location.reload()}});
+  navigator.serviceWorker.register("sw.js").then(r=>r.update()).catch(()=>{});
+}
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>
 </body>
