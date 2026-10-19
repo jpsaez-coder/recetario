@@ -70,7 +70,7 @@ td{padding:6px 0;border-bottom:1px dashed var(--line);vertical-align:top}
 .track b{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);transform:translateX(-1px)}
 .bar small{color:var(--mute)}
 .chk{list-style:none;padding:0;margin:6px 0}.chk li{margin:3px 0}
-.msg.warn{color:var(--ink);font-weight:600}
+.msg.warn,.fl .warn{color:var(--ink);font-weight:600}
 .fsel{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:6px;margin-bottom:10px}
 .dd{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:4px 20px 4px 8px}
 .dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);color:var(--mute);pointer-events:none}
@@ -105,7 +105,7 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .chkb{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px}
 .chkb input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--pine)}
 .chkb.bas input:checked+span{color:var(--mute);text-decoration:line-through}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}.stats div{background:var(--bg);border-radius:10px;padding:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:6px;margin:8px 0}.stats div{background:var(--bg);border-radius:10px;padding:8px}
 .stats small{display:block;font-size:12px;color:var(--mute);line-height:1.25}.stats strong{font:700 17px "Bricolage Grotesque",sans-serif}
 .exf{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.exf #exName,.exf button{grid-column:1/-1}
 .tag.tipo{background:transparent}.tag.alg{border-style:dashed}.tag.alg.hit{border:1.5px solid var(--danger);color:var(--danger);font-weight:600}
@@ -133,6 +133,12 @@ details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:cent
 details.plg>summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}details.plg[open]>summary::after{transform:rotate(180deg)}
 details.plg2{border-top:1px solid var(--line);margin-top:8px}details.plg2>summary{list-style:none;cursor:pointer;padding:10px 0;font-weight:600;color:var(--pine);display:flex}
 details.plg2>summary::-webkit-details-marker{display:none}details.plg2>summary::after{content:"▾";margin-left:auto;color:var(--mute)}details.plg2[open]>summary::after{transform:rotate(180deg)}
+.fl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--mute);margin:12px 0 4px;flex-wrap:wrap}.fl.h{margin:0;color:inherit}
+details.inf{display:contents}details.inf>summary{list-style:none;cursor:pointer;color:var(--pine);font-size:15px;line-height:1;padding:2px 4px}details.inf>summary::-webkit-details-marker{display:none}
+details.inf>.msg{flex-basis:100%;margin:2px 0 6px;background:var(--bg);border-radius:8px;padding:8px 10px}
+details.inf[open]>summary{color:var(--ink)}
+tr.rowd td{padding-top:0;border-bottom:1px dashed var(--line)}tr.rowd small{color:var(--mute)}tr.home b{color:var(--mute)}
+details.plg3>summary{list-style:none;cursor:pointer}details.plg3>summary::-webkit-details-marker{display:none}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -273,7 +279,7 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:0,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
@@ -341,13 +347,13 @@ function heatNote(r){
   const v=HEAT[heatName()],h=heatName();
   /* en la Guía (sin receta), la referencia es la pasta del grupo: 80 g por persona */
   const ag=r?aguaReceta(r):{l:Math.max(1,Math.round(RAC()*0.8)),ref:true};
-  const tip=`<p class="msg">${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""}${r?"":" En altura, las legumbres secas tardan mucho más: mejor de bote."}</p>`;
+  const tip=inf("fue",`${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""} En altura todo tarda más; las legumbres secas, mucho más: mejor de bote.`);
   if(!ag)return tip;
   const L=ag.l,a=Math.round(L*v.perL[0]),b=Math.round(L*v.perL[1]);
   const etq=ag.ref?`Hervir ${L} l de agua (${Math.round(RAC()*80)} g de pasta para ${grupoTxt()} · 1 l por cada 100 g)`:`Hervir unos ${String(L).replace(".",",")} l de agua${ag.que.length?" (para "+ag.que.join(", ")+")":""}`;
   return `<div class="stats"><div><small>${esc(etq)}</small><strong>${a}-${b} min</strong></div>
   <div><small>Volver a hervir al echarlo</small><strong>${v.rec?"+"+v.rec.replace(/[()+]/g,"").trim():"al momento"}</strong></div>
-  <div><small>Por encima de 1.500 m</small><strong>tarda más</strong></div></div>
+</div>
   ${L>6&&h==="hornillo"?`<p class="msg">Con tanta agua, mejor dos ollas o dos hornillos.</p>`:""}${tip}`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
@@ -510,7 +516,7 @@ function sueltosRecipe(n,H){
 }
 function vSueltos(n,H){
   const ex=S.extras||[];H=H||n;
-  return `<div class="card"><h2>Sueltos</h2><p class="msg">Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Entra en la compra, el presupuesto y los macros.</p>
+  return `<div class="card"><div class="fl h"><h2>Sueltos</h2>${inf("sue","Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Entra en la compra, el presupuesto y los macros.")}</div>
   ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*H,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""}</small></td>
     <td class="p">${e.price===""?"":eur(num(e.price)*(e.per==="persona"?H:1))}</td><td class="p"><button class="btn ghost sm" data-act="exDel" data-id="${e.id}" aria-label="Quitar ${esc(e.name)}">Quitar</button></td></tr>`).join("")}</table>`:""}
   <div class="exf"><input id="exName" placeholder="Qué (p. ej. Sandía)" aria-label="Qué"><input id="exQty" inputmode="decimal" placeholder="Cant." aria-label="Cantidad" value="1">
@@ -533,15 +539,14 @@ function vMenu(){
   <input id="bud" type="number" min="0" step="1" inputmode="decimal" value="${S.budget}" data-act="budget">
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona${(S.dias||1)>1?" y día":""}</small><strong>${eur(perPerson/(S.dias||1))}</strong></div>
-  <div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>
-  <div><small>Raciones que cubre (aprox.)</small><strong>${maxP}</strong></div></div>
-  <p class="msg">Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa${total-used>0.5?" (mira «sobran» en la lista)":""}.</p>
+  ${S.budget>0?`<div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>
+  <div><small>Raciones que cubre (aprox.)</small><strong>${maxP}</strong></div>`:""}</div>
+  ${fl("Sobre los precios","pre",`Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa. ${cadena()?`Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}); lo que no está en su catálogo, estimado. Compáralos con el ticket.`:S.super?`Aún no hay precios de ${esc(S.super)}: se usan los estimados.`:`Precios estimados de cada receta.`}`)}
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
-  ${cadena()?`<p class="msg">Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}${PRECIOS.cadenas[cadena()].cp?", CP "+esc(PRECIOS.cadenas[cadena()].cp):""}). Lo que no está en su catálogo va con el precio estimado. Los precios cambian: compáralos con el ticket.</p>`:S.super?`<p class="msg">Aún no hay precios de ${esc(S.super)} en la app: se usan los estimados.</p>`:""}
-  <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${grupoTxt()}.`}</p></div>
+  ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}</div>
   ${vSueltos(n,H)}
   ${vCompra(items)}${vCarga(items)}${vAmortiza(items,rs)}`;
 }
@@ -647,7 +652,7 @@ function pie(m,label){
 }
 function macroBlock(m,label){
   const u=a=>[...new Set(a||[])].join(", ");
-  return `${pie(m,label)}${m.gusto&&m.gusto.length?`<p class="msg">«Al gusto», se cuenta lo típico: ${esc(u(m.gusto))}.</p>`:""}${m.sinQ&&m.sinQ.length?`<p class="msg">Sin cantidad en la receta (no cuentan): ${esc(u(m.sinQ))}.</p>`:""}${m.sin.length?`<p class="msg">Sin datos (no cuentan): ${esc(u(m.sin))}.</p>`:""}<p class="msg">Valores orientativos; el % es de las kcal.</p>`;
+  return `${pie(m,label)}${m.gusto&&m.gusto.length?`<p class="msg">«Al gusto», se cuenta lo típico: ${esc(u(m.gusto))}.</p>`:""}${m.sinQ&&m.sinQ.length?`<p class="msg">Sin cantidad en la receta (no cuentan): ${esc(u(m.sinQ))}.</p>`:""}${m.sin.length?`<p class="msg">Sin datos (no cuentan): ${esc(u(m.sin))}.</p>`:""}${inf("mac","Valores orientativos de tablas de composición; el % es de las kcal.")}`;
 }
 /* ---------- método de los 4 pasos (guía «Cocina e intendencia – Menú equilibrado», guiasparaguias) ---------- */
 /* grupos del plato, por palabra entera; lo primero que coincide manda */
@@ -690,7 +695,7 @@ function vPlato(r){
   const ks=["H","P","V"],sob=ks.reduce((a,k)=>d[k]>d[a]?k:a,"H"),fal=ks.reduce((a,k)=>d[k]<d[a]?k:a,"H");
   const aviso=d[sob]<=15&&d[fal]>=-15?`<p class="msg">✓ Reparto equilibrado para un día activo.</p>`
     :`<p class="msg warn">${MUCHO[sob]} y ${POCO[fal]}: ${ARREGLO[fal]}.</p>`;
-  return `<p class="msg">Referencia, ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}${aviso}`;
+  return `${rows}${aviso}${inf("pla",`Referencia, ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.`)}`;
 }
 /* Paso 3: lo que la guía desaconseja por precio o porque se estropea, con su alternativa */
 const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco","merluza","dorada","salmon"],"atún, caballa o sardinas en lata"],
@@ -767,9 +772,12 @@ function vCarga(items){
   <div class="stats"><div><small>Compra (con envases, aprox.)</small><strong>${String(Math.round(comida/100)/10).replace(".",",")} kg</strong></div>
   <div><small>Agua para cocinar</small><strong>${String(ag.l).replace(".",",")} l</strong></div>
   <div><small>Total a cargar</small><strong>${String(Math.round(tot*10)/10).replace(".",",")} kg</strong></div></div>
-  <p class="msg">Repartido entre ${mochilas} mayor${mochilas===1?"":"es"}: unos ${String(Math.round(tot/mochilas*10)/10).replace(".",",")} kg cada uno. No cuenta el agua para beber (1,5-3 l por persona y día de ruta) ni el material.</p>
+  ${fl(`Unos ${String(Math.round(tot/mochilas*10)/10).replace(".",",")} kg por mayor`,"car",`Repartido entre ${mochilas} mayor${mochilas===1?"":"es"}. No cuenta el agua para beber (1,5-3 l por persona y día de ruta) ni el material. Los envases, a ojo (~8 %).`)}
   ${ag.out.length?`<label class="f">Agua de cocina por receta</label><table>${ag.out.map(([n,l,d])=>`<tr><td>${esc(n)}${d?` <small style="color:var(--mute)">· día ${d}</small>`:""}</td><td class="q">${String(l).replace(".",",")} l</td></tr>`).join("")}</table>`:""}</div>`;
 }
+/* ⓘ: las explicaciones, plegadas; a la vista solo el dato */
+const inf=(k,html)=>`<details class="inf" data-k="i-${k}"${U.det&&U.det["i-"+k]?" open":""}><summary aria-label="Más información">ⓘ</summary><div class="msg">${html}</div></details>`;
+const fl=(t,k,html)=>`<div class="fl"><span>${t}</span>${inf(k,html)}</div>`;
 /* ---------- menú por días ----------
    S.menu = recetas elegidas para el menú (desde Recetas). S.plan["2|Cena"] = [ids] las reparte por días.
    Lo elegido que no está en ningún día cuenta una vez (para una salida de un día no hace falta repartir). */
@@ -813,18 +821,17 @@ function comidoDia(d){
   return t;
 }
 function vObjetivo(d){
-  const o=objetivo(d),t=comidoDia(d);
-  const fila=(n,v,obj,u)=>{const pc=Math.min(100,Math.round(v/obj*100));return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${Math.round(v)} de ${Math.round(obj)} ${u}"><i style="width:${pc}%"></i></div><span>${Math.round(v)}<small> / ${Math.round(obj)} ${u}</small></span></div>`};
+  const o=objetivo(d),t=comidoDia(d),k=`obj${d}`;
+  const fila=(n,v,obj,u)=>{const pc=Math.min(100,Math.round(v/obj*100));return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${Math.round(v)} de ${Math.round(obj)} ${u}"><i style="width:${pc}%"></i></div><span>${Math.round(v).toLocaleString("es-ES")}<small> / ${Math.round(obj).toLocaleString("es-ES")} ${u}</small></span></div>`};
   const falta=o.kcal-t.kcal;
-  return `<div class="obj">${fila("Energía",t.kcal,o.kcal,"kcal")}${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}
-  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan unas ${Math.round(falta/50)*50} kcal por persona: raciones más grandes o sueltos (pan, fruta, frutos secos, chocolate).</p>`:""}
-  ${actDia(d)!=="descanso"?`<p class="msg">En la marcha (más de 1 h): 30-60 g de hidratos por hora y persona; por ejemplo, un plátano o una barrita (unos 25 g) cada hora.</p>`:""}</div>`;
+  return `<div class="obj"><details class="plg3" data-k="${k}"${U.det&&U.det[k]?" open":""}><summary>${fila("Energía",t.kcal,o.kcal,"kcal")}</summary>${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}</details>
+  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}</div>`;
 }
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
-  let h=`<div class="card"><h2>Menú por días</h2><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
+  let h=`<div class="card"><div class="fl h"><h2>Menú por días</h2>${inf("dia","Elige en Recetas las del menú y repártelas por días; las que no pongas en ningún día cuentan una vez. Cada día compara lo que come una ración de adulto con lo que pide su actividad (toca la barra para ver hidratos y proteína). En la marcha de más de 1 h: 30-60 g de hidratos por hora y persona, por ejemplo un plátano o una barrita cada hora.")}</div><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
   const sel=(S.menu||[]).map(getM).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
-  h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl">${esc(r.name)}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}<p class="msg">Repártelas por días abajo. Las que no pongas en ningún día cuentan una vez.</p>`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
+  h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl">${esc(r.name)}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
   if(sel.length)for(let d=1;d<=D;d++){
     h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div>`;
     for(const m of MOMS){
@@ -836,8 +843,8 @@ function vDias(){
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>`;
     }
     const cd=MOMS.reduce((a,m)=>a+costeSlot(d,m),0);
-    if(cd>0)h+=`<p class="msg">Coste de lo que se come el día ${d}: <b>${eur(cd)}</b> (${eur(cd/HEADS())} por persona).</p>`;
-    h+=`<label class="f">Por persona (ración de adulto) frente a lo que pide el día</label>${vObjetivo(d)}`;
+    if(cd>0)h+=`<p class="msg">Día ${d}: <b>${eur(cd)}</b> · ${eur(cd/HEADS())} por persona</p>`;
+    h+=vObjetivo(d);
     h+=`</div>`;
   }
   return h+`</div>`;
@@ -848,10 +855,10 @@ function vAlergias(rs){
   const al=S.alergias||[];
   const hits=rs.flatMap(r=>etiquetas(r).alerg.filter(a=>al.includes(a)).map(a=>[a,r.name]));
   const by={};hits.forEach(([a,n])=>{(by[a]=by[a]||new Set()).add(n)});
-  return `<label class="f">Alergias e intolerancias del grupo</label>
+  return `${fl("Alergias e intolerancias","alg","Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.")}
   <details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
   <div class="ddm-l">${[...ALERG].sort((x,y)=>x[0].localeCompare(y[0],"es")).map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
-  ${al.length?(Object.keys(by).length?Object.entries(by).map(([a,ns])=>`<p class="msg warn">⚠ ${esc(a)}: ${esc([...ns].join(", "))}.</p>`).join(""):`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`)+`<p class="msg">Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.</p>`:""}`;
+  ${al.length?(Object.keys(by).length?`<div class="fl">${Object.entries(by).map(([a,ns])=>`<span class="warn">⚠ ${esc(a)} en ${ns.size} receta${ns.size===1?"":"s"}</span>`).join(" · ")}${inf("algr",Object.entries(by).map(([a,ns])=>`<b>${esc(a)}</b>: ${esc([...ns].join(", "))}.`).join("<br>"))}</div>`:`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`):""}`;
 }
 function vSalida(rs){
   const s=SALIDAS[S.salida]?S.salida:"finde";
@@ -860,10 +867,10 @@ function vSalida(rs){
   const fr=s==="reunion"?[]:ent.filter(e=>!(s==="finde"&&e.d===1)).flatMap(({r,d})=>r.ingredients.filter(i=>FRIO.test(norm(i.name))).map(i=>`${i.name.trim()} (${d?"día "+d+", ":""}${r.name})`));
   /* en la mochila no hay nevera, la marques o no */
   const sinFrio=s==="ruta"||!S.nevera;
-  const fix={ruta:" En la mochila se estropea: cámbialo por conserva, embutido curado o queso curado.",finde:" Pásalo al día 1 o cámbialo por conserva.",largo:" Cámbialo por conserva o secos."}[s];
-  const warn=fr.length&&sinFrio?`<p class="msg warn">Necesita frío${s==="ruta"?"":" y no hay nevera"}: ${esc([...new Set(fr)].join(", "))}.${fix}</p>`:"";
-  return `<label class="f">¿Qué salida es?</label><div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
-  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div><p class="msg">${esc(SALIDAS[s].txt)}</p>${warn}`;
+  const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva",largo:"mejor conserva o secos"}[s];
+  const warn=fr.length&&sinFrio?`<p class="msg warn">❄ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
+  return `${fl("¿Qué salida es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
+  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div>${warn}`;
 }
 /* ---------- precios reales por cadena (precios.json, con fecha) ----------
    Si el súper elegido en Menú tiene catálogo, la compra usa su producto, su formato y su precio;
@@ -932,7 +939,7 @@ function shopList(rs,n){
   });
 }
 /* ---------- lista para la tienda: por secciones, con casillas, y para mandar por WhatsApp ---------- */
-const SECC=[["Conservas",/(^|[^a-z])(atun|sardin|caballa|tomate triturado|tomate frito|guisante|cocid|maiz dulce|aceituna|lata)/],
+const SECC=[["Conservas",/(^|[^a-z])(atun|sardin|caballa|tomate triturado|tomate frito|guisante|(garbanzos?|lentejas?|alubias?|judias?) (blancas )?cocid|maiz dulce|aceituna|piquillo|conserva|lata)/],
   ["Charcutería",/(^|[^a-z])(chorizo|jamon|salchichon|bacon|panceta|tocino|morcilla|fiambre)/],
   ["Carne y pescado",/(^|[^a-z])(pollo|pavo|cerdo|ternera|carne|lomo|chuleta|escalope|entrecot|salchicha|pescado|merluza|vieira|bacalao|arenque)/],
   ["Lácteos y huevos",/(^|[^a-z])(leche|nata|queso|mantequilla|yogur|huevo|yema|clara|cuajada)/],
@@ -944,7 +951,7 @@ function vCompra(items){
   const b=S.bought||{},vivos=items.filter(i=>!i.have),hechos=vivos.filter(i=>b[i.key]).length;
   const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,items.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
   return `<div class="card"><h2>Lista de la compra</h2>
-  <p class="msg">${hechos} de ${vivos.length} en el carro. Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato».</p>
+  ${fl(`${hechos} de ${vivos.length} en el carro`,"com","Toca ⋯ en una fila para ver lo que necesitas, lo que sobra y el producto, o para marcar «Lo tengo» o cambiar el formato si tu súper lo vende distinto.")}
   <div class="row"><button class="btn sm" data-act="waShare">Enviar por WhatsApp</button>${hechos?`<button class="btn ghost sm" data-act="boughtClear">Desmarcar todo</button>`:""}</div>
   ${grupos.map(([s,xs])=>`<h3 class="secc">${esc(s)}</h3><table>${xs.map(shopRow).join("")}</table>`).join("")}</div>`;
 }
@@ -959,13 +966,17 @@ async function compartirCompra(items){
   window.open("https://wa.me/?text="+encodeURIComponent(t),"_blank","noopener");
 }
 function shopRow(i){
-  const need=i.q>0?fmtQ(i.q,i.unit):"al gusto",edit=U.packEdit===i.key;
-  if(i.have)return `<tr><td><b style="color:var(--mute)">${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · lo tienes en casa</small></td><td class="p"><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button></td></tr>`;
-  const buy=i.granel?`a granel · ${esc(i.granel.cadena)}: ${esc(i.granel.producto)}`:i.pk?`compras ${i.k} × ${fmtQ(i.pk.size,i.unit)}${i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?` · sobran ${fmtQ(i.left,i.unit)}`:""}`:"a granel o por unidades";
+  const need=i.q>0?fmtQ(i.q,i.unit):"al gusto",edit=U.packEdit===i.key,open=U.row===i.key||edit;
+  const compra=i.have?"en casa":i.granel||!i.pk?(i.q>0?fmtQ(i.q,i.unit):"al gusto"):`${i.k} × ${fmtQ(i.pk.size,i.unit)}`;
   const got=S.bought&&S.bought[i.key];
-  let h=`<tr class="${got?"got":""}"><td><label class="buy"><input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro"><b>${esc(i.name)}</b></label><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}${i.pk&&i.pk.producto?` · ${esc(i.pk.cadena)}: ${esc(i.pk.producto)}`:""}</small></td>
-  <td class="p">${i.cost?eur(i.cost):""}<br><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button></td></tr>`;
-  if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="2"><div class="row" style="padding:4px 0 8px">
+  let h=`<tr class="${got?"got":""}${i.have?" home":""}"><td><label class="buy">${i.have?"":`<input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro">`}<b>${esc(i.name)}</b></label></td>
+  <td class="q">${compra}</td><td class="p">${!i.have&&i.cost?eur(i.cost):""}</td><td class="p"><button class="x" data-act="row" data-k="${esc(i.key)}" aria-label="Más de ${esc(i.name)}">⋯</button></td></tr>`;
+  if(open){
+    const det=[`necesitas ${need}`,i.pk&&!i.have&&i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?`sobran ${fmtQ(i.left,i.unit)}`:"",i.pk&&i.pk.own?"tu formato":"",
+      (i.pk&&i.pk.producto)?`${esc(i.pk.cadena)}: ${esc(i.pk.producto)}`:i.granel?`a granel · ${esc(i.granel.cadena)}: ${esc(i.granel.producto)}`:""].filter(Boolean).join(" · ");
+    h+=`<tr class="rowd"><td colspan="4"><small>${det}</small><div class="row">${i.have?`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button>`:`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button>`}</div></td></tr>`;
+  }
+  if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="4"><div class="row" style="padding:4px 0 8px">
     <label class="f" style="margin:0">Se vende en</label><input id="pkSize" inputmode="decimal" value="${esc(pk.size)}" style="width:80px"> ${esc(i.unit)}
     <label class="f" style="margin:0">a</label><input id="pkPrice" inputmode="decimal" value="${pk.price!=null?esc(pk.price):""}" placeholder="€ (opcional)" style="width:110px">
     <button class="btn sm" data-act="packSave" data-k="${esc(i.key)}">Guardar</button>${i.pk&&i.pk.own?`<button class="btn ghost sm" data-act="packDel" data-k="${esc(i.key)}">Quitar el mío</button>`:""}
@@ -1043,6 +1054,7 @@ document.addEventListener("click",async e=>{
   else if(a==="apta"){U.apta=!U.apta}
   else if(a==="salida"){S.salida=b.dataset.k;persist()}
   else if(a==="nevera"){S.nevera=!S.nevera;persist()}
+  else if(a==="row"){U.row=U.row===b.dataset.k?"":b.dataset.k}
   else if(a==="packEdit")U.packEdit=U.packEdit===b.dataset.k?"":b.dataset.k;
   else if(a==="packSave"){const size=num($("#pkSize")?.value),pr=$("#pkPrice")?.value.trim();
     if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
