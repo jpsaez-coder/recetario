@@ -122,6 +122,331 @@
   "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"
  },
  {
+  "id": "ej-pan-tomate",
+  "name": "Pan con tomate y aceite",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Tomate",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.63"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.22"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta el pan en rebanadas; si hay sartén o parrilla, tuéstalo\nParte los tomates por la mitad y frótalos sobre el pan, o rállalos antes\nEcha un chorro de aceite y una pizca de sal"
+ },
+ {
+  "id": "ej-pan-aceite",
+  "name": "Pan con aceite, sal y especias",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.22"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Orégano o pimentón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta el pan en rebanadas (tostado está más rico)\nRiega con aceite, sal y una pizca de orégano o pimentón\nPara la mochila: lleva el aceite en un bote pequeño bien cerrado y móntalo al comer"
+ },
+ {
+  "id": "ej-tostadas-mermelada",
+  "name": "Tostadas con mantequilla y mermelada",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.49"
+   },
+   {
+    "name": "Mermelada",
+    "qty": "120",
+    "unit": "g",
+    "price": "0.40"
+   }
+  ],
+  "steps": "Tuesta las rebanadas en la sartén o en la parrilla\nUnta la mantequilla en caliente y después la mermelada"
+ },
+ {
+  "id": "ej-leche-cacao",
+  "name": "Leche con cacao y galletas",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Leche",
+    "qty": "1",
+    "unit": "l",
+    "price": "0.83"
+   },
+   {
+    "name": "Cacao en polvo",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Galletas María",
+    "qty": "160",
+    "unit": "g",
+    "price": "0.27"
+   }
+  ],
+  "steps": "Calienta la leche sin que llegue a hervir (o tómala fría)\nAñade el cacao y remueve bien\nSirve con galletas"
+ },
+ {
+  "id": "ej-gachas-avena",
+  "name": "Gachas de avena con plátano",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Copos de avena",
+    "qty": "240",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "1",
+    "unit": "l",
+    "price": "0.83"
+   },
+   {
+    "name": "Plátano",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.84"
+   },
+   {
+    "name": "Canela",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon la leche y la avena en la olla a fuego medio\nRemueve unos 5 min hasta que espese\nSirve con el plátano en rodajas y una pizca de canela"
+ },
+ {
+  "id": "ej-yogur-cereales",
+  "name": "Yogur con cereales y fruta",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Yogur natural",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.67"
+   },
+   {
+    "name": "Copos de avena",
+    "qty": "120",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Manzana",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.65"
+   }
+  ],
+  "steps": "Pon el yogur en un cuenco\nAñade la avena y la manzana troceada"
+ },
+ {
+  "id": "ej-bocadillo-chorizo",
+  "name": "Bocadillo de chorizo",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Ruta",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "160",
+    "unit": "g",
+    "price": "1.14"
+   }
+  ],
+  "steps": "Corta cada barra en dos y ábrelas\nReparte el chorizo en rodajas finas\nEnvuelve en papel de aluminio o en una bolsa: aguanta la mañana sin nevera"
+ },
+ {
+  "id": "ej-bocadillo-jamon-queso",
+  "name": "Bocadillo de jamón cocido y queso",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Jamón cocido",
+    "qty": "160",
+    "unit": "g",
+    "price": "1.19"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "120",
+    "unit": "g",
+    "price": "0.95"
+   }
+  ],
+  "steps": "Corta cada barra en dos y ábrelas\nReparte el jamón y el queso\nCon calor y sin nevera, mejor cómelo pronto"
+ },
+ {
+  "id": "ej-pan-chocolate",
+  "name": "Pan con chocolate",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Chocolate negro",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.13"
+   }
+  ],
+  "steps": "Corta el pan en cuatro trozos y ábrelos\nMete una onza o dos de chocolate en cada uno"
+ },
+ {
+  "id": "ej-sandwich-mixto",
+  "name": "Sándwich mixto en sartén",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan de molde",
+    "qty": "8",
+    "unit": "ud",
+    "price": "0.45"
+   },
+   {
+    "name": "Jamón cocido",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.74"
+   },
+   {
+    "name": "Queso para fundir",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "20",
+    "unit": "g",
+    "price": "0.16"
+   }
+  ],
+  "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso"
+ },
+ {
   "id": "gpg-ensalada-de-patata",
   "name": "Ensalada de patata",
   "servings": 4,
