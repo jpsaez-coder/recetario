@@ -129,7 +129,8 @@
    "Desayuno",
    "Ruta",
    "Acampada",
-   "Casa"
+   "Casa",
+   "Fuego"
   ],
   "ingredients": [
    {
@@ -172,7 +173,8 @@
   "categories": [
    "Desayuno",
    "Acampada",
-   "Casa"
+   "Casa",
+   "Fuego"
   ],
   "ingredients": [
    {
@@ -760,6 +762,211 @@
    "name": "Menú de ruta (Ahorramás)",
    "url": ""
   }
+ },
+ {
+  "id": "tr-patatas-brasa",
+  "name": "Patatas a la brasa en papel de aluminio",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Principal",
+   "Acampada",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Comida trampera",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-madera-para-fuego-1"
+  },
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava las patatas sin pelarlas y pínchalas con un tenedor\nUnta cada una con un poco de aceite y sal y envuélvela bien en papel de aluminio\nEntiérralas en las brasas, no muy vivas, y dales la vuelta de vez en cuando\nEstán cuando el cuchillo entra sin esfuerzo: unos 30-45 min según el tamaño"
+ },
+ {
+  "id": "tr-huevo-patata",
+  "name": "Huevo a la patata",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Comida trampera",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-madera-para-fuego-1"
+  },
+  "ingredients": [
+   {
+    "name": "Patatas grandes",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.90"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la parte de arriba de cada patata, sin pelar, y guárdala como tapa\nVacía la patata con una cuchara dejando una pared gruesa\nCasca un huevo dentro, sala y pon la tapa\nEnvuélvela en papel de aluminio de pie y ásala junto a las brasas hasta que la patata esté tierna (unos 40 min)"
+ },
+ {
+  "id": "tr-pinchitos",
+  "name": "Pinchitos de carne y verduras",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego",
+   "Verano"
+  ],
+  "source": {
+   "name": "guiasparaguias · Comida trampera",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-madera-para-fuego-1"
+  },
+  "ingredients": [
+   {
+    "name": "Carne de cerdo o pollo en dados",
+    "qty": "600",
+    "unit": "g",
+    "price": "4.20"
+   },
+   {
+    "name": "Pimiento",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Calabacín",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón u orégano",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la carne y las verduras en trozos parecidos\nAlíñalo todo con aceite, sal y pimentón u orégano\nEnsarta alternando carne y verdura en brochetas o en ramas verdes limpias y peladas\nÁsalos sobre las brasas, sin llama, girándolos hasta que la carne esté hecha por dentro (10-15 min)"
+ },
+ {
+  "id": "tr-pescado-papillote",
+  "name": "Pescado en papillote",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Comida trampera",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-madera-para-fuego-1"
+  },
+  "ingredients": [
+   {
+    "name": "Pescado blanco (merluza)",
+    "qty": "600",
+    "unit": "g",
+    "price": "6.00"
+   },
+   {
+    "name": "Limón",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon cada trozo de pescado sobre papel de aluminio con sal, perejil, rodajas de limón y un chorrito de aceite\nCierra bien el paquete doblando los bordes para que no se escape el jugo\nColócalo en la parrilla o sobre brasas no muy fuertes\nUnos 15 min para trozos de 150-200 g: el pescado se separa en láminas"
+ },
+ {
+  "id": "tr-platano-chocolate",
+  "name": "Plátano con chocolate en las brasas",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Plátano",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.84"
+   },
+   {
+    "name": "Chocolate negro",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.68"
+   }
+  ],
+  "steps": "Haz un corte a lo largo del plátano sin pelarlo y sin llegar al otro lado\nMete onzas de chocolate en el corte\nEnvuélvelo en papel de aluminio y déjalo en las brasas 5-8 min\nSe come con cuchara, directamente de la piel"
  },
  {
   "id": "gpg-ensalada-de-patata",
@@ -1795,6 +2002,75 @@
   "steps": "Limpia las setas con un paño (sin mojarlas) y quítales el pie\nJunta las setas de dos en dos con una loncha de queso en medio, como un bocadillo\nPásalas por harina, huevo batido y pan rallado, apretando para que no se abran\nFríelas en la sartén con un dedo de aceite caliente, 3-4 min por lado, hasta que estén doradas y el queso fundido\nDéjalas escurrir en papel de cocina y sala al final"
  },
  {
+  "id": "ej-hamburguesas",
+  "name": "Hamburguesas a la brasa o a la plancha",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Carne picada mixta",
+    "qty": "500",
+    "unit": "g",
+    "price": "3.50"
+   },
+   {
+    "name": "Pan de hamburguesa",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Tomate",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Lechuga",
+    "qty": "0.25",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Ketchup o mostaza",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   }
+  ],
+  "steps": "Sala la carne, divídela en 4 bolas y aplánalas a un dedo de grosor; un hoyo en el centro evita que se abomben\nEn brasas sin llama, sobre parrilla, o en sartén con unas gotas de aceite: 4-5 min por lado, dando la vuelta una sola vez\nPon el queso encima el último minuto para que se funda\nTuesta el pan un momento sobre la parrilla\nMonta con lechuga, tomate y cebolla en rodajas y la salsa\nLa carne picada, bien hecha por dentro: sin rosa en el centro\nFuego solo donde esté permitido; si no, sartén en hornillo"
+ },
+ {
   "id": "gpg-arroz-a-la-cubana-de-campamento",
   "name": "Arroz a la cubana de campamento",
   "servings": 8,
@@ -2465,7 +2741,8 @@
   "servings": 4,
   "categories": [
    "Principal",
-   "Casa"
+   "Casa",
+   "Fuego"
   ],
   "ingredients": [
    {
@@ -2593,7 +2870,8 @@
   "servings": 4,
   "categories": [
    "Principal",
-   "Acampada"
+   "Acampada",
+   "Fuego"
   ],
   "ingredients": [
    {
@@ -2757,7 +3035,8 @@
   "servings": 1,
   "categories": [
    "Postre y masas",
-   "Casa"
+   "Casa",
+   "Fuego"
   ],
   "ingredients": [
    {

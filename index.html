@@ -174,18 +174,18 @@ textarea{min-height:90px;resize:vertical}
 /* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
    Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
 const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Merienda","Entrante","Principal","Postre y masas"]},
-  {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa"]},
+  {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa","Fuego"]},
   {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
 const BASE_CATS=FACETS.flatMap(f=>f.v);
 /* nombres antiguos → nuevos; Comida y Cena pasan a Principal (la app ya dice para cuál encaja) */
-const CAT_OLD={Rutas:"Ruta",Acampadas:"Acampada",Entrantes:"Entrante","Platos principales":"Principal","Masas y postres":"Postre y masas",Comida:"Principal",Cena:"Principal"};
+const CAT_OLD={Trampera:"Fuego",Rutas:"Ruta",Acampadas:"Acampada",Entrantes:"Entrante","Platos principales":"Principal","Masas y postres":"Postre y masas",Comida:"Principal",Cena:"Principal"};
 function migCats(cs){
   const out=[];for(let c of cs||[]){c=CAT_OLD[c]||c;if(!out.includes(c))out.push(c)}
   for(const f of FACETS.filter(f=>f.one)){const hit=out.filter(c=>f.v.includes(c));hit.slice(1).forEach(c=>out.splice(out.indexOf(c),1))}
   return out;
 }
 const facetOf=c=>FACETS.find(f=>f.v.includes(c));
-const CAT_DESC={Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
+const CAT_DESC={Fuego:"Se hace bien en brasas o al fuego directo: parrilla, papel de aluminio, brochetas o piedra. Solo donde el fuego esté permitido; si no, sartén u hornillo.",Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
 const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v)}; una o varias de ${JSON.stringify(FACETS[1].v)}; y como mucho una de ${JSON.stringify(FACETS[2].v)} (ninguna si vale todo el año). Significado: `+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ")+".";
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
@@ -441,6 +441,22 @@ function vGuia(){
   <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
   <label class="f">Al encender, donde esté permitido</label><ul style="margin-top:0"><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul>
   <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></details>
+  <details class="card plg" data-k="cfu"${U.det&&U.det.cfu?" open":""}><summary><h2>Cocinar al fuego</h2></summary>
+  <p class="msg warn">⚠ En la Comunidad de Madrid no se puede hacer fuego en el monte en todo el año, tampoco en las barbacoas de las áreas recreativas. Esto es para campings o sitios donde esté permitido. <button class="lnk" data-act="verFuego">Ver normas</button></p>
+  <p><b>Brasas, no llamas.</b> Espera a que la leña se haga brasa y guarda una reserva a un lado para ir añadiendo: con llama, lo de fuera se quema y lo de dentro queda crudo.</p>
+  <label class="f">Montar el fuego</label><div class="tiles">
+  <div class="tile"><b>Tres piedras</b><small>La olla apoyada en tres piedras grandes, con el fuego debajo.</small></div>
+  <div class="tile"><b>Fuego polinesio</b><small>Un hoyo de unos 40 cm, algo más ancho que la olla: protege del viento.</small></div>
+  <div class="tile"><b>Trébedes y parrilla</b><small>Lo más cómodo si se pueden llevar.</small></div>
+  <div class="tile"><b>Marmita noruega</b><small>Caja o hoyo con papel o paja: la olla, ya caliente, sigue cociendo sin fuego.</small></div></div>
+  <label class="f">Utensilios improvisados</label><div class="tiles">
+  <div class="tile"><b>Sartén de rama</b><small>Una horquilla con una rama atada en triángulo y papel de aluminio encima.</small></div>
+  <div class="tile"><b>Brochetas</b><small>Ramas verdes, limpias y peladas; nunca alambre oxidado ni madera que huela.</small></div>
+  <div class="tile"><b>Parrilla de ramas</b><small>Ramas verdes cruzadas: sirve una vez y se tira.</small></div>
+  <div class="tile"><b>Papillote</b><small>Papel de aluminio con un poco de aceite, sobre brasas no muy vivas.</small></div></div>
+  <label class="f">Recuerda</label><ul style="margin-top:0"><li>Nada de setas ni frutos silvestres que no conozcas seguro.</li><li>Al terminar, apaga con agua y remueve hasta que no quede ninguna brasa.</li><li>Deja el sitio mejor de como lo encontraste.</li></ul>
+  <div class="row"><button class="btn alt sm" data-act="verRecetasFuego">Ver recetas de Fuego</button></div>
+  <p class="msg">Resumido de «Comida trampera» (guiasparaguias).</p></details>
 
   <p class="msg" style="text-align:center">Recetario ${esc(APP_VERSION)}</p>`;
 }
@@ -607,12 +623,12 @@ const NUTRI=[
  [["ternera"],190,20,0,12],[["cerdo","chuleta","lomo"],230,18,0,17],[["pescado","merluza","bacalao"],80,18,0,1],[["huevo"],145,12.5,0.7,10],
  [["leche"],47,3.2,4.8,1.6],[["queso"],350,25,1,28],[["yogur"],60,4,5,3],[["nata"],300,2,3,30],
  [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","almendra","cacahuete"],600,20,15,52],
- [["mermelada","compota"],250,0.4,62,0],[["avena","copos de avena"],370,13,60,7],[["miel"],305,0.3,82,0]];
+ [["mermelada","compota"],250,0.4,62,0],[["ketchup"],110,1,26,0],[["avena","copos de avena"],370,13,60,7],[["miel"],305,0.3,82,0]];
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
-const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado)([^a-z]|$)/;
+const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
 const PIEZA=[[["huevo"],60],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
- [["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
+ [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
 const PAQ=[[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
@@ -1069,6 +1085,8 @@ document.addEventListener("click",async e=>{
   else if(a==="salida"){S.salida=b.dataset.k;persist()}
   else if(a==="nevera"){S.nevera=!S.nevera;persist()}
   else if(a==="row"){U.row=U.row===b.dataset.k?"":b.dataset.k}
+  else if(a==="verFuego"){U.tab="guia";U.det=U.det||{};U.det.fue=true;render();document.querySelector('details[data-k=fue]')?.scrollIntoView({block:"start"});return}
+  else if(a==="verRecetasFuego"){U.tab="recetas";U.f={donde:"Fuego"};U.q="";window.scrollTo(0,0)}
   else if(a==="verTiempos"){U.tab="guia";U.det=U.det||{};U.det.tiempos=true;render();document.querySelector('details[data-k=tiempos]')?.scrollIntoView({block:"start"});return}
   else if(a==="packEdit")U.packEdit=U.packEdit===b.dataset.k?"":b.dataset.k;
   else if(a==="packSave"){const size=num($("#pkSize")?.value),pr=$("#pkPrice")?.value.trim();
