@@ -4,7 +4,8 @@
   "name": "Ensalada de cuscús para la mochila",
   "servings": 4,
   "categories": [
-   "Rutas",
+   "Principal",
+   "Ruta",
    "Verano"
   ],
   "ingredients": [
@@ -58,7 +59,8 @@
   "name": "Arroz con chorizo en una olla",
   "servings": 4,
   "categories": [
-   "Acampadas",
+   "Principal",
+   "Acampada",
    "Invierno"
   ],
   "ingredients": [
@@ -118,5 +120,3012 @@
    }
   ],
   "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"
+ },
+ {
+  "id": "gpg-ensalada-de-patata",
+  "name": "Ensalada de patata",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.60"
+   },
+   {
+    "name": "Tomates",
+    "qty": "3.5",
+    "unit": "ud",
+    "price": "1.40"
+   },
+   {
+    "name": "Pepino",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Lechuga",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Arenque ahumado",
+    "qty": "110",
+    "unit": "g",
+    "price": "2.40"
+   },
+   {
+    "name": "Aceite",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Vinagre",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece las patatas y deja que se templen o enfríen\nCórtalas en rodajas\nTrocea tomates, pepino y lechuga y júntalo todo en un bol con el arenque (máx. 30 g por persona)\nAliña con vinagreta al gusto",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-ensalada-agridulce",
+  "name": "Ensalada agridulce",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Lechuga",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.45"
+   },
+   {
+    "name": "Nata espesa",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.03"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava la lechuga y trocéala\nBate en un cuenco nata, vinagre, sal y pimienta\nMezcla la salsa con la lechuga y sirve",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-ensalada-vosgiana",
+  "name": "Ensalada vosgiana",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Lechuga",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.90"
+   },
+   {
+    "name": "Bacon en tacos",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.10"
+   },
+   {
+    "name": "Pan",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "6",
+    "unit": "cda",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Dora en sartén el bacon con el pan en dados hasta que cruja\nFuera del fuego, añade la nata, mezcla y deja enfriar\nLava y escurre la lechuga y ponla en una fuente\nEcha encima la mezcla y remueve al servir",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-raita-de-pepino",
+  "name": "Raita de pepino",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pepinos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Yogur griego",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Comino en grano",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela los pepinos y lamínalos muy finos\nSálalos y déjalos escurrir 1 hora en un colador; aclara y seca\nTuesta el comino en sartén seca unos 3 minutos\nJunta yogur y pepino, pimienta al gusto y reparte el comino por encima",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-limon-relleno",
+  "name": "Limón relleno",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Limones",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.80"
+   },
+   {
+    "name": "Sardinas en tomate",
+    "qty": "2",
+    "unit": "lata",
+    "price": "2.40"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "6",
+    "unit": "cda",
+    "price": "0.60"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta una tapa a cada limón y saca la pulpa sin romper la piel\nReserva el zumo para beber\nPica la pulpa y aplástala con las sardinas y su tomate\nAñade la nata y salpimienta\nRellena las cáscaras con la pasta\nAdorna con perejil picado",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-ensalada-tutti-frutti",
+  "name": "Ensalada tutti frutti",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Tomates",
+    "qty": "6",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Kiwis",
+    "qty": "6",
+    "unit": "ud",
+    "price": "2.10"
+   },
+   {
+    "name": "Pepino",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Aguacates",
+    "qty": "3",
+    "unit": "ud",
+    "price": "3.00"
+   },
+   {
+    "name": "Limón",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "2.5",
+    "unit": "cda",
+    "price": "0.08"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava los tomates y trocéalos\nPela el pepino y los kiwis y córtalos en rodajas finas\nPela y trocea los aguacates y riégalos al momento con zumo de limón\nHaz una vinagreta con vinagre, sal, pimienta y el aceite\nJunta todo en una ensaladera y aliña justo antes de servir",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-tomates-rellenos-de-huevo",
+  "name": "Tomates rellenos de huevo",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Tomates",
+    "qty": "6",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Chalota",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Perejil",
+    "qty": "6",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Mayonesa",
+    "qty": "2.5",
+    "unit": "cda",
+    "price": "0.25"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece los huevos 10-15 minutos, enfríalos en agua fría y pélalos\nPica las hojas de perejil y la chalota\nTrocea los huevos y mézclalos con chalota, perejil y mayonesa; salpimienta\nCorta una tapa a los tomates y vacíalos con una cuchara\nRellena cada uno con unas 2 cucharadas de la mezcla",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-pepinos-a-la-crema",
+  "name": "Pepinos a la crema",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pepino",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Chalota",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Estragón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela el pepino y córtalo en rodajas finas\nAplasta la chalota con un tenedor hasta hacerla pasta\nBate con fuerza la nata con el aceite\nSin dejar de batir, añade el vinagre, la chalota y el estragón; salpimienta\nMezcla la salsa con el pepino y sirve",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-pizza-fria-de-verano-al-queso-de-cabra",
+  "name": "Pizza fría de verano al queso de cabra",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Masa de pizza",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.50"
+   },
+   {
+    "name": "Queso de cabra fresco",
+    "qty": "150",
+    "unit": "g",
+    "price": "2.40"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Tomates",
+    "qty": "3.5",
+    "unit": "ud",
+    "price": "1.40"
+   },
+   {
+    "name": "Albahaca",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Haz la masa en una sartén grande, girándola a los 5-6 minutos, hasta dorar las dos caras\nAplasta el queso con la nata y 4-5 cucharaditas de aceite hasta que quede cremoso\nUnta la masa ya tibia con la crema\nCubre con rodajas finas de tomate algo solapadas\nAñade albahaca, un hilo de aceite, sal y pimienta\nEnfría en la nevera antes de servir",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-tagliatelle-de-zanahoria",
+  "name": "Tagliatelle de zanahoria",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Zanahorias",
+    "qty": "12",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las zanahorias y córtalas en tiras largas como cintas\nHiérvelas en agua con sal entre 5 y 10 minutos\nEscúrrelas y salpimienta\nMézclalas con un trozo de mantequilla y perejil y sirve",
+  "source": {
+   "name": "guiasparaguias · Entrantes",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-recetas"
+  }
+ },
+ {
+  "id": "gpg-pollo-al-ajillo",
+  "name": "Pollo al ajillo",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pollo troceado",
+    "qty": "1.5",
+    "unit": "kg",
+    "price": "7.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "250",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "50",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Laurel",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Dora los ajos en una cazuela con aceite caliente y sácalos\nDora el pollo por las dos caras en ese aceite\nMoja con el vino, añade laurel, sal y pimienta\nDevuelve los ajos, tapa y cuece 30 minutos a fuego medio",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-fabada-asturiana-rapida",
+  "name": "Fabada asturiana rápida",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Judías blancas cocidas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "2",
+    "unit": "ud",
+    "price": "3.00"
+   },
+   {
+    "name": "Morcilla",
+    "qty": "2",
+    "unit": "ud",
+    "price": "2.50"
+   },
+   {
+    "name": "Tocino",
+    "qty": "500",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Azafrán",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pica cebolla y ajo y sofríelos en una olla con aceite\nDora un poco la morcilla en trozos de 3 cm y apártala\nDora en la misma olla el chorizo en rodajas y el tocino\nEcha las judías con su caldo y el azafrán y cuece 30 minutos a fuego suave\nVuelve a poner la morcilla al final para calentarla",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-sorropotun-cantabro",
+  "name": "Sorropotún cántabro",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Atún fresco",
+    "qty": "1",
+    "unit": "kg",
+    "price": "14.00"
+   },
+   {
+    "name": "Patatas",
+    "qty": "2",
+    "unit": "kg",
+    "price": "2.60"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Trocea el atún en dados y sálalo un poco\nPocha la cebolla en juliana con aceite a fuego lento en una olla grande\nCuando esté dorada, añade las patatas peladas y chascadas, rehoga y cubre de agua\nSala con moderación y cuece a fuego medio hasta que la patata esté tierna\nPon el atún encima, apaga o deja al mínimo y tapa 10-15 minutos",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-paella-de-campamento",
+  "name": "Paella de campamento",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "1",
+    "unit": "kg",
+    "price": "1.60"
+   },
+   {
+    "name": "Pollo troceado",
+    "qty": "2",
+    "unit": "kg",
+    "price": "9.00"
+   },
+   {
+    "name": "Tomates",
+    "qty": "3",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Pimiento",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Garrofón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Guisantes",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Agua",
+    "qty": "3.5",
+    "unit": "l",
+    "price": "0.00"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Ajo",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Romero",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "6",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Azafrán",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Dora el pollo en la paella con un buen chorro de aceite y sácalo\nSofríe tomate y pimiento picados 7-8 minutos\nSala, devuelve el pollo y añade pimentón, azafrán y romero; rehoga 1 minuto\nEcha el agua y hierve unos 20 minutos a fuego medio\nAñade judías, guisantes y el arroz repartido; remueve una sola vez\nCuece a fuego medio hasta que el arroz absorba el caldo",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-huevos-a-la-flamenca",
+  "name": "Huevos a la flamenca",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Huevos",
+    "qty": "16",
+    "unit": "ud",
+    "price": "4.00"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "700",
+    "unit": "ml",
+    "price": "1.80"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.20"
+   },
+   {
+    "name": "Guisantes",
+    "qty": "300",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Ajo",
+    "qty": "4",
+    "unit": "diente",
+    "price": "0.20"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Si los guisantes son frescos, escáldalos unos minutos y enfríalos\nDora el chorizo en dados de 1 cm y apártalo\nSofríe en su grasa el ajo picado y la cebolla en rodajas\nAñade el tomate frito, sala y cuece 5 minutos a fuego suave\nReparte chorizo y guisantes, haz huecos y casca en ellos los huevos\nTapa y deja a fuego lento hasta que cuajen las claras",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-san-jacobo-de-pavo",
+  "name": "San Jacobo de pavo",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Filetes de pavo",
+    "qty": "4",
+    "unit": "ud",
+    "price": "6.00"
+   },
+   {
+    "name": "Jamón cocido",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Queso para fundir",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Harina",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Pan rallado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Abre cada filete en dos capas finas y salpimienta\nMonta jamón, queso y jamón entre dos capas de pavo\nPrepara tres platos: harina, huevo batido y pan rallado\nPasa cada pieza por los tres, por ese orden, apretando el pan\nFríe en abundante aceite muy caliente hasta dorar por ambos lados",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-arroz-a-la-cubana-de-campamento",
+  "name": "Arroz a la cubana de campamento",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Plátanos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Huevos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Pimientos rojos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "800",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Curri",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimentón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Vinagre",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve los pimientos en tiras en agua con sal, sácalos y guarda el agua\nDora los plátanos pelados en sartén con mantequilla y resérvalos\nSofríe la cebolla picada con aceite y curri, añade el arroz y rehoga 2 minutos\nCuece el arroz con el agua de los pimientos\nEn el agua sobrante, con un chorro de vinagre y a fuego mínimo, escalfa los huevos 3 minutos\nSirve arroz con un plátano, un huevo y tomate frito caliente",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-sopa-de-ajo-castellana",
+  "name": "Sopa de ajo castellana",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Ajo",
+    "qty": "12",
+    "unit": "diente",
+    "price": "0.60"
+   },
+   {
+    "name": "Jamón serrano en dados",
+    "qty": "250",
+    "unit": "g",
+    "price": "3.50"
+   },
+   {
+    "name": "Pan duro",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.90"
+   },
+   {
+    "name": "Agua",
+    "qty": "2",
+    "unit": "l",
+    "price": "0.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Lamina los ajos y sofríelos en una olla con el aceite\nAñade el jamón y el pan para que se tueste un poco\nEcha el agua y el pimentón y hierve 5-10 minutos hasta que el pan se deshaga\nCasca los huevos en la sopa hirviendo y remueve en círculos para hacer hebras\nSirve enseguida, bien caliente",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-patatas-a-la-riojana",
+  "name": "Patatas a la riojana",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "2",
+    "unit": "kg",
+    "price": "2.60"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "450",
+    "unit": "g",
+    "price": "4.50"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Ajo",
+    "qty": "4",
+    "unit": "diente",
+    "price": "0.20"
+   },
+   {
+    "name": "Pimientos rojos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "2",
+    "unit": "lata",
+    "price": "1.60"
+   },
+   {
+    "name": "Caldo de verduras",
+    "qty": "2",
+    "unit": "l",
+    "price": "2.40"
+   },
+   {
+    "name": "Laurel",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "60",
+    "unit": "ml",
+    "price": "0.55"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las patatas y chascalas en trozos de unos 4 cm\nPica ajo y cebolla; corta el pimiento en dados y el chorizo en rodajas de 1 cm\nRehoga todo eso en una olla con el aceite hasta que se dore\nAñade tomate, caldo, laurel, sal y pimienta y lleva a hervor\nEcha las patatas y cuece 20-25 minutos a fuego medio sin que se deshagan",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-vieiras-a-la-gallega-con-fricase-de-verduras",
+  "name": "Vieiras a la gallega con fricasé de verduras",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Vieiras",
+    "qty": "16",
+    "unit": "ud",
+    "price": "16.00"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Ajo",
+    "qty": "4",
+    "unit": "diente",
+    "price": "0.20"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "60",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Pimentón dulce",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Champiñones",
+    "qty": "500",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Calabacín",
+    "qty": "500",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Pimientos amarillos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Tomates",
+    "qty": "500",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Patatas",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.65"
+   }
+  ],
+  "steps": "Pica cebolla y ajo y póchalos con el aceite a fuego muy suave, sin que tomen color\nAñade el pimentón y remueve deprisa\nPon las vieiras y hazlas unos 2 minutos por cara\nAparta del fuego y deja tapado\nPica las verduras del fricasé y saltéalas aparte hasta que estén tiernas\nSirve las vieiras sobre las verduras con perejil picado",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-tortilla-de-patatas-tradicional",
+  "name": "Tortilla de patatas tradicional",
+  "servings": 8,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Huevos",
+    "qty": "16",
+    "unit": "ud",
+    "price": "4.00"
+   },
+   {
+    "name": "Patatas",
+    "qty": "2",
+    "unit": "kg",
+    "price": "2.60"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Ajo",
+    "qty": "8",
+    "unit": "diente",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela y lamina las patatas; chafa los ajos con piel\nCalienta 1 cm de aceite con los ajos y fríe la patata 15 minutos a fuego medio\nAñade la cebolla en juliana y sigue 5 minutos más\nBate los huevos con sal y pimienta\nQuita los ajos, escurre patata y cebolla, júntalas con el huevo y deja reposar un poco\nCuaja en la sartén con poco aceite a fuego medio-bajo\nDale la vuelta con un plato y termina por el otro lado",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-tarta-salada-de-atun",
+  "name": "Tarta salada de atún",
+  "servings": 6,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Masa quebrada",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.30"
+   },
+   {
+    "name": "Atún al natural",
+    "qty": "1",
+    "unit": "lata",
+    "price": "1.80"
+   },
+   {
+    "name": "Salsa de tomate",
+    "qty": "1",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Unta un molde con mantequilla y forra con la masa\nBate en un bol los huevos con la nata, el tomate y el atún escurrido y desmigado\nVierte la mezcla sobre la masa\nHornea a 180 °C unos 30 minutos, hasta que cuaje y se dore",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-truffade-del-delfinado",
+  "name": "Truffade del Delfinado",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "1",
+    "unit": "kg",
+    "price": "1.30"
+   },
+   {
+    "name": "Panceta en dados",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.80"
+   },
+   {
+    "name": "Tomates",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las patatas, lamínalas muy finas y sécalas con un paño\nDora la panceta en una sartén grande y sácala; añade el aceite a la grasa\nEcha las patatas, salpimienta, tapa y cuece a fuego muy lento girándolas a menudo\nA los 30 minutos añade los tomates pelados en rodajas y la panceta\nSigue 10 minutos más sin tapa y sirve caliente",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-escalope-a-la-crema-al-estilo-normando",
+  "name": "Escalope a la crema al estilo normando",
+  "servings": 1,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Escalope",
+    "qty": "1",
+    "unit": "ud",
+    "price": "2.50"
+   },
+   {
+    "name": "Manzana",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.35"
+   },
+   {
+    "name": "Nata fresca",
+    "qty": "250",
+    "unit": "ml",
+    "price": "1.20"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela la manzana, quita el corazón y córtala en gajos finos\nDora el escalope en mantequilla, salpimienta y pon la manzana alrededor\nDeja 10 minutos a fuego mínimo\nSaca carne y manzana; echa la nata en la sartén y reduce un par de minutos\nSirve la carne con la manzana y la salsa por encima",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-arroz-gratinado-al-horno",
+  "name": "Arroz gratinado al horno",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Leche",
+    "qty": "250",
+    "unit": "ml",
+    "price": "0.25"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve el arroz en mucha agua con sal y escúrrelo\nMézclalo con la leche, los huevos batidos, la mantequilla fundida y perejil\nPásalo a una fuente de horno o cazuela de barro\nCuécelo en horno medio, o tapado a fuego muy lento, hasta que se absorba el líquido y se dore",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-galettes-de-patata",
+  "name": "Galettes de patata",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Puré de patata en copos",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Harina",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Prepara el puré solo con la leche caliente, para que quede espeso\nAñade cebolla muy picada, huevos, harina, sal, pimienta y nuez moscada\nMezcla hasta tener una masa compacta\nForma tortitas planas de unos 10 cm\nFríelas con un poco de aceite 4-5 minutos por cara hasta que crujan",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-croque-monsieur-al-aluminio",
+  "name": "Croque-monsieur al aluminio",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan de molde",
+    "qty": "16",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Jamón cocido",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Queso emmental rallado",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.20"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Harina",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Haz una bechamel con la mantequilla, la harina y la leche; sazona y funde en ella la mitad del queso\nUnta pan con bechamel, pon el jamón y tapa con otra rebanada untada por los dos lados\nCubre con el resto del queso\nEnvuelve cada sándwich en papel de aluminio aceitado\nÁsalos en el horno o junto a las brasas hasta que el queso se funda",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-gratinado-rapido-de-pasta-atun-y-maiz",
+  "name": "Gratinado rápido de pasta, atún y maíz",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pasta",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.45"
+   },
+   {
+    "name": "Atún en conserva",
+    "qty": "365",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Maíz dulce",
+    "qty": "2.5",
+    "unit": "lata",
+    "price": "2.20"
+   },
+   {
+    "name": "Nata para cocinar",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece la pasta en agua con sal el tiempo del paquete y escúrrela\nEn una fuente, alterna capas de pasta, atún y maíz\nCubre con la nata y salpimienta\nCuece 10 minutos en horno fuerte o en cazuela tapada a fuego muy suave",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-entrecot-a-la-parrilla-a-la-nizarda",
+  "name": "Entrecot a la parrilla a la nizarda",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Entrecot",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Concentrado de tomate",
+    "qty": "1",
+    "unit": "lata",
+    "price": "0.60"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Limón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Perejil",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Tomillo",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Mezcla la mantequilla blanda con limón, el concentrado, el ajo machacado y perejil y tomillo picados\nUnta la carne con aceite, salpimienta y cubre una cara con la mantequilla\nEnvuelve cada pieza en papel de aluminio bien cerrado\nÁsala sobre brasas fuertes un par de minutos por lado",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-fricase-de-cerdo",
+  "name": "Fricasé de cerdo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Carne de cerdo troceada",
+    "qty": "800",
+    "unit": "g",
+    "price": "6.40"
+   },
+   {
+    "name": "Chalotas",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Cebollas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Harina",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Agua",
+    "qty": "750",
+    "unit": "ml",
+    "price": "0.00"
+   },
+   {
+    "name": "Nata líquida",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Salvia",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Tomillo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.10"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pocha en mantequilla las chalotas, las cebollas y el ajo picados\nSalpimienta la carne, enharínala y dórala en la cazuela\nEspolvorea el resto de la harina, remueve 1 minuto y moja con el agua o vino rascando el fondo\nAñade salvia y tomillo, tapa y cuece 1 hora y 30 minutos a fuego muy lento\nAl final, incorpora la nata, remueve hasta que espese y sirve",
+  "source": {
+   "name": "guiasparaguias · Platos principales",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
+  }
+ },
+ {
+  "id": "gpg-pan-casero",
+  "name": "Pan casero",
+  "servings": 1,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "0.25",
+    "unit": "kg",
+    "price": "0.25"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.01"
+   },
+   {
+    "name": "Levadura química",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Agua",
+    "qty": "5",
+    "unit": "cda",
+    "price": "0.00"
+   }
+  ],
+  "steps": "Haz un volcán de harina sobre una superficie limpia y pon en el centro sal, levadura, aceite y agua\nAmasa un buen rato hasta tener una masa suave y elástica\nDéjala fermentar 2-4 horas protegida del aire, por ejemplo en una bolsa\nCuécela en bola en horno muy caliente o sobre piedra entre brasas\nO enróllala en un palo y gírala sobre el fuego\nO hazla tortas finas y ásalas sobre brasas sin llama, volteándolas rápido",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-cuajada-dulce-de-sarten",
+  "name": "Cuajada dulce de sartén",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Yogur natural",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Huevos",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "1",
+    "unit": "l",
+    "price": "1.00"
+   },
+   {
+    "name": "Harina",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "8",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Azúcar vainillado",
+    "qty": "2",
+    "unit": "paquete",
+    "price": "0.40"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "125",
+    "unit": "g",
+    "price": "1.25"
+   },
+   {
+    "name": "Canela",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Bate los huevos con el azúcar y el azúcar vainillado\nAñade el yogur y luego la harina alternando con la leche, sin dejar grumos\nRemueve con cuchara de madera hasta que la masa tome cuerpo\nFunde la mitad de la mantequilla en una sartén a fuego muy suave y cuaja la masa\nPásala a un plato, funde el resto de mantequilla y dórala por el otro lado\nEspolvorea canela al gusto",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-bunuelos-de-campamento",
+  "name": "Buñuelos de campamento",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "125",
+    "unit": "g",
+    "price": "1.25"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Levadura química",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "0.30"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Canela",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Azúcar",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Mezcla harina, levadura y un par de cucharadas de azúcar\nAbre un hueco, echa los huevos, la mantequilla fundida y canela\nIncorpora la leche poco a poco batiendo hasta tener una masa lisa\nTápala y déjala reposar 30 minutos\nCalienta mucho aceite a unos 170 °C\nFríe porciones hechas con dos cucharillas hasta que se inflen y doren\nEscúrrelos y rebózalos en azúcar en caliente",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crepes-de-trigo-sarraceno",
+  "name": "Crepes de trigo sarraceno",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina de trigo sarraceno",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.75"
+   },
+   {
+    "name": "Leche",
+    "qty": "300",
+    "unit": "ml",
+    "price": "0.30"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "75",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite",
+    "qty": "7",
+    "unit": "cdta",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon la harina en corona en un bol y casca los huevos en medio\nAñade azúcar, sal y aceite\nMezcla incorporando la leche fría poco a poco con varillas hasta quitar los grumos\nTapa y deja reposar la masa 1 hora\nHaz las crepes en sartén antiadherente muy caliente con una gota de aceite",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-galette-bretona-de-trigo-sarraceno",
+  "name": "Galette bretona de trigo sarraceno",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina de trigo sarraceno",
+    "qty": "1",
+    "unit": "kg",
+    "price": "5.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Agua",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.00"
+   },
+   {
+    "name": "Sidra",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "1.50"
+   },
+   {
+    "name": "Aceite",
+    "qty": "12",
+    "unit": "cda",
+    "price": "0.90"
+   },
+   {
+    "name": "Sal fina",
+    "qty": "8",
+    "unit": "cdta",
+    "price": "0.05"
+   }
+  ],
+  "steps": "Deslíe la harina en el agua y añade leche y sidra\nIncorpora huevos, aceite y sal, mezcla y deja reposar\nEngrasa la plancha frotando corteza de tocino, o usa sartén de crepes\nHaz las galettes por los dos lados\nSírvelas con mermelada de grosella",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-toffee-de-las-antillas",
+  "name": "Toffee de las Antillas",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Mantequilla",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.12"
+   },
+   {
+    "name": "Cacahuetes tostados",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Junta todo en un cazo\nCalienta hasta que caramelice\nExtiéndelo caliente en una placa aceitada\nCórtalo en trozos antes de que se enfríe",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-diplomatico-sin-coccion",
+  "name": "Diplomático sin cocción",
+  "servings": 6,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Bizcochos de soletilla",
+    "qty": "300",
+    "unit": "g",
+    "price": "2.40"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.18"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Agua",
+    "qty": "250",
+    "unit": "ml",
+    "price": "0.00"
+   },
+   {
+    "name": "Vainilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Bate la mantequilla blanda con el azúcar y el aroma hasta tener una crema\nMoja deprisa cada bizcocho en el agua azucarada\nCubre el fondo de un molde con bizcochos\nAlterna capas de bizcocho y crema hasta llenarlo\nPon peso encima y deja en sitio fresco al menos 3 horas\nDesmolda y cubre con la crema que quede",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-tejas-de-almendra",
+  "name": "Tejas de almendra",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Claras de huevo",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.12"
+   },
+   {
+    "name": "Almendra laminada",
+    "qty": "150",
+    "unit": "g",
+    "price": "2.70"
+   }
+  ],
+  "steps": "Mezcla bien claras, azúcar y almendra\nPon montoncitos del tamaño de una cucharadita, separados, en una bandeja aceitada\nHornea a fuego suave sin perderlas de vista\nCuando se doren los bordes, sácalas y apóyalas en caliente sobre un rodillo o botella\nDéjalas enfriar para que endurezcan curvadas",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crema-hawaiana",
+  "name": "Crema hawaiana",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Limones",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Agua",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.00"
+   },
+   {
+    "name": "Maicena",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "125",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Piña",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve la piel de los limones en tiras en el agua y cuela\nMezcla maicena, yemas, azúcar y zumo de limón\nAñade el agua aromatizada\nHierve 2 minutos removiendo hasta que espese y deja enfriar\nMonta las claras a punto de nieve y júntalas con cuidado con la crema fría\nDecora con piña troceada",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-manzanas-chatelaines",
+  "name": "Manzanas Châtelaines",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Manzanas reineta",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.80"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.18"
+   },
+   {
+    "name": "Limón",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Agua",
+    "qty": "0.25",
+    "unit": "l",
+    "price": "0.00"
+   },
+   {
+    "name": "Vainilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las manzanas, pártelas por la mitad y quita el corazón\nPonlas en un cazo con la parte curva abajo\nAñade agua, azúcar y vainilla, tapa y cuece 8-10 minutos a fuego medio\nCuando clareen, dales la vuelta y cuece otros 8-10 minutos\nSácalas y reduce el líquido a fuego vivo 6-7 minutos\nAñade el zumo de limón y sirve el almíbar sobre las manzanas, templadas o frías",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-bourdelot-normando",
+  "name": "Bourdelot normando",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Leche",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Manzanas",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Mermelada de grosella",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Haz una masa flexible con harina, mantequilla blanda y un poco de leche; deja reposar 2 horas\nPela las manzanas enteras y vacíales el corazón\nRellena el hueco con una cucharada de mermelada\nEstira la masa y envuelve con ella cada manzana\nHornéalas en una fuente con mantequilla a fuego medio hasta dorar",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-melocotones-a-la-plancha",
+  "name": "Melocotones a la plancha",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Melocotones",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.60"
+   },
+   {
+    "name": "Miel",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Jengibre molido",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.20"
+   },
+   {
+    "name": "Canela molida",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.15"
+   },
+   {
+    "name": "Pan rallado",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.30"
+   }
+  ],
+  "steps": "Pela los melocotones, deshuésalos y córtalos en gajos\nPon la miel en un plato y en otro el pan rallado con jengibre y canela\nFunde la mantequilla en la sartén hasta que espume\nPasa los gajos por miel y luego por el pan especiado\nDóralos a fuego vivo unos 5 minutos",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-palitos-de-arroz-dulce",
+  "name": "Palitos de arroz dulce",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "75",
+    "unit": "g",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "5",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Compota de manzana",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava el arroz y precuécelo 3 minutos en cinco veces su volumen de agua; escúrrelo\nÉchalo en la leche hirviendo con el azúcar y cuece 20 minutos a fuego lento; deja templar\nAñade los huevos batidos y extiende en una bandeja con 2 cm de grosor\nÚntalo con mantequilla y deja que se enfríe y endurezca\nCorta discos con un vaso y dóralos en sartén con mantequilla\nSírvelos calientes con compota templada",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crema-josefina",
+  "name": "Crema Josefina",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Claras de huevo",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.12"
+   },
+   {
+    "name": "Café soluble",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.20"
+   },
+   {
+    "name": "Cacao en polvo",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.25"
+   },
+   {
+    "name": "Nata líquida",
+    "qty": "200",
+    "unit": "ml",
+    "price": "1.00"
+   }
+  ],
+  "steps": "Monta las claras a punto de nieve firme\nAñade el azúcar poco a poco sin dejar de batir\nIncorpora cacao y café con movimientos envolventes\nAgrega la nata sin montar con cuidado y sirve al momento",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-torrijas",
+  "name": "Torrijas",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan duro",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Leche",
+    "qty": "0.25",
+    "unit": "l",
+    "price": "0.25"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Aceite",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon la leche en un plato hondo y los huevos batidos en otro\nPasa cada rebanada rápido por la leche y luego por el huevo\nCalienta mantequilla o aceite en una sartén\nFríe las rebanadas hasta dorar por los dos lados\nSírvelas espolvoreadas de azúcar",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crema-pastelera-rapida",
+  "name": "Crema pastelera rápida",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "125",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Harina",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.03"
+   },
+   {
+    "name": "Maicena",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Vainilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve 450 ml de leche con la vainilla\nMientras, bate las yemas con el azúcar hasta que blanqueen\nAñade harina y maicena tamizadas y los 50 ml de leche fría restantes; deja lisa la pasta\nVierte encima la leche hirviendo removiendo, vuelve al cazo y lleva a hervor sin dejar de mover\nHierve unos 15 segundos, retira y pásala a un recipiente frío",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crema-inglesa-tradicional",
+  "name": "Crema inglesa tradicional",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "5",
+    "unit": "ud",
+    "price": "1.25"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "125",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Nata",
+    "qty": "700",
+    "unit": "ml",
+    "price": "3.50"
+   },
+   {
+    "name": "Vainilla",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve la leche con la vainilla; aparte, bate yemas y azúcar hasta que aclaren\nVierte sobre las yemas un tercio de la leche, remueve, y luego otro tercio\nDevuélvelo todo al cazo con el resto de leche\nCalienta a fuego muy suave removiendo hasta que nape la espátula, sin que hierva\nCuélala y enfríala al baño maría frío, removiendo a ratos\nTómala el mismo día",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-platanos-martiniqueses",
+  "name": "Plátanos martiniqueses",
+  "servings": 6,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Plátanos",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.80"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.06"
+   },
+   {
+    "name": "Pasas",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Naranjas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Azúcar vainillado",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Pela los plátanos y dóralos enteros en mantequilla unos 5 minutos por lado\nMezcla el zumo de naranja con los dos azúcares\nAñádelo a la sartén con las pasas\nCuando hierva, deja 5 minutos a fuego suave y sirve templado",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-ensalada-de-frutas-campestre",
+  "name": "Ensalada de frutas campestre",
+  "servings": 6,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Naranjas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Mandarinas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Plátanos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Manzanas",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "3.5",
+    "unit": "cda",
+    "price": "0.07"
+   }
+  ],
+  "steps": "Pela toda la fruta y córtala en trozos iguales\nEndulza con azúcar o miel, unas 3-4 cucharadas\nMezcla con cuidado, deja reposar en sitio fresco y sirve",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-crema-de-chocolate-rapida",
+  "name": "Crema de chocolate rápida",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Chocolate para fundir",
+    "qty": "250",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "0.5",
+    "unit": "l",
+    "price": "0.50"
+   },
+   {
+    "name": "Maicena",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.30"
+   }
+  ],
+  "steps": "Funde el chocolate troceado con medio vaso de agua a fuego suave\nCuando esté liso, añade la leche y lleva a hervor removiendo\nEcha entonces la maicena disuelta en un poco de leche fría\nDeja hervir solo 2-3 segundos, retira y reparte en moldes\nDeja enfriar bien antes de desmoldar",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-tarta-fria-de-galleta-y-chocolate",
+  "name": "Tarta fría de galleta y chocolate",
+  "servings": 7,
+  "categories": [
+   "Postre y masas",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Galletas",
+    "qty": "2",
+    "unit": "paquete",
+    "price": "2.40"
+   },
+   {
+    "name": "Chocolate negro",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Café",
+    "qty": "500",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.04"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   }
+  ],
+  "steps": "Bate el huevo con el azúcar y trabaja con la mantequilla blanda hasta tener una crema\nPon el café en un plato hondo\nMoja rápido las galletas en el café y cubre la base de la fuente\nAlterna capas de galleta y crema\nEcha el café sobrante por los bordes y ralla el chocolate por encima\nDeja enfriar un par de horas antes de comer",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
+ },
+ {
+  "id": "gpg-rocas-de-chocolate",
+  "name": "Rocas de chocolate",
+  "servings": 5,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Chocolate para fundir",
+    "qty": "250",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Copos de maíz",
+    "qty": "170",
+    "unit": "g",
+    "price": "1.10"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Azúcar glas",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.30"
+   }
+  ],
+  "steps": "Funde a fuego suave la mantequilla con el chocolate troceado\nAñade el azúcar glas, aparta del fuego y remueve hasta que quede fino\nIncorpora los copos con suavidad para cubrirlos sin romperlos\nHaz montoncitos con una cuchara en una bandeja\nDéjalos enfriar en sitio fresco o nevera hasta que endurezcan\nEspolvorea un poco de azúcar glas",
+  "source": {
+   "name": "guiasparaguias · Masas y postres",
+   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
+  }
  }
 ]

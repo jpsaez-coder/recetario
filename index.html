@@ -15,9 +15,9 @@
 <style>
 @font-face{font-family:"Bricolage Grotesque";font-weight:500 700;font-display:swap;src:url(fonts/bricolage-grotesque.woff2) format("woff2")}
 @font-face{font-family:"Source Sans 3";font-weight:400 600;font-display:swap;src:url(fonts/source-sans-3.woff2) format("woff2")}
-:root{--m1:#2a78d6;--m2:#eb6834;--m3:#1baf7a;--bg:#EDF0E8;--surface:#FBFCF9;--ink:#1F2B23;--mute:#5E6D63;--line:#D3DBCC;--pine:#2E4B3A;--pine-ink:#F3F7F0;--ochre:#B97A12;--ochre-bg:#F6E8C8;--danger:#A33A2B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m1:#3987e5;--m2:#d95926;--m3:#199e70;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}}
-:root[data-theme="dark"]{--m1:#3987e5;--m2:#d95926;--m3:#199e70;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}
+:root{--m1:#2a78d6;--m2:#eb6834;--m3:#1baf7a;--m4:#008300;--bg:#EDF0E8;--surface:#FBFCF9;--ink:#1F2B23;--mute:#5E6D63;--line:#D3DBCC;--pine:#2E4B3A;--pine-ink:#F3F7F0;--ochre:#B97A12;--ochre-bg:#F6E8C8;--danger:#A33A2B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m1:#3987e5;--m2:#d95926;--m3:#199e70;--m4:#008300;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}}
+:root[data-theme="dark"]{--m1:#3987e5;--m2:#d95926;--m3:#199e70;--m4:#008300;--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Source Sans 3",system-ui,sans-serif}
@@ -63,6 +63,49 @@ td{padding:6px 0;border-bottom:1px dashed var(--line);vertical-align:top}
 .leg li{display:grid;grid-template-columns:12px 62px 44px auto;gap:5px;align-items:center;font-size:15px}
 .leg b{text-align:right}.leg small{color:var(--mute)}
 .sw{width:12px;height:12px;border-radius:3px}
+.bar{display:grid;grid-template-columns:70px 1fr 64px;gap:8px;align-items:center;font-size:14px;margin:6px 0}
+.track{position:relative;height:10px;background:var(--bg);border-radius:5px}
+.track i{position:absolute;left:0;top:0;bottom:0;background:var(--pine);border-radius:5px}
+.track b{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);transform:translateX(-1px)}
+.bar small{color:var(--mute)}
+.chk{list-style:none;padding:0;margin:6px 0}.chk li{margin:3px 0}
+.msg.warn{color:var(--ink);font-weight:600}
+.fsel{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.dd{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:4px 20px 4px 8px}
+.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);color:var(--mute);pointer-events:none}
+.dd span{font-size:11px;color:var(--mute)}
+.dd select{border:0;background:transparent;padding:0;font-weight:600;font-size:14px;-webkit-appearance:none;appearance:none;width:100%}
+.dd.on{border-color:var(--pine);background:var(--bg)}
+details.step4{border-top:1px solid var(--line)}
+details.step4 summary{list-style:none;display:flex;gap:10px;align-items:center;padding:10px 0;cursor:pointer}
+details.step4 summary::-webkit-details-marker{display:none}
+details.step4 summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}
+details.step4[open] summary::after{transform:rotate(180deg)}
+details.step4 summary small{display:block;color:var(--mute);font-size:13px}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:grid;place-items:center;font:700 16px "Bricolage Grotesque",sans-serif}
+.step4-b{padding:0 0 12px 40px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:14px}.tile small{display:block;color:var(--mute);margin-top:2px;line-height:1.35}
+.tpl{display:grid;grid-template-columns:72px 1fr;gap:8px;align-items:center;margin:8px 0}.tpl-l{font-weight:600;font-size:14px}
+.stk{display:flex;gap:2px;height:16px}.stk i{border-radius:4px}
+.stk-n{display:flex;gap:2px;font-size:12px;color:var(--mute);margin-top:-6px}.stk-n span{text-align:center}
+.leg2{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mute)}.leg2 span{display:flex;align-items:center;gap:5px}
+.p3{display:grid;grid-template-columns:1fr 1fr;gap:4px}.p3-g{font-weight:700;margin-top:8px;grid-column:1/-1}
+.p3-si,.p3-no{font-size:14px;padding:6px 8px;border-radius:8px;background:var(--bg)}.p3-si b,.p3-no b{display:block;font-size:12px}
+.p3-si b{color:var(--pine)}.p3-no b{color:var(--danger)}
+@media (min-width:520px){.p3{grid-template-columns:110px 1fr 1fr}.p3-g{margin-top:0;align-self:center;grid-column:auto}}
+.anio-bar{position:relative;display:flex;gap:2px;height:16px;margin-top:12px}.anio-bar i{border-radius:4px}
+.anio-bar b{position:absolute;bottom:100%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top-color:var(--ink)}
+.anio-m{display:grid;grid-template-columns:repeat(12,1fr);font-size:11px;color:var(--mute);text-align:center;margin:8px 0 6px}
+.normas{display:grid;gap:8px}.norma{display:flex;gap:10px;align-items:flex-start;font-size:14px}.norma small{display:block;color:var(--mute);line-height:1.35}
+.ico{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff}
+.ico.si{background:#0ca30c}.ico.no{background:#d03b3b}.ico.ojo{background:#fab219;color:#1F2B23}
+.chkb{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.chkb input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--pine)}
+.chkb input:checked+span{color:var(--mute);text-decoration:line-through}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}.stats div{background:var(--bg);border-radius:10px;padding:8px}
+.stats small{display:block;font-size:12px;color:var(--mute);line-height:1.25}.stats strong{font:700 17px "Bricolage Grotesque",sans-serif}
+.exf{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.exf #exName,.exf button{grid-column:1/-1}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -90,9 +133,22 @@ textarea{min-height:90px;resize:vertical}
 <main id="app"></main>
 <nav class="tabs" role="tablist" id="tabs"></nav>
 <script>
-const BASE_CATS=["Rutas","Acampadas","Casa","Invierno","Verano"];
-const CAT_DESC={Rutas:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
-const catsTxt=()=>JSON.stringify(allCats())+". Significado de las categorías: "+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ");
+/* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
+   Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
+const FACETS=[{k:"plato",n:"Plato",one:true,v:["Desayuno","Entrante","Principal","Postre y masas"]},
+  {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa"]},
+  {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
+const BASE_CATS=FACETS.flatMap(f=>f.v);
+/* nombres antiguos → nuevos; Comida y Cena pasan a Principal (la app ya dice para cuál encaja) */
+const CAT_OLD={Rutas:"Ruta",Acampadas:"Acampada",Entrantes:"Entrante","Platos principales":"Principal","Masas y postres":"Postre y masas",Comida:"Principal",Cena:"Principal"};
+function migCats(cs){
+  const out=[];for(let c of cs||[]){c=CAT_OLD[c]||c;if(!out.includes(c))out.push(c)}
+  for(const f of FACETS.filter(f=>f.one)){const hit=out.filter(c=>f.v.includes(c));hit.slice(1).forEach(c=>out.splice(out.indexOf(c),1))}
+  return out;
+}
+const facetOf=c=>FACETS.find(f=>f.v.includes(c));
+const CAT_DESC={Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
+const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v)}; una o varias de ${JSON.stringify(FACETS[1].v)}; y como mucho una de ${JSON.stringify(FACETS[2].v)} (ninguna si vale todo el año). Significado: `+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ")+".";
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
 const norm=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
@@ -110,14 +166,15 @@ function withOver(r){return {...r,base:true,ingredients:r.ingredients.map((i,k)=
 const all=()=>[...S.recipes,...BASE.map(withOver)];
 const getR=id=>all().find(r=>r.id===id);
 async function loadBase(){
-  try{const r=await fetch("recetas-base.json",{cache:"no-cache"});if(r.ok){const j=await r.json();if(Array.isArray(j))BASE=j.filter(okRecipe)}}catch(e){}
-  const ids=baseIds();S.recipes=S.recipes.filter(r=>!ids.has(r.id));
+  try{const r=await fetch("recetas-base.json",{cache:"no-cache"});if(r.ok){const j=await r.json();if(Array.isArray(j))BASE=j.filter(okRecipe).map(r=>({...r,categories:migCats(r.categories)}))}}catch(e){}
+  const ids=baseIds();S.recipes=S.recipes.filter(r=>!ids.has(r.id)).map(r=>({...r,categories:migCats(r.categories)}));
+  S.cats=[...new Set((S.cats||[]).map(c=>CAT_OLD[c]||c))].filter(c=>!BASE_CATS.includes(c)&&c!=="Principal");
   render();
 }
 function okRecipe(r){return r&&typeof r.name==="string"&&r.name.trim()&&Array.isArray(r.ingredients)}
 function cleanRecipe(r){
   return {id:typeof r.id==="string"?r.id.slice(0,40):uid(),name:String(r.name).slice(0,120),servings:Math.max(1,Math.round(num(r.servings))||4),
-    categories:(Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean).slice(0,8),
+    categories:migCats((Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean)).slice(0,8),
     ingredients:r.ingredients.slice(0,60).map(i=>({name:String(i&&i.name||"").slice(0,80),qty:String(i&&i.qty!=null?i.qty:""),unit:UNITS.includes(i&&i.unit)?i.unit:"ud",price:String(i&&i.price!=null?i.price:"")})),
     steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000)};
 }
@@ -138,6 +195,7 @@ async function importFile(file){
     if(have.has(sig(r))){dup++;continue}
     if(ids.has(r.id))r.id=uid();
     r.categories.forEach(c=>{if(!allCats().includes(c))S.cats.push(c)});
+    S.cats=S.cats.filter(c=>!BASE_CATS.includes(c));
     S.recipes.unshift(r);have.add(sig(r));ids.add(r.id);add++;
   }
   persist();
@@ -149,13 +207,13 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={recipes:[],over:{},packs:{},have:{},cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let S={recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
 const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const allCats=()=>[...BASE_CATS,...S.cats.filter(c=>!BASE_CATS.includes(c))];
+const allCats=()=>[...new Set([...BASE_CATS,...S.cats])];
 const uid=()=>Math.random().toString(36).slice(2,9);
 const num=v=>{const n=parseFloat(String(v).replace(",","."));return isFinite(n)?n:0};
 const eur=n=>n.toLocaleString("es-ES",{style:"currency",currency:"EUR"});
@@ -177,7 +235,7 @@ const PROP=[["Arroz",480],["Pasta",640],["Cuscús, sémola o porridge",480],["Le
 const COCC=[["Arroz","15-20 min","h"],["Pasta","10-15 min","h"],["Patatas","20-30 min","h"],["Zanahorias","30-40 min","h"],["Puerros","30 min","h"],["Coliflor","25 min","h"],["Sopa casera","20 min","h"],["Sémola","10 min","h"],["Huevo duro","10 min","h"],["Chuletas de cerdo","5 min","p"],["Salchichas","15 min","p"],["Pollo troceado","15-20 min","p"],["Ternera","20 min","p"],["Roast beef (al punto)","10 min","a"],["Paletilla de cordero","60 min","a"]];
 const HEAT={
   vitro:{name:"Vitro",perL:[3,5],rec:"",tip:"Calor regular: una vez que hierve, los tiempos de la tabla valen tal cual."},
-  hornillo:{name:"Hornillo de gas",perL:[4,7],rec:" (+2-4 min)",tip:"Sin paravientos ni tapa, puede tardar el doble. Llama pequeña: olla con tapa, paravientos y la sartén por tandas. Con frío el cartucho pierde fuerza (mejor mezcla butano-propano). Lleva cartucho de repuesto."},
+  hornillo:{name:"Hornillo de gas",perL:[4,7],rec:" (+2-4 min)",tip:"Sin paravientos ni tapa, puede tardar el doble. Llama pequeña: olla con tapa, paravientos y la sartén por tandas. Con frío la bombona pierde fuerza (mejor mezcla butano-propano)."},
   fuego:{name:"Fuego o brasas",perL:[6,15],rec:" (+3-6 min)",tip:"Cocina sobre brasas, no sobre llama. El calor no es regular: mira y prueba en vez de fiarte del reloj. Para bajar el fuego, aparta la olla."}};
 const heatName=()=>HEAT[S.heat]?S.heat:"vitro";
 function cTime(t,k){
@@ -189,12 +247,61 @@ function cTime(t,k){
 const heatPick=()=>`<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:6px" aria-label="Dónde cocinas">${Object.entries(HEAT).map(([k,v])=>`<button class="chip" aria-pressed="${heatName()===k}" data-act="heat" data-k="${k}">${v.name}</button>`).join("")}</div>`;
 function heatNote(){
   const v=HEAT[heatName()],L=Math.max(1,Math.round(S.people*0.8)),a=L*v.perL[0],b=L*v.perL[1];
-  return `<p class="msg"><b>Antes de empezar a contar:</b> el agua para la pasta de ${S.people} (unos ${L} l) tarda ${a}-${b} min en hervir con tapa${L>6&&heatName()==="hornillo"?"; con tanta agua, mejor dos ollas o dos hornillos":""}. Al echar la pasta o el arroz el agua deja de hervir${v.rec?" y en este fuego tarda en recuperarse":""}: el tiempo de la tabla cuenta desde que vuelve a hervir${v.rec?", y lo que va entre paréntesis es lo que suele tardar en volver":""}. ${esc(v.tip)}</p>`;
+  return `<div class="stats"><div><small>Hervir ${L} l (pasta para ${S.people})</small><strong>${a}-${b} min</strong></div>
+  <div><small>Volver a hervir al echarla</small><strong>${v.rec?"+"+v.rec.replace(/[()+]/g,"").trim():"al momento"}</strong></div>
+  <div><small>Por encima de 1.500 m</small><strong>tarda más</strong></div></div>
+  <p class="msg">${L>6&&heatName()==="hornillo"?"Con tanta agua, mejor dos ollas o dos hornillos. ":""}${esc(v.tip)}${v.rec?" Lo que va entre paréntesis en la tabla es lo que tarda en volver a hervir.":""} En altura, las legumbres secas tardan mucho más: mejor de bote.</p>`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
-const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras) y garrafa", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, cartucho de repuesto, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Lavavajillas biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
+const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
 const EQUIV=[["Taza de campamento (250 ml): azúcar glas, harina","130 g"],["Taza: arroz","230 g"],["Taza: mermelada","170 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],["Cucharada rasa: harina","15 g"],["Cucharada rasa: azúcar, mantequilla","25 g"],["Cucharada rasa: arroz","20 g"]];
 function tbl(rows){return `<table>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="q">${esc(r[1])}</td></tr>`).join("")}</table>`}
+/* Guía · Menú equilibrado en 4 pasos, en fichas plegables */
+function vCuatro(){
+  const bar=(lab,parts)=>`<div class="tpl"><span class="tpl-l">${lab}</span><div class="stk" role="img" aria-label="${lab}: ${parts.map(([n,v])=>`${n} ${v} %`).join(", ")}">${parts.map(([n,v,c])=>`<i style="flex:${v};background:var(${c})" title="${n} ${v} %"></i>`).join("")}</div><span></span><div class="stk-n">${parts.map(([n,v])=>`<span style="flex:${v}">${v} %</span>`).join("")}</div></div>`;
+  const legend=`<div class="leg2"><span><b class="sw" style="background:var(--m2)"></b>Hidratos</span><span><b class="sw" style="background:var(--m1)"></b>Proteína</span><span><b class="sw" style="background:var(--m4)"></b>Verdura</span></div>`;
+  const P3=[["Proteína","huevos, atún, caballa, sardinas, carne picada, soja texturizada, magro o lomo de cerdo, legumbre de bote","ternera, pescado fresco, ibéricos, quesos caros"],
+    ["Hidratos","arroz, pasta, fideos, cuscús, avena, patata, pan de barra, puré en copos","bollería, cereales azucarados, mucho pan de molde"],
+    ["Fruta y verdura","zanahoria, pepino, puerro, calabacín, cebolla, pimiento, manzana, plátano, naranja, limón, tomate y champiñón en conserva","hoja blanda (lechuga, espinaca), frutos rojos, tomate muy maduro, aguacate"],
+    ["Grasas","aceite, aceitunas, cacahuetes, almendras, chocolate negro, crema de cacahuete","aguacate, frutos secos exóticos (pistacho, anacardo)"]];
+  const P4=[["Pan duro","picatostes para las cremas o torrijas"],["Lata empezada","a la cena del mismo día (en tortilla); nunca abierta para mañana"],["Cereales rotos","a un bote seco: empanado crujiente"],["Mallas de cebolla, zanahoria y pimiento","enteras, a la sombra; picar justo antes"]];
+  const step=(n,t,sub,body,open)=>`<details class="step4" data-k="p${n}"${(U.det&&("p"+n) in U.det?U.det["p"+n]:open)?" open":""}><summary><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></summary><div class="step4-b">${body}</div></details>`;
+  return `<div class="card"><h2>Menú equilibrado en 4 pasos</h2>
+  ${step(1,"Diagnóstico de la salida","Qué aguanta sin estropearse",`<div class="tiles">${Object.values(SALIDAS).map(v=>`<div class="tile"><b>${esc(v.n)}</b><small>${esc(v.txt)}</small></div>`).join("")}</div><p class="msg">En Menú eliges la salida y te avisa de lo que necesita frío.</p>`)}
+  ${step(2,"Plantilla del día","Cada comida, su reparto",`${legend}
+    <div class="tpl"><span class="tpl-l">Desayuno</span><span class="msg" style="margin:0">hidrato complejo (avena o pan) + leche sin lactosa + fruta</span></div>
+    ${bar("Comida",[["Hidratos",60,"--m2"],["Proteína",20,"--m1"],["Verdura",20,"--m4"]])}
+    ${bar("Cena",[["Hidratos",20,"--m2"],["Proteína",50,"--m1"],["Verdura",30,"--m4"]])}
+    <p class="msg">Comida: plato único para rendir. Cena: ligera, para reparar y dormir bien. Según el esfuerzo del día se ajusta. Cada principal te dice si encaja mejor como comida o como cena.</p>`,true)}
+  ${step(3,"Platos económicos","Qué comprar y qué no",`<div class="p3">${P3.map(([g,si,no])=>`<div class="p3-g">${g}</div><div class="p3-si"><b>Sí</b> ${esc(si)}</div><div class="p3-no"><b>Mejor no</b> ${esc(no)}</div>`).join("")}</div>
+    <p class="msg">Para ir bien al baño: fibra (fruta con piel, verdura, integrales, legumbre) y mucha agua. Días fuera (gran juego, exploración): comida que no se estropee, categoría Ruta.</p>`)}
+  ${step(4,"Aprovechamiento seguro","Lo que sobra, sin riesgos",`<div class="tiles">${P4.map(([t,d])=>`<div class="tile"><b>${esc(t)}</b><small>${esc(d)}</small></div>`).join("")}</div>`)}
+  <p class="msg">Resumido de «Cocina e intendencia – Menú equilibrado» (guiasparaguias).</p></div>`;
+}
+/* Fuego: tira del año por época de peligro (INFOMA) y normas en filas */
+function vFuegoAnio(){
+  const seg=[["bajo",135],["medio",30],["alto",108],["medio",31],["bajo",61]]; // 1-ene→15-may, 16-may→14-jun, 15-jun→30-sep, oct, nov-dic
+  const col={bajo:"var(--line)",medio:"#fab219",alto:"#d03b3b"};
+  const d=new Date(),doy=Math.floor((d-new Date(d.getFullYear(),0,1))/864e5);
+  return `<div class="anio" role="img" aria-label="Épocas de peligro: bajo del 1 de noviembre al 15 de mayo; medio del 16 de mayo al 14 de junio y en octubre; alto del 15 de junio al 30 de septiembre">
+  <div class="anio-bar">${seg.map(([k,n])=>`<i style="flex:${n};background:${col[k]}" title="Peligro ${k}"></i>`).join("")}<b style="left:${doy/365*100}%" title="Hoy"></b></div>
+  <div class="anio-m">${"EFMAMJJASOND".split("").map(m=>`<span>${m}</span>`).join("")}</div>
+  <div class="leg2"><span><b class="sw" style="background:${col.bajo}"></b>Peligro bajo</span><span><b class="sw" style="background:${col.medio}"></b>Medio</span><span><b class="sw" style="background:${col.alto}"></b>Alto</span><span>▼ hoy</span></div></div>`;
+}
+const NORMAS=[["no","¿Fuego en el monte o área recreativa?","Prohibido todo el año, también la franja de 400 m alrededor del monte si no es suelo urbano. Solo con autorización expresa."],
+  ["ojo","¿Hornillo o camping-gas en el monte?","La norma no lo nombra: habla de «fuego». Trátalo como fuego y confírmalo antes."],
+  ["si","¿En casa, en un camping o en el pueblo, lejos del monte?","Esta prohibición no aplica. El camping puede tener sus normas."],
+  ["ojo","¿Suelo urbano a menos de 50 m del monte?","Avisa un día antes: usofuego@madrid.org o 900 720 300."],
+  ["no","¿Parque natural o nacional (p. ej. Guadarrama)?","Normas propias más estrictas: ni fuego ni acampada libre."],
+  ["ojo","¿Barbacoa en un camping?","Solo las fijas, a 15 m o más de las parcelas."]];
+const ICO={si:["✓","Sí"],no:["✕","No"],ojo:["!","Ojo"]};
+function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div class="norma"><span class="ico ${k}" aria-label="${ICO[k][1]}">${ICO[k][0]}</span><div><b>${q}</b><small>${a}</small></div></div>`).join("")}</div>`}
+/* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
+function vBasicos(){
+  const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
+  return `<div class="card"><h2>Básicos de intendencia</h2><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
+  ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</div>`;
+}
 function vGuia(){
   const n=S.people;
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
@@ -206,17 +313,15 @@ function vGuia(){
   <div class="card"><h2>Cantidades para ${n} personas</h2><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el número de personas arriba.</p>${tbl(prop)}</div>
   <div class="card"><h2>Tiempos de cocción</h2><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
-  <p class="msg">Lo hervido tarda parecido en cualquier fuego <b>mientras el agua hierve de verdad</b>; lo que alarga el total en hornillo o fuego es calentar el agua, recuperar el hervor y mantenerlo con viento. Por encima de unos 1.500 m el agua hierve a menos temperatura y todo tarda algo más; las legumbres secas, mucho más (mejor de bote). Tiempos orientativos.</p></div>
+  <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></div>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV)}</div>
-  <div class="card"><h2>Básicos de intendencia</h2>${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label><ul style="margin-top:0">${xs.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>`).join("")}</div>
+  ${vCuatro()}
+  ${vBasicos()}
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017, modificado por el 83/2018), revisado el 19-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
-  <ul><li><b>En monte o terreno forestal está prohibido todo el año usar fuego para cocinar o calentarse</b>, salvo autorización expresa. Incluye áreas recreativas y el entorno del monte (franja de hasta 400 m si no es suelo urbano).</li>
-  <li><b>Hornillo o camping-gas:</b> la norma no lo menciona aparte; habla de «fuego». Trátalo como fuego y no lo enciendas en el monte sin confirmarlo. En casa, en un camping o en suelo urbano lejos del monte no aplica esta prohibición (el camping puede tener sus propias normas).</li>
-  <li><b>Épocas de peligro:</b> alto del 15 de junio al 30 de septiembre; medio del 16 de mayo al 14 de junio y en octubre; bajo del 1 de noviembre al 15 de mayo. Con riesgo extremo, Emergencias puede suspender además cualquier autorización.</li>
-  <li><b>Suelo urbano a menos de 50 m del monte:</b> avisa con un día de antelación a usofuego@madrid.org o al 900 720 300.</li>
-  <li><b>Parques naturales y nacionales</b> (p. ej. Guadarrama) tienen normas propias más estrictas: no hay acampada libre ni fuego.</li>
-  <li><b>Barbacoas en campings:</b> solo las fijas, a 15 m o más de las parcelas.</li></ul>
+  <label class="f">Épocas de peligro</label>${vFuegoAnio()}
+  <label class="f">¿Puedo encender?</label>${vNormas()}
+  <p class="msg">Con riesgo extremo, Emergencias puede suspender además cualquier autorización: mira los avisos del año.</p>
   <p><a href="https://idem.comunidad.madrid/visor/?v=ambiental&l=orto-mosaico-20cm-rgb-2022.ecw,IDEM_ES_PROVINCIAS,IDEM_MA_FISIOGRAFIA_500M,IDEM_MA_AREAS_RECREA&share&ZONE=430000,4485000,8" target="_blank" rel="noopener">Mapa oficial de áreas recreativas (visor IDEM)</a><br>
   <a href="https://www.comunidad.madrid/medio-ambiente/areas-recreativas" target="_blank" rel="noopener">Áreas recreativas: normas y listado</a><br>
   <a href="https://sede.comunidad.madrid/autorizaciones-licencias-permisos-carnes/regulacion-distintos-usos-fuego" target="_blank" rel="noopener">Regulación de los usos del fuego</a><br>
@@ -258,17 +363,22 @@ function render(){
   $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
 }
 function vList(){
-  const cats=["Todas",...allCats()];
-  const list=all().filter(r=>(U.filter==="Todas"||r.categories.includes(U.filter))&&(!U.q.trim()||matches(r,U.q)));
-  let h=`<input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, crema, chocolate, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`;
-  if(CAT_DESC[U.filter])h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[U.filter])}</p>`;
-  if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${U.filter!=="Todas"?" en "+esc(U.filter):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
+  U.f=U.f||{};
+  const list=all().filter(r=>FACETS.every(f=>!U.f[f.k]||r.categories.includes(U.f[f.k]))&&(!U.q.trim()||matches(r,U.q)));
+  const fil=`<div class="fsel">${FACETS.map(f=>`<label class="dd${U.f[f.k]?" on":""}"><span>${f.n}</span><select data-act="ffacet" data-k="${f.k}" aria-label="${f.n}"><option value="">Todos</option>${f.v.map(c=>`<option ${U.f[f.k]===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label>`).join("")}</div>`;
+  const sel=FACETS.map(f=>U.f[f.k]).filter(Boolean);
+  let h=`<input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, crema, chocolate, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil;
+  sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
+  if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
     const open=U.open===r.id,f=factor(r,S.people),inMenu=S.menu.includes(r.id);
     let d="";
     if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
     <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
+    <label class="f">Paso 2 · Reparto del plato</label>${vPlato(r)}
+    ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Paso 3 · Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
+    ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/S.people)}/pers.</span></div>
@@ -278,16 +388,35 @@ function vList(){
   }).join("");
   return h;
 }
+/* Sueltos: lo que se compra sin receta (una sandía, barritas para media mañana). Fijos o por persona. */
+function sueltosRecipe(n){
+  const ex=S.extras||[];if(!ex.length)return null;
+  const k=e=>e.per==="persona"?n:1;
+  return {id:"__sueltos",name:"Sueltos",servings:n,categories:[],steps:"",
+    ingredients:ex.map(e=>({name:e.name,qty:String(num(e.qty)*k(e)),unit:e.unit,price:e.price===""?"":String(num(e.price)*k(e))}))};
+}
+function vSueltos(n){
+  const ex=S.extras||[];
+  return `<div class="card"><h2>Sueltos</h2><p class="msg">Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Entra en la compra, el presupuesto y los macros.</p>
+  ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*n,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""}</small></td>
+    <td class="p">${e.price===""?"":eur(num(e.price)*(e.per==="persona"?n:1))}</td><td class="p"><button class="btn ghost sm" data-act="exDel" data-id="${e.id}" aria-label="Quitar ${esc(e.name)}">Quitar</button></td></tr>`).join("")}</table>`:""}
+  <div class="exf"><input id="exName" placeholder="Qué (p. ej. Sandía)" aria-label="Qué"><input id="exQty" inputmode="decimal" placeholder="Cant." aria-label="Cantidad" value="1">
+  <select id="exUnit" aria-label="Unidad">${UNITS.map(u=>`<option ${u==="ud"?"selected":""}>${u}</option>`).join("")}</select>
+  <select id="exPer" aria-label="Fijo o por persona"><option value="fijo">en total</option><option value="persona">por persona</option></select>
+  <input id="exPrice" inputmode="decimal" placeholder="€ (opcional)" aria-label="Precio de esa cantidad"><button class="btn alt sm" data-act="exAdd">+ Añadir</button></div>
+  ${U.exMsg?`<p class="msg err">${esc(U.exMsg)}</p>`:""}</div>`;
+}
 function vMenu(){
-  const rs=S.menu.map(getR).filter(Boolean);
-  if(!rs.length)return `<div class="empty">Añade recetas al menú desde la pestaña Recetas para ver la lista de la compra y el presupuesto.</div>`;
-  const n=S.people;
+  const rs0=S.menu.map(getR).filter(Boolean);
+  const n=S.people,sr=sueltosRecipe(n);
+  const rs=sr?[...rs0,sr]:rs0;
+  if(!rs.length)return `<div class="empty">Añade recetas al menú desde la pestaña Recetas, o cosas sueltas aquí, para ver la lista de la compra y el presupuesto.</div>${vSueltos(n)}`;
   const used=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
   const items=shopList(rs,n);
   const total=items.reduce((a,i)=>a+i.cost,0);
   const perPerson=total/n,usedPP=used/n,maxP=usedPP>0?Math.floor(S.budget/usedPP):0;
   const left=S.budget-total;
-  return `<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto total (€)</label>
+  return `<div class="card">${vSalida(rs)}</div><div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto total (€)</label>
   <input id="bud" type="number" min="0" step="1" inputmode="decimal" value="${S.budget}" data-act="budget">
   <div class="sum"><div><small>Pagas en la tienda (${n} pers.)</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona</small><strong>${eur(perPerson)}</strong></div>
@@ -299,20 +428,23 @@ function vMenu(){
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${n} personas.`}</p></div>
-  ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:[...new Set(ms.flatMap(m=>m.sin))]};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});
-    return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona con todas las recetas del menú juntas.</p>${macroBlock(t,"por persona")}</div>`})()}
-  <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(costF(r,factor(r,n)))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
+  ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:ms.flatMap(m=>m.sin),sinQ:ms.flatMap(m=>m.sinQ),gusto:ms.flatMap(m=>m.gusto)};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});
+    return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona con todo el menú junto, sueltos incluidos.</p>${macroBlock(t,"por persona")}</div>`})()}
+  <div class="card"><h2>Recetas del menú</h2>${rs0.length?"":`<p class="msg">Aún ninguna: añádelas desde Recetas.</p>`}<table>${rs0.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(costF(r,factor(r,n)))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
+  ${vSueltos(n)}
   <div class="card"><h2>Lista de la compra</h2>
   <p class="msg">Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato» y cámbialo; se recuerda para la próxima vez.</p>
   <table>${items.map(shopRow).join("")}</table></div>${vAmortiza(items,rs)}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
 function vAmortiza(items,rs){
+  const latas=items.filter(i=>i.unit==="lata"&&!i.have&&(i.pk?i.left>0.05:Math.ceil(i.q-0.05)-i.q>0.05));
+  const latasTxt=latas.length?`<p class="msg warn">Lata empezada (${latas.map(i=>esc(i.name.toLowerCase())).join(", ")}): a la cena del mismo día, por ejemplo en tortilla. Nunca abierta para el día siguiente; con nevera, en táper cerrado.</p>`:"";
   const over=items.filter(i=>i.pk&&i.left>=i.pk.size*0.2);
   const left=over.filter(i=>!STAPLE.test(norm(i.name))),pantry=over.filter(i=>STAPLE.test(norm(i.name)));
-  if(!over.length)return "";
+  if(!over.length)return latasTxt?`<div class="card"><h2>Para aprovechar lo que sobra</h2>${latasTxt}</div>`:"";
   const pantryTxt=pantry.length?`<p class="msg">Para la despensa (dura meses): ${pantry.map(i=>esc(i.name.toLowerCase())).join(", ")}. Si ya lo tienes en casa, márcalo con «Lo tengo» y no cuenta en el presupuesto.</p>`:"";
-  if(!left.length)return `<div class="card"><h2>Para aprovechar lo que sobra</h2>${pantryTxt}</div>`;
+  if(!left.length)return `<div class="card"><h2>Para aprovechar lo que sobra</h2>${latasTxt}${pantryTxt}</div>`;
   const inMenu=new Set(rs.map(r=>r.id));
   const sug=all().filter(r=>!inMenu.has(r.id)).map(r=>{
     const uses=left.filter(i=>r.ingredients.some(x=>packKey(x.name,toBase(1,x.unit,x.name)[1])===i.key));
@@ -320,18 +452,27 @@ function vAmortiza(items,rs){
   }).filter(x=>x.uses.length).sort((a,b)=>b.uses.length-a.uses.length).slice(0,5);
   return `<div class="card"><h2>Para aprovechar lo que sobra</h2>
   <p class="msg">Sobra: ${left.map(i=>`${esc(i.name.toLowerCase())} (${fmtQ(i.left,i.unit)})`).join(", ")}.${sug.length?" Estas recetas lo usan: añadirlas al menú sale casi gratis en esos ingredientes.":" Ninguna otra receta tuya lo usa: guárdalo para la próxima salida, o baja a un formato más pequeño con «Formato»."}</p>
-  ${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}</div>`;
+  ${latasTxt}${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}</div>`;
 }
 /* ---------- macros ----------
    Valores orientativos por 100 g (kcal, proteína, hidratos, grasa), redondeados de tablas de composición
    habituales (BEDCA/USDA). Se busca por palabra entera, en orden: lo más concreto primero. */
 const NUTRI=[
- [["garbanzos cocidos","lentejas cocidas","alubias cocidas","legumbre cocida"],110,7,15,1.5],
+ [["garbanzos cocidos","lentejas cocidas","alubias cocidas","judias blancas cocidas","judias cocidas","legumbre cocida"],110,7,15,1.5],
+ [["garrofon"],120,7,20,0.5],[["guisante"],80,5,14,0.4],[["maiz dulce"],85,3,17,1],[["copos de maiz"],380,7,84,1],[["maicena"],380,0.3,91,0.1],
+ [["pan de molde"],265,8,49,4],[["masa de pizza"],270,8,50,4],[["masa quebrada"],450,6,50,25],[["bizcocho","bizcochos de soletilla"],390,8,80,4],
+ [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
+ [["jamon cocido"],110,18,1,4],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
+ [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["queso para fundir"],300,15,6,24],
+ [["champinon"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
+ [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
+ [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
  [["pasta","macarron","espagueti","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
  [["lenteja","garbanzo","alubia"],330,22,50,3],[["patata"],80,2,17,0.1],[["pan"],260,9,51,2.5],[["harina"],350,10,73,1.2],
  [["tomate frito"],80,1.5,10,3.5],[["tomate triturado","tomate natural"],30,1.3,5,0.2],[["tomate"],18,0.9,3.9,0.2],
  [["pepino"],12,0.6,2.2,0.1],[["lechuga"],15,1.3,2,0.2],[["pimiento"],25,1,4.5,0.3],[["cebolla"],40,1.1,9,0.1],
  [["zanahoria"],41,0.9,9.6,0.2],[["calabaza"],26,1,6.5,0.1],[["calabacin"],17,1.2,3.1,0.3],[["ajo"],149,6.4,33,0.5],[["limon"],29,1.1,9,0.3],
+ [["sandia"],30,0.6,7.6,0.2],[["melon"],34,0.8,8,0.2],[["barrita","barritas de cereales"],400,6,68,12],
  [["manzana","fruta"],52,0.3,14,0.2],[["platano"],89,1.1,23,0.3],
  [["atun","sardina","caballa"],200,26,0,10],[["aceituna"],145,1,4,15],[["aceite"],900,0,0,100],[["mantequilla"],740,0.7,0.6,82],
  [["chorizo","salchichon"],455,24,2,38],[["salchicha"],300,12,2,27],[["jamon"],240,30,0,13],[["pechuga"],110,23,0,1.5],[["pollo"],215,18,0,15],
@@ -340,10 +481,15 @@ const NUTRI=[
  [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","almendra","cacahuete"],600,20,15,52],
  [["mermelada","compota"],250,0.4,62,0],[["miel"],305,0.3,82,0]];
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
-const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo)([^a-z]|$)/;
+const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
 const PIEZA=[[["huevo"],60],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
- [["patata"],200],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
+ [["patata"],200],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
+ [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
+/* gramos de un paquete típico */
+const PAQ=[[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
+/* lo que la receta pone «al gusto»: se cuenta una cantidad típica por persona; el resto se avisa */
+const ALGUSTO=[[["aceite"],13.5,"1 cda"],[["mantequilla"],10,"10 g"],[["azucar"],10,"10 g"],[["harina"],10,"10 g"]];
 const wordRe=k=>new RegExp("(^|[^a-z])"+k+"(s|es)?([^a-z]|$)");
 const findIn=(tab,nm)=>tab.find(([keys])=>keys.some(k=>wordRe(k).test(nm)));
 function grams(i){
@@ -355,19 +501,22 @@ function grams(i){
   if(u==="barra")return q*250;if(u==="diente")return q*5;
   if(u==="lata")return q*(/atun|sardina|caballa/.test(nm)?56:/tomate/.test(nm)?400:250);
   if(u==="ud"){const p=findIn(PIEZA,nm);return p?q*p[1]:null}
+  if(u==="paquete"){const p=findIn(PAQ,nm);return p?q*p[1]:null}
   return null;
 }
 /* macros de una receta para UNA persona; «sin» = ingredientes sin datos */
 function macros(r){
-  const t={kcal:0,p:0,c:0,f:0},sin=[];
+  const t={kcal:0,p:0,c:0,f:0},sin=[],sinQ=[],gusto=[];
+  const s0=Math.max(1,r.servings);
   for(const i of r.ingredients){
     if(!i.name.trim())continue;const nm=norm(i.name);
     if(NADA.test(nm))continue;
-    const n=findIn(NUTRI,nm),g=grams(i);
+    let n=findIn(NUTRI,nm),g=grams(i);
+    if(!(num(i.qty)>0)){const a=findIn(ALGUSTO,nm);if(a&&n){g=a[1]*s0;gusto.push(i.name.trim()+" ("+a[2]+"/pers.)")}else{sinQ.push(i.name.trim());continue}}
     if(!n||g==null){sin.push(i.name.trim());continue}
     t.kcal+=n[1]*g/100;t.p+=n[2]*g/100;t.c+=n[3]*g/100;t.f+=n[4]*g/100;
   }
-  const s=Math.max(1,r.servings);return {kcal:t.kcal/s,p:t.p/s,c:t.c/s,f:t.f/s,sin};
+  return {kcal:t.kcal/s0,p:t.p/s0,c:t.c/s0,f:t.f/s0,sin,sinQ,gusto};
 }
 function pie(m,label){
   const parts=[["Proteína",m.p*4,m.p,"var(--m1)"],["Hidratos",m.c*4,m.c,"var(--m2)"],["Grasa",m.f*9,m.f,"var(--m3)"]];
@@ -387,7 +536,66 @@ function pie(m,label){
   <div><div class="kcal"><strong>${Math.round(m.kcal)}</strong> kcal <small>${esc(label)}</small></div><ul class="leg">${leg}</ul></div></div>`;
 }
 function macroBlock(m,label){
-  return `${pie(m,label)}${m.sin.length?`<p class="msg">Sin datos (no cuentan): ${esc(m.sin.join(", "))}.</p>`:""}<p class="msg">Valores orientativos; el % es de las kcal.</p>`;
+  const u=a=>[...new Set(a||[])].join(", ");
+  return `${pie(m,label)}${m.gusto&&m.gusto.length?`<p class="msg">«Al gusto», se cuenta lo típico: ${esc(u(m.gusto))}.</p>`:""}${m.sinQ&&m.sinQ.length?`<p class="msg">Sin cantidad en la receta (no cuentan): ${esc(u(m.sinQ))}.</p>`:""}${m.sin.length?`<p class="msg">Sin datos (no cuentan): ${esc(u(m.sin))}.</p>`:""}<p class="msg">Valores orientativos; el % es de las kcal.</p>`;
+}
+/* ---------- método de los 4 pasos (guía «Cocina e intendencia – Menú equilibrado», guiasparaguias) ---------- */
+/* grupos del plato, por palabra entera; lo primero que coincide manda */
+const GRUPOS=[
+ ["P",["escalope","entrecot","filete","vieira","pavo","morcilla","panceta","tocino","salchichon","huevo","atun","caballa","sardina","carne picada","picada","soja","magro","lomo","cerdo","pollo","pechuga","chorizo","salchicha","jamon","ternera","pescado","queso","garbanzo","lenteja","alubia","bacon","arenque"]],
+ ["H",["pasta","macarron","espagueti","fideo","tallarin","arroz","cuscus","semola","avena","patata","pan","harina","pure","copos","maiz","tortilla de trigo","masa"]],
+ ["V",["tomate","pepino","zanahoria","puerro","calabacin","cebolla","pimiento","champinon","lechuga","espinaca","acelga","calabaza","brocoli","coliflor","berenjena","judia verde","guisante","ajo","chalota","cebolleta","manzana","platano","naranja","limon","ciruela","kiwi","fruta","pera"]],
+ ["L",["leche","yogur"]]];
+/* pasta, arroz y legumbre secos casi triplican su peso al cocerse: el plato se mira cocinado */
+const SECO=/(^|[^a-z])(pasta|macarron|espagueti|fideo|tallarin|arroz|cuscus|semola|lenteja|garbanzo|alubia|avena)(s|es)?([^a-z]|$)/;
+function grupo(nm){for(const [g,ks] of GRUPOS)if(ks.some(k=>wordRe(k).test(nm)))return g;return null}
+function plato(r){
+  const t={P:0,H:0,V:0,L:0};
+  for(const i of r.ingredients){const nm=norm(i.name),g=grupo(nm),gr=grams(i);if(!g||gr==null)continue;
+    t[g]+=gr*(g!=="V"&&SECO.test(nm)&&!/cocid|bote/.test(nm)?2.5:1)}
+  return t;
+}
+const OBJ={Comida:{H:60,P:20,V:20,txt:"plato único: 60 % hidrato fuerte, 20 % proteína, 20 % verdura fresca"},
+           Cena:{H:20,P:50,V:30,txt:"ligera: 50 % proteína fácil de digerir, 30 % verdura cocinada, 20 % hidrato"}};
+function vPlato(r){
+  const t=plato(r);
+  let mom=r.categories.includes("Desayuno")?"Desayuno":r.categories.includes("Principal")?null:"-";
+  if(mom==="-")return `<p class="msg">La plantilla del día se comprueba en principales y desayunos.</p>`;
+  if(mom==="Desayuno"){
+    const fruta=r.ingredients.some(i=>/manzana|platano|naranja|kiwi|fruta|pera|ciruela/.test(norm(i.name)));
+    const ok=[["Hidrato complejo (avena, pan…)",t.H>0],["Leche (sin lactosa, según la guía)",t.L>0],["Fruta",fruta]];
+    return `<ul class="chk">${ok.map(([n,v])=>`<li>${v?"✓":"✗"} ${esc(n)}</li>`).join("")}</ul>`;
+  }
+  const sum=t.H+t.P+t.V;
+  if(sum<=0)return `<p class="msg">Sin datos para repartir el plato.</p>`;
+  /* ¿se parece más a la comida (mucho hidrato) o a la cena (mucha proteína)? */
+  const dist=m=>["H","P","V"].reduce((a,k)=>a+Math.abs(t[k]/sum*100-OBJ[m][k]),0);
+  mom=dist("Comida")<=dist("Cena")?"Comida":"Cena";
+  const o=OBJ[mom];
+  const rows=[["Hidratos","H"],["Proteína","P"],["Verdura","V"]].map(([n,k])=>{const pc=Math.round(t[k]/sum*100),d=pc-o[k];
+    return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${pc} % (objetivo ${o[k]} %)"><i style="width:${pc}%"></i><b style="left:${o[k]}%"></b></div><span>${pc} %<small> / ${o[k]}</small></span></div>${Math.abs(d)>15?`<p class="msg warn">${k==="H"?(d<0?"Le faltan":"Le sobran"):(d<0?"Le falta":"Le sobra")} ${n.toLowerCase()}.</p>`:""}`}).join("");
+  return `<p class="msg"><b>Encaja mejor como ${mom.toLowerCase()}</b>: ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}`;
+}
+/* Paso 3: lo que la guía desaconseja por precio o porque se estropea, con su alternativa */
+const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco","merluza","dorada","salmon"],"atún, caballa o sardinas en lata"],
+  [["iberico"],"embutido normal o atún"],[["lechuga","espinaca","acelga"],"zanahoria, pepino o col"],[["aguacate"],"aceitunas o crema de cacahuete"],
+  [["frambuesa","fresa","arandano","frutos rojos"],"manzana, plátano o naranja"],[["pistacho","anacardo"],"cacahuetes o almendras"],
+  [["bolleria","magdalena","croissant"],"pan con aceite o mermelada"]];
+function evitaEn(r){const out=[];for(const i of r.ingredients){const nm=norm(i.name);const e=EVITA.find(([ks])=>ks.some(k=>wordRe(k).test(nm)));if(e)out.push([i.name.trim(),e[1]])}return out}
+/* Paso 1: lo que necesita frío */
+const FRIO=/(^|[^a-z])(pollo|pechuga|carne|picada|cerdo|lomo|ternera|pescado|merluza|nata|yogur|queso fresco|leche fresca|mantequilla|salchicha|bacon)(s|es)?([^a-z]|$)/;
+const SALIDAS={ruta:{n:"Ruta (un día)",txt:"Todo va en la mochila: sin nevera ni cocina, o con un hornillo como mucho. Nada que se estropee con calor, comida ligera y fácil de comer andando, y agua de sobra. Mira la categoría Ruta."},
+  reunion:{n:"Reunión",txt:"Unas horas en el local: merienda o comida sencilla que se toma en el día. Si el local tiene cocina, se usa; los frescos no dan problema si se compran ese mismo día."},
+  finde:{n:"Acampada (2 días)",txt:"Se puede llevar fresco que aguante 24 h en la caja de intendencia; mejor congelado para la primera noche. El segundo día, sobre todo con calor, sin frescos."}};
+function vSalida(rs){
+  const s=SALIDAS[S.salida]?S.salida:"finde";
+  const fr=s==="reunion"?[]:rs.flatMap(r=>r.ingredients.filter(i=>FRIO.test(norm(i.name))).map(i=>`${i.name.trim()} (${r.name})`));
+  /* en la mochila no hay nevera, la marques o no */
+  const sinFrio=s==="ruta"||!S.nevera;
+  const fix={ruta:" En la mochila se estropea: cámbialo por conserva, embutido curado o queso curado.",finde:" Cómelo el primer día.",largo:" Cámbialo por conserva o secos."}[s];
+  const warn=fr.length&&sinFrio?`<p class="msg warn">Necesita frío${s==="ruta"?"":" y no hay nevera"}: ${esc([...new Set(fr)].join(", "))}.${fix}</p>`:"";
+  return `<label class="f">Paso 1 · ¿Qué salida es?</label><div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
+  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div><p class="msg">${esc(SALIDAS[s].txt)}</p>${warn}`;
 }
 /* ---------- compra por formatos de venta ---------- */
 /* Formato orientativo en que se vende cada cosa; cada persona lo cambia en la lista (S.packs). */
@@ -395,7 +603,7 @@ const PACKS=[[["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["ar
   [["lenteja","garbanzo","alubia"],1000,"g"],[["atun","sardina","caballa"],3,"lata"],[["tomate triturado","tomate frito"],400,"g"],
   [["leche"],1000,"ml"],[["huevo"],12,"ud"],[["aceite"],1000,"ml"],[["vinagre"],1000,"ml"],[["sal"],1000,"g"],[["azucar"],1000,"g"],
   [["harina"],1000,"g"],[["chorizo","salchichon"],250,"g"],[["pastilla de caldo","pastillas de caldo"],10,"ud"],[["pimenton"],75,"g"],
-  [["oregano"],10,"g"],[["aceituna"],150,"g"],[["patata"],2000,"g"],[["cebolla"],1000,"g"],[["chocolate"],100,"g"],[["galleta"],500,"g"]];
+  [["oregano"],10,"g"],[["aceituna"],150,"g"],[["patata"],2000,"g"],[["cebolla"],1000,"g"],[["chocolate"],100,"g"],[["galleta"],500,"g"],[["barrita","barritas de cereales"],6,"ud"]];
 const STAPLE=/aceite|(^|[^a-z])sal([^a-z]|$)|azucar|pimenton|pimienta|oregano|comino|especia|caldo|vinagre|harina|levadura/;
 const LIQ=/aceite|vinagre|leche|agua|zumo|salsa|caldo liquido/;
 function toBase(q,u,name){
@@ -460,9 +668,10 @@ function vForm(){
   <div class="ai"><p><b>Importar una receta</b> Pega el texto de la web o la descripción del vídeo de Instagram o TikTok y la dejo en pasos simples.</p><textarea id="imp" placeholder="Pega aquí el texto de la receta" aria-label="Texto de la receta">${esc(U.impQ||"")}</textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="imp" ${U.impBusy?"disabled":""}>${U.impBusy?"Importando…":"Importar receta"}</button></div>${U.impMsg?`<p class="msg ${U.impErr?"err":""}">${esc(U.impMsg)}</p>`:""}</div>`:U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}
   <div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
-  <label class="f">Categorías</label>
-  <div class="chips" style="flex-wrap:wrap;overflow:visible">${allCats().map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>
-  <div class="row"><input id="newcat" placeholder="Nueva categoría" aria-label="Nueva categoría" style="flex:1"><button class="btn alt sm" data-act="addcat">Añadir</button></div>
+  ${FACETS.map(f=>`<label class="f">${f.n}${f.one?(f.k==="temp"?" (si no marcas, todo el año)":""):" (una o varias)"}</label><div class="chips" style="flex-wrap:wrap;overflow:visible">${f.v.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`).join("")}
+  <label class="f">Otras etiquetas</label>
+  <div class="chips" style="flex-wrap:wrap;overflow:visible">${S.cats.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+  <div class="row"><input id="newcat" placeholder="Nueva etiqueta (p. ej. Sin gluten)" aria-label="Nueva etiqueta" style="flex:1"><button class="btn alt sm" data-act="addcat">Añadir</button></div>
   <label class="f">Ingredientes (precio = lo que cuesta esa cantidad)</label>
   <div class="ingh"><span>Nombre</span><span>Cant.</span><span>Unidad</span><span>€</span><span></span></div>
   ${d.ingredients.map(ingRow).join("")}
@@ -482,6 +691,8 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="bchk"){S.check=S.check||{};if(e.target.checked)S.check[e.target.dataset.k]=true;else delete S.check[e.target.dataset.k];persist();render();return}
+  if(e.target.dataset.act==="ffacet"){U.f=U.f||{};U.f[e.target.dataset.k]=e.target.value;render();return}
   if(e.target.dataset.act==="super"){S.super=e.target.value;U.prMsg="";persist();render();return}
   if(e.target.dataset.act==="budget"){S.budget=num(e.target.value);persist();
     const keep=e.target.selectionStart;render();const b=$("#bud");if(b){b.focus();try{b.setSelectionRange(keep,keep)}catch(_){}}}
@@ -491,9 +702,16 @@ document.addEventListener("click",async e=>{
   const a=b.dataset.act;sync();
   if(a==="tab"){U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
   else if(a==="pm"){S.people=Math.max(1,S.people+num(b.dataset.d));persist()}
-  else if(a==="filter")U.filter=b.dataset.c;
+  else if(a==="filter"){U.f=U.f||{};U.f[b.dataset.k]=b.dataset.c}
   else if(a==="heat"){S.heat=b.dataset.k;persist()}
   else if(a==="have"){S.have=S.have||{};if(S.have[b.dataset.k])delete S.have[b.dataset.k];else S.have[b.dataset.k]=true;persist()}
+  else if(a==="exAdd"){const name=$("#exName").value.trim(),qty=num($("#exQty").value),pr=$("#exPrice").value.trim();
+    if(!name||!(qty>0)){U.exMsg="Pon qué es y una cantidad.";render();return}
+    S.extras=[...(S.extras||[]),{id:uid(),name:name.slice(0,60),qty:String(qty),unit:$("#exUnit").value,per:$("#exPer").value,price:pr?String(num(pr)):""}];U.exMsg="";persist()}
+  else if(a==="exDel"){S.extras=(S.extras||[]).filter(e=>e.id!==b.dataset.id);persist()}
+  else if(a==="bclear"){S.check={};persist()}
+  else if(a==="salida"){S.salida=b.dataset.k;persist()}
+  else if(a==="nevera"){S.nevera=!S.nevera;persist()}
   else if(a==="packEdit")U.packEdit=U.packEdit===b.dataset.k?"":b.dataset.k;
   else if(a==="packSave"){const size=num($("#pkSize")?.value),pr=$("#pkPrice")?.value.trim();
     if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
@@ -508,7 +726,9 @@ document.addEventListener("click",async e=>{
     const res=await saveFile("mis-recetas-"+new Date().toISOString().slice(0,10)+".json",{app:"recetario",version:APP_VERSION,exported:new Date().toISOString(),recipes:S.recipes.map(cleanRecipe),cats:S.cats});
     U.ioMsg=res==="cancelado"?"":`Copia ${res}: ${S.recipes.length} receta${S.recipes.length===1?"":"s"}. Guárdala fuera del móvil.`}
   else if(a==="import"){$("#impfile")?.click();return}
-  else if(a==="dcat"){const c=b.dataset.c,d=U.draft;d.categories=d.categories.includes(c)?d.categories.filter(x=>x!==c):[...d.categories,c]}
+  else if(a==="dcat"){const c=b.dataset.c,d=U.draft,f=facetOf(c);
+    if(d.categories.includes(c))d.categories=d.categories.filter(x=>x!==c);
+    else d.categories=[...d.categories.filter(x=>!(f&&f.one&&f.v.includes(x))),c]}
   else if(a==="addcat"){const v=$("#newcat").value.trim();if(v){if(!allCats().includes(v))S.cats.push(v);if(!U.draft.categories.includes(v))U.draft.categories.push(v);persist()}}
   else if(a==="addIng")U.draft.ingredients.push({name:"",qty:"",unit:"g",price:""});
   else if(a==="rmIng"){U.draft.ingredients.splice(num(b.dataset.k),1);if(!U.draft.ingredients.length)U.draft.ingredients.push({name:"",qty:"",unit:"g",price:""})}
@@ -516,9 +736,9 @@ document.addEventListener("click",async e=>{
   else if(a==="save"){
     const d=U.draft;d.ingredients=d.ingredients.filter(i=>i.name.trim());
     if(!d.name.trim()){U.aiMsg="Ponle un nombre a la receta.";U.aiErr=true;render();return}
-    if(!d.categories.length)d.categories=["Casa"];
+    if(!d.categories.some(c=>FACETS[0].v.includes(c)))d.categories.unshift("Principal");
     if(d.id)S.recipes=S.recipes.map(r=>r.id===d.id?d:r);else{d.id=uid();S.recipes.unshift(d)}
-    U.draft=null;U.tab="recetas";U.filter="Todas";U.open=d.id;U.aiMsg="";persist();
+    U.draft=null;U.tab="recetas";U.f={};U.open=d.id;U.aiMsg="";persist();
   }
   else if(a==="ai"){render();return aiCreate()}
   else if(a==="imp"){render();return aiImport()}
@@ -564,7 +784,7 @@ Responde SOLO con JSON válido, sin texto extra ni comillas de código, con esta
 Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = personas para las que son las cantidades (usa el número que pida la petición, o 4). "price" = coste estimado en euros ${superTxt()} de ESA cantidad de ingrediente. "steps" = pasos separados por salto de línea (\\n), breves y prácticos. Español de España.${GUIA_TXT}${heatTxt()}`,{cache:false});
     const d=blank();
     d.name=String(r.name||"");d.servings=Math.max(1,num(r.servings)||4);
-    d.categories=(r.categories||[]).filter(c=>allCats().includes(c));
+    d.categories=migCats((r.categories||[]).filter(c=>BASE_CATS.includes(c)||CAT_OLD[c]));
     d.ingredients=(r.ingredients||[]).map(i=>({name:String(i.name||""),qty:String(i.qty??""),unit:UNITS.includes(i.unit)?i.unit:"ud",price:String(i.price??"")}));
     d.steps=Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"");
     U.draft=d;U.aiMsg="Receta creada. Revisa cantidades y precios, y guárdala.";U.aiErr=false;
@@ -590,7 +810,7 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
     if(r.error||!r.ingredients)throw new Error("norecipe");
     const d=blank();
     d.name=String(r.name||"");d.servings=Math.max(1,num(r.servings)||4);
-    d.categories=(r.categories||[]).filter(c=>allCats().includes(c));
+    d.categories=migCats((r.categories||[]).filter(c=>BASE_CATS.includes(c)||CAT_OLD[c]));
     d.ingredients=(r.ingredients||[]).map(i=>({name:String(i.name||""),qty:String(i.qty??""),unit:UNITS.includes(i.unit)?i.unit:"ud",price:String(i.price??"")}));
     d.steps=Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"");
     U.draft=d;U.impMsg="Receta importada. Revisa cantidades y precios (son estimados) y guárdala.";U.impErr=false;
@@ -599,6 +819,8 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
   }
   U.impBusy=false;render();
 }
+/* que una ficha abierta siga abierta al repintar */
+document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details[data-k]")){U.det=U.det||{};U.det[d.dataset.k]=d.open}},true);
 document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="guia";render()})}});
 initStorage().then(loadBase);
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
