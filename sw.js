@@ -1,4 +1,4 @@
-// versión 1.3.2 — la escribe bin/version; si no cambia este fichero, el navegador no ve la actualización
+// versión 1.3.3 — la escribe bin/version; si no cambia este fichero, el navegador no ve la actualización
 importScripts("version.js");
 const CACHE = "recetario-" + self.APP_VERSION;
 const FILES = ["./", "index.html", "version.js", "recetas-base.json", "manifest.webmanifest",

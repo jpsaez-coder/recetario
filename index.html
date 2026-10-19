@@ -259,7 +259,10 @@ function heatNote(){
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
 const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
-const EQUIV=[["Taza de campamento (250 ml): azúcar glas, harina","130 g"],["Taza: arroz","230 g"],["Taza: mermelada","170 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],["Cucharada rasa: harina","15 g"],["Cucharada rasa: azúcar, mantequilla","25 g"],["Cucharada rasa: arroz","20 g"]];
+const EQUIV=[["Arroz: agua","2 vasos por 1 de arroz (paella, 2,5-3)"],["Pasta: agua","1 l por cada 100 g"],["Cuscús: agua","el mismo volumen que de cuscús"],
+ ["Taza de campamento (250 ml): harina","130 g"],["Taza: azúcar glas","130 g"],["Taza: arroz","230 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],
+ ["Brik de leche (1 l)","5 vasos"],["Cucharada de aceite","10-15 ml"],["Cucharadita de sal","5 g"],
+ ["Cucharada rasa: harina","15 g"],["Cucharada rasa: azúcar, mantequilla","25 g"]];
 function tbl(rows){return `<table>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="q">${esc(r[1])}</td></tr>`).join("")}</table>`}
 /* Guía · Menú equilibrado en 4 pasos, en fichas plegables */
 function vCuatro(){
@@ -319,7 +322,7 @@ function vGuia(){
   <div class="card"><h2>Tiempos de cocción</h2><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></div>
-  <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV)}</div>
+  <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</div>
   ${vCuatro()}
   ${vBasicos()}
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
