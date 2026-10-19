@@ -798,7 +798,7 @@ function vAlergias(rs){
   const by={};hits.forEach(([a,n])=>{(by[a]=by[a]||new Set()).add(n)});
   return `<label class="f">Alergias e intolerancias del grupo</label>
   <details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
-  <div class="ddm-l">${ALERG.map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
+  <div class="ddm-l">${[...ALERG].sort((x,y)=>x[0].localeCompare(y[0],"es")).map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
   ${al.length?(Object.keys(by).length?Object.entries(by).map(([a,ns])=>`<p class="msg warn">⚠ ${esc(a)}: ${esc([...ns].join(", "))}.</p>`).join(""):`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`)+`<p class="msg">Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.</p>`:""}`;
 }
 function vSalida(rs){
