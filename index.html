@@ -486,8 +486,10 @@ function vList(){
   h+=list.map(r=>{
     const open=U.open===r.id,f=factor(r,RAC()),inMenu=planEntries().filter(e=>e.id===r.id);
     let d="";
-    if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
-    ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
+    /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
+    const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
+    if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>`,true)}
+    ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <details class="plg2" data-k="n-${esc(r.id)}"${U.det&&U.det["n-"+r.id]?" open":""}><summary>Nutrición y cocina</summary>
     <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
