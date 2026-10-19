@@ -1397,6 +1397,61 @@
   }
  },
  {
+  "id": "ej-san-jacobo-setas",
+  "name": "San Jacobo de setas",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Casa",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Setas portobello",
+    "qty": "600",
+    "unit": "g",
+    "price": "2.76"
+   },
+   {
+    "name": "Queso para fundir",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.44"
+   },
+   {
+    "name": "Harina",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.04"
+   },
+   {
+    "name": "Pan rallado",
+    "qty": "120",
+    "unit": "g",
+    "price": "0.14"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.37"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Limpia las setas con un paño (sin mojarlas) y quítales el pie\nJunta las setas de dos en dos con una loncha de queso en medio, como un bocadillo\nPásalas por harina, huevo batido y pan rallado, apretando para que no se abran\nFríelas en la sartén con un dedo de aceite caliente, 3-4 min por lado, hasta que estén doradas y el queso fundido\nDéjalas escurrir en papel de cocina y sala al final"
+ },
+ {
   "id": "gpg-arroz-a-la-cubana-de-campamento",
   "name": "Arroz a la cubana de campamento",
   "servings": 8,

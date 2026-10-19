@@ -179,7 +179,7 @@ const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
 const norm=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
-const SINON={couscous:"cuscus",cous:"cuscus",kuskus:"cuscus"};
+const SINON={couscous:"cuscus",cous:"cuscus",kuskus:"cuscus",carbohidratos:"hidratos",hidrato:"hidratos",proteinas:"proteina",grasas:"grasa"};
 /* ---------- etiquetas automáticas: tipo de plato y alérgenos, sacadas del nombre y los ingredientes ---------- */
 const TIPOS=[
  ["Carne",/(^|[^a-z])(pollo|pavo|cerdo|ternera|chorizo|salchich|salchichon|jamon|bacon|panceta|tocino|lomo|carne|escalope|entrecot|morcilla|picada|costilla|chuleta|hamburguesa|cordero|conejo)/],
@@ -211,11 +211,15 @@ function etiquetas(r){
   const alerg=ALERG.filter(([,re,no])=>ings.some(x=>re.test(x)&&!(no&&no.test(x)))).map(([a])=>a);
   return Object.defineProperty(r,"_et",{value:{tipos,alerg},enumerable:false,configurable:true})._et;
 }
+/* «Rico en» un macro, en % de las kcal (como la tarta). Cortes elegidos para que cada uno marque
+   un grupo útil del recetario: con «el mayor macro» la proteína no salía en ninguna receta. */
+const RICO={proteina:0.20,hidratos:0.55,grasa:0.55};
+function ricoEn(r){const m=macros(r),t=m.p*4+m.c*4+m.f*9;if(!t)return [];const s={proteina:m.p*4/t,hidratos:m.c*4/t,grasa:m.f*9/t};return Object.keys(RICO).filter(k=>s[k]>=RICO[k])}
 /* Busca por principio de palabra: «sopa» encuentra «sopas», pero no el «queso pan» de un San Jacobo
    (quitar los espacios del texto, como se hacía antes, juntaba palabras y daba falsos positivos). */
 function matches(r,q){
   const et=etiquetas(r);
-  const words=norm([r.name,...r.categories,...et.tipos,...r.ingredients.map(i=>i.name),r.steps].join(" ")).split(/[^a-z0-9ñ]+/).filter(Boolean);
+  const words=norm([r.name,...r.categories,...et.tipos,...ricoEn(r),...r.ingredients.map(i=>i.name),r.steps].join(" ")).split(/[^a-z0-9ñ]+/).filter(Boolean);
   const ws=norm(q).split(/[^a-z0-9ñ]+/).filter(Boolean);
   if(!ws.length)return false;
   const qf=ws.join("");
@@ -466,7 +470,7 @@ function vList(){
   const list=all().filter(r=>FACETS.every(f=>!U.f[f.k]||r.categories.includes(U.f[f.k]))&&(!U.q.trim()||matches(r,U.q))&&!(U.apta&&etiquetas(r).alerg.some(a=>al.includes(a))));
   const fil=`<div class="fsel">${FACETS.map(f=>`<label class="dd${U.f[f.k]?" on":""}"><span>${f.n}</span><select data-act="ffacet" data-k="${f.k}" aria-label="${f.n}"><option value="">Todos</option>${f.v.map(c=>`<option ${U.f[f.k]===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label>`).join("")}</div>`;
   const sel=FACETS.map(f=>U.f[f.k]).filter(Boolean);
-  let h=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
+  let h=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, proteína…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
   sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
   if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
@@ -567,7 +571,7 @@ const NUTRI=[
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
  [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["queso para fundir"],300,15,6,24],
- [["champinon"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
+ [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
  [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
  [["pasta","macarron","espagueti","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
@@ -647,7 +651,7 @@ function macroBlock(m,label){
 const GRUPOS=[
  ["P",["escalope","entrecot","filete","vieira","pavo","morcilla","panceta","tocino","salchichon","huevo","atun","caballa","sardina","carne picada","picada","soja","magro","lomo","cerdo","pollo","pechuga","chorizo","salchicha","jamon","ternera","pescado","queso","garbanzo","lenteja","alubia","bacon","arenque"]],
  ["H",["pasta","macarron","espagueti","fideo","tallarin","arroz","cuscus","semola","avena","patata","pan","harina","pure","copos","maiz","tortilla de trigo","masa"]],
- ["V",["tomate","pepino","zanahoria","puerro","calabacin","cebolla","pimiento","champinon","lechuga","espinaca","acelga","calabaza","brocoli","coliflor","berenjena","judia verde","guisante","ajo","chalota","cebolleta","manzana","platano","naranja","limon","ciruela","kiwi","fruta","pera"]],
+ ["V",["tomate","pepino","zanahoria","puerro","calabacin","cebolla","pimiento","champinon","lechuga","espinaca","acelga","calabaza","brocoli","coliflor","berenjena","seta","portobello","judia verde","guisante","ajo","chalota","cebolleta","manzana","platano","naranja","limon","ciruela","kiwi","fruta","pera"]],
  ["L",["leche","yogur"]]];
 /* pasta, arroz y legumbre secos casi triplican su peso al cocerse: el plato se mira cocinado */
 const SECO=/(^|[^a-z])(pasta|macarron|espagueti|fideo|tallarin|arroz|cuscus|semola|lenteja|garbanzo|alubia|avena)(s|es)?([^a-z]|$)/;
