@@ -77,7 +77,8 @@ td{padding:6px 0;border-bottom:1px dashed var(--line);vertical-align:top}
 .dd span{font-size:11px;color:var(--mute)}
 .dd select{border:0;background:transparent;padding:0;font-weight:600;font-size:14px;-webkit-appearance:none;appearance:none;width:100%}
 .dd.on{border-color:var(--pine);background:var(--bg)}
-details.step4{border-top:1px solid var(--line)}
+details.step4,.step4.fijo{border-top:1px solid var(--line)}
+.sum4{display:flex;gap:10px;align-items:center;padding:10px 0}.sum4 small{display:block;color:var(--mute);font-size:13px}
 details.step4 summary{list-style:none;display:flex;gap:10px;align-items:center;padding:10px 0;cursor:pointer}
 details.step4 summary::-webkit-details-marker{display:none}
 details.step4 summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}
@@ -126,6 +127,10 @@ label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;hei
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
 .x.aj{font-size:12px;text-decoration:underline;color:var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
+.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}
+.obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
+details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
+details.plg>summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}details.plg[open]>summary::after{transform:rotate(180deg)}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -262,7 +267,7 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
@@ -311,12 +316,30 @@ function cTime(t,k){
   return h==="vitro"?t+" (horno)":h==="hornillo"?"Sin horno: mejor guisado en olla":t+" o más, en brasas suaves";
 }
 const heatPick=()=>`<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:6px" aria-label="Dónde cocinas">${Object.entries(HEAT).map(([k,v])=>`<button class="chip" aria-pressed="${heatName()===k}" data-act="heat" data-k="${k}">${v.name}</button>`).join("")}</div>`;
-function heatNote(){
-  const v=HEAT[heatName()],L=Math.max(1,Math.round(RAC()*0.8)),a=L*v.perL[0],b=L*v.perL[1];
-  return `<div class="stats"><div><small>Hervir ${L} l (pasta para ${grupoTxt()})</small><strong>${a}-${b} min</strong></div>
-  <div><small>Volver a hervir al echarla</small><strong>${v.rec?"+"+v.rec.replace(/[()+]/g,"").trim():"al momento"}</strong></div>
+/* Agua a hervir para una receta y el grupo: pasta 1 l por 100 g, arroz ~2,5 veces su peso, cuscús o sémola
+   ~1,2 veces, legumbre seca 3 veces; si la receta trae agua o caldo, cuenta eso. null = no hierve nada. */
+function aguaReceta(r){
+  if(!r)return null;const f=factor(r,RAC());let l=0,que=[],agua=0;
+  for(const i of r.ingredients){const nm=norm(i.name),g=grams(i);if(g==null)continue;
+    if(/^(agua|caldo)/.test(nm)){agua+=g/1000*f;continue}
+    if(SECO.test(nm)&&!/cocid|bote/.test(nm)){
+      const k=/pasta|macarron|espagueti|fideo|tallarin/.test(nm)?0.01:/arroz/.test(nm)?0.0025:/cuscus|semola/.test(nm)?0.0012:/avena/.test(nm)?0.004:0.003;
+      l+=g*f*k;que.push(i.name.toLowerCase())}}
+  if(agua>0)l=agua; // si la receta dice cuánta agua lleva, manda eso (no se suma la del arroz)
+  return l>=0.2?{l:Math.max(0.5,Math.round(l*2)/2),que}:null;
+}
+function heatNote(r){
+  const v=HEAT[heatName()],h=heatName();
+  /* en la Guía (sin receta), la referencia es la pasta del grupo: 80 g por persona */
+  const ag=r?aguaReceta(r):{l:Math.max(1,Math.round(RAC()*0.8)),ref:true};
+  const tip=`<p class="msg">${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""}${r?"":" En altura, las legumbres secas tardan mucho más: mejor de bote."}</p>`;
+  if(!ag)return tip;
+  const L=ag.l,a=Math.round(L*v.perL[0]),b=Math.round(L*v.perL[1]);
+  const etq=ag.ref?`Hervir ${L} l de agua (${Math.round(RAC()*80)} g de pasta para ${grupoTxt()} · 1 l por cada 100 g)`:`Hervir unos ${String(L).replace(".",",")} l de agua${ag.que.length?" (para "+ag.que.join(", ")+")":""}`;
+  return `<div class="stats"><div><small>${esc(etq)}</small><strong>${a}-${b} min</strong></div>
+  <div><small>Volver a hervir al echarlo</small><strong>${v.rec?"+"+v.rec.replace(/[()+]/g,"").trim():"al momento"}</strong></div>
   <div><small>Por encima de 1.500 m</small><strong>tarda más</strong></div></div>
-  <p class="msg">${L>6&&heatName()==="hornillo"?"Con tanta agua, mejor dos ollas o dos hornillos. ":""}${esc(v.tip)}${v.rec?" Los tiempos de la tabla ya suman lo que tarda en volver a hervir.":""} En altura, las legumbres secas tardan mucho más: mejor de bote.</p>`;
+  ${L>6&&h==="hornillo"?`<p class="msg">Con tanta agua, mejor dos ollas o dos hornillos.</p>`:""}${tip}`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
 const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta, pimentón, orégano, pastillas de caldo, ajos y cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
@@ -334,14 +357,19 @@ function vCuatro(){
     ["Fruta y verdura","zanahoria, pepino, puerro, calabacín, cebolla, pimiento, manzana, plátano, naranja, limón, tomate y champiñón en conserva","hoja blanda (lechuga, espinaca), frutos rojos, tomate muy maduro, aguacate"],
     ["Grasas","aceite, aceitunas, cacahuetes, almendras, chocolate negro, crema de cacahuete","aguacate, frutos secos exóticos (pistacho, anacardo)"]];
   const P4=[["Pan duro","picatostes para las cremas o torrijas"],["Lata empezada","a la cena del mismo día (en tortilla); nunca abierta para mañana"],["Cereales rotos","a un bote seco: empanado crujiente"],["Mallas de cebolla, zanahoria y pimiento","enteras, a la sombra; picar justo antes"]];
-  const step=(n,t,sub,body,open)=>`<details class="step4" data-k="p${n}"${(U.det&&("p"+n) in U.det?U.det["p"+n]:open)?" open":""}><summary><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></summary><div class="step4-b">${body}</div></details>`;
+  /* el paso 2 (plantilla del día) va siempre abierto: no se pliega */
+  const step=(n,t,sub,body,open)=>n===2?`<div class="step4 fijo"><div class="sum4"><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></div><div class="step4-b">${body}</div></div>`:`<details class="step4" data-k="p${n}"${(U.det&&("p"+n) in U.det?U.det["p"+n]:open)?" open":""}><summary><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></summary><div class="step4-b">${body}</div></details>`;
   return `<div class="card"><h2>Menú equilibrado en 4 pasos</h2>
   ${step(1,"Diagnóstico de la salida","Qué aguanta sin estropearse",`<div class="tiles">${Object.values(SALIDAS).map(v=>`<div class="tile"><b>${esc(v.n)}</b><small>${esc(v.txt)}</small></div>`).join("")}</div><p class="msg">En Menú eliges la salida y te avisa de lo que necesita frío.</p>`)}
   ${step(2,"Plantilla del día","Cada comida, su reparto",`${legend}
     <div class="tpl"><span class="tpl-l">Desayuno</span><span class="msg" style="margin:0">hidrato complejo (avena o pan) + leche sin lactosa + fruta</span></div>
     ${bar("Comida",[["Hidratos",60,"--m2"],["Proteína",20,"--m1"],["Verdura",20,"--m4"]])}
-    ${bar("Cena",[["Hidratos",20,"--m2"],["Proteína",50,"--m1"],["Verdura",30,"--m4"]])}
-    <p class="msg">Comida: plato único para rendir. Cena: ligera, para reparar y dormir bien. Según el esfuerzo del día se ajusta. Cada principal te dice si encaja mejor como comida o como cena.</p>`,true)}
+    ${bar("Cena",[["Hidratos",40,"--m2"],["Proteína",30,"--m1"],["Verdura",30,"--m4"]])}
+    <p class="msg">Comida: plato único para rendir. Cena: repone los hidratos gastados para el día siguiente, con proteína fácil de digerir. En cada principal, la app lo compara con un plato de día activo (50 / 25 / 25).</p>
+    <p class="msg">La guía original ponía en la cena 50 % proteína y 20 % hidrato, un reparto pensado para quien quiere perder peso. En días de ruta las recomendaciones deportivas (ACSM 2016) piden reponer hidratos, así que aquí va 40 / 30 / 30.</p>
+    <label class="f">Lo que pide cada día (por ración de adulto)</label>
+    <div class="p3">${Object.values(ACT).map(a=>`<div class="p3-g">${esc(a.n)}</div><div class="p3-si">≈ ${a.kcal} kcal</div><div class="p3-si">${a.ch*PESO} g hidratos · ${Math.round(PROT*PESO)} g proteína</div>`).join("")}</div>
+    <p class="msg">Orientativo, para un adulto de unos 65 kg; un niño de hasta 10 años, sobre el 70 %. No sustituye a un dietista-nutricionista, sobre todo con niños o dietas especiales.</p>`,true)}
   ${step(3,"Platos económicos","Qué comprar y qué no",`<div class="p3">${P3.map(([g,si,no])=>`<div class="p3-g">${g}</div><div class="p3-si"><b>Sí</b> ${esc(si)}</div><div class="p3-no"><b>Mejor no</b> ${esc(no)}</div>`).join("")}</div>
     <p class="msg">Para ir bien al baño: fibra (fruta con piel, verdura, integrales, legumbre) y mucha agua. Días fuera (gran juego, exploración): comida que no se estropee, categoría Ruta.</p>`)}
   ${step(4,"Aprovechamiento seguro","Lo que sobra, sin riesgos",`<div class="tiles">${P4.map(([t,d])=>`<div class="tile"><b>${esc(t)}</b><small>${esc(d)}</small></div>`).join("")}</div>`)}
@@ -380,10 +408,10 @@ function vGuia(){
   <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
   <input id="impfile" type="file" accept=".json,application/json" hidden>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</div>
-  <div class="card"><h2>Cantidades para ${grupoTxt()}</h2><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 11 años, ración entera; hasta los 10, el 70 % de una ración.</p>${tbl(prop)}</div>
-  <div class="card"><h2>Tiempos de cocción</h2><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
+  <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 11 años, ración entera; hasta los 10, el 70 % de una ración.</p>${tbl(prop)}</details>
+  <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
-  <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></div>
+  <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</div>
   ${vBasicos()}
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
@@ -451,7 +479,7 @@ function vList(){
     <label class="f">Reparto del plato</label>${vPlato(r)}
     ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
-    <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
+    <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
@@ -627,7 +655,8 @@ function plato(r){
   return t;
 }
 const OBJ={Comida:{H:60,P:20,V:20,txt:"plato único: 60 % hidrato fuerte, 20 % proteína, 20 % verdura fresca"},
-           Cena:{H:20,P:50,V:30,txt:"ligera: 50 % proteína fácil de digerir, 30 % verdura cocinada, 20 % hidrato"}};
+           Activo:{H:50,P:25,V:25,txt:"plato de día activo: la mitad hidrato, un cuarto proteína y un cuarto verdura"},
+           Cena:{H:40,P:30,V:30,txt:"de día activo: 40 % hidrato para reponer, 30 % proteína fácil de digerir, 30 % verdura cocinada"}};
 function vPlato(r){
   const t=plato(r);
   let mom=r.categories.includes("Desayuno")?"Desayuno":r.categories.includes("Principal")?null:"-";
@@ -639,13 +668,11 @@ function vPlato(r){
   }
   const sum=t.H+t.P+t.V;
   if(sum<=0)return `<p class="msg">Sin datos para repartir el plato.</p>`;
-  /* ¿se parece más a la comida (mucho hidrato) o a la cena (mucha proteína)? */
-  const dist=m=>["H","P","V"].reduce((a,k)=>a+Math.abs(t[k]/sum*100-OBJ[m][k]),0);
-  mom=dist("Comida")<=dist("Cena")?"Comida":"Cena";
-  const o=OBJ[mom];
+  /* comida y cena de día activo se parecen: una sola referencia (decir «encaja como cena» marcaba a todos) */
+  const o=OBJ.Activo;
   const rows=[["Hidratos","H"],["Proteína","P"],["Verdura","V"]].map(([n,k])=>{const pc=Math.round(t[k]/sum*100),d=pc-o[k];
     return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${pc} % (objetivo ${o[k]} %)"><i style="width:${pc}%"></i><b style="left:${o[k]}%"></b></div><span>${pc} %<small> / ${o[k]}</small></span></div>${Math.abs(d)>15?`<p class="msg warn">${k==="H"?(d<0?"Le faltan":"Le sobran"):(d<0?"Le falta":"Le sobra")} ${n.toLowerCase()}.</p>`:""}`}).join("");
-  return `<p class="msg"><b>Encaja mejor como ${mom.toLowerCase()}</b>: ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}`;
+  return `<p class="msg">Referencia, ${esc(o.txt)}. La raya marca el objetivo; el peso es en cocinado.</p>${rows}`;
 }
 /* Paso 3: lo que la guía desaconseja por precio o porque se estropea, con su alternativa */
 const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco","merluza","dorada","salmon"],"atún, caballa o sardinas en lata"],
@@ -708,6 +735,7 @@ function planEntries(){
 }
 const planIds=()=>planEntries().map(e=>e.id);
 function fitMomento(r){
+  return null; // ya no se usa: ver vPlato
   if(!r.categories.includes("Principal"))return null;
   const t=plato(r),sum=t.H+t.P+t.V;if(!sum)return null;
   const dist=m=>["H","P","V"].reduce((a,k)=>a+Math.abs(t[k]/sum*100-OBJ[m][k]),0);
@@ -719,13 +747,37 @@ function optRecetas(m){
   const sel=(S.menu||[]).map(getR).filter(Boolean),pega=r=>MOM_DE[r.categories.find(c=>MOM_DE[c])]===m;
   return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
 }
+/* ---------- energía según la actividad del día ----------
+   Objetivos orientativos por ración de adulto (≥ 11 años, ~65 kg); un niño come ~70 %.
+   Hidratos en g/kg y proteína 1,2-1,6 g/kg según la postura ACSM/AND/DC 2016; kcal, valores habituales de gasto. */
+const ACT={descanso:{n:"Descanso o reunión",kcal:2200,ch:4},suave:{n:"Ruta suave (hasta 4 h)",kcal:2800,ch:6},exigente:{n:"Ruta exigente (5 h o más)",kcal:3500,ch:8}};
+const PESO=65,PROT=1.3;
+const actDia=d=>(S.act&&ACT[S.act[d]])?S.act[d]:(S.salida==="reunion"?"descanso":"suave");
+function objetivo(d){const a=ACT[actDia(d)];return {kcal:a.kcal,c:a.ch*PESO,p:PROT*PESO}}
+/* lo que come una ración de adulto ese día: lo puesto en el día y, repartido entre los días, lo que no tiene día y los sueltos */
+function comidoDia(d){
+  const D=S.dias||1,t={kcal:0,p:0,c:0,f:0};
+  const sum=(r,w)=>{if(!r)return;const m=macros(r);t.kcal+=m.kcal*w;t.p+=m.p*w;t.c+=m.c*w;t.f+=m.f*w};
+  for(const m of MOMS)for(const id of (S.plan&&S.plan[d+"|"+m])||[])sum(getM(id),1);
+  for(const e of planEntries().filter(e=>!e.d))sum(getM(e.id),1/D);
+  const sr=sueltosRecipe(RAC(),HEADS());if(sr){const m=macros(sr),k=1/D;t.kcal+=m.kcal*k;t.p+=m.p*k;t.c+=m.c*k;t.f+=m.f*k}
+  return t;
+}
+function vObjetivo(d){
+  const o=objetivo(d),t=comidoDia(d);
+  const fila=(n,v,obj,u)=>{const pc=Math.min(100,Math.round(v/obj*100));return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${Math.round(v)} de ${Math.round(obj)} ${u}"><i style="width:${pc}%"></i></div><span>${Math.round(v)}<small> / ${Math.round(obj)} ${u}</small></span></div>`};
+  const falta=o.kcal-t.kcal;
+  return `<div class="obj">${fila("Energía",t.kcal,o.kcal,"kcal")}${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}
+  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan unas ${Math.round(falta/50)*50} kcal por persona: raciones más grandes o sueltos (pan, fruta, frutos secos, chocolate).</p>`:""}
+  ${actDia(d)!=="descanso"?`<p class="msg">En la marcha (más de 1 h): 30-60 g de hidratos por hora y persona; por ejemplo, un plátano o una barrita (unos 25 g) cada hora.</p>`:""}</div>`;
+}
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
   let h=`<div class="card"><h2>Menú por días</h2><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
   const sel=(S.menu||[]).map(getM).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
   h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl">${esc(r.name)}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}<p class="msg">Repártelas por días abajo. Las que no pongas en ningún día cuentan una vez.</p>`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
   if(sel.length)for(let d=1;d<=D;d++){
-    h+=`<div class="dia"><h3>Día ${d}</h3>`;
+    h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div>`;
     for(const m of MOMS){
       const ids=(S.plan&&S.plan[d+"|"+m])||[];
       h+=`<div class="slot"><span class="slot-m">${m}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
@@ -733,6 +785,7 @@ function vDias(){
         return `<span class="pl">${esc(r.name)}${fit&&fit!==m?`<small> · encaja mejor de ${fit.toLowerCase()}</small>`:""}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>`;
     }
+    h+=`<label class="f">Por persona (ración de adulto) frente a lo que pide el día</label>${vObjetivo(d)}`;
     h+=`</div>`;
   }
   return h+`</div>`;
@@ -807,7 +860,7 @@ const SECC=[["Conservas",/(^|[^a-z])(atun|sardin|caballa|tomate triturado|tomate
   ["Charcutería",/(^|[^a-z])(chorizo|jamon|salchichon|bacon|panceta|tocino|morcilla|fiambre)/],
   ["Carne y pescado",/(^|[^a-z])(pollo|pavo|cerdo|ternera|carne|lomo|chuleta|escalope|entrecot|salchicha|pescado|merluza|vieira|bacalao|arenque)/],
   ["Lácteos y huevos",/(^|[^a-z])(leche|nata|queso|mantequilla|yogur|huevo|yema|clara|cuajada)/],
-  ["Despensa",/(^|[^a-z])(arroz|pasta|macarron|espagueti|fideo|harina|azucar|aceite|sal|vinagre|cuscus|semola|galleta|cacao|chocolate|avena|caldo|pimenton|oregano|canela|especia|mermelada|pan rallado|maicena|levadura|miel|pasas|bizcocho|cereales|barrita)/],
+  ["Despensa / baúl",/(^|[^a-z])(arroz|pasta|macarron|espagueti|fideo|harina|azucar|aceite|sal|vinagre|cuscus|semola|galleta|cacao|chocolate|avena|caldo|pimenton|oregano|canela|especia|mermelada|pan rallado|maicena|levadura|miel|pasas|bizcocho|cereales|barrita)/],
   ["Panadería",/(^|[^a-z])(pan(?:es)?(?![a-z])|pan de molde|barra|masa)/],
   ["Fruta y verdura",/(^|[^a-z])(tomate|pepino|lechuga|cebolla|ajo|patata|zanahoria|pimiento|limon|manzana|platano|naranja|fruta|calabac|calabaza|puerro|chalota|kiwi|melocoton|sandia|melon|pera|champinon|perejil|albahaca|aguacate|mandarina|pina|brocoli|coliflor|judia verde|espinaca)/]];
 const seccion=n=>{const x=norm(n);const s=SECC.find(([,re])=>re.test(x));return s?s[0]:"Otros"};
@@ -883,6 +936,7 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="actDia"){S.act=S.act||{};S.act[e.target.dataset.k]=e.target.value;persist();render();return}
   if(e.target.dataset.act==="ajChk"){const id=e.target.dataset.id,k=e.target.dataset.k;S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};
     x.quitar=e.target.checked?(x.quitar||[]).filter(z=>z!==k):[...new Set([...(x.quitar||[]),k])];persist();render();return}
   if(e.target.dataset.act==="buyChk"){S.bought=S.bought||{};if(e.target.checked)S.bought[e.target.dataset.k]=true;else delete S.bought[e.target.dataset.k];persist();render();return}
