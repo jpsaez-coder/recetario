@@ -89,7 +89,9 @@ function matches(r,q){
   return ws.length>0&&ws.every(w=>hay.includes(SINON[w]||w));
 }
 const UNITS=["g","kg","ml","l","ud","cda","cdta"];
-let S={recipes:[],cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null};
+/* recetas de ejemplo: solo aparecen si no hay nada guardado; precios aproximados del 19-10-2026 */
+const SEED=[{"id": "ej-cuscus", "name": "Ensalada de cuscús para la mochila", "servings": 4, "categories": ["Rutas", "Verano"], "ingredients": [{"name": "Cuscús", "qty": "240", "unit": "g", "price": "0.6"}, {"name": "Tomate", "qty": "400", "unit": "g", "price": "1.0"}, {"name": "Pepino", "qty": "1", "unit": "ud", "price": "0.5"}, {"name": "Atún en aceite (lata)", "qty": "3", "unit": "ud", "price": "2.4"}, {"name": "Aceitunas sin hueso", "qty": "100", "unit": "g", "price": "0.8"}, {"name": "Limón", "qty": "1", "unit": "ud", "price": "0.3"}, {"name": "Aceite de oliva", "qty": "3", "unit": "cda", "price": "0.3"}], "steps": "En un táper grande, cubre el cuscús con el mismo volumen de agua (unos 250 ml) y una pizca de sal\nCon agua fría tarda unos 30 min; con agua caliente, 5 min. No hace falta fuego\nTrocea el tomate y el pepino; escurre el atún y las aceitunas\nMezcla todo con el zumo del limón y el aceite\nCierra bien el táper: aguanta la mañana en la mochila, a la sombra"}, {"id": "ej-arroz", "name": "Arroz con chorizo en una olla", "servings": 4, "categories": ["Acampadas", "Invierno"], "ingredients": [{"name": "Arroz", "qty": "240", "unit": "g", "price": "0.6"}, {"name": "Chorizo", "qty": "200", "unit": "g", "price": "2.2"}, {"name": "Pimiento rojo", "qty": "1", "unit": "ud", "price": "0.7"}, {"name": "Cebolla", "qty": "1", "unit": "ud", "price": "0.3"}, {"name": "Tomate triturado", "qty": "400", "unit": "g", "price": "0.8"}, {"name": "Pastilla de caldo", "qty": "1", "unit": "ud", "price": "0.15"}, {"name": "Pimentón", "qty": "1", "unit": "cdta", "price": "0.1"}, {"name": "Aceite de oliva", "qty": "2", "unit": "cda", "price": "0.2"}, {"name": "Agua", "qty": "600", "unit": "ml", "price": "0"}], "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"}];
+let S={recipes:JSON.parse(JSON.stringify(SEED)),cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:""};
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
@@ -109,7 +111,22 @@ const factor=(r,n)=>n/Math.max(1,r.servings);
 
 const GUIA_TXT=" Guía de raciones para 8 personas: arroz 480 g, pasta 640 g, legumbres secas 640 g, patatas 3,2 kg, carne deshuesada 800 g, carne con hueso 1,6 kg, embutido 800 g, pescado 800 g, queso 240 g, fruta 1,6 kg; pan 250 g y leche 400 ml por persona y día. Estilo de cocina de campamento: una olla o sartén, brasas, sin horno si es posible, ingredientes baratos y fáciles de transportar.";
 const PROP=[["Arroz",480],["Pasta",640],["Cuscús, sémola o porridge",480],["Legumbres secas",640],["Patatas",3200],["Carne deshuesada",800],["Carne con hueso",1600],["Embutidos",800],["Pescado",800],["Zanahorias",2000],["Coliflor",1600],["Judías verdes",2000],["Guisantes",2400],["Tomates",2000],["Fruta fresca",1600],["Frutos secos",640],["Compota de fruta",480],["Mermelada",800],["Queso",240]];
-const COCC=[["Arroz","15-20 min"],["Pasta","10-15 min"],["Patatas","20-30 min"],["Zanahorias","30-40 min"],["Puerros","30 min"],["Coliflor","25 min"],["Sopa casera","20 min"],["Sémola","10 min"],["Huevo duro","10 min"],["Chuletas de cerdo","5 min"],["Salchichas","15 min"],["Pollo troceado","15-20 min"],["Ternera","20 min"],["Roast beef (al punto)","10 min"],["Paletilla de cordero","60 min"]];
+/* tipo: h = hervido (el tiempo cuenta desde que hierve), p = plancha o sartén, a = asado */
+const COCC=[["Arroz","15-20 min","h"],["Pasta","10-15 min","h"],["Patatas","20-30 min","h"],["Zanahorias","30-40 min","h"],["Puerros","30 min","h"],["Coliflor","25 min","h"],["Sopa casera","20 min","h"],["Sémola","10 min","h"],["Huevo duro","10 min","h"],["Chuletas de cerdo","5 min","p"],["Salchichas","15 min","p"],["Pollo troceado","15-20 min","p"],["Ternera","20 min","p"],["Roast beef (al punto)","10 min","a"],["Paletilla de cordero","60 min","a"]];
+const HEAT={
+  vitro:{name:"Vitro",agua:"Hervir 2 l de agua: unos 10 min con tapa.",tip:"Calor regular: los tiempos de la tabla valen tal cual."},
+  hornillo:{name:"Hornillo de gas",agua:"Hervir 2 l de agua: 10-15 min con tapa y paravientos; sin ellos, puede ser el doble.",tip:"Llama pequeña: olla con tapa, paravientos y la sartén por tandas. Con frío el cartucho pierde fuerza (mejor mezcla butano-propano). Lleva cartucho de repuesto."},
+  fuego:{name:"Fuego o brasas",agua:"Hervir 2 l de agua: 15-30 min; depende mucho del fuego.",tip:"Cocina sobre brasas, no sobre llama. El calor no es regular: mira y prueba en vez de fiarte del reloj. Para bajar el fuego, aparta la olla."}};
+const heatName=()=>HEAT[S.heat]?S.heat:"vitro";
+function cTime(t,k){
+  const h=heatName();
+  if(k==="h")return t;
+  if(k==="p")return h==="vitro"?t:h==="hornillo"?t+" por tanda":t+" o más, según brasas";
+  return h==="vitro"?t+" (horno)":h==="hornillo"?"Sin horno: mejor guisado en olla":t+" o más, en brasas suaves";
+}
+const heatPick=()=>`<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:6px" aria-label="Dónde cocinas">${Object.entries(HEAT).map(([k,v])=>`<button class="chip" aria-pressed="${heatName()===k}" data-act="heat" data-k="${k}">${v.name}</button>`).join("")}</div>`;
+const heatNote=()=>{const v=HEAT[heatName()];return `<p class="msg">${esc(v.agua)} ${esc(v.tip)}</p>`};
+const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
 const BASICOS=["Sal, pimienta, mostaza, aceite, hierbas y azúcar","Papel de periódico, cerillas y una vela (por si llueve)","Lavavajillas biodegradable, esponja, estropajo y paño","Manoplas o agarradores, pelador de patatas y abrelatas","Bolsas de basura","Campamento: ajos, cebollas, pastillas de caldo, utensilios, botes de cristal contra la humedad, trébedes y parrilla, cuaderno de recetas y bolsa colgable para el pan"];
 const EQUIV=[["Taza de campamento (250 ml): azúcar glas, harina","130 g"],["Taza: arroz","230 g"],["Taza: mermelada","170 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],["Cucharada rasa: harina","15 g"],["Cucharada rasa: azúcar, mantequilla","25 g"],["Cucharada rasa: arroz","20 g"]];
 function tbl(rows){return `<table>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="q">${esc(r[1])}</td></tr>`).join("")}</table>`}
@@ -117,7 +134,9 @@ function vGuia(){
   const n=S.people;
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(250*n,"g")],["Leche (por día)",fmtQ(400*n,"ml")]]);
   return `<div class="card"><h2>Cantidades para ${n} personas</h2><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el número de personas arriba.</p>${tbl(prop)}</div>
-  <div class="card"><h2>Tiempos de cocción</h2>${tbl(COCC)}</div>
+  <div class="card"><h2>Tiempos de cocción</h2><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
+  ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)]))}
+  <p class="msg">Lo hervido tarda lo mismo en cualquier fuego <b>una vez que el agua hierve</b>: lo que cambia es cuánto tarda en hervir y si el fuego mantiene el hervor. Por encima de unos 1.500 m el agua hierve a menos temperatura y todo tarda algo más; las legumbres secas, mucho más (mejor de bote). Tiempos orientativos.</p></div>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV)}</div>
   <div class="card"><h2>Básicos de intendencia</h2><ul>${BASICOS.map(b=>`<li>${esc(b)}</li>`).join("")}</ul></div>
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
@@ -178,6 +197,7 @@ function vList(){
     let d="";
     if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(num(i.price)*f):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
+    <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
     <div class="row"><button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button><button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button></div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(cost(r)*f/S.people)}/pers.</span></div>
     <div class="meta">${r.categories.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}<span class="tag">base: ${r.servings} pers.</span></div>
@@ -263,6 +283,7 @@ document.addEventListener("click",async e=>{
   if(a==="tab"){U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
   else if(a==="pm"){S.people=Math.max(1,S.people+num(b.dataset.d));persist()}
   else if(a==="filter")U.filter=b.dataset.c;
+  else if(a==="heat"){S.heat=b.dataset.k;persist()}
   else if(a==="open")U.open=U.open===b.dataset.id?null:b.dataset.id;
   else if(a==="menu"){const id=b.dataset.id;S.menu=S.menu.includes(id)?S.menu.filter(x=>x!==id):[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){S.recipes=S.recipes.filter(r=>r.id!==b.dataset.id);S.menu=S.menu.filter(x=>x!==b.dataset.id);persist()}}
@@ -319,7 +340,7 @@ async function aiCreate(){
     const r=await sample.json(`Eres un cocinero que prepara recetas para grupos (rutas, campamentos, casa). Crea UNA receta para esta petición: "${q}".
 Responde SOLO con JSON válido, sin texto extra ni comillas de código, con esta forma exacta:
 {"name":string,"servings":number,"categories":string[],"ingredients":[{"name":string,"qty":number,"unit":string,"price":number}],"steps":string}
-Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = personas para las que son las cantidades (usa el número que pida la petición, o 4). "price" = coste estimado en euros ${superTxt()} de ESA cantidad de ingrediente. "steps" = pasos separados por salto de línea (\\n), breves y prácticos. Español de España.${GUIA_TXT}`,{cache:false});
+Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = personas para las que son las cantidades (usa el número que pida la petición, o 4). "price" = coste estimado en euros ${superTxt()} de ESA cantidad de ingrediente. "steps" = pasos separados por salto de línea (\\n), breves y prácticos. Español de España.${GUIA_TXT}${heatTxt()}`,{cache:false});
     const d=blank();
     d.name=String(r.name||"");d.servings=Math.max(1,num(r.servings)||4);
     d.categories=(r.categories||[]).filter(c=>allCats().includes(c));
@@ -342,7 +363,7 @@ async function aiImport(){
 Responde SOLO con JSON válido, sin texto extra ni comillas de código, con esta forma exacta:
 {"name":string,"servings":number,"categories":string[],"ingredients":[{"name":string,"qty":number,"unit":string,"price":number}],"steps":string}
 Si el texto no contiene una receta responde {"error":true}.
-Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = raciones del texto, o 4 si no se indican. "price" = coste estimado en euros ${superTxt()} de ESA cantidad (estimación tuya). "steps" = pasos SIMPLIFICADOS, cortos y claros, máximo 8, separados por salto de línea (\\n), sin numerar. Español de España.${GUIA_TXT}
+Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = raciones del texto, o 4 si no se indican. "price" = coste estimado en euros ${superTxt()} de ESA cantidad (estimación tuya). "steps" = pasos SIMPLIFICADOS, cortos y claros, máximo 8, separados por salto de línea (\\n), sin numerar. Español de España.${GUIA_TXT}${heatTxt()}
 
 TEXTO:\n${t.slice(0,6000)}`,{cache:false});
     if(r.error||!r.ingredients)throw new Error("norecipe");
