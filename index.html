@@ -280,7 +280,7 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:0,super:"",priceInfo:null,heat:"vitro"};
+let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,ppd:6,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
@@ -535,14 +535,16 @@ function vMenu(){
   const used=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
   const items=shopList(rs,n);
   const total=items.reduce((a,i)=>a+i.cost,0);
-  const perPerson=total/H,usedPP=used/n,maxP=usedPP>0?Math.floor(S.budget/usedPP):0;
-  const left=S.budget-total;
-  return `<div class="card">${vSalida(rs)}${vAlergias(rs)}</div>${vDias()}<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto total (€)</label>
-  <input id="bud" type="number" min="0" step="1" inputmode="decimal" value="${S.budget}" data-act="budget">
+  /* presupuesto: € por persona y día (6 por defecto); el total sale de las personas y los días */
+  const D=S.dias||1,ppd=S.ppd==null?6:S.ppd,B=ppd*H*D;
+  const perPerson=total/H,usedPP=used/n,maxP=usedPP>0?Math.floor(B/usedPP):0;
+  const left=B-total;
+  return `<div class="card">${vSalida(rs)}${vAlergias(rs)}</div>${vDias()}<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
+  <input id="bud" type="number" min="0" step="0.5" inputmode="decimal" value="${ppd}" data-act="budget">
+  <p class="msg">= <b>${eur(B)}</b> (${H} pers. × ${D} día${D===1?"":"s"})</p>
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona${(S.dias||1)>1?" y día":""}</small><strong>${eur(perPerson/(S.dias||1))}</strong></div>
-  ${S.budget>0?`<div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>
-  <div><small>Raciones que cubre (aprox.)</small><strong>${maxP}</strong></div>`:""}</div>
+  ${B>0?`<div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>`:""}</div>
   ${fl("Sobre los precios","pre",`Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa. ${cadena()?`Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}); lo que no está en su catálogo, estimado. Compáralos con el ticket.`:S.super?`Aún no hay precios de ${esc(S.super)}: se usan los estimados.`:`Precios estimados de cada receta.`}`)}
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
@@ -1035,7 +1037,7 @@ document.addEventListener("input",e=>{
   if(e.target.dataset.act==="bchk"){S.check=S.check||{};if(e.target.checked)S.check[e.target.dataset.k]=true;else delete S.check[e.target.dataset.k];persist();render();return}
   if(e.target.dataset.act==="ffacet"){U.f=U.f||{};U.f[e.target.dataset.k]=e.target.value;render();return}
   if(e.target.dataset.act==="super"){S.super=e.target.value;U.prMsg="";persist();render();return}
-  if(e.target.dataset.act==="budget"){S.budget=num(e.target.value);persist();
+  if(e.target.dataset.act==="budget"){S.ppd=num(e.target.value);persist();
     const keep=e.target.selectionStart;render();const b=$("#bud");if(b){b.focus();try{b.setSelectionRange(keep,keep)}catch(_){}}}
 });
 document.addEventListener("click",async e=>{
