@@ -24,7 +24,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Source Sans 
 h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif;margin:0;line-height:1.15}
 main{max-width:720px;margin:0 auto;padding:16px 16px 90px}
 header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 12px;margin-bottom:14px}
-.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap;width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
+.grp{display:flex;gap:4px;align-items:center;flex-wrap:wrap;width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
 header.top h1{font-size:28px;color:var(--pine)}
 header.top p{margin:2px 0 0;color:var(--mute);font-size:14px}
 .people{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 8px}
@@ -141,6 +141,8 @@ tr.rowd td{padding-top:0;border-bottom:1px dashed var(--line)}tr.rowd small{colo
 details.plg3>summary{list-style:none;cursor:pointer}details.plg3>summary::-webkit-details-marker{display:none}
 button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:underline;font:inherit;cursor:pointer}
 .sumx{margin-left:auto;margin-right:8px;color:var(--mute);font-size:13px}
+.people input.cnt{width:34px;padding:3px 0;text-align:center;font-size:17px;font-weight:700;border:1px solid var(--line);background:var(--surface);-moz-appearance:textfield}
+.people input.cnt::-webkit-inner-spin-button,.people input.cnt::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -305,7 +307,7 @@ const costF=(r,f)=>r.ingredients.reduce((a,i)=>a+sPrice(i,f),0);
 /* Raciones por edad: S.people = mayores (12 años o más), S.kids = niños (hasta 11 años, ~70 % de ración).
    RAC() = raciones de comida (cantidades, compra); HEADS() = cabezas (lo que es «uno por persona» y el gasto por persona). */
 const KID=0.7;
-const HEADS=()=>S.people+(S.kids||0);
+const HEADS=()=>Math.max(1,(S.people||0)+(S.kids||0)); // nunca 0: se divide entre esto
 const RAC=()=>Math.round((S.people+KID*(S.kids||0))*10)/10;
 const grupoTxt=()=>S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} pers.`;
 const factor=(r,n)=>n/Math.max(1,r.servings);
@@ -469,8 +471,8 @@ function render(){
   const tabs=[["recetas","Recetas"],["menu","Menú ("+planIds().length+")"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top"><div><h1>Recetario</h1></div>
-  <div class="grp"><div class="people" aria-label="12 años o más"><small>≥ 12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
-  <div class="people" aria-label="Hasta 11 años"><small>≤ 11 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
+  <div class="grp"><div class="people" aria-label="12 años o más"><small>≥ 12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
+  <div class="people" aria-label="Hasta 11 años"><small>≤ 11 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></header>`;
   $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
 }
@@ -1034,6 +1036,10 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="nPeople"||e.target.dataset.act==="nKids"){
+    const v=Math.min(999,Math.max(0,parseInt(e.target.value,10)||0)),act=e.target.dataset.act;
+    if(act==="nPeople")S.people=v;else S.kids=v;persist();
+    render();const i=document.querySelector(`[data-act=${act}]`);if(i){i.focus();if(e.target.value==="")i.value=""}return}
   if(e.target.dataset.act==="climaDia"){S.clima=S.clima||{};S.clima[e.target.dataset.k]=e.target.value;persist();render();return}
   if(e.target.dataset.act==="actDia"){S.act=S.act||{};S.act[e.target.dataset.k]=e.target.value;persist();render();return}
   if(e.target.dataset.act==="ajChk"){const id=e.target.dataset.id,k=e.target.dataset.k;S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};
