@@ -182,7 +182,7 @@ const norm=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase(
 const SINON={couscous:"cuscus",cous:"cuscus",kuskus:"cuscus",carbohidratos:"hidratos",hidrato:"hidratos",proteinas:"proteina",grasas:"grasa"};
 /* ---------- etiquetas automáticas: tipo de plato y alérgenos, sacadas del nombre y los ingredientes ---------- */
 const TIPOS=[
- ["Carne",/(^|[^a-z])(pollo|pavo|cerdo|ternera|chorizo|salchich|salchichon|jamon|bacon|panceta|tocino|lomo|carne|escalope|entrecot|morcilla|picada|costilla|chuleta|hamburguesa|cordero|conejo)/],
+ ["Carne",/(^|[^a-z])(caldo de cocido|caldo de pollo|caldo de carne|pollo|pavo|cerdo|ternera|chorizo|salchich|salchichon|jamon|bacon|panceta|tocino|lomo|carne|escalope|entrecot|morcilla|picada|costilla|chuleta|hamburguesa|cordero|conejo)/],
  ["Pescado",/(^|[^a-z])(atun|sardin|caballa|arenque|merluza|bacalao|pescado|salmon|bonito|anchoa|boqueron|dorada|lubina)/],
  ["Marisco",/(^|[^a-z])(vieira|gamba|langostino|mejillon|almeja|calamar|sepia|pulpo|marisco)/],
  ["Huevo",/(^|[^a-z])(huevo|yema|clara)/],
@@ -569,7 +569,8 @@ const NUTRI=[
  [["garrofon"],120,7,20,0.5],[["guisante"],80,5,14,0.4],[["maiz dulce"],85,3,17,1],[["copos de maiz"],380,7,84,1],[["maicena"],380,0.3,91,0.1],
  [["pan de molde"],265,8,49,4],[["masa de pizza"],270,8,50,4],[["masa quebrada"],450,6,50,25],[["bizcocho","bizcochos de soletilla"],390,8,80,4],
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
- [["jamon cocido"],110,18,1,4],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
+ [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
+ [["tortilla de trigo","tortillas de trigo","fajita"],300,8,50,7],[["crema de cacahuete"],600,25,15,50],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
  [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["queso para fundir"],300,15,6,24],
  [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
@@ -591,7 +592,7 @@ const NUTRI=[
 const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
 const PIEZA=[[["huevo"],60],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
- [["patata"],200],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
+ [["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
 const PAQ=[[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
@@ -854,7 +855,7 @@ const PACKS=[[["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["ar
   [["lenteja","garbanzo","alubia"],1000,"g"],[["atun","sardina","caballa"],3,"lata"],[["tomate triturado","tomate frito"],400,"g"],
   [["leche"],1000,"ml"],[["huevo"],12,"ud"],[["aceite"],1000,"ml"],[["vinagre"],1000,"ml"],[["sal"],1000,"g"],[["azucar"],1000,"g"],
   [["harina"],1000,"g"],[["chorizo","salchichon"],250,"g"],[["pastilla de caldo","pastillas de caldo"],10,"ud"],[["pimenton"],75,"g"],
-  [["oregano"],10,"g"],[["aceituna"],150,"g"],[["patata"],2000,"g"],[["cebolla"],1000,"g"],[["chocolate"],100,"g"],[["galleta"],500,"g"],[["barrita","barritas de cereales"],6,"ud"]];
+  [["oregano"],10,"g"],[["aceituna"],150,"g"],[["patata"],2000,"g"],[["cebolla"],1000,"g"],[["chocolate"],100,"g"],[["galleta"],500,"g"],[["tortilla de trigo","tortillas de trigo"],8,"ud"],[["carne picada"],500,"g"],[["barrita","barritas de cereales"],6,"ud"]];
 const STAPLE=/aceite|(^|[^a-z])sal([^a-z]|$)|azucar|pimenton|pimienta|oregano|comino|especia|caldo|vinagre|harina|levadura/;
 const LIQ=/aceite|vinagre|leche|agua|zumo|salsa|caldo liquido/;
 function toBase(q,u,name){

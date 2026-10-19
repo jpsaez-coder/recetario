@@ -419,6 +419,349 @@
   "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso"
  },
  {
+  "id": "mr-crepes-pavo-queso",
+  "name": "Crepes salados de pavo y queso",
+  "servings": 16,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.34"
+   },
+   {
+    "name": "Leche entera",
+    "qty": "800",
+    "unit": "ml",
+    "price": "0.77"
+   },
+   {
+    "name": "Pechuga de pavo o jamón cocido",
+    "qty": "600",
+    "unit": "g",
+    "price": "4.95"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "500",
+    "unit": "g",
+    "price": "3.20"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Bate la harina con la leche y una pizca de sal hasta tener una masa fluida\nCalienta la sartén con unas gotas de aceite y echa un cazo de masa, extendiéndola\nDora 1 min por cada lado\nPon queso y pavo, dobla y sirve; repite hasta acabar la masa",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-picada-cuscus",
+  "name": "Salteado de carne picada con verduras y cuscús",
+  "servings": 16,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Carne picada mixta",
+    "qty": "1500",
+    "unit": "g",
+    "price": "10.50"
+   },
+   {
+    "name": "Cuscús",
+    "qty": "1000",
+    "unit": "g",
+    "price": "3.38"
+   },
+   {
+    "name": "Pimiento",
+    "qty": "300",
+    "unit": "g",
+    "price": "1.30"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "300",
+    "unit": "g",
+    "price": "1.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Agua",
+    "qty": "1200",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Comino o pimentón",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Fogón 1: sofríe la cebolla y el pimiento picados\nAñade la carne picada y dórala bien; sal y especias\nFogón 2: hierve el agua con sal y un chorro de aceite\nApaga, echa el cuscús, tapa y deja 5 min; suéltalo con un tenedor\nSirve el cuscús de base y la carne encima\nLa carne, comprada fresca y congelada el día antes: llega fría al primer día",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-pasta-magro",
+  "name": "Pasta con magro de cerdo y tomate",
+  "servings": 16,
+  "categories": [
+   "Principal",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Pasta",
+    "qty": "1500",
+    "unit": "g",
+    "price": "3.00"
+   },
+   {
+    "name": "Magro de cerdo en conserva",
+    "qty": "4",
+    "unit": "lata",
+    "price": "5.20"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "1000",
+    "unit": "g",
+    "price": "1.40"
+   },
+   {
+    "name": "Queso rallado",
+    "qty": "300",
+    "unit": "g",
+    "price": "2.10"
+   },
+   {
+    "name": "Agua",
+    "qty": "6",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Fogón 1: cuece la pasta en el agua con sal el tiempo del paquete y escurre\nFogón 2: desmenuza el magro y caliéntalo en la sartén; añade el tomate frito\nMezcla la salsa con la pasta y echa el queso rallado por encima",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-molde-cacahuete",
+  "name": "Pan de molde con crema de cacahuete y plátano",
+  "servings": 16,
+  "categories": [
+   "Desayuno",
+   "Merienda",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan de molde",
+    "qty": "32",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Crema de cacahuete",
+    "qty": "500",
+    "unit": "g",
+    "price": "3.50"
+   },
+   {
+    "name": "Plátano",
+    "qty": "16",
+    "unit": "ud",
+    "price": "3.38"
+   }
+  ],
+  "steps": "Unta las rebanadas con crema de cacahuete\nPon encima un plátano en rodajas por persona\nLos plátanos que sobren, para la marcha",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-ensalada-garbanzos",
+  "name": "Ensalada campera de garbanzos y atún",
+  "servings": 16,
+  "categories": [
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Garbanzos cocidos",
+    "qty": "2000",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "8",
+    "unit": "lata",
+    "price": "5.20"
+   },
+   {
+    "name": "Maíz dulce",
+    "qty": "3",
+    "unit": "lata",
+    "price": "1.80"
+   },
+   {
+    "name": "Pimientos del piquillo",
+    "qty": "1",
+    "unit": "lata",
+    "price": "1.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "6",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Escurre los garbanzos, el maíz y el atún\nPica los pimientos del piquillo\nMézclalo todo en una fiambrera o en la olla\nAliña con aceite, vinagre y sal: no hace falta encender fuego",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-sopa-fideos-cocido",
+  "name": "Sopa de fideos con caldo de cocido",
+  "servings": 16,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Caldo de cocido",
+    "qty": "2",
+    "unit": "l",
+    "price": "2.20"
+   },
+   {
+    "name": "Fideos finos",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Calienta el caldo hasta que hierva\nEcha los fideos y cuécelos 3 min\nSirve al momento, en taza o cuenco pequeño",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
+  "id": "mr-fajitas-lomo",
+  "name": "Fajitas de lomo, queso y pimientos verdes",
+  "servings": 16,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Tortillas de trigo",
+    "qty": "24",
+    "unit": "ud",
+    "price": "3.60"
+   },
+   {
+    "name": "Lomo curado en tacos",
+    "qty": "500",
+    "unit": "g",
+    "price": "4.50"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "200",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "600",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Saltea en la sartén los pimientos verdes en tiras y los tacos de lomo unos minutos\nCalienta las tortillas un momento en la sartén para que se doblen sin romperse\nRellena con la carne, los pimientos y unas tiras de queso, y enrolla",
+  "source": {
+   "name": "Menú de ruta (Ahorramás)",
+   "url": ""
+  }
+ },
+ {
   "id": "gpg-ensalada-de-patata",
   "name": "Ensalada de patata",
   "servings": 4,
