@@ -140,6 +140,7 @@ details.inf[open]>summary{color:var(--ink)}
 tr.rowd td{padding-top:0;border-bottom:1px dashed var(--line)}tr.rowd small{color:var(--mute)}tr.home b{color:var(--mute)}
 details.plg3>summary{list-style:none;cursor:pointer}details.plg3>summary::-webkit-details-marker{display:none}
 button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:underline;font:inherit;cursor:pointer}
+.sumx{margin-left:auto;margin-right:8px;color:var(--mute);font-size:13px}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -412,8 +413,8 @@ function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div cla
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
-  return `<div class="card"><h2>Básicos de intendencia</h2><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
-  ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</div>`;
+  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary><h2>Básicos de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
+  ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</details>`;
 }
 function vGuia(){
   const n=RAC();
@@ -423,9 +424,9 @@ function vGuia(){
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
-  <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</div>
+  <details class="card plg" data-k="med"${U.det&&U.det.med?" open":""}><summary><h2>Medidas útiles</h2></summary>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</details>
   ${vBasicos()}
-  <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
+  <details class="card plg" data-k="fue"${U.det&&U.det.fue?" open":""}><summary><h2>Fuego en la Comunidad de Madrid</h2></summary>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017, modificado por el 83/2018), revisado el 19-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
   <label class="f">Épocas de peligro</label>${vFuegoAnio()}
   <label class="f">¿Puedo encender?</label>${vNormas()}
@@ -436,7 +437,7 @@ function vGuia(){
   <a href="https://www.comunidad.madrid/seguridad-emergencias-asem-112/infoma26" target="_blank" rel="noopener">Avisos y suspensiones de este año (INFOMA)</a><br>
   <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
   <label class="f">Al encender, donde esté permitido</label><ul style="margin-top:0"><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul>
-  <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></div>
+  <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></details>
 
   <p class="msg" style="text-align:center">Recetario ${esc(APP_VERSION)}</p>`;
 }
@@ -467,7 +468,7 @@ async function initStorage(){
 function render(){
   const tabs=[["recetas","Recetas"],["menu","Menú ("+planIds().length+")"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
-  const head=`<header class="top"><div><h1>Recetario</h1><p>Rutas, campamentos y cocina de casa</p></div>
+  const head=`<header class="top"><div><h1>Recetario</h1></div>
   <div class="grp"><div class="people" aria-label="12 años o más"><small>≥ 12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
   <div class="people" aria-label="Hasta 11 años"><small>≤ 11 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></header>`;
@@ -833,7 +834,7 @@ function vObjetivo(d){
   const fila=(n,v,obj,u)=>{const pc=Math.min(100,Math.round(v/obj*100));return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${Math.round(v)} de ${Math.round(obj)} ${u}"><i style="width:${pc}%"></i></div><span>${Math.round(v).toLocaleString("es-ES")}<small> / ${Math.round(obj).toLocaleString("es-ES")} ${u}</small></span></div>`};
   const falta=o.kcal-t.kcal;
   return `<div class="obj"><details class="plg3" data-k="${k}"${U.det&&U.det[k]?" open":""}><summary>${fila("Energía",t.kcal,o.kcal,"kcal")}</summary>${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}</details>
-  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}${CLIMA[climaDia(d)].aviso?`<p class="msg">${CLIMA[climaDia(d)].aviso}</p>`:""}</div>`;
+  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}${CLIMA[climaDia(d)].aviso?`<div class="fl">${CLIMA[climaDia(d)].aviso.split(":")[0]}${inf("cl"+d,CLIMA[climaDia(d)].aviso.split(":").slice(1).join(":").trim())}</div>`:""}</div>`;
 }
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
