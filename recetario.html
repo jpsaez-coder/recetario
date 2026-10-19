@@ -73,6 +73,8 @@ textarea{min-height:90px;resize:vertical}
 <nav class="tabs" role="tablist" id="tabs"></nav>
 <script>
 const BASE_CATS=["Rutas","Acampadas","Casa","Invierno","Verano"];
+const CAT_DESC={Rutas:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
+const catsTxt=()=>JSON.stringify(allCats())+". Significado de las categorías: "+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ");
 const UNITS=["g","kg","ml","l","ud","cda","cdta"];
 let S={recipes:[],cats:[],menu:[],people:4,budget:60};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false};
@@ -141,7 +143,8 @@ function render(){
 function vList(){
   const cats=["Todas",...allCats()];
   const list=S.recipes.filter(r=>U.filter==="Todas"||r.categories.includes(U.filter));
-  let h=`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div>`;
+  let h=`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`;
+  if(CAT_DESC[U.filter])h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[U.filter])}</p>`;
   if(!list.length)h+=`<div class="empty">${S.recipes.length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button></div>`;
   h+=list.map(r=>{
     const open=U.open===r.id,f=factor(r,S.people),inMenu=S.menu.includes(r.id);
@@ -198,7 +201,7 @@ function vForm(){
   <div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
   <label class="f">Categorías</label>
-  <div class="chips" style="flex-wrap:wrap;overflow:visible">${allCats().map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+  <div class="chips" style="flex-wrap:wrap;overflow:visible">${allCats().map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>
   <div class="row"><input id="newcat" placeholder="Nueva categoría" aria-label="Nueva categoría" style="flex:1"><button class="btn alt sm" data-act="addcat">Añadir</button></div>
   <label class="f">Ingredientes (precio = lo que cuesta esa cantidad)</label>
   <div class="ingh"><span>Nombre</span><span>Cant.</span><span>Unidad</span><span>€</span><span></span></div>
@@ -257,7 +260,7 @@ async function aiCreate(){
     const r=await sample.json(`Eres un cocinero que prepara recetas para grupos (rutas, campamentos, casa). Crea UNA receta para esta petición: "${q}".
 Responde SOLO con JSON válido, sin texto extra ni comillas de código, con esta forma exacta:
 {"name":string,"servings":number,"categories":string[],"ingredients":[{"name":string,"qty":number,"unit":string,"price":number}],"steps":string}
-Reglas: "categories" elige solo de ${JSON.stringify(allCats())}. "unit" solo de ${JSON.stringify(UNITS)}. "servings" = personas para las que son las cantidades (usa el número que pida la petición, o 4). "price" = coste estimado en euros en un supermercado de España de ESA cantidad de ingrediente. "steps" = pasos separados por salto de línea (\\n), breves y prácticos. Español de España.${GUIA_TXT}`,{cache:false});
+Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = personas para las que son las cantidades (usa el número que pida la petición, o 4). "price" = coste estimado en euros en un supermercado de España de ESA cantidad de ingrediente. "steps" = pasos separados por salto de línea (\\n), breves y prácticos. Español de España.${GUIA_TXT}`,{cache:false});
     const d=blank();
     d.name=String(r.name||"");d.servings=Math.max(1,num(r.servings)||4);
     d.categories=(r.categories||[]).filter(c=>allCats().includes(c));
@@ -280,7 +283,7 @@ async function aiImport(){
 Responde SOLO con JSON válido, sin texto extra ni comillas de código, con esta forma exacta:
 {"name":string,"servings":number,"categories":string[],"ingredients":[{"name":string,"qty":number,"unit":string,"price":number}],"steps":string}
 Si el texto no contiene una receta responde {"error":true}.
-Reglas: "categories" elige solo de ${JSON.stringify(allCats())}. "unit" solo de ${JSON.stringify(UNITS)}. "servings" = raciones del texto, o 4 si no se indican. "price" = coste estimado en euros en un supermercado de España de ESA cantidad (estimación tuya). "steps" = pasos SIMPLIFICADOS, cortos y claros, máximo 8, separados por salto de línea (\\n), sin numerar. Español de España.${GUIA_TXT}
+Reglas: "categories" elige solo de ${catsTxt()} "unit" solo de ${JSON.stringify(UNITS)}. "servings" = raciones del texto, o 4 si no se indican. "price" = coste estimado en euros en un supermercado de España de ESA cantidad (estimación tuya). "steps" = pasos SIMPLIFICADOS, cortos y claros, máximo 8, separados por salto de línea (\\n), sin numerar. Español de España.${GUIA_TXT}
 
 TEXTO:\n${t.slice(0,6000)}`,{cache:false});
     if(r.error||!r.ingredients)throw new Error("norecipe");
