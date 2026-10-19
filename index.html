@@ -127,7 +127,7 @@ label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;hei
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
 .x.aj{font-size:12px;text-decoration:underline;color:var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
-.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}
+.dia-h h3{white-space:nowrap}.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}.dia-s{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
 details.plg>summary::after{content:"▾";margin-left:auto;color:var(--mute);transition:transform .15s}details.plg[open]>summary::after{transform:rotate(180deg)}
@@ -280,7 +280,7 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,ppd:6,super:"",priceInfo:null,heat:"vitro"};
+let S={clima:{},act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,ppd:6,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
@@ -374,8 +374,7 @@ function vCuatro(){
     ["Fruta y verdura","zanahoria, pepino, puerro, calabacín, cebolla, pimiento, manzana, plátano, naranja, limón, tomate y champiñón en conserva","hoja blanda (lechuga, espinaca), frutos rojos, tomate muy maduro, aguacate"],
     ["Grasas","aceite, aceitunas, cacahuetes, almendras, chocolate negro, crema de cacahuete","aguacate, frutos secos exóticos (pistacho, anacardo)"]];
   const P4=[["Pan duro","picatostes para las cremas o torrijas"],["Lata empezada","a la cena del mismo día (en tortilla); nunca abierta para mañana"],["Cereales rotos","a un bote seco: empanado crujiente"],["Mallas de cebolla, zanahoria y pimiento","enteras, a la sombra; picar justo antes"]];
-  /* el paso 2 (plantilla del día) va siempre abierto: no se pliega */
-  const step=(n,t,sub,body,open)=>n===2?`<div class="step4 fijo"><div class="sum4"><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></div><div class="step4-b">${body}</div></div>`:`<details class="step4" data-k="p${n}"${(U.det&&("p"+n) in U.det?U.det["p"+n]:open)?" open":""}><summary><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></summary><div class="step4-b">${body}</div></details>`;
+  const step=(n,t,sub,body,open)=>`<details class="step4" data-k="p${n}"${(U.det&&("p"+n) in U.det?U.det["p"+n]:open)?" open":""}><summary><span class="num">${n}</span><span><b>${t}</b><small>${sub}</small></span></summary><div class="step4-b">${body}</div></details>`;
   return `<div class="card"><h2>Menú equilibrado en 4 pasos</h2>
   ${step(1,"Diagnóstico de la salida","Qué aguanta sin estropearse",`<div class="tiles">${Object.values(SALIDAS).map(v=>`<div class="tile"><b>${esc(v.n)}</b><small>${esc(v.txt)}</small></div>`).join("")}</div><p class="msg">En Menú eliges la salida y te avisa de lo que necesita frío.</p>`)}
   ${step(2,"Plantilla del día","Cada comida, su reparto",`${legend}
@@ -385,8 +384,8 @@ function vCuatro(){
     <p class="msg">Comida: plato único para rendir. Cena: repone los hidratos gastados para el día siguiente, con proteína fácil de digerir. En cada principal, la app lo compara con un plato de día activo (50 / 25 / 25).</p>
     <p class="msg">La guía original ponía en la cena 50 % proteína y 20 % hidrato, un reparto pensado para quien quiere perder peso. En días de ruta las recomendaciones deportivas (ACSM 2016) piden reponer hidratos, así que aquí va 40 / 30 / 30.</p>
     <label class="f">Lo que pide cada día (por ración de adulto)</label>
-    <div class="p3">${Object.values(ACT).map(a=>`<div class="p3-g">${esc(a.n)}</div><div class="p3-si">≈ ${a.kcal} kcal</div><div class="p3-si">${a.ch*PESO} g hidratos · ${Math.round(PROT*PESO)} g proteína</div>`).join("")}</div>
-    <p class="msg">Orientativo, para un adulto de unos 65 kg; un niño de hasta 11 años, sobre el 70 %. No sustituye a un dietista-nutricionista, sobre todo con niños o dietas especiales.</p>`,true)}
+    <div class="p3">${Object.values(ACT).map(a=>`<div class="p3-g">${esc(a.l)}</div><div class="p3-si">≈ ${a.kcal} kcal</div><div class="p3-si">${a.ch*PESO} g hidratos · ${Math.round(PROT*PESO)} g proteína</div>`).join("")}</div>
+    <p class="msg">Orientativo, para un adulto de unos 65 kg; un niño de hasta 11 años, sobre el 70 %. Con frío o en altura (más de 2.500 m), un 15 % más; con calor casi igual, pero mucha más agua y algo de sal. No sustituye a un dietista-nutricionista, sobre todo con niños o dietas especiales.</p>`)}
   ${step(3,"Platos económicos","Qué comprar y qué no",`<div class="p3">${P3.map(([g,si,no])=>`<div class="p3-g">${g}</div><div class="p3-si"><b>Sí</b> ${esc(si)}</div><div class="p3-no"><b>Mejor no</b> ${esc(no)}</div>`).join("")}</div>
     <p class="msg">Para ir bien al baño: fibra (fruta con piel, verdura, integrales, legumbre) y mucha agua. Días fuera (gran juego, exploración): comida que no se estropee, categoría Ruta.</p>`)}
   ${step(4,"Aprovechamiento seguro","Lo que sobra, sin riesgos",`<div class="tiles">${P4.map(([t,d])=>`<div class="tile"><b>${esc(t)}</b><small>${esc(d)}</small></div>`).join("")}</div>`)}
@@ -811,10 +810,15 @@ function optRecetas(m){
 /* ---------- energía según la actividad del día ----------
    Objetivos orientativos por ración de adulto (≥ 12 años, ~65 kg); un niño come ~70 %.
    Hidratos en g/kg y proteína 1,2-1,6 g/kg según la postura ACSM/AND/DC 2016; kcal, valores habituales de gasto. */
-const ACT={descanso:{n:"Descanso o reunión",kcal:2200,ch:4},suave:{n:"Ruta suave (hasta 4 h)",kcal:2800,ch:6},exigente:{n:"Ruta exigente (5 h o más)",kcal:3500,ch:8}};
+const ACT={descanso:{n:"Descanso",l:"Descanso o reunión",kcal:2200,ch:4},suave:{n:"Ruta suave",l:"Ruta suave (hasta 4 h)",kcal:2800,ch:6},exigente:{n:"Ruta exigente",l:"Ruta exigente (5 h o más)",kcal:3500,ch:8}};
 const PESO=65,PROT=1.3;
 const actDia=d=>(S.act&&ACT[S.act[d]])?S.act[d]:(S.salida==="reunion"?"descanso":"suave");
-function objetivo(d){const a=ACT[actDia(d)];return {kcal:a.kcal,c:a.ch*PESO,p:PROT*PESO}}
+/* clima: el frío y la altura suben el gasto (~15 %, orientativo); con calor casi no, pero cambian el agua y la sal */
+const CLIMA={templado:{n:"Templado",k:1},calor:{n:"Calor",k:1.05,aviso:"☀ Calor: 0,5-1 l de agua por hora de marcha y algo salado; comidas ligeras y frecuentes."},
+  frio:{n:"Frío",k:1.15,aviso:"❄ Frío: comidas calientes, algo más de grasa e hidratos y tentempiés a menudo."},
+  altura:{n:"Altura",k:1.15,aviso:"⛰ Altura: más agua e hidratos fáciles de comer; el apetito baja."}};
+const climaDia=d=>(S.clima&&CLIMA[S.clima[d]])?S.clima[d]:"templado";
+function objetivo(d){const a=ACT[actDia(d)],k=CLIMA[climaDia(d)].k;return {kcal:Math.round(a.kcal*k/50)*50,c:a.ch*PESO*k,p:PROT*PESO}}
 /* lo que come una ración de adulto ese día: lo puesto en el día y, repartido entre los días, lo que no tiene día y los sueltos */
 function comidoDia(d){
   const D=S.dias||1,t={kcal:0,p:0,c:0,f:0};
@@ -829,7 +833,7 @@ function vObjetivo(d){
   const fila=(n,v,obj,u)=>{const pc=Math.min(100,Math.round(v/obj*100));return `<div class="bar"><span>${n}</span><div class="track" title="${n}: ${Math.round(v)} de ${Math.round(obj)} ${u}"><i style="width:${pc}%"></i></div><span>${Math.round(v).toLocaleString("es-ES")}<small> / ${Math.round(obj).toLocaleString("es-ES")} ${u}</small></span></div>`};
   const falta=o.kcal-t.kcal;
   return `<div class="obj"><details class="plg3" data-k="${k}"${U.det&&U.det[k]?" open":""}><summary>${fila("Energía",t.kcal,o.kcal,"kcal")}</summary>${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}</details>
-  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}</div>`;
+  ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}${CLIMA[climaDia(d)].aviso?`<p class="msg">${CLIMA[climaDia(d)].aviso}</p>`:""}</div>`;
 }
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
@@ -837,7 +841,7 @@ function vDias(){
   const sel=(S.menu||[]).map(getM).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
   h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl">${esc(r.name)}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
   if(sel.length)for(let d=1;d<=D;d++){
-    h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div>`;
+    h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><div class="dia-s"><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select><select data-act="climaDia" data-k="${d}" aria-label="Clima del día ${d}">${Object.entries(CLIMA).map(([k,v])=>`<option value="${k}" ${climaDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div></div>`;
     for(const m of MOMS){
       const ids=(S.plan&&S.plan[d+"|"+m])||[];
       const cs=costeSlot(d,m);
@@ -1027,6 +1031,7 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="climaDia"){S.clima=S.clima||{};S.clima[e.target.dataset.k]=e.target.value;persist();render();return}
   if(e.target.dataset.act==="actDia"){S.act=S.act||{};S.act[e.target.dataset.k]=e.target.value;persist();render();return}
   if(e.target.dataset.act==="ajChk"){const id=e.target.dataset.id,k=e.target.dataset.k;S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};
     x.quitar=e.target.checked?(x.quitar||[]).filter(z=>z!==k):[...new Set([...(x.quitar||[]),k])];persist();render();return}
