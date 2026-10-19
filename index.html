@@ -121,6 +121,9 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .x{border:0;background:none;color:var(--mute);font-size:13px;padding:2px 6px;cursor:pointer}
 select.pladd{width:100%;min-width:0;padding:4px 6px;font-size:13px;border-style:dashed;color:var(--mute);background:transparent}
 .addrow select{width:auto}
+h3.secc{font-size:14px;color:var(--pine);margin:14px 0 0;text-transform:uppercase;letter-spacing:.04em}
+label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;height:20px;flex:none;accent-color:var(--pine)}
+tr.got b{color:var(--mute);text-decoration:line-through}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -256,7 +259,7 @@ const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes"
 /* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
    Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
 let BASE=[];
-let S={dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let S={bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
@@ -448,12 +451,12 @@ function vList(){
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
-    <div class="meta">${r.categories.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}<span class="tag">cantidades para ${r.servings}</span></div>
-    <div class="meta">${etiquetas(r).tipos.map(t=>`<span class="tag tipo">${esc(t)}</span>`).join("")}${etiquetas(r).alerg.map(a=>`<span class="tag alg${(S.alergias||[]).includes(a)?" hit":""}" title="Alérgeno">${(S.alergias||[]).includes(a)?"⚠ ":""}${esc(a)}</span>`).join("")}</div>
+    ${open?`<div class="meta">${r.categories.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}<span class="tag">cantidades para ${r.servings}</span></div>
+    <div class="meta">${etiquetas(r).tipos.map(t=>`<span class="tag tipo">${esc(t)}</span>`).join("")}${etiquetas(r).alerg.map(a=>`<span class="tag alg${(S.alergias||[]).includes(a)?" hit":""}" title="Alérgeno">${(S.alergias||[]).includes(a)?"⚠ ":""}${esc(a)}</span>`).join("")}</div>`
+    :(()=>{const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
     <div class="row"><button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button>
-    <button class="btn alt sm" data-act="addFor" data-id="${r.id}">Añadir al menú</button></div>
-    ${U.addFor===r.id?`<div class="row addrow"><select id="adD" aria-label="Día">${Array.from({length:S.dias||1},(_,i)=>`<option value="${i+1}">Día ${i+1}</option>`).join("")}</select><select id="adM" aria-label="Momento">${MOMS.map(m=>`<option ${m===(MOM_DE[r.categories.find(c=>MOM_DE[c])]||"Comida")?"selected":""}>${m}</option>`).join("")}</select><button class="btn sm" data-act="addGo" data-id="${r.id}">Añadir</button><button class="btn ghost sm" data-act="addFor" data-id="">Cancelar</button></div>`:""}
-    ${inMenu.length?`<p class="msg">En el menú: ${inMenu.map(e=>e.d?`día ${e.d}, ${e.m.toLowerCase()}`:"sin día").join(" · ")}</p>`:""}${d}</article>`;
+    <button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button></div>
+    ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
   return h;
 }
@@ -500,9 +503,7 @@ function vMenu(){
   ${(()=>{const ms=rs.map(macros),t={kcal:0,p:0,c:0,f:0,sin:ms.flatMap(m=>m.sin),sinQ:ms.flatMap(m=>m.sinQ),gusto:ms.flatMap(m=>m.gusto)};ms.forEach(m=>{t.kcal+=m.kcal;t.p+=m.p;t.c+=m.c;t.f+=m.f});const D=S.dias||1;["kcal","p","c","f"].forEach(k=>t[k]/=D);
     return `<div class="card"><h2>Macros del menú</h2><p class="msg">Lo que come cada persona${(S.dias||1)>1?" de media al día":""}, sueltos incluidos.</p>${macroBlock(t,(S.dias||1)>1?"por persona y día":"por persona")}</div>`})()}
   ${vSueltos(n,H)}
-  <div class="card"><h2>Lista de la compra</h2>
-  <p class="msg">Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato» y cámbialo; se recuerda para la próxima vez.</p>
-  <table>${items.map(shopRow).join("")}</table></div>${vAmortiza(items,rs)}`;
+  ${vCompra(items)}${vAmortiza(items,rs)}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
 function vAmortiza(items,rs){
@@ -655,14 +656,16 @@ const FRIO=/(^|[^a-z])(pollo|pechuga|carne|picada|cerdo|lomo|ternera|pescado|mer
 const SALIDAS={ruta:{n:"Ruta (un día)",txt:"Todo va en la mochila: sin nevera ni cocina, o con un hornillo como mucho. Nada que se estropee con calor, comida ligera y fácil de comer andando, y agua de sobra. Mira la categoría Ruta."},
   reunion:{n:"Reunión",txt:"Unas horas en el local: merienda o comida sencilla que se toma en el día. Si el local tiene cocina, se usa; los frescos no dan problema si se compran ese mismo día."},
   finde:{n:"Acampada (2 días)",txt:"Se puede llevar fresco que aguante 24 h en la caja de intendencia; mejor congelado para la primera noche. El segundo día, sobre todo con calor, sin frescos."}};
-/* ---------- menú por días: rejilla día × momento ----------
-   S.plan["2|Cena"] = [ids]; S.menu queda como «sin día» (lo que había antes de los días). */
+/* ---------- menú por días ----------
+   S.menu = recetas elegidas para el menú (desde Recetas). S.plan["2|Cena"] = [ids] las reparte por días.
+   Lo elegido que no está en ningún día cuenta una vez (para una salida de un día no hace falta repartir). */
 const MOMS=["Desayuno","Comida","Merienda","Cena"];
 const MOM_DE={Desayuno:"Desayuno",Merienda:"Merienda",Entrante:"Comida",Principal:"Comida","Postre y masas":"Comida"};
 function planEntries(){
   const out=[];const d=S.dias||1;
   for(let i=1;i<=d;i++)for(const m of MOMS)for(const id of (S.plan&&S.plan[i+"|"+m])||[])out.push({id,d:i,m});
-  for(const id of S.menu||[])out.push({id,d:0,m:""});
+  const usados=new Set(out.map(e=>e.id));
+  for(const id of S.menu||[])if(!usados.has(id))out.push({id,d:0,m:""});
   return out;
 }
 const planIds=()=>planEntries().map(e=>e.id);
@@ -674,14 +677,16 @@ function fitMomento(r){
 }
 function addPlan(id,d,m){S.plan=S.plan||{};const k=d+"|"+m;S.plan[k]=[...(S.plan[k]||[]),id];persist()}
 function optRecetas(m){
-  const pl=FACETS[0].v,pref=Object.keys(MOM_DE).filter(p=>MOM_DE[p]===m);
-  const orden=[...pref,...pl.filter(p=>!pref.includes(p))];
-  return orden.map(p=>{const rs=all().filter(r=>r.categories.includes(p));return rs.length?`<optgroup label="${esc(p)}">${rs.map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("")}</optgroup>`:""}).join("");
+  /* solo las elegidas para el menú; primero las que pegan con ese momento */
+  const sel=(S.menu||[]).map(getR).filter(Boolean),pega=r=>MOM_DE[r.categories.find(c=>MOM_DE[c])]===m;
+  return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
 }
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
   let h=`<div class="card"><h2>Menú por días</h2><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
-  for(let d=1;d<=D;d++){
+  const sel=(S.menu||[]).map(getR).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
+  h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl">${esc(r.name)}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div><p class="msg">Repártelas por días abajo. Las que no pongas en ningún día cuentan una vez.</p>`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
+  if(sel.length)for(let d=1;d<=D;d++){
     h+=`<div class="dia"><h3>Día ${d}</h3>`;
     for(const m of MOMS){
       const ids=(S.plan&&S.plan[d+"|"+m])||[];
@@ -692,8 +697,6 @@ function vDias(){
     }
     h+=`</div>`;
   }
-  const sd=(S.menu||[]).map(getR).filter(Boolean);
-  if(sd.length)h+=`<div class="dia"><h3>Sin día</h3><p class="msg">Añadidas antes de haber días: pásalas a su sitio con «+ añadir» y quítalas de aquí.</p>${sd.map(r=>`<span class="pl">${esc(r.name)}<button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`).join("")}</div>`;
   return h+`</div>`;
 }
 /* Alergias del grupo: se marcan una vez y avisan en recetas y menú. Se detectan por el nombre del ingrediente:
@@ -761,11 +764,39 @@ function shopList(rs,n){
     return {...it,pk:null,k:0,cost:per*whole,left:0};
   });
 }
+/* ---------- lista para la tienda: por secciones, con casillas, y para mandar por WhatsApp ---------- */
+const SECC=[["Conservas",/(^|[^a-z])(atun|sardin|caballa|tomate triturado|tomate frito|guisante|cocid|maiz dulce|aceituna|lata)/],
+  ["Charcutería",/(^|[^a-z])(chorizo|jamon|salchichon|bacon|panceta|tocino|morcilla|fiambre)/],
+  ["Carne y pescado",/(^|[^a-z])(pollo|pavo|cerdo|ternera|carne|lomo|chuleta|escalope|entrecot|salchicha|pescado|merluza|vieira|bacalao|arenque)/],
+  ["Lácteos y huevos",/(^|[^a-z])(leche|nata|queso|mantequilla|yogur|huevo|yema|clara|cuajada)/],
+  ["Despensa",/(^|[^a-z])(arroz|pasta|macarron|espagueti|fideo|harina|azucar|aceite|sal|vinagre|cuscus|semola|galleta|cacao|chocolate|avena|caldo|pimenton|oregano|canela|especia|mermelada|pan rallado|maicena|levadura|miel|pasas|bizcocho|cereales|barrita)/],
+  ["Panadería",/(^|[^a-z])(pan(?:es)?(?![a-z])|pan de molde|barra|masa)/],
+  ["Fruta y verdura",/(^|[^a-z])(tomate|pepino|lechuga|cebolla|ajo|patata|zanahoria|pimiento|limon|manzana|platano|naranja|fruta|calabac|calabaza|puerro|chalota|kiwi|melocoton|sandia|melon|pera|champinon|perejil|albahaca|aguacate|mandarina|pina|brocoli|coliflor|judia verde|espinaca)/]];
+const seccion=n=>{const x=norm(n);const s=SECC.find(([,re])=>re.test(x));return s?s[0]:"Otros"};
+function vCompra(items){
+  const b=S.bought||{},vivos=items.filter(i=>!i.have),hechos=vivos.filter(i=>b[i.key]).length;
+  const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,items.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
+  return `<div class="card"><h2>Lista de la compra</h2>
+  <p class="msg">${hechos} de ${vivos.length} en el carro. Formatos de venta orientativos: si tu súper lo vende distinto, toca «Formato».</p>
+  <div class="row"><button class="btn sm" data-act="waShare">Enviar por WhatsApp</button>${hechos?`<button class="btn ghost sm" data-act="boughtClear">Desmarcar todo</button>`:""}</div>
+  ${grupos.map(([s,xs])=>`<h3 class="secc">${esc(s)}</h3><table>${xs.map(shopRow).join("")}</table>`).join("")}</div>`;
+}
+function compraTexto(items){
+  const vivos=items.filter(i=>!i.have);
+  const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,vivos.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
+  return "Lista de la compra ("+grupoTxt()+((S.dias||1)>1?", "+S.dias+" días":"")+")\n"+grupos.map(([s,xs])=>"\n*"+s+"*\n"+xs.map(i=>"- "+i.name+(i.pk?": "+i.k+" × "+fmtQ(i.pk.size,i.unit):i.q>0?": "+fmtQ(i.q,i.unit):" (al gusto)")).join("\n")).join("\n");
+}
+async function compartirCompra(items){
+  const t=compraTexto(items);
+  try{if(navigator.share){await navigator.share({text:t});return}}catch(e){if(e&&e.name==="AbortError")return}
+  window.open("https://wa.me/?text="+encodeURIComponent(t),"_blank","noopener");
+}
 function shopRow(i){
-  const need=fmtQ(i.q,i.unit),edit=U.packEdit===i.key;
+  const need=i.q>0?fmtQ(i.q,i.unit):"al gusto",edit=U.packEdit===i.key;
   if(i.have)return `<tr><td><b style="color:var(--mute)">${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · lo tienes en casa</small></td><td class="p"><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button></td></tr>`;
   const buy=i.pk?`compras ${i.k} × ${fmtQ(i.pk.size,i.unit)}${i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?` · sobran ${fmtQ(i.left,i.unit)}`:""}`:"a granel o por unidades";
-  let h=`<tr><td><b>${esc(i.name)}</b><br><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}</small></td>
+  const got=S.bought&&S.bought[i.key];
+  let h=`<tr class="${got?"got":""}"><td><label class="buy"><input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro"><b>${esc(i.name)}</b></label><small style="color:var(--mute)">necesitas ${need} · ${buy}${i.pk&&i.pk.own?" (tu formato)":""}</small></td>
   <td class="p">${i.cost?eur(i.cost):""}<br><button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button></td></tr>`;
   if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="2"><div class="row" style="padding:4px 0 8px">
     <label class="f" style="margin:0">Se vende en</label><input id="pkSize" inputmode="decimal" value="${esc(pk.size)}" style="width:80px"> ${esc(i.unit)}
@@ -814,6 +845,7 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="buyChk"){S.bought=S.bought||{};if(e.target.checked)S.bought[e.target.dataset.k]=true;else delete S.bought[e.target.dataset.k];persist();render();return}
   if(e.target.dataset.act==="plAdd"){if(e.target.value){const [d,m]=e.target.dataset.k.split("|");addPlan(e.target.value,+d,m)}render();return}
   if(e.target.dataset.act==="algChk"){const k=e.target.dataset.k;S.alergias=e.target.checked?[...new Set([...(S.alergias||[]),k])]:(S.alergias||[]).filter(x=>x!==k);persist();render();return}
   if(e.target.dataset.act==="aptaChk"){U.apta=e.target.checked;render();return}
@@ -846,10 +878,10 @@ document.addEventListener("click",async e=>{
     if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
   else if(a==="packDel"){if(S.packs)delete S.packs[b.dataset.k];persist();U.packEdit=""}
   else if(a==="open")U.open=U.open===b.dataset.id?null:b.dataset.id;
-  else if(a==="menu"){const id=b.dataset.id;S.menu=S.menu.includes(id)?S.menu.filter(x=>x!==id):[...S.menu,id];persist()}
+  else if(a==="menu"){const id=b.dataset.id;if(S.menu.includes(id)){S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id)}else S.menu=[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){const id=b.dataset.id;S.recipes=S.recipes.filter(r=>r.id!==id);S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);persist()}}
-  else if(a==="addFor"){U.addFor=b.dataset.id}
-  else if(a==="addGo"){addPlan(b.dataset.id,+$("#adD").value,$("#adM").value);U.addFor=""}
+  else if(a==="boughtClear"){S.bought={};persist()}
+  else if(a==="waShare"){const rs0=planIds().map(getR).filter(Boolean),sr=sueltosRecipe(RAC(),HEADS());return compartirCompra(shopList(sr?[...rs0,sr]:rs0,RAC()))}
   else if(a==="plDel"){const k=b.dataset.k;S.plan[k]=(S.plan[k]||[]).filter((_,i)=>i!==+b.dataset.i);persist()}
   else if(a==="dias"){S.dias=Math.min(15,Math.max(1,(S.dias||1)+num(b.dataset.d)));persist()}
   else if(a==="edit"){U.draft=JSON.parse(JSON.stringify(S.recipes.find(r=>r.id===b.dataset.id)));U.tab="nueva"}
