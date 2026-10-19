@@ -127,6 +127,7 @@
   "servings": 4,
   "categories": [
    "Desayuno",
+   "Ruta",
    "Acampada",
    "Casa"
   ],
@@ -154,38 +155,6 @@
     "qty": "",
     "unit": "ud",
     "price": ""
-   }
-  ],
-  "steps": "Corta el pan en rebanadas; si hay sartén o parrilla, tuéstalo\nParte los tomates por la mitad y frótalos sobre el pan, o rállalos antes\nEcha un chorro de aceite y una pizca de sal"
- },
- {
-  "id": "ej-pan-aceite",
-  "name": "Pan con aceite, sal y especias",
-  "servings": 4,
-  "categories": [
-   "Desayuno",
-   "Ruta",
-   "Acampada",
-   "Casa"
-  ],
-  "ingredients": [
-   {
-    "name": "Pan",
-    "qty": "1",
-    "unit": "barra",
-    "price": "0.40"
-   },
-   {
-    "name": "Aceite de oliva",
-    "qty": "4",
-    "unit": "cda",
-    "price": "0.22"
-   },
-   {
-    "name": "Sal",
-    "qty": "",
-    "unit": "ud",
-    "price": ""
    },
    {
     "name": "Orégano o pimentón",
@@ -194,7 +163,7 @@
     "price": ""
    }
   ],
-  "steps": "Corta el pan en rebanadas (tostado está más rico)\nRiega con aceite, sal y una pizca de orégano o pimentón\nPara la mochila: lleva el aceite en un bote pequeño bien cerrado y móntalo al comer"
+  "steps": "Corta el pan en rebanadas; si hay sartén o parrilla, tuéstalo\nParte los tomates por la mitad y frótalos sobre el pan, o rállalos antes\nEcha un chorro de aceite, una pizca de sal y, si quieres, orégano o pimentón\nSolo con aceite: en el menú, «Ajustar» y quita el tomate (para la mochila, el aceite en un bote bien cerrado)"
  },
  {
   "id": "ej-tostadas-mermelada",
@@ -2607,65 +2576,7 @@
     "price": ""
    }
   ],
-  "steps": "Pon la harina en corona en un bol y casca los huevos en medio\nAñade azúcar, sal y aceite\nMezcla incorporando la leche fría poco a poco con varillas hasta quitar los grumos\nTapa y deja reposar la masa 1 hora\nHaz las crepes en sartén antiadherente muy caliente con una gota de aceite",
-  "source": {
-   "name": "guiasparaguias · Masas y postres",
-   "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
-  }
- },
- {
-  "id": "gpg-galette-bretona-de-trigo-sarraceno",
-  "name": "Galette bretona de trigo sarraceno",
-  "servings": 5,
-  "categories": [
-   "Postre y masas",
-   "Acampada"
-  ],
-  "ingredients": [
-   {
-    "name": "Harina de trigo sarraceno",
-    "qty": "1",
-    "unit": "kg",
-    "price": "5.00"
-   },
-   {
-    "name": "Huevos",
-    "qty": "8",
-    "unit": "ud",
-    "price": "2.00"
-   },
-   {
-    "name": "Leche",
-    "qty": "0.5",
-    "unit": "l",
-    "price": "0.50"
-   },
-   {
-    "name": "Agua",
-    "qty": "0.5",
-    "unit": "l",
-    "price": "0.00"
-   },
-   {
-    "name": "Sidra",
-    "qty": "0.5",
-    "unit": "l",
-    "price": "1.50"
-   },
-   {
-    "name": "Aceite",
-    "qty": "12",
-    "unit": "cda",
-    "price": "0.90"
-   },
-   {
-    "name": "Sal fina",
-    "qty": "8",
-    "unit": "cdta",
-    "price": "0.05"
-   }
-  ],
-  "steps": "Deslíe la harina en el agua y añade leche y sidra\nIncorpora huevos, aceite y sal, mezcla y deja reposar\nEngrasa la plancha frotando corteza de tocino, o usa sartén de crepes\nHaz las galettes por los dos lados\nSírvelas con mermelada de grosella",
+  "steps": "Pon la harina en corona en un bol y casca los huevos en medio\nAñade azúcar, sal y aceite\nMezcla incorporando la leche fría poco a poco con varillas hasta quitar los grumos\nTapa y deja reposar la masa 1 hora\nHaz las crepes en sartén antiadherente muy caliente con una gota de aceite\nVersión salada (galette bretona): en el menú, «Ajustar», quita el azúcar y rellena con jamón, queso o huevo",
   "source": {
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes-1"
