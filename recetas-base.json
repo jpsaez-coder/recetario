@@ -1,0 +1,122 @@
+[
+ {
+  "id": "ej-cuscus",
+  "name": "Ensalada de cuscús para la mochila",
+  "servings": 4,
+  "categories": [
+   "Rutas",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Cuscús",
+    "qty": "240",
+    "unit": "g",
+    "price": "0.6"
+   },
+   {
+    "name": "Tomate",
+    "qty": "400",
+    "unit": "g",
+    "price": "1.0"
+   },
+   {
+    "name": "Pepino",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.5"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "3",
+    "unit": "lata",
+    "price": "2.4"
+   },
+   {
+    "name": "Aceitunas sin hueso",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.8"
+   },
+   {
+    "name": "Limón",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.3"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.3"
+   }
+  ],
+  "steps": "En un táper grande, cubre el cuscús con el mismo volumen de agua (unos 250 ml) y una pizca de sal\nCon agua fría tarda unos 30 min; con agua caliente, 5 min. No hace falta fuego\nTrocea el tomate y el pepino; escurre el atún y las aceitunas\nMezcla todo con el zumo del limón y el aceite\nCierra bien el táper: aguanta la mañana en la mochila, a la sombra"
+ },
+ {
+  "id": "ej-arroz",
+  "name": "Arroz con chorizo en una olla",
+  "servings": 4,
+  "categories": [
+   "Acampadas",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "240",
+    "unit": "g",
+    "price": "0.6"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.2"
+   },
+   {
+    "name": "Pimiento rojo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.7"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.3"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.8"
+   },
+   {
+    "name": "Pastilla de caldo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.1"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.2"
+   },
+   {
+    "name": "Agua",
+    "qty": "600",
+    "unit": "ml",
+    "price": "0"
+   }
+  ],
+  "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"
+ }
+]

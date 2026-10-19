@@ -1,0 +1,11 @@
+#!/bin/sh
+# Sube la versión en los dos sitios a la vez: version.js (la que se ve) y sw.js (la que obliga a actualizar).
+set -eu
+cd "$(dirname "$0")/.." || exit 1
+v="${1:?uso: bin/version MAYOR.MENOR.PARCHE}"
+echo "$v" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo "versión no válida: $v" >&2; exit 1; }
+printf 'self.APP_VERSION = "%s";\n' "$v" > version.js
+[ "$(grep -c '^// versión ' sw.js)" = 1 ] || { echo "sw.js: no encuentro la línea de versión" >&2; exit 1; }
+sed -i.bak "1s|^// versión [0-9.]*|// versión $v|" sw.js && rm -f sw.js.bak
+grep -q "^// versión $v " sw.js || { echo "sw.js no se actualizó" >&2; exit 1; }
+echo "versión $v"

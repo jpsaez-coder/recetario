@@ -4,9 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Recetario de campamento y casa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#2E4B3A">
+<meta name="description" content="Recetas para rutas, acampadas y casa. Funciona sin conexión.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Recetario">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<script src="version.js"></script>
 <style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:500 700;font-display:swap;src:url(fonts/bricolage-grotesque.woff2) format("woff2")}
+@font-face{font-family:"Source Sans 3";font-weight:400 600;font-display:swap;src:url(fonts/source-sans-3.woff2) format("woff2")}
 :root{--bg:#EDF0E8;--surface:#FBFCF9;--ink:#1F2B23;--mute:#5E6D63;--line:#D3DBCC;--pine:#2E4B3A;--pine-ink:#F3F7F0;--ochre:#B97A12;--ochre-bg:#F6E8C8;--danger:#A33A2B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#151C17;--surface:#1E2822;--ink:#E7EEE4;--mute:#9BAA9F;--line:#33423A;--pine:#7FB28F;--pine-ink:#0F1A13;--ochre:#E0A53A;--ochre-bg:#3A2D12;--danger:#E27968;color-scheme:dark}
@@ -47,6 +55,7 @@ nav.tabs button[aria-selected="true"]{color:var(--pine);background:var(--bg)}
 .spread{justify-content:space-between}
 table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
 td{padding:6px 0;border-bottom:1px dashed var(--line);vertical-align:top}
+td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
 ol{padding-left:20px;margin:8px 0}
@@ -88,11 +97,53 @@ function matches(r,q){
   const ws=norm(q).split(/[^a-z0-9ñ]+/).filter(Boolean);
   return ws.length>0&&ws.every(w=>hay.includes(SINON[w]||w));
 }
-const UNITS=["g","kg","ml","l","ud","cda","cdta"];
-/* recetas de ejemplo: solo aparecen si no hay nada guardado; precios aproximados del 19-10-2026 */
-const SEED=[{"id": "ej-cuscus", "name": "Ensalada de cuscús para la mochila", "servings": 4, "categories": ["Rutas", "Verano"], "ingredients": [{"name": "Cuscús", "qty": "240", "unit": "g", "price": "0.6"}, {"name": "Tomate", "qty": "400", "unit": "g", "price": "1.0"}, {"name": "Pepino", "qty": "1", "unit": "ud", "price": "0.5"}, {"name": "Atún en aceite (lata)", "qty": "3", "unit": "ud", "price": "2.4"}, {"name": "Aceitunas sin hueso", "qty": "100", "unit": "g", "price": "0.8"}, {"name": "Limón", "qty": "1", "unit": "ud", "price": "0.3"}, {"name": "Aceite de oliva", "qty": "3", "unit": "cda", "price": "0.3"}], "steps": "En un táper grande, cubre el cuscús con el mismo volumen de agua (unos 250 ml) y una pizca de sal\nCon agua fría tarda unos 30 min; con agua caliente, 5 min. No hace falta fuego\nTrocea el tomate y el pepino; escurre el atún y las aceitunas\nMezcla todo con el zumo del limón y el aceite\nCierra bien el táper: aguanta la mañana en la mochila, a la sombra"}, {"id": "ej-arroz", "name": "Arroz con chorizo en una olla", "servings": 4, "categories": ["Acampadas", "Invierno"], "ingredients": [{"name": "Arroz", "qty": "240", "unit": "g", "price": "0.6"}, {"name": "Chorizo", "qty": "200", "unit": "g", "price": "2.2"}, {"name": "Pimiento rojo", "qty": "1", "unit": "ud", "price": "0.7"}, {"name": "Cebolla", "qty": "1", "unit": "ud", "price": "0.3"}, {"name": "Tomate triturado", "qty": "400", "unit": "g", "price": "0.8"}, {"name": "Pastilla de caldo", "qty": "1", "unit": "ud", "price": "0.15"}, {"name": "Pimentón", "qty": "1", "unit": "cdta", "price": "0.1"}, {"name": "Aceite de oliva", "qty": "2", "unit": "cda", "price": "0.2"}, {"name": "Agua", "qty": "600", "unit": "ml", "price": "0"}], "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"}];
-let S={recipes:JSON.parse(JSON.stringify(SEED)),cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
-let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:""};
+const baseIds=()=>new Set(BASE.map(r=>r.id));
+function withOver(r){return {...r,base:true,ingredients:r.ingredients.map((i,k)=>{const v=S.over&&S.over[r.id+":"+k];return v!==undefined?{...i,price:String(v)}:i})}}
+const all=()=>[...S.recipes,...BASE.map(withOver)];
+const getR=id=>all().find(r=>r.id===id);
+async function loadBase(){
+  try{const r=await fetch("recetas-base.json",{cache:"no-cache"});if(r.ok){const j=await r.json();if(Array.isArray(j))BASE=j.filter(okRecipe)}}catch(e){}
+  const ids=baseIds();S.recipes=S.recipes.filter(r=>!ids.has(r.id));
+  render();
+}
+function okRecipe(r){return r&&typeof r.name==="string"&&r.name.trim()&&Array.isArray(r.ingredients)}
+function cleanRecipe(r){
+  return {id:typeof r.id==="string"?r.id.slice(0,40):uid(),name:String(r.name).slice(0,120),servings:Math.max(1,Math.round(num(r.servings))||4),
+    categories:(Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean).slice(0,8),
+    ingredients:r.ingredients.slice(0,60).map(i=>({name:String(i&&i.name||"").slice(0,80),qty:String(i&&i.qty!=null?i.qty:""),unit:UNITS.includes(i&&i.unit)?i.unit:"ud",price:String(i&&i.price!=null?i.price:"")})),
+    steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000)};
+}
+const sig=r=>norm(r.name)+"|"+r.ingredients.map(i=>norm(i.name)).sort().join(",");
+async function saveFile(name,obj){
+  const blob=new Blob([JSON.stringify(obj,null,1)],{type:"application/json"});
+  try{const f=new File([blob],name,{type:"application/json"});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return "compartido"}}catch(e){if(e&&e.name==="AbortError")return "cancelado"}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);return "descargado";
+}
+const fileName=t=>norm(t).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"receta";
+async function importFile(file){
+  let j;try{j=JSON.parse(await file.text())}catch(e){return "Ese fichero no es una receta del Recetario."}
+  const list=(Array.isArray(j)?j:Array.isArray(j&&j.recipes)?j.recipes:[j]).filter(okRecipe).map(cleanRecipe);
+  if(!list.length)return "Ese fichero no trae ninguna receta.";
+  const have=new Set(all().map(sig)),ids=new Set(all().map(r=>r.id));let add=0,dup=0;
+  for(const r of list){
+    if(have.has(sig(r))){dup++;continue}
+    if(ids.has(r.id))r.id=uid();
+    r.categories.forEach(c=>{if(!allCats().includes(c))S.cats.push(c)});
+    S.recipes.unshift(r);have.add(sig(r));ids.add(r.id);add++;
+  }
+  persist();
+  return `${add} receta${add===1?"":"s"} añadida${add===1?"":"s"}`+(dup?`; ${dup} ya la${dup===1?"":"s"} tenías`:"")+".";
+}
+const UNITS=["g","kg","ml","l","ud","barra","lata","paquete","diente","cda","cdta"];
+/* lo que se compra entero: se redondea hacia arriba (no se compra media lata) */
+const WHOLE={ud:"ud",brik:"briks",barra:"barras",lata:"latas",paquete:"paquetes",diente:"dientes"};
+/* Recetas base: vienen con la app (recetas-base.json), no se borran ni se editan; se copian para cambiarlas.
+   Las propias de cada persona van en S.recipes y se guardan en su dispositivo. */
+let BASE=[];
+let S={recipes:[],over:{},cats:[],menu:[],people:4,budget:60,super:"",priceInfo:null,heat:"vitro"};
+let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false};
+const APP_VERSION=self.APP_VERSION||"dev";
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
 const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -101,12 +152,15 @@ const uid=()=>Math.random().toString(36).slice(2,9);
 const num=v=>{const n=parseFloat(String(v).replace(",","."));return isFinite(n)?n:0};
 const eur=n=>n.toLocaleString("es-ES",{style:"currency",currency:"EUR"});
 function fmtQ(q,u){
+  if(WHOLE[u]){const c=Math.max(1,Math.ceil(q-0.05));return c+" "+(c===1?u:WHOLE[u])}
   if(u==="g"&&q>=1000){q/=1000;u="kg"}
   if(u==="ml"&&q>=1000){q/=1000;u="l"}
   const r=q>=100?Math.round(q/5)*5:Math.round(q*10)/10;
   return r.toLocaleString("es-ES",{maximumFractionDigits:1})+" "+u;
 }
-const cost=(r)=>r.ingredients.reduce((a,i)=>a+num(i.price),0);
+/* precio escalado; lo que se compra entero se paga entero (4,5 latas son 5) */
+const sPrice=(i,f)=>WHOLE[i.unit]&&num(i.qty)>0?num(i.price)/num(i.qty)*Math.max(1,Math.ceil(num(i.qty)*f-0.05)):num(i.price)*f;
+const costF=(r,f)=>r.ingredients.reduce((a,i)=>a+sPrice(i,f),0);
 const factor=(r,n)=>n/Math.max(1,r.servings);
 
 const GUIA_TXT=" Guía de raciones para 8 personas: arroz 480 g, pasta 640 g, legumbres secas 640 g, patatas 3,2 kg, carne deshuesada 800 g, carne con hueso 1,6 kg, embutido 800 g, pescado 800 g, queso 240 g, fruta 1,6 kg; pan 250 g y leche 400 ml por persona y día. Estilo de cocina de campamento: una olla o sartén, brasas, sin horno si es posible, ingredientes baratos y fáciles de transportar.";
@@ -114,29 +168,37 @@ const PROP=[["Arroz",480],["Pasta",640],["Cuscús, sémola o porridge",480],["Le
 /* tipo: h = hervido (el tiempo cuenta desde que hierve), p = plancha o sartén, a = asado */
 const COCC=[["Arroz","15-20 min","h"],["Pasta","10-15 min","h"],["Patatas","20-30 min","h"],["Zanahorias","30-40 min","h"],["Puerros","30 min","h"],["Coliflor","25 min","h"],["Sopa casera","20 min","h"],["Sémola","10 min","h"],["Huevo duro","10 min","h"],["Chuletas de cerdo","5 min","p"],["Salchichas","15 min","p"],["Pollo troceado","15-20 min","p"],["Ternera","20 min","p"],["Roast beef (al punto)","10 min","a"],["Paletilla de cordero","60 min","a"]];
 const HEAT={
-  vitro:{name:"Vitro",agua:"Hervir 2 l de agua: unos 10 min con tapa.",tip:"Calor regular: los tiempos de la tabla valen tal cual."},
-  hornillo:{name:"Hornillo de gas",agua:"Hervir 2 l de agua: 10-15 min con tapa y paravientos; sin ellos, puede ser el doble.",tip:"Llama pequeña: olla con tapa, paravientos y la sartén por tandas. Con frío el cartucho pierde fuerza (mejor mezcla butano-propano). Lleva cartucho de repuesto."},
-  fuego:{name:"Fuego o brasas",agua:"Hervir 2 l de agua: 15-30 min; depende mucho del fuego.",tip:"Cocina sobre brasas, no sobre llama. El calor no es regular: mira y prueba en vez de fiarte del reloj. Para bajar el fuego, aparta la olla."}};
+  vitro:{name:"Vitro",perL:[3,5],rec:"",tip:"Calor regular: una vez que hierve, los tiempos de la tabla valen tal cual."},
+  hornillo:{name:"Hornillo de gas",perL:[4,7],rec:" (+2-4 min)",tip:"Sin paravientos ni tapa, puede tardar el doble. Llama pequeña: olla con tapa, paravientos y la sartén por tandas. Con frío el cartucho pierde fuerza (mejor mezcla butano-propano). Lleva cartucho de repuesto."},
+  fuego:{name:"Fuego o brasas",perL:[6,15],rec:" (+3-6 min)",tip:"Cocina sobre brasas, no sobre llama. El calor no es regular: mira y prueba en vez de fiarte del reloj. Para bajar el fuego, aparta la olla."}};
 const heatName=()=>HEAT[S.heat]?S.heat:"vitro";
 function cTime(t,k){
   const h=heatName();
-  if(k==="h")return t;
+  if(k==="h")return t+HEAT[h].rec;
   if(k==="p")return h==="vitro"?t:h==="hornillo"?t+" por tanda":t+" o más, según brasas";
   return h==="vitro"?t+" (horno)":h==="hornillo"?"Sin horno: mejor guisado en olla":t+" o más, en brasas suaves";
 }
 const heatPick=()=>`<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:6px" aria-label="Dónde cocinas">${Object.entries(HEAT).map(([k,v])=>`<button class="chip" aria-pressed="${heatName()===k}" data-act="heat" data-k="${k}">${v.name}</button>`).join("")}</div>`;
-const heatNote=()=>{const v=HEAT[heatName()];return `<p class="msg">${esc(v.agua)} ${esc(v.tip)}</p>`};
+function heatNote(){
+  const v=HEAT[heatName()],L=Math.max(1,Math.round(S.people*0.8)),a=L*v.perL[0],b=L*v.perL[1];
+  return `<p class="msg"><b>Antes de empezar a contar:</b> el agua para la pasta de ${S.people} (unos ${L} l) tarda ${a}-${b} min en hervir con tapa${L>6&&heatName()==="hornillo"?"; con tanta agua, mejor dos ollas o dos hornillos":""}. Al echar la pasta o el arroz el agua deja de hervir${v.rec?" y en este fuego tarda en recuperarse":""}: el tiempo de la tabla cuenta desde que vuelve a hervir${v.rec?", y lo que va entre paréntesis es lo que suele tardar en volver":""}. ${esc(v.tip)}</p>`;
+}
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
 const BASICOS=["Sal, pimienta, mostaza, aceite, hierbas y azúcar","Papel de periódico, cerillas y una vela (por si llueve)","Lavavajillas biodegradable, esponja, estropajo y paño","Manoplas o agarradores, pelador de patatas y abrelatas","Bolsas de basura","Campamento: ajos, cebollas, pastillas de caldo, utensilios, botes de cristal contra la humedad, trébedes y parrilla, cuaderno de recetas y bolsa colgable para el pan"];
 const EQUIV=[["Taza de campamento (250 ml): azúcar glas, harina","130 g"],["Taza: arroz","230 g"],["Taza: mermelada","170 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],["Cucharada rasa: harina","15 g"],["Cucharada rasa: azúcar, mantequilla","25 g"],["Cucharada rasa: arroz","20 g"]];
 function tbl(rows){return `<table>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="q">${esc(r[1])}</td></tr>`).join("")}</table>`}
 function vGuia(){
   const n=S.people;
-  const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(250*n,"g")],["Leche (por día)",fmtQ(400*n,"ml")]]);
-  return `<div class="card"><h2>Cantidades para ${n} personas</h2><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el número de personas arriba.</p>${tbl(prop)}</div>
+  const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
+  return `<div class="card"><h2>Tus recetas</h2>
+  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican.</p>
+  <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
+  <input id="impfile" type="file" accept=".json,application/json" hidden>
+  ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</div>
+  <div class="card"><h2>Cantidades para ${n} personas</h2><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el número de personas arriba.</p>${tbl(prop)}</div>
   <div class="card"><h2>Tiempos de cocción</h2><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
-  ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)]))}
-  <p class="msg">Lo hervido tarda lo mismo en cualquier fuego <b>una vez que el agua hierve</b>: lo que cambia es cuánto tarda en hervir y si el fuego mantiene el hervor. Por encima de unos 1.500 m el agua hierve a menos temperatura y todo tarda algo más; las legumbres secas, mucho más (mejor de bote). Tiempos orientativos.</p></div>
+  ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
+  <p class="msg">Lo hervido tarda parecido en cualquier fuego <b>mientras el agua hierve de verdad</b>; lo que alarga el total en hornillo o fuego es calentar el agua, recuperar el hervor y mantenerlo con viento. Por encima de unos 1.500 m el agua hierve a menos temperatura y todo tarda algo más; las legumbres secas, mucho más (mejor de bote). Tiempos orientativos.</p></div>
   <div class="card"><h2>Medidas útiles</h2>${tbl(EQUIV)}</div>
   <div class="card"><h2>Básicos de intendencia</h2><ul>${BASICOS.map(b=>`<li>${esc(b)}</li>`).join("")}</ul></div>
   <div class="card"><h2>Fuego en la Comunidad de Madrid</h2>
@@ -153,7 +215,8 @@ function vGuia(){
   <a href="https://www.comunidad.madrid/seguridad-emergencias-asem-112/infoma26" target="_blank" rel="noopener">Avisos y suspensiones de este año (INFOMA)</a><br>
   <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
   <p class="msg">Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></div>
-  <div class="card"><h2>Fuego y seguridad</h2><ul><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul></div>`;
+  <div class="card"><h2>Fuego y seguridad</h2><ul><li>En España las hogueras en espacios abiertos están prohibidas en los meses calurosos: infórmate de los lugares permitidos.</li><li>Limpia 2-3 m alrededor, ten agua o una rama frondosa cerca y no dejes nunca el fuego sin apagar.</li><li>Cocina sobre brasas, no sobre llama; la carne se quema por fuera y queda cruda dentro si hay demasiada.</li></ul></div>
+  <p class="msg" style="text-align:center">Recetario ${esc(APP_VERSION)}</p>`;
 }
 /* ---------- guardado ---------- */
 function persist(){
@@ -188,36 +251,36 @@ function render(){
 }
 function vList(){
   const cats=["Todas",...allCats()];
-  const list=S.recipes.filter(r=>(U.filter==="Todas"||r.categories.includes(U.filter))&&(!U.q.trim()||matches(r,U.q)));
+  const list=all().filter(r=>(U.filter==="Todas"||r.categories.includes(U.filter))&&(!U.q.trim()||matches(r,U.q)));
   let h=`<input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, crema, chocolate, cuscús…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+`<div class="chips">${cats.map(c=>`<button class="chip" aria-pressed="${U.filter===c}" data-act="filter" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`;
   if(CAT_DESC[U.filter])h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[U.filter])}</p>`;
-  if(!list.length)h+=`<div class="empty">${U.q.trim()&&S.recipes.length?`Ninguna receta coincide con «${esc(U.q.trim())}»${U.filter!=="Todas"?" en "+esc(U.filter):""}.`:S.recipes.length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${S.recipes.length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
+  if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${U.filter!=="Todas"?" en "+esc(U.filter):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   h+=list.map(r=>{
     const open=U.open===r.id,f=factor(r,S.people),inMenu=S.menu.includes(r.id);
     let d="";
-    if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(num(i.price)*f):""}</td></tr>`).join("")}</table>
+    if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
-    <div class="row"><button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button><button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button></div>`;
-    return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(cost(r)*f/S.people)}/pers.</span></div>
-    <div class="meta">${r.categories.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}<span class="tag">base: ${r.servings} pers.</span></div>
+    <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
+    return `<article class="card"><div class="row spread"><h2>${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/S.people)}/pers.</span></div>
+    <div class="meta">${r.categories.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}${r.base?`<span class="tag">Receta base</span>`:""}<span class="tag">cantidades para ${r.servings}</span></div>
     <div class="row"><button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+S.people+" pers."}</button>
     <button class="btn alt sm" data-act="menu" data-id="${r.id}">${inMenu?"Quitar del menú":"Añadir al menú"}</button></div>${d}</article>`;
   }).join("");
   return h;
 }
 function vMenu(){
-  const rs=S.menu.map(id=>S.recipes.find(r=>r.id===id)).filter(Boolean);
+  const rs=S.menu.map(getR).filter(Boolean);
   if(!rs.length)return `<div class="empty">Añade recetas al menú desde la pestaña Recetas para ver la lista de la compra y el presupuesto.</div>`;
   const n=S.people;
-  const total=rs.reduce((a,r)=>a+cost(r)*factor(r,n),0);
+  const total=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
   const perPerson=total/n,maxP=perPerson>0?Math.floor(S.budget/perPerson):0;
   const left=S.budget-total;
   const agg={};
   rs.forEach(r=>r.ingredients.forEach(i=>{
     const k=i.name.trim().toLowerCase()+"|"+i.unit;
     agg[k]=agg[k]||{name:i.name.trim(),unit:i.unit,q:0,p:0};
-    agg[k].q+=num(i.qty)*factor(r,n);agg[k].p+=num(i.price)*factor(r,n);
+    agg[k].q+=num(i.qty)*factor(r,n);agg[k].p+=sPrice(i,factor(r,n));
   }));
   const items=Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es"));
   return `<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto total (€)</label>
@@ -228,10 +291,10 @@ function vMenu(){
   <div><small>Personas que cubre el presupuesto</small><strong>${maxP}</strong></div></div>
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
-  <div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>
+  ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket. Escalados a ${n} personas.`:`Precios según los que pusiste en cada receta (cantidad base), escalados a ${n} personas.`}</p></div>
-  <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(cost(r)*factor(r,n))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
+  <div class="card"><h2>Recetas del menú</h2><table>${rs.map(r=>`<tr><td>${esc(r.name)}</td><td class="p">${eur(costF(r,factor(r,n)))}</td><td class="p"><button class="btn ghost sm" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)}">Quitar</button></td></tr>`).join("")}</table></div>
   <div class="card"><h2>Lista de la compra</h2><table>${items.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(i.q,i.unit)}</td><td class="p">${i.p?eur(i.p):""}</td></tr>`).join("")}</table></div>`;
 }
 function ingRow(i,k){
@@ -244,11 +307,11 @@ function ingRow(i,k){
 function vForm(){
   if(!U.draft)U.draft=blank();
   const d=U.draft;
-  return `<div class="ai"><p><b>Pídele una receta a Claude</b> Describe lo que necesitas y la deja lista para revisar.</p>
+  return `${U.ai?`<div class="ai"><p><b>Pídele una receta a Claude</b> Describe lo que necesitas y la deja lista para revisar.</p>
   <textarea id="aiq" placeholder="Ej.: cena caliente para acampada de 12 personas, barata y sin nevera" aria-label="Qué receta quieres">${esc(U.aiQ||"")}</textarea>
   <div class="row" style="margin-top:8px"><button class="btn" data-act="ai" ${U.aiBusy?"disabled":""}>${U.aiBusy?"Creando…":"Crear con Claude"}</button></div>
   ${U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}</div>
-  <div class="ai"><p><b>Importar una receta</b> Pega el texto de la web o la descripción del vídeo de Instagram o TikTok y la dejo en pasos simples.</p><textarea id="imp" placeholder="Pega aquí el texto de la receta" aria-label="Texto de la receta">${esc(U.impQ||"")}</textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="imp" ${U.impBusy?"disabled":""}>${U.impBusy?"Importando…":"Importar receta"}</button></div>${U.impMsg?`<p class="msg ${U.impErr?"err":""}">${esc(U.impMsg)}</p>`:""}</div>
+  <div class="ai"><p><b>Importar una receta</b> Pega el texto de la web o la descripción del vídeo de Instagram o TikTok y la dejo en pasos simples.</p><textarea id="imp" placeholder="Pega aquí el texto de la receta" aria-label="Texto de la receta">${esc(U.impQ||"")}</textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="imp" ${U.impBusy?"disabled":""}>${U.impBusy?"Importando…":"Importar receta"}</button></div>${U.impMsg?`<p class="msg ${U.impErr?"err":""}">${esc(U.impMsg)}</p>`:""}</div>`:U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}
   <div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
   <label class="f">Categorías</label>
@@ -288,6 +351,12 @@ document.addEventListener("click",async e=>{
   else if(a==="menu"){const id=b.dataset.id;S.menu=S.menu.includes(id)?S.menu.filter(x=>x!==id):[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){S.recipes=S.recipes.filter(r=>r.id!==b.dataset.id);S.menu=S.menu.filter(x=>x!==b.dataset.id);persist()}}
   else if(a==="edit"){U.draft=JSON.parse(JSON.stringify(S.recipes.find(r=>r.id===b.dataset.id)));U.tab="nueva"}
+  else if(a==="copy"){const r=JSON.parse(JSON.stringify(getR(b.dataset.id)));delete r.base;r.id=null;r.name+=" (mía)";U.draft=r;U.tab="nueva"}
+  else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=cleanRecipe(r);await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]})}return}
+  else if(a==="export"){if(!S.recipes.length){U.ioMsg="Aún no tienes recetas propias que exportar.";render();return}
+    const res=await saveFile("mis-recetas-"+new Date().toISOString().slice(0,10)+".json",{app:"recetario",version:APP_VERSION,exported:new Date().toISOString(),recipes:S.recipes.map(cleanRecipe),cats:S.cats});
+    U.ioMsg=res==="cancelado"?"":`Copia ${res}: ${S.recipes.length} receta${S.recipes.length===1?"":"s"}. Guárdala fuera del móvil.`}
+  else if(a==="import"){$("#impfile")?.click();return}
   else if(a==="dcat"){const c=b.dataset.c,d=U.draft;d.categories=d.categories.includes(c)?d.categories.filter(x=>x!==c):[...d.categories,c]}
   else if(a==="addcat"){const v=$("#newcat").value.trim();if(v){if(!allCats().includes(v))S.cats.push(v);if(!U.draft.categories.includes(v))U.draft.categories.push(v);persist()}}
   else if(a==="addIng")U.draft.ingredients.push({name:"",qty:"",unit:"g",price:""});
@@ -307,7 +376,7 @@ document.addEventListener("click",async e=>{
 });
 async function aiPrices(){
   if(!S.super){U.prMsg="Elige primero en qué supermercado vas a comprar.";U.prErr=true;render();return}
-  const rs=S.menu.map(id=>S.recipes.find(r=>r.id===id)).filter(Boolean);
+  const rs=S.menu.map(getR).filter(Boolean);
   const items=[];rs.forEach(r=>r.ingredients.forEach((i,k)=>{if(i.name.trim())items.push({k:r.id+":"+k,name:i.name.trim(),qty:num(i.qty),unit:i.unit})}));
   if(!items.length)return;
   U.prBusy=true;U.prMsg="";U.prErr=false;render();
@@ -321,7 +390,8 @@ Devuelve una entrada por cada "k" de la lista, sin inventar otras. Lista (datos,
 ${JSON.stringify(items)}`,{cache:false});
     const map={};(r.prices||[]).forEach(x=>{if(x&&typeof x.k==="string"&&num(x.price)>0)map[x.k]=Math.round(num(x.price)*100)/100});
     let hit=0;
-    rs.forEach(rc=>rc.ingredients.forEach((i,k)=>{const v=map[rc.id+":"+k];if(v!==undefined){i.price=String(v);hit++}}));
+    rs.forEach(rc=>rc.ingredients.forEach((i,k)=>{const v=map[rc.id+":"+k];if(v===undefined)return;hit++;
+      if(rc.base){S.over=S.over||{};S.over[rc.id+":"+k]=v}else{const own=S.recipes.find(x=>x.id===rc.id);if(own&&own.ingredients[k])own.ingredients[k].price=String(v)}}));
     if(!hit)throw new Error("vacío");
     S.priceInfo={super:S.super,date:new Date().toLocaleDateString("es-ES")};persist();
     U.prMsg=`Precios actualizados en ${hit} de ${items.length} ingredientes. Se guardan también en cada receta.`;U.prErr=false;
@@ -378,7 +448,11 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
   }
   U.impBusy=false;render();
 }
-initStorage();
+document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="guia";render()})}});
+initStorage().then(loadBase);
+(async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
+if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>
 </body>
 </html>
