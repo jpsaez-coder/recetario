@@ -24,12 +24,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Source Sans 
 h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif;margin:0;line-height:1.15}
 main{max-width:720px;margin:0 auto;padding:16px 16px 90px}
 header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 12px;margin-bottom:14px}
-.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
+.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap;width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
 header.top h1{font-size:28px;color:var(--pine)}
 header.top p{margin:2px 0 0;color:var(--mute);font-size:14px}
 .people{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 8px}
 .people b{min-width:26px;text-align:center;font-size:18px}
-.people small{color:var(--mute);margin-right:2px}
+.people small{color:var(--mute);margin-right:2px;font-size:12px;white-space:nowrap}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 .btn{background:var(--pine);color:var(--pine-ink);border:0;border-radius:10px;padding:10px 14px;font-weight:600}
@@ -103,11 +103,15 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .ico.si{background:#0ca30c}.ico.no{background:#d03b3b}.ico.ojo{background:#fab219;color:#1F2B23}
 .chkb{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px}
 .chkb input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--pine)}
-.chkb input:checked+span{color:var(--mute);text-decoration:line-through}
+.chkb.bas input:checked+span{color:var(--mute);text-decoration:line-through}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}.stats div{background:var(--bg);border-radius:10px;padding:8px}
 .stats small{display:block;font-size:12px;color:var(--mute);line-height:1.25}.stats strong{font:700 17px "Bricolage Grotesque",sans-serif}
 .exf{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.exf #exName,.exf button{grid-column:1/-1}
 .tag.tipo{background:transparent}.tag.alg{border-style:dashed}.tag.alg.hit{border:1.5px solid var(--danger);color:var(--danger);font-weight:600}
+.ddm summary{list-style:none;cursor:pointer}.ddm summary::-webkit-details-marker{display:none}
+.ddm summary b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ddm-l{border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:0 10px;margin-top:-4px;background:var(--surface)}
+.ddm-l .chkb:last-child{border-bottom:0}
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -350,7 +354,7 @@ function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div cla
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
   return `<div class="card"><h2>Básicos de intendencia</h2><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
-  ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</div>`;
+  ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</div>`;
 }
 function vGuia(){
   const n=RAC();
@@ -409,8 +413,8 @@ function render(){
   const tabs=[["recetas","Recetas"],["menu","Menú ("+S.menu.length+")"],["nueva",U.draft&&U.draft.id?"Editar":"Nueva"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top"><div><h1>Recetario</h1><p>Rutas, campamentos y cocina de casa</p></div>
-  <div class="grp"><div class="people" aria-label="Mayores de 10 años"><small>11 años o más</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
-  <div class="people" aria-label="Niños hasta 10 años"><small>hasta 10 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
+  <div class="grp"><div class="people" aria-label="Mayores de 10 años"><small>≥ 11 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><b>${S.people}</b><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
+  <div class="people" aria-label="Niños hasta 10 años"><small>≤ 10 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><b>${S.kids||0}</b><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></header>`;
   $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
 }
@@ -429,8 +433,8 @@ function vList(){
     if(open)d=`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${fmtQ(num(i.qty)*f,i.unit)}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`:""}
     <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
-    <label class="f">Paso 2 · Reparto del plato</label>${vPlato(r)}
-    ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Paso 3 · Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
+    <label class="f">Reparto del plato</label>${vPlato(r)}
+    ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
@@ -648,7 +652,8 @@ function vAlergias(rs){
   const hits=rs.flatMap(r=>etiquetas(r).alerg.filter(a=>al.includes(a)).map(a=>[a,r.name]));
   const by={};hits.forEach(([a,n])=>{(by[a]=by[a]||new Set()).add(n)});
   return `<label class="f">Alergias e intolerancias del grupo</label>
-  <div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${ALERG.map(([a])=>`<button class="chip" aria-pressed="${al.includes(a)}" data-act="alg" data-k="${esc(a)}">${esc(a)}</button>`).join("")}</div>
+  <details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
+  <div class="ddm-l">${ALERG.map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
   ${al.length?(Object.keys(by).length?Object.entries(by).map(([a,ns])=>`<p class="msg warn">⚠ ${esc(a)}: ${esc([...ns].join(", "))}.</p>`).join(""):`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`)+`<p class="msg">Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.</p>`:""}`;
 }
 function vSalida(rs){
@@ -658,7 +663,7 @@ function vSalida(rs){
   const sinFrio=s==="ruta"||!S.nevera;
   const fix={ruta:" En la mochila se estropea: cámbialo por conserva, embutido curado o queso curado.",finde:" Cómelo el primer día.",largo:" Cámbialo por conserva o secos."}[s];
   const warn=fr.length&&sinFrio?`<p class="msg warn">Necesita frío${s==="ruta"?"":" y no hay nevera"}: ${esc([...new Set(fr)].join(", "))}.${fix}</p>`:"";
-  return `<label class="f">Paso 1 · ¿Qué salida es?</label><div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
+  return `<label class="f">¿Qué salida es?</label><div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
   ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div><p class="msg">${esc(SALIDAS[s].txt)}</p>${warn}`;
 }
 /* ---------- compra por formatos de venta ---------- */
@@ -687,6 +692,7 @@ function shopList(rs,n){
   const agg={};
   rs.forEach(r=>{const f=factor(r,n);r.ingredients.forEach(i=>{
     if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return; // el agua no se compra
+    if((S.alergias||[]).includes("Lactosa")&&/^leche( (entera|semidesnatada|desnatada|fresca))?$/.test(norm(i.name).trim()))i={...i,name:"Leche sin lactosa"};
     const [q,u]=toBase(num(i.qty)*f,i.unit,i.name),k=packKey(i.name,u);
     agg[k]=agg[k]||{key:k,name:i.name.trim(),unit:u,q:0,p:0};
     agg[k].q+=q;agg[k].p+=num(i.price)*f;
@@ -755,6 +761,7 @@ function sync(){
 }
 document.addEventListener("input",e=>{
   if(e.target.dataset.act==="q"){U.q=e.target.value;const keep=e.target.selectionStart;render();const i=$("#q");if(i){i.focus();try{i.setSelectionRange(keep,keep)}catch(_){}}return}
+  if(e.target.dataset.act==="algChk"){const k=e.target.dataset.k;S.alergias=e.target.checked?[...new Set([...(S.alergias||[]),k])]:(S.alergias||[]).filter(x=>x!==k);persist();render();return}
   if(e.target.dataset.act==="aptaChk"){U.apta=e.target.checked;render();return}
   if(e.target.dataset.act==="bchk"){S.check=S.check||{};if(e.target.checked)S.check[e.target.dataset.k]=true;else delete S.check[e.target.dataset.k];persist();render();return}
   if(e.target.dataset.act==="ffacet"){U.f=U.f||{};U.f[e.target.dataset.k]=e.target.value;render();return}
