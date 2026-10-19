@@ -115,7 +115,7 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .ddm-l .chkb:last-child{border-bottom:0}
 .dia{border-top:1px solid var(--line);padding:8px 0 4px;margin-top:6px}.dia h3{font-size:16px;margin:2px 0 4px}
 .slot{display:grid;grid-template-columns:74px 1fr;gap:6px;align-items:start;padding:3px 0}
-.slot-m{font-size:13px;color:var(--mute);padding-top:6px}
+.slot-m{font-size:13px;color:var(--mute);padding-top:6px;line-height:1.25}.slot-m small{color:var(--ochre);font-weight:600}
 .slot-r{display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
 .pl{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px 2px 3px 8px;font-size:14px;line-height:1.3}
 .pl small{color:var(--mute);font-size:12px}.pl small.w{color:var(--danger)}
@@ -326,14 +326,16 @@ const heatPick=()=>`<div class="chips" style="flex-wrap:wrap;overflow:visible;pa
 /* Agua a hervir para una receta y el grupo: pasta 1 l por 100 g, arroz ~2,5 veces su peso, cuscús o sémola
    ~1,2 veces, legumbre seca 3 veces; si la receta trae agua o caldo, cuenta eso. null = no hierve nada. */
 function aguaReceta(r){
-  if(!r)return null;const f=factor(r,RAC());let l=0,que=[],agua=0;
+  if(!r)return null;const f=factor(r,RAC());let l=0,que=[],agua=0,caldo=0;
   for(const i of r.ingredients){const nm=norm(i.name),g=grams(i);if(g==null)continue;
-    if(/^(agua|caldo)/.test(nm)){agua+=g/1000*f;continue}
+    if(/^agua/.test(nm)){agua+=g/1000*f;continue}
+    if(/^caldo/.test(nm)){caldo+=g/1000*f;continue}
     if(SECO.test(nm)&&!/cocid|bote/.test(nm)){
       const k=/pasta|macarron|espagueti|fideo|tallarin/.test(nm)?0.01:/arroz/.test(nm)?0.0025:/cuscus|semola/.test(nm)?0.0012:/avena/.test(nm)?0.004:0.003;
       l+=g*f*k;que.push(i.name.toLowerCase())}}
-  if(agua>0)l=agua; // si la receta dice cuánta agua lleva, manda eso (no se suma la del arroz)
-  return l>=0.2?{l:Math.max(0.5,Math.round(l*2)/2),que}:null;
+  if(agua>0||caldo>0)l=agua+caldo; // si la receta dice cuánto líquido lleva, manda eso (no se suma la del arroz)
+  const cargar=agua>0||caldo>0?agua:l; // el caldo ya va en la compra: no es agua que cargar
+  return l>=0.2?{l:Math.max(0.5,Math.round(l*2)/2),que,cargar}:null;
 }
 function heatNote(r){
   const v=HEAT[heatName()],h=heatName();
@@ -541,7 +543,7 @@ function vMenu(){
   ${cadena()?`<p class="msg">Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}${PRECIOS.cadenas[cadena()].cp?", CP "+esc(PRECIOS.cadenas[cadena()].cp):""}). Lo que no está en su catálogo va con el precio estimado. Los precios cambian: compáralos con el ticket.</p>`:S.super?`<p class="msg">Aún no hay precios de ${esc(S.super)} en la app: se usan los estimados.</p>`:""}
   <p class="msg">${S.priceInfo?`Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}. Son una estimación, no precios en vivo de la tienda: compáralos con el ticket.`:`Precios según los que pusiste en cada receta, escalados a ${grupoTxt()}.`}</p></div>
   ${vSueltos(n,H)}
-  ${vCompra(items)}${vAmortiza(items,rs)}`;
+  ${vCompra(items)}${vCarga(items)}${vAmortiza(items,rs)}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
 function vAmortiza(items,rs){
@@ -737,6 +739,37 @@ function migrarJuntadas(){
   for(const k in S.plan||{})S.plan[k]=S.plan[k].map(sw);
   if(cambio)persist();
 }
+/* ---------- coste por comida, agua de cocina y peso de la carga ---------- */
+/* coste de lo que se come (no de los envases): el de cada receta escalada al grupo */
+const costeSlot=(d,m)=>((S.plan&&S.plan[d+"|"+m])||[]).map(getM).filter(Boolean).reduce((a,r)=>a+costF(r,factor(r,RAC())),0);
+/* agua de cocina de todo el menú: cada receta tantas veces como esté puesta (las de «sin día», una) */
+function aguaMenu(){
+  const out=[];let l=0;
+  for(const e of planEntries()){const r=getM(e.id),a=aguaReceta(r);if(a&&a.cargar>0.05){const c=Math.round(a.cargar*10)/10;l+=c;out.push([r.name,c,e.d])}}
+  l=Math.round(l*10)/10;
+  return {l,out};
+}
+/* peso aproximado de lo que se compra (lo que se lleva, envase incluido a ojo) */
+const PESO_UD={lata:150,barra:250,diente:5,brik:1030};
+function pesoItem(i){
+  if(i.have)return 0;
+  const q=i.pk?i.k*i.pk.size:i.q,u=i.unit;
+  if(u==="g")return q;if(u==="ml")return q*(/aceite/.test(norm(i.name))?0.92:1);
+  if(PESO_UD[u])return q*PESO_UD[u];
+  if(u==="ud"){const p=findIn(PIEZA,norm(i.name));return q*(p?p[1]:100)}
+  if(u==="paquete"){const p=findIn(PAQ,norm(i.name));return q*(p?p[1]:300)}
+  return 0;
+}
+function vCarga(items){
+  const comida=items.reduce((a,i)=>a+pesoItem(i),0)*1.08; // ~8 % de envases
+  const ag=aguaMenu(),tot=comida/1000+ag.l,mochilas=Math.max(1,S.people||1);
+  return `<div class="card"><h2>Carga y agua</h2>
+  <div class="stats"><div><small>Compra (con envases, aprox.)</small><strong>${String(Math.round(comida/100)/10).replace(".",",")} kg</strong></div>
+  <div><small>Agua para cocinar</small><strong>${String(ag.l).replace(".",",")} l</strong></div>
+  <div><small>Total a cargar</small><strong>${String(Math.round(tot*10)/10).replace(".",",")} kg</strong></div></div>
+  <p class="msg">Repartido entre ${mochilas} mayor${mochilas===1?"":"es"}: unos ${String(Math.round(tot/mochilas*10)/10).replace(".",",")} kg cada uno. No cuenta el agua para beber (1,5-3 l por persona y día de ruta) ni el material.</p>
+  ${ag.out.length?`<label class="f">Agua de cocina por receta</label><table>${ag.out.map(([n,l,d])=>`<tr><td>${esc(n)}${d?` <small style="color:var(--mute)">· día ${d}</small>`:""}</td><td class="q">${String(l).replace(".",",")} l</td></tr>`).join("")}</table>`:""}</div>`;
+}
 /* ---------- menú por días ----------
    S.menu = recetas elegidas para el menú (desde Recetas). S.plan["2|Cena"] = [ids] las reparte por días.
    Lo elegido que no está en ningún día cuenta una vez (para una salida de un día no hace falta repartir). */
@@ -796,11 +829,14 @@ function vDias(){
     h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div>`;
     for(const m of MOMS){
       const ids=(S.plan&&S.plan[d+"|"+m])||[];
-      h+=`<div class="slot"><span class="slot-m">${m}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
+      const cs=costeSlot(d,m);
+      h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
         const fit=(m==="Comida"||m==="Cena")?fitMomento(r):null,warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
         return `<span class="pl">${esc(r.name)}${fit&&fit!==m?`<small> · encaja mejor de ${fit.toLowerCase()}</small>`:""}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>`;
     }
+    const cd=MOMS.reduce((a,m)=>a+costeSlot(d,m),0);
+    if(cd>0)h+=`<p class="msg">Coste de lo que se come el día ${d}: <b>${eur(cd)}</b> (${eur(cd/HEADS())} por persona).</p>`;
     h+=`<label class="f">Por persona (ración de adulto) frente a lo que pide el día</label>${vObjetivo(d)}`;
     h+=`</div>`;
   }
@@ -840,7 +876,8 @@ function prodDe(name){
   if(!PRECIOS._map){const m={};for(const [k,ns] of Object.entries(PRECIOS.claves||{}))for(const n of ns)m[n]=k;PRECIOS._map=m}
   /* el trozo más largo del principio del nombre que sea una clave: «aceite de oliva virgen extra» → aceite de oliva; «tomate frito» → tomate frito */
   const w=norm(name).replace(/[^a-z0-9ñ ]/g," ").trim().split(/\s+/);
-  for(let n=w.length;n>0;n--){const k=PRECIOS._map[w.slice(0,n).join(" ")];if(k){const p=PRECIOS.cadenas[c].productos[k];return p?{...p,k,cadena:c}:null}}
+  /* una clave de una sola palabra («pan», «aceite») solo vale entera: «pan de molde» no es la barra */
+  for(let n=w.length;n>0;n--){if(n===1&&w.length>1)break;const k=PRECIOS._map[w.slice(0,n).join(" ")];if(k){const p=PRECIOS.cadenas[c].productos[k];return p?{...p,k,cadena:c}:null}}
   return null;
 }
 /* lleva la cantidad de un ingrediente a la unidad del producto (dientes de ajo → g, barra → ud) */
