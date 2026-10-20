@@ -1031,6 +1031,219 @@
   "steps": "Haz un corte a lo largo del plátano sin pelarlo y sin llegar al otro lado\nMete onzas de chocolate en el corte\nEnvuélvelo en papel de aluminio y déjalo en las brasas 5-8 min\nSe come con cuchara, directamente de la piel"
  },
  {
+  "id": "tr-palomitas",
+  "name": "Palomitas en la hoguera",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Maíz para palomitas",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.26"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.03"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.01"
+   }
+  ],
+  "steps": "Hace falta fuego ya en brasas, sin llama: con llama se queman antes de abrirse\nCon dos coladores metálicos: ata uno a la punta de un palo largo, echa un puñado de maíz con unas gotas de aceite y cierra con el otro colador, sujeto con alambre o una brida metálica\nCon papel de aluminio: pon el maíz y el aceite en el centro de una hoja doble, ciérrala como una bolsa holgada (tienen que caber al inflarse) y átala a un palo\nSostenlo sobre las brasas sin apoyarlo y muévelo sin parar\nCuando pasen 2-3 segundos sin que estalle ninguna, retíralo; deja enfriar un minuto antes de abrir, que el vapor quema\nEcha la sal al final. Usa guantes, y ten cerca un cubo de agua o arena",
+  "source": {
+   "name": "Scouts (Reino Unido) · Cook some campfire popcorn",
+   "url": "https://www.scouts.org.uk/activities/cook-some-campfire-popcorn/"
+  }
+ },
+ {
+  "id": "tr-bizcocho-naranja",
+  "name": "Bizcocho dentro de una naranja",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Merienda",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Naranja",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.2"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Harina",
+    "qty": "80",
+    "unit": "g",
+    "price": "0.06"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.07"
+   },
+   {
+    "name": "Leche",
+    "qty": "60",
+    "unit": "ml",
+    "price": "0.06"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.06"
+   },
+   {
+    "name": "Levadura química",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.1"
+   }
+  ],
+  "steps": "Corta la parte de arriba de cada naranja y vacíala con una cuchara sin romper la piel; la pulpa se come o se exprime\nEn un táper bate el huevo con el azúcar, la leche y el aceite; añade la harina y la levadura y mezcla hasta que no queden grumos\nLlena cada naranja hasta 2/3: la masa sube\nTápala con su «sombrero» y envuélvela en dos capas de papel de aluminio\nDéjala de pie entre las brasas (no sobre la llama) unos 20 min, girándola cada 5 min\nPincha con un palillo a través del papel: si sale seco, está; si no, 5 min más. Abre con cuidado, que sale vapor\nAtajo: con masa de magdalenas comprada tarda unos 10 min",
+  "source": {
+   "name": "Macaroni Kid · Campfire orange cakes",
+   "url": "https://athens.macaronikid.com/articles/59dd09f9d083650291e14c81/campfire-orange-cakes"
+  }
+ },
+ {
+  "id": "tr-pan-de-palo",
+  "name": "Pan de palo (pan serpiente)",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.21"
+   },
+   {
+    "name": "Agua",
+    "qty": "180",
+    "unit": "ml",
+    "price": "0"
+   },
+   {
+    "name": "Levadura química",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.2"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.01"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.1"
+   }
+  ],
+  "steps": "Mezcla la harina, la levadura y la sal; añade el agua y el aceite y amasa 5 min hasta que no se pegue (se puede llevar hecha en una bolsa)\nBusca palos verdes de un dedo de grosor, pélales la punta y caliéntala un momento en el fuego\nHaz tiras de masa del grosor de un dedo y enróllalas en espiral en la punta del palo, sin dejar huecos\nGíralo despacio sobre las brasas, a un palmo, unos 10-15 min, hasta que esté dorado y suene hueco\nSácalo del palo: el hueco se puede rellenar de chocolate, crema de cacao o una salchicha"
+ },
+ {
+  "id": "tr-manzana-asada",
+  "name": "Manzana asada en las brasas",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Manzana",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.0"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "4",
+    "unit": "cdta",
+    "price": "0.03"
+   },
+   {
+    "name": "Canela",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.1"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "20",
+    "unit": "g",
+    "price": "0.2"
+   },
+   {
+    "name": "Nueces",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.4"
+   }
+  ],
+  "steps": "Quita el corazón de cada manzana con una navaja, sin llegar al fondo, para que no se salga el relleno\nRellena el hueco con azúcar, canela, un trozo de mantequilla y nueces picadas\nEnvuélvela en papel de aluminio dejando el agujero hacia arriba\nPonla de pie entre las brasas 20-30 min: está cuando un palillo entra sin esfuerzo\nSe come caliente con cuchara"
+ },
+ {
+  "id": "tr-nubes-galleta",
+  "name": "Nubes asadas con galleta y chocolate",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Merienda",
+   "Acampada",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Nubes",
+    "qty": "8",
+    "unit": "ud",
+    "price": "0.6"
+   },
+   {
+    "name": "Galleta",
+    "qty": "16",
+    "unit": "ud",
+    "price": "0.5"
+   },
+   {
+    "name": "Chocolate con leche",
+    "qty": "80",
+    "unit": "g",
+    "price": "0.75"
+   }
+  ],
+  "steps": "Pincha una nube en un palo limpio o un pincho largo\nTuéstala sobre las brasas, girando, hasta que esté dorada y blanda por dentro (si prende, sopla y sigue)\nPonla sobre una galleta con una onza de chocolate y aplasta con otra galleta\nEspera un momento: el calor de la nube derrite el chocolate"
+ },
+ {
   "id": "gpg-ensalada-de-patata",
   "name": "Ensalada de patata",
   "servings": 4,

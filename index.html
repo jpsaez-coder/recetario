@@ -87,7 +87,7 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:grid;place-items:center;font:700 16px "Bricolage Grotesque",sans-serif}
 .step4-b{padding:0 0 12px 40px}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tile{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:14px}.tile small{display:block;color:var(--mute);margin-top:2px;line-height:1.35}
+.tile{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:14px}.fimg{display:block;width:100%;height:96px;object-fit:contain;background:#fff;border-radius:8px;margin-bottom:6px}.estr{color:var(--ochre);letter-spacing:1px;font-size:12px}.elig{margin-top:0;padding-left:18px}.lena{width:100%;border-collapse:collapse;font-size:13px;margin:4px 0 8px}.lena th,.lena td{text-align:left;vertical-align:top;padding:6px 4px;border-bottom:1px solid var(--line,#e3ddd0)}.lena th{font-weight:600;color:var(--mute)}.lena td:nth-child(2){white-space:nowrap}.elig li{margin-bottom:6px;line-height:1.4}.tile small{display:block;color:var(--mute);margin-top:2px;line-height:1.35}
 .tpl{display:grid;grid-template-columns:72px 1fr;gap:8px;align-items:center;margin:8px 0}.tpl-l{font-weight:600;font-size:14px}
 .stk{display:flex;gap:2px;height:16px}.stk i{border-radius:4px}
 .stk-n{display:flex;gap:2px;font-size:12px;color:var(--mute);margin-top:-6px}.stk-n span{text-align:center}
@@ -477,7 +477,61 @@ function vGuia(){
   <details class="card plg" data-k="cfu"${U.det&&U.det.cfu?" open":""}><summary><h2>Cocinar al fuego</h2></summary>
   <p class="msg warn">⚠ En la Comunidad de Madrid no se puede hacer fuego en el monte en todo el año, tampoco en las barbacoas de las áreas recreativas. Esto es para campings o sitios donde esté permitido. <button class="lnk" data-act="verFuego">Ver normas</button></p>
   <p><b>Brasas, no llamas.</b> Espera a que la leña se haga brasa y guarda una reserva a un lado para ir añadiendo: con llama, lo de fuera se quema y lo de dentro queda crudo.</p>
-  <label class="f">Montar el fuego</label><div class="tiles">
+  <label class="f">Estructuras de leña · cuáles van mejor para cocinar</label><div class="tiles">
+  <div class="tile"><img class="fimg" src="fuego/cazador.svg" alt="Fuego cazador" loading="lazy"><b>Cazador</b> <span class="estr" aria-label="3 de 3 para cocinar">★★★</span><small>El mejor para sartén y olla: dos troncos gruesos en paralelo, el fuego entre ellos y el recipiente apoyado encima.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/estrella.svg" alt="Fuego estrella" loading="lazy"><b>Estrella</b> <span class="estr" aria-label="3 de 3 para cocinar">★★★</span><small>Para guisos largos: los troncos en estrella se van empujando al centro. Gasta poca leña y el calor se regula solo.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/cabana.svg" alt="Fuego cabaña" loading="lazy"><b>Cabaña</b> <span class="estr" aria-label="2 de 3 para cocinar">★★☆</span><small>Hace mucha brasa pareja: buena para parrilla y papel de aluminio. Tarda más en estar lista.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/antorcha-sueca.svg" alt="Fuego antorcha sueca" loading="lazy"><b>Antorcha sueca</b> <span class="estr" aria-label="2 de 3 para cocinar">★★☆</span><small>Un tronco grueso y seco cortado en cruz hace de hornillo para una sartén o un cazo.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/dakota.svg" alt="Fuego agujero dakota" loading="lazy"><b>Agujero dakota</b> <span class="estr" aria-label="2 de 3 para cocinar">★★☆</span><small>Un hoyo para el fuego y otro para el aire: poca leña, poco humo y aguanta el viento. Solo donde se pueda cavar.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/tipi.svg" alt="Fuego tipi" loading="lazy"><b>Tipi</b> <span class="estr" aria-label="1 de 3 para cocinar">★☆☆</span><small>Prende rápido y da llama alta: para encender y hervir agua. Para cocinar, déjalo caer y usa las brasas.</small></div>
+  </div>
+  <label class="f">Cómo elegir: según lo que quieres</label><ul class="elig">
+  <li><b>Calor fuerte, brasas abundantes</b> (parrilla, papel de aluminio, palomitas, naranjas) → <b>cabaña</b>; o un tipi para arrancar que luego se deja caer.</li>
+  <li><b>Sartén u olla a diario</b> → <b>cazador</b>: el recipiente apoya firme y el calor va todo hacia arriba.</li>
+  <li><b>Guiso largo con poca leña</b> → <b>estrella</b>: empujas los troncos cuando quieres más fuego.</li>
+  <li><b>Hervir agua deprisa o encender</b> → <b>tipi</b>.</li></ul>
+  <label class="f">Según el sitio, el tiempo y la leña</label><ul class="elig">
+  <li><b>Viento</b> → cazador con la abertura de cara al viento, o agujero dakota; si no, un murete de piedras al lado del que sopla.</li>
+  <li><b>Lluvia o suelo húmedo</b> → antorcha sueca (el tronco está seco por dentro), o cualquier fuego sobre una base de palos secos, no sobre la tierra mojada.</li>
+  <li><b>Suelo de roca o con raíces</b> → cazador o estrella sobre piedras; nada de cavar.</li>
+  <li><b>Tierra blanda y se puede cavar</b> → agujero dakota: gasta poco y casi no se ve.</li>
+  <li><b>Leña gruesa de sobra</b> → cabaña o cazador. <b>Solo ramas finas</b> → tipi pequeño, alimentándolo sin parar. <b>Poca leña</b> → estrella o dakota.</li>
+  <li><b>Hierba seca alrededor o calor fuerte</b> → no enciendas: hornillo, o nada.</li></ul>
+  <label class="f">Dos clases de hogar</label><div class="tiles">
+  <div class="tile"><img class="fimg" src="fuego/cazador.svg" alt="Hogar a ras de suelo" loading="lazy"><b>A ras de suelo</b><small>Cazador, estrella o tres piedras sobre tierra limpia. Se monta en un momento: para una comida o una noche.</small></div>
+  <div class="tile"><img class="fimg" src="fuego/hogar-elevado.svg" alt="Hogar elevado" loading="lazy"><b>Elevado</b><small>Una mesa de troncos con una capa de barro y el fuego encima. Para varios días, suelo mojado o nieve.</small></div></div>
+  <p><b>Cómo se monta el elevado:</b></p><ol class="elig">
+  <li>Cuatro postes semigruesos clavados (o dos trípodes), con la parte de arriba a la altura de la cintura, unos 80-90 cm.</li>
+  <li>Dos travesaños bien amarrados (amarre cuadrado) y, encima, troncos semigruesos juntos, sin huecos, formando la mesa.</li>
+  <li>Un borde de troncos o piedras alrededor y, dentro, una capa de <b>barro</b> (tierra con agua, sin hojas ni raíces) de 10-15 cm, bien apretada: es lo que aísla la madera del fuego.</li>
+  <li>Encima, un fuego pequeño de cazador o estrella. La olla, sobre dos troncos o una parrilla.</li>
+  <li>Se cocina de pie, el suelo y las raíces no se queman y nadie pisa las brasas. Si el barro se agrieta, rellénalo; al terminar, apaga y mira por debajo que la mesa no esté caliente.</li></ol>
+  <label class="f">La leña: cuál calienta más</label>
+  <p>Por kilo, toda la leña seca da casi lo mismo (unas 4.500 kcal/kg, unos 5 kWh). Cambian dos cosas: <b>lo que pesa</b> un tronco del mismo tamaño (la madera densa tiene más calor dentro y arde más despacio) y <b>el agua</b>: recién cortada es casi tres cuartas partes agua, humea y apenas calienta.</p>
+  <table class="lena"><tr><th>Madera</th><th>Peso aprox.<br><small>kg/m³ seca</small></th><th>Cómo arde</th></tr>
+  <tr><td><b>Encina, olivo</b></td><td>850-950</td><td>Muy despacio, brasa larga y fuerte. <b>La mejor para cocinar</b></td></tr>
+  <tr><td><b>Roble, quejigo, haya, fresno, almendro y frutales</b></td><td>700-800</td><td>Despacio, buena brasa. Muy buena para cocinar</td></tr>
+  <tr><td><b>Castaño</b></td><td>550-600</td><td>Bien, pero salta en chispas</td></tr>
+  <tr><td><b>Pino, abeto</b></td><td>500-550</td><td>Deprisa, llama alta, humo y chispas por la resina. Para encender, no para la olla</td></tr>
+  <tr><td><b>Chopo, sauce, álamo</b></td><td>400-450</td><td>Muy deprisa, casi sin brasa. Solo para arrancar</td></tr></table>
+  <ul class="elig"><li><b>Leña seca:</b> pesa poco, tiene grietas en las puntas, suena hueca al chocar dos trozos y la corteza se suelta. La húmeda silba y echa humo blanco.</li>
+  <li><b>Orden:</b> yesca (hierba seca, corteza, piña) → astillas finas → ramas de pino o chopo para que prenda → encina o roble para la brasa de cocinar.</li>
+  <li><b>Nunca</b> madera pintada, barnizada, de palés o aglomerado: suelta gases tóxicos.</li></ul>
+  <p class="msg">Datos de la leña: <a href="https://www.sanestebandelvalle.es/pdf/guia_lenas_calefaccion.pdf" target="_blank" rel="noopener">guía de leñas del Ayto. de San Esteban del Valle</a>; los pesos son valores habituales de madera seca.</p>
+  <label class="f">Fuego con cualquier tiempo</label><ul class="elig">
+  <li><b>Lluvia:</b> busca leña muerta que no toque el suelo (ramas secas aún en el árbol, bajo pinos y abetos espesos) y párte los palos: por dentro están secos. Lleva yesca seca en una bolsa. Enciende sobre una base de palos y bajo una lona alta, nunca dentro de la tienda.</li>
+  <li><b>Viento:</b> fuego pequeño, resguardado tras un murete de piedras o en un hoyo poco profundo; el cazador con la abertura de cara al viento. Con rachas fuertes, no se enciende: las chispas vuelan lejos.</li>
+  <li><b>Nieve o suelo encharcado:</b> hogar elevado, o una plataforma de troncos verdes debajo del fuego.</li>
+  <li><b>Calor y sequía:</b> no se enciende, aunque el sitio lo permita. Hornillo o comida fría.</li></ul>
+  <label class="f">Reglas forestales</label><ul class="elig">
+  <li>Solo donde y cuando esté permitido, y con permiso del dueño o del guarda. En la Comunidad de Madrid, nunca en el monte.</li>
+  <li>Sitio despejado: unos 3 m alrededor sin hojas ni hierba seca, lejos de árboles (mira las ramas de encima), raíces y tiendas.</li>
+  <li>Leña muerta y caída: no se cortan ni se arrancan ramas vivas.</li>
+  <li>Nada de piedras de río o mojadas alrededor del fuego: pueden estallar.</li>
+  <li>Agua o arena a mano y alguien siempre al lado: un fuego no se deja solo ni un momento.</li>
+  <li>Apagar: agua, remover, más agua, hasta poder poner el dorso de la mano sobre la ceniza. Luego se deshace el hogar y el sitio queda como estaba.</li></ul>
+  <p class="msg">Ilustraciones: MichaelPhilip, <a href="https://commons.wikimedia.org/wiki/Category:Campfire_illustrations" target="_blank" rel="noopener">Wikimedia Commons</a>, dominio público; el hogar elevado, dibujo propio.</p>
+  <label class="f">Dónde apoyar la olla</label><div class="tiles">
   <div class="tile"><b>Tres piedras</b><small>La olla apoyada en tres piedras grandes, con el fuego debajo.</small></div>
   <div class="tile"><b>Fuego polinesio</b><small>Un hoyo de unos 40 cm, algo más ancho que la olla: protege del viento.</small></div>
   <div class="tile"><b>Trébedes y parrilla</b><small>Lo más cómodo si se pueden llevar.</small></div>
@@ -642,7 +696,7 @@ function vAmortiza(items,rs){
    habituales (BEDCA/USDA). Se busca por palabra entera, en orden: lo más concreto primero. */
 const NUTRI=[
  [["garbanzos cocidos","lentejas cocidas","alubias cocidas","judias blancas cocidas","judias cocidas","legumbre cocida"],110,7,15,1.5],
- [["garrofon"],120,7,20,0.5],[["guisante"],80,5,14,0.4],[["maiz dulce"],85,3,17,1],[["copos de maiz"],380,7,84,1],[["maicena"],380,0.3,91,0.1],
+ [["garrofon"],120,7,20,0.5],[["guisante"],80,5,14,0.4],[["maiz dulce"],85,3,17,1],[["maiz para palomitas","palomitas"],375,11,74,4],[["nubes","nube"],330,2.5,80,0.2],[["copos de maiz"],380,7,84,1],[["maicena"],380,0.3,91,0.1],
  [["pan de molde"],265,8,49,4],[["masa de pizza"],270,8,50,4],[["masa quebrada"],450,6,50,25],[["bizcocho","bizcochos de soletilla"],390,8,80,4],
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
@@ -662,12 +716,12 @@ const NUTRI=[
  [["chorizo","salchichon"],455,24,2,38],[["salchicha"],300,12,2,27],[["jamon"],240,30,0,13],[["pechuga"],110,23,0,1.5],[["pollo"],215,18,0,15],
  [["ternera"],190,20,0,12],[["cerdo","chuleta","lomo"],230,18,0,17],[["pescado","merluza","bacalao"],80,18,0,1],[["huevo"],145,12.5,0.7,10],
  [["leche"],47,3.2,4.8,1.6],[["queso"],350,25,1,28],[["yogur"],60,4,5,3],[["nata"],300,2,3,30],
- [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","almendra","cacahuete"],600,20,15,52],
+ [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","nueces","almendra","cacahuete"],600,20,15,52],
  [["mermelada","compota"],250,0.4,62,0],[["ketchup"],110,1,26,0],[["avena","copos de avena"],370,13,60,7],[["miel"],305,0.3,82,0]];
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
 const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
-const PIEZA=[[["huevo"],60],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
+const PIEZA=[[["huevo"],60],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */

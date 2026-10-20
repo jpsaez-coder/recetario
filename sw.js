@@ -1,9 +1,10 @@
-// versión 1.17.0 — la escribe bin/version; si no cambia este fichero, el navegador no ve la actualización
+// versión 1.18.0 — la escribe bin/version; si no cambia este fichero, el navegador no ve la actualización
 importScripts("version.js");
 const CACHE = "recetario-" + self.APP_VERSION;
 const FILES = ["./", "index.html", "version.js", "recetas-base.json", "precios.json", "manifest.webmanifest",
   "fonts/bricolage-grotesque.woff2", "fonts/source-sans-3.woff2",
-  "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
+  "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png",
+  "fuego/cazador.svg", "fuego/estrella.svg", "fuego/cabana.svg", "fuego/antorcha-sueca.svg", "fuego/dakota.svg", "fuego/tipi.svg", "fuego/hogar-elevado.svg"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, {cache: "reload"})))).then(() => self.skipWaiting()));

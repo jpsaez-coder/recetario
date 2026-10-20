@@ -105,6 +105,9 @@ T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/gr
 caso("foto base antigua se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,undefined);
 caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
+{const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
+caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);
+caso("todo lo que pide el modo sin conexión existe",lista.filter(f=>!fs.existsSync(path.join(raiz,f))),[]);}
 caso("el modo sin conexión no pide fotos",/fotos\//.test(fs.readFileSync(path.join(raiz,"sw.js"),"utf8")),false);
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
