@@ -766,7 +766,7 @@ const PIEZA=[[["huevo"],60],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
-const PAQ=[[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
+const PAQ=[[["levadura"],16],[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
 /* lo que la receta pone «al gusto»: se cuenta una cantidad típica por persona; el resto se avisa */
 const ALGUSTO=[[["aceite"],13.5,"1 cda"],[["mantequilla"],10,"10 g"],[["azucar"],10,"10 g"],[["harina"],10,"10 g"]];
 const wordRe=k=>new RegExp("(^|[^a-z])"+k+"(s|es)?([^a-z]|$)");
@@ -1070,7 +1070,45 @@ function toBase(q,u,name){
   if(u==="cda"||u==="cdta"){const liq=LIQ.test(norm(name));return [q*(u==="cda"?(liq?15:10):(liq?5:3)),liq?"ml":"g"]}
   return [q,u];
 }
-const packKey=(name,u)=>norm(name).trim()+"|"+u;
+/* ---------- un ingrediente, una línea en la compra ----------
+   «Cebolla» y «Cebollas», «Aceite» y «Aceite de oliva virgen extra», «Sal» al gusto y «Sal» 5 g son lo mismo
+   en la tienda: se comparan sin acentos, en singular y con sinónimos, y se pasan a la misma unidad. */
+const MISMO=[[/^aceite( de oliva( virgen( extra)?)?)?$/,"Aceite de oliva"],[/^leche (entera|fresca)$/,"Leche"],
+  [/^nata( liquida| para cocinar)?$/,"Nata líquida"],[/^huevos?$/,"Huevos"],[/^canela( molida)?$/,"Canela"]];
+const singular=w=>w.length<=3||/^(de|del|la|las|los|con|en|al|y|o|u|gas|atun|maiz|arroz)$/.test(w)?w:/ces$/.test(w)?w.slice(0,-3)+"z":/[lnrdj]es$/.test(w)?w.slice(0,-2):/[^s]s$/.test(w)?w.slice(0,-1):w;
+const canon=name=>norm(name).trim().split(/\s+/).map(singular).join(" ");
+function nombreCompra(name){const n=norm(name).trim();for(const [re,to] of MISMO)if(re.test(n))return to;return name.trim()}
+const packKey=(name,u)=>canon(nombreCompra(name))+"|"+u;
+/* junta lo que solo se diferencia en la unidad o en estar «al gusto» */
+function unificar(items){
+  const por={};for(const it of items){const c=it.key.split("|")[0];(por[c]=por[c]||[]).push(it)}
+  const out=[];
+  for(const xs of Object.values(por)){
+    let con=xs.filter(x=>x.q>0);
+    if(!con.length){out.push(nombrar(xs[0]));continue} // todo «al gusto»: una línea
+    if(con.length>1){
+      const cp=prodDe(con[0].name),u=cp&&con.some(x=>x.unit===cp.unit)?cp.unit:con.some(x=>x.unit==="g")?"g":con[0].unit;
+      const destino=con.find(x=>x.unit===u)||con[0],resto=[];
+      for(const x of con){if(x===destino)continue;const q=pasar(x,destino.unit);
+        if(q==null){resto.push(x);continue}destino.q+=q;destino.p+=x.p;for(const [k,v] of Object.entries(x._n))destino._n[k]=(destino._n[k]||0)+v}
+      con=[destino,...resto];
+    }
+    out.push(...con.map(nombrar));
+  }
+  return out;
+}
+/* una cantidad de una unidad a otra del mismo ingrediente; null si no se sabe */
+function pasar(x,u){
+  if(x.unit===u)return x.q;
+  const g=grams({qty:String(x.q),unit:x.unit,name:x.name});
+  if(u==="g"){if(g!=null)return g;const pq=x.unit==="paquete"&&findIn(PAQ,norm(x.name));return pq?x.q*pq[1]:null}
+  if(g==null)return null;
+  if(u==="barra")return g/250;
+  if(u==="ud"){const p=findIn(PIEZA,norm(x.name));return p?g/p[1]:null}
+  return null;
+}
+/* el nombre que se ve: el que más pesa de los juntados */
+const nombrar=x=>{const ns=Object.entries(x._n||{}).sort((a,b)=>b[1]-a[1]);const {_n,...r}=x;return MISMO.some(([,to])=>to===x.name)||!ns.length?r:{...r,name:ns[0][0]}};
 function packFor(name,u){
   const own=S.packs&&S.packs[packKey(name,u)];if(own)return {...own,own:true};
   const cp=prodDe(name);if(cp&&cp.unit===u&&!cp.granel)return {size:cp.size,price:cp.precio,cadena:cp.cadena,producto:cp.producto};
@@ -1084,11 +1122,11 @@ function shopList(rs,n){
   rs.forEach(r=>{const f=factor(r,n);r.ingredients.forEach(i=>{
     if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return; // el agua no se compra
     if((S.alergias||[]).includes("Lactosa")&&/^leche( (entera|semidesnatada|desnatada|fresca))?$/.test(norm(i.name).trim()))i={...i,name:"Leche sin lactosa"};
-    const [q,u]=enUnidadDe(prodDe(i.name),i,f),k=packKey(i.name,u);
-    agg[k]=agg[k]||{key:k,name:i.name.trim(),unit:u,q:0,p:0};
-    agg[k].q+=q;agg[k].p+=num(i.price)*f;
+    const nombre=nombreCompra(i.name),[q,u]=enUnidadDe(prodDe(nombre),{...i,name:nombre},f),k=packKey(nombre,u);
+    agg[k]=agg[k]||{key:k,name:nombre,unit:u,q:0,p:0,_n:{}};
+    agg[k].q+=q;agg[k].p+=num(i.price)*f;agg[k]._n[i.name.trim()]=(agg[k]._n[i.name.trim()]||0)+Math.max(q,1e-9);
   })});
-  return Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es")).map(it=>{
+  return unificar(Object.values(agg)).sort((a,b)=>a.name.localeCompare(b.name,"es")).map(it=>{
     if(S.have&&S.have[it.key])return {...it,have:true,pk:null,k:0,cost:0,left:0};
     const pk=packFor(it.name,it.unit),cp=prodDe(it.name),gr=cp&&cp.granel&&cp.unit===it.unit;
     const per=gr?cp.precio/cp.size:it.q>0?it.p/it.q:0; // a granel: precio por kilo o por pieza de la cadena

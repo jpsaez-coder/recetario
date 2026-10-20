@@ -146,6 +146,16 @@ caso("tres: con un solo bloque no se rompe",(T.tres([["<b>x</b>",3]]).match(/<b>
 // nombre del PDF: «Menú - actividad», sin caracteres que no admiten los ficheros
 caso("nombre del PDF",T.nombrePDF("Acampada (2 días)"),"Menú - Acampada (2 días)");
 caso("nombre del PDF sin barras ni dos puntos",T.nombrePDF("Ruta: día 1/2"),"Menú - Ruta día 1 2");
+// compra: un mismo ingrediente sale en una sola línea (plural, sinónimo, otra unidad o «al gusto»)
+{const it=T.shopList(base,8),k=it.map(i=>i.key.split("|")[0]);
+caso("compra: ningún ingrediente repetido",k.filter((x,i)=>k.indexOf(x)!==i),[]);
+const ac=it.filter(i=>/^aceite de oliva$/i.test(i.name));caso("compra: aceite de oliva en una línea y con cantidad",ac.length===1&&ac[0].q>0,true);
+caso("compra: sin «aceite» suelto al gusto",it.some(i=>/^aceite$/i.test(i.name)),false);
+caso("compra: sal, una línea",it.filter(i=>/^sal$/i.test(i.name)).length,1);
+caso("compra: cebolla y cebollas juntas",it.filter(i=>/^cebollas?$/i.test(i.name)).length,1);
+const R=(id,ings)=>({id,name:id,servings:1,categories:[],steps:"",ingredients:ings.map(([name,qty,unit])=>({name,qty:String(qty),unit,price:""}))});
+const dos=T.shopList([R("a",[["Cebolla",2,"ud"]]),R("b",[["Cebollas",300,"g"]])],1).filter(i=>/cebolla/i.test(i.name));
+caso("compra: 2 cebollas + 300 g = 600 g en una línea",dos.length===1&&Math.round(dos[0].q),600);}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);
