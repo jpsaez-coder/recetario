@@ -1,4 +1,4 @@
-# Recetario de campamento y casa
+# Recetario
 
 PWA estática: se instala en el móvil y funciona sin conexión. Sin servidor ni cuentas:
 cada persona guarda sus recetas en su dispositivo.
