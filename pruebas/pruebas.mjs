@@ -198,6 +198,15 @@ const R=(id,ings)=>({id,name:id,servings:1,categories:[],steps:"",ingredients:in
 const p=T.shopList([R("a",[["Pimiento rojo",1,"ud"]]),R("b",[["Pimiento verde",300,"g"]])],1).filter(i=>/pimiento/i.test(i.name));
 caso("variantes: 1 pimiento rojo + 300 g verde = 450 g, con desglose",p.length===1&&Math.round(p[0].q)+" "+p[0].unit+" · "+p[0].det,"450 g · rojo 1 ud, verde 300 g");}
 caso("singular: grandes, verdes, limones, nueces",["Patatas grandes","Pimientos verdes","Limones","Nueces"].map(x=>T.packKey(x,"ud").split("|")[0]),["patata grande","pimiento verde","limon","nuez"]);
+// imprimir: lo comprado sale marcado y lo que hay en casa, en su línea
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,bought:T.S.bought,have:T.S.have});
+Object.assign(T.S,{dias:1,menu:["ej-gachas-avena"],plan:{"1|Desayuno":["ej-gachas-avena"]},bought:{},have:{}});
+const it=T.shopList([T.getR("ej-gachas-avena")],T.RAC()),av=it.find(i=>/avena/i.test(i.name)),le=it.find(i=>/^leche$/i.test(i.name));
+T.S.bought={[av.key]:true};T.S.have={[le.key]:true};const h=T.vImprimir();
+caso("imprimir: lo comprado, marcado",/<li class="hecho"><span class="cb on"><\/span><span>Copos de avena/.test(h),true);
+caso("imprimir: lo que hay en casa, en «Ya en casa»",/Ya en casa<\/b> Leche/.test(h),true);
+caso("imprimir: lo de casa no sale en la compra",/<span>Leche <em>/.test(h),false);
+Object.assign(T.S,JSON.parse(S0));}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

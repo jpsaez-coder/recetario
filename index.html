@@ -196,7 +196,9 @@ textarea{min-height:90px;resize:vertical}
   #imprimir .tri h3{font:700 7.5pt "Source Sans 3",sans-serif;letter-spacing:.6pt;text-transform:uppercase;color:#2E4B3A;margin:0 0 2pt}
   #imprimir .tri li{display:flex;gap:5pt;align-items:flex-start;margin-bottom:1.5pt}
   #imprimir .tri em{font-style:normal;color:#5E6D63;white-space:nowrap}
-  #imprimir .cb{flex:none;width:7pt;height:7pt;border:1px solid #5E6D63;border-radius:1.5pt;margin-top:2pt}
+  #imprimir .cb{flex:none;width:7pt;height:7pt;border:1px solid #5E6D63;border-radius:1.5pt;margin-top:2pt;position:relative}
+  #imprimir .cb.on{background:#2E4B3A;border-color:#2E4B3A}#imprimir .cb.on::after{content:"";position:absolute;left:2pt;top:.4pt;width:1.6pt;height:3.6pt;border:solid #fff;border-width:0 1.2pt 1.2pt 0;transform:rotate(45deg)}
+  #imprimir li.hecho>span:last-child{color:#8A968D;text-decoration:line-through}#imprimir li.hecho em{color:#8A968D}
   #imprimir .precs{break-before:page;margin-top:0}
   #imprimir .rec{break-inside:avoid;border-left:3pt solid #2E4B3A;padding:2pt 0 2pt 9pt;margin:0 0 10pt}
   #imprimir .rec h3{font-size:11.5pt;margin:0}#imprimir .sub{color:#5E6D63;margin:0 0 4pt;font-size:8.5pt}
@@ -679,7 +681,7 @@ function vImprimir(){
   const n=RAC(),H=HEADS(),D=S.dias||1,s=SALIDAS[S.salida]?S.salida:"finde";
   const ent=planEntries(),sinDia=ent.filter(e=>!e.d).map(e=>getM(e.id)).filter(Boolean);
   const dias=[];for(let d=1;d<=D;d++){const fil=MOMS.map(m=>[m,((S.plan&&S.plan[d+"|"+m])||[]).map(getM).filter(Boolean)]).filter(([,rs])=>rs.length);if(fil.length)dias.push([d,fil])}
-  const rs0=ent.map(e=>getM(e.id)).filter(Boolean),sr=sueltosRecipe(n,H),items=shopList(sr?[...rs0,sr]:rs0,n).filter(i=>!i.have);
+  const rs0=ent.map(e=>getM(e.id)).filter(Boolean),sr=sueltosRecipe(n,H),todo=shopList(sr?[...rs0,sr]:rs0,n),items=todo.filter(i=>!i.have),enCasa=todo.filter(i=>i.have);
   const grupos=[...SECC.map(([x])=>x),"Otros"].map(x=>[x,items.filter(i=>seccion(i.name)===x)]).filter(([,xs])=>xs.length);
   /* lo que solo se monta (pan con tomate, bocadillos…) va en los días y en la compra, pero no como receta */
   const todas=[...new Map(rs0.map(r=>[r.id,r])).values()],unicas=todas.filter(r=>!r.sencilla),montar=todas.filter(r=>r.sencilla);
@@ -692,7 +694,8 @@ function vImprimir(){
     <div class="pdat"><span>${esc(grupoTxt())}</span><span>${D} día${D===1?"":"s"}</span><span>${hoy}</span></div></header>
   ${dias.length?`<section class="pdias">${dias.map(([d,fil])=>`<div class="pdia"><h2>Día ${d}</h2><table>${fil.map(([m,rs])=>`<tr><th>${m}</th><td>${rs.map(r=>esc(r.name)).join("<br>")}</td></tr>`).join("")}</table></div>`).join("")}</section>`:""}
   ${sinDia.length?`<p class="psin"><b>Sin día</b> ${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
-  ${grupos.length?`<h2 class="pt">Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>${cb}<span>${esc(i.name)} <em>${cant(i)}</em>${i.det?`<small> (${esc(i.det)})</small>`:""}</span></li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
+  ${grupos.length?`<h2 class="pt">Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li${S.bought&&S.bought[i.key]?' class="hecho"':""}><span class="cb${S.bought&&S.bought[i.key]?" on":""}"></span><span>${esc(i.name)} <em>${cant(i)}</em>${i.det?`<small> (${esc(i.det)})</small>`:""}</span></li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
+  ${enCasa.length?`<p class="psin"><b>Ya en casa</b> ${enCasa.map(i=>esc(i.name)).join(" · ")}</p>`:""}
   ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
   ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
     <div class="rcol"><table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
