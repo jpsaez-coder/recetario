@@ -365,5 +365,45 @@
   "q": "queso rallado",
   "inc": "queso rallado",
   "exc": "parmesano|grana|vegano|ensalada|pizza|light"
+ },
+ {
+  "k": "salchichas vegetales",
+  "n": "Salchichas vegetales",
+  "u": "g",
+  "q": "salchichas vegetales",
+  "inc": "salchichas? (vegetal|vegan)|salchichas? (de )?(tofu|soja|seitan)|vegalia",
+  "exc": ""
+ },
+ {
+  "k": "chorizo vegetal",
+  "n": "Chorizo vegetal",
+  "u": "g",
+  "q": "chorizo vegetal",
+  "inc": "chorizo (vegetal|vegano)|chorizo (de )?(soja|seitan)",
+  "exc": ""
+ },
+ {
+  "k": "soja texturizada",
+  "n": "Soja texturizada",
+  "u": "g",
+  "q": "soja texturizada",
+  "inc": "soja texturizada|proteina de soja texturizada",
+  "exc": "bebida|salsa"
+ },
+ {
+  "k": "tofu",
+  "n": "Tofu firme",
+  "u": "g",
+  "q": "tofu",
+  "inc": "^tofu",
+  "exc": "postre|bebida|ahumado sabor|salsa"
+ },
+ {
+  "k": "hamburguesa vegetal",
+  "n": "Hamburguesa vegetal",
+  "u": "g",
+  "q": "hamburguesa vegetal",
+  "inc": "burgers? vegetal|hamburguesas? vegetal|hamburguesa (de )?(soja|tofu|seitan|legumbres|garbanzo|lenteja)",
+  "exc": "pan|salsa|mini"
  }
 ]

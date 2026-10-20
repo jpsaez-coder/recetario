@@ -1,5 +1,5 @@
 {
- "fecha": "2026-10-19",
+ "fecha": "2026-10-21",
  "nota": "Precios de la web de cada cadena; cambian con el tiempo y entre tiendas.",
  "claves": {
   "mantequilla": [
@@ -193,6 +193,25 @@
   ],
   "queso rallado": [
    "queso rallado"
+  ],
+  "soja texturizada": [
+   "soja texturizada"
+  ],
+  "tofu": [
+   "tofu",
+   "tofu firme"
+  ],
+  "hamburguesa vegetal": [
+   "hamburguesa vegetal",
+   "hamburguesas vegetales",
+   "burger vegetal"
+  ],
+  "salchichas vegetales": [
+   "salchichas vegetales",
+   "salchicha vegetal"
+  ],
+  "chorizo vegetal": [
+   "chorizo vegetal"
   ]
  },
  "cadenas": {
@@ -307,7 +326,7 @@
      "producto": "Pepino",
      "size": 1,
      "unit": "ud",
-     "precio": 0.36
+     "precio": 0.34
     },
     "chorizo": {
      "producto": "Chorizo oreado",
@@ -378,9 +397,9 @@
     },
     "pimiento": {
      "producto": "Pimiento rojo",
-     "size": 280.0,
+     "size": 240.0,
      "unit": "g",
-     "precio": 0.81,
+     "precio": 0.7,
      "granel": true
     },
     "pan": {
@@ -475,6 +494,24 @@
      "size": 400.0,
      "unit": "g",
      "precio": 1.9
+    },
+    "soja texturizada": {
+     "producto": "Soja texturizada Luengo",
+     "size": 200.0,
+     "unit": "g",
+     "precio": 2.7
+    },
+    "tofu": {
+     "producto": "Tofu firme Hacendado",
+     "size": 400.0,
+     "unit": "g",
+     "precio": 1.75
+    },
+    "hamburguesa vegetal": {
+     "producto": "Burgers vegetales Hacendado con calabaza",
+     "size": 160.0,
+     "unit": "g",
+     "precio": 1.8
     }
    }
   },
@@ -712,6 +749,30 @@
      "size": 150.06,
      "unit": "g",
      "precio": 1.25
+    },
+    "salchichas vegetales": {
+     "producto": "Salchicha viena Vegalia Campofrío 200g",
+     "size": 200.0,
+     "unit": "g",
+     "precio": 3.45
+    },
+    "soja texturizada": {
+     "producto": "Soja texturizada Esgir 350g",
+     "size": 350.063,
+     "unit": "g",
+     "precio": 2.79
+    },
+    "tofu": {
+     "producto": "Tofu fresco Man Fong 450g",
+     "size": 449.927,
+     "unit": "g",
+     "precio": 3.1
+    },
+    "hamburguesa vegetal": {
+     "producto": "Burger vegetal con sabor vacuno Amara 2 unidades 100g",
+     "size": 200.0,
+     "unit": "g",
+     "precio": 3.36
     }
    }
   }

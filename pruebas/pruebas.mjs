@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -57,7 +57,7 @@ caso("aceite virgen extra → aceite de oliva",T.prodDe("Aceite de oliva virgen 
 caso("tomate frito no es tomate",T.prodDe("Tomate frito")?.k,"tomate frito");
 caso("leche entera → leche",T.prodDe("Leche entera")?.k,"leche");
 T.S.super="Mercadona";
-caso("Mercadona tiene los 45",Object.keys(JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8")).cadenas.Mercadona.productos).length,45);
+caso("Mercadona no pierde productos al regenerar (al menos 45)",Object.keys(JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8")).cadenas.Mercadona.productos).length>=45,true);
 T.S.super="";
 // buscador
 const busca=q=>T.all().filter(r=>T.matches(r,q)).map(r=>r.name);
@@ -206,6 +206,46 @@ T.S.bought={[av.key]:true};T.S.have={[le.key]:true};const h=T.vImprimir();
 caso("imprimir: lo comprado, marcado",/<li class="hecho"><span class="cb on"><\/span><span>Copos de avena/.test(h),true);
 caso("imprimir: lo que hay en casa, en «Ya en casa»",/Ya en casa<\/b> Leche/.test(h),true);
 caso("imprimir: lo de casa no sale en la compra",/<span>Leche <em>/.test(h),false);
+Object.assign(T.S,JSON.parse(S0));}
+// tarjeta: con supermercado elegido, nombra lo que va con precio aproximado; sin supermercado, nada
+{const s0=T.S.super;T.S.super="Ahorramás";caso("aprox: pan con tomate en Ahorramás → tomate",T.aproxDe(T.getR("ej-pan-tomate")),["Tomate"]);
+T.S.super="Mercadona";caso("aprox: pan con tomate en Mercadona → nada",T.aproxDe(T.getR("ej-pan-tomate")),[]);
+T.S.super="";caso("aprox: sin supermercado no dice nada",T.aproxDe(T.getR("ej-pan-tomate")),[]);T.S.super=s0;}
+// compra: lo que se vende en paquete sale en paquetes, no en unidades sueltas
+{const s0=T.S.super;T.S.super="";const R=(id,ings)=>({id,name:id,servings:1,categories:[],steps:"",ingredients:ings.map(([name,qty,unit])=>({name,qty:String(qty),unit,price:""}))});
+const it=T.shopList([R("a",[["Pan de hamburguesa",3,"ud"],["Mantequilla",300,"g"],["Yogur natural",5,"ud"]])],1),k=re=>{const x=it.find(i=>re.test(i.name));return x&&x.pk?x.k+" × "+x.pk.size+" "+x.unit:"suelto"};
+caso("paquete: 3 panes de hamburguesa → 1 paquete de 4",k(/hamburguesa/i),"1 × 4 ud");
+caso("paquete: 300 g de mantequilla → 2 de 250 g",k(/mantequilla/i),"2 × 250 g");
+caso("paquete: 5 yogures → 2 de 4",k(/yogur/i),"2 × 4 ud");T.S.super=s0;}
+// sueltos en las comidas: cada vez que se pone cuenta su cantidad; sin día, una vez
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,people:T.S.people,kids:T.S.kids,extras:T.S.extras,have:T.S.have});
+Object.assign(T.S,{people:8,kids:0,dias:2,have:{},menu:[],extras:[{id:"s1",name:"Sandía",qty:"1",unit:"ud",per:"fijo",price:"3"},{id:"s2",name:"Plátano",qty:"1",unit:"ud",per:"persona",price:""}],
+ plan:{"1|Comida":["x:s2"],"2|Comida":["x:s2"]}});
+const sr=T.sueltosRecipe(T.RAC(),T.HEADS()),rs=[...T.planIds().map(T.getM).filter(Boolean),...(sr?[sr]:[])],it=T.shopList(rs,T.RAC());
+const q=re=>{const x=it.find(i=>re.test(i.name));return x?Math.round(x.q):0};
+caso("sueltos: plátano por persona en 2 comidas = 16",q(/pl[aá]tano/i),16);
+caso("sueltos: sandía sin día cuenta una vez",q(/sand[ií]a/i),1);
+caso("sueltos: los puestos en un día no se cuentan otra vez como «sin día»",sr.ingredients.map(i=>i.name),["Sandía"]);
+const h=T.vImprimir();caso("sueltos: salen en su comida al imprimir",/<td>Plátano<\/td>/.test(h),true);
+caso("sueltos: no salen como receta ni en «se montan»",/Plátano<\/h3>/.test(h)||/Se montan en el momento[^<]*<\/b>[^<]*Plátano/.test(h),false);
+Object.assign(T.S,JSON.parse(S0));}
+// vegetarianos: 4 de 16 (una cuarta parte). La carne adaptable se reparte; la de «toque» se les quita; la que no se adapta, se avisa
+{const S0=JSON.stringify({people:T.S.people,kids:T.S.kids,veg:T.S.veg,super:T.S.super});Object.assign(T.S,{people:16,kids:0,veg:4,super:""});
+const compra=id=>T.shopList([T.getR(id)],T.RAC()),q=(it,re)=>{const x=it.find(i=>re.test(i.name));return x?Math.round(x.q)+" "+x.unit:"no está"};
+const c1=compra("mr-picada-cuscus");
+caso("veg: picada cuscús, carne para 12",q(c1,/^carne picada/i),"1125 g");
+caso("veg: picada cuscús, soja texturizada para 4 (un tercio, en seco)",q(c1,/^soja texturizada/i),"125 g");
+const c2=compra("ej-hamburguesas");
+caso("veg: hamburguesas, carne para 12",q(c2,/^carne picada/i),"1500 g");
+caso("veg: hamburguesas, 4 hamburguesas vegetales",q(c2,/^hamburguesa vegetal/i),"4 ud");
+const c3=compra("ej-bocadillo-jamon-queso");
+caso("veg: bocadillo de jamón, jamón solo para 12",q(c3,/^jam[oó]n cocido/i),"480 g");
+caso("veg: bocadillo de jamón, sin sustituto",c3.some(i=>/vegetal/i.test(i.name)),false);
+caso("veg: entrecot no se adapta",T.vegAdapta(T.getR("gpg-entrecot-a-la-parrilla-a-la-nizarda")),false);
+caso("veg: «pan de hamburguesa» no es carne",T.vegAdapta(T.getR("ej-hamburguesas")),true);
+caso("veg: gachas no llevan carne",T.vegAdapta(T.getR("ej-gachas-avena")),null);
+const r=T.getR("mr-picada-cuscus");caso("veg: nota en la receta",T.notaVeg(r,r.ingredients.find(i=>/picada/i.test(i.name)),1),"Soja texturizada: 125 g para 4 (en seco: se hidrata 10 min en agua caliente)");
+T.S.veg=0;caso("veg: sin vegetarianos, todo carne",q(compra("mr-picada-cuscus"),/^carne picada/i),"1500 g");
 Object.assign(T.S,JSON.parse(S0));}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");

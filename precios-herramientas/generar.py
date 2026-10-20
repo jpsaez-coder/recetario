@@ -1,5 +1,5 @@
 """Genera precios.json para la app a partir de los cruces por cadena (casado-*.json)."""
-import json,os,sys
+import json,os,sys,time
 # nombres de ingrediente (normalizados, sin tildes) que corresponden a cada producto
 CLAVES={"mantequilla":["mantequilla"],"huevo":["huevo","huevos","yema","yemas","clara","claras","yemas de huevo","claras de huevo"],"azucar":["azucar","azucar blanco"],
  "aceite de oliva":["aceite de oliva","aceite","aceite de oliva virgen extra","aceite de oliva virgen"],"aceite de girasol":["aceite de girasol"],
@@ -13,9 +13,11 @@ CLAVES={"mantequilla":["mantequilla"],"huevo":["huevo","huevos","yema","yemas","
  "naranja":["naranja","naranjas"],"chocolate":["chocolate","chocolate negro","chocolate para fundir"],"aceitunas":["aceitunas","aceitunas sin hueso"],
  "atun":["atun","atun en aceite"],"sardinas":["sardinas","sardinas en tomate","sardinillas"],"cuscus":["cuscus","semola"],"caldo":["pastilla de caldo","pastillas de caldo"],
  "pasta":["pasta","macarrones"],"garbanzos cocidos":["garbanzos cocidos","garbanzos"],"galletas":["galletas","galletas maria"],"yogur":["yogur","yogur natural","yogures"],
- "queso rallado":["queso rallado"]}
+ "queso rallado":["queso rallado"],
+ "soja texturizada":["soja texturizada"],"tofu":["tofu","tofu firme"],"hamburguesa vegetal":["hamburguesa vegetal","hamburguesas vegetales","burger vegetal"],
+ "salchichas vegetales":["salchichas vegetales","salchicha vegetal"],"chorizo vegetal":["chorizo vegetal"]}
 CAD={"Mercadona":("casado-mercadona-mad3.json","28022 (en 28343, igual salvo céntimos)"),"Ahorramás":("casado-ahorramas.json",""),"Alcampo":("casado-alcampo.json","")}
-out={"fecha":"2026-10-19","nota":"Precios de la web de cada cadena; cambian con el tiempo y entre tiendas.","claves":CLAVES,"cadenas":{}}
+out={"fecha":time.strftime("%Y-%m-%d"),"nota":"Precios de la web de cada cadena; cambian con el tiempo y entre tiendas.","claves":CLAVES,"cadenas":{}}
 for cad,(f,cp) in CAD.items():
     if not os.path.exists(f):continue
     d=json.load(open(f,encoding="utf-8"))

@@ -126,7 +126,7 @@ h3.secc{font-size:14px;color:var(--pine);margin:14px 0 0;text-transform:uppercas
 label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;height:20px;flex:none;accent-color:var(--pine)}
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
-.buy small.det{display:block;font-weight:400;color:var(--mute);font-size:12px;line-height:1.3}.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
+.buy small.det{display:block;font-weight:400;color:var(--mute);font-size:12px;line-height:1.3}.aprox{margin:2px 0 0;font-size:12.5px;color:var(--mute)}.pls{padding:0 2px}.nveg{color:var(--pine);font-size:12px}.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
 .dia-h h3{white-space:nowrap}.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}.dia-s{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
@@ -205,6 +205,7 @@ textarea{min-height:90px;resize:vertical}
   #imprimir .rcol{display:flex;gap:14pt;align-items:flex-start}
   #imprimir .rcol table{flex:0 0 38%;font-size:9pt}#imprimir .rcol td{border-top:1px solid #E6EBE1;padding:1.5pt 0}#imprimir .rcol tr:first-child td{border-top:0}
   #imprimir td.q{text-align:right;white-space:nowrap;padding-left:6pt;color:#5E6D63}
+  #imprimir .nveg{color:#2E4B3A;font-size:8pt}
   #imprimir .rcol ol{flex:1;margin:0;padding-left:13pt;font-size:9.5pt}#imprimir .rcol ol li{margin-bottom:2pt}
   #imprimir .ppie{margin-top:12pt;padding-top:4pt;border-top:1px solid #D3DBCC;font-size:8pt;color:#5E6D63;text-align:center}
 }
@@ -382,6 +383,8 @@ function fmtQ(q,u){
 const sPrice=(i,f)=>{const cp=prodDe(i.name);if(cp&&num(i.qty)>0){const [q,u]=enUnidadDe(cp,i,f);if(u===cp.unit)return q*cp.precio/cp.size}return sPrice0(i,f)};
 const sPrice0=(i,f)=>WHOLE[i.unit]&&num(i.qty)>0?num(i.price)/num(i.qty)*Math.max(1,Math.ceil(num(i.qty)*f-0.05)):num(i.price)*f;
 const costF=(r,f)=>r.ingredients.reduce((a,i)=>a+sPrice(i,f),0);
+/* con un supermercado con catálogo elegido: los ingredientes que cuestan algo y no salen de su lista (llevan el precio de referencia) */
+const aproxDe=r=>{if(!cadena())return [];return r.ingredients.filter(i=>{if(!(num(i.qty)>0)||!(num(i.price)>0))return false;const cp=prodDe(i.name);return !(cp&&enUnidadDe(cp,i,1)[1]===cp.unit)}).map(i=>i.name.trim())};
 /* Raciones por edad: S.people = mayores (12 años o más), S.kids = niños (hasta 11 años, ~70 % de ración).
    RAC() = raciones de comida (cantidades, compra); HEADS() = cabezas (lo que es «uno por persona» y el gasto por persona). */
 const KID=0.7;
@@ -619,7 +622,7 @@ function vList(){
     let d="";
     /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
     const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
-    if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`).join("")}</table>`,true)}
+    if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>`,true)}
     ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <details class="plg2" data-k="n-${esc(r.id)}"${U.det&&U.det["n-"+r.id]?" open":""}><summary>Nutrición y cocina</summary>
@@ -629,7 +632,7 @@ function vList(){
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     const fs=fotoSrc(r);
-    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
+    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
       const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
     <div class="row"><button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button>
@@ -644,16 +647,25 @@ function vList(){
   return h;
 }
 /* Sueltos: lo que se compra sin receta (una sandía, barritas para media mañana). Fijos o por persona. */
+/* sueltos en el menú: se ponen en las comidas como una receta («x:<id>»); cada vez que se pone cuenta su cantidad.
+   Los que no están en ningún día se suman una vez (sueltosRecipe), como antes. */
+function sueltoR(id){
+  const e=(S.extras||[]).find(x=>"x:"+x.id===id);if(!e)return null;
+  const k=e.per==="persona"?HEADS():1;
+  return {id,name:e.name,servings:RAC(),categories:[],steps:"",suelto:true,sencilla:true,
+    ingredients:[{name:e.name,qty:String(num(e.qty)*k),unit:e.unit,price:e.price===""?"":String(num(e.price)*k)}]};
+}
+const sueltoVeces=e=>Object.values(S.plan||{}).flat().filter(x=>x==="x:"+e.id).length;
 function sueltosRecipe(n,H){
-  const ex=S.extras||[];if(!ex.length)return null;
+  const ex=(S.extras||[]).filter(e=>!sueltoVeces(e));if(!ex.length)return null;
   const k=e=>e.per==="persona"?(H||n):1;
   return {id:"__sueltos",name:"Sueltos",servings:n,categories:[],steps:"",
     ingredients:ex.map(e=>({name:e.name,qty:String(num(e.qty)*k(e)),unit:e.unit,price:e.price===""?"":String(num(e.price)*k(e))}))};
 }
 function vSueltos(n,H){
   const ex=S.extras||[];H=H||n;
-  return `<div class="card"><div class="fl h"><h2>Sueltos</h2>${inf("sue","Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Entra en la compra, el presupuesto y los macros.")}</div>
-  ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*H,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""}</small></td>
+  return `<div class="card"><div class="fl h"><h2>Sueltos</h2>${inf("sue","Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Se puede poner en las comidas con «+ añadir», como una receta: cada vez que está puesto cuenta su cantidad. Si no está en ningún día, cuenta una vez. Entra en la compra, el presupuesto y los macros.")}</div>
+  ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*H,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""} · ${sueltoVeces(e)?`en ${sueltoVeces(e)} comida${sueltoVeces(e)===1?"":"s"}`:"sin día: cuenta una vez"}</small></td>
     <td class="p">${e.price===""?"":eur(num(e.price)*(e.per==="persona"?H:1))}</td><td class="p"><button class="btn ghost sm" data-act="exDel" data-id="${e.id}" aria-label="Quitar ${esc(e.name)}">Quitar</button></td></tr>`).join("")}</table>`:""}
   <div class="exf"><input id="exName" placeholder="Qué (p. ej. Sandía)" aria-label="Qué"><input id="exQty" inputmode="decimal" placeholder="Cant." aria-label="Cantidad" value="1">
   <select id="exUnit" aria-label="Unidad">${UNITS.map(u=>`<option ${u==="ud"?"selected":""}>${u}</option>`).join("")}</select>
@@ -684,7 +696,7 @@ function vImprimir(){
   const rs0=ent.map(e=>getM(e.id)).filter(Boolean),sr=sueltosRecipe(n,H),todo=shopList(sr?[...rs0,sr]:rs0,n),items=todo.filter(i=>!i.have),enCasa=todo.filter(i=>i.have);
   const grupos=[...SECC.map(([x])=>x),"Otros"].map(x=>[x,items.filter(i=>seccion(i.name)===x)]).filter(([,xs])=>xs.length);
   /* lo que solo se monta (pan con tomate, bocadillos…) va en los días y en la compra, pero no como receta */
-  const todas=[...new Map(rs0.map(r=>[r.id,r])).values()],unicas=todas.filter(r=>!r.sencilla),montar=todas.filter(r=>r.sencilla);
+  const todas=[...new Map(rs0.map(r=>[r.id,r])).values()],unicas=todas.filter(r=>!r.sencilla),montar=todas.filter(r=>r.sencilla&&!r.suelto);
   const veces=id=>ent.filter(e=>e.id===id).length;
   const faltan=BASICOS.flatMap(([,xs])=>xs).filter(x=>!(S.check&&S.check[x]));
   const hoy=new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});
@@ -698,7 +710,7 @@ function vImprimir(){
   ${enCasa.length?`<p class="psin"><b>Ya en casa</b> ${enCasa.map(i=>esc(i.name)).join(" · ")}</p>`:""}
   ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
   ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
-    <div class="rcol"><table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
+    <div class="rcol"><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")}
   ${montar.length?`<p class="psin"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
@@ -727,7 +739,7 @@ function vMenu(){
   const D=S.dias||1,ppd=S.ppd==null?6:S.ppd,B=ppd*H*D;
   const perPerson=total/H,usedPP=used/n,maxP=usedPP>0?Math.floor(B/usedPP):0;
   const left=B-total;
-  return `${vTopMenu()}<div class="card">${vSalida(rs)}${vAlergias(rs)}</div><div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
+  return `${vTopMenu()}<div class="card">${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div><div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
   <input id="bud" type="number" min="0" step="0.5" inputmode="decimal" value="${ppd}" data-act="budget">
   <p class="msg">= <b>${eur(B)}</b> (${H} pers. × ${D} día${D===1?"":"s"})</p>
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
@@ -791,7 +803,7 @@ const NUTRI=[
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
 const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
-const PIEZA=[[["huevo"],60],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
+const PIEZA=[[["huevo"],60],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
@@ -910,7 +922,7 @@ function ajustar(r){
   if(!suf)return r;
   return {...r,ingredients:[...r.ingredients.filter(i=>!q.includes(nkey(i.name))),...mas],name:`${r.name} (${suf})`};
 }
-const getM=id=>ajustar(getR(id));
+const getM=id=>typeof id==="string"&&id.startsWith("x:")?sueltoR(id):ajustar(getR(id));
 function vAjuste(id){
   const r=getR(id);if(!r)return "";
   const a=(S.ajustes||{})[id]||{},q=a.quitar||[],mas=a.mas||[];
@@ -986,7 +998,9 @@ function addPlan(id,d,m){S.plan=S.plan||{};const k=d+"|"+m;S.plan[k]=[...(S.plan
 function optRecetas(m){
   /* solo las elegidas para el menú; primero las que pegan con ese momento */
   const sel=(S.menu||[]).map(getR).filter(Boolean),pega=r=>MOM_DE[r.categories.find(c=>MOM_DE[c])]===m;
-  return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
+  const ex=S.extras||[];
+  return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("")
+    +(ex.length?`<optgroup label="Sueltos">${ex.map(e=>`<option value="x:${esc(e.id)}">${esc(e.name)}</option>`).join("")}</optgroup>`:"");
 }
 /* ---------- energía según la actividad del día ----------
    Objetivos orientativos por ración de adulto (≥ 12 años, ~65 kg); un niño come ~70 %.
@@ -1017,7 +1031,7 @@ function vObjetivo(d){
   ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}${CLIMA[climaDia(d)].aviso?`<div class="fl">${CLIMA[climaDia(d)].aviso.split(":")[0]}${inf("cl"+d,CLIMA[climaDia(d)].aviso.split(":").slice(1).join(":").trim())}</div>`:""}</div>`;
 }
 /* el nombre de la receta en el menú abre su ajuste justo debajo de donde se toca */
-const plName=(r,at)=>`<button class="pln" data-act="aj" data-id="${r.id}" data-at="${at}" title="${esc(r.name)} · tocar para ajustar" aria-expanded="${U.aj===r.id&&U.ajAt===at}">${esc(corto(r))}</button>`;
+const plName=(r,at)=>r.suelto?`<span class="pls">${esc(corto(r))}</span>`:`<button class="pln" data-act="aj" data-id="${r.id}" data-at="${at}" title="${esc(r.name)} · tocar para ajustar" aria-expanded="${U.aj===r.id&&U.ajAt===at}">${esc(corto(r))}</button>`;
 const ajAqui=at=>U.aj&&U.ajAt===at&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):"";
 /* comidas que faltan en un día, según la salida: la ruta solo pide la comida; en la acampada,
    el desayuno del primer día y la cena del último suelen hacerse en casa; la reunión no avisa.
@@ -1044,7 +1058,7 @@ function vDias(){
       const cs=costeSlot(d,m);
       h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
         const warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
-        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
+        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}${S.veg&&!r.suelto&&vegAdapta(r)===false?`<small class="w"> · sin opción vegetariana</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>${ajAqui(d+"|"+m)}`;
     }
     const vacias=comidasVacias(d);
@@ -1058,6 +1072,13 @@ function vDias(){
 }
 /* Alergias del grupo: se marcan una vez y avisan en recetas y menú. Se detectan por el nombre del ingrediente:
    no ven trazas ni la etiqueta del envase. */
+function vVeg(rs){
+  const v=S.veg||0,H=HEADS();
+  const no=v?[...new Map(rs.filter(r=>vegAdapta(r)===false).map(r=>[r.id,r])).values()]:[];
+  return `${fl("Vegetarianos","veg","En las recetas con carne que se puede cambiar, su parte se compra en vegetal (picada vegetal, tiras vegetales…) y la carne que es solo un toque (bacon, jamón) se les quita. Las que no se pueden adaptar (entrecot, pollo al ajillo…) se avisan en cada comida.")}
+  <div class="row"><div class="people"><button class="step" data-act="veg" data-d="-1" aria-label="Menos vegetarianos">−</button><b>${v}</b><button class="step" data-act="veg" data-d="1" aria-label="Más vegetarianos">+</button></div><span class="msg" style="margin:0">de ${H} personas</span></div>
+  ${no.length?`<p class="msg warn">Sin opción vegetariana: ${esc(no.map(r=>r.name).join(", "))}. Para ${v} hace falta otra cosa en esa comida.</p>`:""}`;
+}
 function vAlergias(rs){
   const al=S.alergias||[];
   const hits=rs.flatMap(r=>etiquetas(r).alerg.filter(a=>al.includes(a)).map(a=>[a,r.name]));
@@ -1102,7 +1123,17 @@ function enUnidadDe(cp,i,f){
 }
 /* ---------- compra por formatos de venta ---------- */
 /* Formato orientativo en que se vende cada cosa; cada persona lo cambia en la lista (S.packs). */
-const PACKS=[[["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
+const PACKS=[
+  /* se venden en paquete aunque la receta cuente unidades o gramos (lo más concreto primero) */
+  [["pan de hamburguesa","pan de perrito"],4,"ud"],[["pan de molde"],20,"ud"],[["yogur"],4,"ud"],[["queso para fundir","queso en lonchas"],10,"ud"],
+  [["nube","nubes"],20,"ud"],[["salchicha"],6,"ud"],[["filete de pavo","filetes de pavo"],4,"ud"],[["escalope"],2,"ud"],
+  [["mantequilla"],250,"g"],[["nata liquida","nata para cocinar"],200,"ml"],[["nata fresca","nata espesa"],200,"g"],[["nata espesa"],200,"ml"],
+  [["mermelada"],350,"g"],[["crema de cacahuete"],350,"g"],[["cacao"],400,"g"],[["copos de maiz"],500,"g"],[["copos de avena"],500,"g"],
+  [["bizcochos de soletilla"],200,"g"],[["almendra"],100,"g"],[["cacahuete"],200,"g"],[["nuez","nueces"],200,"g"],[["pasas"],200,"g"],
+  [["maicena"],400,"g"],[["pan rallado"],500,"g"],[["queso rallado","queso emmental rallado"],200,"g"],[["queso en lonchas","jamon cocido"],250,"g"],
+  [["bacon","panceta","lomo curado"],200,"g"],[["caldo"],1000,"ml"],[["cafe soluble"],200,"g"],[["mayonesa"],450,"g"],
+  [["champinon","setas"],250,"g"],[["levadura"],16,"g"],[["almendra laminada"],100,"g"],
+  [["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
   [["lenteja","garbanzo","alubia"],1000,"g"],[["atun","sardina","caballa"],3,"lata"],[["tomate triturado","tomate frito"],400,"g"],
   [["leche"],1000,"ml"],[["huevo"],12,"ud"],[["aceite"],1000,"ml"],[["vinagre"],1000,"ml"],[["sal"],1000,"g"],[["azucar"],1000,"g"],
   [["harina"],1000,"g"],[["chorizo","salchichon"],250,"g"],[["pastilla de caldo","pastillas de caldo"],10,"ud"],[["pimenton"],75,"g"],
@@ -1113,6 +1144,45 @@ function toBase(q,u,name){
   if(u==="kg")return [q*1000,"g"];if(u==="l")return [q*1000,"ml"];
   if(u==="cda"||u==="cdta"){const liq=LIQ.test(norm(name));return [q*(u==="cda"?(liq?15:10):(liq?5:3)),liq?"ml":"g"]}
   return [q,u];
+}
+/* ---------- vegetarianos del grupo ----------
+   S.veg = cuántos del grupo son vegetarianos. En las recetas con carne que se puede cambiar, esa parte se compra
+   y se cocina en vegetal (picada vegetal, tiras vegetales…); la carne que es solo un toque (bacon, jamón) se les quita.
+   Una receta con carne sin regla (entrecot, pollo al ajillo…) no se adapta: el menú avisa. */
+const CARNE=/(^|[^a-z])(carne|picada|salchicha|hamburguesa|pollo|pechuga|pavo|cerdo|lomo|magro|chorizo|jamon|bacon|panceta|tocino|morcilla|entrecot|escalope|ternera|fiambre)/;
+const VEG=[[/carne picada|^magro/,{to:"Soja texturizada",k:1/3,nota:"en seco: se hidrata 10 min en agua caliente"}],[/^salchichas?/,{to:"Salchichas vegetales"}],[/carne de cerdo o pollo en dados|^lomo curado/,{to:"Tofu firme"}],
+  [/^chorizo/,{to:"Chorizo vegetal"}],[/^jamon cocido|^jamon serrano|^bacon|^panceta|^tocino|^pechuga de pavo o jamon/,{quitar:true}]];
+/* precio de referencia de lo vegetal (€ por kg o por unidad) si el supermercado no lo tiene en su lista */
+const VEGREF={"Soja texturizada":[11,"g"],"Salchichas vegetales":[17,"g"],"Tofu firme":[5,"g"],"Chorizo vegetal":[20,"g"],"Hamburguesa vegetal":[0.9,"ud"]};
+const fracVeg=()=>Math.min(1,Math.max(0,(S.veg||0)/HEADS()));
+function reglaVeg(r,i){
+  const n=norm(i.name).trim();if(!CARNE.test(n)||/^(pan|caldo|pastilla)/.test(n))return null; // «pan de hamburguesa», «caldo de pollo» no son carne
+  if(r.vegetal&&r.vegetal[i.name.trim()]){const [to,g]=r.vegetal[i.name.trim()].split("|");return g?{to,g:num(g)}:{to}}
+  for(const [re,x] of VEG)if(re.test(n))return x;
+  return {no:true};
+}
+/* adaptable: lleva carne y toda tiene regla; null si no lleva carne */
+function vegAdapta(r){const rs=r.ingredients.map(i=>reglaVeg(r,i)).filter(Boolean);return rs.length?rs.every(x=>!x.no):null}
+/* los ingredientes con la parte de los vegetarianos ya repartida (para la compra) */
+function ingsVeg(r){
+  const fv=fracVeg();if(!fv||r.suelto||!vegAdapta(r))return r.ingredients;
+  const out=[];
+  for(const i of r.ingredients){const g=reglaVeg(r,i);
+    if(!g||!(num(i.qty)>0)){out.push(i);continue}
+    out.push({...i,qty:String(num(i.qty)*(1-fv)),price:i.price===""?"":String(num(i.price)*(1-fv))});
+    if(g.to&&g.g){const gr=grams({...i,qty:String(num(i.qty)*fv)});if(gr!=null){const ref=VEGREF[g.to];out.push({name:g.to,qty:String(gr/g.g),unit:"ud",price:ref?String(gr/g.g*ref[0]):""});continue}}
+    if(g.to){const ref=VEGREF[g.to],q=num(i.qty)*fv*(g.k||1),[qb,ub]=toBase(q,i.unit,i.name);
+      out.push({name:g.to,qty:String(q),unit:i.unit,price:ref?String(ref[1]==="g"&&ub==="g"?qb/1000*ref[0]:ref[1]==="ud"&&ub==="ud"?qb*ref[0]:0):""})}}
+  return out;
+}
+/* para ver en la receta: qué lleva la parte de los vegetarianos en este ingrediente */
+function notaVeg(r,i,f){
+  const v=S.veg||0;if(!v||r.suelto||!(num(i.qty)>0)||!vegAdapta(r))return "";
+  const g=reglaVeg(r,i);if(!g)return "";
+  if(g.quitar)return `sin esto para ${v} vegetariano${v===1?"":"s"}`;
+  const q=num(i.qty)*f*fracVeg();
+  if(g.g){const gr=grams({...i,qty:String(q)});return gr!=null?`${g.to}: ${fmtQ(gr/g.g,"ud")} para ${v}`:""}
+  return `${g.to}: ${fmtQ(q*(g.k||1),i.unit)} para ${v}${g.nota?` (${g.nota})`:""}`;
 }
 /* ---------- un ingrediente, una línea en la compra ----------
    «Cebolla» y «Cebollas», «Aceite» y «Aceite de oliva virgen extra», «Sal» al gusto y «Sal» 5 g son lo mismo
@@ -1182,7 +1252,7 @@ function packFor(name,u){
 }
 function shopList(rs,n){
   const agg={};
-  rs.forEach(r=>{const f=factor(r,n);r.ingredients.forEach(i=>{
+  rs.forEach(r=>{const f=factor(r,n);ingsVeg(r).forEach(i=>{
     if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return; // el agua no se compra
     if((S.alergias||[]).includes("Lactosa")&&/^leche( (entera|semidesnatada|desnatada|fresca))?$/.test(norm(i.name).trim()))i={...i,name:"Leche sin lactosa"};
     const nombre=nombreCompra(i.name),[q,u]=enUnidadDe(prodDe(nombre),{...i,name:nombre},f),k=packKey(nombre,u);
@@ -1330,7 +1400,7 @@ document.addEventListener("click",async e=>{
   else if(a==="exAdd"){const name=$("#exName").value.trim(),qty=num($("#exQty").value),pr=$("#exPrice").value.trim();
     if(!name||!(qty>0)){U.exMsg="Pon qué es y una cantidad.";render();return}
     S.extras=[...(S.extras||[]),{id:uid(),name:name.slice(0,60),qty:String(qty),unit:$("#exUnit").value,per:$("#exPer").value,price:pr?String(num(pr)):""}];U.exMsg="";persist()}
-  else if(a==="exDel"){S.extras=(S.extras||[]).filter(e=>e.id!==b.dataset.id);persist()}
+  else if(a==="exDel"){const id=b.dataset.id;S.extras=(S.extras||[]).filter(e=>e.id!==id);for(const k in S.plan||{})S.plan[k]=S.plan[k].filter(x=>x!=="x:"+id);persist()}
   else if(a==="bclear"){S.check={};persist()}
   else if(a==="alg"){const k=b.dataset.k;S.alergias=(S.alergias||[]).includes(k)?S.alergias.filter(x=>x!==k):[...(S.alergias||[]),k];persist()}
   else if(a==="apta"){U.apta=!U.apta}
@@ -1356,6 +1426,7 @@ document.addEventListener("click",async e=>{
   else if(a==="waShare"){const rs0=planIds().map(getM).filter(Boolean),sr=sueltosRecipe(RAC(),HEADS());return compartirCompra(shopList(sr?[...rs0,sr]:rs0,RAC()))}
   else if(a==="plDel"){const k=b.dataset.k;S.plan[k]=(S.plan[k]||[]).filter((_,i)=>i!==+b.dataset.i);persist()}
   else if(a==="dias"){S.dias=Math.min(15,Math.max(1,(S.dias||1)+num(b.dataset.d)));persist()}
+  else if(a==="veg"){S.veg=Math.min(HEADS(),Math.max(0,(S.veg||0)+num(b.dataset.d)));persist()}
   else if(a==="edit"){U.draft=JSON.parse(JSON.stringify(S.recipes.find(r=>r.id===b.dataset.id)));U.tab="nueva"}
   else if(a==="copy"){const r=JSON.parse(JSON.stringify(getR(b.dataset.id)));delete r.base;r.id=null;r.name+=" (mía)";U.draft=r;U.tab="nueva"}
   else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=await conFoto(r);const res=await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]});if(res==="fallo"){U.ioMsg="Aquí no se puede descargar: compártela desde la app instalada.";render()}}return}

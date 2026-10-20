@@ -2320,6 +2320,9 @@
    "Casa",
    "Fuego"
   ],
+  "vegetal": {
+   "Carne picada mixta": "Hamburguesa vegetal|125"
+  },
   "ingredients": [
    {
     "name": "Carne picada mixta",
