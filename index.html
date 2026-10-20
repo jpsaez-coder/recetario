@@ -178,7 +178,7 @@ textarea{min-height:90px;resize:vertical}
   #imprimir h1{font:700 18pt "Bricolage Grotesque",sans-serif;margin:0 0 2pt}#imprimir h2{font:700 13pt "Bricolage Grotesque",sans-serif;margin:12pt 0 4pt;border-bottom:1px solid #999}
   #imprimir h3{font-size:11.5pt;margin:6pt 0 2pt}#imprimir .sub{color:#555;margin:0 0 4pt;font-size:9.5pt}
   #imprimir table{width:100%;border-collapse:collapse;margin:2pt 0 4pt}#imprimir th,#imprimir td{text-align:left;vertical-align:top;padding:2pt 4pt;border-bottom:1px solid #ddd}#imprimir th{width:22%}#imprimir td.q{text-align:right;white-space:nowrap;width:30%}
-  #imprimir ul{list-style:none;padding:0;margin:0}#imprimir .cols{columns:2;column-gap:18pt}#imprimir .gr{break-inside:avoid;margin-bottom:4pt}#imprimir .cols3{columns:3;column-gap:12pt;font-size:9pt;line-height:1.25}#imprimir .cols3 h3{font-size:9.5pt;margin:0 0 1pt;text-transform:uppercase;letter-spacing:.3pt}#imprimir .cols3 li{padding-left:9pt;text-indent:-9pt}
+  #imprimir ul{list-style:none;padding:0;margin:0}#imprimir .cols{columns:2;column-gap:18pt}#imprimir .gr{break-inside:avoid;margin-bottom:4pt}#imprimir .tri{display:flex;gap:12pt;font-size:9pt;line-height:1.25}#imprimir .tri>div{flex:1;min-width:0}#imprimir .tri h3{font-size:9.5pt;margin:0 0 1pt;text-transform:uppercase;letter-spacing:.3pt}#imprimir .tri li{padding-left:9pt;text-indent:-9pt}
   #imprimir .rec{break-inside:avoid;margin-bottom:8pt}#imprimir ol{margin:2pt 0;padding-left:16pt}
 }
 </style>
@@ -646,6 +646,13 @@ function vTopMenu(){
   return `<div class="card topm"><div class="tm"><span>${ok?"✅":"🧺"} <b>Básicos de intendencia</b><small>${done} de ${all.length} en la caja</small></span><button class="btn ${ok?"ghost":"alt"} sm" data-act="irBas">${ok?"Ver":"Ir a la checklist"}</button></div>
   ${planIds().length?`<div class="tm"><span>🖨️ <b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>`:""}</div>`;
 }
+/* tres columnas fijas, en orden y equilibradas por líneas: no depende de que el navegador
+   respete las columnas de CSS al imprimir (algunos móviles las ignoran y sale una lista larga) */
+function tres(bloques){
+  const tot=bloques.reduce((a,[,w])=>a+w,0),cols=[[],[],[]];let c=0,acc=0;
+  for(const [h,w] of bloques){if(c<2&&acc>0&&acc+w/2>tot*(c+1)/3)c++;cols[c].push(h);acc+=w}
+  return `<div class="tri">${cols.map(x=>`<div>${x.join("")}</div>`).join("")}</div>`;
+}
 /* hoja para imprimir (o guardar en PDF): lo de esta salida en concreto */
 function vImprimir(){
   const n=RAC(),H=HEADS(),D=S.dias||1,s=SALIDAS[S.salida]?S.salida:"finde";
@@ -659,8 +666,8 @@ function vImprimir(){
   return `<h1>Menú · ${esc(SALIDAS[s].n)}</h1><p class="sub">${esc(grupoTxt())} · ${D} día${D===1?"":"s"} · Recetario ${esc(APP_VERSION)} · ${new Date().toLocaleDateString("es-ES")}</p>
   ${dias.map(([d,fil])=>`<h2>Día ${d}</h2><table>${fil.map(([m,rs])=>`<tr><th>${m}</th><td>${rs.map(r=>esc(r.name)).join(" · ")}</td></tr>`).join("")}</table>`).join("")}
   ${sinDia.length?`<h2>Sin día</h2><p>${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
-  ${grupos.length?`<h2>Lista de la compra</h2><div class="cols3">${grupos.map(([g,xs])=>`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>☐ ${esc(i.name)}${i.pk?`: ${i.k} × ${fmtQ(i.pk.size,i.unit)}`:i.q>0?`: ${fmtQ(i.q,i.unit)}`:" (al gusto)"}</li>`).join("")}</ul></div>`).join("")}</div>`:""}
-  ${faltan.length?`<h2>Básicos que faltan en la caja</h2><ul class="cols3">${faltan.map(x=>`<li>☐ ${esc(x)}</li>`).join("")}</ul>`:""}
+  ${grupos.length?`<h2>Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>☐ ${esc(i.name)}${i.pk?`: ${i.k} × ${fmtQ(i.pk.size,i.unit)}`:i.q>0?`: ${fmtQ(i.q,i.unit)}`:" (al gusto)"}</li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
+  ${faltan.length?`<h2>Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>☐ ${esc(x)}</li></ul>`,Math.ceil(x.length/34)]))}`:""}
   <h2>Recetas</h2>${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<div class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
     <table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`}).join("")}`;

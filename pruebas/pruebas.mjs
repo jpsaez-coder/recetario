@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,tres,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -137,6 +137,12 @@ Object.assign(T.S,JSON.parse(S0));}
 // sin cantidad solo pueden ir condimentos («al gusto»): un ingrediente principal sin cantidad no entra bien en la compra
 {const ok=/^(sal|pimienta|aceite|aceite de oliva|ajo|perejil|tomillo|romero|laurel|canela|curri|azafr[aá]n|estrag[oó]n|albahaca|or[eé]gano|piment[oó]n|vinagre|ketchup|mostaza|nuez moscada|comino|hierbas|agua|lim[oó]n|az[uú]car glas|vainilla|salvia|cebollino|especias)$/i;
 caso("ingredientes principales con cantidad",base.flatMap(r=>r.ingredients.filter(i=>!String(i.qty).trim()&&!i.name.trim().split(/ [ou] /).every(x=>ok.test(x.trim()))).map(i=>r.id+": "+i.name)),[]);}
+// imprimir: el reparto en tres columnas no pierde, no repite y mantiene el orden; columnas equilibradas
+{const bl=Array.from({length:10},(_,i)=>[`<b>${i}</b>`,i%3+1]),h=T.tres(bl),cols=h.split("</div><div>");
+caso("tres: salen 3 columnas",(h.match(/<div>/g)||[]).length,3);
+caso("tres: todo, una vez y en orden",[...h.matchAll(/<b>(\d)<\/b>/g)].map(m=>+m[1]).join(""),"0123456789");
+caso("tres: ninguna columna vacía con 10 bloques",cols.every(c=>/<b>/.test(c)),true);
+caso("tres: con un solo bloque no se rompe",(T.tres([["<b>x</b>",3]]).match(/<b>x<\/b>/g)||[]).length,1);}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);
