@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,tres,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -143,6 +143,9 @@ caso("tres: salen 3 columnas",(h.match(/<div>/g)||[]).length,3);
 caso("tres: todo, una vez y en orden",[...h.matchAll(/<b>(\d)<\/b>/g)].map(m=>+m[1]).join(""),"0123456789");
 caso("tres: ninguna columna vacía con 10 bloques",cols.every(c=>/<b>/.test(c)),true);
 caso("tres: con un solo bloque no se rompe",(T.tres([["<b>x</b>",3]]).match(/<b>x<\/b>/g)||[]).length,1);}
+// nombre del PDF: «Menú - actividad», sin caracteres que no admiten los ficheros
+caso("nombre del PDF",T.nombrePDF("Acampada (2 días)"),"Menú - Acampada (2 días)");
+caso("nombre del PDF sin barras ni dos puntos",T.nombrePDF("Ruta: día 1/2"),"Menú - Ruta día 1 2");
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

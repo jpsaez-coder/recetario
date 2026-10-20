@@ -644,7 +644,9 @@ function vSueltos(n,H){
 function vTopMenu(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length,ok=done===all.length;
   return `<div class="card topm"><div class="tm"><span>${ok?"✅":"🧺"} <b>Básicos de intendencia</b><small>${done} de ${all.length} en la caja</small></span><button class="btn ${ok?"ghost":"alt"} sm" data-act="irBas">${ok?"Ver":"Ir a la checklist"}</button></div>
-  ${planIds().length?`<div class="tm"><span>🖨️ <b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>`:""}</div>`;
+  ${planIds().length?`<div class="tm"><span>🖨️ <b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>
+  <div class="tm"><span>🧹 <b>Menú nuevo</b><small>Vacía este menú para preparar otra salida</small></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`:""}
+  ${S.ultimoMenu&&!planIds().length?`<div class="tm"><span>↩️ <b>Menú vaciado</b><small>${esc(S.ultimoMenu.n)} receta${S.ultimoMenu.n===1?"":"s"} · ${new Date(S.ultimoMenu.t).toLocaleDateString("es-ES")}</small></span><button class="btn ghost sm" data-act="menuDeshacer">Deshacer</button></div>`:""}</div>`;
 }
 /* tres columnas fijas, en orden y equilibradas por líneas: no depende de que el navegador
    respete las columnas de CSS al imprimir (algunos móviles las ignoran y sale una lista larga) */
@@ -672,10 +674,16 @@ function vImprimir(){
     <table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`}).join("")}`;
 }
+const nombrePDF=act=>("Menú - "+act).replace(/[\\/:*?"<>|]+/g," ").replace(/\s+/g," ").trim();
 function imprimir(){
   let el=document.getElementById("imprimir");
   if(!el){el=document.createElement("div");el.id="imprimir";document.body.appendChild(el)}
   el.innerHTML=vImprimir();
+  /* el navegador propone como nombre del PDF el título de la página */
+  const t0=document.title,s=SALIDAS[S.salida]?S.salida:"finde";
+  document.title=nombrePDF(SALIDAS[s].n);
+  /* se deja puesto hasta cambiar de pestaña: en el móvil el aviso de «impreso» llega antes de guardar */
+  if(!U.tituloApp)U.tituloApp=t0;
   try{window.print()}catch(e){}
 }
 function vMenu(){
@@ -1207,7 +1215,13 @@ document.addEventListener("click",async e=>{
   const a=b.dataset.act;sync();
   if(a==="irBas"){U.tab="guia";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
-  if(a==="tab"){U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
+  /* menú nuevo: vacía lo de este menú y guarda una copia para deshacer; personas, alergias, presupuesto, salida y checklist se quedan */
+  if(a==="menuNo"){U.confVaciar=false;render();return}
+  if(a==="menuNuevo"){if(!U.confVaciar){U.confVaciar=true;render();return}U.confVaciar=false;
+    S.ultimoMenu={t:Date.now(),n:planIds().length,menu:S.menu||[],plan:S.plan||{},extras:S.extras||[],ajustes:S.ajustes||{},bought:S.bought||{},have:S.have||{},act:S.act||{},clima:S.clima||{},dias:S.dias||1};
+    S.menu=[];S.plan={};S.extras=[];S.ajustes={};S.bought={};S.have={};S.act={};S.clima={};U.aj="";persist();render();window.scrollTo(0,0);return}
+  if(a==="menuDeshacer"){const u=S.ultimoMenu;if(u){for(const k of ["menu","plan","extras","ajustes","bought","have","act","clima","dias"])S[k]=u[k];delete S.ultimoMenu;persist();render()}return}
+  if(a==="tab"){if(U.tituloApp){document.title=U.tituloApp;U.tituloApp=""}U.confVaciar=false;U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
   else if(a==="pm"){S.people=Math.max(0,S.people+num(b.dataset.d));if(!HEADS())S.people=1;persist()}
   else if(a==="pk"){S.kids=Math.max(0,(S.kids||0)+num(b.dataset.d));if(!HEADS())S.kids=1;persist()}
   else if(a==="filter"){U.f=U.f||{};U.f[b.dataset.k]=b.dataset.c}
