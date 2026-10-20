@@ -178,7 +178,7 @@ textarea{min-height:90px;resize:vertical}
 <script>
 /* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
    Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
-const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Merienda","Entrante","Principal","Postre y masas"]},
+const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Entrante","Principal","Postre y masas","Merienda"]},
   {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa","Fuego"]},
   {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
 const BASE_CATS=FACETS.flatMap(f=>f.v);
@@ -260,7 +260,7 @@ function cleanRecipe(r){
     ingredients:r.ingredients.slice(0,60).map(i=>({name:String(i&&i.name||"").slice(0,80),qty:String(i&&i.qty!=null?i.qty:""),unit:UNITS.includes(i&&i.unit)?i.unit:"ud",price:String(i&&i.price!=null?i.price:"")})),
     steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000),
     ...(typeof r.foto==="string"&&/^fotos\/[a-z0-9-]+\.jpg$/.test(r.foto)?{foto:r.foto,
-      ...(r.fotoCredito&&typeof r.fotoCredito.pagina==="string"&&/^https:\/\/commons\.wikimedia\.org\//.test(r.fotoCredito.pagina)?{fotoCredito:{autor:String(r.fotoCredito.autor||"").slice(0,80),licencia:String(r.fotoCredito.licencia||"").slice(0,30),pagina:r.fotoCredito.pagina}}:{})}:{})};
+      ...(r.fotoCredito&&typeof r.fotoCredito.pagina==="string"&&/^https:\/\/(commons\.wikimedia\.org|www\.flickr\.com|flickr\.com|www\.rawpixel\.com)\//.test(r.fotoCredito.pagina)?{fotoCredito:{autor:String(r.fotoCredito.autor||"").slice(0,80),licencia:String(r.fotoCredito.licencia||"").slice(0,30),pagina:r.fotoCredito.pagina}}:{})}:{})};
 }
 /* ---------- fotos ----------
    Base: r.foto = "fotos/<id>.jpg" (vienen con la app). Tuyas: r.foto = "idb", la imagen va en IndexedDB
@@ -561,7 +561,7 @@ function vList(){
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     const fs=fotoSrc(r);
-    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">${r.fotoCredito?`<p class="cred">Foto: <a href="${esc(r.fotoCredito.pagina)}" target="_blank" rel="noopener">${esc(r.fotoCredito.autor||"Wikimedia Commons")}</a> · ${esc(r.fotoCredito.licencia)} · orientativa</p>`:""}`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
+    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">${r.fotoCredito?`<p class="cred">Foto: <a href="${esc(r.fotoCredito.pagina)}" target="_blank" rel="noopener">${esc(r.fotoCredito.autor||"autor desconocido")}</a> · ${esc(r.fotoCredito.licencia)} · orientativa</p>`:""}`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
       const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
     <div class="row"><button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button>

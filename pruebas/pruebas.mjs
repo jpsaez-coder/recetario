@@ -107,7 +107,7 @@ caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:
 // fotos base: el fichero existe, tiene crédito con enlace a Commons y está en la lista del modo sin conexión
 {const conF=base.filter(r=>r.foto);const lista=fs.readFileSync(path.join(raiz,"fotos/lista.js"),"utf8");
 caso("fotos base: el fichero existe",conF.filter(r=>!fs.existsSync(path.join(raiz,r.foto))).map(r=>r.id),[]);
-caso("fotos base: con crédito de Commons",conF.filter(r=>!(r.fotoCredito&&/^https:\/\/commons\.wikimedia\.org\//.test(r.fotoCredito.pagina)&&r.fotoCredito.licencia)).map(r=>r.id),[]);
+caso("fotos base: con crédito y página de origen",conF.filter(r=>!(r.fotoCredito&&/^https:\/\/(commons\.wikimedia\.org|www\.flickr\.com|www\.rawpixel\.com)\//.test(r.fotoCredito.pagina)&&r.fotoCredito.licencia)).map(r=>r.id),[]);
 caso("fotos base: en la lista sin conexión",conF.filter(r=>!lista.includes(r.foto)).map(r=>r.id),[]);
 caso("hay fotos base",conF.length>40,true);}
 // versión: la visible y la del service worker, iguales
