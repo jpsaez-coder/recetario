@@ -134,6 +134,7 @@
    "Casa",
    "Fuego"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan",
@@ -179,6 +180,7 @@
    "Casa",
    "Fuego"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan",
@@ -211,6 +213,7 @@
    "Acampada",
    "Casa"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Leche",
@@ -281,6 +284,7 @@
    "Desayuno",
    "Casa"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Yogur natural",
@@ -313,6 +317,7 @@
    "Ruta",
    "Acampada"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan",
@@ -341,6 +346,7 @@
    "Acampada",
    "Casa"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan",
@@ -373,6 +379,7 @@
    "Acampada",
    "Casa"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan",
@@ -611,6 +618,7 @@
    "Acampada",
    "Casa"
   ],
+  "sencilla": true,
   "ingredients": [
    {
     "name": "Pan de molde",

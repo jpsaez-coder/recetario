@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -156,6 +156,36 @@ caso("compra: cebolla y cebollas juntas",it.filter(i=>/^cebollas?$/i.test(i.name
 const R=(id,ings)=>({id,name:id,servings:1,categories:[],steps:"",ingredients:ings.map(([name,qty,unit])=>({name,qty:String(qty),unit,price:""}))});
 const dos=T.shopList([R("a",[["Cebolla",2,"ud"]]),R("b",[["Cebollas",300,"g"]])],1).filter(i=>/cebolla/i.test(i.name));
 caso("compra: 2 cebollas + 300 g = 600 g en una línea",dos.length===1&&Math.round(dos[0].q),600);}
+// compra de un menú completo, hecha a mano: 8 personas, 2 días
+// día 1: gachas + bocadillo de chorizo; día 2: pan con tomate + leche con cacao + bocadillo de chorizo
+// pan: 2 barras×2 (bocadillo) ×2 días + 1×2 (pan con tomate) = 10 barras; leche: 1 l×2 + 1 l×2 = 4 l; chorizo: 160 g×2×2 = 640 g
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,people:T.S.people,kids:T.S.kids,have:T.S.have,extras:T.S.extras,ajustes:T.S.ajustes});
+Object.assign(T.S,{people:8,kids:0,dias:2,have:{},extras:[],ajustes:{},menu:["ej-gachas-avena","ej-bocadillo-chorizo","ej-pan-tomate","ej-leche-cacao"],
+ plan:{"1|Desayuno":["ej-gachas-avena"],"1|Comida":["ej-bocadillo-chorizo"],"2|Desayuno":["ej-pan-tomate","ej-leche-cacao"],"2|Comida":["ej-bocadillo-chorizo"]}});
+const it=T.shopList(T.planIds().map(T.getR),T.RAC()),q=re=>{const x=it.find(i=>re.test(i.name));return x?Math.round(x.q)+" "+x.unit:"no está"};
+caso("menú completo: raciones",T.RAC(),8);
+caso("menú completo: pan",q(/^pan$/i),"10 barra");
+caso("menú completo: leche",q(/^leche$/i),"4000 ml");
+caso("menú completo: chorizo",q(/^chorizo$/i),"640 g");
+Object.assign(T.S,JSON.parse(S0));}
+// imprimir: lo que solo se monta va en días y compra, no como receta; comidas vacías según la salida; ajustar al tocar la receta
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,salida:T.S.salida});const U0={aj:T.U.aj,ajAt:T.U.ajAt};
+Object.assign(T.S,{dias:2,salida:"finde",menu:["ej-pan-tomate","ej-gachas-avena"],plan:{"1|Comida":["ej-gachas-avena"],"2|Desayuno":["ej-pan-tomate"]}});
+const h=T.vImprimir();
+caso("imprimir: pan con tomate no sale como receta",/Pan con tomate y aceite<\/h3>/.test(h),false);
+caso("imprimir: pan con tomate sale en el día",/<td>[^<]*Pan con tomate y aceite/.test(h),true);
+caso("imprimir: pan con tomate en «se montan en el momento»",/Se montan en el momento[\s\S]*Pan con tomate/.test(h),true);
+caso("imprimir: las gachas sí salen como receta",/Gachas de avena con plátano<\/h3>/.test(h),true);
+caso("vacías acampada, día 1: sin desayuno no avisa; falta la cena",T.comidasVacias(1),["Cena"]);
+caso("vacías acampada, último día: sin cena no avisa; falta la comida",T.comidasVacias(2),["Comida"]);
+T.S.salida="ruta";T.S.dias=1;T.S.plan={"1|Desayuno":["ej-pan-tomate"]};caso("vacías ruta: solo pide la comida",T.comidasVacias(1),["Comida"]);
+T.S.salida="reunion";caso("vacías reunión: no avisa",T.comidasVacias(1),[]);
+T.S.salida="finde";T.S.dias=2;T.S.plan={"1|Comida":["ej-gachas-avena"],"2|Desayuno":["ej-pan-tomate"]};
+T.U.aj="ej-gachas-avena";T.U.ajAt="1|Comida";const v=T.vDias();
+caso("ajustar: el panel sale una vez",(v.match(/Ajustar: /g)||[]).length,1);
+caso("ajustar: debajo de la comida tocada, no arriba",v.indexOf("Ajustar: ")>v.indexOf('data-k="1|Comida"'),true);
+caso("ajustar: ya no hay botón «Ajustar» suelto",/>Ajustar<\/button>/.test(v),false);
+Object.assign(T.S,JSON.parse(S0));Object.assign(T.U,U0);}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

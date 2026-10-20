@@ -126,7 +126,7 @@ h3.secc{font-size:14px;color:var(--pine);margin:14px 0 0;text-transform:uppercas
 label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;height:20px;flex:none;accent-color:var(--pine)}
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
-.x.aj{font-size:12px;text-decoration:underline;color:var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
+.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
 .dia-h h3{white-space:nowrap}.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}.dia-s{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
@@ -662,7 +662,8 @@ function vImprimir(){
   const dias=[];for(let d=1;d<=D;d++){const fil=MOMS.map(m=>[m,((S.plan&&S.plan[d+"|"+m])||[]).map(getM).filter(Boolean)]).filter(([,rs])=>rs.length);if(fil.length)dias.push([d,fil])}
   const rs0=ent.map(e=>getM(e.id)).filter(Boolean),sr=sueltosRecipe(n,H),items=shopList(sr?[...rs0,sr]:rs0,n).filter(i=>!i.have);
   const grupos=[...SECC.map(([x])=>x),"Otros"].map(x=>[x,items.filter(i=>seccion(i.name)===x)]).filter(([,xs])=>xs.length);
-  const unicas=[...new Map(rs0.map(r=>[r.id,r])).values()];
+  /* lo que solo se monta (pan con tomate, bocadillos…) va en los días y en la compra, pero no como receta */
+  const todas=[...new Map(rs0.map(r=>[r.id,r])).values()],unicas=todas.filter(r=>!r.sencilla),montar=todas.filter(r=>r.sencilla);
   const veces=id=>ent.filter(e=>e.id===id).length;
   const faltan=BASICOS.flatMap(([,xs])=>xs).filter(x=>!(S.check&&S.check[x]));
   return `<h1>Menú · ${esc(SALIDAS[s].n)}</h1><p class="sub">${esc(grupoTxt())} · ${D} día${D===1?"":"s"} · Recetario ${esc(APP_VERSION)} · ${new Date().toLocaleDateString("es-ES")}</p>
@@ -670,9 +671,10 @@ function vImprimir(){
   ${sinDia.length?`<h2>Sin día</h2><p>${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
   ${grupos.length?`<h2>Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>☐ ${esc(i.name)}${i.pk?`: ${i.k} × ${fmtQ(i.pk.size,i.unit)}`:i.q>0?`: ${fmtQ(i.q,i.unit)}`:" (al gusto)"}</li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
   ${faltan.length?`<h2>Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>☐ ${esc(x)}</li></ul>`,Math.ceil(x.length/34)]))}`:""}
-  <h2>Recetas</h2>${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<div class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
+  ${unicas.length?`<h2>Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<div class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
     <table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
-    ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`}).join("")}`;
+    ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`}).join("")}
+  ${montar.length?`<p class="sub" style="margin-top:8pt"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}`;
 }
 const nombrePDF=act=>("Menú - "+act).replace(/[\\/:*?"<>|]+/g," ").replace(/\s+/g," ").trim();
 function imprimir(){
@@ -987,14 +989,27 @@ function vObjetivo(d){
   return `<div class="obj"><details class="plg3" data-k="${k}"${U.det&&U.det[k]?" open":""}><summary>${fila("Energía",t.kcal,o.kcal,"kcal")}</summary>${fila("Hidratos",t.c,o.c,"g")}${fila("Proteína",t.p,o.p,"g")}</details>
   ${t.kcal>0&&falta>o.kcal*0.15?`<p class="msg warn">Faltan ~${Math.round(falta/50)*50} kcal por persona: más ración o sueltos.</p>`:""}${CLIMA[climaDia(d)].aviso?`<div class="fl">${CLIMA[climaDia(d)].aviso.split(":")[0]}${inf("cl"+d,CLIMA[climaDia(d)].aviso.split(":").slice(1).join(":").trim())}</div>`:""}</div>`;
 }
+/* el nombre de la receta en el menú abre su ajuste justo debajo de donde se toca */
+const plName=(r,at)=>`<button class="pln" data-act="aj" data-id="${r.id}" data-at="${at}" title="${esc(r.name)} · tocar para ajustar" aria-expanded="${U.aj===r.id&&U.ajAt===at}">${esc(corto(r))}</button>`;
+const ajAqui=at=>U.aj&&U.ajAt===at&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):"";
+/* comidas que faltan en un día, según la salida: la ruta solo pide la comida; en la acampada,
+   el desayuno del primer día y la cena del último suelen hacerse en casa; la reunión no avisa.
+   Solo cuando ya se ha empezado a repartir por días. */
+function comidasVacias(d){
+  const s=SALIDAS[S.salida]?S.salida:"finde",D=S.dias||1,p=S.plan||{};
+  if(s==="reunion"||!Object.values(p).some(x=>x&&x.length))return [];
+  let pide=s==="ruta"?["Comida"]:["Desayuno","Comida","Cena"];
+  if(s!=="ruta"){if(d===1&&D>1)pide=pide.filter(m=>m!=="Desayuno");if(d===D&&D>1)pide=pide.filter(m=>m!=="Cena")}
+  return pide.filter(m=>!((p[d+"|"+m]||[]).length));
+}
 function vDias(){
   const D=S.dias||1,al=S.alergias||[];
   let h=`<div class="card"><div class="fl h"><h2>Menú por días</h2>${inf("dia","Elige en Recetas las del menú y repártelas por días; las que no pongas en ningún día cuentan una vez. Cada día compara lo que come una ración de adulto con lo que pide su actividad (toca la barra para ver hidratos y proteína). En la marcha de más de 1 h: 30-60 g de hidratos por hora y persona, por ejemplo un plátano o una barrita cada hora.")}</div><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
   const sel=(S.menu||[]).map(getM).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
   /* arriba solo lo que aún no tiene día: lo demás ya se ve en su día y no se repite */
   const sinDia=sel.filter(r=>!asig.has(r.id));
-  h+=sel.length?`<label class="f">${sinDia.length?"Sin día (cuentan una vez)":"Recetas del menú"}</label>${sinDia.length?`<div class="slot-r">${sinDia.map(r=>`<span class="pl" title="${esc(r.name)}">${esc(corto(r))}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>`:`<p class="msg" style="margin:0 0 6px">Todas puestas en un día.</p>`}
-  ${sel.length>sinDia.length?`<select class="pladd" data-act="ajSel" aria-label="Ajustar una receta del menú"><option value="">Ajustar una receta…</option>${sel.map(r=>{const v=planIds().filter(x=>x===r.id).length;return `<option value="${r.id}" ${U.aj===r.id?"selected":""}>${esc(corto(r))}${v>1?` ×${v}`:""}</option>`}).join("")}</select>`:""}${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}`:`<label class="f">Recetas del menú</label><p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`;
+  h+=sel.length?`<label class="f">${sinDia.length?"Sin día (cuentan una vez)":"Recetas del menú"}</label>${sinDia.length?`<div class="slot-r">${sinDia.map(r=>`<span class="pl${U.aj===r.id&&U.ajAt==="top"?" on":""}">${plName(r,"top")}<button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${ajAqui("top")}`:`<p class="msg" style="margin:0 0 6px">Todas puestas en un día.</p>`}
+  ${sel.length?`<p class="msg" style="margin:2px 0 0">Toca una receta para ajustarla a este menú.</p>`:""}`:`<label class="f">Recetas del menú</label><p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`;
   if(sel.length)for(let d=1;d<=D;d++){
     h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><div class="dia-s"><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select><select data-act="climaDia" data-k="${d}" aria-label="Clima del día ${d}">${Object.entries(CLIMA).map(([k,v])=>`<option value="${k}" ${climaDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div></div>`;
     for(const m of MOMS){
@@ -1002,9 +1017,11 @@ function vDias(){
       const cs=costeSlot(d,m);
       h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{const r=getM(id);if(!r)return "";
         const warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
-        return `<span class="pl" title="${esc(r.name)}">${esc(corto(r))}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
-        <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>`;
+        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
+        <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${optRecetas(m)}</select></div></div>${ajAqui(d+"|"+m)}`;
     }
+    const vacias=comidasVacias(d);
+    if(vacias.length)h+=`<p class="msg warn" style="margin:4px 0">Sin nada: ${vacias.map(x=>x.toLowerCase()).join(", ")}.</p>`;
     const cd=MOMS.reduce((a,m)=>a+costeSlot(d,m),0);
     if(cd>0)h+=`<p class="msg">Día ${d}: <b>${eur(cd)}</b> · ${eur(cd/HEADS())} por persona</p>`;
     h+=vObjetivo(d);
@@ -1238,7 +1255,6 @@ document.addEventListener("input",e=>{
   if(e.target.dataset.act==="ajChk"){const id=e.target.dataset.id,k=e.target.dataset.k;S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};
     x.quitar=e.target.checked?(x.quitar||[]).filter(z=>z!==k):[...new Set([...(x.quitar||[]),k])];persist();render();return}
   if(e.target.dataset.act==="buyChk"){S.bought=S.bought||{};if(e.target.checked)S.bought[e.target.dataset.k]=true;else delete S.bought[e.target.dataset.k];persist();render();return}
-  if(e.target.dataset.act==="ajSel"){U.aj=e.target.value;render();return}
   if(e.target.dataset.act==="plAdd"){if(e.target.value){const [d,m]=e.target.dataset.k.split("|");addPlan(e.target.value,+d,m)}render();return}
   if(e.target.dataset.act==="algChk"){const k=e.target.dataset.k;S.alergias=e.target.checked?[...new Set([...(S.alergias||[]),k])]:(S.alergias||[]).filter(x=>x!==k);persist();render();return}
   if(e.target.dataset.act==="aptaChk"){U.apta=e.target.checked;render();return}
@@ -1285,7 +1301,7 @@ document.addEventListener("click",async e=>{
   else if(a==="open")U.open=U.open===b.dataset.id?null:b.dataset.id;
   else if(a==="menu"){const id=b.dataset.id;if(S.menu.includes(id)){S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);if(S.ajustes)delete S.ajustes[id];if(U.aj===id)U.aj=""}else S.menu=[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){const id=b.dataset.id;FOTOS.del(id).catch(()=>{});S.recipes=S.recipes.filter(r=>r.id!==id);S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);persist()}}
-  else if(a==="aj"){U.aj=U.aj===b.dataset.id?"":b.dataset.id}
+  else if(a==="aj"){const at=b.dataset.at||"";if(!b.dataset.id||(U.aj===b.dataset.id&&U.ajAt===at)){U.aj="";U.ajAt=""}else{U.aj=b.dataset.id;U.ajAt=at}}
   else if(a==="ajAdd"){const name=$("#ajName").value.trim();if(name){const id=b.dataset.id,qt=num($("#ajQty").value),pr=$("#ajPrice").value.trim();
     S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};x.mas=[...(x.mas||[]),{name:name.slice(0,60),qty:qt>0?String(qt):"",unit:qt>0?$("#ajUnit").value:"ud",price:pr?String(num(pr)):""}];persist()}}
   else if(a==="ajDel"){const x=(S.ajustes||{})[b.dataset.id];if(x){x.mas=(x.mas||[]).filter((_,i)=>i!==+b.dataset.i);persist()}}
