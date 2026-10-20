@@ -101,15 +101,11 @@ const tit=[...h.matchAll(/<h3 class="secc grp-t">([^<]+)<\/h3>/g)].map(m=>m[1]);
 caso("grupos en el orden de Plato",tit,T.FACETS[0].v.filter(p=>tit.includes(p)));
 caso("hay grupo de Desayuno y de Principal",tit.includes("Desayuno")&&tit.includes("Principal"),true);
 T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/grp-t/.test(h2),false);T.U.ord="plato";}
-// fotos: la ruta de una foto base pasa por cleanRecipe; una ruta rara, no
-caso("foto base se conserva",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,"fotos/ej-arroz.jpg");
+// fotos: las base se retiraron en la 1.17.0; solo quedan las tuyas (r.foto="idb", en IndexedDB)
+caso("foto base antigua se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,undefined);
 caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
-// fotos base: el fichero existe, tiene crédito con enlace a Commons y está en la lista del modo sin conexión
-{const conF=base.filter(r=>r.foto);const lista=fs.readFileSync(path.join(raiz,"fotos/lista.js"),"utf8");
-caso("fotos base: el fichero existe",conF.filter(r=>!fs.existsSync(path.join(raiz,r.foto))).map(r=>r.id),[]);
-caso("fotos base: con crédito y página de origen",conF.filter(r=>!(r.fotoCredito&&/^https:\/\/(commons\.wikimedia\.org|www\.flickr\.com|www\.rawpixel\.com)\//.test(r.fotoCredito.pagina)&&r.fotoCredito.licencia)).map(r=>r.id),[]);
-caso("fotos base: en la lista sin conexión",conF.filter(r=>!lista.includes(r.foto)).map(r=>r.id),[]);
-caso("hay fotos base",conF.length>40,true);}
+caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
+caso("el modo sin conexión no pide fotos",/fotos\//.test(fs.readFileSync(path.join(raiz,"sw.js"),"utf8")),false);
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);

@@ -148,7 +148,7 @@ button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:
 .foto-th{width:56px;height:56px;object-fit:cover;border-radius:10px;flex:none}.tit{flex:1;min-width:0}
 .foto-big{width:calc(100% + 28px);margin:-14px -14px 10px;max-height:240px;object-fit:cover;border-radius:14px 14px 0 0;display:block}
 .foto-ed{width:100%;max-height:220px;object-fit:cover;border-radius:10px;margin-bottom:6px}
-.cred{font-size:11px;color:var(--mute);margin:-6px 0 8px}.cred a{font-weight:400;line-height:1.3}
+
 td.q.w{white-space:normal}
 td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
@@ -258,12 +258,10 @@ function cleanRecipe(r){
   return {id:typeof r.id==="string"?r.id.slice(0,40):uid(),name:String(r.name).slice(0,120),servings:Math.max(1,Math.round(num(r.servings))||4),
     categories:migCats((Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean)).slice(0,8),
     ingredients:r.ingredients.slice(0,60).map(i=>({name:String(i&&i.name||"").slice(0,80),qty:String(i&&i.qty!=null?i.qty:""),unit:UNITS.includes(i&&i.unit)?i.unit:"ud",price:String(i&&i.price!=null?i.price:"")})),
-    steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000),
-    ...(typeof r.foto==="string"&&/^fotos\/[a-z0-9-]+\.jpg$/.test(r.foto)?{foto:r.foto,
-      ...(r.fotoCredito&&typeof r.fotoCredito.pagina==="string"&&/^https:\/\/(commons\.wikimedia\.org|www\.flickr\.com|flickr\.com|www\.rawpixel\.com)\//.test(r.fotoCredito.pagina)?{fotoCredito:{autor:String(r.fotoCredito.autor||"").slice(0,80),licencia:String(r.fotoCredito.licencia||"").slice(0,30),pagina:r.fotoCredito.pagina}}:{})}:{})};
+    steps:(Array.isArray(r.steps)?r.steps.join("\n"):String(r.steps||"")).slice(0,4000)};
 }
 /* ---------- fotos ----------
-   Base: r.foto = "fotos/<id>.jpg" (vienen con la app). Tuyas: r.foto = "idb", la imagen va en IndexedDB
+   Solo las tuyas: r.foto = "idb", la imagen va en IndexedDB
    con la clave del id de la receta (localStorage no da para fotos). Se reducen a 900 px antes de guardarse. */
 const FOTOS={db:null,
   open(){return this.db||(this.db=new Promise((ok,ko)=>{try{const q=indexedDB.open("recetario-fotos",1);q.onupgradeneeded=()=>q.result.createObjectStore("f");q.onsuccess=()=>ok(q.result);q.onerror=()=>ko(q.error)}catch(e){ko(e)}}))},
@@ -271,8 +269,8 @@ const FOTOS={db:null,
   put(k,b){return this.tx("readwrite",s=>s.put(b,k))},get(k){return this.tx("readonly",s=>s.get(k))},del(k){return this.tx("readwrite",s=>s.delete(k))}};
 const FOTO_URL={};
 function fotoSrc(r){
-  if(!r||!r.foto)return null;
-  if(r.foto!=="idb")return r.foto;
+  /* las fotos base se retiraron en la 1.17.0: una copia antigua con "fotos/…" se queda sin foto, no con una rota */
+  if(!r||r.foto!=="idb")return null;
   if(FOTO_URL[r.id])return FOTO_URL[r.id];
   if(FOTO_URL[r.id]===undefined){FOTO_URL[r.id]=null;FOTOS.get(r.id).then(b=>{if(b){FOTO_URL[r.id]=URL.createObjectURL(b);render()}}).catch(()=>{})}
   return null;
@@ -286,7 +284,7 @@ async function reducir(file,max=900){
 const blobADatos=b=>new Promise(ok=>{const f=new FileReader();f.onload=()=>ok(f.result);f.readAsDataURL(b)});
 const datosABlob=async u=>(await fetch(u)).blob();
 /* para exportar y compartir: la foto viaja dentro del fichero */
-async function conFoto(r){const c=cleanRecipe(r);if(r.foto==="idb"){const b=await FOTOS.get(r.id).catch(()=>null);if(b)c.fotoData=await blobADatos(b)}else if(r.foto)c.foto=r.foto;return c}
+async function conFoto(r){const c=cleanRecipe(r);if(r.foto==="idb"){const b=await FOTOS.get(r.id).catch(()=>null);if(b)c.fotoData=await blobADatos(b)}return c}
 const sig=r=>norm(r.name)+"|"+r.ingredients.map(i=>norm(i.name)).sort().join(",");
 async function saveFile(name,obj){
   const blob=new Blob([JSON.stringify(obj,null,1)],{type:"application/json"});
@@ -561,7 +559,7 @@ function vList(){
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     const fs=fotoSrc(r);
-    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">${r.fotoCredito?`<p class="cred">Foto: <a href="${esc(r.fotoCredito.pagina)}" target="_blank" rel="noopener">${esc(r.fotoCredito.autor||"autor desconocido")}</a> · ${esc(r.fotoCredito.licencia)} · orientativa</p>`:""}`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
+    return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
       const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
     <div class="row"><button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button>
@@ -1066,7 +1064,7 @@ function vForm(){
   ${U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}</div>
   <div class="ai"><p><b>Importar una receta</b> Pega el texto de la web o la descripción del vídeo de Instagram o TikTok y la dejo en pasos simples.</p><textarea id="imp" placeholder="Pega aquí el texto de la receta" aria-label="Texto de la receta">${esc(U.impQ||"")}</textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="imp" ${U.impBusy?"disabled":""}>${U.impBusy?"Importando…":"Importar receta"}</button></div>${U.impMsg?`<p class="msg ${U.impErr?"err":""}">${esc(U.impMsg)}</p>`:""}</div>`:U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}
   <div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
-  <label class="f">Foto</label>${(()=>{const src=U.draftFotoURL||(d.foto&&d.foto!=="idb"?d.foto:d.id&&d.foto==="idb"?FOTO_URL[d.id]:null);
+  <label class="f">Foto</label>${(()=>{const src=U.draftFotoURL||(d.id&&d.foto==="idb"?FOTO_URL[d.id]:null);
     return `${src?`<img class="foto-ed" src="${esc(src)}" alt="Foto de la receta">`:""}<div class="row"><label class="btn alt sm">${src?"Cambiar foto":"Añadir foto"}<input type="file" accept="image/*" data-act="fotoIn" hidden></label>${src?`<button class="btn ghost sm" data-act="fotoQuitar">Quitar foto</button>`:""}</div>`})()}
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
   ${FACETS.map(f=>`<label class="f">${f.n}${f.one?(f.k==="temp"?" (si no marcas, todo el año)":""):" (una o varias)"}</label><div class="chips" style="flex-wrap:wrap;overflow:visible">${f.v.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`).join("")}
