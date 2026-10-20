@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -104,6 +104,11 @@ T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/gr
 // fotos: las base se retiraron en la 1.17.0; solo quedan las tuyas (r.foto="idb", en IndexedDB)
 caso("foto base antigua se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,undefined);
 caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
+// nombre corto del menú: cabe, no se repite (si dos se llaman igual no se distinguen) y la de usuario se recorta por palabras
+caso("nombre corto: cabe en 24 letras",base.filter(r=>T.corto(r).replace("…","").length>24).map(r=>r.id),[]);
+{const v=base.map(r=>T.corto(r));caso("nombre corto: no se repite",v.filter((c,i)=>v.indexOf(c)!==i),[]);}
+caso("nombre corto: una tuya larga se recorta por palabras",T.corto({name:"Lentejas estofadas de la abuela con chorizo"}),"Lentejas estofadas…");
+caso("nombre corto: una corta se queda igual",T.corto({name:"Pan con chocolate"}),"Pan con chocolate");
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

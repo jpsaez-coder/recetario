@@ -2,6 +2,7 @@
  {
   "id": "ej-cuscus",
   "name": "Ensalada de cuscús para la mochila",
+  "corto": "Ensalada de cuscús",
   "servings": 4,
   "categories": [
    "Principal",
@@ -57,6 +58,7 @@
  {
   "id": "ej-arroz",
   "name": "Arroz con chorizo en una olla",
+  "corto": "Arroz con chorizo",
   "servings": 4,
   "categories": [
    "Principal",
@@ -169,6 +171,7 @@
  {
   "id": "ej-tostadas-mermelada",
   "name": "Tostadas con mantequilla y mermelada",
+  "corto": "Tostadas con mermelada",
   "servings": 4,
   "categories": [
    "Desayuno",
@@ -201,6 +204,7 @@
  {
   "id": "ej-leche-cacao",
   "name": "Leche con cacao y galletas",
+  "corto": "Leche con cacao",
   "servings": 4,
   "categories": [
    "Desayuno",
@@ -232,6 +236,7 @@
  {
   "id": "ej-gachas-avena",
   "name": "Gachas de avena con plátano",
+  "corto": "Gachas de avena",
   "servings": 4,
   "categories": [
    "Desayuno",
@@ -270,6 +275,7 @@
  {
   "id": "ej-yogur-cereales",
   "name": "Yogur con cereales y fruta",
+  "corto": "Yogur con cereales",
   "servings": 4,
   "categories": [
    "Desayuno",
@@ -326,6 +332,7 @@
  {
   "id": "ej-bocadillo-jamon-queso",
   "name": "Bocadillo de jamón cocido y queso",
+  "corto": "Bocadillo jamón y queso",
   "servings": 4,
   "categories": [
    "Merienda",
@@ -423,6 +430,7 @@
  {
   "id": "mr-crepes-pavo-queso",
   "name": "Crepes salados de pavo y queso",
+  "corto": "Crepes de pavo",
   "servings": 16,
   "categories": [
    "Desayuno",
@@ -476,6 +484,7 @@
  {
   "id": "mr-picada-cuscus",
   "name": "Salteado de carne picada con verduras y cuscús",
+  "corto": "Picada con cuscús",
   "servings": 16,
   "categories": [
    "Principal",
@@ -540,6 +549,7 @@
  {
   "id": "mr-pasta-magro",
   "name": "Pasta con magro de cerdo y tomate",
+  "corto": "Pasta con magro",
   "servings": 16,
   "categories": [
    "Principal",
@@ -592,6 +602,7 @@
  {
   "id": "mr-molde-cacahuete",
   "name": "Pan de molde con crema de cacahuete y plátano",
+  "corto": "Molde con cacahuete",
   "servings": 16,
   "categories": [
    "Desayuno",
@@ -629,6 +640,7 @@
  {
   "id": "mr-ensalada-garbanzos",
   "name": "Ensalada campera de garbanzos y atún",
+  "corto": "Ensalada de garbanzos",
   "servings": 16,
   "categories": [
    "Principal",
@@ -689,6 +701,7 @@
  {
   "id": "mr-sopa-fideos-cocido",
   "name": "Sopa de fideos con caldo de cocido",
+  "corto": "Sopa de fideos",
   "servings": 16,
   "categories": [
    "Entrante",
@@ -766,6 +779,7 @@
  {
   "id": "tr-patatas-brasa",
   "name": "Patatas a la brasa en papel de aluminio",
+  "corto": "Patatas a la brasa",
   "servings": 4,
   "categories": [
    "Entrante",
@@ -837,6 +851,7 @@
  {
   "id": "tr-pinchitos",
   "name": "Pinchitos de carne y verduras",
+  "corto": "Pinchitos",
   "servings": 4,
   "categories": [
    "Principal",
@@ -898,6 +913,7 @@
  {
   "id": "tr-pescado-papillote",
   "name": "Pescado en papillote",
+  "corto": "Pescado en papillote",
   "servings": 4,
   "categories": [
    "Principal",
@@ -946,6 +962,7 @@
  {
   "id": "ej-pescado-patatas-aluminio",
   "name": "Pescado con patatas en papel de aluminio",
+  "corto": "Pescado con patatas",
   "servings": 4,
   "categories": [
    "Principal",
@@ -1008,6 +1025,7 @@
  {
   "id": "tr-platano-chocolate",
   "name": "Plátano con chocolate en las brasas",
+  "corto": "Plátano con chocolate",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -1068,6 +1086,7 @@
  {
   "id": "tr-bizcocho-naranja",
   "name": "Bizcocho dentro de una naranja",
+  "corto": "Bizcocho en naranja",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -1128,6 +1147,7 @@
  {
   "id": "tr-pan-de-palo",
   "name": "Pan de palo (pan serpiente)",
+  "corto": "Pan de palo",
   "servings": 4,
   "categories": [
    "Merienda",
@@ -1171,6 +1191,7 @@
  {
   "id": "tr-manzana-asada",
   "name": "Manzana asada en las brasas",
+  "corto": "Manzana asada",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -1214,6 +1235,7 @@
  {
   "id": "tr-nubes-galleta",
   "name": "Nubes asadas con galleta y chocolate",
+  "corto": "Nubes asadas",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -1571,6 +1593,7 @@
  {
   "id": "gpg-tomates-rellenos-de-huevo",
   "name": "Tomates rellenos de huevo",
+  "corto": "Tomates rellenos",
   "servings": 6,
   "categories": [
    "Entrante",
@@ -1693,6 +1716,7 @@
  {
   "id": "gpg-pizza-fria-de-verano-al-queso-de-cabra",
   "name": "Pizza fría de verano al queso de cabra",
+  "corto": "Pizza fría de cabra",
   "servings": 6,
   "categories": [
    "Entrante",
@@ -1868,6 +1892,7 @@
  {
   "id": "gpg-fabada-asturiana-rapida",
   "name": "Fabada asturiana rápida",
+  "corto": "Fabada",
   "servings": 8,
   "categories": [
    "Principal",
@@ -1990,6 +2015,7 @@
  {
   "id": "gpg-paella-de-campamento",
   "name": "Paella de campamento",
+  "corto": "Paella",
   "servings": 8,
   "categories": [
    "Principal",
@@ -2279,6 +2305,7 @@
  {
   "id": "ej-hamburguesas",
   "name": "Hamburguesas a la brasa o a la plancha",
+  "corto": "Hamburguesas",
   "servings": 4,
   "categories": [
    "Principal",
@@ -2348,6 +2375,7 @@
  {
   "id": "ej-pimientos-rellenos",
   "name": "Pimientos rellenos de carne, champiñones y zanahoria",
+  "corto": "Pimientos rellenos",
   "servings": 4,
   "categories": [
    "Principal",
@@ -2422,6 +2450,7 @@
  {
   "id": "gpg-arroz-a-la-cubana-de-campamento",
   "name": "Arroz a la cubana de campamento",
+  "corto": "Arroz a la cubana",
   "servings": 8,
   "categories": [
    "Principal",
@@ -2510,6 +2539,7 @@
  {
   "id": "gpg-sopa-de-ajo-castellana",
   "name": "Sopa de ajo castellana",
+  "corto": "Sopa de ajo",
   "servings": 8,
   "categories": [
    "Principal",
@@ -2657,6 +2687,7 @@
  {
   "id": "gpg-vieiras-a-la-gallega-con-fricase-de-verduras",
   "name": "Vieiras a la gallega con fricasé de verduras",
+  "corto": "Vieiras a la gallega",
   "servings": 8,
   "categories": [
    "Principal",
@@ -2751,6 +2782,7 @@
  {
   "id": "gpg-tortilla-de-patatas-tradicional",
   "name": "Tortilla de patatas tradicional",
+  "corto": "Tortilla de patatas",
   "servings": 8,
   "categories": [
    "Principal",
@@ -2861,6 +2893,7 @@
  {
   "id": "gpg-truffade-del-delfinado",
   "name": "Truffade del Delfinado",
+  "corto": "Truffade",
   "servings": 4,
   "categories": [
    "Principal",
@@ -2913,6 +2946,7 @@
  {
   "id": "gpg-escalope-a-la-crema-al-estilo-normando",
   "name": "Escalope a la crema al estilo normando",
+  "corto": "Escalope a la crema",
   "servings": 1,
   "categories": [
    "Principal",
@@ -2965,6 +2999,7 @@
  {
   "id": "gpg-arroz-gratinado-al-horno",
   "name": "Arroz gratinado al horno",
+  "corto": "Arroz gratinado",
   "servings": 4,
   "categories": [
    "Principal",
@@ -3087,6 +3122,7 @@
  {
   "id": "gpg-croque-monsieur-al-aluminio",
   "name": "Croque-monsieur al aluminio",
+  "corto": "Croque-monsieur",
   "servings": 4,
   "categories": [
    "Principal",
@@ -3164,6 +3200,7 @@
  {
   "id": "gpg-gratinado-rapido-de-pasta-atun-y-maiz",
   "name": "Gratinado rápido de pasta, atún y maíz",
+  "corto": "Gratinado de atún",
   "servings": 4,
   "categories": [
    "Principal",
@@ -3216,6 +3253,7 @@
  {
   "id": "gpg-entrecot-a-la-parrilla-a-la-nizarda",
   "name": "Entrecot a la parrilla a la nizarda",
+  "corto": "Entrecot a la parrilla",
   "servings": 4,
   "categories": [
    "Principal",
@@ -3293,6 +3331,7 @@
  {
   "id": "gpg-fricase-de-cerdo",
   "name": "Fricasé de cerdo",
+  "corto": "Fricasé de cerdo",
   "servings": 4,
   "categories": [
    "Principal",
@@ -3428,6 +3467,7 @@
  {
   "id": "gpg-cuajada-dulce-de-sarten",
   "name": "Cuajada dulce de sartén",
+  "corto": "Cuajada de sartén",
   "servings": 8,
   "categories": [
    "Postre y masas",
@@ -3492,6 +3532,7 @@
  {
   "id": "gpg-bunuelos-de-campamento",
   "name": "Buñuelos de campamento",
+  "corto": "Buñuelos",
   "servings": 8,
   "categories": [
    "Postre y masas",
@@ -3562,6 +3603,7 @@
  {
   "id": "gpg-crepes-de-trigo-sarraceno",
   "name": "Crepes de trigo sarraceno",
+  "corto": "Crepes de sarraceno",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -3614,6 +3656,7 @@
  {
   "id": "gpg-toffee-de-las-antillas",
   "name": "Toffee de las Antillas",
+  "corto": "Toffee",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -3648,6 +3691,7 @@
  {
   "id": "gpg-diplomatico-sin-coccion",
   "name": "Diplomático sin cocción",
+  "corto": "Diplomático",
   "servings": 6,
   "categories": [
    "Postre y masas",
@@ -3872,6 +3916,7 @@
  {
   "id": "gpg-melocotones-a-la-plancha",
   "name": "Melocotones a la plancha",
+  "corto": "Melocotón a la plancha",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -3924,6 +3969,7 @@
  {
   "id": "gpg-palitos-de-arroz-dulce",
   "name": "Palitos de arroz dulce",
+  "corto": "Palitos de arroz",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -4074,6 +4120,7 @@
  {
   "id": "gpg-crema-pastelera-rapida",
   "name": "Crema pastelera rápida",
+  "corto": "Crema pastelera",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -4126,6 +4173,7 @@
  {
   "id": "gpg-crema-inglesa-tradicional",
   "name": "Crema inglesa tradicional",
+  "corto": "Crema inglesa",
   "servings": 5,
   "categories": [
    "Postre y masas",
@@ -4224,6 +4272,7 @@
  {
   "id": "gpg-ensalada-de-frutas-campestre",
   "name": "Ensalada de frutas campestre",
+  "corto": "Ensalada de frutas",
   "servings": 6,
   "categories": [
    "Postre y masas",
@@ -4270,6 +4319,7 @@
  {
   "id": "gpg-crema-de-chocolate-rapida",
   "name": "Crema de chocolate rápida",
+  "corto": "Crema de chocolate",
   "servings": 4,
   "categories": [
    "Postre y masas",
@@ -4304,6 +4354,7 @@
  {
   "id": "gpg-tarta-fria-de-galleta-y-chocolate",
   "name": "Tarta fría de galleta y chocolate",
+  "corto": "Tarta de galleta",
   "servings": 7,
   "categories": [
    "Postre y masas",
