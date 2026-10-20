@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -186,6 +186,18 @@ caso("ajustar: el panel sale una vez",(v.match(/Ajustar: /g)||[]).length,1);
 caso("ajustar: debajo de la comida tocada, no arriba",v.indexOf("Ajustar: ")>v.indexOf('data-k="1|Comida"'),true);
 caso("ajustar: ya no hay botón «Ajustar» suelto",/>Ajustar<\/button>/.test(v),false);
 Object.assign(T.S,JSON.parse(S0));Object.assign(T.U,U0);}
+// variantes de color o tamaño: una línea con desglose; lo que es otro producto, aparte
+{const it=T.shopList(base,8),cuenta=re=>it.filter(i=>re.test(i.name)).length;
+caso("variantes: pimientos frescos en una línea",it.filter(i=>/^pimientos?\b/i.test(i.name)&&!/piquillo/i.test(i.name)).map(i=>i.name).length,1);
+caso("variantes: los del piquillo siguen aparte",cuenta(/piquillo/i),1);
+caso("variantes: patatas en una línea",cuenta(/^patatas?\b/i),1);
+caso("variantes: galletas en una línea",cuenta(/^galletas?\b/i),1);
+caso("variantes: pimentón en una línea (sin contar «pimentón u orégano»)",it.filter(i=>/^piment[oó]n\b/i.test(i.name)&&!/or[eé]gano/i.test(i.name)).length,1);
+caso("variantes: azúcar glas sigue aparte",cuenta(/glas/i),1);
+const R=(id,ings)=>({id,name:id,servings:1,categories:[],steps:"",ingredients:ings.map(([name,qty,unit])=>({name,qty:String(qty),unit,price:""}))});
+const p=T.shopList([R("a",[["Pimiento rojo",1,"ud"]]),R("b",[["Pimiento verde",300,"g"]])],1).filter(i=>/pimiento/i.test(i.name));
+caso("variantes: 1 pimiento rojo + 300 g verde = 450 g, con desglose",p.length===1&&Math.round(p[0].q)+" "+p[0].unit+" · "+p[0].det,"450 g · rojo 1 ud, verde 300 g");}
+caso("singular: grandes, verdes, limones, nueces",["Patatas grandes","Pimientos verdes","Limones","Nueces"].map(x=>T.packKey(x,"ud").split("|")[0]),["patata grande","pimiento verde","limon","nuez"]);
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

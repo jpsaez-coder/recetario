@@ -126,7 +126,7 @@ h3.secc{font-size:14px;color:var(--pine);margin:14px 0 0;text-transform:uppercas
 label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;height:20px;flex:none;accent-color:var(--pine)}
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
-.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
+.buy small.det{display:block;font-weight:400;color:var(--mute);font-size:12px;line-height:1.3}.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
 .dia-h h3{white-space:nowrap}.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}.dia-s{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
@@ -630,8 +630,8 @@ function vList(){
     return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
       const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
-    <div class="row"><button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button>
-    <button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button></div>
+    <div class="row"><button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button>
+    <button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button></div>
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
   h+=`<details class="card plg" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Tus recetas: copia e importar</h2></summary>
@@ -692,7 +692,7 @@ function vImprimir(){
     <div class="pdat"><span>${esc(grupoTxt())}</span><span>${D} día${D===1?"":"s"}</span><span>${hoy}</span></div></header>
   ${dias.length?`<section class="pdias">${dias.map(([d,fil])=>`<div class="pdia"><h2>Día ${d}</h2><table>${fil.map(([m,rs])=>`<tr><th>${m}</th><td>${rs.map(r=>esc(r.name)).join("<br>")}</td></tr>`).join("")}</table></div>`).join("")}</section>`:""}
   ${sinDia.length?`<p class="psin"><b>Sin día</b> ${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
-  ${grupos.length?`<h2 class="pt">Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>${cb}<span>${esc(i.name)} <em>${cant(i)}</em></span></li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
+  ${grupos.length?`<h2 class="pt">Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>${cb}<span>${esc(i.name)} <em>${cant(i)}</em>${i.det?`<small> (${esc(i.det)})</small>`:""}</span></li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
   ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
   ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
     <div class="rcol"><table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
@@ -1116,7 +1116,7 @@ function toBase(q,u,name){
    en la tienda: se comparan sin acentos, en singular y con sinónimos, y se pasan a la misma unidad. */
 const MISMO=[[/^aceite( de oliva( virgen( extra)?)?)?$/,"Aceite de oliva"],[/^leche (entera|fresca)$/,"Leche"],
   [/^nata( liquida| para cocinar)?$/,"Nata líquida"],[/^huevos?$/,"Huevos"],[/^canela( molida)?$/,"Canela"]];
-const singular=w=>w.length<=3||/^(de|del|la|las|los|con|en|al|y|o|u|gas|atun|maiz|arroz)$/.test(w)?w:/ces$/.test(w)?w.slice(0,-3)+"z":/[lnrdj]es$/.test(w)?w.slice(0,-2):/[^s]s$/.test(w)?w.slice(0,-1):w;
+const singular=w=>w.length<=3||/^(de|del|la|las|los|con|en|al|y|o|u|gas|atun|maiz|arroz)$/.test(w)?w:/ces$/.test(w)?w.slice(0,-3)+"z":/[lnr]es$/.test(w)?w.slice(0,-2):/[^s]s$/.test(w)?w.slice(0,-1):w;
 const canon=name=>norm(name).trim().split(/\s+/).map(singular).join(" ");
 function nombreCompra(name){const n=norm(name).trim();for(const [re,to] of MISMO)if(re.test(n))return to;return name.trim()}
 const packKey=(name,u)=>canon(nombreCompra(name))+"|"+u;
@@ -1136,7 +1136,26 @@ function unificar(items){
     }
     out.push(...con.map(nombrar));
   }
-  return out;
+  return variantes(out);
+}
+/* «Pimiento», «Pimientos rojos» y «Pimientos rojos grandes» son el mismo producto con otro color o tamaño:
+   una línea con el total y el desglose. Lo que cambia de producto (del piquillo, rallado, glas…) no se junta. */
+const ADJ=new Set(["rojo","roja","verde","amarillo","amarilla","morado","morada","blanco","blanca","grande","pequeno","pequena","mediano","mediana","maduro","madura","dulce","reineta","maria"]);
+function variantes(items){
+  const fam={};
+  for(const it of items){const w=it.key.split("|")[0].split(" ");if(w.length===1||w.slice(1).every(x=>ADJ.has(x)))(fam[w[0]]=fam[w[0]]||[]).push(it)}
+  const fuera=new Set();const nuevos=[];
+  for(const [cab,xs] of Object.entries(fam)){
+    const con=xs.filter(x=>x.q>0);if(xs.length<2||!con.length)continue;
+    const u=con.some(x=>x.unit==="g")?"g":con[0].unit;
+    const qs=con.map(x=>pasar(x,u));if(qs.some(q=>q==null))continue; // no se sabe sumar: se quedan aparte
+    const det=con.map(x=>{const r=x.key.split("|")[0].split(" ").slice(1).join(" ");return `${r||"otros"} ${fmtQ(x.q,x.unit)}`});
+    const prin=con.slice().sort((a,b)=>pasar(b,u)-pasar(a,u))[0];
+    const nombre=prin.name.split(" ")[0];
+    nuevos.push({key:cab+"|"+u,name:nombre.charAt(0).toUpperCase()+nombre.slice(1),unit:u,q:qs.reduce((a,b)=>a+b,0),p:con.reduce((a,x)=>a+x.p,0),det:det.join(", ")});
+    xs.forEach(x=>fuera.add(x));
+  }
+  return [...items.filter(x=>!fuera.has(x)),...nuevos];
 }
 /* una cantidad de una unidad a otra del mismo ingrediente; null si no se sabe */
 function pasar(x,u){
@@ -1200,7 +1219,7 @@ function vCompra(items){
 function compraTexto(items){
   const vivos=items.filter(i=>!i.have);
   const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,vivos.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
-  return "Lista de la compra ("+grupoTxt()+((S.dias||1)>1?", "+S.dias+" días":"")+")\n"+grupos.map(([s,xs])=>"\n*"+s+"*\n"+xs.map(i=>(S.bought&&S.bought[i.key]?"☑ ":"☐ ")+i.name+(i.pk?": "+i.k+" × "+fmtQ(i.pk.size,i.unit):i.q>0?": "+fmtQ(i.q,i.unit):" (al gusto)")).join("\n")).join("\n");
+  return "Lista de la compra ("+grupoTxt()+((S.dias||1)>1?", "+S.dias+" días":"")+")\n"+grupos.map(([s,xs])=>"\n*"+s+"*\n"+xs.map(i=>(S.bought&&S.bought[i.key]?"☑ ":"☐ ")+i.name+(i.pk?": "+i.k+" × "+fmtQ(i.pk.size,i.unit):i.q>0?": "+fmtQ(i.q,i.unit):" (al gusto)")+(i.det?" ("+i.det+")":"")).join("\n")).join("\n");
 }
 async function compartirCompra(items){
   const t=compraTexto(items);
@@ -1211,7 +1230,7 @@ function shopRow(i){
   const need=i.q>0?fmtQ(i.q,i.unit):"al gusto",edit=U.packEdit===i.key,open=U.row===i.key||edit;
   const compra=i.have?"en casa":i.granel||!i.pk?(i.q>0?fmtQ(i.q,i.unit):"al gusto"):`${i.k} × ${fmtQ(i.pk.size,i.unit)}`;
   const got=S.bought&&S.bought[i.key];
-  let h=`<tr class="${got?"got":""}${i.have?" home":""}"><td><label class="buy">${i.have?"":`<input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro">`}<b>${esc(i.name)}</b></label></td>
+  let h=`<tr class="${got?"got":""}${i.have?" home":""}"><td><label class="buy">${i.have?"":`<input type="checkbox" data-act="buyChk" data-k="${esc(i.key)}" ${got?"checked":""} aria-label="En el carro">`}<span><b>${esc(i.name)}</b>${i.det?`<small class="det">${esc(i.det)}</small>`:""}</span></label></td>
   <td class="q">${compra}</td><td class="p">${!i.have&&i.cost?eur(i.cost):""}</td><td class="p"><button class="x" data-act="row" data-k="${esc(i.key)}" aria-label="Más de ${esc(i.name)}">⋯</button></td></tr>`;
   if(open){
     const det=[`necesitas ${need}`,i.pk&&!i.have&&i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?`sobran ${fmtQ(i.left,i.unit)}`:"",i.pk&&i.pk.own?"tu formato":"",
