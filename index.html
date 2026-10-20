@@ -173,13 +173,38 @@ textarea{min-height:90px;resize:vertical}
 .topm{display:grid;gap:8px}.tm{display:flex;align-items:center;justify-content:space-between;gap:10px}.tm>span{font-size:15px}.tm b{margin-left:4px}.tm small{display:block;color:var(--mute);font-size:13px;margin-left:24px}
 #imprimir{display:none}
 @media print{
+  @page{margin:12mm 13mm}
   body{background:#fff!important}body>*:not(#imprimir){display:none!important}
-  #imprimir{display:block;color:#000;font:11pt/1.4 "Source Sans 3",sans-serif}
-  #imprimir h1{font:700 18pt "Bricolage Grotesque",sans-serif;margin:0 0 2pt}#imprimir h2{font:700 13pt "Bricolage Grotesque",sans-serif;margin:12pt 0 4pt;border-bottom:1px solid #999}
-  #imprimir h3{font-size:11.5pt;margin:6pt 0 2pt}#imprimir .sub{color:#555;margin:0 0 4pt;font-size:9.5pt}
-  #imprimir table{width:100%;border-collapse:collapse;margin:2pt 0 4pt}#imprimir th,#imprimir td{text-align:left;vertical-align:top;padding:2pt 4pt;border-bottom:1px solid #ddd}#imprimir th{width:22%}#imprimir td.q{text-align:right;white-space:nowrap;width:30%}
-  #imprimir ul{list-style:none;padding:0;margin:0}#imprimir .cols{columns:2;column-gap:18pt}#imprimir .gr{break-inside:avoid;margin-bottom:4pt}#imprimir .tri{display:flex;gap:12pt;font-size:9pt;line-height:1.25}#imprimir .tri>div{flex:1;min-width:0}#imprimir .tri h3{font-size:9.5pt;margin:0 0 1pt;text-transform:uppercase;letter-spacing:.3pt}#imprimir .tri li{padding-left:9pt;text-indent:-9pt}
-  #imprimir .rec{break-inside:avoid;margin-bottom:8pt}#imprimir ol{margin:2pt 0;padding-left:16pt}
+  #imprimir{display:block;color:#1F2B23;font:10pt/1.4 "Source Sans 3",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #imprimir h1,#imprimir h2,#imprimir h3{font-family:"Bricolage Grotesque",sans-serif;color:#2E4B3A}
+  #imprimir .pcab{display:flex;justify-content:space-between;align-items:flex-end;gap:12pt;background:#2E4B3A;color:#F3F7F0;border-radius:8pt;padding:10pt 14pt;margin-bottom:10pt}
+  #imprimir .pcab small{font:700 7.5pt "Source Sans 3",sans-serif;letter-spacing:1.5pt;color:#E9C97F}
+  #imprimir .pcab h1{color:#F3F7F0;font-size:18pt;margin:1pt 0 0;line-height:1.1}
+  #imprimir .pdat{display:flex;flex-direction:column;align-items:flex-end;font-size:9pt;line-height:1.35;white-space:nowrap}
+  #imprimir .pdias{display:grid;grid-template-columns:1fr 1fr;gap:8pt}
+  #imprimir .pdia{border:1px solid #D3DBCC;border-radius:7pt;padding:6pt 9pt;break-inside:avoid}
+  #imprimir .pdia h2{font-size:11.5pt;margin:0 0 3pt}
+  #imprimir table{width:100%;border-collapse:collapse}
+  #imprimir th,#imprimir td{text-align:left;vertical-align:top;padding:2.5pt 0;border-top:1px solid #E6EBE1;border-bottom:0}
+  #imprimir .pdia tr:first-child th,#imprimir .pdia tr:first-child td{border-top:0}
+  #imprimir th{width:30%;font:700 7.5pt "Source Sans 3",sans-serif;letter-spacing:.6pt;text-transform:uppercase;color:#B97A12;padding-top:4pt}
+  #imprimir .psin{font-size:9pt;color:#5E6D63;margin:6pt 0}#imprimir .psin b{color:#2E4B3A}
+  #imprimir h2.pt{font-size:12pt;margin:12pt 0 5pt;padding-bottom:2pt;border-bottom:2px solid #2E4B3A}
+  #imprimir ul{list-style:none;padding:0;margin:0}
+  #imprimir .tri{display:flex;gap:12pt;font-size:9pt;line-height:1.3}#imprimir .tri>div{flex:1;min-width:0}
+  #imprimir .gr{break-inside:avoid;margin-bottom:5pt}
+  #imprimir .tri h3{font:700 7.5pt "Source Sans 3",sans-serif;letter-spacing:.6pt;text-transform:uppercase;color:#2E4B3A;margin:0 0 2pt}
+  #imprimir .tri li{display:flex;gap:5pt;align-items:flex-start;margin-bottom:1.5pt}
+  #imprimir .tri em{font-style:normal;color:#5E6D63;white-space:nowrap}
+  #imprimir .cb{flex:none;width:7pt;height:7pt;border:1px solid #5E6D63;border-radius:1.5pt;margin-top:2pt}
+  #imprimir .precs{break-before:page;margin-top:0}
+  #imprimir .rec{break-inside:avoid;border-left:3pt solid #2E4B3A;padding:2pt 0 2pt 9pt;margin:0 0 10pt}
+  #imprimir .rec h3{font-size:11.5pt;margin:0}#imprimir .sub{color:#5E6D63;margin:0 0 4pt;font-size:8.5pt}
+  #imprimir .rcol{display:flex;gap:14pt;align-items:flex-start}
+  #imprimir .rcol table{flex:0 0 38%;font-size:9pt}#imprimir .rcol td{border-top:1px solid #E6EBE1;padding:1.5pt 0}#imprimir .rcol tr:first-child td{border-top:0}
+  #imprimir td.q{text-align:right;white-space:nowrap;padding-left:6pt;color:#5E6D63}
+  #imprimir .rcol ol{flex:1;margin:0;padding-left:13pt;font-size:9.5pt}#imprimir .rcol ol li{margin-bottom:2pt}
+  #imprimir .ppie{margin-top:12pt;padding-top:4pt;border-top:1px solid #D3DBCC;font-size:8pt;color:#5E6D63;text-align:center}
 }
 </style>
 </head>
@@ -639,7 +664,7 @@ function vTopMenu(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length,ok=done===all.length;
   return `<div class="card topm"><div class="tm"><span>${ok?"✅":"🧺"} <b>Básicos de intendencia</b><small>${done} de ${all.length} en la caja</small></span><button class="btn ${ok?"ghost":"alt"} sm" data-act="irBas">${ok?"Ver":"Ir a la checklist"}</button></div>
   ${planIds().length?`<div class="tm"><span>🖨️ <b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>
-  <div class="tm"><span>🧹 <b>Menú nuevo</b><small>Vacía este menú para preparar otra salida</small></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`:""}
+  <div class="tm"><span>🧹 <b>Menú nuevo</b><small>Vacía este menú para preparar otra actividad</small></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`:""}
   ${S.ultimoMenu&&!planIds().length?`<div class="tm"><span>↩️ <b>Menú vaciado</b><small>${esc(S.ultimoMenu.n)} receta${S.ultimoMenu.n===1?"":"s"} · ${new Date(S.ultimoMenu.t).toLocaleDateString("es-ES")}</small></span><button class="btn ghost sm" data-act="menuDeshacer">Deshacer</button></div>`:""}</div>`;
 }
 /* tres columnas fijas, en orden y equilibradas por líneas: no depende de que el navegador
@@ -660,15 +685,20 @@ function vImprimir(){
   const todas=[...new Map(rs0.map(r=>[r.id,r])).values()],unicas=todas.filter(r=>!r.sencilla),montar=todas.filter(r=>r.sencilla);
   const veces=id=>ent.filter(e=>e.id===id).length;
   const faltan=BASICOS.flatMap(([,xs])=>xs).filter(x=>!(S.check&&S.check[x]));
-  return `<h1>Menú · ${esc(SALIDAS[s].n)}</h1><p class="sub">${esc(grupoTxt())} · ${D} día${D===1?"":"s"} · Recetario ${esc(APP_VERSION)} · ${new Date().toLocaleDateString("es-ES")}</p>
-  ${dias.map(([d,fil])=>`<h2>Día ${d}</h2><table>${fil.map(([m,rs])=>`<tr><th>${m}</th><td>${rs.map(r=>esc(r.name)).join(" · ")}</td></tr>`).join("")}</table>`).join("")}
-  ${sinDia.length?`<h2>Sin día</h2><p>${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
-  ${grupos.length?`<h2>Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>☐ ${esc(i.name)}${i.pk?`: ${i.k} × ${fmtQ(i.pk.size,i.unit)}`:i.q>0?`: ${fmtQ(i.q,i.unit)}`:" (al gusto)"}</li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
-  ${faltan.length?`<h2>Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>☐ ${esc(x)}</li></ul>`,Math.ceil(x.length/34)]))}`:""}
-  ${unicas.length?`<h2>Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<div class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
-    <table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
-    ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`}).join("")}
-  ${montar.length?`<p class="sub" style="margin-top:8pt"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}`;
+  const hoy=new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});
+  const cb='<span class="cb"></span>';
+  const cant=i=>i.pk?`${i.k} × ${fmtQ(i.pk.size,i.unit)}`:i.q>0?fmtQ(i.q,i.unit):"al gusto";
+  return `<header class="pcab"><div><small>RECETARIO</small><h1>Menú · ${esc(SALIDAS[s].n)}</h1></div>
+    <div class="pdat"><span>${esc(grupoTxt())}</span><span>${D} día${D===1?"":"s"}</span><span>${hoy}</span></div></header>
+  ${dias.length?`<section class="pdias">${dias.map(([d,fil])=>`<div class="pdia"><h2>Día ${d}</h2><table>${fil.map(([m,rs])=>`<tr><th>${m}</th><td>${rs.map(r=>esc(r.name)).join("<br>")}</td></tr>`).join("")}</table></div>`).join("")}</section>`:""}
+  ${sinDia.length?`<p class="psin"><b>Sin día</b> ${sinDia.map(r=>esc(r.name)).join(" · ")}</p>`:""}
+  ${grupos.length?`<h2 class="pt">Lista de la compra</h2>${tres(grupos.map(([g,xs])=>[`<div class="gr"><h3>${esc(g)}</h3><ul>${xs.map(i=>`<li>${cb}<span>${esc(i.name)} <em>${cant(i)}</em></span></li>`).join("")}</ul></div>`,xs.length+1.5]))}`:""}
+  ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
+  ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
+    <div class="rcol"><table>${r.ingredients.map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
+    ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")}
+  ${montar.length?`<p class="psin"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}
+  <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
 }
 const nombrePDF=act=>("Menú - "+act).replace(/[\\/:*?"<>|]+/g," ").replace(/\s+/g," ").trim();
 function imprimir(){
@@ -863,9 +893,9 @@ const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco"
 function evitaEn(r){const out=[];for(const i of r.ingredients){const nm=norm(i.name);const e=EVITA.find(([ks])=>ks.some(k=>wordRe(k).test(nm)));if(e)out.push([i.name.trim(),e[1]])}return out}
 /* Paso 1: lo que necesita frío */
 const FRIO=/(^|[^a-z])(pollo|pechuga|carne|picada|cerdo|lomo|ternera|pescado|merluza|nata|yogur|queso fresco|leche fresca|mantequilla|salchicha|bacon)(s|es)?([^a-z]|$)/;
-const SALIDAS={ruta:{n:"Ruta (un día)",txt:"Todo va en la mochila: sin nevera ni cocina, o con un hornillo como mucho. Nada que se estropee con calor, comida ligera y fácil de comer andando, y agua de sobra. Mira la categoría Ruta."},
+const SALIDAS={ruta:{n:"Ruta",txt:"Todo va en la mochila: sin nevera ni cocina, o con un hornillo como mucho. Nada que se estropee con calor, comida ligera y fácil de comer andando, y agua de sobra. Mira la categoría Ruta."},
   reunion:{n:"Reunión",txt:"Unas horas en el local: merienda o comida sencilla que se toma en el día. Si el local tiene cocina, se usa; los frescos no dan problema si se compran ese mismo día."},
-  finde:{n:"Acampada (2 días)",txt:"Se puede llevar fresco que aguante 24 h en la caja de intendencia; mejor congelado para la primera noche. El segundo día, sobre todo con calor, sin frescos."}};
+  finde:{n:"Acampada",txt:"Se puede llevar fresco que aguante 24 h en la caja de intendencia; mejor congelado para la primera noche. Del segundo día en adelante, sobre todo con calor, sin frescos. Los días se ponen en «Menú por días»."}};
 /* ---------- ajustar una receta solo para este menú (quitar o añadir ingredientes) ----------
    S.ajustes[id] = {quitar:[nombre normalizado], mas:[ingrediente]}. La receta original no cambia. */
 const nkey=n=>norm(n).trim();
@@ -1043,7 +1073,7 @@ function vSalida(rs){
   const sinFrio=s==="ruta"||!S.nevera;
   const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva"}[s];
   const warn=fr.length&&sinFrio?`<p class="msg warn">❄ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
-  return `${fl("¿Qué salida es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
+  return `${fl("¿Qué actividad es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
   ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div>${warn}`;
 }
 /* ---------- precios reales por cadena (precios.json, con fecha) ----------
