@@ -100,7 +100,8 @@ caso("WhatsApp: casilla vacía",/^☐ /m.test(tx),true);caso("WhatsApp: lo compr
 const tit=[...h.matchAll(/<h3 class="secc grp-t">([^<]+)<\/h3>/g)].map(m=>m[1]);
 caso("grupos en el orden de Plato",tit,T.FACETS[0].v.filter(p=>tit.includes(p)));
 caso("hay grupo de Desayuno y de Principal",tit.includes("Desayuno")&&tit.includes("Principal"),true);
-T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/grp-t/.test(h2),false);T.U.ord="plato";}
+T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/grp-t/.test(h2),false);
+T.U.ord="kcal";const h3=T.vList();caso("orden antiguo «kcal» vuelve a por plato",/grp-t/.test(h3),true);caso("no se ofrece ordenar por calorías",/menos calorías|value="kcal"/.test(h3),false);T.U.ord="plato";}
 // fotos: las base se retiraron en la 1.17.0; solo quedan las tuyas (r.foto="idb", en IndexedDB)
 caso("foto base antigua se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"fotos/ej-arroz.jpg"}).foto,undefined);
 caso("foto con ruta rara se descarta",T.cleanRecipe({...T.getR("ej-arroz"),foto:"javascript:alert(1)"}).foto,undefined);
