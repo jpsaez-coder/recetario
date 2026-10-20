@@ -724,7 +724,7 @@ function vMenu(){
   const D=S.dias||1,ppd=S.ppd==null?6:S.ppd,B=ppd*H*D;
   const perPerson=total/H,usedPP=used/n,maxP=usedPP>0?Math.floor(B/usedPP):0;
   const left=B-total;
-  return `${vTopMenu()}<div class="card">${vSalida(rs)}${vAlergias(rs)}</div>${vDias()}<div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
+  return `${vTopMenu()}<div class="card">${vSalida(rs)}${vAlergias(rs)}</div><div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
   <input id="bud" type="number" min="0" step="0.5" inputmode="decimal" value="${ppd}" data-act="budget">
   <p class="msg">= <b>${eur(B)}</b> (${H} pers. × ${D} día${D===1?"":"s"})</p>
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
@@ -737,7 +737,7 @@ function vMenu(){
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}</div>
-  ${vSueltos(n,H)}
+  ${vDias()}${vSueltos(n,H)}
   ${vCompra(items)}${vCarga(items)}${vAmortiza(items,rs)}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
