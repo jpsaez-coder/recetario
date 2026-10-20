@@ -857,8 +857,7 @@
    "Principal",
    "Acampada",
    "Casa",
-   "Fuego",
-   "Verano"
+   "Fuego"
   ],
   "source": {
    "name": "guiasparaguias · Comida trampera",
@@ -1294,7 +1293,7 @@
    },
    {
     "name": "Lechuga",
-    "qty": "",
+    "qty": "1",
     "unit": "ud",
     "price": ""
    },
@@ -1796,8 +1795,8 @@
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "30",
+    "unit": "g",
     "price": ""
    },
    {
@@ -2048,14 +2047,14 @@
    },
    {
     "name": "Garrofón",
-    "qty": "",
-    "unit": "ud",
+    "qty": "200",
+    "unit": "g",
     "price": ""
    },
    {
     "name": "Guisantes",
-    "qty": "",
-    "unit": "ud",
+    "qty": "200",
+    "unit": "g",
     "price": ""
    },
    {
@@ -2311,8 +2310,7 @@
    "Principal",
    "Acampada",
    "Casa",
-   "Fuego",
-   "Verano"
+   "Fuego"
   ],
   "ingredients": [
    {
@@ -2495,8 +2493,8 @@
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "30",
+    "unit": "g",
     "price": ""
    },
    {
@@ -2879,8 +2877,8 @@
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "10",
+    "unit": "g",
     "price": ""
    }
   ],
@@ -2973,8 +2971,8 @@
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "15",
+    "unit": "g",
     "price": ""
    },
    {
@@ -3263,8 +3261,8 @@
   "ingredients": [
    {
     "name": "Entrecot",
-    "qty": "",
-    "unit": "ud",
+    "qty": "1",
+    "unit": "kg",
     "price": ""
    },
    {
@@ -3287,7 +3285,7 @@
    },
    {
     "name": "Limón",
-    "qty": "",
+    "qty": "1",
     "unit": "ud",
     "price": ""
    },
@@ -3394,8 +3392,8 @@
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "30",
+    "unit": "g",
     "price": ""
    },
    {
@@ -3583,8 +3581,8 @@
    },
    {
     "name": "Azúcar",
-    "qty": "",
-    "unit": "ud",
+    "qty": "60",
+    "unit": "g",
     "price": ""
    },
    {
@@ -3810,8 +3808,8 @@
    },
    {
     "name": "Piña",
-    "qty": "",
-    "unit": "ud",
+    "qty": "1",
+    "unit": "lata",
     "price": ""
    }
   ],
@@ -3878,32 +3876,32 @@
   "ingredients": [
    {
     "name": "Harina",
-    "qty": "",
-    "unit": "ud",
+    "qty": "300",
+    "unit": "g",
     "price": ""
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "150",
+    "unit": "g",
     "price": ""
    },
    {
     "name": "Leche",
-    "qty": "",
-    "unit": "ud",
+    "qty": "4",
+    "unit": "cda",
     "price": ""
    },
    {
     "name": "Manzanas",
-    "qty": "",
+    "qty": "5",
     "unit": "ud",
     "price": ""
    },
    {
     "name": "Mermelada de grosella",
-    "qty": "",
-    "unit": "ud",
+    "qty": "5",
+    "unit": "cda",
     "price": ""
    }
   ],
@@ -4008,8 +4006,8 @@
    },
    {
     "name": "Compota de manzana",
-    "qty": "",
-    "unit": "ud",
+    "qty": "200",
+    "unit": "g",
     "price": ""
    }
   ],
@@ -4076,8 +4074,8 @@
   "ingredients": [
    {
     "name": "Pan duro",
-    "qty": "",
-    "unit": "ud",
+    "qty": "1",
+    "unit": "barra",
     "price": ""
    },
    {
@@ -4094,14 +4092,14 @@
    },
    {
     "name": "Azúcar",
-    "qty": "",
-    "unit": "ud",
+    "qty": "80",
+    "unit": "g",
     "price": ""
    },
    {
     "name": "Mantequilla",
-    "qty": "",
-    "unit": "ud",
+    "qty": "40",
+    "unit": "g",
     "price": ""
    },
    {

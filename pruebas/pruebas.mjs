@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -110,6 +110,33 @@ caso("nombre corto: cabe en 24 letras",base.filter(r=>T.corto(r).replace("…","
 {const v=base.map(r=>T.corto(r));caso("nombre corto: no se repite",v.filter((c,i)=>v.indexOf(c)!==i),[]);}
 caso("nombre corto: una tuya larga se recorta por palabras",T.corto({name:"Lentejas estofadas de la abuela con chorizo"}),"Lentejas estofadas…");
 caso("nombre corto: una corta se queda igual",T.corto({name:"Pan con chocolate"}),"Pan con chocolate");
+// menú: una receta puesta en dos días cuenta dos veces (compra y coste); sin día, una
+{const g="ej-gachas-avena",avena=()=>{const it=T.shopList(T.planIds().map(T.getR),8).find(i=>/avena/i.test(i.name));return it?it.q:0};
+const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias});
+T.S.dias=2;T.S.menu=[g];T.S.plan={};const una=avena();
+T.S.plan={"1|Desayuno":[g]};const unDia=avena();
+T.S.plan={"1|Desayuno":[g],"2|Desayuno":[g]};const dos=avena();
+caso("sin día cuenta una vez",unDia,una);
+caso("en dos días, el doble de compra",Math.round(dos/una*100)/100,2);
+caso("en dos días, cada día su coste",T.costeSlot(1,"Desayuno")>0&&T.costeSlot(1,"Desayuno")===T.costeSlot(2,"Desayuno"),true);
+T.S.plan={"1|Desayuno":[g],"3|Desayuno":[g]};caso("un día por encima de los días del menú no cuenta",Math.round(avena()/una*100)/100,1);
+Object.assign(T.S,JSON.parse(S0));}
+// temporada: lo que no está marcado sale en invierno y en verano; lo de verano no sale en invierno
+{T.U.q="";T.U.f={temp:"Invierno"};const h=T.vList();caso("en invierno salen los postres de todo el año",/Torrijas/.test(h)&&/Bizcocho dentro de una naranja/.test(h),true);
+caso("en invierno no sale lo de verano",/Ensalada de cuscús para la mochila/.test(h),false);caso("en invierno sale lo de invierno",/Sopa de ajo castellana/.test(h),true);T.U.f={};}
+// hoja para imprimir: días, receta con pasos, repetida avisada, básicos que faltan; arriba del menú, el recuento de básicos
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,check:T.S.check});const g="ej-gachas-avena";
+T.S.dias=2;T.S.menu=[g];T.S.plan={"1|Desayuno":[g],"2|Desayuno":[g]};T.S.check={};const h=T.vImprimir();
+caso("imprimir: sale el día 2",/<h2>Día 2<\/h2>/.test(h),true);
+caso("imprimir: la receta con sus pasos",/Gachas de avena con plátano<\/h3>/.test(h)&&/<ol>/.test(h),true);
+caso("imprimir: avisa de que se hace 2 veces",/se hace 2 veces/.test(h),true);
+caso("imprimir: la receta sale una vez aunque se repita",(h.match(/Gachas de avena con plátano<\/h3>/g)||[]).length,1);
+caso("imprimir: lista los básicos que faltan",/Básicos que faltan/.test(h),true);
+caso("arriba del menú: 0 de N básicos",/0 de \d+ en la caja/.test(T.vTopMenu()),true);
+Object.assign(T.S,JSON.parse(S0));}
+// sin cantidad solo pueden ir condimentos («al gusto»): un ingrediente principal sin cantidad no entra bien en la compra
+{const ok=/^(sal|pimienta|aceite|aceite de oliva|ajo|perejil|tomillo|romero|laurel|canela|curri|azafr[aá]n|estrag[oó]n|albahaca|or[eé]gano|piment[oó]n|vinagre|ketchup|mostaza|nuez moscada|comino|hierbas|agua|lim[oó]n|az[uú]car glas|vainilla|salvia|cebollino|especias)$/i;
+caso("ingredientes principales con cantidad",base.flatMap(r=>r.ingredients.filter(i=>!String(i.qty).trim()&&!i.name.trim().split(/ [ou] /).every(x=>ok.test(x.trim()))).map(i=>r.id+": "+i.name)),[]);}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);
