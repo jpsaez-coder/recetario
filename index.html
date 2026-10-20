@@ -290,6 +290,10 @@ async function conFoto(r){const c=cleanRecipe(r);if(r.foto==="idb"){const b=awai
 const sig=r=>norm(r.name)+"|"+r.ingredients.map(i=>norm(i.name)).sort().join(",");
 async function saveFile(name,obj){
   const blob=new Blob([JSON.stringify(obj,null,1)],{type:"application/json"});
+  /* dentro de claude.ai el visor no deja descargar con un enlace: se pide con «downloads», que pregunta antes de guardar */
+  if(window.claude){const dl=await window.claude.use("downloads").catch(()=>null);
+    if(!dl)return "fallo";
+    try{await dl.save({filename:name,data:blob});return "descargado"}catch(e){return e&&e.code==="declined"?"cancelado":"fallo"}}
   try{const f=new File([blob],name,{type:"application/json"});
     if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return "compartido"}}catch(e){if(e&&e.name==="AbortError")return "cancelado"}
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);return "descargado";
@@ -932,7 +936,10 @@ function vDias(){
   const D=S.dias||1,al=S.alergias||[];
   let h=`<div class="card"><div class="fl h"><h2>Menú por días</h2>${inf("dia","Elige en Recetas las del menú y repártelas por días; las que no pongas en ningún día cuentan una vez. Cada día compara lo que come una ración de adulto con lo que pide su actividad (toca la barra para ver hidratos y proteína). En la marcha de más de 1 h: 30-60 g de hidratos por hora y persona, por ejemplo un plátano o una barrita cada hora.")}</div><div class="row"><span>Días</span><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b>${D}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>`;
   const sel=(S.menu||[]).map(getM).filter(Boolean),asig=new Set(Object.values(S.plan||{}).flat());
-  h+=`<label class="f">Recetas del menú</label>${sel.length?`<div class="slot-r">${sel.map(r=>`<span class="pl" title="${esc(r.name)}">${esc(corto(r))}${asig.has(r.id)?"":`<small> · sin día</small>`}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}`:`<p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`}`;
+  /* arriba solo lo que aún no tiene día: lo demás ya se ve en su día y no se repite */
+  const sinDia=sel.filter(r=>!asig.has(r.id));
+  h+=sel.length?`<label class="f">${sinDia.length?"Sin día (cuentan una vez)":"Recetas del menú"}</label>${sinDia.length?`<div class="slot-r">${sinDia.map(r=>`<span class="pl" title="${esc(r.name)}">${esc(corto(r))}<button class="x aj" data-act="aj" data-id="${r.id}">Ajustar</button><button class="x" data-act="menu" data-id="${r.id}" aria-label="Quitar ${esc(r.name)} del menú">✕</button></span>`).join("")}</div>`:`<p class="msg" style="margin:0 0 6px">Todas puestas en un día.</p>`}
+  ${sel.length>sinDia.length?`<select class="pladd" data-act="ajSel" aria-label="Ajustar una receta del menú"><option value="">Ajustar una receta…</option>${sel.map(r=>`<option value="${r.id}" ${U.aj===r.id?"selected":""}>${esc(corto(r))}</option>`).join("")}</select>`:""}${U.aj&&(S.menu||[]).includes(U.aj)?vAjuste(U.aj):""}`:`<label class="f">Recetas del menú</label><p class="msg">Aún ninguna: elígelas en Recetas con «Añadir al menú».</p>`;
   if(sel.length)for(let d=1;d<=D;d++){
     h+=`<div class="dia"><div class="dia-h"><h3>Día ${d}</h3><div class="dia-s"><select data-act="actDia" data-k="${d}" aria-label="Actividad del día ${d}">${Object.entries(ACT).map(([k,v])=>`<option value="${k}" ${actDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select><select data-act="climaDia" data-k="${d}" aria-label="Clima del día ${d}">${Object.entries(CLIMA).map(([k,v])=>`<option value="${k}" ${climaDia(d)===k?"selected":""}>${v.n}</option>`).join("")}</select></div></div>`;
     for(const m of MOMS){
@@ -1138,6 +1145,7 @@ document.addEventListener("input",e=>{
   if(e.target.dataset.act==="ajChk"){const id=e.target.dataset.id,k=e.target.dataset.k;S.ajustes=S.ajustes||{};const x=S.ajustes[id]=S.ajustes[id]||{};
     x.quitar=e.target.checked?(x.quitar||[]).filter(z=>z!==k):[...new Set([...(x.quitar||[]),k])];persist();render();return}
   if(e.target.dataset.act==="buyChk"){S.bought=S.bought||{};if(e.target.checked)S.bought[e.target.dataset.k]=true;else delete S.bought[e.target.dataset.k];persist();render();return}
+  if(e.target.dataset.act==="ajSel"){U.aj=e.target.value;render();return}
   if(e.target.dataset.act==="plAdd"){if(e.target.value){const [d,m]=e.target.dataset.k.split("|");addPlan(e.target.value,+d,m)}render();return}
   if(e.target.dataset.act==="algChk"){const k=e.target.dataset.k;S.alergias=e.target.checked?[...new Set([...(S.alergias||[]),k])]:(S.alergias||[]).filter(x=>x!==k);persist();render();return}
   if(e.target.dataset.act==="aptaChk"){U.apta=e.target.checked;render();return}
@@ -1187,11 +1195,11 @@ document.addEventListener("click",async e=>{
   else if(a==="dias"){S.dias=Math.min(15,Math.max(1,(S.dias||1)+num(b.dataset.d)));persist()}
   else if(a==="edit"){U.draft=JSON.parse(JSON.stringify(S.recipes.find(r=>r.id===b.dataset.id)));U.tab="nueva"}
   else if(a==="copy"){const r=JSON.parse(JSON.stringify(getR(b.dataset.id)));delete r.base;r.id=null;r.name+=" (mía)";U.draft=r;U.tab="nueva"}
-  else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=await conFoto(r);await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]})}return}
+  else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=await conFoto(r);const res=await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]});if(res==="fallo"){U.ioMsg="Aquí no se puede descargar: compártela desde la app instalada.";render()}}return}
   else if(a==="export"){if(!S.recipes.length){U.ioMsg="Aún no tienes recetas propias que exportar.";render();return}
     const res=await saveFile("mis-recetas-"+new Date().toISOString().slice(0,10)+".json",{app:"recetario",version:APP_VERSION,exported:new Date().toISOString(),recipes:await Promise.all(S.recipes.map(conFoto)),cats:S.cats});
-    if(res!=="cancelado"){S.lastExport=Date.now();persist()}
-    U.ioMsg=res==="cancelado"?"":`Copia ${res}: ${S.recipes.length} receta${S.recipes.length===1?"":"s"}. Guárdala fuera del móvil.`}
+    if(res==="descargado"||res==="compartido"){S.lastExport=Date.now();persist()}
+    U.ioMsg=res==="cancelado"?"":res==="fallo"?"Aquí no se puede descargar: abre la app instalada (jpsaez-coder.github.io/recetario) y exporta desde allí.":`Copia ${res}: ${S.recipes.length} receta${S.recipes.length===1?"":"s"}. Guárdala fuera del móvil.`}
   else if(a==="remindLater"){S.remindAt=Date.now()+7*864e5;persist()}
   else if(a==="import"){$("#impfile")?.click();return}
   else if(a==="dcat"){const c=b.dataset.c,d=U.draft,f=facetOf(c);
