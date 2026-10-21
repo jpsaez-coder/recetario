@@ -318,7 +318,7 @@ function okRecipe(r){return r&&typeof r.name==="string"&&r.name.trim()&&Array.is
    bin/recoger y, si encaja, entra en recetas-base.json con la siguiente versión.
    APORTA_WEB es la dirección del proyecto en Cloudflare y APORTA_CLAVE la clave pública de Turnstile;
    mientras estén vacías el botón no sale (en local se usan las de prueba de Turnstile). */
-const APORTA_WEB="",APORTA_CLAVE="";
+const APORTA_WEB="https://recetario-3uj.pages.dev",APORTA_CLAVE="0x4AAAAAAFe5v1VSG488Z0bp";
 function aporta(){
   if(window.claude||location.protocol==="file:")return null; // en claude.ai no se puede llamar a otra web
   if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname))return {url:"/api/aportar",clave:"1x00000000000000000000AA"};
