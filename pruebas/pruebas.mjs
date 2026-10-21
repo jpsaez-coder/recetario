@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -288,6 +288,28 @@ caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);
 caso("ningún SVG trae DOCTYPE ni ENTITY",fs.readdirSync(path.join(raiz,"fuego")).filter(f=>/<!(DOCTYPE|ENTITY)/.test(fs.readFileSync(path.join(raiz,"fuego",f),"utf8"))),[]);
 caso("todo lo que pide el modo sin conexión existe",lista.filter(f=>!fs.existsSync(path.join(raiz,f))),[]);}
 caso("el modo sin conexión no pide fotos",/fotos\//.test(fs.readFileSync(path.join(raiz,"sw.js"),"utf8")),false);
+{const s0=T.S.super,v0=T.S.veg,r=T.getR("ej-arroz"),ch=r.ingredients.find(i=>/^chorizo/i.test(i.name));T.S.veg=2;
+T.S.super="";caso("vegetal sin súper: chorizo vegetal",/^Chorizo vegetal/.test(T.notaVeg(r,ch,1)),true);
+T.S.super="Mercadona";caso("vegetal en Mercadona (no hay chorizo vegetal): tofu",/^Tofu firme.*en Mercadona no hay chorizo vegetal/.test(T.notaVeg(r,ch,1)),true);
+caso("vegetal en Mercadona: la compra lleva tofu, no chorizo vegetal",T.shopList([r],8).some(i=>/chorizo vegetal/i.test(i.name)),false);
+T.S.super="Ahorramás";caso("vegetal en Ahorramás (tampoco hay): tofu",/^Tofu firme/.test(T.notaVeg(r,ch,1)),true);
+T.S.super=s0;T.S.veg=v0;}
+{const v0=T.S.veg,al0=T.S.alergias,m0=T.S.menu,p0=T.S.plan,s0=T.S.super;T.S.super="";T.S.alergias=[];
+const pa=T.getR("gpg-paella-de-campamento");
+caso("alternativa vegetariana: paella → arroz a la cubana",T.altVeg(pa)?.id,"gpg-arroz-a-la-cubana-de-campamento");
+caso("las recetas base que no se adaptan tienen todas alternativa",T.all().filter(r=>T.vegAdapta(r)===false&&!T.altVeg(r)).map(r=>r.id),[]);
+caso("la que se adapta no lleva alternativa",T.altVeg(T.getR("ej-arroz")),null);
+T.S.alergias=["Lactosa"];const sj=T.altVeg(T.getR("gpg-san-jacobo-de-pavo"));
+caso("con lactosa en el grupo, la alternativa no lleva lactosa",!!sj&&!T.etiquetas(sj).alerg.includes("Lactosa"),true);T.S.alergias=[];
+const mia={id:"u-costillas",name:"Costillas al fuego",servings:4,categories:["Principal","Fuego"],steps:"",ingredients:[{name:"Costillas de cerdo",qty:"1",unit:"kg",price:"8"}]};
+const am=T.altVeg(mia);caso("receta propia sin alternativa escrita: un principal vegetariano",!!am&&am.categories.includes("Principal")&&T.vegAdapta(am)===null&&!am.sencilla,true);
+const pollo=its=>its.filter(i=>/pollo/i.test(i.name)).reduce((a,i)=>a+i.q,0);
+T.S.veg=0;const sin=T.shopList([pa],16);T.S.veg=4;const con=T.shopList([pa],16);
+caso("con vegetarianos, la paella lleva el pollo de los demás",Math.round(pollo(con)/pollo(sin)*100),Math.round((1-4/T.HEADS())*100));
+caso("y la compra lleva lo del arroz a la cubana",con.some(i=>/^huevo/i.test(i.name))&&!sin.some(i=>/^huevo/i.test(i.name)),true);
+T.S.menu=["gpg-paella-de-campamento"];T.S.plan={};const h=T.vImprimir();
+caso("la hoja impresa trae la receta alternativa",/Arroz a la cubana[\s\S]*vegetarianos, en lugar de Paella/i.test(h),true);
+T.S.veg=v0;T.S.alergias=al0;T.S.menu=m0;T.S.plan=p0;T.S.super=s0;}
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);

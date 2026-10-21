@@ -1894,7 +1894,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "gpg-tortilla-de-patatas-tradicional"
  },
  {
   "id": "gpg-fabada-asturiana-rapida",
@@ -1965,7 +1966,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "gpg-tortilla-de-patatas-tradicional"
  },
  {
   "id": "gpg-sorropotun-cantabro",
@@ -2112,7 +2114,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "gpg-arroz-a-la-cubana-de-campamento"
  },
  {
   "id": "gpg-huevos-a-la-flamenca",
@@ -2252,7 +2255,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "ej-san-jacobo-setas"
  },
  {
   "id": "ej-san-jacobo-setas",
@@ -3003,7 +3007,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "ej-san-jacobo-setas"
  },
  {
   "id": "gpg-arroz-gratinado-al-horno",
@@ -3335,7 +3340,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "tr-huevo-patata"
  },
  {
   "id": "gpg-fricase-de-cerdo",
@@ -3424,7 +3430,8 @@
   "source": {
    "name": "guiasparaguias · Platos principales",
    "url": "https://guiasparaguias.wixsite.com/inicio/copia-de-entrantes"
-  }
+  },
+  "altVeg": "gpg-truffade-del-delfinado"
  },
  {
   "id": "gpg-pan-casero",

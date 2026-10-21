@@ -121,7 +121,7 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .slot-m{font-size:13px;color:var(--mute);padding-top:6px;line-height:1.25}.slot-m small{color:var(--ochre);font-weight:600}
 .slot-r{display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
 .pl{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px 2px 3px 8px;font-size:14px;line-height:1.3}
-.pl small{color:var(--mute);font-size:12px}.pl small.w{color:var(--danger)}
+.pl small{color:var(--mute);font-size:12px}.pl small.w{color:var(--danger)}.pl small.vg{color:var(--pine)}p.nveg.alt{margin:8px 0 0;font-size:13.5px;color:var(--pine)}
 .x{border:0;background:none;color:var(--mute);font-size:13px;padding:2px 6px;cursor:pointer}
 select.pladd{width:100%;min-width:0;padding:4px 6px;font-size:13px;border-style:dashed;color:var(--mute);background:transparent}
 .addrow select{width:auto}
@@ -129,7 +129,7 @@ h3.secc{font-size:14px;color:var(--pine);margin:14px 0 0;text-transform:uppercas
 label.buy{display:flex;gap:8px;align-items:center}label.buy input{width:20px;height:20px;flex:none;accent-color:var(--pine)}
 tr.got b{color:var(--mute);text-decoration:line-through}
 .ajuste{background:var(--bg);border-radius:10px;padding:10px;margin:8px 0}.ajuste .chkb{border-bottom-color:var(--line)}
-.buy small.det{display:block;font-weight:400;color:var(--mute);font-size:12px;line-height:1.3}.aprox{margin:2px 0 0;font-size:12.5px;color:var(--mute)}.pls{padding:0 2px}.pl.casa{padding-left:8px;font-style:italic;color:var(--mute)}.nveg{color:var(--pine);font-size:12px}.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
+.buy small.det{display:block;font-weight:400;color:var(--mute);font-size:12px;line-height:1.3}.card .acc{margin-top:10px;flex-wrap:nowrap}.card .acc .btn.sm{padding:5px 12px}.aprox{margin:2px 0 0;font-size:12.5px;color:var(--mute)}.pls{padding:0 2px}.pl.casa{padding-left:8px;font-style:italic;color:var(--mute)}.nveg{color:var(--pine);font-size:12px}.pln{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted var(--mute);text-underline-offset:3px}.pl.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}.exf #ajName,.exf [data-act=ajAdd]{grid-column:1/-1}
 .dia-h h3{white-space:nowrap}.dia-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.dia-h select{width:auto;font-size:13px;padding:4px 6px}.dia-s{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .obj{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:4px}.obj .track{background:var(--surface)}.tcasa,.tcasa-m{position:absolute;right:0;top:0;bottom:0;border-radius:0 5px 5px 0;background:repeating-linear-gradient(135deg,var(--line) 0 4px,transparent 4px 8px)}.casa-l{margin:-2px 0 2px 78px;font-size:12px;color:var(--mute);display:flex;align-items:center;gap:6px}.tcasa-m{position:static;display:inline-block;width:18px;height:8px;border-radius:3px}.obj .bar{grid-template-columns:70px 1fr 104px}
 details.plg>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.plg>summary::-webkit-details-marker{display:none}
@@ -660,7 +660,7 @@ function vList(){
     let d="";
     /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
     const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
-    if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>`,true)}
+    if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>${lineaAlt(r,RAC())}`,true)}
     ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <details class="plg2" data-k="n-${esc(r.id)}"${U.det&&U.det["n-"+r.id]?" open":""}><summary>Nutrición y cocina</summary>
@@ -673,8 +673,8 @@ function vList(){
     return `${grupo}<article class="card pl-${Math.max(0,PL.indexOf(platoDe(r)))}">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:fs?"":pico(Math.max(0,PL.indexOf(platoDe(r))))}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
       const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
-    <div class="row"><button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button>
-    <button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button></div>
+    <div class="row acc"><button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button>
+    <button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver receta"}</button></div>
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
 
@@ -744,8 +744,12 @@ function vImprimir(){
   ${enCasa.length?`<p class="psin"><b>Ya en casa o en el baúl</b> ${enCasa.map(i=>esc(i.name)).join(" · ")}</p>`:""}
   ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
   ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
-    <div class="rcol"><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>
+    <div class="rcol"><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")}
+  ${(()=>{const fv=fracVeg(),al=new Map();if(fv)for(const r of todas){const a=altVeg(r);if(a)al.set(a.id,[a,[...((al.get(a.id)||[])[1]||[]),r.name]])}
+    return [...al.values()].map(([a,orig])=>{const na=n*fv,f=factor(a,na);return `<article class="rec"><h3>${esc(a.name)}</h3><p class="sub">Para ${String(Math.round(na*10)/10).replace(".",",")} raciones · vegetarianos, en lugar de ${esc(orig.join(" y "))}</p>
+    <div class="rcol"><table>${ingsVeg(a).map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
+    ${a.steps?`<ol>${a.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")})()}
   ${montar.length?`<p class="psin"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
 }
@@ -758,7 +762,7 @@ function vImprimirReceta(r){
   return `<header class="pcab"><div><small>RECETARIO</small><h1>${esc(r.name)}</h1></div>
     <div class="pdat"><span>Para ${n} ${n===1?"ración":"raciones"}</span>${cats.length?`<span>${esc(cats.join(" · "))}</span>`:""}<span>${hoy}</span></div></header>
   <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
-    <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table></div>
+    <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}</div>
     ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}</div></article>
   ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
@@ -1113,7 +1117,7 @@ function vDias(){
       const cs=costeSlot(d,m);
       h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{if(id===CASA)return `<span class="pl casa">De casa<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar «de casa»">✕</button></span>`;const r=getM(id);if(!r)return "";
         const warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
-        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}${S.veg&&!r.suelto&&vegAdapta(r)===false?`<small class="w"> · sin opción vegetariana</small>`:""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
+        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}${S.veg&&!r.suelto&&vegAdapta(r)===false?(a=>a?`<small class="vg"> · vegetarianos: ${esc(corto(a))}</small>`:`<small class="w"> · sin opción vegetariana</small>`)(altVeg(r)):""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${ids.includes(CASA)?"":`<option value="${CASA}">De casa (no se compra)</option>`}${optRecetas(m)}</select></div></div>${ajAqui(d+"|"+m)}`;
     }
     const vacias=comidasVacias(d);
@@ -1129,9 +1133,10 @@ function vDias(){
    no ven trazas ni la etiqueta del envase. */
 function vVeg(rs){
   const v=S.veg||0,H=HEADS();
-  const no=v?[...new Map(rs.filter(r=>vegAdapta(r)===false).map(r=>[r.id,r])).values()]:[];
-  return `${fl("Vegetarianos","veg","En las recetas con carne que se puede cambiar, su parte se compra en vegetal (picada vegetal, tiras vegetales…) y la carne que es solo un toque (bacon, jamón) se les quita. Las que no se pueden adaptar (entrecot, pollo al ajillo…) se avisan en cada comida.")}
+  const nad=v?[...new Map(rs.filter(r=>vegAdapta(r)===false).map(r=>[r.id,r])).values()]:[],no=nad.filter(r=>!altVeg(r)),con=nad.filter(r=>altVeg(r));
+  return `${fl("Vegetarianos","veg","En las recetas con carne que se puede cambiar, su parte se compra en vegetal (picada vegetal, tiras vegetales…) y la carne que es solo un toque (bacon, jamón) se les quita. Las que no se pueden adaptar (entrecot, pollo al ajillo…) llevan otro plato para ellos, que entra en la compra y en la hoja impresa.")}
   <div class="row"><div class="people"><button class="step" data-act="veg" data-d="-1" aria-label="Menos vegetarianos">−</button><b>${v}</b><button class="step" data-act="veg" data-d="1" aria-label="Más vegetarianos">+</button></div><span class="msg" style="margin:0">de ${H} personas</span></div>
+  ${con.length?`<p class="msg">En su lugar, para ${v}: ${con.map(r=>`${esc(corto(r))} → <b>${esc(corto(altVeg(r)))}</b>`).join(" · ")}</p>`:""}
   ${no.length?`<p class="msg warn">Sin opción vegetariana: ${esc(no.map(r=>r.name).join(", "))}. Para ${v} hace falta otra cosa en esa comida.</p>`:""}`;
 }
 function vAlergias(rs){
@@ -1209,18 +1214,48 @@ const VEG=[[/carne picada|^magro/,{to:"Soja texturizada",k:1/3,nota:"en seco: se
   [/^chorizo/,{to:"Chorizo vegetal"}],[/^jamon cocido|^jamon serrano|^bacon|^panceta|^tocino|^pechuga de pavo o jamon/,{quitar:true}]];
 /* precio de referencia de lo vegetal (€ por kg o por unidad) si el supermercado no lo tiene en su lista */
 const VEGREF={"Soja texturizada":[11,"g"],"Salchichas vegetales":[17,"g"],"Tofu firme":[5,"g"],"Chorizo vegetal":[20,"g"],"Hamburguesa vegetal":[0.9,"ud"]};
+/* si el supermercado marcado no tiene el sustituto, otro que sí tenga (Mercadona no vende salchichas ni chorizo vegetal) */
+const VEGALT={"Salchichas vegetales":{to:"Tofu firme",nota:"en tiras, a la plancha"},"Chorizo vegetal":{to:"Tofu firme",nota:"en dados, con pimentón ahumado"}};
+function enSuper(x){
+  const c=cadena();if(!c||!x||!x.to||prodDe(x.to))return x;
+  const a=VEGALT[x.to];return a&&prodDe(a.to)?{...x,...a,k:a.k||1,nota:`${a.nota}: en ${c} no hay ${x.to.toLowerCase()}`}:x;
+}
 const fracVeg=()=>Math.min(1,Math.max(0,(S.veg||0)/HEADS()));
 function reglaVeg(r,i){
   const n=norm(i.name).trim();if(!CARNE.test(n)||/^(pan|caldo|pastilla)/.test(n))return null; // «pan de hamburguesa», «caldo de pollo» no son carne
-  if(r.vegetal&&r.vegetal[i.name.trim()]){const [to,g]=r.vegetal[i.name.trim()].split("|");return g?{to,g:num(g)}:{to}}
-  for(const [re,x] of VEG)if(re.test(n))return x;
+  if(r.vegetal&&r.vegetal[i.name.trim()]){const [to,g]=r.vegetal[i.name.trim()].split("|");return enSuper(g?{to,g:num(g)}:{to})}
+  for(const [re,x] of VEG)if(re.test(n))return enSuper(x);
   return {no:true};
 }
 /* adaptable: lleva carne y toda tiene regla; null si no lleva carne */
 function vegAdapta(r){const rs=r.ingredients.map(i=>reglaVeg(r,i)).filter(Boolean);return rs.length?rs.every(x=>!x.no):null}
+/* La receta que no se adapta (pollo al ajillo, entrecot…) se hace igual para los demás, y los vegetarianos comen otro plato:
+   el que dice la receta (altVeg) o, en las tuyas, el vegetariano del mismo plato que más se le parece (dónde y cómo se cocina). */
+const PESCADO=/(^|[^a-z])(atun|sardina|bonito|merluza|pescado|gamba|calamar|mejillon|anchoa|bacalao|salmon|marisco|langostino|caballa|vieira)/;
+const esVeg=r=>vegAdapta(r)===null&&!r.ingredients.some(i=>PESCADO.test(norm(i.name)));
+function altVeg(r){
+  if(!r||r.suelto||vegAdapta(r)!==false)return null;
+  const al=S.alergias||[],ok=a=>a&&a.id!==r.id&&esVeg(a)&&!etiquetas(a).alerg.some(x=>al.includes(x));
+  if(r.altVeg){const a=getR(r.altVeg);if(ok(a))return a}
+  const PL=FACETS[0].v,pl=r.categories.filter(c=>PL.includes(c));
+  let best=null,bs=-1;
+  for(const a of all()){if(a.sencilla||!ok(a)||!a.categories.some(c=>pl.includes(c)))continue;
+    const sc=a.categories.filter(c=>r.categories.includes(c)).length;if(sc>bs){best=a;bs=sc}}
+  return best;
+}
+/* parte de la receta que se hace con carne: toda, salvo lo de los vegetarianos */
+const kVeg=(r,nv)=>nv||(S.veg&&altVeg(r))?1-fracVeg():1;
+function lineaAlt(r,n){
+  const v=S.veg||0,a=v?altVeg(r):null;if(!a)return "";
+  return `<p class="nveg alt">Para ${v} vegetariano${v===1?"":"s"}: <b>${esc(a.name)}</b> en su lugar, para ${String(Math.round(n*fracVeg()*10)/10).replace(".",",")} raciones</p>`;
+}
 /* los ingredientes con la parte de los vegetarianos ya repartida (para la compra) */
 function ingsVeg(r){
-  const fv=fracVeg();if(!fv||r.suelto||!vegAdapta(r))return r.ingredients;
+  const fv=fracVeg();if(!fv||r.suelto)return r.ingredients;
+  const ad=vegAdapta(r),parte=(i,k)=>num(i.qty)>0?{...i,qty:String(num(i.qty)*k),price:i.price===""?"":String(num(i.price)*k)}:i;
+  if(ad===false){const a=altVeg(r);if(!a)return r.ingredients;const k=r.servings/Math.max(1,a.servings)*fv;
+    return [...r.ingredients.map(i=>parte(i,1-fv)),...ingsVeg(a).map(i=>parte(i,k))]}
+  if(!ad)return r.ingredients;
   const out=[];
   for(const i of r.ingredients){const g=reglaVeg(r,i);
     if(!g||!(num(i.qty)>0)){out.push(i);continue}
