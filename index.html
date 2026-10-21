@@ -227,6 +227,13 @@ textarea{min-height:90px;resize:vertical}
   #imprimir .rcol ol{flex:1;margin:0;padding-left:13pt;font-size:9.5pt}#imprimir .rcol ol li{margin-bottom:2pt}
   #imprimir .ppie{margin-top:12pt;padding-top:4pt;border-top:1px solid #D3DBCC;font-size:8pt;color:#5E6D63;text-align:center}
 }
+.intro{position:fixed;inset:0;z-index:50;background:rgb(0 0 0/.45);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.intro .caja{background:var(--surface);color:var(--ink);border-radius:16px;max-width:460px;width:100%;padding:20px 20px 14px;box-shadow:0 10px 30px rgb(0 0 0/.3);margin-bottom:env(safe-area-inset-bottom,0px)}
+@media (min-width:600px){.intro{align-items:center}}
+.intro .paso{color:var(--mute);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+.intro h2{margin:0 0 8px;font-size:21px}.intro p{margin:0 0 6px;line-height:1.5}.intro .ico{font-size:34px;line-height:1;margin-bottom:8px}
+.intro .puntos{display:flex;gap:6px;justify-content:center;margin:14px 0 10px}.intro .puntos i{width:8px;height:8px;border-radius:50%;background:var(--line)}.intro .puntos i.on{background:var(--pine)}
+.intro .row{justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
@@ -594,7 +601,7 @@ function vBasicos(){
 function vGuia(){
   const n=RAC();
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
-  return `${vBasicos()}
+  return `<div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn alt sm" data-act="intro">Cómo usar esta app</button></div>${vBasicos()}
   ${vCuatro()}
   <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 12 años, ración entera; hasta los 11, el 70 % de una ración.</p>${tbl(prop)}</details>
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
@@ -1622,6 +1629,7 @@ document.addEventListener("input",e=>{
 document.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;
   const a=b.dataset.act;sync();
+  if(a==="intro"){intro(0);return}
   if(a==="irBas"){U.tab="guia";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
   if(a==="pdfReceta"){const r=getR(b.dataset.id);if(r)imprimir(r);return}
@@ -1781,7 +1789,28 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
 /* que una ficha abierta siga abierta al repintar */
 document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details[data-k]")){U.det=U.det||{};U.det[d.dataset.k]=d.open}},true);
 document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{if(m&&m.receta)return abrirLeida(m.receta,m.origen);U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
-initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render);
+/* «Cómo usar esta app»: unos pasos al abrirla por primera vez, con «Omitir». Se vuelve a ver desde la Guía. (JPS, 21-10-2026) */
+const INTRO=[
+  ["👥","Elige cuántos sois","Arriba, en «Personas», pon los mayores de 12 años y los niños. Todas las cantidades, la compra y el precio se ajustan solos."],
+  ["🔎","Busca recetas","En «Recetas» tienes el buscador y los filtros (plato, temporada…). «Ver receta» enseña ingredientes, pasos y precio por persona."],
+  ["📅","Monta el menú","Con «Añadir al menú» la receta pasa a la pestaña «Menú». Allí la repartes por días y comidas, y te salen la lista de la compra y el presupuesto."],
+  ["📘","Consulta la Guía","Cantidades por persona, tiempos de cocción, medidas útiles, el menú equilibrado en 4 pasos y las normas del fuego."],
+  ["✍️","Tus recetas","En «Mis recetas» creas, copias o importas las tuyas. Se guardan solo en este móvil: guarda una copia de vez en cuando. Consejo: añade la app a la pantalla de inicio para usarla sin conexión."],
+];
+function intro(n){
+  let d=document.getElementById("intro");
+  if(n==null||n>=INTRO.length){d&&d.remove();try{localStorage.setItem("recetario_intro","1")}catch(e){}return}
+  if(!d){d=document.createElement("div");d.id="intro";d.className="intro";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.setAttribute("aria-label","Cómo usar esta app");document.body.appendChild(d)}
+  const [ico,t,txt]=INTRO[n],ult=n===INTRO.length-1;
+  d.innerHTML=`<div class="caja"><p class="paso">Cómo usar esta app · ${n+1} de ${INTRO.length}</p><div class="ico" aria-hidden="true">${ico}</div><h2>${t}</h2><p>${txt}</p>
+  <div class="puntos" aria-hidden="true">${INTRO.map((_,k)=>`<i class="${k===n?"on":""}"></i>`).join("")}</div>
+  <div class="row"><button class="btn ghost sm" data-intro="fin">${ult?"":"Omitir"}</button><div class="row">${n?`<button class="btn alt sm" data-intro="${n-1}">Anterior</button>`:""}<button class="btn sm" data-intro="${ult?"fin":n+1}">${ult?"Empezar":"Siguiente"}</button></div></div></div>`;
+  d.querySelector("[data-intro]:last-child")?.focus?.();
+}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;intro(v==="fin"?null:+v)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("intro"))intro(null)});
+const verIntro=()=>{try{if(!localStorage.getItem("recetario_intro"))intro(0)}catch(e){}};
+initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
 if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){
   /* si ya había una versión guardada y entra otra, recargar una vez para verla ya (si no, salía la vieja hasta la siguiente apertura) */
