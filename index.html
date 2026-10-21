@@ -24,7 +24,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Source Sans 
 h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif;margin:0;line-height:1.15}
 main{max-width:720px;margin:0 auto;padding:16px 16px 90px}
 header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 12px;margin-bottom:14px}
-.grp{display:flex;gap:4px;align-items:center;flex-wrap:wrap;width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
+.grp{display:flex;gap:4px;align-items:center;flex-wrap:wrap;width:100%;margin-top:8px}
+.ppl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 10px;min-width:0}.ppl>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:15px}.ppl>summary::-webkit-details-marker{display:none}
+.ppl>summary::after{content:"▾";color:var(--mute);font-size:12px;margin-left:2px}.ppl[open]>summary::after{content:"▴"}.pplk{color:var(--mute);font-size:13px}
+.ppl[open]{width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
 header.top h1{font-size:28px;color:var(--pine)}
 header.top p{margin:2px 0 0;color:var(--mute);font-size:14px}
 .people{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 8px}
@@ -154,7 +157,7 @@ td.q{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
 td.p{text-align:right;color:var(--mute);white-space:nowrap;padding-left:10px;width:1%}
 ol{padding-left:20px;margin:8px 0}
 label.f{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
-input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+input,select,textarea{width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 10px} /* border-box explícito: dentro de un <details> no se hereda */
 textarea{min-height:90px;resize:vertical}
 .ing{display:grid;grid-template-columns:1fr 70px 78px 70px 30px;gap:6px;margin-bottom:6px}
 .ing input,.ing select{padding:8px 6px}
@@ -601,11 +604,19 @@ function render(){
   const tabs=[["menu","Menú ("+planIds().length+")"],["recetas","Recetas"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top"><div><h1>Recetario</h1></div>
+  <details class="ppl" data-k="ppl"${U.det&&U.det.ppl?" open":""}><summary><span class="pplk">Personas</span><b>${S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} personas`}</b></summary>
   <div class="grp"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
-  ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></header>`;
+  ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header>`;
   $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
 }
+const vTus=()=>`<details class="card plg" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Mis recetas: crear, copia e importar</h2></summary>
+  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican. También lee un PDF o un texto: saca título, raciones, ingredientes y pasos y te los deja en el editor para revisar.</p>
+  <div class="row"><button class="btn sm" data-act="tab" data-k="nueva">+ Nueva receta</button><button class="btn alt sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
+  <input id="impfile" type="file" accept=".json,application/json,.pdf,application/pdf,.txt,text/plain" hidden>
+  <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
+  <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
+  ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
 function vList(){
   U.f=U.f||{};
   const al=S.alergias||[];
@@ -616,7 +627,7 @@ function vList(){
   /* tus recetas solo viven en este móvil: si hace más de 30 días sin copia, un aviso (se puede posponer 7 días) */
   const DIA=864e5,dias=S.lastExport?Math.floor((Date.now()-S.lastExport)/DIA):null;
   const aviso=S.recipes.length&&(dias===null||dias>30)&&!(S.remindAt&&Date.now()<S.remindAt);
-  let h=`${aviso?`<div class="remind"><span>💾 ${S.recipes.length} receta${S.recipes.length===1?"":"s"} tuya${S.recipes.length===1?"":"s"} ${dias===null?"sin copia todavía":`sin copia desde hace ${dias} días`}. Solo están en este móvil.</span><div class="row"><button class="btn sm" data-act="export">Exportar</button><button class="btn ghost sm" data-act="remindLater">Luego</button></div></div>`:""}<div class="row spread" style="margin-bottom:10px"><button class="btn" data-act="tab" data-k="nueva">+ Nueva receta</button><label class="ordsel">Ordenar <select data-act="ord" aria-label="Ordenar recetas">${[["plato","por plato"],["nombre","por nombre"],["precio","más baratas"]].map(([k,n])=>`<option value="${k}" ${(U.ord||"plato")===k?"selected":""}>${n}</option>`).join("")}</select></label></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, proteína…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
+  let h=`${aviso?`<div class="remind"><span>💾 ${S.recipes.length} receta${S.recipes.length===1?"":"s"} tuya${S.recipes.length===1?"":"s"} ${dias===null?"sin copia todavía":`sin copia desde hace ${dias} días`}. Solo están en este móvil.</span><div class="row"><button class="btn sm" data-act="export">Exportar</button><button class="btn ghost sm" data-act="remindLater">Luego</button></div></div>`:""}${vTus()}<div class="row" style="margin-bottom:10px;justify-content:flex-end"><label class="ordsel">Ordenar <select data-act="ord" aria-label="Ordenar recetas">${[["plato","por plato"],["nombre","por nombre"],["precio","más baratas"]].map(([k,n])=>`<option value="${k}" ${(U.ord||"plato")===k?"selected":""}>${n}</option>`).join("")}</select></label></div><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar: sopa, pescado, vegetariana, proteína…" aria-label="Buscar recetas por nombre, ingrediente o tipo" style="margin-bottom:10px">`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
   sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
   if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   /* orden: por plato (con su título) y, dentro, de la A a la Z; o por nombre o precio */
@@ -647,13 +658,7 @@ function vList(){
     <button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver para "+grupoTxt()}</button></div>
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
-  h+=`<details class="card plg" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Tus recetas: copia e importar</h2></summary>
-  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican. También lee un PDF o un texto: saca título, raciones, ingredientes y pasos y te los deja en el editor para revisar.</p>
-  <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
-  <input id="impfile" type="file" accept=".json,application/json,.pdf,application/pdf,.txt,text/plain" hidden>
-  <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
-  <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
-  ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
+
   return h;
 }
 /* Sueltos: lo que se compra sin receta (una sandía, barritas para media mañana). Fijos o por persona. */
