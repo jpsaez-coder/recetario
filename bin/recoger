@@ -1,0 +1,105 @@
+#!/usr/bin/env node
+// Revisa las recetas que la comunidad aporta (cola KV de Cloudflare, ver functions/api/aportar.js).
+//   bin/recoger                    lista lo pendiente (y lo guarda en tmp/aportes/ para leerlo con calma)
+//   bin/recoger ver <id>           enseña una entera
+//   bin/recoger aceptar <id>       la añade a recetas-base.json con su autor y la quita de la cola
+//   bin/recoger descartar <id>     la quita de la cola sin añadirla
+// Después de aceptar: revisar con git diff y publicar con bin/publicar.
+// Configuración en ~/.config/recetario/cloudflare.json (permisos 600):
+//   {"cuenta": "<id de la cuenta>", "cola": "<id del espacio KV>", "token": "<token solo de KV>"}
+"use strict";
+const fs = require("node:fs"), path = require("node:path"), os = require("node:os");
+const RAIZ = path.resolve(__dirname, "..");
+const BASE = path.join(RAIZ, "recetas-base.json"), DIR = path.join(RAIZ, "tmp", "aportes");
+const CONF = path.join(os.homedir(), ".config", "recetario", "cloudflare.json");
+
+const norm = t => String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9ñ ]/g, " ").replace(/\s+/g, " ").trim();
+const slug = t => norm(t).replace(/ /g, "-").slice(0, 40).replace(/-+$/, "");
+const palabras = t => new Set(norm(t).split(" ").filter(w => w.length > 2 && !["con", "del", "las", "los", "para"].includes(w)));
+function parecido(a, b) { // 0..1: nombre y lista de ingredientes en común
+  const j = (x, y) => { const i = [...x].filter(w => y.has(w)).length, u = new Set([...x, ...y]).size; return u ? i / u : 0; };
+  const ia = new Set(a.ingredients.map(i => norm(i.name))), ib = new Set(b.ingredients.map(i => norm(i.name)));
+  return 0.5 * j(palabras(a.name), palabras(b.name)) + 0.5 * j(ia, ib);
+}
+function masParecida(r, base) {
+  let m = null, s = 0; for (const b of base) { const p = parecido(r, b); if (p > s) { s = p; m = b; } }
+  return s >= 0.45 ? { receta: m, valor: s } : null;
+}
+/* la receta tal como entra en recetas-base.json */
+function aBase(ap, base) {
+  const PL = ["Desayuno", "Entrante", "Principal", "Postre y masas", "Merienda"], r = ap.receta;
+  const cats = r.categories.length && r.categories.some(c => PL.includes(c)) ? r.categories : ["Principal", ...r.categories];
+  const ids = new Set(base.map(b => b.id)); let id = "com-" + slug(r.name), n = 2;
+  while (ids.has(id)) id = "com-" + slug(r.name) + "-" + n++;
+  return { id, name: r.name, servings: r.servings, categories: cats, ingredients: r.ingredients, steps: r.steps,
+    aporte: { autor: ap.autor || "", origen: ap.origen || "", fecha: String(ap.fecha || "").slice(0, 10), cola: ap.id } };
+}
+
+function conf() {
+  if (!fs.existsSync(CONF)) throw new Error(`Falta ${CONF} (ver la cabecera de bin/recoger).`);
+  const modo = fs.statSync(CONF).mode & 0o777;
+  if (modo & 0o077) throw new Error(`${CONF} tiene permisos ${modo.toString(8)}: ponlo en 600 (chmod 600).`);
+  const c = JSON.parse(fs.readFileSync(CONF, "utf8"));
+  if (!c.cuenta || !c.cola || !c.token) throw new Error(`${CONF} necesita cuenta, cola y token.`);
+  return c;
+}
+async function api(c, metodo, ruta) {
+  const url = `https://api.cloudflare.com/client/v4/accounts/${c.cuenta}/storage/kv/namespaces/${c.cola}${ruta}`;
+  const r = await fetch(url, { method: metodo, headers: { Authorization: "Bearer " + c.token } });
+  if (!r.ok) throw new Error(`Cloudflare respondió ${r.status} a ${metodo} ${ruta.split("?")[0]}`);
+  return r.json();
+}
+async function pendientes(c) {
+  const out = []; let cursor = "";
+  do {
+    const j = await api(c, "GET", `/keys?prefix=p:&limit=1000${cursor ? "&cursor=" + encodeURIComponent(cursor) : ""}`);
+    out.push(...(j.result || []).map(k => k.name)); cursor = j.result_info && j.result_info.cursor;
+  } while (cursor);
+  return out;
+}
+const leerBase = () => JSON.parse(fs.readFileSync(BASE, "utf8"));
+const escribirBase = b => fs.writeFileSync(BASE, JSON.stringify(b, null, 1) + "\n");
+async function traer(c, id) {
+  const f = path.join(DIR, id + ".json");
+  if (fs.existsSync(f)) return JSON.parse(fs.readFileSync(f, "utf8"));
+  return api(c, "GET", "/values/" + encodeURIComponent("p:" + id));
+}
+
+async function main(args) {
+  const [orden, id] = args, c = conf(), base = leerBase();
+  if (!orden) {
+    const ks = await pendientes(c);
+    if (!ks.length) return console.log("No hay recetas pendientes.");
+    fs.mkdirSync(DIR, { recursive: true });
+    for (const k of ks) {
+      const ap = await api(c, "GET", "/values/" + encodeURIComponent(k));
+      fs.writeFileSync(path.join(DIR, ap.id + ".json"), JSON.stringify(ap, null, 1));
+      const ya = base.find(b => b.aporte && b.aporte.cola === ap.id), p = masParecida(ap.receta, base);
+      console.log(`\n${ap.id}\n  ${ap.receta.name} · ${ap.receta.ingredients.length} ingredientes · ${ap.autor || "sin autor"}${ap.origen ? " · de: " + ap.origen : ""}`
+        + (ya ? `\n  ✓ ya aceptada como ${ya.id}: descártala para sacarla de la cola` : "")
+        + (p ? `\n  ⚠ se parece a «${p.receta.name}» (${Math.round(p.valor * 100)} %)` : ""));
+    }
+    return console.log(`\n${ks.length} pendiente${ks.length === 1 ? "" : "s"} (copias en tmp/aportes/). Siguiente: bin/recoger ver <id>`);
+  }
+  if (!id) throw new Error("Falta el id (el que sale en la lista).");
+  if (orden === "ver") { const ap = await traer(c, id); const r = ap.receta;
+    return console.log(`${r.name} (para ${r.servings}) · ${r.categories.join(", ")}\nAutor: ${ap.autor || "—"} · Origen: ${ap.origen || "—"} · ${ap.fecha}\n\n`
+      + r.ingredients.map(i => `- ${i.name}: ${i.qty} ${i.unit}`).join("\n") + "\n\n" + r.steps); }
+  if (orden === "aceptar") {
+    const ap = await traer(c, id);
+    if (base.some(b => b.aporte && b.aporte.cola === ap.id)) throw new Error("Esa ya está aceptada.");
+    const nueva = aBase(ap, base); base.push(nueva); escribirBase(base);
+    await api(c, "DELETE", "/values/" + encodeURIComponent("p:" + id));
+    fs.rmSync(path.join(DIR, id + ".json"), { force: true });
+    return console.log(`✓ añadida como ${nueva.id}. Revisa con git diff (cambia lo que haga falta) y publica con bin/publicar.`);
+  }
+  if (orden === "descartar") {
+    await api(c, "DELETE", "/values/" + encodeURIComponent("p:" + id));
+    fs.rmSync(path.join(DIR, id + ".json"), { force: true });
+    return console.log("✓ quitada de la cola.");
+  }
+  throw new Error("Órdenes: (nada), ver, aceptar, descartar.");
+}
+
+module.exports = { aBase, masParecida, parecido };
+if (require.main === module) main(process.argv.slice(2)).catch(e => { console.error("✗ " + e.message); process.exit(1); });

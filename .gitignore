@@ -4,3 +4,6 @@ retirados/
 .claude/
 precios-herramientas/*.json
 !precios-herramientas/productos.json
+.wrangler/
+node_modules/
+.dev.vars

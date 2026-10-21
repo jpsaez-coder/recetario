@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -310,6 +310,48 @@ caso("y la compra lleva lo del arroz a la cubana",con.some(i=>/^huevo/i.test(i.n
 T.S.menu=["gpg-paella-de-campamento"];T.S.plan={};const h=T.vImprimir();
 caso("la hoja impresa trae la receta alternativa",/Arroz a la cubana[\s\S]*vegetarianos, en lugar de Paella/i.test(h),true);
 T.S.veg=v0;T.S.alergias=al0;T.S.menu=m0;T.S.plan=p0;T.S.super=s0;}
+// versión nueva: solo avisa si la publicada es mayor
+caso("versión: 1.28.0 es más nueva que 1.27.3",T.masNueva("1.28.0","1.27.3"),true);
+caso("versión: 1.10.0 es más nueva que 1.9.9 (no por texto)",T.masNueva("1.10.0","1.9.9"),true);
+caso("versión: la misma no avisa",T.masNueva("1.27.0","1.27.0"),false);
+caso("versión: una más vieja no avisa",T.masNueva("1.26.9","1.27.0"),false);
+caso("versión: «dev» no avisa",T.masNueva("1.27.0","dev"),false);
+caso("el service worker deja pasar la comprobación de versión a la red",/searchParams\.has\("comprobar"\)/.test(fs.readFileSync(path.join(raiz,"sw.js"),"utf8")),true);
+// aportar: el botón solo sale en las tuyas, con el envío configurado
+{const r0=T.S.recipes,o0=T.U.open;const mia={id:"mia1",name:"Lentejas de mi madre",servings:4,categories:["Principal"],ingredients:[{name:"Lentejas",qty:"400",unit:"g",price:""}],steps:"Cocer las lentejas una hora."};
+T.S.recipes=[mia];T.U.open="mia1";
+caso("aportar: sin configurar (o en claude.ai) no sale el botón",/Aporta esta receta/.test(T.vList()),false);
+ctx.location.protocol="http:";ctx.location.hostname="localhost";
+caso("aportar: en tus recetas sale el botón",/Aporta esta receta/.test(T.vList()),true);
+T.U.open="ej-arroz";caso("aportar: en las de la base no sale",/data-act="apAbrir" data-id="ej-arroz"/.test(T.vList()),false);
+ctx.location.protocol="file:";delete ctx.location.hostname;T.S.recipes=r0;T.U.open=o0;}
+// la función de Cloudflare
+{const ap=await import(path.join(raiz,"functions/api/aportar.js"));const kv=new Map(),COLA={get:async k=>kv.get(k)??null,put:async(k,v)=>{kv.set(k,v)}};
+const env={COLA,TURNSTILE_SECRET:"x"};let humano=true;const f0=globalThis.fetch;globalThis.fetch=async()=>({json:async()=>({success:humano})});
+const buena={name:"Lentejas de mi madre",servings:4,categories:["Principal"],ingredients:[{name:"Lentejas",qty:"400",unit:"g"}],steps:"Cocer las lentejas una hora."};
+const pide=(cuerpo,origen="https://jpsaez-coder.github.io",ip="1.2.3.4")=>ap.onRequestPost({env,request:new Request("https://recetario.pages.dev/api/aportar",{method:"POST",headers:{Origin:origen,"CF-Connecting-IP":ip,"Content-Type":"application/json"},body:typeof cuerpo==="string"?cuerpo:JSON.stringify(cuerpo)})});
+const ok={receta:buena,autor:"Marta R.",origen:"de mi madre",acepto:true,token:"t",app:"1.28.0"};
+let r=await pide(ok);caso("aportar: una buena entra en la cola",r.status,201);
+const g=[...kv.entries()].find(([k])=>k.startsWith("p:"));caso("aportar: se guarda con su autor",JSON.parse(g[1]).autor,"Marta R.");
+caso("aportar: no se guarda la IP",[...kv.entries()].some(([k,v])=>(k+v).includes("1.2.3.4")),false);
+caso("aportar: CORS solo para la web",(await pide(ok,"https://otra.web")).status,403);
+caso("aportar: sin aceptar no entra",(await pide({...ok,acepto:false})).status,400);
+humano=false;caso("aportar: si Turnstile dice que no, no entra",(await pide(ok,undefined,"5.5.5.5")).status,403);humano=true;
+r=await pide({...ok,receta:{...buena,steps:""}},undefined,"6.6.6.6");caso("aportar: sin pasos no entra",[r.status,(await r.json()).error],[400,"Faltan los pasos."]);
+caso("aportar: demasiado grande no entra",(await pide(JSON.stringify({...ok,relleno:"x".repeat(70000)}),undefined,"7.7.7.7")).status,413);
+const lim=[];for(let i=0;i<11;i++)lim.push((await pide(ok,undefined,"9.9.9.9")).status);caso("aportar: más de 10 al día desde la misma, no",lim.slice(-2),[201,429]);
+const v=ap.validar({...buena,extra:"<script>",foto:"x",ingredients:[{name:"Lentejas",qty:"400",unit:"cubo",raro:1}]});
+caso("aportar: solo pasan los campos conocidos",[Object.keys(v).sort().join(","),v.ingredients[0].unit,Object.keys(v.ingredients[0]).join(",")],["categories,ingredients,name,servings,steps","ud","name,qty,unit,price"]);
+caso("aportar: sin COLA ni secreto, avisa",(await ap.onRequestPost({env:{},request:new Request("https://recetario.pages.dev/api/aportar",{method:"POST",headers:{Origin:"https://recetario.pages.dev"},body:"{}"})})).status,503);
+globalThis.fetch=f0;}
+// bin/recoger: cómo entra una aceptada en la base
+{const {createRequire}=await import("node:module");const rq=createRequire(import.meta.url);const rc=rq(path.join(raiz,"bin/recoger"));
+const ap={id:"2026-x",fecha:"2026-10-21T10:00:00Z",autor:"Marta R.",origen:"",receta:{name:"Arroz con leche",servings:4,categories:[],ingredients:[{name:"Arroz",qty:"200",unit:"g",price:""}],steps:"Cocer despacio."}};
+const nb=rc.aBase(ap,[...base,{id:"com-arroz-con-leche"}]);
+caso("recoger: id propio y sin pisar otro",nb.id,"com-arroz-con-leche-2");
+caso("recoger: sin plato, va a Principal",nb.categories,["Principal"]);
+caso("recoger: lleva el autor",nb.aporte.autor,"Marta R.");
+caso("recoger: avisa si ya existe una parecida",rc.masParecida({name:"Paella de campamento",ingredients:T.getR("gpg-paella-de-campamento").ingredients},base)?.receta.id,"gpg-paella-de-campamento");}
 // versión: la visible y la del service worker, iguales
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);

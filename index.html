@@ -121,6 +121,8 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .slot-m{font-size:13px;color:var(--mute);padding-top:6px;line-height:1.25}.slot-m small{color:var(--ochre);font-weight:600}
 .slot-r{display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
 .pl{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px 2px 3px 8px;font-size:14px;line-height:1.3}
+.nueva{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--ochre-bg);border:1px solid var(--ochre);border-radius:12px;padding:10px 12px;margin:0 0 12px;font-size:14px;font-weight:600}.nueva .btn{flex:none}
+.aporta{margin-top:12px;padding:12px;border-radius:12px;background:var(--ochre-bg)}.aporta h4{margin:0 0 4px;font-size:16px}.apok{display:flex;gap:8px;align-items:flex-start;margin:12px 0 8px;font-size:14px}.apok input{width:auto;margin-top:3px}#ts{min-height:10px;margin:6px 0}.btn.aportar{margin-top:10px;width:100%}
 .pl small{color:var(--mute);font-size:12px}.pl small.w{color:var(--danger)}.pl small.vg{color:var(--pine)}p.nveg.alt{margin:8px 0 0;font-size:13.5px;color:var(--pine)}
 .x{border:0;background:none;color:var(--mute);font-size:13px;padding:2px 6px;cursor:pointer}
 select.pladd{width:100%;min-width:0;padding:4px 6px;font-size:13px;border-style:dashed;color:var(--mute);background:transparent}
@@ -311,6 +313,58 @@ async function loadBase(){
   render();
 }
 function okRecipe(r){return r&&typeof r.name==="string"&&r.name.trim()&&Array.isArray(r.ingredients)}
+/* ---------- aportar a la comunidad ----------
+   La receta va a una cola en Cloudflare (functions/api/aportar.js) y no se publica sola: JPS la revisa con
+   bin/recoger y, si encaja, entra en recetas-base.json con la siguiente versión.
+   APORTA_WEB es la dirección del proyecto en Cloudflare y APORTA_CLAVE la clave pública de Turnstile;
+   mientras estén vacías el botón no sale (en local se usan las de prueba de Turnstile). */
+const APORTA_WEB="",APORTA_CLAVE="";
+function aporta(){
+  if(window.claude||location.protocol==="file:")return null; // en claude.ai no se puede llamar a otra web
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname))return {url:"/api/aportar",clave:"1x00000000000000000000AA"};
+  if(!APORTA_WEB||!APORTA_CLAVE)return null;
+  return {url:(location.origin===APORTA_WEB?"":APORTA_WEB)+"/api/aportar",clave:APORTA_CLAVE};
+}
+function vAporta(r){
+  const ya=S.aportadas&&S.aportadas[r.id];
+  if(U.aporta!==r.id)return ya?`<p class="msg">Aportada a la comunidad el ${esc(ya.split("-").reverse().join("-"))}. ¡Gracias!</p>`:"";
+  return `<div class="aporta"><h4>Aporta tu receta a la comunidad</h4>
+  <p class="msg">El Recetario lo hacemos entre todos. La revisamos y, si encaja, llega a todo el mundo con la siguiente versión, con tu nombre si lo pones.</p>
+  <label class="f" for="apAutor">Tu nombre o el de tu grupo (opcional)</label><input id="apAutor" maxlength="60" placeholder="Marta R., Grupo 512" value="${esc(U.apAutor??S.apAutor??"")}">
+  <p class="msg" style="margin:4px 0 0">Si eres menor de edad, solo nombre e inicial del apellido.</p>
+  <label class="f" for="apOrigen">¿De dónde sale? (opcional)</label><input id="apOrigen" maxlength="200" placeholder="De mi abuela, de un libro, de una web…" value="${esc(U.apOrigen||"")}">
+  <label class="apok"><input type="checkbox" id="apAcepto"${U.apAcepto?" checked":""}> La he escrito con mis palabras (si es de un libro o una web, lo digo arriba) y acepto que se publique en el Recetario.</label>
+  <div id="ts"></div>
+  ${U.apMsg?`<p class="msg${U.apErr?" warn":""}">${esc(U.apMsg)}</p>`:""}
+  <div class="row"><button class="btn sm" data-act="apEnviar" data-id="${r.id}"${U.apEnviando?" disabled":""}>${U.apEnviando?"Enviando…":"Enviar"}</button><button class="btn ghost sm" data-act="apCerrar">Ahora no</button></div></div>`;
+}
+/* Turnstile (de Cloudflare): comprueba que envía una persona. Se carga solo al abrir el panel; cada render pinta uno nuevo. */
+function montarTS(){
+  const el=document.getElementById("ts"),c=aporta();if(!el||!c||el.dataset.m)return;el.dataset.m="1";U.apTok=null;
+  if(window.turnstile){try{window.turnstile.render(el,{sitekey:c.clave,language:"es",callback:t=>{U.apTok=t},"expired-callback":()=>{U.apTok=null}})}catch(e){}return}
+  if(!document.getElementById("ts-js")){const s=document.createElement("script");s.id="ts-js";s.async=true;
+    s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    s.onload=()=>{const e=document.getElementById("ts");if(e){delete e.dataset.m;montarTS()}};
+    s.onerror=()=>{s.remove();U.apMsg="No se ha podido cargar la comprobación: revisa la conexión.";U.apErr=true;render()};
+    document.head.appendChild(s)}
+}
+async function enviarAporte(r){
+  const c=aporta();if(!r||!c)return;
+  U.apAutor=($("#apAutor")?.value||"").trim();U.apOrigen=($("#apOrigen")?.value||"").trim();U.apAcepto=!!$("#apAcepto")?.checked;
+  const fin=(m,err)=>{U.apMsg=m;U.apErr=err;U.apEnviando=false;render()};
+  if(!U.apAcepto)return fin("Marca la casilla para poder enviarla.",true);
+  if(navigator.onLine===false)return fin("Sin conexión: envíala cuando tengas cobertura.",true);
+  if(!U.apTok)return fin("Espera a que termine la comprobación y vuelve a pulsar Enviar.",true);
+  const token=U.apTok;U.apEnviando=true;U.apMsg="";render();
+  try{
+    const res=await fetch(c.url,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({receta:cleanRecipe(r),autor:U.apAutor,origen:U.apOrigen,acepto:true,token,app:APP_VERSION})});
+    const j=await res.json().catch(()=>({}));
+    if(!res.ok)return fin(j.error||"No se ha podido enviar. Prueba más tarde.",true);
+    S.aportadas={...(S.aportadas||{}),[r.id]:new Date().toISOString().slice(0,10)};S.apAutor=U.apAutor;persist();
+    U.aporta=null;U.apOrigen="";U.apAcepto=false;fin("",false);
+  }catch(e){fin("No se ha podido enviar. Prueba más tarde.",true)}
+}
 function cleanRecipe(r){
   return {id:typeof r.id==="string"?r.id.slice(0,40):uid(),name:String(r.name).slice(0,120),servings:Math.max(1,Math.round(num(r.servings))||4),
     categories:migCats((Array.isArray(r.categories)?r.categories:[]).map(c=>String(c).slice(0,30)).filter(Boolean)).slice(0,8),
@@ -377,6 +431,7 @@ async function importFile(file){
     S.recipes.unshift(r);have.add(sig(r));ids.add(r.id);add++;
   }
   persist();
+  if(add===1&&aporta()){U.open=S.recipes[0].id;U.aporta=S.recipes[0].id;U.apMsg=""}
   return `${add} receta${add===1?"":"s"} añadida${add===1?"":"s"}`+(dup?`; ${dup} ya la${dup===1?"":"s"} tenías`:"")+".";
 }
 const UNITS=["g","kg","ml","l","ud","barra","lata","paquete","diente","cda","cdta"];
@@ -388,6 +443,13 @@ let BASE=[];
 let S={clima:{},act:{},ajustes:{},bought:{},dias:1,plan:{},kids:0,alergias:[],recipes:[],over:{},packs:{},have:{},check:{},extras:[],salida:"finde",nevera:false,cats:[],menu:[],people:4,ppd:6,super:"",priceInfo:null,heat:"vitro"};
 let U={tab:"recetas",filter:"Todas",open:null,draft:null,aiBusy:false,aiMsg:"",aiErr:false,prBusy:false,prMsg:"",prErr:false,q:"",ioMsg:"",ai:false,ord:(()=>{try{return localStorage.getItem("recetario_ord")||"plato"}catch(e){return "plato"}})(),packEdit:""};
 const APP_VERSION=self.APP_VERSION||"dev";
+/* ¿a es más nueva que b? (MAYOR.MENOR.PARCHE) */
+const masNueva=(a,b)=>{const x=String(a).split(".").map(Number),y=String(b).split(".").map(Number);if(x.length!==3||y.length!==3||[...x,...y].some(isNaN))return false;for(let i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i]}return false};
+async function actualizar(){
+  U.actualizando=true;render();
+  try{const r=await navigator.serviceWorker.getRegistration();if(r)await r.update()}catch(e){}
+  setTimeout(()=>location.reload(),4000); // si el service worker nuevo no toma el control antes, se recarga igual
+}
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
 const LOGO=`<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#2E4B3A"/><path d="M12 13h24v8a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#F3F7F0"/><rect x="9" y="11" width="30" height="3.5" rx="1.75" fill="#F3F7F0"/><path d="M15 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0zM22.5 32c-3.5 4-.5 10 2.5 10s6-6 1.5-10c0 2.4-2.4 3-4 0zM30 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0z" fill="#E0A53A"/></svg>`;
@@ -627,7 +689,9 @@ function render(){
   <div class="grp"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header>`;
-  $("#app").innerHTML=head+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
+  const aviso=U.nueva?`<div class="nueva"><span>Hay una versión nueva del Recetario (${esc(U.nueva)}).</span><button class="btn sm" data-act="actualizar"${U.actualizando?" disabled":""}>${U.actualizando?"Actualizando…":"Actualizar"}</button></div>`:"";
+  $("#app").innerHTML=head+aviso+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
+  montarTS();
 }
 const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Mis recetas</h2><small>crear, copiar e importar</small></summary>
   <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican. También lee un PDF o un texto: saca título, raciones, ingredientes y pasos y te los deja en el editor para revisar.</p>
@@ -662,13 +726,15 @@ function vList(){
     const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
     if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>${lineaAlt(r,RAC())}`,true)}
     ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
+    ${r.aporte?`<p class="msg">Aportada por ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}. ¡Gracias!</p>`:""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
     <details class="plg2" data-k="n-${esc(r.id)}"${U.det&&U.det["n-"+r.id]?" open":""}><summary>Nutrición y cocina</summary>
     <label class="f">Macros por persona</label>${macroBlock(macros(r),"por persona")}
     <label class="f">Reparto del plato</label>${vPlato(r)}
     ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
-    <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button><button class="btn ghost sm" data-act="pdfReceta" data-id="${r.id}">PDF</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
+    <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button><button class="btn ghost sm" data-act="pdfReceta" data-id="${r.id}">PDF</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>
+    ${!r.base&&aporta()&&U.aporta!==r.id&&!(S.aportadas&&S.aportadas[r.id])?`<button class="btn alt sm aportar" data-act="apAbrir" data-id="${r.id}">Aporta esta receta a la comunidad</button>`:""}${r.base?"":vAporta(r)}`;
     const fs=fotoSrc(r);
     return `${grupo}<article class="card pl-${Math.max(0,PL.indexOf(platoDe(r)))}">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:fs?"":pico(Math.max(0,PL.indexOf(platoDe(r))))}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
@@ -764,6 +830,7 @@ function vImprimirReceta(r){
   <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
     <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}</div>
     ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}</div></article>
+  ${r.aporte?`<p class="psin"><b>Aportada por</b> ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}</p>`:""}
   ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
 }
@@ -1601,6 +1668,10 @@ document.addEventListener("click",async e=>{
   else if(a==="veg"){S.veg=Math.min(HEADS(),Math.max(0,(S.veg||0)+num(b.dataset.d)));persist()}
   else if(a==="edit"){U.draft=JSON.parse(JSON.stringify(S.recipes.find(r=>r.id===b.dataset.id)));U.tab="nueva"}
   else if(a==="copy"){const r=JSON.parse(JSON.stringify(getR(b.dataset.id)));delete r.base;r.id=null;r.name+=" (mía)";U.draft=r;U.tab="nueva"}
+  else if(a==="actualizar"){return actualizar()}
+  else if(a==="apAbrir"){U.aporta=b.dataset.id;U.open=b.dataset.id;U.apMsg="";U.apErr=false}
+  else if(a==="apCerrar"){U.aporta=null;U.apMsg=""}
+  else if(a==="apEnviar"){return enviarAporte(getR(b.dataset.id))}
   else if(a==="share"){const r=getR(b.dataset.id);if(r){const c=await conFoto(r);const res=await saveFile("receta-"+fileName(r.name)+".json",{app:"recetario",version:APP_VERSION,recipes:[c]});if(res==="fallo"){U.ioMsg="Aquí no se puede descargar: compártela desde la app instalada.";render()}}return}
   else if(a==="export"){if(!S.recipes.length){U.ioMsg="Aún no tienes recetas propias que exportar.";render();return}
     const res=await saveFile("mis-recetas-"+new Date().toISOString().slice(0,10)+".json",{app:"recetario",version:APP_VERSION,exported:new Date().toISOString(),recipes:await Promise.all(S.recipes.map(conFoto)),cats:S.cats});
@@ -1621,7 +1692,7 @@ document.addEventListener("click",async e=>{
     const d=U.draft;d.ingredients=d.ingredients.filter(i=>i.name.trim());
     if(!d.name.trim()){U.aiMsg="Ponle un nombre a la receta.";U.aiErr=true;render();return}
     if(!d.categories.some(c=>FACETS[0].v.includes(c)))d.categories.unshift("Principal");
-    if(d.id)S.recipes=S.recipes.map(r=>r.id===d.id?d:r);else{d.id=uid();S.recipes.unshift(d)}
+    if(d.id)S.recipes=S.recipes.map(r=>r.id===d.id?d:r);else{d.id=uid();S.recipes.unshift(d);if(aporta()){U.aporta=d.id;U.apMsg=""}}
     if(U.draftFoto){const b=U.draftFoto;d.foto="idb";FOTO_URL[d.id]=U.draftFotoURL;FOTOS.put(d.id,b).catch(()=>{})}
     else if(d._quitarFoto){FOTOS.del(d.id).catch(()=>{});delete FOTO_URL[d.id]}
     delete d._quitarFoto;U.draftFoto=null;U.draftFotoURL=null;
@@ -1716,6 +1787,14 @@ if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){
   const habia=!!navigator.serviceWorker.controller;let recargado=false;
   navigator.serviceWorker.addEventListener("controllerchange",()=>{if(habia&&!recargado){recargado=true;location.reload()}});
   navigator.serviceWorker.register("sw.js").then(r=>r.update()).catch(()=>{});
+  /* Al entrar (abrirla o volver a ella desde otra app) se mira si hay una versión más nueva publicada y, si la hay,
+     se avisa arriba en vez de recargar por sorpresa a mitad de uso. Sin temporizador: solo al entrar. */
+  let ultima=0;
+  const comprobar=async()=>{if(Date.now()-ultima<10*60e3||navigator.onLine===false)return;ultima=Date.now();
+    try{const t=await (await fetch("version.js?comprobar="+Date.now(),{cache:"no-store"})).text(),v=(t.match(/APP_VERSION\s*=\s*"([^"]+)"/)||[])[1];
+      if(v&&masNueva(v,APP_VERSION)&&U.nueva!==v){U.nueva=v;render()}}catch(e){}};
+  setTimeout(comprobar,3000);
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")comprobar()});
 }
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>

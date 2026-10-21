@@ -17,5 +17,6 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   const r = e.request;
   if (r.method !== "GET" || new URL(r.url).origin !== location.origin) return;
+  if (new URL(r.url).searchParams.has("comprobar")) return; // el aviso de versión nueva pregunta a la red, no a la copia
   e.respondWith(caches.match(r, {ignoreSearch: true}).then(hit => hit || fetch(r).catch(() => r.mode === "navigate" ? caches.match("index.html") : Response.error())));
 });
