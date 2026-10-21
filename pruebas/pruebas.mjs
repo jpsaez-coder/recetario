@@ -323,6 +323,8 @@ T.S.recipes=[mia];T.U.open="mia1";
 caso("aportar: sin configurar (o en claude.ai) no sale el botón",/Aporta esta receta/.test(T.vList()),false);
 ctx.location.protocol="http:";ctx.location.hostname="localhost";
 caso("aportar: en tus recetas sale el botón",/Aporta esta receta/.test(T.vList()),true);
+T.U.open=null;caso("aportar: también se ve con la receta cerrada",/class="aplink" data-act="apAbrir" data-id="mia1"/.test(T.vList()),true);
+T.S.aportadas={mia1:"2026-10-21"};caso("aportar: una ya aportada no lo vuelve a pedir",/class="aplink"/.test(T.vList()),false);T.S.aportadas={};
 T.U.open="ej-arroz";caso("aportar: en las de la base no sale",/data-act="apAbrir" data-id="ej-arroz"/.test(T.vList()),false);
 ctx.location.protocol="file:";delete ctx.location.hostname;T.S.recipes=r0;T.U.open=o0;}
 // la función de Cloudflare
