@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,objetivo,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -204,7 +204,7 @@ Object.assign(T.S,{dias:1,menu:["ej-gachas-avena"],plan:{"1|Desayuno":["ej-gacha
 const it=T.shopList([T.getR("ej-gachas-avena")],T.RAC()),av=it.find(i=>/avena/i.test(i.name)),le=it.find(i=>/^leche$/i.test(i.name));
 T.S.bought={[av.key]:true};T.S.have={[le.key]:true};const h=T.vImprimir();
 caso("imprimir: lo comprado, marcado",/<li class="hecho"><span class="cb on"><\/span><span>Copos de avena/.test(h),true);
-caso("imprimir: lo que hay en casa, en «Ya en casa»",/Ya en casa<\/b> Leche/.test(h),true);
+caso("imprimir: lo que hay en casa, en «Ya en casa o en el baúl»",/Ya en casa o en el baúl<\/b> Leche/.test(h),true);
 caso("imprimir: lo de casa no sale en la compra",/<span>Leche <em>/.test(h),false);
 Object.assign(T.S,JSON.parse(S0));}
 // tarjeta: con supermercado elegido, nombra lo que va con precio aproximado; sin supermercado, nada
@@ -246,6 +246,15 @@ caso("veg: «pan de hamburguesa» no es carne",T.vegAdapta(T.getR("ej-hamburgues
 caso("veg: gachas no llevan carne",T.vegAdapta(T.getR("ej-gachas-avena")),null);
 const r=T.getR("mr-picada-cuscus");caso("veg: nota en la receta",T.notaVeg(r,r.ingredients.find(i=>/picada/i.test(i.name)),1),"Soja texturizada: 125 g para 4 (en seco: se hidrata 10 min en agua caliente)");
 T.S.veg=0;caso("veg: sin vegetarianos, todo carne",q(compra("mr-picada-cuscus"),/^carne picada/i),"1500 g");
+Object.assign(T.S,JSON.parse(S0));}
+// «De casa» en una comida: cuenta como cubierta, no se compra ni cuenta en el menú, y sale al imprimir
+{const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,salida:T.S.salida});
+Object.assign(T.S,{salida:"finde",dias:2,menu:["ej-gachas-avena"],plan:{"1|Comida":["__casa"],"1|Cena":["ej-gachas-avena"],"2|Desayuno":["ej-gachas-avena"],"2|Comida":["__casa"]}});
+caso("de casa: la comida cuenta como cubierta",T.comidasVacias(1),[]);
+caso("de casa: no cuenta en el menú",T.planIds().filter(x=>x==="__casa").length,0);
+caso("de casa: no rompe la compra",T.shopList(T.planIds().map(T.getM).filter(Boolean),8).length>0,true);
+{T.S.dias=3;const sin=T.objetivo(3).kcal;T.S.plan["3|Cena"]=["__casa"];caso("de casa: el objetivo del día no cambia",T.objetivo(3).kcal,sin);caso("de casa: la barra marca el 30 % de la cena como de casa",/class="tcasa" style="width:30%"/.test(T.vDias()),true);delete T.S.plan["3|Cena"];T.S.dias=2;}
+caso("de casa: sale al imprimir",/<th>Comida<\/th><td>De casa<\/td>/.test(T.vImprimir()),true);
 Object.assign(T.S,JSON.parse(S0));}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
