@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,corto,vImprimir,objetivo,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -256,6 +256,32 @@ caso("de casa: no rompe la compra",T.shopList(T.planIds().map(T.getM).filter(Boo
 {T.S.dias=3;const sin=T.objetivo(3).kcal;T.S.plan["3|Cena"]=["__casa"];caso("de casa: el objetivo del día no cambia",T.objetivo(3).kcal,sin);caso("de casa: la barra marca el 30 % de la cena como de casa",/class="tcasa" style="width:30%"/.test(T.vDias()),true);delete T.S.plan["3|Cena"];T.S.dias=2;}
 caso("de casa: sale al imprimir",/<th>Comida<\/th><td>De casa<\/td>/.test(T.vImprimir()),true);
 Object.assign(T.S,JSON.parse(S0));}
+// receta en PDF: cabecera con el nombre, para el grupo, ingredientes y pasos; nombre del fichero
+{const S0=JSON.stringify({people:T.S.people,kids:T.S.kids,veg:T.S.veg});Object.assign(T.S,{people:8,kids:0,veg:0});
+const h=T.vImprimirReceta(T.getR("ej-gachas-avena"));
+caso("PDF receta: título",/<h1>Gachas de avena con plátano<\/h1>/.test(h),true);
+caso("PDF receta: para el grupo (8 raciones)",/Para 8 raciones/.test(h),true);
+caso("PDF receta: avena escalada a 8 (480 g)",/Copos de avena<\/td><td class="q">480 g/.test(h),true);
+caso("PDF receta: lleva los pasos",(h.match(/<li>/g)||[]).length,3);
+caso("PDF receta: nombre del fichero",T.nombreReceta("Pan con tomate y aceite"),"Receta - Pan con tomate y aceite");
+Object.assign(T.S,JSON.parse(S0));}
+// leer una receta de un texto: con títulos, de un PDF de la app (dos líneas de título, raciones, categorías) y sin títulos
+{const a=T.leerReceta("Lentejas con chorizo\nPara 4 personas\nIngredientes:\n- 300 g de lentejas\n- 1/2 cebolla\n- 3 cucharadas de aceite de oliva\n- Sal al gusto\n- 1 litro de agua\nPreparación:\n1. Pon las lentejas en remojo.\n2. Cuece 40 minutos.");
+caso("leer: título",a.name,"Lentejas con chorizo");caso("leer: raciones",a.servings,4);
+caso("leer: ingredientes",a.ingredients.map(i=>i.qty+" "+i.unit+" "+i.name),["300 g Lentejas","0.5 ud Cebolla","3 cda Aceite de oliva"," ud Sal","1 l Agua"]);
+caso("leer: pasos sin numerar",a.steps,"Pon las lentejas en remojo.\nCuece 40 minutos.");
+const b=T.leerReceta("RECETARIO\nPimientos rellenos de carne,\nchampiñones y zanahoria\nUnas 521 kcal por persona\nIngredientes\nPimientos rojos grandes 16 ud\nCarne picada mixta 1,2 kg\nPara 16 raciones\nPrincipal · Acampada\n21 de octubre de 2026\nPasos\nCorta la tapa\nRellena\nRecetario 1.25.0 · 21 de octubre de 2026");
+caso("leer PDF de la app: título en dos líneas",b.name,"Pimientos rellenos de carne, champiñones y zanahoria");
+caso("leer PDF de la app: raciones y categorías",b.servings+" "+b.categories.join(","),"16 Principal,Acampada");
+caso("leer PDF de la app: cantidad al final",b.ingredients.map(i=>i.qty+" "+i.unit),["16 ud","1.2 kg"]);
+caso("leer PDF de la app: pasos",b.steps,"Corta la tapa\nRellena");
+const d=T.leerReceta("R E C E T A R I O\nTortilla\nPASOS\n1. Pela las patatas y córtalas finas, y fríelas en\nabundante aceite 15 min\n2. Bate los huevos");
+caso("leer: letras espaciadas fuera del título",d.name,"Tortilla");
+caso("leer: un paso en dos líneas se junta",d.steps,"Pela las patatas y córtalas finas, y fríelas en abundante aceite 15 min\nBate los huevos");
+const c=T.leerReceta("Tortitas\n2 huevos\nun vaso de leche\nuna pizca de sal\nBate todo junto hasta que no queden grumos y deja reposar diez minutos.");
+caso("leer sin títulos: vaso = 200 ml",c.ingredients.find(i=>/leche/i.test(i.name)).qty+" "+c.ingredients.find(i=>/leche/i.test(i.name)).unit,"200 ml");
+caso("leer: raciones dentro de una frase",T.leerReceta("Bizcocho\nReceta fácil y esponjosa. Para 8 personas. Tiempo: 45 minutos.\nIngredientes\n3 huevos").servings,8);
+caso("leer sin títulos: la frase larga es un paso",c.steps.startsWith("Bate todo"),true);}
 caso("ninguna receta base trae foto",base.filter(r=>r.foto||r.fotoCredito).map(r=>r.id),[]);
 {const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8");const lista=[...sw.slice(sw.indexOf("const FILES")).split("];")[0].matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=="./");
 caso("el modo sin conexión pide más de 10 ficheros",lista.length>10,true);

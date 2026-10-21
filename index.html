@@ -201,6 +201,7 @@ textarea{min-height:90px;resize:vertical}
   #imprimir li.hecho>span:last-child{color:#8A968D;text-decoration:line-through}#imprimir li.hecho em{color:#8A968D}
   #imprimir .precs{break-before:page;margin-top:0}
   #imprimir .rec{break-inside:avoid;border-left:3pt solid #2E4B3A;padding:2pt 0 2pt 9pt;margin:0 0 10pt}
+  #imprimir .rsola{border-left:0;padding-left:0}#imprimir .ring{flex:0 0 38%}#imprimir .rpas{flex:1}#imprimir .ring table{width:100%;font-size:10pt}#imprimir .rpas ol{margin:0;padding-left:15pt;font-size:10.5pt}#imprimir .rsola h4{font:700 8pt "Source Sans 3",sans-serif;letter-spacing:.8pt;text-transform:uppercase;color:#B97A12;margin:0 0 4pt}
   #imprimir .rec h3{font-size:11.5pt;margin:0}#imprimir .sub{color:#5E6D63;margin:0 0 4pt;font-size:8.5pt}
   #imprimir .rcol{display:flex;gap:14pt;align-items:flex-start}
   #imprimir .rcol table{flex:0 0 38%;font-size:9pt}#imprimir .rcol td{border-top:1px solid #E6EBE1;padding:1.5pt 0}#imprimir .rcol tr:first-child td{border-top:0}
@@ -339,7 +340,14 @@ async function saveFile(name,obj){
 }
 const fileName=t=>norm(t).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"receta";
 async function importFile(file){
-  let j;try{j=JSON.parse(await file.text())}catch(e){return "Ese fichero no es una receta del Recetario."}
+  const nm=(file.name||"").toLowerCase();
+  if(file.type==="application/pdf"||nm.endsWith(".pdf")){
+    let t="";try{t=await textoDePdf(file)}catch(e){return "No he podido abrir ese PDF."}
+    if(t.replace(/\s/g,"").length<20)return "Ese PDF no tiene texto que leer (si es una foto o un escaneo, no se puede).";
+    return {receta:leerReceta(t),origen:"un PDF"};
+  }
+  const txt=await file.text();
+  let j;try{j=JSON.parse(txt)}catch(e){return txt.trim().length>20?{receta:leerReceta(txt),origen:"un texto"}:"Ese fichero no es una receta."}
   const crudo=(Array.isArray(j)?j:Array.isArray(j&&j.recipes)?j.recipes:[j]).filter(okRecipe);
   const list=crudo.map(x=>({...cleanRecipe(x),_fd:typeof x.fotoData==="string"&&/^data:image\/(jpeg|png|webp);base64,/.test(x.fotoData)?x.fotoData:null}));
   if(!list.length)return "Ese fichero no trae ninguna receta.";
@@ -630,7 +638,7 @@ function vList(){
     <label class="f">Reparto del plato</label>${vPlato(r)}
     ${(()=>{const e=evitaEn(r);return e.length?`<label class="f">Más barato o más seguro</label><ul class="chk">${e.map(([n,a])=>`<li>${esc(n)} → ${esc(a)}</li>`).join("")}</ul>`:""})()}
     <label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote(r)}</details>
-    <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
+    <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button><button class="btn ghost sm" data-act="pdfReceta" data-id="${r.id}">PDF</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>`;
     const fs=fotoSrc(r);
     return `${grupo}<article class="card">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:""}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
@@ -640,9 +648,11 @@ function vList(){
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
   h+=`<details class="card plg" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Tus recetas: copia e importar</h2></summary>
-  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican.</p>
+  <p class="msg">Las recetas base vienen con la app. Las tuyas se guardan solo en este dispositivo: exporta una copia de vez en cuando y guárdala fuera (por ejemplo, mándatela por WhatsApp). Con «Importar» añades recetas que te pasen o recuperas tu copia; las repetidas no se duplican. También lee un PDF o un texto: saca título, raciones, ingredientes y pasos y te los deja en el editor para revisar.</p>
   <div class="row"><button class="btn sm" data-act="export">Exportar mis recetas (${S.recipes.length})</button><button class="btn alt sm" data-act="import">Importar recetas</button></div>
-  <input id="impfile" type="file" accept=".json,application/json" hidden>
+  <input id="impfile" type="file" accept=".json,application/json,.pdf,application/pdf,.txt,text/plain" hidden>
+  <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
+  <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
   return h;
 }
@@ -716,13 +726,27 @@ function vImprimir(){
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
 }
 const nombrePDF=act=>("Menú - "+act).replace(/[\\/:*?"<>|]+/g," ").replace(/\s+/g," ").trim();
-function imprimir(){
+/* hoja de una receta para imprimir o guardar en PDF, para el grupo de ahora */
+function vImprimirReceta(r){
+  const n=RAC(),f=factor(r,n),m=macros(r);
+  const hoy=new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});
+  const cats=r.categories.filter(c=>!["Invierno","Verano"].includes(c));
+  return `<header class="pcab"><div><small>RECETARIO</small><h1>${esc(r.name)}</h1></div>
+    <div class="pdat"><span>Para ${n} ${n===1?"ración":"raciones"}</span>${cats.length?`<span>${esc(cats.join(" · "))}</span>`:""}<span>${hoy}</span></div></header>
+  <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
+    <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=nv?1-fracVeg():1;return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table></div>
+    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}</div></article>
+  ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
+  <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
+}
+const nombreReceta=n=>("Receta - "+n).replace(/[\\/:*?"<>|]+/g," ").replace(/\s+/g," ").trim();
+function imprimir(r){
   let el=document.getElementById("imprimir");
   if(!el){el=document.createElement("div");el.id="imprimir";document.body.appendChild(el)}
-  el.innerHTML=vImprimir();
+  el.innerHTML=r?vImprimirReceta(r):vImprimir();
   /* el navegador propone como nombre del PDF el título de la página */
   const t0=document.title,s=SALIDAS[S.salida]?S.salida:"finde";
-  document.title=nombrePDF(SALIDAS[s].n);
+  document.title=r?nombreReceta(r.name):nombrePDF(SALIDAS[s].n);
   /* se deja puesto hasta cambiar de pestaña: en el móvil el aviso de «impreso» llega antes de guardar */
   if(!U.tituloApp)U.tituloApp=t0;
   try{window.print()}catch(e){}
@@ -1339,7 +1363,7 @@ function vForm(){
   <div class="row" style="margin-top:8px"><button class="btn" data-act="ai" ${U.aiBusy?"disabled":""}>${U.aiBusy?"Creando…":"Crear con Claude"}</button></div>
   ${U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}</div>
   <div class="ai"><p><b>Importar una receta</b> Pega el texto de la web o la descripción del vídeo de Instagram o TikTok y la dejo en pasos simples.</p><textarea id="imp" placeholder="Pega aquí el texto de la receta" aria-label="Texto de la receta">${esc(U.impQ||"")}</textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="imp" ${U.impBusy?"disabled":""}>${U.impBusy?"Importando…":"Importar receta"}</button></div>${U.impMsg?`<p class="msg ${U.impErr?"err":""}">${esc(U.impMsg)}</p>`:""}</div>`:U.aiMsg?`<p class="msg ${U.aiErr?"err":""}">${esc(U.aiMsg)}</p>`:""}
-  <div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
+  ${U.leida?`<p class="msg warn">Leída de ${esc(U.leida)}: revisa el nombre, las cantidades y los pasos antes de guardar. Lo que no ha entendido queda como ingrediente «al gusto».</p>`:""}<div class="card"><label class="f" for="nm" style="margin-top:0">Nombre</label><input id="nm" value="${esc(d.name)}">
   <label class="f">Foto</label>${(()=>{const src=U.draftFotoURL||(d.id&&d.foto==="idb"?FOTO_URL[d.id]:null);
     return `${src?`<img class="foto-ed" src="${esc(src)}" alt="Foto de la receta">`:""}<div class="row"><label class="btn alt sm">${src?"Cambiar foto":"Añadir foto"}<input type="file" accept="image/*" data-act="fotoIn" hidden></label>${src?`<button class="btn ghost sm" data-act="fotoQuitar">Quitar foto</button>`:""}</div>`})()}
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
@@ -1354,6 +1378,87 @@ function vForm(){
   <label class="f" for="st">Pasos (uno por línea)</label><textarea id="st">${esc(d.steps)}</textarea>
   <div class="row" style="margin-top:14px"><button class="btn" data-act="save">Guardar receta</button><button class="btn ghost" data-act="cancel">Cancelar</button></div></div>`;
 }
+/* ---------- leer una receta de un texto o un PDF (sin internet) ----------
+   Busca título, raciones, ingredientes y pasos; lo que encuentra lo abre en el editor para revisarlo. */
+const UNIDAD=[[/^(g|gr|grs|gramos?)$/,"g"],[/^(kg|kgs|kilos?|kilogramos?)$/,"kg"],[/^(ml|mililitros?)$/,"ml"],[/^(l|lt|litros?)$/,"l"],
+  [/^(cucharadas?|cda|cdas)$/,"cda"],[/^(cucharaditas?|cdta|cdtas)$/,"cdta"],[/^(dientes?)$/,"diente"],[/^(latas?)$/,"lata"],
+  [/^(paquetes?|sobres?|bolsas?)$/,"paquete"],[/^(barras?)$/,"barra"],[/^(ud|uds|unidad|unidades|piezas?)$/,"ud"],[/^(vasos?)$/,"vaso"],[/^(tazas?)$/,"taza"]];
+const NUMS={medio:.5,media:.5,un:1,una:1,uno:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,doce:12};
+const numTxt=t=>{t=t.replace(",",".");if(/^\d+\/\d+$/.test(t)){const [a,b]=t.split("/");return a/b}if(/^\d+ y \d+\/\d+$/.test(t)){const [e,f]=t.split(" y ");return +e+numTxt(f)}return NUMS[t]!=null?NUMS[t]:parseFloat(t)};
+const unidadDe=w=>{const n=norm(w||"");for(const [re,u] of UNIDAD)if(re.test(n))return u;return null};
+const mayus=t=>t.charAt(0).toUpperCase()+t.slice(1);
+function leerIngrediente(l){
+  l=l.replace(/^[-•*·☐▢□✓]\s*/,"").replace(/\s+/g," ").trim();
+  if(/al gusto|una pizca|^pizca/i.test(l)&&!/^\d/.test(l))return {name:mayus(l.replace(/,?\s*(al gusto|una pizca( de)?|pizca( de)?)\s*/ig," ").replace(/^de /,"").trim()),qty:"",unit:"ud",price:""};
+  const Q="(\\d+(?:[.,]\\d+)?(?: y \\d+/\\d+)?|\\d+/\\d+|medio|media|una?|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|doce)";
+  let m=l.match(new RegExp("^"+Q+"\\s*([a-záéíóúñ]+\\.?)?\\s+(?:de\\s+)?(.+)$","i"));
+  if(m){let q=numTxt(m[1].toLowerCase()),u=unidadDe((m[2]||"").replace(".","")),name=m[3];
+    if(!u&&m[2]){name=m[2]+" "+name;u="ud"}
+    if(!u)u="ud";
+    if(u==="vaso"){q*=200;u="ml"}if(u==="taza"){q*=250;u="ml"}
+    if(isFinite(q))return {name:mayus(name.replace(/^de\s+/i,"").trim()),qty:String(+q.toFixed(3)),unit:u,price:""}}
+  m=l.match(new RegExp("^(.+?)\\s+"+Q+"\\s*([a-záéíóúñ]+)?$","i"));
+  if(m){const u=unidadDe(m[3]||"ud");if(u&&!/^(para|de)$/i.test(m[3]||"")){let q=numTxt(m[2].toLowerCase());if(isFinite(q))return {name:mayus(m[1].replace(/[:,]$/,"").trim()),qty:String(+q.toFixed(3)),unit:u==="vaso"||u==="taza"?"ml":u,price:""}}}
+  return {name:mayus(l.replace(/[:,]$/,"")),qty:"",unit:"ud",price:""};
+}
+function leerReceta(texto){
+  const RUIDO=/^(recetario( \d.*)?|unas? \d+ kcal.*|fuente\b.*|\d{1,2} de [a-záéíóú]+ de \d{4}|p[aá]gina \d+.*|.*vegetarian.*|[^:]{2,40}: .* para \d+.*)$/i;
+  const ING=/^ingredientes\b.*:?$/i,PAS=/^(preparaci[oó]n|elaboraci[oó]n|pasos|instrucciones|modo de (hacerlo|preparaci[oó]n)|c[oó]mo se hace)\b.*:?$/i;
+  const PARA=/(?:para|raciones:?|personas:?|comensales:?)\s*(\d+)|(\d+)\s*(?:personas|raciones|comensales|porciones)/i;
+  let lineas=String(texto).replace(/\r/g,"").split("\n").map(x=>x.replace(/\s+/g," ").trim()).filter(Boolean)
+    .map(l=>/^(\S ){3,}\S$/.test(l)?l.replace(/ /g,""):l); // «R E C E T A R I O» → «RECETARIO»
+  let servings=0;const cats=[];
+  lineas=lineas.filter(l=>{
+    const m=l.match(PARA);if(m&&!/\d+\s*(g|kg|ml|l)\b/i.test(l)){if(!servings)servings=+(m[1]||m[2]);if(l.length<40)return false}
+    const ts=l.split(" · ");if(ts.length>1&&ts.every(t=>allCats().includes(t))){cats.push(...ts);return false}
+    return !RUIDO.test(l)});
+  let name="";
+  while(lineas.length&&!ING.test(lineas[0])&&!PAS.test(lineas[0])){
+    if(!name){name=lineas.shift();continue}
+    if(/^[a-záéíóúñ]/.test(lineas[0])||/[,y]$/.test(name)){name+=" "+lineas.shift();continue}
+    break;
+  }
+  let ing=[],pasos=[];
+  const iI=lineas.findIndex(l=>ING.test(l)),iP=lineas.findIndex(l=>PAS.test(l));
+  if(iI>=0||iP>=0){
+    const fin=(i)=>{const xs=[iI,iP].filter(x=>x>i);return xs.length?Math.min(...xs):lineas.length};
+    if(iI>=0)ing=lineas.slice(iI+1,fin(iI));
+    if(iP>=0)pasos=lineas.slice(iP+1,fin(iP));
+    const sueltas=lineas.slice(0,Math.min(...[iI,iP].filter(x=>x>=0)));for(const l of sueltas)(/^\d+[.)]\s|\.$/.test(l)||l.length>60?pasos:ing).push(l);
+  }else for(const l of lineas)(/^\d+[.)]\s|\.$/.test(l)||l.length>60?pasos:ing).push(l);
+  const ingredients=ing.map(leerIngrediente).filter(i=>i.name);
+  /* un paso largo ocupa varias líneas: si van numerados, lo que no empieza por número sigue al anterior;
+     si no, sigue al anterior lo que empieza en minúscula */
+  const numerados=pasos.some(l=>/^(paso\s*)?\d+[.)-]\s/i.test(l)),juntos=[];
+  for(const l of pasos){const cont=numerados?!/^(paso\s*)?\d+[.)-]\s/i.test(l):/^[a-záéíóúñ]/.test(l);if(cont&&juntos.length)juntos[juntos.length-1]+=" "+l;else juntos.push(l)}
+  const steps=juntos.map(l=>l.replace(/^(paso\s*)?\d+[.)-]?\s*/i,"").trim()).filter(Boolean).join("\n");
+  return {id:null,name:(name||"Receta importada").slice(0,120),servings:servings||4,categories:[...new Set(cats)],
+    ingredients:ingredients.length?ingredients:[{name:"",qty:"",unit:"g",price:""}],steps};
+}
+/* el texto de un PDF, columna por columna (los PDF de la app van a dos: ingredientes y pasos) */
+let pdfjsCarga=null;
+function cargarPdfjs(){return pdfjsCarga||(pdfjsCarga=new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src="vendor/pdfjs/pdf.min.js";
+  sc.onload=()=>{window.pdfjsLib.GlobalWorkerOptions.workerSrc="vendor/pdfjs/pdf.worker.min.js";ok(window.pdfjsLib)};sc.onerror=()=>{pdfjsCarga=null;ko(new Error("pdfjs"))};document.head.appendChild(sc)}))}
+async function textoDePdf(file){
+  const lib=await cargarPdfjs(),doc=await lib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+  const izq=[],der=[];
+  for(let n=1;n<=Math.min(doc.numPages,10);n++){
+    const pg=await doc.getPage(n),w=pg.getViewport({scale:1}).width,tc=await pg.getTextContent();
+    const filas=[];
+    for(const it of tc.items){if(!it.str.trim())continue;const x=it.transform[4],y=it.transform[5];let f=filas.find(f=>Math.abs(f.y-y)<3);if(!f)filas.push(f={y,its:[]});f.its.push({x,s:it.str,w:it.width})}
+    filas.sort((a,b)=>b.y-a.y);
+    /* trozos de cada fila separados por un hueco grande; la segunda columna es donde empiezan alineados muchos trozos */
+    const trozos=filas.map(f=>{f.its.sort((a,b)=>a.x-b.x);const ts=[];for(const it of f.its){const u=ts[ts.length-1];if(u&&it.x-u.fin<15){u.s+=(it.x-u.fin>1?" ":"")+it.s;u.fin=it.x+it.w}else ts.push({x:it.x,s:it.s,fin:it.x+it.w})}return ts});
+    const cuenta={};for(const ts of trozos)for(const t of ts)if(t.x>w*0.25){const k=Math.round(t.x/2)*2;cuenta[k]=(cuenta[k]||0)+1}
+    const [col,veces]=Object.entries(cuenta).sort((a,b)=>b[1]-a[1])[0]||[0,0];
+    /* el corte, un poco a la izquierda: títulos y números de lista empiezan unos puntos antes que el texto */
+    const corte=veces>=3?Math.min(...Object.keys(cuenta).map(Number).filter(k=>k>=+col-15&&k<=+col))-3:Infinity;
+    for(const ts of trozos){const L=ts.filter(t=>t.x<corte).map(t=>t.s),R=ts.filter(t=>t.x>=corte).map(t=>t.s);if(L.length)izq.push(L.join(" "));if(R.length)der.push(R.join(" "))}
+  }
+  return [...izq,...der].join("\n");
+}
+/* importar un texto o un PDF: abre el editor con lo leído */
+function abrirLeida(r,origen){U.draft=r;U.tab="nueva";U.leida=origen;U.ioMsg="";render();window.scrollTo(0,0)}
 const blank=()=>({id:null,name:"",servings:4,categories:[],ingredients:[{name:"",qty:"",unit:"g",price:""}],steps:""});
 
 /* ---------- acciones ---------- */
@@ -1392,6 +1497,7 @@ document.addEventListener("click",async e=>{
   const a=b.dataset.act;sync();
   if(a==="irBas"){U.tab="guia";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
+  if(a==="pdfReceta"){const r=getR(b.dataset.id);if(r)imprimir(r);return}
   /* menú nuevo: vacía lo de este menú y guarda una copia para deshacer; personas, alergias, presupuesto, salida y checklist se quedan */
   if(a==="menuNo"){U.confVaciar=false;render();return}
   if(a==="menuNuevo"){if(!U.confVaciar){U.confVaciar=true;render();return}U.confVaciar=false;
@@ -1450,8 +1556,9 @@ document.addEventListener("click",async e=>{
   else if(a==="addIng")U.draft.ingredients.push({name:"",qty:"",unit:"g",price:""});
   else if(a==="rmIng"){U.draft.ingredients.splice(num(b.dataset.k),1);if(!U.draft.ingredients.length)U.draft.ingredients.push({name:"",qty:"",unit:"g",price:""})}
   else if(a==="fotoQuitar"){U.draftFoto=null;U.draftFotoURL=null;U.draft.foto=null;U.draft._quitarFoto=true}
-  else if(a==="cancel"){U.draft=null;U.draftFoto=null;U.draftFotoURL=null;U.tab="recetas"}
-  else if(a==="save"){
+  else if(a==="pegarLeer"){const t=($("#pegar")?.value||"").trim();if(t.length<20){U.ioMsg="Pega la receta entera: título, ingredientes y pasos.";U.det=U.det||{};U.det.tus=true}else return abrirLeida(leerReceta(t),"un texto pegado")}
+  else if(a==="cancel"){U.leida="";U.draft=null;U.draftFoto=null;U.draftFotoURL=null;U.tab="recetas"}
+  else if(a==="save"){U.leida="";
     const d=U.draft;d.ingredients=d.ingredients.filter(i=>i.name.trim());
     if(!d.name.trim()){U.aiMsg="Ponle un nombre a la receta.";U.aiErr=true;render();return}
     if(!d.categories.some(c=>FACETS[0].v.includes(c)))d.categories.unshift("Principal");
@@ -1542,7 +1649,7 @@ TEXTO:\n${t.slice(0,6000)}`,{cache:false});
 }
 /* que una ficha abierta siga abierta al repintar */
 document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details[data-k]")){U.det=U.det||{};U.det[d.dataset.k]=d.open}},true);
-document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
+document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{if(m&&m.receta)return abrirLeida(m.receta,m.origen);U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
 initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render);
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
 if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){

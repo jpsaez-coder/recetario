@@ -1,0 +1,4 @@
+pdf.js 3.11.174 (build legacy) de Mozilla, licencia Apache-2.0.
+Origen: https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-3.11.174.tgz
+sha512 del paquete comprobado contra el registro de npm el 21-10-2026.
+Se usa solo para sacar el texto de un PDF al importar una receta.
