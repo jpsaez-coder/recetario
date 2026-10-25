@@ -234,6 +234,11 @@ textarea{min-height:90px;resize:vertical}
 .intro h2{margin:0 0 8px;font-size:21px}.intro p{margin:0 0 6px;line-height:1.5}.intro .ico{font-size:34px;line-height:1;margin-bottom:8px}
 .intro .puntos{display:flex;gap:6px;justify-content:center;margin:14px 0 10px}.intro .puntos i{width:8px;height:8px;border-radius:50%;background:var(--line)}.intro .puntos i.on{background:var(--pine)}
 .intro .row{justify-content:space-between;align-items:center}
+.tchips{display:flex;flex-wrap:wrap;gap:6px}.tchip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px}.tchip b,.ttab td.tn b,.msg b{color:var(--pine)}
+.ttab{table-layout:fixed;font-size:13px;border-collapse:separate;border-spacing:2px}.ttab th,.ttab td{padding:0;border:0;text-align:center}.ttab thead th{font-size:11px;color:var(--mute);font-weight:600}
+.ttab th:first-child,.ttab td.tn{width:40%}.ttab td.tn{text-align:left;padding:2px 4px 2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none;height:auto}
+.ttab td{height:16px;background:var(--bg);border-radius:3px}.ttab td.si{background:var(--pine)}.ttab td.hoy:not(.si){background:var(--ochre-bg)}.ttab th.hoy{color:var(--ink);font-weight:800}
+.ttab tr.tg th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);padding:8px 0 2px}
 .ic{width:22px;height:22px;flex:none;color:var(--pine);vertical-align:middle}.ic-s{width:22px;height:22px;margin-right:8px;color:var(--ochre)}
 .intro .ico{width:auto;height:auto;border-radius:0;display:block;color:var(--pine);margin-bottom:6px}.ic-g{width:40px;height:40px;stroke-width:1.5}
 .tm>span{display:flex;align-items:center;gap:10px}.tm>span>span{display:block}.tm b{margin-left:0}.tm small{margin-left:0}
@@ -617,6 +622,24 @@ const NORMAS=[["no","¿En el monte o en un área recreativa?","Cocinar o calenta
   ["si","¿En casa o en el pueblo, lejos del monte?","Esta norma no aplica; manda el ayuntamiento."]];
 const ICO={si:["✓","Sí"],no:["✕","No"],ojo:["!","Ojo"]};
 function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div class="norma"><span class="ico ${k}" aria-label="${ICO[k][1]}">${ICO[k][0]}</span><div><b>${q}</b><small>${a}</small></div></div>`).join("")}</div>`}
+/* Temporada (península, al aire libre; orientativo): [nombre, meses 1-12, aguanta días sin nevera].
+   Mismos datos que el calendario del PDF «Hacer un buen menú» de la web. */
+const TEMPORADA={"frutas":[["Naranja",[1,2,3,4,5,11,12],true],["Mandarina",[1,2,10,11,12],true],["Limón",[1,2,3,4,5,10,11,12],true],["Kiwi",[1,2,3,4,11,12],false],["Manzana",[1,2,3,4,8,9,10,11,12],true],["Pera",[1,7,8,9,10,11,12],false],["Plátano",[1,2,3,4,5,6,7,8,9,10,11,12],false],["Fresa",[2,3,4,5,6],false],["Cereza",[5,6,7],false],["Albaricoque",[5,6,7],false],["Melocotón y nectarina",[6,7,8,9],false],["Ciruela",[6,7,8,9],false],["Melón",[6,7,8,9],true],["Sandía",[6,7,8,9],true],["Higo",[8,9],false],["Uva",[8,9,10,11],false],["Granada",[9,10,11,12],true],["Caqui",[10,11,12],false]],"verduras":[["Patata",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Cebolla",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Ajo",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Zanahoria",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Lechuga",[1,2,3,4,5,6,7,8,9,10,11,12],false],["Tomate",[6,7,8,9,10],false],["Pimiento",[7,8,9,10],true],["Calabacín",[5,6,7,8,9,10],false],["Berenjena",[6,7,8,9,10],false],["Pepino",[5,6,7,8,9],false],["Judía verde",[6,7,8,9],false],["Calabaza",[1,2,9,10,11,12],true],["Boniato",[1,10,11,12],true],["Puerro",[1,2,3,4,10,11,12],false],["Coliflor y brócoli",[1,2,3,10,11,12],false],["Repollo",[1,2,3,10,11,12],true],["Espinaca y acelga",[1,2,3,4,10,11,12],false],["Alcachofa",[1,2,3,4,5,11,12],false],["Guisante y haba",[3,4,5],false],["Espárrago verde",[3,4,5,6],false]]};
+const MES_N=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+function vTemporada(){
+  const m=new Date().getMonth()+1;
+  /* este mes: lo que no hay todo el año (eso se dice aparte) */
+  const hoy=xs=>xs.filter(([,ms])=>ms.includes(m)&&ms.length<12).map(([n,,d])=>`<span class="tchip">${esc(n)}${d?" <b>●</b>":""}</span>`).join("");
+  const filas=(tt,xs)=>`<tr class="tg"><th colspan="13">${tt}</th></tr>`+xs.map(([n,ms,d])=>`<tr><td class="tn">${esc(n)}${d?" <b>●</b>":""}</td>${MES_N.map((_,i)=>`<td class="${ms.includes(i+1)?"si":""}${i+1===m?" hoy":""}"></td>`).join("")}</tr>`).join("");
+  return `<details class="card plg" data-k="temp"${U.det&&U.det.temp?" open":""}><summary><h2>Frutas y verduras de temporada</h2></summary>
+  <p class="msg">De temporada sale más barato y sabe mejor. En ${MES_N[m-1]}:</p>
+  <label class="f">Frutas</label><div class="tchips">${hoy(TEMPORADA.frutas)}</div>
+  <label class="f">Verduras y hortalizas</label><div class="tchips">${hoy(TEMPORADA.verduras)}</div>
+  <p class="msg">Patata, cebolla, ajo, zanahoria, lechuga y plátano hay todo el año. <b>●</b> Aguanta varios días sin nevera, entero y a la sombra.</p>
+  <details class="plg2" data-k="temp-a"${U.det&&U.det["temp-a"]?" open":""}><summary>Todo el año, mes a mes</summary>
+  <table class="ttab"><thead><tr><th></th>${MES_N.map((x,i)=>`<th class="${i+1===m?"hoy":""}">${x[0].toUpperCase()}</th>`).join("")}</tr></thead><tbody>${filas("Frutas",TEMPORADA.frutas)}${filas("Verduras y hortalizas",TEMPORADA.verduras)}</tbody></table>
+  <p class="msg">Orientativo: cambia con la zona y con el año; en invernadero hay de casi todo, pero más caro.</p></details></details>`;
+}
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
@@ -632,6 +655,7 @@ function vGuia(){
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
+  ${vTemporada()}
   <details class="card plg" data-k="med"${U.det&&U.det.med?" open":""}><summary><h2>Medidas útiles</h2></summary>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</details>
   <details class="card plg" data-k="fue"${U.det&&U.det.fue?" open":""}><summary><h2>Fuego en la Comunidad de Madrid</h2></summary>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017; el 83/2018 solo cambió plazos y organización), contrastado con su texto el 20-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
