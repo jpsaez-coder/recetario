@@ -158,7 +158,7 @@ button.lnk{border:0;background:none;padding:0;color:var(--pine);text-decoration:
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pl-0{--pc:#E0A53A}:root:not([data-theme="light"]) .pl-1{--pc:#8FC07A}:root:not([data-theme="light"]) .pl-2{--pc:#7FB28F}:root:not([data-theme="light"]) .pl-3{--pc:#E58BAE}:root:not([data-theme="light"]) .pl-4{--pc:#8DB0E0}}
 .marca{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;flex:none}
 header.top.banda{background:#482413;margin:-16px -16px 16px;padding:16px;align-items:center}
-header.top.banda h1{color:#DFE5F8;font-size:21px;letter-spacing:.2em;text-transform:uppercase}
+header.top.banda h1{color:#FFF8E6;font-size:21px;letter-spacing:.2em;text-transform:uppercase}
 header.top.banda h1 b{color:#EACA5B}
 .card{border-left:5px solid var(--pc,var(--ochre))}
 h3.grp-t{color:var(--ochre);letter-spacing:.14em}
@@ -234,6 +234,22 @@ textarea{min-height:90px;resize:vertical}
 .intro h2{margin:0 0 8px;font-size:21px}.intro p{margin:0 0 6px;line-height:1.5}.intro .ico{font-size:34px;line-height:1;margin-bottom:8px}
 .intro .puntos{display:flex;gap:6px;justify-content:center;margin:14px 0 10px}.intro .puntos i{width:8px;height:8px;border-radius:50%;background:var(--line)}.intro .puntos i.on{background:var(--pine)}
 .intro .row{justify-content:space-between;align-items:center}
+.tchips{display:flex;flex-wrap:wrap;gap:6px}.tchip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px}.tchip b,.ttab td.tn b,.msg b{color:var(--pine)}
+.ttab{table-layout:fixed;font-size:13px;border-collapse:separate;border-spacing:2px}.ttab th,.ttab td{padding:0;border:0;text-align:center}.ttab thead th{font-size:11px;color:var(--mute);font-weight:600}
+.ttab th:first-child,.ttab td.tn{width:40%}.ttab td.tn{text-align:left;padding:2px 4px 2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none;height:auto}
+.ttab td{height:16px;background:var(--bg);border-radius:3px}.ttab td.si{background:var(--pine)}.ttab td.hoy:not(.si){background:var(--ochre-bg)}.ttab th.hoy{color:var(--ink);font-weight:800}
+.ttab tr.tg th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);padding:8px 0 2px}
+.ic{width:22px;height:22px;flex:none;color:var(--pine);vertical-align:middle}.ic-s{width:22px;height:22px;margin-right:8px;color:var(--ochre)}
+.intro .ico{width:auto;height:auto;border-radius:0;display:block;color:var(--pine);margin-bottom:6px}.ic-g{width:40px;height:40px;stroke-width:1.5}
+.tm>span{display:flex;align-items:center;gap:10px}.tm>span>span{display:block}.tm b{margin-left:0}.tm small{margin-left:0}
+.card.rc{padding:8px 10px 8px 12px;margin-bottom:8px}.rcab{display:flex;align-items:center;gap:8px}
+.rtit{flex:1;min-width:0;display:flex;align-items:center;gap:10px;background:none;border:0;padding:2px 0;text-align:left;color:inherit;cursor:pointer}
+.rtx{display:flex;flex-direction:column;min-width:0}.rtit .tit{font-size:17px}.rtit .cost{font-size:13.5px;margin-top:2px}
+.rc .pico{width:38px;height:38px;border-radius:10px}.rc .pico svg{width:22px;height:22px}.rc .foto-th{width:44px;height:44px}
+.mas{flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--pine);background:transparent;color:var(--pine);display:grid;place-items:center;padding:0}
+.mas .ic{color:currentColor}.mas.on{background:var(--pine);color:var(--pine-ink)}
+.rc .foto-big{width:calc(100% + 22px);margin:-8px -10px 10px -12px}
+.rc[class] .rcab+.aprox{margin-left:48px}
 </style>
 </head>
 <body>
@@ -465,6 +481,20 @@ const PICO=[`<path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10
 `<path d="M5 10h14v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3 10h18M2.5 13H5M19 13h2.5"/><path d="M10 7h4M12 7V5.5"/>`,
 `<path d="M6.5 13h11l-1.6 7.5H8.1z"/><path d="M10.2 13l.5 7.5M13.8 13l-.5 7.5"/><path d="M5.5 13a3 3 0 0 1 1.3-5.7A5.3 5.3 0 0 1 17.2 7.3 3 3 0 0 1 18.5 13"/><path d="M12 4.5V2.8"/>`,
 `<path d="M3 10.5a9 5.5 0 0 1 18 0z"/><path d="M3 13.6c2 1.1 3-1.1 4.5 0s3 1.1 4.5 0 3-1.1 4.5 0 3 1.1 4.5 0"/><rect x="3" y="16" width="18" height="3.6" rx="1.6"/>`];
+/* iconos de línea, con el mismo trazo que los de los platos (sustituyen a los emojis de colores) */
+const IC={cesta:'<path d="M4 10h16l-1.5 8.6a2 2 0 0 1-2 1.7h-9a2 2 0 0 1-2-1.7z"/><path d="M8 10l4-6 4 6"/><path d="M9.5 13.5v3.5M14.5 13.5v3.5"/>',
+  hecho:'<circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.7 2.7L16 9.6"/>',
+  imprimir:'<path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 13.5h10V20H7z"/>',
+  vaciar:'<path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 12.5h9l1-12.5"/>',
+  deshacer:'<path d="M9 6.5L4.5 11 9 15.5"/><path d="M5 11h9.5a5 5 0 0 1 0 10H12"/>',
+  grupo:'<circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.8 14.1c2.4-.2 4.3 1.5 4.7 4.4"/>',
+  buscar:'<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
+  calendario:'<rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>',
+  libro:'<path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5v13"/>',
+  lapiz:'<path d="M15.5 4.5l4 4L8 20H4v-4z"/><path d="M13 7l4 4"/>',
+  mas:'<path d="M12 6v12M6 12h12"/>',
+  ok:'<path d="M6.5 12.5l3.7 3.7L17.5 8.5"/>'};
+const ic=(k,c="")=>`<svg class="ic${c?" "+c:""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 const pico=i=>`<span class="pico pl-${i}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${PICO[i]}</svg></span>`;
 const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const allCats=()=>[...new Set([...BASE_CATS,...S.cats])];
@@ -592,21 +622,40 @@ const NORMAS=[["no","¿En el monte o en un área recreativa?","Cocinar o calenta
   ["si","¿En casa o en el pueblo, lejos del monte?","Esta norma no aplica; manda el ayuntamiento."]];
 const ICO={si:["✓","Sí"],no:["✕","No"],ojo:["!","Ojo"]};
 function vNormas(){return `<div class="normas">${NORMAS.map(([k,q,a])=>`<div class="norma"><span class="ico ${k}" aria-label="${ICO[k][1]}">${ICO[k][0]}</span><div><b>${q}</b><small>${a}</small></div></div>`).join("")}</div>`}
+/* Temporada (península, al aire libre; orientativo): [nombre, meses 1-12, aguanta días sin nevera].
+   Mismos datos que el calendario del PDF «Hacer un buen menú» de la web. */
+const TEMPORADA={"frutas":[["Naranja",[1,2,3,4,5,11,12],true],["Mandarina",[1,2,10,11,12],true],["Limón",[1,2,3,4,5,10,11,12],true],["Kiwi",[1,2,3,4,11,12],false],["Manzana",[1,2,3,4,8,9,10,11,12],true],["Pera",[1,7,8,9,10,11,12],false],["Plátano",[1,2,3,4,5,6,7,8,9,10,11,12],false],["Fresa",[2,3,4,5,6],false],["Cereza",[5,6,7],false],["Albaricoque",[5,6,7],false],["Melocotón y nectarina",[6,7,8,9],false],["Ciruela",[6,7,8,9],false],["Melón",[6,7,8,9],true],["Sandía",[6,7,8,9],true],["Higo",[8,9],false],["Uva",[8,9,10,11],false],["Granada",[9,10,11,12],true],["Caqui",[10,11,12],false]],"verduras":[["Patata",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Cebolla",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Ajo",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Zanahoria",[1,2,3,4,5,6,7,8,9,10,11,12],true],["Lechuga",[1,2,3,4,5,6,7,8,9,10,11,12],false],["Tomate",[6,7,8,9,10],false],["Pimiento",[7,8,9,10],true],["Calabacín",[5,6,7,8,9,10],false],["Berenjena",[6,7,8,9,10],false],["Pepino",[5,6,7,8,9],false],["Judía verde",[6,7,8,9],false],["Calabaza",[1,2,9,10,11,12],true],["Boniato",[1,10,11,12],true],["Puerro",[1,2,3,4,10,11,12],false],["Coliflor y brócoli",[1,2,3,10,11,12],false],["Repollo",[1,2,3,10,11,12],true],["Espinaca y acelga",[1,2,3,4,10,11,12],false],["Alcachofa",[1,2,3,4,5,11,12],false],["Guisante y haba",[3,4,5],false],["Espárrago verde",[3,4,5,6],false]]};
+const MES_N=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+function vTemporada(){
+  const m=new Date().getMonth()+1;
+  /* este mes: lo que no hay todo el año (eso se dice aparte) */
+  const hoy=xs=>xs.filter(([,ms])=>ms.includes(m)&&ms.length<12).map(([n,,d])=>`<span class="tchip">${esc(n)}${d?" <b>●</b>":""}</span>`).join("");
+  const filas=(tt,xs)=>`<tr class="tg"><th colspan="13">${tt}</th></tr>`+xs.map(([n,ms,d])=>`<tr><td class="tn">${esc(n)}${d?" <b>●</b>":""}</td>${MES_N.map((_,i)=>`<td class="${ms.includes(i+1)?"si":""}${i+1===m?" hoy":""}"></td>`).join("")}</tr>`).join("");
+  return `<details class="card plg" data-k="temp"${U.det&&U.det.temp?" open":""}><summary><h2>Frutas y verduras de temporada</h2></summary>
+  <p class="msg">De temporada sale más barato y sabe mejor. En ${MES_N[m-1]}:</p>
+  <label class="f">Frutas</label><div class="tchips">${hoy(TEMPORADA.frutas)}</div>
+  <label class="f">Verduras y hortalizas</label><div class="tchips">${hoy(TEMPORADA.verduras)}</div>
+  <p class="msg">Patata, cebolla, ajo, zanahoria, lechuga y plátano hay todo el año. <b>●</b> Aguanta varios días sin nevera, entero y a la sombra.</p>
+  <details class="plg2" data-k="temp-a"${U.det&&U.det["temp-a"]?" open":""}><summary>Todo el año, mes a mes</summary>
+  <table class="ttab"><thead><tr><th></th>${MES_N.map((x,i)=>`<th class="${i+1===m?"hoy":""}">${x[0].toUpperCase()}</th>`).join("")}</tr></thead><tbody>${filas("Frutas",TEMPORADA.frutas)}${filas("Verduras y hortalizas",TEMPORADA.verduras)}</tbody></table>
+  <p class="msg">Orientativo: cambia con la zona y con el año; en invernadero hay de casi todo, pero más caro.</p></details></details>`;
+}
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
-  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary><h2>Checklist de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
+  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary>${ic(done===all.length?"hecho":"cesta","ic-s")}<h2>Checklist de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
   ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</details>`;
 }
 function vGuia(){
   const n=RAC();
   const prop=PROP.map(([a,g])=>[a,fmtQ(g*n/8,"g")]).concat([["Lechuga",Math.ceil(n/4)+" ud"],["Pan (por día)",fmtQ(n,"barra")+" (≈250 g)"],["Leche (por día)",fmtQ(400*n,"ml")+" · "+fmtQ(0.4*n,"brik")]]);
-  return `<div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn alt sm" data-act="intro">Cómo usar esta app</button></div>${vBasicos()}
+  return `<div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn alt sm" data-act="intro">Cómo usar esta app</button></div>
   ${vCuatro()}
   <details class="card plg" data-k="cant"${U.det&&U.det.cant?" open":""}><summary><h2>Cantidades para ${grupoTxt()}</h2></summary><p class="msg">Proporciones de la guía de intendencia (calculadas desde 8 personas). Cambia el grupo arriba: desde los 12 años, ración entera; hasta los 11, el 70 % de una ración.</p>${tbl(prop)}</details>
   <details class="card plg" data-k="tiempos"${U.det&&U.det.tiempos?" open":""}><summary><h2>Tiempos de cocción</h2></summary><label class="f">¿Dónde cocinas?</label>${heatPick()}${heatNote()}
   ${tbl(COCC.map(([n,t,k])=>[n,cTime(t,k)])).replaceAll('class="q"','class="q w"')}
   <p class="msg">Tiempos orientativos, contados desde que el agua hierve de verdad.</p></details>
+  ${vTemporada()}
   <details class="card plg" data-k="med"${U.det&&U.det.med?" open":""}><summary><h2>Medidas útiles</h2></summary>${tbl(EQUIV).replaceAll('class="q"','class="q w"')}</details>
   <details class="card plg" data-k="fue"${U.det&&U.det.fue?" open":""}><summary><h2>Fuego en la Comunidad de Madrid</h2></summary>
   <p class="msg">Resumen del Plan INFOMA (Decreto 59/2017; el 83/2018 solo cambió plazos y organización), contrastado con su texto el 20-10-2026. No sustituye a la norma: antes de salir, confirma.</p>
@@ -621,7 +670,7 @@ function vGuia(){
   <a href="https://www.comunidad.madrid/docs/assets/2018/02/05/decreto_59.2017_de_6_junio.pdf" target="_blank" rel="noopener">Texto del Decreto 59/2017 (BOCM)</a></p>
   <p class="msg">Cómo montar, encender y apagar el fuego: en «Cocinar al fuego». Dudas: Agentes Forestales o 112. Fuera de Madrid, cada comunidad tiene su norma.</p></details>
   <details class="card plg" data-k="cfu"${U.det&&U.det.cfu?" open":""}><summary><h2>Cocinar al fuego</h2></summary>
-  <p class="msg warn">⚠ En la Comunidad de Madrid no se puede hacer fuego en el monte en todo el año, tampoco en las barbacoas de las áreas recreativas. Esto es para campings o sitios donde esté permitido. <button class="lnk" data-act="verFuego">Ver normas</button></p>
+  <p class="msg warn">⚠︎ En la Comunidad de Madrid no se puede hacer fuego en el monte en todo el año, tampoco en las barbacoas de las áreas recreativas. Esto es para campings o sitios donde esté permitido. <button class="lnk" data-act="verFuego">Ver normas</button></p>
   <p><b>Brasas, no llamas.</b> Espera a que la leña se haga brasa y guarda una reserva a un lado para ir añadiendo: con llama, lo de fuera se quema y lo de dentro queda crudo.</p>
   <label class="f">Estructuras de leña · cuáles van mejor para cocinar</label><div class="tiles">
   <div class="tile"><img class="fimg" src="fuego/cazador.svg" alt="Fuego cazador" loading="lazy"><b>Cazador</b> <span class="estr" aria-label="3 de 3 para cocinar">★★★</span><small>El mejor para sartén y olla: dos troncos gruesos en paralelo, el fuego entre ellos y el recipiente apoyado encima.</small></div>
@@ -743,12 +792,12 @@ function vList(){
     <div class="row">${r.base?`<button class="btn alt sm" data-act="copy" data-id="${r.id}">Copiar para cambiarla</button>`:`<button class="btn alt sm" data-act="edit" data-id="${r.id}">Editar</button>`}<button class="btn ghost sm" data-act="share" data-id="${r.id}">Compartir</button><button class="btn ghost sm" data-act="pdfReceta" data-id="${r.id}">PDF</button>${r.base?"":`<button class="btn ghost sm danger" data-act="del" data-id="${r.id}">Eliminar</button>`}</div>
     ${!r.base&&aporta()&&U.aporta!==r.id&&!(S.aportadas&&S.aportadas[r.id])?`<button class="btn alt sm aportar" data-act="apAbrir" data-id="${r.id}">Aporta esta receta a la comunidad</button>`:""}${r.base?"":vAporta(r)}`;
     const fs=fotoSrc(r);
-    return `${grupo}<article class="card pl-${Math.max(0,PL.indexOf(platoDe(r)))}">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="row spread">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:fs?"":pico(Math.max(0,PL.indexOf(platoDe(r))))}<h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
+    const enMenu=(S.menu||[]).includes(r.id);
+    /* una fila: tocar el nombre abre la receta; «+» la pone en el menú (✓ si ya está) */
+    return `${grupo}<article class="card rc pl-${Math.max(0,PL.indexOf(platoDe(r)))}">${fs&&open?`<img class="foto-big" src="${esc(fs)}" alt="" loading="lazy">`:""}<div class="rcab"><button class="rtit" data-act="open" data-id="${r.id}" aria-expanded="${open}">${fs&&!open?`<img class="foto-th" src="${esc(fs)}" alt="" loading="lazy">`:fs?"":pico(Math.max(0,PL.indexOf(platoDe(r))))}<span class="rtx"><h2 class="tit">${esc(r.name)}</h2><span class="cost">${eur(costF(r,f)/HEADS())}/pers.</span></span></button><button class="mas${enMenu?" on":""}" data-act="menu" data-id="${r.id}" aria-pressed="${enMenu}" aria-label="${enMenu?"Quitar del menú":"Añadir al menú"}: ${esc(r.name)}" title="${enMenu?"Quitar del menú":"Añadir al menú"}">${ic(enMenu?"ok":"mas")}</button></div>${(()=>{const a=aproxDe(r);return a.length?`<p class="aprox">Precio aproximado: ${esc(a.slice(0,3).join(", ").toLowerCase())}${a.length>3?` y ${a.length-3} más`:""}</p>`:""})()}
     ${!r.base&&!open&&aporta()&&!(S.aportadas&&S.aportadas[r.id])?`<button class="aplink" data-act="apAbrir" data-id="${r.id}">Aporta esta receta a la comunidad →</button>`:""}
     ${(()=>{/* las etiquetas sirven para filtrar y buscar, pero no se enseñan; solo el aviso de alérgenos del grupo */
-      const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠ ${esc(a)}</span>`).join("")}</div>`:""})()}
-    <div class="row acc"><button class="btn alt sm" data-act="menu" data-id="${r.id}">${(S.menu||[]).includes(r.id)?"Quitar del menú":"Añadir al menú"}</button>
-    <button class="btn sm" data-act="open" data-id="${r.id}">${open?"Ocultar":"Ver receta"}</button></div>
+      const h=etiquetas(r).alerg.filter(a=>(S.alergias||[]).includes(a));return h.length?`<div class="meta">${h.map(a=>`<span class="tag alg hit">⚠︎ ${esc(a)}</span>`).join("")}</div>`:""})()}
     ${inMenu.some(e=>e.d)?`<p class="msg">En el menú: ${inMenu.filter(e=>e.d).map(e=>`día ${e.d}, ${e.m.toLowerCase()}`).join(" · ")}</p>`:""}${d}</article>`;
   }).join("");
 
@@ -772,22 +821,24 @@ function sueltosRecipe(n,H){
 }
 function vSueltos(n,H){
   const ex=S.extras||[];H=H||n;
-  return `<div class="card"><div class="fl h"><h2>Sueltos</h2>${inf("sue","Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Se puede poner en las comidas con «+ añadir», como una receta: cada vez que está puesto cuenta su cantidad. Si no está en ningún día, cuenta una vez. Entra en la compra, el presupuesto y los macros.")}</div>
+  return pleg("sue","Sueltos",ex.length?`${ex.length} cosa${ex.length===1?"":"s"}`:"fruta, pan, barritas…",`<p class="msg">Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Se puede poner en las comidas con «+ añadir», como una receta: cada vez que está puesto cuenta su cantidad. Si no está en ningún día, cuenta una vez. Entra en la compra, el presupuesto y los macros.</p>
   ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*H,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""} · ${sueltoVeces(e)?`en ${sueltoVeces(e)} comida${sueltoVeces(e)===1?"":"s"}`:"sin día: cuenta una vez"}</small></td>
     <td class="p">${e.price===""?"":eur(num(e.price)*(e.per==="persona"?H:1))}</td><td class="p"><button class="btn ghost sm" data-act="exDel" data-id="${e.id}" aria-label="Quitar ${esc(e.name)}">Quitar</button></td></tr>`).join("")}</table>`:""}
   <div class="exf"><input id="exName" placeholder="Qué (p. ej. Sandía)" aria-label="Qué"><input id="exQty" inputmode="decimal" placeholder="Cant." aria-label="Cantidad" value="1">
   <select id="exUnit" aria-label="Unidad">${UNITS.map(u=>`<option ${u==="ud"?"selected":""}>${u}</option>`).join("")}</select>
   <select id="exPer" aria-label="Fijo o por persona"><option value="fijo">en total</option><option value="persona">por persona</option></select>
   <input id="exPrice" inputmode="decimal" placeholder="€ (opcional)" aria-label="Precio de esa cantidad"><button class="btn alt sm" data-act="exAdd">+ Añadir</button></div>
-  ${U.exMsg?`<p class="msg err">${esc(U.exMsg)}</p>`:""}</div>`;
+  ${U.exMsg?`<p class="msg err">${esc(U.exMsg)}</p>`:""}`);
 }
-/* arriba del menú: los básicos de la caja y el menú para imprimir */
+/* abajo del menú: la checklist de la caja (solo aquí) y lo que se hace al terminar: imprimir y vaciar */
 function vTopMenu(){
-  const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length,ok=done===all.length;
-  return `<div class="card topm"><div class="tm"><span>${ok?"✅":"🧺"} <b>Básicos de intendencia</b><small>${done} de ${all.length} en la caja</small></span><button class="btn ${ok?"ghost":"alt"} sm" data-act="irBas">${ok?"Ver":"Ir a la checklist"}</button></div>
-  ${planIds().length?`<div class="tm"><span>🖨️ <b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>
-  <div class="tm"><span>🧹 <b>Menú nuevo</b><small>Vacía este menú para preparar otra actividad</small></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`:""}
-  ${S.ultimoMenu&&!planIds().length?`<div class="tm"><span>↩️ <b>Menú vaciado</b><small>${esc(S.ultimoMenu.n)} receta${S.ultimoMenu.n===1?"":"s"} · ${new Date(S.ultimoMenu.t).toLocaleDateString("es-ES")}</small></span><button class="btn ghost sm" data-act="menuDeshacer">Deshacer</button></div>`:""}</div>`;
+  const acc=[];
+  if(planIds().length){
+    acc.push(`<div class="tm"><span>${ic("imprimir")}<span><b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>`);
+    acc.push(`<div class="tm"><span>${ic("vaciar")}<span><b>Menú nuevo</b><small>Vacía este menú para otra actividad</small></span></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`);
+  }
+  if(S.ultimoMenu&&!planIds().length)acc.push(`<div class="tm"><span>${ic("deshacer")}<span><b>Menú vaciado</b><small>${esc(S.ultimoMenu.n)} receta${S.ultimoMenu.n===1?"":"s"} · ${new Date(S.ultimoMenu.t).toLocaleDateString("es-ES")}</small></span></span><button class="btn ghost sm" data-act="menuDeshacer">Deshacer</button></div>`);
+  return `${vBasicos()}${acc.length?`<div class="card topm">${acc.join("")}</div>`:""}`;
 }
 /* tres columnas fijas, en orden y equilibradas por líneas: no depende de que el navegador
    respete las columnas de CSS al imprimir (algunos móviles las ignoran y sale una lista larga) */
@@ -858,7 +909,7 @@ function vMenu(){
   const rs0=planIds().map(getM).filter(Boolean);
   const n=RAC(),H=HEADS(),sr=sueltosRecipe(n,H);
   const rs=sr?[...rs0,sr]:rs0;
-  if(!rs.length)return `${vTopMenu()}${vDias()}<div class="empty">Añade recetas a cada día con «+ añadir», o cosas sueltas, para ver la lista de la compra y el presupuesto.</div>${vSueltos(n,H)}`;
+  if(!rs.length)return `${vDias()}<div class="empty">Añade recetas a cada día con «+ añadir», o cosas sueltas, para ver la lista de la compra y el presupuesto.</div>${vSueltos(n,H)}${vTopMenu()}`;
   const used=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
   const items=shopList(rs,n);
   const total=items.reduce((a,i)=>a+i.cost,0);
@@ -866,21 +917,22 @@ function vMenu(){
   const D=S.dias||1,ppd=S.ppd==null?6:S.ppd,B=ppd*H*D;
   const perPerson=total/H,usedPP=used/n,maxP=usedPP>0?Math.floor(B/usedPP):0;
   const left=B-total;
-  return `${vTopMenu()}<div class="card">${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div><div class="card"><label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
+  const presu=`<label class="f" for="bud" style="margin-top:0">Presupuesto por persona y día (€)</label>
   <input id="bud" type="number" min="0" step="0.5" inputmode="decimal" value="${ppd}" data-act="budget">
   <p class="msg">= <b>${eur(B)}</b> (${H} pers. × ${D} día${D===1?"":"s"})</p>
   <div class="sum"><div><small>Pagas en la tienda (${grupoTxt()})</small><strong>${eur(total)}</strong></div>
   <div><small>Por persona${(S.dias||1)>1?" y día":""}</small><strong>${eur(perPerson/(S.dias||1))}</strong></div>
   ${B>0?`<div><small>${left>=0?"Te sobra":"Te pasas"}</small><strong class="${left>=0?"ok":"over"}">${eur(Math.abs(left))}</strong></div>`:""}</div>
-  ${cadena()&&(Date.now()-new Date(PRECIOS.fecha))>90*864e5?`<p class="msg warn">⚠ Los precios de ${esc(cadena())} son de hace más de 3 meses (${esc(PRECIOS.fecha)}): tómalos como orientativos.</p>`:""}
+  ${cadena()&&(Date.now()-new Date(PRECIOS.fecha))>90*864e5?`<p class="msg warn">⚠︎ Los precios de ${esc(cadena())} son de hace más de 3 meses (${esc(PRECIOS.fecha)}): tómalos como orientativos.</p>`:""}
   ${fl("Sobre los precios","pre",`Se compran paquetes enteros: de los ${eur(total)} se gastan en el menú unos ${eur(used)}; el resto queda en la despensa. ${cadena()?`Precios de ${esc(cadena())} (web, ${esc(PRECIOS.fecha)}); lo que no está en su catálogo, estimado. Compáralos con el ticket.`:S.super?`Aún no hay precios de ${esc(S.super)}: se usan los estimados.`:`Precios estimados de cada receta.`}`)}
   <label class="f" for="sup">¿En qué supermercado vas a comprar?</label>
   <select id="sup" data-act="super"><option value="">Sin decidir</option>${SUPERS.map(x=>`<option ${x===S.super?"selected":""}>${esc(x)}</option>`).join("")}</select>
   ${U.ai?`<div class="row" style="margin-top:8px"><button class="btn alt sm" data-act="prices" ${U.prBusy?"disabled":""}>${U.prBusy?"Calculando…":S.super?`Calcular precios aproximados en ${esc(S.super)}`:"Calcular precios aproximados"}</button></div>`:""}
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
-  ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}</div>
-  ${vDias()}${vSueltos(n,H)}
-  ${vCompra(items)}${vCarga(items)}${vAmortiza(items,rs)}`;
+  ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}`;
+  const resP=`${eur(total)}${B>0?` · <span class="${left>=0?"ok":"over"}">${left>=0?"sobran":"te pasas"} ${eur(Math.abs(left))}</span>`:""}`;
+  return `<div class="card">${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div>${vDias()}${vSueltos(n,H)}
+  ${vCompra(items)}${pleg("pres","Presupuesto",resP,presu)}${vCarga(items)}${vAmortiza(items,rs)}${vTopMenu()}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
 function vAmortiza(items,rs){
@@ -888,17 +940,16 @@ function vAmortiza(items,rs){
   const latasTxt=latas.length?`<p class="msg warn">Lata empezada (${latas.map(i=>esc(i.name.toLowerCase())).join(", ")}): a la cena del mismo día, por ejemplo en tortilla. Nunca abierta para el día siguiente; con nevera, en táper cerrado.</p>`:"";
   const over=items.filter(i=>i.pk&&i.left>=i.pk.size*0.2);
   const left=over.filter(i=>!STAPLE.test(norm(i.name))),pantry=over.filter(i=>STAPLE.test(norm(i.name)));
-  if(!over.length)return latasTxt?`<div class="card"><h2>Para aprovechar lo que sobra</h2>${latasTxt}</div>`:"";
+  if(!over.length)return latasTxt?pleg("sob","Lo que sobra","lata empezada",latasTxt):"";
   const pantryTxt=pantry.length?`<p class="msg">Para la despensa (dura meses): ${pantry.map(i=>esc(i.name.toLowerCase())).join(", ")}. Si ya lo tienes en casa, márcalo con «Lo tengo» y no cuenta en el presupuesto.</p>`:"";
-  if(!left.length)return `<div class="card"><h2>Para aprovechar lo que sobra</h2>${latasTxt}${pantryTxt}</div>`;
+  if(!left.length)return pleg("sob","Lo que sobra","",latasTxt+pantryTxt);
   const inMenu=new Set(rs.map(r=>r.id));
   const sug=all().filter(r=>!inMenu.has(r.id)).map(r=>{
     const uses=left.filter(i=>r.ingredients.some(x=>packKey(x.name,toBase(1,x.unit,x.name)[1])===i.key));
     return {r,uses};
   }).filter(x=>x.uses.length).sort((a,b)=>b.uses.length-a.uses.length).slice(0,5);
-  return `<div class="card"><h2>Para aprovechar lo que sobra</h2>
-  <p class="msg">Sobra: ${left.map(i=>`${esc(i.name.toLowerCase())} (${fmtQ(i.left,i.unit)})`).join(", ")}.${sug.length?" Estas recetas lo usan: añadirlas al menú sale casi gratis en esos ingredientes.":" Ninguna otra receta tuya lo usa: guárdalo para la próxima salida, o baja a un formato más pequeño con «Formato»."}</p>
-  ${latasTxt}${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}</div>`;
+  return pleg("sob","Lo que sobra",sug.length?`${sug.length} receta${sug.length===1?"":"s"} lo usa${sug.length===1?"":"n"}`:"",`<p class="msg">Sobra: ${left.map(i=>`${esc(i.name.toLowerCase())} (${fmtQ(i.left,i.unit)})`).join(", ")}.${sug.length?" Estas recetas lo usan: añadirlas al menú sale casi gratis en esos ingredientes.":" Ninguna otra receta tuya lo usa: guárdalo para la próxima salida, o baja a un formato más pequeño con «Formato»."}</p>
+  ${latasTxt}${pantryTxt}${sug.length?`<table>${sug.map(({r,uses})=>`<tr><td><b>${esc(r.name)}</b><br><small style="color:var(--mute)">usa ${uses.map(i=>esc(i.name.toLowerCase())).join(", ")}</small></td><td class="p"><button class="btn alt sm" data-act="menu" data-id="${r.id}">Añadir</button></td></tr>`).join("")}</table>`:""}`);
 }
 /* ---------- macros ----------
    Valores orientativos por 100 g (kcal, proteína, hidratos, grasa), redondeados de tablas de composición
@@ -1098,15 +1149,16 @@ function pesoItem(i){
 function vCarga(items){
   const comida=items.reduce((a,i)=>a+pesoItem(i),0)*1.08; // ~8 % de envases
   const ag=aguaMenu(),tot=comida/1000+ag.l,mochilas=Math.max(1,S.people||1);
-  return `<div class="card"><h2>Carga y agua</h2>
-  <div class="stats"><div><small>Compra (con envases, aprox.)</small><strong>${String(Math.round(comida/100)/10).replace(".",",")} kg</strong></div>
+  return pleg("car","Carga y agua",`${String(Math.round(tot*10)/10).replace(".",",")} kg`,`<div class="stats"><div><small>Compra (con envases, aprox.)</small><strong>${String(Math.round(comida/100)/10).replace(".",",")} kg</strong></div>
   <div><small>Agua para cocinar</small><strong>${String(ag.l).replace(".",",")} l</strong></div>
   <div><small>Total a cargar</small><strong>${String(Math.round(tot*10)/10).replace(".",",")} kg</strong></div></div>
   ${fl(`Unos ${String(Math.round(tot/mochilas*10)/10).replace(".",",")} kg por mayor`,"car",`Repartido entre ${mochilas} mayor${mochilas===1?"":"es"}. No cuenta el agua para beber (1,5-3 l por persona y día de ruta) ni el material. Los envases, a ojo (~8 %).`)}
-  ${ag.out.length?`<label class="f">Agua de cocina por receta</label><table>${ag.out.map(([n,l,d])=>`<tr><td>${esc(n)}${d?` <small style="color:var(--mute)">· día ${d}</small>`:""}</td><td class="q">${String(l).replace(".",",")} l</td></tr>`).join("")}</table>`:""}</div>`;
+  ${ag.out.length?`<label class="f">Agua de cocina por receta</label><table>${ag.out.map(([n,l,d])=>`<tr><td>${esc(n)}${d?` <small style="color:var(--mute)">· día ${d}</small>`:""}</td><td class="q">${String(l).replace(".",",")} l</td></tr>`).join("")}</table>`:""}`);
 }
 /* ⓘ: las explicaciones, plegadas; a la vista solo el dato */
 const inf=(k,html)=>`<details class="inf" data-k="i-${k}"${U.det&&U.det["i-"+k]?" open":""}><summary aria-label="Más información">ⓘ</summary><div class="msg">${html}</div></details>`;
+/* tarjeta plegable: a la vista el título y un resumen; el detalle, al tocar */
+const pleg=(k,titulo,resumen,cuerpo)=>`<details class="card plg" data-k="${k}"${U.det&&U.det[k]?" open":""}><summary><h2>${titulo}</h2>${resumen?`<small class="sumx">${resumen}</small>`:""}</summary>${cuerpo}</details>`;
 const fl=(t,k,html)=>`<div class="fl"><span>${t}</span>${inf(k,html)}</div>`;
 /* ---------- menú por días ----------
    S.menu = recetas elegidas para el menú (desde Recetas). S.plan["2|Cena"] = [ids] las reparte por días.
@@ -1138,9 +1190,9 @@ const ACT={descanso:{n:"Descanso",l:"Descanso o reunión",kcal:2200,ch:4},suave:
 const PESO=65,PROT=1.3;
 const actDia=d=>(S.act&&ACT[S.act[d]])?S.act[d]:(S.salida==="reunion"?"descanso":"suave");
 /* clima: el frío y la altura suben el gasto (~15 %, orientativo); con calor casi no, pero cambian el agua y la sal */
-const CLIMA={templado:{n:"Templado",k:1},calor:{n:"Calor",k:1.05,aviso:"☀ Calor: 0,5-1 l de agua por hora de marcha y algo salado; comidas ligeras y frecuentes."},
-  frio:{n:"Frío",k:1.15,aviso:"❄ Frío: comidas calientes, algo más de grasa e hidratos y tentempiés a menudo."},
-  altura:{n:"Altura",k:1.15,aviso:"⛰ Altura: más agua e hidratos fáciles de comer; el apetito baja."}};
+const CLIMA={templado:{n:"Templado",k:1},calor:{n:"Calor",k:1.05,aviso:"☀︎ Calor: 0,5-1 l de agua por hora de marcha y algo salado; comidas ligeras y frecuentes."},
+  frio:{n:"Frío",k:1.15,aviso:"❄︎ Frío: comidas calientes, algo más de grasa e hidratos y tentempiés a menudo."},
+  altura:{n:"Altura",k:1.15,aviso:"⛰︎ Altura: más agua e hidratos fáciles de comer; el apetito baja."}};
 const climaDia=d=>(S.clima&&CLIMA[S.clima[d]])?S.clima[d]:"templado";
 /* parte del día de cada comida; lo que se hace «de casa» se descuenta del objetivo de ese día */
 const PESO_MOM={Desayuno:.25,Comida:.35,Merienda:.1,Cena:.3};
@@ -1192,7 +1244,7 @@ function vDias(){
       const cs=costeSlot(d,m);
       h+=`<div class="slot"><span class="slot-m">${m}${cs>0?`<br><small>${eur(cs)}</small>`:""}</span><div class="slot-r">${ids.map((id,i)=>{if(id===CASA)return `<span class="pl casa">De casa<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar «de casa»">✕</button></span>`;const r=getM(id);if(!r)return "";
         const warnA=etiquetas(r).alerg.filter(a=>al.includes(a));
-        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}${S.veg&&!r.suelto&&vegAdapta(r)===false?(a=>a?`<small class="vg"> · vegetarianos: ${esc(corto(a))}</small>`:`<small class="w"> · sin opción vegetariana</small>`)(altVeg(r)):""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
+        return `<span class="pl${U.aj===id&&U.ajAt===d+"|"+m?" on":""}">${plName(r,d+"|"+m)}${warnA.length?`<small class="w"> · ⚠︎ ${esc(warnA.join(", ").toLowerCase())}</small>`:""}${S.veg&&!r.suelto&&vegAdapta(r)===false?(a=>a?`<small class="vg"> · vegetarianos: ${esc(corto(a))}</small>`:`<small class="w"> · sin opción vegetariana</small>`)(altVeg(r)):""}<button class="x" data-act="plDel" data-k="${d}|${m}" data-i="${i}" aria-label="Quitar ${esc(r.name)}">✕</button></span>`}).join("")}
         <select class="pladd" data-act="plAdd" data-k="${d}|${m}" aria-label="Añadir a ${m} del día ${d}"><option value="">+ añadir</option>${ids.includes(CASA)?"":`<option value="${CASA}">De casa (no se compra)</option>`}${optRecetas(m)}</select></div></div>${ajAqui(d+"|"+m)}`;
     }
     const vacias=comidasVacias(d);
@@ -1221,7 +1273,7 @@ function vAlergias(rs){
   return `${fl("Alergias e intolerancias","alg","Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.")}
   <details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
   <div class="ddm-l">${[...ALERG].sort((x,y)=>x[0].localeCompare(y[0],"es")).map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
-  ${al.length?(Object.keys(by).length?`<div class="fl">${Object.entries(by).map(([a,ns])=>`<span class="warn">⚠ ${esc(a)} en ${ns.size} receta${ns.size===1?"":"s"}</span>`).join(" · ")}${inf("algr",Object.entries(by).map(([a,ns])=>`<b>${esc(a)}</b>: ${esc([...ns].join(", "))}.`).join("<br>"))}</div>`:`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`):""}`;
+  ${al.length?(Object.keys(by).length?`<div class="fl">${Object.entries(by).map(([a,ns])=>`<span class="warn">⚠︎ ${esc(a)} en ${ns.size} receta${ns.size===1?"":"s"}</span>`).join(" · ")}${inf("algr",Object.entries(by).map(([a,ns])=>`<b>${esc(a)}</b>: ${esc([...ns].join(", "))}.`).join("<br>"))}</div>`:`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`):""}`;
 }
 function vSalida(rs){
   const s=SALIDAS[S.salida]?S.salida:"finde";
@@ -1231,7 +1283,7 @@ function vSalida(rs){
   /* en la mochila no hay nevera, la marques o no */
   const sinFrio=s==="ruta"||!S.nevera;
   const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva"}[s];
-  const warn=fr.length&&sinFrio?`<p class="msg warn">❄ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
+  const warn=fr.length&&sinFrio?`<p class="msg warn">❄︎ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
   return `${fl("¿Qué actividad es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
   ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div>${warn}`;
 }
@@ -1630,7 +1682,7 @@ document.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;
   const a=b.dataset.act;sync();
   if(a==="intro"){intro(0);return}
-  if(a==="irBas"){U.tab="guia";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
+  if(a==="irBas"){U.tab="menu";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
   if(a==="pdfReceta"){const r=getR(b.dataset.id);if(r)imprimir(r);return}
   /* menú nuevo: vacía lo de este menú y guarda una copia para deshacer; personas, alergias, presupuesto, salida y checklist se quedan */
@@ -1791,18 +1843,18 @@ document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches(
 document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{if(m&&m.receta)return abrirLeida(m.receta,m.origen);U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
 /* «Cómo usar esta app»: unos pasos al abrirla por primera vez, con «Omitir». Se vuelve a ver desde la Guía. (JPS, 21-10-2026) */
 const INTRO=[
-  ["👥","Elige cuántos sois","Arriba, en «Personas», pon los mayores de 12 años y los niños. Todas las cantidades, la compra y el precio se ajustan solos."],
-  ["🔎","Busca recetas","En «Recetas» tienes el buscador y los filtros (plato, temporada…). «Ver receta» enseña ingredientes, pasos y precio por persona."],
-  ["📅","Monta el menú","Con «Añadir al menú» la receta pasa a la pestaña «Menú». Allí la repartes por días y comidas, y te salen la lista de la compra y el presupuesto."],
-  ["📘","Consulta la Guía","Cantidades por persona, tiempos de cocción, medidas útiles, el menú equilibrado en 4 pasos y las normas del fuego."],
-  ["✍️","Tus recetas","En «Mis recetas» creas, copias o importas las tuyas. Se guardan solo en este móvil: guarda una copia de vez en cuando. Consejo: añade la app a la pantalla de inicio para usarla sin conexión."],
+  ["grupo","Elige cuántos sois","Arriba, en «Personas», pon los mayores de 12 años y los niños. Todas las cantidades, la compra y el precio se ajustan solos."],
+  ["buscar","Busca recetas","En «Recetas» tienes el buscador y los filtros (plato, temporada…). Toca el nombre de una receta para ver ingredientes, pasos y precio por persona."],
+  ["calendario","Monta el menú","Con el «+» de cada receta la pones en la pestaña «Menú». Allí la repartes por días y comidas, y te salen la lista de la compra y el presupuesto."],
+  ["libro","Consulta la Guía","Cantidades por persona, tiempos de cocción, medidas útiles, el menú equilibrado en 4 pasos y las normas del fuego."],
+  ["lapiz","Tus recetas","En «Mis recetas» creas, copias o importas las tuyas. Se guardan solo en este móvil: guarda una copia de vez en cuando. Consejo: añade la app a la pantalla de inicio para usarla sin conexión."],
 ];
 function intro(n){
   let d=document.getElementById("intro");
   if(n==null||n>=INTRO.length){d&&d.remove();try{localStorage.setItem("recetario_intro","1")}catch(e){}return}
   if(!d){d=document.createElement("div");d.id="intro";d.className="intro";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.setAttribute("aria-label","Cómo usar esta app");document.body.appendChild(d)}
   const [ico,t,txt]=INTRO[n],ult=n===INTRO.length-1;
-  d.innerHTML=`<div class="caja"><p class="paso">Cómo usar esta app · ${n+1} de ${INTRO.length}</p><div class="ico" aria-hidden="true">${ico}</div><h2>${t}</h2><p>${txt}</p>
+  d.innerHTML=`<div class="caja"><p class="paso">Cómo usar esta app · ${n+1} de ${INTRO.length}</p><div class="ico" aria-hidden="true">${ic(ico,"ic-g")}</div><h2>${t}</h2><p>${txt}</p>
   <div class="puntos" aria-hidden="true">${INTRO.map((_,k)=>`<i class="${k===n?"on":""}"></i>`).join("")}</div>
   <div class="row"><button class="btn ghost sm" data-intro="fin">${ult?"":"Omitir"}</button><div class="row">${n?`<button class="btn alt sm" data-intro="${n-1}">Anterior</button>`:""}<button class="btn sm" data-intro="${ult?"fin":n+1}">${ult?"Empezar":"Siguiente"}</button></div></div></div>`;
   d.querySelector("[data-intro]:last-child")?.focus?.();
