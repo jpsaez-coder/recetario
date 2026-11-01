@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Recetario</title>
-<meta name="theme-color" content="#482413">
+<meta name="theme-color" content="#5B7F45">
 <meta name="description" content="Recetas para rutas, acampadas y casa. Funciona sin conexión.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Recetario">
@@ -253,6 +253,83 @@ a.web b{display:block;font:700 17px "League Spartan",sans-serif}a.web small{disp
 .mas .ic{color:currentColor}.mas.on{background:var(--pine);color:var(--pine-ink)}
 .rc .foto-big{width:calc(100% + 22px);margin:-8px -10px 10px -12px}
 .rc[class] .rcab+.aprox{margin-left:48px}
+
+/* ===== Estilo «Huerto» (elegido por JPS el 01-11): verde, lima, amarillo y gusanos de colores ===== */
+@font-face{font-family:"Gluten";font-weight:800;font-display:swap;src:url(fonts/gluten-800.woff2) format("woff2")}
+@font-face{font-family:"Archivo";font-weight:600 900;font-display:swap;src:url(fonts/archivo-800.woff2) format("woff2")}
+@font-face{font-family:"Courier Prime";font-weight:400;font-display:swap;src:url(fonts/courier-prime-400.woff2) format("woff2")}
+@font-face{font-family:"Courier Prime";font-weight:600 800;font-display:swap;src:url(fonts/courier-prime-700.woff2) format("woff2")}
+:root{--bg:#F6F2E1;--surface:#FFFCF2;--ink:#2F4424;--mute:#5C6B50;--line:#CBD7B4;--pine:#5B7F45;--pine-ink:#FFFCF2;--ochre:#B8460E;--ochre-bg:#FBEBB0;--danger:#B42318;
+  --verde:#5B7F45;--lima:#C6DB6B;--amar:#F5B91B;--rojo:#EE5A3C;--borde:#5B7F45;--banda:#5B7F45;--tabbg:#5B7F45;--tabink:#E3EEBD;
+  --f-tit:"Gluten","Archivo",system-ui,sans-serif;--f-lbl:"Archivo","Inter",system-ui,sans-serif;--f-txt:"Courier Prime","Courier New",monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161E10;--surface:#1F2A18;--ink:#EEF3DF;--mute:#AEBB9C;--line:#36452B;--pine:#C6DB6B;--pine-ink:#1A2410;--ochre:#F5B91B;--ochre-bg:#36300F;--danger:#F28B73;--borde:#56703F;--banda:#34492A;--tabbg:#253420;--tabink:#B9C8A0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161E10;--surface:#1F2A18;--ink:#EEF3DF;--mute:#AEBB9C;--line:#36452B;--pine:#C6DB6B;--pine-ink:#1A2410;--ochre:#F5B91B;--ochre-bg:#36300F;--danger:#F28B73;--borde:#56703F;--banda:#34492A;--tabbg:#253420;--tabink:#B9C8A0;color-scheme:dark}
+body{font-family:var(--f-txt);font-size:16px}
+h1,h2,h3{font-family:var(--f-tit);font-weight:800}
+/* cabecera */
+header.top.banda{background:var(--banda);margin-bottom:0;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:18px 16px 14px}
+header.top.banda>div:first-child{display:flex;justify-content:center}
+header.top.banda h1{font-family:var(--f-tit);font-size:30px;letter-spacing:.03em;color:#FFFCF2;line-height:1}
+header.top.banda h1 b{color:inherit;font-weight:inherit}
+header.top.banda h1 small{display:block;font:800 9px/1.4 var(--f-lbl);letter-spacing:.32em;margin-top:3px}
+header.top.banda .logo{width:34px;height:34px}
+header.top.banda .ppl{background:var(--lima);border:0;color:#2F4424;border-radius:999px;padding:5px 14px;align-self:center}
+header.top.banda .ppl[open]{border-radius:14px;width:100%}
+header.top.banda .ppl .pplk,header.top.banda .ppl>summary::after{color:#4A5E3A}
+header.top.banda .ppl .people{background:#FFFCF2;border-color:#9FB65A;color:#2F4424}
+header.top.banda .ppl .rac{color:#2F4424}
+.cinta{background:var(--lima);color:#2F4424;font-size:12px;white-space:nowrap;overflow:hidden;padding:5px 0;margin:0 -16px 16px}
+/* pestañas */
+nav.tabs{background:var(--tabbg);border-top:0}
+nav.tabs button{color:var(--tabink);font-family:var(--f-lbl);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:13px;border-radius:6px}
+nav.tabs button[aria-selected="true"]{color:#2F4424;background:var(--lima)}
+/* botones y campos */
+.btn{background:var(--amar);color:#2F4424;border-radius:5px;font:800 13px/1.2 var(--f-lbl);text-transform:uppercase;letter-spacing:.04em;padding:11px 15px}
+.btn.sm{font-size:12px;padding:8px 11px}
+.btn.alt{background:transparent;color:var(--pine);border:1.5px solid var(--pine)}
+.btn.ghost{background:transparent;color:var(--mute);border:0}
+.btn.danger{color:var(--danger)}
+input,select,textarea{border:1.5px solid var(--borde);border-radius:6px;background:var(--surface)}
+.dd{border:1.5px solid var(--borde);border-radius:6px}
+.dd span{font:800 10px var(--f-lbl);text-transform:uppercase;letter-spacing:.06em}
+.dd.on{background:var(--amar);border-color:var(--amar)}.dd.on,.dd.on span,.dd.on select,.dd.on::after{color:#2F4424}
+.chip{border:1.5px solid var(--borde);border-radius:5px;font:800 12px var(--f-lbl);text-transform:uppercase}
+.chip[aria-pressed="true"]{background:var(--amar);border-color:var(--amar);color:#2F4424}
+.step{border:1.5px solid var(--borde);border-radius:6px}
+.tag{border-radius:4px;font-family:var(--f-lbl);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+/* tarjetas: caja con borde verde, sin franja de color */
+.card{border:1.5px solid var(--borde);border-radius:12px;box-shadow:none}
+.card h2{font-family:var(--f-tit);color:var(--pine);text-transform:uppercase;font-size:18px;letter-spacing:.01em}
+details.tus h2{font-size:16px}
+/* lista de recetas: una columna con líneas, como cuadrícula de huerto */
+.card.rc{border-radius:0;border-width:1.5px 0 0;margin:0;padding:10px 2px;background:transparent}
+.card.rc+h3.grp-t{border-top:1.5px solid var(--borde);padding-top:16px;margin-top:0}
+.rtit .tit{font:800 14.5px/1.2 var(--f-lbl);text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
+.rtit .cost{font:400 13px var(--f-txt);color:var(--mute)}
+.rc .pico{border-radius:50%;background:color-mix(in srgb,var(--pc) 22%,var(--surface))}
+.pl-0{--pc:#C98A0A}.pl-1{--pc:#5B7F45}.pl-2{--pc:#EE5A3C}.pl-3{--pc:#C2457A}.pl-4{--pc:#3E8FB0}
+.mas{border:0;background:var(--amar);color:#2F4424;width:38px;height:38px}
+.mas.on{background:var(--pine);color:var(--pine-ink)}
+.rc .foto-big{border-radius:0}
+h3.secc{font-family:var(--f-tit);color:var(--pine);text-transform:uppercase;letter-spacing:.01em;font-size:16px}
+h3.grp-t{font-size:24px;color:var(--pine);letter-spacing:.01em;margin:22px 2px 10px;position:relative;display:flex;align-items:center;gap:10px}
+h3.grp-t::after{content:"";width:58px;height:26px;flex:none;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23EE5A3C' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+h3.grp-t:nth-of-type(3n+2)::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23C6DB6B' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+h3.grp-t:nth-of-type(3n)::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23F5B91B' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+/* menú y resto */
+.num{background:var(--lima);color:#2F4424;font-family:var(--f-lbl)}
+.sum div,.stats div,.tile,.ajuste,.obj{border:1.5px solid var(--line);background:var(--surface)}
+.sum strong,.stats strong,.kcal strong{font-family:var(--f-lbl);font-weight:800}
+.empty{position:relative;padding:44px 10px}
+.empty::before,.empty::after{content:"";position:absolute;width:70px;height:32px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23EE5A3C' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+.empty::before{left:4px;top:6px;transform:rotate(-15deg)}
+.empty::after{right:4px;bottom:4px;transform:rotate(25deg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23F5B91B' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+a.web{background:var(--banda);color:#FFFCF2;border-radius:12px}a.web b{font-family:var(--f-tit);font-weight:800}
+.nueva,.remind,.aporta,.ai{border:1.5px solid var(--amar);border-radius:12px}
+.intro .caja{border:1.5px solid var(--borde)}
+.intro h2{font-family:var(--f-tit);color:var(--pine);text-transform:uppercase}
+.intro .paso{font-family:var(--f-lbl);font-weight:800}
+.ttab td.si{background:var(--pine)}
 </style>
 </head>
 <body>
@@ -478,7 +555,7 @@ async function actualizar(){
 }
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
-const LOGO=`<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#482413"/><path d="M12 13h24v8a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#FFF8E6"/><rect x="9" y="11" width="30" height="3.5" rx="1.75" fill="#FFF8E6"/><path d="M15 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0zM22.5 32c-3.5 4-.5 10 2.5 10s6-6 1.5-10c0 2.4-2.4 3-4 0zM30 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0z" fill="#EACA5B"/></svg>`;
+const LOGO=`<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="24" fill="#C6DB6B"/><path d="M12 13h24v8a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#2F4424"/><rect x="9" y="11" width="30" height="3.5" rx="1.75" fill="#2F4424"/><path d="M15 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0zM22.5 32c-3.5 4-.5 10 2.5 10s6-6 1.5-10c0 2.4-2.4 3-4 0zM30 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0z" fill="#EE5A3C"/></svg>`;
 const PICO=[`<path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8.5 3.5c-1 1.3 1 2 0 3.5M12 3.5c-1 1.3 1 2 0 3.5"/>`,
 `<path d="M3 12h18a9 8 0 0 1-18 0z"/><path d="M9 12c-1.2-3.6.8-6 4-7 .2 3-1.2 5.4-4 7zM14 12c.2-2.4 2-4 5-4.3-.8 2.3-2.2 3.8-5 4.3"/>`,
 `<path d="M5 10h14v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3 10h18M2.5 13H5M19 13h2.5"/><path d="M10 7h4M12 7V5.5"/>`,
@@ -744,11 +821,11 @@ async function initStorage(){
 function render(){
   const tabs=[["menu","Menú ("+planIds().length+")"],["recetas","Recetas"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
-  const head=`<header class="top banda"><div><div class="marca">${LOGO}<h1>Receta<b>rio</b></h1></div></div>
+  const head=`<header class="top banda"><div><div class="marca">${LOGO}<h1>Receta<b>rio</b><small>PARA LA PATRULLA</small></h1></div></div>
   <details class="ppl" data-k="ppl"${U.det&&U.det.ppl?" open":""}><summary><span class="pplk">Personas</span><b>${S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} personas`}</b></summary>
   <div class="grp"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
-  ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header>`;
+  ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header><div class="cinta" aria-hidden="true">${"Para la patrulla. Para el campamento. Para la salida. ".repeat(4)}</div>`;
   const aviso=U.nueva?`<div class="nueva"><span>Hay una versión nueva del Recetario (${esc(U.nueva)}).</span><button class="btn sm" data-act="actualizar"${U.actualizando?" disabled":""}>${U.actualizando?"Actualizando…":"Actualizar"}</button></div>`:"";
   $("#app").innerHTML=head+aviso+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
   montarTS();
