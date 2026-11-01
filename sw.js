@@ -2,7 +2,7 @@
 importScripts("version.js");
 const CACHE = "recetario-" + self.APP_VERSION;
 const FILES = ["./", "index.html", "version.js", "recetas-base.json", "precios.json", "manifest.webmanifest",
-  "fonts/league-spartan-700.woff2", "fonts/inter-400.woff2", "fonts/inter-600.woff2", "fonts/inter-700.woff2",
+  "fonts/league-spartan-700.woff2", "fonts/gluten-800.woff2", "fonts/archivo-800.woff2", "fonts/courier-prime-400.woff2", "fonts/courier-prime-700.woff2", "fonts/inter-400.woff2", "fonts/inter-600.woff2", "fonts/inter-700.woff2",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png",
   "fuego/cazador.svg", "fuego/estrella.svg", "fuego/cabana.svg", "fuego/antorcha-sueca.svg", "fuego/dakota.svg", "fuego/tipi.svg", "fuego/hogar-elevado.svg",
   "vendor/pdfjs/pdf.min.js", "vendor/pdfjs/pdf.worker.min.js"];
