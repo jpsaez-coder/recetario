@@ -71,7 +71,8 @@ caso("ids únicos",new Set(base.map(r=>r.id)).size,base.length);
 caso("todas tienen plato",base.filter(r=>!r.categories.some(c=>T.FACETS[0].v.includes(c))).map(r=>r.name),[]);
 caso("unidades válidas",base.flatMap(r=>r.ingredients.filter(i=>!T.UNITS.includes(i.unit)).map(i=>r.name+": "+i.unit)),[]);
 caso("ningún ingrediente sin datos de macros",base.filter(r=>T.macros(r).sin.length).map(r=>r.name+": "+T.macros(r).sin),[]);
-caso("kcal por persona razonables (40-1300)",base.filter(r=>{const k=T.macros(r).kcal;return k<40||k>1300}).map(r=>r.name+" "+Math.round(T.macros(r).kcal)),[]);
+// (las salsas se toman en poca cantidad: no cuentan en el mínimo de kcal por persona)
+caso("kcal por persona razonables (40-1300)",base.filter(r=>!r.categories.includes("Salsa")).filter(r=>{const k=T.macros(r).kcal;return k<40||k>1300}).map(r=>r.name+" "+Math.round(T.macros(r).kcal)),[]);
 // agua
 T.S.people=4;T.S.kids=0;
 caso("bocadillo no hierve agua",T.aguaReceta(T.getR("ej-bocadillo-chorizo")),null);

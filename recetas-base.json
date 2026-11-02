@@ -4334,7 +4334,7 @@
  },
  {
   "id": "gpg-crema-de-chocolate-rapida",
-  "name": "Crema de chocolate rápida",
+  "name": "Crema de chocolate rápida (sin huevos)",
   "corto": "Crema de chocolate",
   "servings": 4,
   "categories": [
@@ -4459,5 +4459,1307 @@
    "name": "guiasparaguias · Masas y postres",
    "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
   }
+ },
+ {
+  "id": "sa-chimichurri",
+  "name": "Chimichurri",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Perejil fresco",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Ajo",
+    "qty": "4",
+    "unit": "diente",
+    "price": "0.20"
+   },
+   {
+    "name": "Orégano seco",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "120",
+    "unit": "ml",
+    "price": "1.00"
+   },
+   {
+    "name": "Vinagre de vino",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava y seca bien el perejil y pícalo muy fino con el ajo, a cuchillo: con batidora queda una pasta\nMézclalos en un bol con el orégano, el pimentón (picante si os gusta) y la sal\nAñade el vinagre y el aceite y remueve\nDéjala reposar al menos 30 min. En un tarro cerrado y en frío aguanta 3 días\nConsejo: Sírvela por encima de la carne justo al retirarla del fuego"
+ },
+ {
+  "id": "sa-barbacoa",
+  "name": "Salsa barbacoa casera",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Tomate frito",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.45"
+   },
+   {
+    "name": "Vinagre de manzana o de vino",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Azúcar moreno",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Salsa de soja",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Mostaza",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon todos los ingredientes en un cazo, con el ajo rallado, y mezcla. Si tienes pimentón ahumado, mejor\nHierve a fuego suave de 10 a 15 min, removiendo, hasta que espese y brille\nPrueba y ajusta: más vinagre si queda muy dulce, más azúcar si queda muy ácida\nDéjala enfriar. En un tarro cerrado y en frío aguanta una semana\nConsejo: Úntala en los últimos minutos de cocción: con el azúcar, si va desde el principio, se quema antes de que la carne esté hecha"
+ },
+ {
+  "id": "sa-tartara",
+  "name": "Salsa tártara",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Mayonesa",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Pepinillos en vinagre",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Alcaparras",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Huevo cocido",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Cebolla tierna",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Perejil picado",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Mostaza",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Limón",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   }
+  ],
+  "steps": "Pica bien fino lo que lo necesite y escurre los pepinillos y las alcaparras\nMezcla la mayonesa con la mostaza y el zumo del limón\nAñade el resto y remueve\nDéjala reposar 30 min en frío antes de servir\nConsejo: En campamento usa mayonesa envasada: la casera con huevo crudo se estropea con el calor"
+ },
+ {
+  "id": "sa-verde",
+  "name": "Salsa verde para merluza",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Principal",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Ajo",
+    "qty": "4",
+    "unit": "diente",
+    "price": "0.20"
+   },
+   {
+    "name": "Harina",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.40"
+   },
+   {
+    "name": "Caldo de pescado o agua",
+    "qty": "250",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Perejil fresco",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Merluza en rodajas",
+    "qty": "1",
+    "unit": "kg",
+    "price": "9.00"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Calienta el aceite en una cazuela baja a fuego suave y dora el ajo en láminas sin que se queme, porque amarga\nAñade la harina y remueve 1 min\nEcha el vino y deja que se evapore. Añade el caldo poco a poco, sin dejar de remover, para que no haga grumos\nCocina 5 min, echa la mitad del perejil picado y sala\nPon la merluza salpimentada en la salsa y cuécela de 4 a 5 min por lado, moviendo la cazuela en vez de remover para que no se deshaga\nTermina con el resto del perejil"
+ },
+ {
+  "id": "sa-limon-oregano",
+  "name": "Aliño de limón y orégano",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Ruta",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Limón",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "120",
+    "unit": "ml",
+    "price": "1.10"
+   },
+   {
+    "name": "Orégano seco",
+    "qty": "2",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Miel (opcional)",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Disuelve la sal en el zumo de los limones\nAñade el ajo muy picado, el orégano, la pimienta y la miel\nEcha el aceite en hilo fino batiendo con un tenedor hasta que se ligue\nPrueba sobre una hoja de lechuga y ajusta de sal o de limón\nConsejo: Aliña justo antes de comer: si la lechuga espera mucho con el limón, se marchita"
+ },
+ {
+  "id": "sa-tomate",
+  "name": "Salsa de tomate casera",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Salsas y aderezos",
+   "url": "https://guiasparaguias.org/cocina/recetas"
+  },
+  "ingredients": [
+   {
+    "name": "Tomate triturado",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.30"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Orégano o albahaca",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pocha la cebolla picada en el aceite a fuego suave unos 8 min, hasta que esté transparente. Añade el ajo picado 1 min\nAñade el tomate, la sal y el azúcar, que quita la acidez\nCocina a fuego bajo de 25 a 30 min, hasta que espese. Echa la albahaca u orégano al final\nTritúrala si la quieres fina\nConsejo: En frío dura 4 días en un tarro cerrado. También se puede congelar en raciones"
+ },
+ {
+  "id": "nv-macarrones-atun",
+  "name": "Macarrones con tomate y atún",
+  "corto": "Macarrones con atún",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Macarrones",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.90"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "3",
+    "unit": "lata",
+    "price": "2.40"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Queso rallado (opcional)",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece los macarrones en agua abundante con sal el tiempo que diga el paquete y escúrrelos\nMientras, sofríe la cebolla picada en el aceite 5 min\nAñade el tomate frito y el atún escurrido y calienta 3 min\nMezcla con la pasta y sirve con el queso por encima"
+ },
+ {
+  "id": "nv-lentejas",
+  "name": "Lentejas estofadas con chorizo",
+  "corto": "Lentejas con chorizo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Lentejas pardinas",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.90"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.60"
+   },
+   {
+    "name": "Patata",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Zanahoria",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Hoja de laurel",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava las lentejas bajo el grifo y quita las piedrecitas\nEn la olla, sofríe con el aceite la cebolla, el pimiento y el ajo picados, 5 min\nAñade la zanahoria en rodajas y el chorizo en trozos, 2 min; aparta la olla del fuego y echa el pimentón\nAñade las lentejas, el laurel y agua hasta cubrir dos dedos por encima\nCuece a fuego medio 25 min, añade la patata en trozos pequeños y cuece 15 min más, hasta que todo esté tierno. Sala al final"
+ },
+ {
+  "id": "nv-garbanzos-espinacas",
+  "name": "Garbanzos con espinacas",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Garbanzos cocidos",
+    "qty": "2",
+    "unit": "lata",
+    "price": "1.60"
+   },
+   {
+    "name": "Espinacas frescas o congeladas",
+    "qty": "400",
+    "unit": "g",
+    "price": "1.40"
+   },
+   {
+    "name": "Ajo",
+    "qty": "3",
+    "unit": "diente",
+    "price": "0.15"
+   },
+   {
+    "name": "Pan del día anterior",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Comino molido",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Escurre y lava los garbanzos\nEn la sartén, fríe en el aceite los ajos en láminas y una rebanada de pan hasta que estén dorados; sácalos y machácalos con el comino, el pimentón y el vinagre\nEn el mismo aceite, saltea las espinacas hasta que bajen\nAñade los garbanzos, el majado y un vaso de agua y cuece 10 min a fuego suave. Sala al final"
+ },
+ {
+  "id": "nv-espaguetis-bolonesa",
+  "name": "Espaguetis a la boloñesa",
+  "corto": "Espaguetis boloñesa",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Espaguetis",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Carne picada",
+    "qty": "400",
+    "unit": "g",
+    "price": "3.20"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Zanahoria",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Orégano",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Queso rallado",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Sofríe en el aceite la cebolla, la zanahoria y el ajo muy picados, 8 min\nAñade la carne, sálala y deshazla con la cuchara hasta que pierda el color rosa\nEcha el tomate y el orégano y cuece 15 min a fuego suave\nCuece los espaguetis en agua con sal el tiempo del paquete y escúrrelos\nSirve la salsa por encima con el queso rallado"
+ },
+ {
+  "id": "nv-arroz-salteado",
+  "name": "Arroz salteado con huevo, jamón y guisantes",
+  "corto": "Arroz salteado",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Jamón cocido en taquitos",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Guisantes congelados",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Zanahoria",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Salsa de soja",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece el arroz en agua con sal 15 min, escúrrelo y déjalo enfriar (mejor del día anterior)\nBate los huevos, cuájalos en la sartén con un poco de aceite como una tortilla fina y córtala en tiras\nSaltea en el resto del aceite la zanahoria rallada y los guisantes 5 min, y luego el jamón 1 min\nAñade el arroz y la soja y saltea a fuego vivo 3 min. Mezcla con el huevo y sirve"
+ },
+ {
+  "id": "nv-pure-salchichas",
+  "name": "Puré de patatas con salchichas",
+  "corto": "Puré con salchichas",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Patata",
+    "qty": "1",
+    "unit": "kg",
+    "price": "1.20"
+   },
+   {
+    "name": "Leche",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.20"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Salchichas frescas",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.80"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las patatas, córtalas en trozos iguales y cuécelas en agua con sal 20 min, hasta que se deshagan al pincharlas\nEscúrrelas y aplástalas con un tenedor o un pasapurés, nunca con batidora (queda como chicle)\nAñade la mantequilla y la leche caliente poco a poco, sal y una pizca de nuez moscada\nMientras, haz las salchichas en la sartén o la parrilla con el aceite hasta que estén doradas por todos lados"
+ },
+ {
+  "id": "nv-crema-calabacin",
+  "name": "Crema de calabacín",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Calabacín",
+    "qty": "3",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Patata",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Quesitos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pocha la cebolla picada en el aceite 5 min\nAñade el calabacín y la patata troceados y cubre justo con agua\nCuece 20 min con sal\nTritura con los quesitos hasta que quede fina"
+ },
+ {
+  "id": "nv-gazpacho",
+  "name": "Gazpacho andaluz",
+  "corto": "Gazpacho",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Tomate maduro",
+    "qty": "1",
+    "unit": "kg",
+    "price": "2.00"
+   },
+   {
+    "name": "Pepino",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Pan del día anterior",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "60",
+    "unit": "ml",
+    "price": "0.55"
+   },
+   {
+    "name": "Vinagre de vino",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Trocea el tomate, el pepino pelado, el pimiento y el ajo\nTritúralos con el pan remojado, el vinagre y la sal\nAñade el aceite poco a poco mientras sigues triturando\nPrueba, ajusta y déjalo en frío al menos 1 h. Si queda espeso, añade agua fría"
+ },
+ {
+  "id": "nv-ensalada-pasta",
+  "name": "Ensalada de pasta",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Pasta corta (espirales o lacitos)",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "2",
+    "unit": "lata",
+    "price": "1.60"
+   },
+   {
+    "name": "Maíz dulce",
+    "qty": "1",
+    "unit": "lata",
+    "price": "0.70"
+   },
+   {
+    "name": "Tomates cherry",
+    "qty": "250",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.45"
+   },
+   {
+    "name": "Aceitunas sin hueso",
+    "qty": "80",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece la pasta en agua con sal, escúrrela y enfríala bajo el grifo\nCuece los huevos 10 min, enfríalos y trocéalos\nMezcla la pasta con el atún y el maíz escurridos, los cherry partidos, el huevo y las aceitunas\nAliña con aceite, vinagre y sal justo antes de comer"
+ },
+ {
+  "id": "nv-wraps-pollo",
+  "name": "Wraps de pollo y verduras",
+  "corto": "Wraps de pollo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Ruta",
+   "Acampada"
+  ],
+  "ingredients": [
+   {
+    "name": "Tortillas de trigo",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Pechuga de pollo",
+    "qty": "500",
+    "unit": "g",
+    "price": "3.50"
+   },
+   {
+    "name": "Pimiento rojo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Lechuga",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta el pollo, el pimiento y la cebolla en tiras\nSaltéalos en la sartén con el aceite, la sal y las especias 8 min, hasta que el pollo esté hecho por dentro\nCalienta las tortillas un momento en la sartén seca\nRellena cada tortilla con lechuga, queso y el salteado, y enróllala cerrando un extremo"
+ },
+ {
+  "id": "nv-revuelto-jamon",
+  "name": "Huevos revueltos con jamón",
+  "corto": "Revuelto de jamón",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Huevos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.80"
+   },
+   {
+    "name": "Jamón serrano en taquitos",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Bate los huevos con la leche y poca sal (el jamón ya es salado)\nDora el jamón en la sartén con el aceite 1 min\nEcha los huevos a fuego bajo y remueve sin parar con una cuchara de madera\nRetíralos cuando aún estén jugosos: se terminan de hacer solos. Sirve con pan"
+ },
+ {
+  "id": "nv-tortitas",
+  "name": "Tortitas en la sartén",
+  "corto": "Tortitas",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Merienda",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Leche",
+    "qty": "300",
+    "unit": "ml",
+    "price": "0.30"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.45"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Levadura química (sobre)",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Miel",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Mezcla en un bol la harina, el azúcar, la levadura y una pizca de sal\nAñade los huevos y la leche y bate con unas varillas o un tenedor hasta que no haya grumos\nUnta la sartén con un poco de mantequilla y ponla a fuego medio\nEcha un cazo de masa; cuando salgan burbujas por encima, dale la vuelta y cuécela 1 min más\nSírvelas con miel (o sirope o crema de cacao)"
+ },
+ {
+  "id": "nv-arroz-con-leche",
+  "name": "Arroz con leche",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz redondo",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.35"
+   },
+   {
+    "name": "Leche",
+    "qty": "1",
+    "unit": "l",
+    "price": "0.95"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Limón (la piel)",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Canela en rama",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Canela",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Calienta la leche con la piel del limón (sin lo blanco) y la canela en rama\nCuando hierva, añade el arroz y baja el fuego\nCuece 35 a 40 min a fuego suave, removiendo a menudo para que no se pegue\nAñade el azúcar y cuece 5 min más. Quita la piel y la canela, deja enfriar y espolvorea canela molida"
+ },
+ {
+  "id": "nv-bolitas-avena",
+  "name": "Bolitas energéticas de avena y cacao",
+  "corto": "Bolitas de avena",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Copos de avena",
+    "qty": "150",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Crema de cacahuete",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Miel",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.60"
+   },
+   {
+    "name": "Cacao en polvo",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Pasas o pepitas de chocolate",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   }
+  ],
+  "steps": "Mezcla en un bol la avena, el cacao y las pasas\nAñade la crema de cacahuete y la miel y amasa con las manos limpias hasta que se pegue\nHaz bolitas del tamaño de una nuez\nGuárdalas en un táper en un sitio fresco\nOjo: Lleva cacahuete: pregunta antes por alergias"
+ },
+ {
+  "id": "nv-migas",
+  "name": "Migas de pastor",
+  "corto": "Migas",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Fuego",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan del día anterior",
+    "qty": "600",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.60"
+   },
+   {
+    "name": "Panceta",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.30"
+   },
+   {
+    "name": "Ajo",
+    "qty": "6",
+    "unit": "diente",
+    "price": "0.30"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "6",
+    "unit": "cda",
+    "price": "0.60"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "La noche antes, corta el pan en dados pequeños, humedécelo con agua con sal y tápalo con un paño\nEn la sartén, fríe en el aceite los ajos sin pelar, el pimiento, el chorizo y la panceta en trozos; sácalos\nEcha el pan en ese aceite con el pimentón y remueve sin parar a fuego medio unos 20 min, hasta que esté suelto y dorado\nVuelve a añadir lo frito, mezcla y sirve"
  }
 ]
