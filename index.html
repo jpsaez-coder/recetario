@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Recetario</title>
-<meta name="theme-color" content="#5B7F45">
+<meta name="theme-color" content="#1F2433">
 <meta name="description" content="Recetas para rutas, acampadas y casa. Funciona sin conexión.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Recetario">
@@ -254,75 +254,74 @@ a.web b{display:block;font:700 17px "League Spartan",sans-serif}a.web small{disp
 .rc .foto-big{width:calc(100% + 22px);margin:-8px -10px 10px -12px}
 .rc[class] .rcab+.aprox{margin-left:48px}
 
-/* ===== Estilo «Huerto» (elegido por JPS el 01-11): verde, lima, amarillo y gusanos de colores ===== */
-@font-face{font-family:"Gluten";font-weight:800;font-display:swap;src:url(fonts/gluten-800.woff2) format("woff2")}
-@font-face{font-family:"Figtree";font-weight:300 900;font-display:swap;src:url(fonts/figtree.woff2) format("woff2")}
-:root{--bg:#F6F2E1;--surface:#FFFCF2;--ink:#2F4424;--mute:#5C6B50;--line:#CBD7B4;--pine:#5B7F45;--pine-ink:#FFFCF2;--ochre:#B8460E;--ochre-bg:#FBEBB0;--danger:#B42318;
-  --verde:#5B7F45;--lima:#C6DB6B;--amar:#F5B91B;--rojo:#EE5A3C;--borde:#5B7F45;--banda:#5B7F45;--tabbg:#5B7F45;--tabink:#E3EEBD;
-  --f-logo:"Gluten","Figtree",system-ui,sans-serif;--f-tit:"Figtree",system-ui,sans-serif;--f-lbl:"Figtree",system-ui,sans-serif;--f-txt:"Figtree",system-ui,sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161E10;--surface:#1F2A18;--ink:#EEF3DF;--mute:#AEBB9C;--line:#36452B;--pine:#C6DB6B;--pine-ink:#1A2410;--ochre:#F5B91B;--ochre-bg:#36300F;--danger:#F28B73;--borde:#56703F;--banda:#34492A;--tabbg:#253420;--tabink:#B9C8A0;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#161E10;--surface:#1F2A18;--ink:#EEF3DF;--mute:#AEBB9C;--line:#36452B;--pine:#C6DB6B;--pine-ink:#1A2410;--ochre:#F5B91B;--ochre-bg:#36300F;--danger:#F28B73;--borde:#56703F;--banda:#34492A;--tabbg:#253420;--tabink:#B9C8A0;color-scheme:dark}
+/* ===== Estilo «Fogata» con colores «Fresco» (elegido por JPS el 02-11): azul noche, blanco y un pastel por tipo de plato ===== */
+@font-face{font-family:"Barlow Condensed";font-weight:700;font-display:swap;src:url(fonts/barlow-condensed-700.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:400;font-display:swap;src:url(fonts/barlow-400.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:500;font-display:swap;src:url(fonts/barlow-500.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:600 800;font-display:swap;src:url(fonts/barlow-600.woff2) format("woff2")}
+:root{--bg:#FFFFFF;--surface:#F6F7FA;--ink:#1F2433;--mute:#646B7C;--line:#E6E8EE;--pine:#1F2433;--pine-ink:#FFFFFF;--ochre:#B7791F;--ochre-bg:#FFF3D1;--danger:#C0392B;
+  --noche:#1F2433;--sol:#FFE7A8;--banda:#1F2433;--tabbg:#1F2433;--tabink:#9AA0AE;--tabon:#FFE7A8;--campo:#F3F4F8;
+  --f-tit:"Barlow Condensed","Barlow",system-ui,sans-serif;--f-txt:"Barlow",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151E;--surface:#1B1F2B;--ink:#EEF0F6;--mute:#A3A9B8;--line:#2B3142;--pine:#FFE7A8;--pine-ink:#1F2433;--ochre:#F2C46D;--ochre-bg:#352C17;--danger:#F08A7E;--banda:#1B1F2B;--tabbg:#1B1F2B;--campo:#232838;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151E;--surface:#1B1F2B;--ink:#EEF0F6;--mute:#A3A9B8;--line:#2B3142;--pine:#FFE7A8;--pine-ink:#1F2433;--ochre:#F2C46D;--ochre-bg:#352C17;--danger:#F08A7E;--banda:#1B1F2B;--tabbg:#1B1F2B;--campo:#232838;color-scheme:dark}
 body{font-family:var(--f-txt);font-size:16px}
-h1,h2,h3{font-family:var(--f-tit);font-weight:800}
-/* cabecera */
-header.top.banda{background:var(--banda);margin-bottom:0;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:18px 16px 14px}
-header.top.banda>div:first-child{display:flex;justify-content:center}
-header.top.banda h1{font-family:var(--f-logo);font-size:30px;letter-spacing:.03em;color:#FFFCF2;line-height:1}
-header.top.banda h1 b{color:inherit;font-weight:inherit}
+h1,h2,h3{font-family:var(--f-tit);font-weight:700}
+/* tipos de plato: Desayuno, Entrante, Principal, Postre y masas, Merienda */
+.pl-0{--pc:#B7860B;--pp:#FFE7A8}.pl-1{--pc:#2F7FB5;--pp:#CFE6F5}.pl-2{--pc:#2E8B57;--pp:#CDEBD3}.pl-3{--pc:#C2507A;--pp:#FAD4E1}.pl-4{--pc:#D0603F;--pp:#FFD6C9}
+/* cabecera azul noche con montaña */
+header.top.banda{background:var(--banda);margin-bottom:16px;position:relative;overflow:hidden;padding:18px 16px 16px;align-items:flex-start;flex-direction:column;gap:10px}
+header.top.banda::after{content:"";position:absolute;right:-12px;bottom:-4px;width:170px;height:68px;pointer-events:none;background:no-repeat right bottom/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Cpath d='M0 60 40 18l18 18 26-30 66 54z' fill='%23CDEBD3'/%3E%3Cpath d='M60 60 84 6l66 54z' fill='%23CFE6F5'/%3E%3Cpath d='M84 6l10 12-6-2-4 6-4-6-6 2z' fill='%23fff'/%3E%3Ccircle cx='128' cy='16' r='7' fill='%23FFE7A8'/%3E%3C/svg%3E")}
+header.top.banda>*{position:relative;z-index:1}
+header.top.banda h1{font-family:var(--f-tit);font-size:32px;letter-spacing:.03em;text-transform:uppercase;color:#FFFFFF;line-height:1}
+header.top.banda h1 b{color:var(--sol);font-weight:inherit}
 header.top.banda .logo{width:34px;height:34px}
-header.top.banda .ppl{background:var(--lima);border:0;color:#2F4424;border-radius:999px;padding:5px 14px;align-self:center}
-header.top.banda .ppl[open]{border-radius:14px;width:100%}
-header.top.banda .ppl .pplk,header.top.banda .ppl>summary::after{color:#4A5E3A}
-header.top.banda .ppl .people{background:#FFFCF2;border-color:#9FB65A;color:#2F4424}
-header.top.banda .ppl .rac{color:#2F4424}
+header.top.banda .ppl{background:rgba(255,255,255,.12);border:0;color:#FFFFFF;border-radius:10px;padding:6px 12px}
+header.top.banda .ppl[open]{width:100%;background:rgba(255,255,255,.14)}
+header.top.banda .ppl .pplk,header.top.banda .ppl>summary::after{color:#C9CDD8}
+header.top.banda .ppl .people{background:#FFFFFF;border-color:#FFFFFF;color:#1F2433}
+header.top.banda .ppl .step{background:#F3F4F8;border-color:#E6E8EE;color:#1F2433}
+header.top.banda .ppl .rac{color:#E6E8EE}
 /* pestañas */
 nav.tabs{background:var(--tabbg);border-top:0}
-nav.tabs button{color:var(--tabink);font-family:var(--f-lbl);font-weight:700;font-size:15px;border-radius:6px}
-nav.tabs button[aria-selected="true"]{color:#2F4424;background:var(--lima)}
+nav.tabs button{color:var(--tabink);font:700 16px var(--f-tit);text-transform:uppercase;letter-spacing:.07em;border-radius:8px}
+nav.tabs button[aria-selected="true"]{color:var(--tabon);background:transparent}
 /* botones y campos */
-.btn{background:var(--amar);color:#2F4424;border-radius:5px;font:700 15px/1.2 var(--f-lbl);padding:11px 15px}
-.btn.sm{font-size:14px;padding:8px 11px}
+.btn{background:var(--pine);color:var(--pine-ink);border-radius:10px;font:600 15px/1.2 var(--f-txt);padding:11px 15px}
+.btn.sm{font-size:14px;padding:8px 12px}
 .btn.alt{background:transparent;color:var(--pine);border:1.5px solid var(--pine)}
 .btn.ghost{background:transparent;color:var(--mute);border:0}
 .btn.danger{color:var(--danger)}
-input,select,textarea{border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-.dd{border:1px solid var(--line);border-radius:8px}
-.dd span{font:600 11px var(--f-lbl)}
-.dd.on{background:var(--amar);border-color:var(--amar)}.dd.on,.dd.on span,.dd.on select,.dd.on::after{color:#2F4424}
-.chip{border:1px solid var(--line);border-radius:999px;font:600 14px var(--f-lbl)}
-.chip[aria-pressed="true"]{background:var(--amar);border-color:var(--amar);color:#2F4424}
-.step{border:1px solid var(--line);border-radius:8px}
-.tag{border-radius:6px}
-/* tarjetas: caja con borde verde, sin franja de color */
-.card{border:1px solid var(--line);border-radius:12px;box-shadow:none}
-.card h2{font-family:var(--f-tit);font-weight:800;color:var(--ink);font-size:18px}
-details.tus h2{font-size:16px}
-/* lista de recetas: una columna con líneas, como cuadrícula de huerto */
-.card.rc{border-radius:0;border-width:1px 0 0;margin:0;padding:10px 2px;background:transparent}
-.card.rc+h3.grp-t{border-top:1px solid var(--line);padding-top:16px;margin-top:0}
-.rtit .tit{font:700 16px/1.25 var(--f-lbl);color:var(--ink)}
+input,select,textarea{border:1px solid var(--line);border-radius:10px;background:var(--campo)}
+.busc input{border-color:transparent}
+.dd{border:1px solid var(--line);border-radius:10px;background:var(--campo)}
+.dd span{font:500 11px var(--f-txt)}
+.dd.on{background:var(--pine);border-color:var(--pine)}.dd.on,.dd.on span,.dd.on select,.dd.on::after{color:var(--pine-ink)}
+.chip{border:0;background:var(--campo);border-radius:8px;font:600 14px var(--f-txt)}
+.chip[aria-pressed="true"]{background:var(--pine);color:var(--pine-ink)}
+.step{border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.tag{border-radius:6px;background:var(--campo);border-color:transparent}
+/* tarjetas */
+.card{border:0;border-radius:14px;background:var(--surface);box-shadow:none}
+.card h2{font-family:var(--f-tit);font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);font-size:20px}
+details.tus h2{font-size:18px}
+.card.rc{border-radius:12px;margin:0 0 8px;padding:10px 12px}
+.rtit .tit{font:600 16.5px/1.25 var(--f-txt);color:var(--ink);text-transform:none;letter-spacing:0}
 .rtit .cost{font:400 13.5px var(--f-txt);color:var(--mute)}
-.rc .pico{border-radius:50%;background:color-mix(in srgb,var(--pc) 22%,var(--surface))}
-.pl-0{--pc:#C98A0A}.pl-1{--pc:#5B7F45}.pl-2{--pc:#EE5A3C}.pl-3{--pc:#C2457A}.pl-4{--pc:#3E8FB0}
-.mas{border:0;background:var(--amar);color:#2F4424;width:38px;height:38px}
-.mas.on{background:var(--pine);color:var(--pine-ink)}
-.rc .foto-big{border-radius:0}
-h3.secc{font-family:var(--f-tit);font-weight:800;color:var(--pine);text-transform:none;letter-spacing:0;font-size:15px}
-h3.grp-t{font-size:20px;color:var(--pine);text-transform:none;letter-spacing:0;margin:22px 2px 10px;position:relative;display:flex;align-items:center;gap:10px}
-/* menú y resto */
-.num{background:var(--lima);color:#2F4424;font-family:var(--f-lbl)}
-.sum div,.stats div,.tile,.ajuste,.obj{border:0;background:var(--surface)}
-.sum strong,.stats strong,.kcal strong{font-family:var(--f-lbl);font-weight:800}
-.empty{position:relative;padding:44px 10px}
-.empty::before,.empty::after{content:"";position:absolute;width:70px;height:32px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23EE5A3C' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
-.empty::before{left:4px;top:6px;transform:rotate(-15deg)}
-.empty::after{right:4px;bottom:4px;transform:rotate(25deg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 54'%3E%3Cpath d='M8 38c14-30 30 10 46-14s30 22 56-10' stroke='%23F5B91B' stroke-width='13' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
-a.web{background:var(--banda);color:#FFFCF2;border-radius:12px}a.web b{font-family:var(--f-tit);font-weight:800}
-.nueva,.remind,.aporta,.ai{border:0;border-radius:12px}
-
-.intro h2{color:var(--pine)}
-
-.ttab td.si{background:var(--pine)}
+.pico,.rc .pico{border-radius:10px;color:var(--pc);background:var(--pp)}
+.mas{border:0;background:var(--pine);color:var(--pine-ink);width:36px;height:36px}
+.mas.on{background:#2E8B57;color:#FFFFFF}
+.rc .foto-big{border-radius:12px 12px 0 0}
+h3.secc{font-family:var(--f-tit);font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;font-size:16px}
+h3.grp-t{font-size:22px;color:var(--ink);letter-spacing:.04em;margin:20px 2px 10px;display:flex;align-items:center;gap:10px}
+h3.grp-t::after{content:"";flex:1;height:6px;border-radius:6px;background:var(--pp,var(--line))}
+/* resto */
+.num{background:var(--sol);color:#1F2433;font-family:var(--f-tit)}
+.sum div,.stats div,.tile,.ajuste,.obj{border:0;background:var(--bg)}
+.sum strong,.stats strong,.kcal strong{font-family:var(--f-tit);font-weight:700}
+a.web{background:var(--noche);color:#FFFFFF;border-radius:14px}a.web b{font-family:var(--f-tit);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.nueva,.remind,.aporta,.ai{border:0;border-radius:14px}
+.intro h2{font-family:var(--f-tit);text-transform:uppercase;letter-spacing:.03em}
+.ttab td.si{background:#2E8B57}
 </style>
 </head>
 <body>
@@ -548,7 +547,7 @@ async function actualizar(){
 }
 let dbDoc=null,saveT=null;
 const $=s=>document.querySelector(s);
-const LOGO=`<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="24" fill="#C6DB6B"/><path d="M12 13h24v8a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#2F4424"/><rect x="9" y="11" width="30" height="3.5" rx="1.75" fill="#2F4424"/><path d="M15 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0zM22.5 32c-3.5 4-.5 10 2.5 10s6-6 1.5-10c0 2.4-2.4 3-4 0zM30 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0z" fill="#EE5A3C"/></svg>`;
+const LOGO=`<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#FFE7A8"/><path d="M12 13h24v8a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#1F2433"/><rect x="9" y="11" width="30" height="3.5" rx="1.75" fill="#1F2433"/><path d="M15 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0zM22.5 32c-3.5 4-.5 10 2.5 10s6-6 1.5-10c0 2.4-2.4 3-4 0zM30 34c-3 3.5-.5 8 2.5 8s5.5-4.5 1.5-8c0 2-2 2.5-4 0z" fill="#FF8A65"/></svg>`;
 const PICO=[`<path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8.5 3.5c-1 1.3 1 2 0 3.5M12 3.5c-1 1.3 1 2 0 3.5"/>`,
 `<path d="M3 12h18a9 8 0 0 1-18 0z"/><path d="M9 12c-1.2-3.6.8-6 4-7 .2 3-1.2 5.4-4 7zM14 12c.2-2.4 2-4 5-4.3-.8 2.3-2.2 3.8-5 4.3"/>`,
 `<path d="M5 10h14v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3 10h18M2.5 13H5M19 13h2.5"/><path d="M10 7h4M12 7V5.5"/>`,
@@ -849,7 +848,7 @@ function vList(){
   const orden=[...list].sort(ord==="precio"?(a,b)=>coste(a)-coste(b):ord==="plato"?(a,b)=>PL.indexOf(platoDe(a))-PL.indexOf(platoDe(b))||az(a,b):az);
   let prev="";
   h+=orden.map(r=>{
-    const grupo=ord==="plato"&&platoDe(r)!==prev?(prev=platoDe(r),`<h3 class="secc grp-t">${esc(prev)}</h3>`):"";
+    const grupo=ord==="plato"&&platoDe(r)!==prev?(prev=platoDe(r),`<h3 class="secc grp-t pl-${Math.max(0,PL.indexOf(prev))}">${esc(prev)}</h3>`):"";
     const open=U.open===r.id,f=factor(r,RAC()),inMenu=planEntries().filter(e=>e.id===r.id);
     let d="";
     /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
