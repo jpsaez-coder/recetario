@@ -97,7 +97,7 @@ T.setPrecios(JSON.parse(fs.readFileSync(path.join(raiz,"precios.json"),"utf8")))
 caso("WhatsApp: casilla vacía",/^☐ /m.test(tx),true);caso("WhatsApp: lo comprado, marcado",/^☑ /m.test(tx),true);caso("WhatsApp: sin viñetas",/^- /m.test(tx),false);T.S.bought={};}
 // orden de las recetas: por plato, con su título y de la A a la Z
 {T.U.f={};T.U.q="";T.S.recipes=[];T.U.ord="plato";const h=T.vList();
-const tit=[...h.matchAll(/<h3 class="secc grp-t">([^<]+)<\/h3>/g)].map(m=>m[1]);
+const tit=[...h.matchAll(/<h3 class="secc grp-t[^"]*">([^<]+)<\/h3>/g)].map(m=>m[1]);
 caso("grupos en el orden de Plato",tit,T.FACETS[0].v.filter(p=>tit.includes(p)));
 caso("hay grupo de Desayuno y de Principal",tit.includes("Desayuno")&&tit.includes("Principal"),true);
 T.U.ord="precio";const h2=T.vList();caso("por precio, sin títulos de grupo",/grp-t/.test(h2),false);
