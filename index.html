@@ -267,7 +267,7 @@ a.web b{display:block;font:700 17px "League Spartan",sans-serif}a.web small{disp
 body{font-family:var(--f-txt);font-size:16px}
 h1,h2,h3{font-family:var(--f-tit);font-weight:700}
 /* tipos de plato: Desayuno, Entrante, Principal, Postre y masas, Merienda */
-.pl-0{--pc:#B7860B;--pp:#FFE7A8}.pl-1{--pc:#2F7FB5;--pp:#CFE6F5}.pl-2{--pc:#2E8B57;--pp:#CDEBD3}.pl-3{--pc:#C2507A;--pp:#FAD4E1}.pl-4{--pc:#D0603F;--pp:#FFD6C9}
+.pl-0{--pc:#B7860B;--pp:#FFE7A8}.pl-1{--pc:#2F7FB5;--pp:#CFE6F5}.pl-2{--pc:#2E8B57;--pp:#CDEBD3}.pl-3{--pc:#C2507A;--pp:#FAD4E1}.pl-4{--pc:#D0603F;--pp:#FFD6C9}.pl-5{--pc:#6E8B1E;--pp:#E6F2BF}
 /* cabecera azul noche con montaña */
 header.top.banda{background:var(--banda);margin-bottom:16px;position:relative;overflow:hidden;padding:18px 16px 16px;align-items:flex-start;flex-direction:column;gap:10px}
 header.top.banda::after{content:"";position:absolute;right:-12px;bottom:-4px;width:170px;height:68px;pointer-events:none;background:no-repeat right bottom/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Cpath d='M0 60 40 18l18 18 26-30 66 54z' fill='%23CDEBD3'/%3E%3Cpath d='M60 60 84 6l66 54z' fill='%23CFE6F5'/%3E%3Cpath d='M84 6l10 12-6-2-4 6-4-6-6 2z' fill='%23fff'/%3E%3Ccircle cx='128' cy='16' r='7' fill='%23FFE7A8'/%3E%3C/svg%3E")}
@@ -330,7 +330,7 @@ a.web{background:var(--noche);color:#FFFFFF;border-radius:14px}a.web b{font-fami
 <script>
 /* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
    Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
-const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Entrante","Principal","Postre y masas","Merienda"]},
+const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Entrante","Principal","Postre y masas","Merienda","Salsa"]},
   {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa","Fuego"]},
   {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
 const BASE_CATS=FACETS.flatMap(f=>f.v);
@@ -552,7 +552,8 @@ const PICO=[`<path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10
 `<path d="M3 12h18a9 8 0 0 1-18 0z"/><path d="M9 12c-1.2-3.6.8-6 4-7 .2 3-1.2 5.4-4 7zM14 12c.2-2.4 2-4 5-4.3-.8 2.3-2.2 3.8-5 4.3"/>`,
 `<path d="M5 10h14v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3 10h18M2.5 13H5M19 13h2.5"/><path d="M10 7h4M12 7V5.5"/>`,
 `<path d="M6.5 13h11l-1.6 7.5H8.1z"/><path d="M10.2 13l.5 7.5M13.8 13l-.5 7.5"/><path d="M5.5 13a3 3 0 0 1 1.3-5.7A5.3 5.3 0 0 1 17.2 7.3 3 3 0 0 1 18.5 13"/><path d="M12 4.5V2.8"/>`,
-`<path d="M3 10.5a9 5.5 0 0 1 18 0z"/><path d="M3 13.6c2 1.1 3-1.1 4.5 0s3 1.1 4.5 0 3-1.1 4.5 0 3 1.1 4.5 0"/><rect x="3" y="16" width="18" height="3.6" rx="1.6"/>`];
+`<path d="M3 10.5a9 5.5 0 0 1 18 0z"/><path d="M3 13.6c2 1.1 3-1.1 4.5 0s3 1.1 4.5 0 3-1.1 4.5 0 3 1.1 4.5 0"/><rect x="3" y="16" width="18" height="3.6" rx="1.6"/>`,
+`<path d="M9 3h6v3H9z"/><path d="M8 6h8l1 3v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9z"/><path d="M7 13h10"/>`];
 /* iconos de línea, con el mismo trazo que los de los platos (sustituyen a los emojis de colores) */
 const IC={cesta:'<path d="M4 10h16l-1.5 8.6a2 2 0 0 1-2 1.7h-9a2 2 0 0 1-2-1.7z"/><path d="M8 10l4-6 4 6"/><path d="M9.5 13.5v3.5M14.5 13.5v3.5"/>',
   hecho:'<circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.7 2.7L16 9.6"/>',
@@ -1034,7 +1035,7 @@ const NUTRI=[
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
  [["tortilla de trigo","tortillas de trigo","fajita"],300,8,50,7],[["crema de cacahuete"],600,25,15,50],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
- [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["queso para fundir"],300,15,6,24],
+ [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["queso para fundir"],300,15,6,24],
  [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
  [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
@@ -1054,7 +1055,7 @@ const NUTRI=[
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
 const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
-const PIEZA=[[["huevo"],60],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
+const PIEZA=[[["huevo"],60],[["quesito","quesitos"],16],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
@@ -1237,7 +1238,7 @@ const fl=(t,k,html)=>`<div class="fl"><span>${t}</span>${inf(k,html)}</div>`;
    S.menu = recetas elegidas para el menú (desde Recetas). S.plan["2|Cena"] = [ids] las reparte por días.
    Lo elegido que no está en ningún día cuenta una vez (para una salida de un día no hace falta repartir). */
 const MOMS=["Desayuno","Comida","Merienda","Cena"];
-const MOM_DE={Desayuno:"Desayuno",Merienda:"Merienda",Entrante:"Comida",Principal:"Comida","Postre y masas":"Comida"};
+const MOM_DE={Desayuno:"Desayuno",Merienda:"Merienda",Entrante:"Comida",Principal:"Comida","Postre y masas":"Comida",Salsa:"Comida"};
 function planEntries(){
   const out=[];const d=S.dias||1;
   for(let i=1;i<=d;i++)for(const m of MOMS)for(const id of (S.plan&&S.plan[i+"|"+m])||[])if(id!==CASA)out.push({id,d:i,m});
