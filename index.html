@@ -1035,7 +1035,7 @@ const NUTRI=[
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
  [["tortilla de trigo","tortillas de trigo","fajita"],300,8,50,7],[["crema de cacahuete"],600,25,15,50],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
- [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["queso para fundir"],300,15,6,24],
+ [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["membrillo"],215,0.4,55,0.1],[["menta"],44,3.3,8,0.7],[["queso para fundir"],300,15,6,24],
  [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
  [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
@@ -1055,7 +1055,7 @@ const NUTRI=[
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
 const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
-const PIEZA=[[["huevo"],60],[["quesito","quesitos"],16],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
+const PIEZA=[[["huevo"],60],[["menta"],0.5],[["quesito","quesitos"],16],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],
  [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
@@ -1504,7 +1504,7 @@ function unificar(items){
 }
 /* «Pimiento», «Pimientos rojos» y «Pimientos rojos grandes» son el mismo producto con otro color o tamaño:
    una línea con el total y el desglose. Lo que cambia de producto (del piquillo, rallado, glas…) no se junta. */
-const ADJ=new Set(["rojo","roja","verde","amarillo","amarilla","morado","morada","blanco","blanca","grande","pequeno","pequena","mediano","mediana","maduro","madura","dulce","reineta","maria"]);
+const ADJ=new Set(["rojo","roja","verde","amarillo","amarilla","morado","morada","blanco","blanca","grande","pequeno","pequena","mediano","mediana","maduro","madura","dulce","picante","reineta","maria"]);
 function variantes(items){
   const fam={};
   for(const it of items){const w=it.key.split("|")[0].split(" ");if(w.length===1||w.slice(1).every(x=>ADJ.has(x)))(fam[w[0]]=fam[w[0]]||[]).push(it)}
