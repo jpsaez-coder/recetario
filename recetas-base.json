@@ -6513,5 +6513,222 @@
    }
   ],
   "steps": "Corta el pan en dados con corteza\nParte el ajo por la mitad y frota con él el interior del cazo. Echa el vino y llévalo a hervor suave\nBaja el fuego y añade el queso en tandas, removiendo sin parar en ochos; espera a que se funda cada tanda\nDisuelve la maicena en un chorrito de agua, añádela y cocina 1 min más removiendo. Echa pimienta y nuez moscada\nMantenla al mínimo en el hornillo mientras se come, y moja los dados de pan pinchados en un tenedor largo"
+ },
+ {
+  "id": "ac-trufas",
+  "name": "Trufas de chocolate negro y cacao",
+  "corto": "Trufas de chocolate",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Chocolate negro",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Nata líquida",
+    "qty": "150",
+    "unit": "ml",
+    "price": "0.90"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Cacao en polvo",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   }
+  ],
+  "steps": "Trocea el chocolate fino en un bol. Calienta la nata en un cazo y, en cuanto hierva, viértela sobre el chocolate\nDeja reposar 1 min y remueve desde el centro hacia fuera hasta que se derrita. Añade la mantequilla blanda y mezcla\nPásala a una fuente llana, tápala y déjala en la nevera 3 o 4 h, hasta que esté firme\nPon el cacao en un plato. Toma porciones con dos cucharitas, dales forma de bola rápido con las manos y rebózalas en el cacao\nUsa chocolate de al menos 60 % de cacao (y nata de 35 % de grasa) para que cojan cuerpo\nOjo: Necesita nevera para cuajar (3 o 4 h) y para guardarlas: sin ella, con calor, se derriten"
+ },
+ {
+  "id": "ac-datiles-bacon",
+  "name": "Dátiles con bacon y almendra",
+  "corto": "Dátiles con bacon",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Dátiles sin hueso",
+    "qty": "12",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Almendras tostadas",
+    "qty": "15",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Bacon en lonchas",
+    "qty": "90",
+    "unit": "g",
+    "price": "1.00"
+   }
+  ],
+  "steps": "Haz un corte a lo largo en cada dátil y mete una almendra dentro; aprieta para cerrarlo\nEnvuelve cada dátil con media loncha de bacon (6 lonchas en total) tapando el corte y sujétalo con un palillo\nHazlos en la sartén caliente sin aceite 10 a 12 min, dándoles la vuelta, hasta que el bacon esté crujiente\nEscúrrelos en papel y sírvelos calientes"
+ },
+ {
+  "id": "ac-queso-azul",
+  "name": "Salsa de queso azul",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Queso azul",
+    "qty": "75",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Yogur griego",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Mayonesa",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Desmenuza el queso (gorgonzola, roquefort o cabrales) con un tenedor y aplástalo hasta hacer una pasta\nAñade el yogur, la mayonesa, el vinagre y la pimienta y mezcla, dejando algún tropezón de queso\nVa con ensaladas de hojas amargas, como endivias o rúcula, y con patatas cocidas\nOjo: Usa mayonesa envasada y hazla justo antes de comer; sin nevera, el yogur y el queso no aguantan"
+ },
+ {
+  "id": "ac-sesamo-jengibre",
+  "name": "Aderezo de sésamo y jengibre",
+  "corto": "Aderezo de sésamo",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Aceite de girasol",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Aceite de sésamo",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Salsa de soja",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Vinagre de arroz",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.15"
+   },
+   {
+    "name": "Jengibre fresco",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.20"
+   }
+  ],
+  "steps": "En un cuenco, mezcla la salsa de soja, el vinagre de arroz y el jengibre recién rallado\nJunta los dos aceites y échalos en hilo mientras bates con un tenedor, hasta que ligue\nVa muy bien con ensalada de col o de zanahoria rallada\nConsejo: Sin nevera aguanta todo el día en un tarro cerrado: no lleva nada que se estropee"
+ },
+ {
+  "id": "ac-coulis",
+  "name": "Coulis de frutos rojos",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Postre y masas",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Frutos rojos",
+    "qty": "250",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Limón",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Canela en rama",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Pon en un cazo los frutos rojos (frescos o congelados), el azúcar, el zumo del limón y la canela\nCocina a fuego medio-bajo 10 a 15 min, removiendo de vez en cuando, hasta que la fruta se deshaga\nQuita la canela. Aplasta la fruta con un tenedor (o pásala por la batidora si hay) y cuélala apretando con una cuchara para quitar las semillas\nDéjala enfriar: espesa al templarse. Va con yogur, natillas, tortitas o arroz con leche"
  }
 ]
