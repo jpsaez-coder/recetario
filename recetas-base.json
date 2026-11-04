@@ -5761,5 +5761,757 @@
    }
   ],
   "steps": "La noche antes, corta el pan en dados pequeños, humedécelo con agua con sal y tápalo con un paño\nEn la sartén, fríe en el aceite los ajos sin pelar, el pimiento, el chorizo y la panceta en trozos; sácalos\nEcha el pan en ese aceite con el pimentón y remueve sin parar a fuego medio unos 20 min, hasta que esté suelto y dorado\nVuelve a añadir lo frito, mezcla y sirve"
+ },
+ {
+  "id": "bo-tortilla",
+  "name": "Bocadillo de tortilla de patatas",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Patatas",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Huevos",
+    "qty": "5",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.90"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela y corta las patatas en láminas finas y la cebolla en tiras, y sálalas\nPóchalas en la sartén con el aceite a fuego medio unos 20 min, removiendo, hasta que estén tiernas, sin freírlas\nEscúrrelas del aceite y mézclalas con los huevos batidos\nCuaja la tortilla en la sartén con un poco de aceite, 3 o 4 min por cada lado; dale la vuelta con un plato\nCorta cada barra en dos y ábrelas a lo largo. Deja templar la tortilla, córtala en cuñas y repártela en el pan\nOjo: Para la mochila, la tortilla bien cuajada: el huevo poco hecho se estropea con el calor",
+  "corto": "Bocadillo de tortilla"
+ },
+ {
+  "id": "bo-lomo-pimientos",
+  "name": "Bocadillo de lomo con pimientos verdes",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Lomo de cerdo en filetes",
+    "qty": "400",
+    "unit": "g",
+    "price": "3.20"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.90"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta los pimientos en tiras y fríelos en la sartén con el aceite a fuego medio unos 10 min, hasta que estén blandos. Sálalos y apártalos\nEn la misma sartén, bien caliente, haz los filetes de lomo 1 o 2 min por cada lado y sálalos\nCorta cada barra en dos, ábrelas a lo largo y rellénalas con el lomo y los pimientos",
+  "corto": "Bocadillo de lomo"
+ },
+ {
+  "id": "bo-vegetal-atun",
+  "name": "Bocadillo vegetal de atún",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "2",
+    "unit": "lata",
+    "price": "2.00"
+   },
+   {
+    "name": "Huevo cocido",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Tomate",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Lechuga",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Mayonesa",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.30"
+   }
+  ],
+  "steps": "Cuece los huevos 10 min, enfríalos en agua y pélalos\nLava la lechuga y el tomate; corta el tomate y los huevos en rodajas\nEscurre el atún\nCorta cada barra en dos y ábrelas a lo largo, úntalas con mayonesa y rellénalas con la lechuga, el tomate, el huevo y el atún\nOjo: Con calor y sin nevera, cómelo en las primeras horas. Usa mayonesa envasada, nunca casera"
+ },
+ {
+  "id": "bo-pollo",
+  "name": "Bocadillo de pollo con lechuga y mayonesa",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Pechuga de pollo",
+    "qty": "400",
+    "unit": "g",
+    "price": "2.80"
+   },
+   {
+    "name": "Lechuga",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Tomate",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Mayonesa",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la pechuga en filetes finos y salpimiéntalos\nHazlos en la sartén con el aceite, bien caliente, 2 o 3 min por cada lado, hasta que no quede nada rosa por dentro\nLava la lechuga y corta el tomate en rodajas\nCorta cada barra en dos y ábrelas a lo largo, úntalas con mayonesa y rellénalas con el pollo, la lechuga y el tomate\nOjo: El pollo, siempre bien hecho por dentro"
+ },
+ {
+  "id": "bo-jamon-tomate",
+  "name": "Bocadillo de jamón serrano con tomate",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Jamón serrano en lonchas",
+    "qty": "150",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Tomate",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta cada barra en dos y ábrelas a lo largo\nParte los tomates por la mitad y frótalos sobre el pan. Echa un chorro de aceite y una pizca de sal\nReparte el jamón\nConsejo: Para la ruta, lleva el tomate entero y úntalo al comer: el pan no se empapa"
+ },
+ {
+  "id": "bo-perritos",
+  "name": "Perritos calientes",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan de perrito",
+    "qty": "8",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Salchichas tipo frankfurt",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Ketchup",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Mostaza",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Corta la cebolla en tiras finas y póchala en la sartén con el aceite a fuego suave unos 15 min, hasta que esté dorada\nHaz las salchichas en la sartén o en la parrilla 4 o 5 min, dándoles vueltas, hasta que estén bien calientes\nAbre los panes, mete una salchicha en cada uno con la cebolla y pon kétchup y mostaza al gusto\nConsejo: En la hoguera, pincha cada salchicha en un palo limpio y ásala sobre las brasas, no sobre la llama"
+ },
+ {
+  "id": "bo-francesa-queso",
+  "name": "Bocadillo de tortilla francesa con queso",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Huevos",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.40"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "120",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta cada barra en dos y ábrelas a lo largo\nBate los huevos de uno en uno o de dos en dos con una pizca de sal\nHaz cada tortilla en la sartén con un poco de aceite; antes de doblarla pon encima una loncha de queso para que se funda\nMete cada tortilla en su trozo de pan, todavía caliente",
+  "corto": "Bocadillo de francesa"
+ },
+ {
+  "id": "bo-queso-membrillo",
+  "name": "Bocadillo de queso y membrillo",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Queso manchego",
+    "qty": "200",
+    "unit": "g",
+    "price": "3.00"
+   },
+   {
+    "name": "Dulce de membrillo",
+    "qty": "200",
+    "unit": "g",
+    "price": "1.20"
+   }
+  ],
+  "steps": "Corta cada barra en dos y ábrelas a lo largo\nCorta el queso y el membrillo en lonchas finas\nAlterna una loncha de queso y otra de membrillo dentro del pan"
+ },
+ {
+  "id": "bo-atun-pimientos",
+  "name": "Bocadillo de atún con pimientos asados",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Ruta",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "2",
+    "unit": "lata",
+    "price": "2.00"
+   },
+   {
+    "name": "Tiras de pimiento asado",
+    "qty": "200",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Corta cada barra en dos, ábrelas a lo largo y moja el pan con un poco del aceite del atún o de los pimientos\nReparte el atún escurrido y las tiras de pimiento\nConsejo: Si llevas latas a la ruta, que tengan abrefácil o lleva abrelatas"
+ },
+ {
+  "id": "bo-bacon-queso",
+  "name": "Bocadillo de bacon y queso",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Pan",
+    "qty": "2",
+    "unit": "barra",
+    "price": "0.80"
+   },
+   {
+    "name": "Bacon en lonchas",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Queso en lonchas",
+    "qty": "120",
+    "unit": "g",
+    "price": "1.00"
+   }
+  ],
+  "steps": "Haz el bacon en la sartén sin aceite, a fuego medio, 2 o 3 min por cada lado, hasta que esté dorado\nCorta cada barra en dos y ábrelas a lo largo. Si quieres, tuéstalas un poco en la misma sartén\nPon el queso en el pan y el bacon caliente encima, para que se funda"
+ },
+ {
+  "id": "ac-salsa-brava",
+  "name": "Salsa brava tradicional",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Pimentón dulce",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón picante",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Caldo de pollo o de cocido",
+    "qty": "250",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pica la cebolla muy fina y póchala en un cazo con el aceite y una pizca de sal a fuego medio, hasta que esté transparente\nAñade la harina y remueve 1 min. Retira el cazo del fuego, echa los pimentones y remueve rápido para que no se quemen\nVuelve al fuego y vierte el caldo caliente poco a poco sin dejar de remover. Deja hervir suave 10 min\nSi tienes batidora, pásala para dejarla fina; sin ella queda rústica y está igual de buena\nConsejo: No lleva tomate, como la de las tabernas madrileñas. Va con patatas cocidas o asadas en dados"
+ },
+ {
+  "id": "ac-vinagreta-mostaza",
+  "name": "Vinagreta de mostaza y miel",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Ruta",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "60",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Vinagre de manzana",
+    "qty": "20",
+    "unit": "ml",
+    "price": "0.10"
+   },
+   {
+    "name": "Mostaza",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Miel",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "En un tarro o un vaso, mezcla la sal, la pimienta, el vinagre, la miel y la mostaza hasta que la miel se disuelva\nAñade el aceite. En tarro, ciérralo y agítalo fuerte 20 s; en vaso, bate con un tenedor hasta que aclare y espese"
+ },
+ {
+  "id": "ac-yogur-menta",
+  "name": "Salsa de yogur y menta",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Yogur griego",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Limón",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Menta fresca",
+    "qty": "10",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "En un bol, trabaja el yogur con una cuchara hasta dejarlo fino y añade la sal, la pimienta y el zumo del limón\nEcha el aceite en hilo fino sin dejar de remover\nPica fina la menta (10 hojas) y mézclala\nOjo: Hazla justo antes de comer; con calor y sin nevera el yogur no aguanta"
+ },
+ {
+  "id": "ac-natillas",
+  "name": "Natillas caseras",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Leche entera",
+    "qty": "500",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "80",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Maicena",
+    "qty": "5",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Limón (la piel)",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Canela en rama",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.10"
+   },
+   {
+    "name": "Galletas María",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Separa 4 cucharadas de leche fría en un vaso. Calienta el resto con la canela y la piel de limón; cuando hierva, apaga, tapa y deja reposar 10 min. Cuela la leche\nEn un bol, disuelve la maicena en la leche fría y añade las yemas y el azúcar, batiendo\nEcha la leche caliente poco a poco sobre las yemas, sin parar de remover\nVuelve a ponerlo todo en el cazo a fuego bajo y remueve sin parar, haciendo ochos, hasta que cubra el dorso de la cuchara. Que no llegue a hervir: el huevo se corta\nRepártelas en vasos y, al templarse, pon una galleta y canela en polvo por encima\nConsejo: Las claras que sobran sirven para una tortilla; en el campamento, cómelas el mismo día"
+ },
+ {
+  "id": "ac-fondue",
+  "name": "Fondue de queso",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Queso gruyer rallado",
+    "qty": "200",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Queso emmental rallado",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.80"
+   },
+   {
+    "name": "Maicena",
+    "qty": "5",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Pan del día anterior",
+    "qty": "400",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta el pan en dados con corteza\nParte el ajo por la mitad y frota con él el interior del cazo. Echa el vino y llévalo a hervor suave\nBaja el fuego y añade el queso en tandas, removiendo sin parar en ochos; espera a que se funda cada tanda\nDisuelve la maicena en un chorrito de agua, añádela y cocina 1 min más removiendo. Echa pimienta y nuez moscada\nMantenla al mínimo en el hornillo mientras se come, y moja los dados de pan pinchados en un tenedor largo"
  }
 ]
