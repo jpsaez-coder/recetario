@@ -373,7 +373,15 @@ const ALERG=[
  ["Sésamo",/(^|[^a-z])(sesamo|tahini)/,null],
  ["Sulfitos",/(^|[^a-z])(vino|vinagre|sidra)/,null],
  ["Tomate",/(^|[^a-z])(tomate|ketchup|gazpacho|pisto|sofrito)/,null],
- ["Piel de melocotón",/(^|[^a-z])melocoton/,null]];
+ ["Piel de melocotón",/(^|[^a-z])melocoton/,null],
+ ["Mostaza",/(^|[^a-z])mostaza/,null],
+ ["Apio",/(^|[^a-z])apio(?![a-z])/,null],
+ ["Altramuz",/(^|[^a-z])altramu(z|ces)/,null],
+ ["Legumbres",/(^|[^a-z])(garbanzo|lenteja|alubia|judias blancas|judion|fabada|guisante|habas?(?![a-z])|hummus)/,null],
+ ["Kiwi",/(^|[^a-z])kiwi/,null],
+ ["Plátano",/(^|[^a-z])(platano|banana)/,null],
+ ["Maíz",/(^|[^a-z])(maiz|maicena|palomita|nacho|polenta)/,null],
+ ["Manzana",/(^|[^a-z])(manzana|sidra)/,null]];
 function etiquetas(r){
   if(r._et)return r._et;
   const ings=r.ingredients.map(i=>norm(i.name)),nm=norm(r.name);
