@@ -114,7 +114,9 @@ details.step4 summary small{display:block;color:var(--mute);font-size:13px}
 .tag.tipo{background:transparent}.tag.alg{border-style:dashed}.tag.alg.hit{border:1.5px solid var(--danger);color:var(--danger);font-weight:600}
 .ddm summary{list-style:none;cursor:pointer}.ddm summary::-webkit-details-marker{display:none}
 .ddm summary b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ddm-l{border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:0 10px;margin-top:-4px;background:var(--surface)}
+.ddm-l{border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:0 10px;margin-top:-4px;background:var(--surface);max-height:248px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.ddm[open] .ddm-l{animation:ddmBaja .22s ease-out}@keyframes ddmBaja{from{max-height:0;opacity:0}to{max-height:248px;opacity:1}}
+@media (prefers-reduced-motion:reduce){.ddm[open] .ddm-l{animation:none}}
 .ddm-l .chkb:last-child{border-bottom:0}
 .dia{border-top:1px solid var(--line);padding:8px 0 4px;margin-top:6px}.dia h3{font-size:16px;margin:2px 0 4px}
 .slot{display:grid;grid-template-columns:74px 1fr;gap:6px;align-items:start;padding:3px 0}
@@ -369,7 +371,17 @@ const ALERG=[
  ["Marisco",/(^|[^a-z])(vieira|gamba|langostino|mejillon|almeja|calamar|sepia|pulpo|marisco)/,null],
  ["Soja",/(^|[^a-z])(soja|tofu)/,null],
  ["Sésamo",/(^|[^a-z])(sesamo|tahini)/,null],
- ["Sulfitos",/(^|[^a-z])(vino|vinagre|sidra)/,null]];
+ ["Sulfitos",/(^|[^a-z])(vino|vinagre|sidra)/,null],
+ ["Tomate",/(^|[^a-z])(tomate|ketchup|gazpacho|pisto|sofrito)/,null],
+ ["Piel de melocotón",/(^|[^a-z])melocoton/,null],
+ ["Mostaza",/(^|[^a-z])mostaza/,null],
+ ["Apio",/(^|[^a-z])apio(?![a-z])/,null],
+ ["Altramuz",/(^|[^a-z])altramu(z|ces)/,null],
+ ["Legumbres",/(^|[^a-z])(garbanzo|lenteja|alubia|judias blancas|judion|fabada|guisante|habas?(?![a-z])|hummus)/,null],
+ ["Kiwi",/(^|[^a-z])kiwi/,null],
+ ["Plátano",/(^|[^a-z])(platano|banana)/,null],
+ ["Maíz",/(^|[^a-z])(maiz|maicena|palomita|nacho|polenta)/,null],
+ ["Manzana",/(^|[^a-z])(manzana|sidra)/,null]];
 function etiquetas(r){
   if(r._et)return r._et;
   const ings=r.ingredients.map(i=>norm(i.name)),nm=norm(r.name);
