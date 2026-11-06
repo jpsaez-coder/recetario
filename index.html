@@ -373,7 +373,7 @@ const ALERG=[
  ["Sésamo",/(^|[^a-z])(sesamo|tahini)/,null],
  ["Sulfitos",/(^|[^a-z])(vino|vinagre|sidra)/,null],
  ["Tomate",/(^|[^a-z])(tomate|ketchup|gazpacho|pisto|sofrito)/,null],
- ["Frutas de piel de melocotón",/(^|[^a-z])(melocoton|albaricoque|nectarina|paraguayo)/,null]];
+ ["Piel de melocotón",/(^|[^a-z])melocoton/,null]];
 function etiquetas(r){
   if(r._et)return r._et;
   const ings=r.ingredients.map(i=>norm(i.name)),nm=norm(r.name);
