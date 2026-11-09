@@ -6730,5 +6730,925 @@
    }
   ],
   "steps": "Pon en un cazo los frutos rojos (frescos o congelados), el azúcar, el zumo del limón y la canela\nCocina a fuego medio-bajo 10 a 15 min, removiendo de vez en cuando, hasta que la fruta se deshaga\nQuita la canela. Aplasta la fruta con un tenedor (o pásala por la batidora si hay) y cuélala apretando con una cuchara para quitar las semillas\nDéjala enfriar: espesa al templarse. Va con yogur, natillas, tortitas o arroz con leche"
+ },
+ {
+  "id": "c4-macarrones-chorizo",
+  "name": "Macarrones con chorizo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Macarrones",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.90"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Queso rallado (opcional)",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Pon a hervir abundante agua con sal\nPica la cebolla y córtala con el chorizo en rodajas o dados\nEn una sartén u olla, sofríe la cebolla con el aceite 5 min, añade el chorizo y deja que suelte la grasa 2 min\nEcha el tomate, el azúcar (quita la acidez) y un poco de sal, y cocina a fuego suave 10 min\nCuece los macarrones el tiempo del paquete, escúrrelos y mézclalos con la salsa\nSirve con queso rallado por encima si hay\nConsejo: Guarda un vaso del agua de cocer la pasta: si la salsa queda espesa, un chorrito la suelta"
+ },
+ {
+  "id": "c4-pisto-huevo",
+  "name": "Pisto manchego con huevo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Calabacín",
+    "qty": "2",
+    "unit": "ud",
+    "price": "1.20"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Pimiento rojo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la cebolla, los pimientos y el calabacín en dados pequeños\nEn una sartén grande u olla baja, pocha la cebolla con el aceite 5 min a fuego medio\nAñade los pimientos y cocina 10 min más; después el calabacín, otros 10 min, removiendo de vez en cuando\nEcha el tomate, el azúcar y la sal y deja a fuego suave 10 min, hasta que espese\nHaz cuatro huecos en el pisto, casca un huevo en cada uno, tapa y deja 4 o 5 min, hasta que la clara cuaje"
+ },
+ {
+  "id": "c4-albondigas",
+  "name": "Albóndigas en salsa",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Carne picada mixta",
+    "qty": "500",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Pan rallado",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.20"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Perejil picado",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Harina",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "6",
+    "unit": "cda",
+    "price": "0.60"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Agua",
+    "qty": "200",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Mezcla la carne con el huevo, el pan rallado, un ajo picado, el perejil y sal\nHaz bolas del tamaño de una nuez y pásalas por harina\nDóralas en la sartén con el aceite, en tandas, unos 3 min dándoles la vuelta. Apártalas\nEn el mismo aceite, pocha la cebolla y el otro ajo picados 5 min\nAñade el tomate y el agua, sala y mete las albóndigas. Tapa y cuece a fuego suave 15 min, moviendo la olla de vez en cuando\nConsejo: Con las manos mojadas, las bolas no se pegan"
+ },
+ {
+  "id": "c4-pollo-patatas",
+  "name": "Pollo guisado con patatas",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Pollo troceado",
+    "qty": "1",
+    "unit": "kg",
+    "price": "4.50"
+   },
+   {
+    "name": "Patatas",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Hoja de laurel",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Agua",
+    "qty": "750",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Sala el pollo y dóralo en la olla con el aceite, por todos los lados, unos 8 min. Apártalo\nEn la misma olla, pocha la cebolla, el pimiento y el ajo picados 5 min\nAñade el tomate y, fuera del fuego, el pimentón; remueve para que no se queme\nVuelve a meter el pollo, añade el laurel y el agua, tapa y cuece 20 min a fuego suave\nPela las patatas, cháscalas en trozos (corta un poco y rompe el trozo con el cuchillo: así sueltan almidón y espesan el caldo) y añádelas con un poco de sal\nCuece 20 min más, hasta que las patatas estén tiernas\nOjo: El pollo, bien hecho: sin nada rosa junto al hueso"
+ },
+ {
+  "id": "c4-estofado-ternera",
+  "name": "Estofado de ternera",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Ternera para guisar",
+    "qty": "800",
+    "unit": "g",
+    "price": "8.00"
+   },
+   {
+    "name": "Patatas",
+    "qty": "600",
+    "unit": "g",
+    "price": "0.75"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.40"
+   },
+   {
+    "name": "Harina",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.02"
+   },
+   {
+    "name": "Hoja de laurel",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Agua",
+    "qty": "1",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la carne en dados, sálala, pásala por la harina y dórala en la olla con el aceite. Apártala\nPocha en la misma olla la cebolla y el ajo picados 5 min\nAñade el tomate, la carne, el vino y el laurel y deja que el vino hierva 2 min\nCubre con el agua, tapa y cuece a fuego suave 1 h, removiendo de vez en cuando\nAñade las patatas y las zanahorias en trozos y un poco de sal, y cuece 25 o 30 min más, hasta que todo esté tierno\nConsejo: Con olla exprés, la carne está en 25 min; luego las patatas, 5 min más"
+ },
+ {
+  "id": "c4-lentejas-verduras",
+  "name": "Lentejas con verduras",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Lentejas pardinas",
+    "qty": "400",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Patata",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Hoja de laurel",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Agua",
+    "qty": "1.5",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Lava las lentejas (las pardinas no hace falta ponerlas en remojo)\nPocha en la olla la cebolla, el pimiento y el ajo picados con el aceite 5 min\nAñade el tomate y, fuera del fuego, el pimentón\nEcha las lentejas, la zanahoria y la patata en trozos, el laurel y el agua fría\nCuece tapado a fuego suave 35 a 40 min, hasta que estén tiernas. Sala al final y añade agua si se quedan secas\nConsejo: Comprueba que la pastilla de caldo, si la usas, es de verduras: muchas llevan carne"
+ },
+ {
+  "id": "c4-francesa-atun",
+  "name": "Tortilla francesa con atún",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Ruta"
+  ],
+  "ingredients": [
+   {
+    "name": "Huevos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "2",
+    "unit": "lata",
+    "price": "2.00"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Escurre el atún y desmígalo\nBate los huevos de dos en dos con una pizca de sal\nCalienta un poco de aceite en la sartén, echa los huevos y, cuando empiecen a cuajar, pon una cuarta parte del atún en el centro\nDobla la tortilla en tres y déjala 1 min más. Repite con las demás"
+ },
+ {
+  "id": "c4-revuelto-champinones",
+  "name": "Revuelto de champiñones y jamón",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa"
+  ],
+  "ingredients": [
+   {
+    "name": "Champiñones",
+    "qty": "400",
+    "unit": "g",
+    "price": "1.60"
+   },
+   {
+    "name": "Jamón serrano en taquitos",
+    "qty": "100",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Huevos",
+    "qty": "6",
+    "unit": "ud",
+    "price": "1.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Saltea los champiñones con el ajo picado y el aceite a fuego fuerte 5 min, hasta que suelten el agua y se doren\nAñade el jamón y dale una vuelta de 1 min\nBaja el fuego, echa los huevos batidos con poca sal (el jamón ya sala) y remueve sin parar\nRetira cuando estén cuajados pero jugosos: se terminan de hacer fuera del fuego"
+ },
+ {
+  "id": "c4-crema-verduras",
+  "name": "Crema de verduras",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "400",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Calabacín",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Pastilla de caldo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.20"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Agua",
+    "qty": "1",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Quesitos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pocha la cebolla picada con el aceite 5 min\nAñade las patatas, las zanahorias y el calabacín en trozos pequeños, el agua y la pastilla de caldo\nCuece tapado 20 o 25 min, hasta que todo esté muy tierno\nTritura con batidora; sin ella, aplasta con un tenedor o un pasapurés hasta que quede fina\nAñade los quesitos, remueve hasta que se fundan y prueba de sal"
+ },
+ {
+  "id": "c4-sopa-sobre",
+  "name": "Sopa de sobre mejorada",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Ruta",
+   "Acampada",
+   "Casa",
+   "Invierno"
+  ],
+  "ingredients": [
+   {
+    "name": "Sopa de fideos de sobre",
+    "qty": "2",
+    "unit": "paquete",
+    "price": "1.20"
+   },
+   {
+    "name": "Agua",
+    "qty": "1.5",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Jamón serrano en taquitos",
+    "qty": "80",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Pan del día anterior",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Corta el pan en dados y tuéstalo en la sartén con el aceite hasta que esté dorado\nHierve el agua, echa los sobres y el jamón y cuece el tiempo que indique el paquete\nBate los huevos y échalos en hilo en la sopa hirviendo, removiendo: se cuajan en hebras\nSirve con los picatostes por encima en el momento, para que no se ablanden"
+ },
+ {
+  "id": "c4-ensaladilla",
+  "name": "Ensaladilla rusa",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "600",
+    "unit": "g",
+    "price": "0.75"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Huevo cocido",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "2",
+    "unit": "lata",
+    "price": "2.00"
+   },
+   {
+    "name": "Guisantes congelados",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceitunas sin hueso",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Mayonesa",
+    "qty": "200",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece las patatas y las zanahorias peladas en trozos en agua con sal 15 o 20 min, hasta que estén tiernas; añade los guisantes los últimos 3 min\nCuece los huevos 10 min, enfríalos en agua y pélalos\nEscurre todo y déjalo enfriar del todo\nMezcla con el huevo picado, el atún escurrido y las aceitunas, y liga con la mayonesa\nOjo: Usa mayonesa envasada y cómela el mismo día; sin nevera, en las dos horas siguientes"
+ },
+ {
+  "id": "c4-ensalada-lentejas",
+  "name": "Ensalada de lentejas",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Ruta",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Lentejas cocidas",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.60"
+   },
+   {
+    "name": "Tomate",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Cebolla tierna",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Atún en aceite",
+    "qty": "1",
+    "unit": "lata",
+    "price": "1.00"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Escurre las lentejas y acláralas con agua\nPica el tomate, el pimiento y la cebolla en dados pequeños\nMézclalo todo con el atún escurrido\nAliña con el aceite, el vinagre y la sal justo antes de comer"
+ },
+ {
+  "id": "c4-huevos-bacon",
+  "name": "Huevos fritos con bacon",
+  "servings": 4,
+  "categories": [
+   "Desayuno",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Huevos",
+    "qty": "8",
+    "unit": "ud",
+    "price": "2.00"
+   },
+   {
+    "name": "Bacon en lonchas",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Pan",
+    "qty": "1",
+    "unit": "barra",
+    "price": "0.40"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Haz el bacon en la sartén sin aceite, 2 min por cada lado, hasta que esté crujiente. Apártalo\nEn la misma sartén, añade el aceite y fríe los huevos de dos en dos a fuego medio, echándoles por encima un poco de aceite con la cuchara, hasta que la clara esté cuajada\nSirve con el bacon y pan para mojar"
+ },
+ {
+  "id": "c4-fruta-yogur",
+  "name": "Fruta con yogur y miel",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Desayuno",
+   "Acampada",
+   "Casa",
+   "Verano"
+  ],
+  "ingredients": [
+   {
+    "name": "Yogur natural",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Plátanos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Manzana",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Melocotones",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Miel",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Nueces",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Lava y corta la fruta en trozos\nRepártela en cuencos y pon un yogur por encima de cada uno\nTermina con un hilo de miel y las nueces troceadas\nConsejo: Usa la fruta que haya; para que la manzana y el plátano no se pongan negros, añade unas gotas de limón"
+ },
+ {
+  "id": "c4-galletas-sarten",
+  "name": "Galletas con chocolate a la sartén",
+  "servings": 4,
+  "categories": [
+   "Merienda",
+   "Postre y masas",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Galletas María",
+    "qty": "160",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Chocolate con leche",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "20",
+    "unit": "g",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Pon una onza de chocolate entre dos galletas, como un bocadillo\nCalienta la sartén a fuego bajo con un poco de mantequilla\nTuesta las galletas 1 min por cada lado, apretando un poco con la espátula, hasta que el chocolate se funda\nDéjalas enfriar un minuto antes de comer: el chocolate quema"
  }
 ]
