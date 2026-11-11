@@ -7650,5 +7650,1326 @@
    }
   ],
   "steps": "Pon una onza de chocolate entre dos galletas, como un bocadillo\nCalienta la sartén a fuego bajo con un poco de mantequilla\nTuesta las galletas 1 min por cada lado, apretando un poco con la espátula, hasta que el chocolate se funda\nDéjalas enfriar un minuto antes de comer: el chocolate quema"
+ },
+ {
+  "id": "ca-mayonesa",
+  "name": "Mayonesa casera",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "En el vaso de la batidora, pon primero el huevo, la sal y el vinagre, y después todo el aceite de golpe. Deja que el huevo se asiente en el fondo\nMete la batidora apagada hasta el fondo, cubriendo la yema. Enciéndela a velocidad media-alta y mantenla quieta 15 s, hasta que emulsione la base\nLevántala despacio, centímetro a centímetro, para ligar el aceite de la superficie\nConsejo: Si se corta, bate un huevo nuevo en un vaso limpio y echa la mayonesa cortada en hilo fino, sin parar de batir\nOjo: Lleva huevo crudo: guárdala en nevera y consúmela en 24 h. Para el campamento, usa la de bote o la lactonesa"
+ },
+ {
+  "id": "ca-lactonesa",
+  "name": "Lactonesa (mayonesa sin huevo)",
+  "servings": 8,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Leche",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.03"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pon la leche (a temperatura ambiente) y la sal en el fondo del vaso. Echa el aceite encima despacio: se forman dos capas\nBaja la batidora hasta el fondo, enciéndela a velocidad media y déjala quieta 20 s, hasta que espese abajo\nSube y baja despacio para ligar el resto del aceite. Al final, añade el vinagre y bate 5 s más\nConsejo: No lleva huevo, así que no hay riesgo de salmonela. En nevera dura de 3 a 5 días",
+  "corto": "Lactonesa"
+ },
+ {
+  "id": "ca-bechamel",
+  "name": "Salsa blanca (bechamel)",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Harina",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Leche entera",
+    "qty": "500",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Derrite la mantequilla en un cazo a fuego medio. Echa la harina de golpe y remueve con varillas 2 min, hasta que burbujee y huela a tostado\nBaja el fuego al mínimo y añade la leche tibia en chorro fino, batiendo con fuerza. No eches más hasta que la anterior se haya absorbido\nSube a fuego medio hasta que hierva suave. Echa la sal, la pimienta y la nuez moscada y cocina 8 o 10 min sin parar de remover\nConsejo: Cocinarla el tiempo suficiente evita que sepa a harina cruda"
+ },
+ {
+  "id": "ca-holandesa",
+  "name": "Salsa holandesa",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Limón",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Derrite la mantequilla en un cazo hasta que burbujee y esté muy caliente (unos 80 °C), sin que se queme\nEn el vaso de la batidora, pon las yemas, la sal y el zumo del limón. Da dos golpes de batidora abajo\nCon la batidora encendida y fija en el fondo, echa la mantequilla caliente en hilo muy fino. El calor cocina las yemas y sale una crema amarilla densa\nSírvela al momento\nOjo: Las yemas quedan casi crudas: no la guardes ni la lleves de ruta"
+ },
+ {
+  "id": "ca-bearnesa",
+  "name": "Salsa bearnesa",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Yemas de huevo",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Vinagre",
+    "qty": "50",
+    "unit": "ml",
+    "price": "0.05"
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "50",
+    "unit": "ml",
+    "price": "0.20"
+   },
+   {
+    "name": "Chalota",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Estragón",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.30"
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Hierve en un cazo el vinagre, el vino, la chalota picada, la pimienta y la mitad del estragón, hasta que el líquido se reduzca a la mitad. Cuélalo\nDerrite la mantequilla hasta que esté muy caliente (unos 80 °C)\nEn el vaso de la batidora, pon las yemas y 2 cucharadas de la reducción. Bate abajo mientras echas la mantequilla caliente en hilo fino\nMezcla con una cuchara el resto del estragón picado\nConsejo: Es la holandesa con un toque de vinagre y hierbas; acompaña muy bien las carnes"
+ },
+ {
+  "id": "ca-pesto",
+  "name": "Pesto genovés",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Albahaca fresca",
+    "qty": "50",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "70",
+    "unit": "ml",
+    "price": "0.70"
+   },
+   {
+    "name": "Piñones",
+    "qty": "30",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Queso parmesano rallado",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Queso pecorino rallado",
+    "qty": "20",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Tuesta los piñones en una sartén sin aceite 2 min, hasta que doren. Déjalos enfriar del todo\nEn el vaso, pon el ajo, los piñones, los quesos, la sal y la mitad del aceite, y tritura\nAñade la albahaca (limpia y muy seca) y el resto del aceite y tritura con golpes cortos, para no calentar la masa: debe quedar rústico, no licuado\nConsejo: Si se calientan las cuchillas, la albahaca pierde el color verde vivo"
+ },
+ {
+  "id": "ca-cesar",
+  "name": "Aderezo César casero",
+  "servings": 4,
+  "categories": [
+   "Salsa",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite de girasol",
+    "qty": "150",
+    "unit": "ml",
+    "price": "0.40"
+   },
+   {
+    "name": "Ajo",
+    "qty": "1",
+    "unit": "diente",
+    "price": "0.05"
+   },
+   {
+    "name": "Anchoas en aceite",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.40"
+   },
+   {
+    "name": "Salsa Worcestershire",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Limón",
+    "qty": "0.25",
+    "unit": "ud",
+    "price": "0.10"
+   },
+   {
+    "name": "Queso parmesano rallado",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.60"
+   }
+  ],
+  "steps": "Pon todo en el vaso de la batidora menos el parmesano. Sigue el método de la mayonesa casera: 15 s quieta abajo y luego sube despacio\nRetira la batidora, echa el parmesano y mezcla con una cuchara\nOjo: Lleva huevo crudo: guárdalo en nevera y consúmelo en 24 h"
+ },
+ {
+  "id": "ca-masa-quebrada",
+  "name": "Pasta quebrada",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Mantequilla muy fría",
+    "qty": "125",
+    "unit": "g",
+    "price": "1.25"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Azúcar (si es base dulce)",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   }
+  ],
+  "steps": "Junta la harina, la sal y la mantequilla fría en cubitos. Con la punta de los dedos, frota rápido hasta que parezca arena gruesa, sin calentar la mezcla\nPon el huevo (o 50 ml de agua helada) en el centro y une apretando hacia dentro, sin amasar. En cuanto forme una bola compacta, envuélvela en film\nDéjala en la nevera 1 h como mínimo\nSirve de base para tartas saladas o dulces. Se hornea a 180-200 °C"
+ },
+ {
+  "id": "ca-pastaflora",
+  "name": "Pastaflora (pasta sablé)",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Mantequilla a punto de pomada",
+    "qty": "125",
+    "unit": "g",
+    "price": "1.25"
+   },
+   {
+    "name": "Azúcar glas",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Vainilla",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Bate la mantequilla blanda con el azúcar glas y la sal, hasta tener una pasta blanquecina y cremosa. Añade el huevo y la vainilla\nEcha la harina tamizada y une con las manos o con una espátula, apretando los trozos, sin amasar\nDale forma de disco plano entre dos papeles y déjala en la nevera 1 h como mínimo\nSe desmorona con facilidad: es la masa de las tartaletas dulces"
+ },
+ {
+  "id": "ca-hojaldre",
+  "name": "Hojaldre clásico",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Harina de fuerza",
+    "qty": "250",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Agua fría",
+    "qty": "125",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "200",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Mezcla la harina, el agua, la sal y 50 g de la mantequilla derretida y templada. Amasa lo justo, haz una bola con un corte en cruz, envuélvela y déjala 30 min en la nevera\nEstira la masa en forma de estrella de cuatro puntas. Pon en el centro el resto de la mantequilla (150 g), en un bloque plano y frío, y cierra las puntas como un sobre\nEstira a lo largo, dobla en tres, gira 90° y repite: son dos vueltas. Enfría 30 min\nRepite el proceso dos veces más, hasta 6 vueltas. Guárdalo en frío; se hornea a 200 °C\nConsejo: En casa sale muy bien, pero lleva horas: para una tarta o unos canapés, vale el de lámina comprado"
+ },
+ {
+  "id": "ca-choux",
+  "name": "Masa choux (para lionesas)",
+  "servings": 6,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Agua",
+    "qty": "125",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Harina",
+    "qty": "75",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Huevos",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Calienta en un cazo el agua, la mantequilla, la sal y el azúcar. En cuanto rompa a hervir, echa la harina de golpe y retira del fuego. Remueve hasta que sea una masa compacta, y 1 min más a fuego medio, hasta que deje una película fina en el fondo\nPásala a un bol y deja templar 5 min. Añade un huevo y bate bien (al principio se separa, pero vuelve a unirse), y después el segundo. Si está muy dura, añade parte del tercero\nEstá lista cuando, al levantar la espátula, cae despacio formando un triángulo limpio\nForma porciones con una manga sobre papel de horno y hornea a 200 °C de 20 a 25 min, hasta que estén doradas. No abras el horno antes de los 15 min\nDéjalas enfriar sobre una rejilla. Rellenas de nata o de crema, son lionesas o profiteroles",
+  "corto": "Masa choux"
+ },
+ {
+  "id": "ca-masa-empanada",
+  "name": "Masa de empanada tradicional",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Agua tibia",
+    "qty": "150",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Vino blanco",
+    "qty": "50",
+    "unit": "ml",
+    "price": "0.20"
+   },
+   {
+    "name": "Aceite de oliva (del sofrito)",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.90"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Levadura fresca de panadería",
+    "qty": "10",
+    "unit": "g",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Pimentón dulce",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   }
+  ],
+  "steps": "Disuelve la levadura en el agua tibia con el vino. Añade el huevo, el aceite templado del sofrito y el pimentón, y bate con un tenedor\nIncorpora la harina y la sal. Cuando la harina absorba el líquido, pasa la masa a la encimera y amasa 8 o 10 min, hasta que esté lisa y elástica\nHaz una bola, ponla en un bol engrasado, tápala con un paño y déjala 1 h en un sitio cálido, hasta que doble su volumen\nConsejo: Se amasa con el aceite del propio sofrito del relleno, y eso le da color y sabor",
+  "corto": "Masa de empanada"
+ },
+ {
+  "id": "ca-canapes-cabra",
+  "name": "Canapés de hojaldre con queso de cabra y cebolla caramelizada",
+  "servings": 6,
+  "categories": [
+   "Entrante",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Hojaldre en lámina",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.50"
+   },
+   {
+    "name": "Queso de cabra en rulo",
+    "qty": "150",
+    "unit": "g",
+    "price": "2.50"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Azúcar moreno",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta la cebolla en juliana fina y cocínala a fuego muy bajo con un chorro de aceite y sal 25 min, hasta que esté tierna y oscura. Añade el azúcar moreno y remueve 5 min más. Déjala enfriar\nCorta el hojaldre en cuadrados de unos 4 × 4 cm, ponlos en una bandeja y pínchalos en el centro con un tenedor\nPon encima una cucharadita de cebolla y una rodaja fina de queso de cabra. Pinta los bordes con huevo batido\nHornea a 200 °C de 12 a 15 min, hasta que los bordes suban y se doren. Sírvelos templados",
+  "corto": "Canapés de hojaldre"
+ },
+ {
+  "id": "ca-volovanes",
+  "name": "Volovanes caseros",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Hojaldre en lámina",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.50"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   }
+  ],
+  "steps": "Con un cortador de 8 cm, corta círculos de hojaldre frío: tres por cada volován. Deja un círculo entero para la base. A los otros dos, quítales el centro con un cortador de 5 cm: serán dos anillos\nPon la base en una bandeja con papel de horno y pincha el centro con un tenedor. Píntale el borde con huevo batido muy escurrido: si chorrea, sella las hojas y no suben. Pon encima el primer anillo, píntalo y coloca el segundo\nMete los volovanes montados 20 min en la nevera. Píntalos por arriba con huevo y hornea a 200 °C de 15 a 20 min sin abrir el horno\nSi el centro sube, empújalo suave con el dedo para dejar sitio al relleno (champiñones con bechamel, atún con tomate...)\nConsejo: Se rellenan justo antes de servir, para que el hojaldre no se ablande"
+ },
+ {
+  "id": "ca-croquetas",
+  "name": "Croquetas de jamón tradicionales",
+  "servings": 8,
+  "categories": [
+   "Entrante",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla",
+    "qty": "70",
+    "unit": "g",
+    "price": "0.70"
+   },
+   {
+    "name": "Harina",
+    "qty": "70",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Leche entera",
+    "qty": "500",
+    "unit": "ml",
+    "price": "0.50"
+   },
+   {
+    "name": "Jamón ibérico picado",
+    "qty": "150",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.15"
+   },
+   {
+    "name": "Huevos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Pan rallado",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Harina para empanar",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de girasol para freír",
+    "qty": "300",
+    "unit": "ml",
+    "price": "0.80"
+   }
+  ],
+  "steps": "Pocha la cebolla picada fina con la mantequilla. Añade el jamón y remueve unos segundos. Echa la harina y sigue como la bechamel, añadiendo la leche caliente poco a poco. Cocina la masa 15 min en total\nPásala a una fuente llana, tápala con film pegado a la masa y déjala en la nevera 6 h como mínimo (mejor de un día para otro)\nToma porciones con dos cucharas y pásalas por harina, huevo batido y pan rallado, en ese orden\nFríelas en aceite bien caliente (180 °C), en tandas pequeñas, para que no baje la temperatura y no se abran. Escúrrelas en papel\nOjo: La masa necesita nevera al menos 6 h, y se fríe: es una receta de casa",
+  "corto": "Croquetas de jamón"
+ },
+ {
+  "id": "ca-souffle",
+  "name": "Soufflé de queso clásico",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Harina",
+    "qty": "40",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Leche entera",
+    "qty": "300",
+    "unit": "ml",
+    "price": "0.30"
+   },
+   {
+    "name": "Queso gruyer o emmental rallado",
+    "qty": "150",
+    "unit": "g",
+    "price": "3.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Nuez moscada",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pinta el molde con mantequilla derretida, de abajo hacia arriba (así sube recto), y espolvorea un poco de queso por dentro. Resérvalo en la nevera\nHaz una bechamel espesa con 40 g de mantequilla, la harina y la leche; sazona. Retírala del fuego, añade las yemas una a una, removiendo rápido, y el queso hasta que se funda. Deja que se temple\nPrecalienta el horno a 200 °C. Monta las claras a punto de nieve firme con una pizca de sal e incorpóralas con movimientos envolventes\nLlena el molde hasta tres cuartas partes y hornea de 25 a 30 min sin abrir la puerta en los primeros 20. Sírvelo al momento",
+  "corto": "Soufflé de queso"
+ },
+ {
+  "id": "ca-provoleta",
+  "name": "Provoleta al horno",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Queso provolone en rodaja",
+    "qty": "200",
+    "unit": "g",
+    "price": "3.50"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "60",
+    "unit": "g",
+    "price": "0.15"
+   },
+   {
+    "name": "Orégano seco",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva virgen extra",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   }
+  ],
+  "steps": "En una cazuela pequeña apta para horno, extiende el tomate en el fondo para que el queso no se pegue\nPon encima la rodaja de provolone (de unos 2 cm), espolvorea el orégano y el pimentón y añade un hilo de aceite\nHornea a 200 °C con el gratinador encendido de 10 a 12 min, hasta que esté fundido y dorado. Sírvelo con pan tostado",
+  "corto": "Provoleta al horno"
+ },
+ {
+  "id": "ca-cookies",
+  "name": "Cookies con pepitas de chocolate",
+  "servings": 12,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla a punto de pomada",
+    "qty": "115",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "75",
+    "unit": "g",
+    "price": "0.10"
+   },
+   {
+    "name": "Azúcar moreno",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Vainilla",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Harina",
+    "qty": "190",
+    "unit": "g",
+    "price": "0.20"
+   },
+   {
+    "name": "Bicarbonato",
+    "qty": "0.5",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Pepitas de chocolate",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Bate la mantequilla blanda con los dos azúcares. Añade el huevo y la vainilla y bate hasta que sea homogénea\nIncorpora con una espátula la harina, la sal y el bicarbonato tamizados, y el chocolate\nHaz bolas con las manos y mételas en la nevera 1 h como mínimo, para que mantengan la forma\nPonlas separadas sobre papel de horno y hornea a 180 °C de 10 a 12 min. Deben salir blandas en el centro: terminan de asentarse al enfriarse",
+  "corto": "Cookies de chocolate"
+ },
+ {
+  "id": "ca-pastas-te",
+  "name": "Pastas de té",
+  "servings": 8,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Mantequilla a punto de pomada",
+    "qty": "125",
+    "unit": "g",
+    "price": "1.25"
+   },
+   {
+    "name": "Azúcar glas",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.25"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Harina",
+    "qty": "185",
+    "unit": "g",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Vainilla",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Bate la mantequilla con el azúcar glas hasta que sea una pasta blanquecina. Añade la yema, la sal y la vainilla\nEcha la harina y une apretando, sin estirar ni amasar de más. Envuelve en film, estírala entre dos papeles hasta 5 mm y enfríala 30 min\nCorta las pastas con los moldes que quieras y hornea a 180 °C de 10 a 12 min, hasta que los bordes tomen un dorado pálido. Déjalas enfriar en una rejilla"
+ },
+ {
+  "id": "ca-tarta-manzana",
+  "name": "Tarta fina de manzana y hojaldre",
+  "servings": 6,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Hojaldre en lámina",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "1.50"
+   },
+   {
+    "name": "Manzanas reineta",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.90"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Mermelada de albaricoque",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.40"
+   }
+  ],
+  "steps": "Estira el hojaldre sobre papel de horno, en una bandeja, y pínchalo con un tenedor dejando 1 cm de borde sin pinchar, para que el borde suba y el centro quede plano\nPela las manzanas, quítales el centro y córtalas en láminas de unos 2 mm. Colócalas solapadas sobre el hojaldre\nReparte dados de mantequilla y espolvorea el azúcar\nHornea a 200 °C unos 20 min, hasta que el hojaldre esté dorado y las manzanas tiernas. Píntala con la mermelada tibia para darle brillo",
+  "corto": "Tarta fina de manzana"
+ },
+ {
+  "id": "ca-mousse",
+  "name": "Mousse de chocolate ligera",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Chocolate negro",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "30",
+    "unit": "g",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Derrite el chocolate troceado al baño maría y déjalo templar. Añade las 4 yemas una a una, removiendo rápido con varillas\nMonta las claras con una pizca de sal a punto de nieve. Cuando empiecen a estar firmes, añade el azúcar poco a poco sin dejar de batir, hasta un merengue firme\nMezcla una tercera parte de las claras con el chocolate para aligerarlo. Incorpora el resto en dos tandas, con movimientos envolventes de abajo hacia arriba\nReparte en copas y refrigera 3 h como mínimo\nOjo: Lleva huevo crudo y necesita nevera 3 h: es una receta de casa",
+  "corto": "Mousse de chocolate"
+ },
+ {
+  "id": "ca-pastel-carne",
+  "name": "Pastel de carne con puré",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Carne picada",
+    "qty": "500",
+    "unit": "g",
+    "price": "4.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Puerro",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Concentrado de tomate",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Vino tinto",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.30"
+   },
+   {
+    "name": "Caldo de carne",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.30"
+   },
+   {
+    "name": "Patatas",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "50",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Leche",
+    "qty": "50",
+    "unit": "ml",
+    "price": "0.05"
+   },
+   {
+    "name": "Yemas de huevo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Cuece las patatas peladas en trozos 20 min, hasta que estén tiernas\nEn una sartén ancha, pocha con aceite la cebolla, las zanahorias y el puerro picados finos. Añade la carne, sazona y dórala\nAñade el tomate concentrado, el vino tinto (deja que se evapore el alcohol) y el caldo, y cocina a fuego lento 15 min, hasta que espese. Pásalo a una fuente de horno\nChafa las patatas calientes con la mantequilla, la leche, la yema, sal y pimienta, hasta un puré espeso. Extiéndelo sobre la carne y haz surcos con un tenedor\nHornea a 200 °C unos 20 min, hasta que el puré se dore y el guiso burbujee por los bordes. Deja reposar unos minutos",
+  "corto": "Pastel de carne"
+ },
+ {
+  "id": "ca-pastel-pescado",
+  "name": "Pastel de pescado blanco y marisco",
+  "servings": 6,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Pescado blanco (merluza)",
+    "qty": "400",
+    "unit": "g",
+    "price": "5.00"
+   },
+   {
+    "name": "Gambas peladas",
+    "qty": "150",
+    "unit": "g",
+    "price": "3.00"
+   },
+   {
+    "name": "Huevos",
+    "qty": "4",
+    "unit": "ud",
+    "price": "1.00"
+   },
+   {
+    "name": "Nata para cocinar",
+    "qty": "200",
+    "unit": "ml",
+    "price": "0.60"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Cebollino",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   },
+   {
+    "name": "Pimienta",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Corta el pescado (sin piel ni espinas) en dados de 1 cm y las gambas por la mitad; sazónalos un poco. Para una textura de mousse, tritura el pescado\nBate los huevos con la nata, el tomate frito, el cebollino, la sal y la pimienta. Incorpora el pescado y las gambas\nVierte la mezcla en un molde alargado engrasado y forrado con papel de horno. Ponlo en una bandeja más grande con agua caliente hasta la mitad del molde (baño maría)\nHornea a 180 °C de 40 a 45 min, hasta que un palillo salga limpio del centro. Se toma templado o frío\nOjo: Con marisco y huevo, si se toma frío necesita nevera",
+  "corto": "Pastel de pescado"
+ },
+ {
+  "id": "ca-empanada-atun",
+  "name": "Empanada de atún",
+  "servings": 6,
+  "categories": [
+   "Principal",
+   "Casa"
+  ],
+  "source": {
+   "name": "guiasparaguias · Arte culinario",
+   "url": "https://guiasparaguias.org/cocina/arte-culinario"
+  },
+  "ingredients": [
+   {
+    "name": "Masa de empanada",
+    "qty": "1",
+    "unit": "paquete",
+    "price": "2.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "3",
+    "unit": "ud",
+    "price": "0.75"
+   },
+   {
+    "name": "Pimiento rojo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Atún en conserva",
+    "qty": "300",
+    "unit": "g",
+    "price": "3.00"
+   },
+   {
+    "name": "Huevo cocido",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Tomate frito",
+    "qty": "80",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "100",
+    "unit": "ml",
+    "price": "0.90"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pocha en una sartén con abundante aceite la cebolla y los pimientos cortados finos, con sal, a fuego lento de 25 a 30 min. Cuélalos y guarda el aceite para pintar la masa (o para hacerla casera, con la receta de Masa de empanada)\nMezcla las verduras con el atún escurrido y desmigado, el huevo cocido picado y el tomate frito. Déjalo enfriar por completo\nDivide la masa en dos partes, una algo mayor. Estira la mayor hasta 2 o 3 mm sobre papel de horno, reparte el relleno frío dejando 2 cm de borde, tapa con la otra mitad y cierra con pliegues (el repulgo)\nHaz un agujero de 2 cm en el centro (la chimenea) para que salga el vapor. Pinta con el aceite del sofrito y hornea a 200 °C de 30 a 35 min, hasta que esté dorada",
+  "corto": "Empanada de atún"
  }
 ]
