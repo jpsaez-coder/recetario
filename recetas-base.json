@@ -9065,5 +9065,418 @@
    }
   ],
   "steps": "Mezcla la harina, la levadura y la sal. Añade el agua y 1 cucharada de aceite, y amasa 3 min, hasta que no se pegue\nDeja reposar la masa 10 min tapada\nDivídela en 4 trozos y estíralos con las manos o con una botella limpia, en tortas de medio dedo de grosor\nCalienta una sartén o la parrilla sobre brasas sin llama, con unas gotas de aceite\nHaz cada torta de 3 a 4 min por lado, hasta que se hinche y tenga manchas doradas\nSírvelo caliente, con aceite y sal, con queso o para mojar en guisos\nConsejo: La masa se puede llevar hecha en una bolsa desde casa, y se cocina al momento"
+ },
+ {
+  "id": "pf-cocido",
+  "name": "Cocido de campamento",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego",
+   "Invierno"
+  ],
+  "corto": "Cocido de campamento",
+  "ingredients": [
+   {
+    "name": "Garbanzos cocidos",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.60"
+   },
+   {
+    "name": "Patatas",
+    "qty": "600",
+    "unit": "g",
+    "price": "0.75"
+   },
+   {
+    "name": "Zanahorias",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Panceta",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.80"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Agua",
+    "qty": "1.5",
+    "unit": "l",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pica la cebolla y el ajo. Pela las patatas y cháscalas en trozos, y corta las zanahorias en rodajas gruesas\nEn la olla, dora la panceta y el chorizo en trozos 3 o 4 min, hasta que suelten la grasa. Añade la cebolla y el ajo y sofríe 5 min\nRetira la olla del fuego, echa el pimentón y remueve para que no se queme. Añade el agua\nCuando hierva, echa las zanahorias y cuece tapado 15 min a fuego medio\nAñade las patatas y los garbanzos escurridos y cuece 20 o 25 min más, hasta que la patata esté tierna. Prueba de sal al final\nSirve el caldo primero, con pasta o pan, y después el resto\nConsejo: Si lo haces en sitio fijo, usa garbanzos secos remojados desde la noche anterior y alarga la cocción"
+ },
+ {
+  "id": "pf-arroz-verduras-pollo",
+  "name": "Arroz con verduras y pollo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Arroz",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Pollo troceado",
+    "qty": "0.6",
+    "unit": "kg",
+    "price": "2.70"
+   },
+   {
+    "name": "Pimiento rojo",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.70"
+   },
+   {
+    "name": "Calabacín",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Guisantes congelados",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Tomate triturado",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.20"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Agua",
+    "qty": "750",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Sala el pollo y dóralo en la olla con el aceite, por todos los lados, unos 8 min. Apártalo\nEn el mismo aceite, sofríe el pimiento y el calabacín en dados y el ajo picado 5 min\nAñade el tomate y, fuera del fuego, el pimentón. Remueve y vuelve a poner el pollo\nEcha el agua y la sal y deja que hierva. Cuece tapado 15 min\nAñade el arroz y los guisantes, repártelo bien y cuece 18 min a fuego medio sin remover\nApaga y deja reposar tapado 5 min antes de servir\nOjo: El pollo, bien hecho: sin nada rosa junto al hueso"
+ },
+ {
+  "id": "pf-judias-verdes",
+  "name": "Judías verdes con patatas y chorizo",
+  "servings": 4,
+  "categories": [
+   "Principal",
+   "Acampada",
+   "Casa",
+   "Fuego",
+   "Invierno"
+  ],
+  "corto": "Judías con patatas",
+  "ingredients": [
+   {
+    "name": "Judías verdes",
+    "qty": "600",
+    "unit": "g",
+    "price": "1.80"
+   },
+   {
+    "name": "Patatas",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.60"
+   },
+   {
+    "name": "Chorizo",
+    "qty": "120",
+    "unit": "g",
+    "price": "1.20"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.25"
+   },
+   {
+    "name": "Ajo",
+    "qty": "2",
+    "unit": "diente",
+    "price": "0.10"
+   },
+   {
+    "name": "Pimentón",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Agua",
+    "qty": "600",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Quita las puntas a las judías y córtalas en trozos de 3 cm. Pela las patatas y cháscalas\nSofríe en la olla el chorizo en rodajas con el aceite 3 min. Añade la cebolla y el ajo picados y 5 min más\nFuera del fuego, echa el pimentón y remueve. Añade el agua y las judías\nCuece tapado 15 min a fuego medio. Añade las patatas y la sal y cuece 20 min más, hasta que estén tiernas"
+ },
+ {
+  "id": "pf-patatas-verduras-aluminio",
+  "name": "Patatas y verduras en papel de aluminio",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "corto": "Patatas y verduras",
+  "ingredients": [
+   {
+    "name": "Patatas",
+    "qty": "800",
+    "unit": "g",
+    "price": "1.00"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Pimiento verde",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.60"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "4",
+    "unit": "cda",
+    "price": "0.40"
+   },
+   {
+    "name": "Orégano seco",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Pela las patatas y córtalas en rodajas de medio dedo. Corta la cebolla y el pimiento en tiras\nReparte todo en 4 trozos grandes de papel de aluminio doble. Echa un chorro de aceite, sal y orégano a cada uno y mezcla\nCierra bien cada paquete, doblando los bordes, para que no escape el vapor\nPon los paquetes entre las brasas (no sobre la llama) de 30 a 40 min, dándoles la vuelta a mitad. Las patatas deben estar tiernas al pinchar\nÁbrelos con cuidado, que sale vapor muy caliente\nOjo: Usa guantes gruesos o pinzas para sacarlos del fuego"
+ },
+ {
+  "id": "pf-calabacin-relleno",
+  "name": "Calabacín relleno de queso a la brasa",
+  "servings": 4,
+  "categories": [
+   "Entrante",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "corto": "Calabacín relleno",
+  "ingredients": [
+   {
+    "name": "Calabacín",
+    "qty": "4",
+    "unit": "ud",
+    "price": "2.40"
+   },
+   {
+    "name": "Queso rallado",
+    "qty": "150",
+    "unit": "g",
+    "price": "1.50"
+   },
+   {
+    "name": "Tomate",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Cebolla",
+    "qty": "0.5",
+    "unit": "ud",
+    "price": "0.12"
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   },
+   {
+    "name": "Orégano seco",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Sal",
+    "qty": "",
+    "unit": "ud",
+    "price": ""
+   }
+  ],
+  "steps": "Abre los calabacines por la mitad a lo largo y vacía un poco el centro con una cuchara. Pica la pulpa\nSofríe en la sartén la cebolla picada con el aceite 5 min; añade la pulpa y el tomate picado y cocina 5 min más. Sala y echa el orégano\nRellena las mitades con esa mezcla y cubre con el queso rallado\nColócalos sobre la parrilla, a un palmo de las brasas sin llama, tapados con papel de aluminio, de 15 a 20 min, hasta que el calabacín esté tierno y el queso, fundido"
+ },
+ {
+  "id": "pf-pina-brasa",
+  "name": "Piña a la brasa con canela y miel",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa",
+   "Fuego",
+   "Verano"
+  ],
+  "corto": "Piña a la brasa",
+  "ingredients": [
+   {
+    "name": "Piña en rodajas",
+    "qty": "600",
+    "unit": "g",
+    "price": "2.00"
+   },
+   {
+    "name": "Miel",
+    "qty": "3",
+    "unit": "cda",
+    "price": "0.45"
+   },
+   {
+    "name": "Canela molida",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.05"
+   },
+   {
+    "name": "Mantequilla",
+    "qty": "20",
+    "unit": "g",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Escurre las rodajas de piña (frescas o de lata) y sécalas con papel\nUnta la parrilla con un poco de mantequilla y calienta las rodajas sobre brasas sin llama de 3 a 4 min por lado, hasta que se marquen y se doren\nSírvelas con un hilo de miel y canela por encima\nConsejo: Cuanto más madura la piña, más se caramelizan sus azúcares"
+ },
+ {
+  "id": "pf-brochetas-fruta",
+  "name": "Brochetas de fruta con chocolate",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "corto": "Brochetas de fruta",
+  "ingredients": [
+   {
+    "name": "Plátanos",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.50"
+   },
+   {
+    "name": "Manzana",
+    "qty": "1",
+    "unit": "ud",
+    "price": "0.30"
+   },
+   {
+    "name": "Melocotones",
+    "qty": "2",
+    "unit": "ud",
+    "price": "0.80"
+   },
+   {
+    "name": "Chocolate para fundir",
+    "qty": "100",
+    "unit": "g",
+    "price": "0.80"
+   }
+  ],
+  "steps": "Lava la fruta y córtala en trozos de unos 3 cm; el plátano, sin pelar hasta el último momento, para que no se oscurezca\nPínchala en brochetas o en palos limpios, alternando las frutas\nAsa las brochetas sobre brasas sin llama 3 o 4 min, dándoles la vuelta, hasta que se doren\nDeshaz el chocolate al baño maría (un cazo dentro de una olla con agua caliente) y échalo por encima"
  }
 ]
