@@ -8971,5 +8971,99 @@
   ],
   "steps": "Pocha en una sartén con abundante aceite la cebolla y los pimientos cortados finos, con sal, a fuego lento de 25 a 30 min. Cuélalos y guarda el aceite para pintar la masa (o para hacerla casera, con la receta de Masa de empanada)\nMezcla las verduras con el atún escurrido y desmigado, el huevo cocido picado y el tomate frito. Déjalo enfriar por completo\nDivide la masa en dos partes, una algo mayor. Estira la mayor hasta 2 o 3 mm sobre papel de horno, reparte el relleno frío dejando 2 cm de borde, tapa con la otra mitad y cierra con pliegues (el repulgo)\nHaz un agujero de 2 cm en el centro (la chimenea) para que salga el vapor. Pinta con el aceite del sofrito y hornea a 200 °C de 30 a 35 min, hasta que esté dorada",
   "corto": "Empanada de atún"
+ },
+ {
+  "id": "pf-pan-olla-brasas",
+  "name": "Pan de olla en las brasas",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "500",
+    "unit": "g",
+    "price": "0.50"
+   },
+   {
+    "name": "Levadura seca de panadería",
+    "qty": "7",
+    "unit": "g",
+    "price": "0.40"
+   },
+   {
+    "name": "Azúcar",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.05"
+   },
+   {
+    "name": "Agua tibia",
+    "qty": "320",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "1",
+    "unit": "cda",
+    "price": "0.10"
+   }
+  ],
+  "steps": "Disuelve la levadura y el azúcar en el agua tibia (que no queme) y déjala 5 min, hasta que haga espuma\nMezcla la harina con la sal, echa el agua con la levadura y el aceite y une con las manos. Amasa 8 o 10 min, hasta que esté lisa y no se pegue\nHaz una bola, ponla en un bol tapado con un paño o en una bolsa y déjala fermentar 1 h en un sitio cálido, hasta que doble su volumen\nMientras tanto, prepara las brasas: madera de leña dura (encina, roble) hecha ascua, sin llama\nForra el fondo de una olla con tapa con papel de aluminio o de horno. Pon la masa dentro, forma de bola, y haz un corte en cruz por encima\nColoca la olla sobre un lecho de brasas apoyada en tres piedras o bolas de aluminio, para que el fondo no se queme. Pon la tapa y reparte brasas encima de la tapa\nHornea de 35 a 45 min, renovando las brasas de arriba a mitad. Debe quedar dorado y sonar hueco al golpearlo por debajo\nDéjalo enfriar unos 15 min sobre una rejilla o un paño antes de cortarlo\nConsejo: Más brasas arriba que abajo: si no, el fondo se quema antes de que el centro esté hecho\nOjo: Usa guantes gruesos para mover la olla y no hagas el fuego en el campamento si no está permitido"
+ },
+ {
+  "id": "pf-pan-sarten",
+  "name": "Pan plano de sartén",
+  "servings": 4,
+  "categories": [
+   "Postre y masas",
+   "Acampada",
+   "Casa",
+   "Fuego"
+  ],
+  "ingredients": [
+   {
+    "name": "Harina",
+    "qty": "300",
+    "unit": "g",
+    "price": "0.30"
+   },
+   {
+    "name": "Levadura química",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.10"
+   },
+   {
+    "name": "Sal",
+    "qty": "1",
+    "unit": "cdta",
+    "price": "0.02"
+   },
+   {
+    "name": "Agua",
+    "qty": "180",
+    "unit": "ml",
+    "price": ""
+   },
+   {
+    "name": "Aceite de oliva",
+    "qty": "2",
+    "unit": "cda",
+    "price": "0.20"
+   }
+  ],
+  "steps": "Mezcla la harina, la levadura y la sal. Añade el agua y 1 cucharada de aceite, y amasa 3 min, hasta que no se pegue\nDeja reposar la masa 10 min tapada\nDivídela en 4 trozos y estíralos con las manos o con una botella limpia, en tortas de medio dedo de grosor\nCalienta una sartén o la parrilla sobre brasas sin llama, con unas gotas de aceite\nHaz cada torta de 3 a 4 min por lado, hasta que se hinche y tenga manchas doradas\nSírvelo caliente, con aceite y sal, con queso o para mojar en guisos\nConsejo: La masa se puede llevar hecha en una bolsa desde casa, y se cocina al momento"
  }
 ]
