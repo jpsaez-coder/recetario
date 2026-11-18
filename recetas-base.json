@@ -10790,5 +10790,80 @@
       }
     ],
     "steps": "Lava los pimientos y sécalos muy bien (si quedan húmedos, el aceite salta al freírlos)\nCalienta abundante aceite en la sartén a fuego fuerte\nFríe los pimientos enteros 2-3 min, removiendo, hasta que la piel arrugue y estén blandos por dentro\nEscúrrelos y sala al momento, a poder ser con sal gruesa"
+  },
+  {
+    "id": "pan-casero-mantequilla-miel",
+    "name": "Pan casero con mantequilla y miel",
+    "corto": "Pan casero con miel",
+    "servings": 4,
+    "categories": [
+      "Desayuno",
+      "Merienda",
+      "Acampada",
+      "Casa",
+      "Fuego"
+    ],
+    "sencilla": true,
+    "ingredients": [
+      {
+        "name": "Pan casero",
+        "qty": "1",
+        "unit": "barra",
+        "price": "0.30"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "60",
+        "unit": "g",
+        "price": "0.49"
+      },
+      {
+        "name": "Miel",
+        "qty": "120",
+        "unit": "g",
+        "price": "0.55"
+      }
+    ],
+    "steps": "Tuesta o calienta las rebanadas de pan casero en la sartén o junto al fuego\nÚntalas con la mantequilla en caliente y termina con un buen chorro de miel"
+  },
+  {
+    "id": "ensalada-tomate-oregano",
+    "name": "Ensalada de tomate con orégano",
+    "corto": "Ensalada de tomate",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Verano"
+    ],
+    "sencilla": true,
+    "ingredients": [
+      {
+        "name": "Tomates",
+        "qty": "600",
+        "unit": "g",
+        "price": "1.26"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.15"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Lava los tomates y córtalos en rodajas o en gajos\nColócalos en una fuente y riégalos con el aceite de oliva\nEspolvorea con orégano y sal justo antes de servir"
   }
 ]
