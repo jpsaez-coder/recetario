@@ -10088,5 +10088,111 @@
       }
     ],
     "steps": "Recolectar las ortigas con guantes o con cuidado; cortarlas y dejarlas un rato en el suelo ayuda a que pinchen menos. Elegir brotes jóvenes y tiernos, de un lugar limpio.\nPoner el agua a calentar hasta que hierva.\nEn una gamela grande, derretir la mantequilla removiendo. Quitar los tallos de las ortigas, lavarlas y picar las hojas.\nAñadir el agua hirviendo poco a poco y dejar cocer un poco más.\nAñadir la nata y mezclar."
+  },
+  {
+    "id": "inf-te-lenador",
+    "name": "El té del leñador (infusión de abeto o pino)",
+    "corto": "Té del leñador",
+    "servings": 8,
+    "categories": [
+      "Merienda",
+      "Fuego",
+      "Acampada"
+    ],
+    "source": {
+      "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
+    },
+    "ingredients": [
+      {
+        "name": "Ramitas de confíferas (hierbas para infusión: abeto blanco o pino silvestre)",
+        "qty": "30",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Agua",
+        "qty": "1.5",
+        "unit": "l",
+        "price": ""
+      },
+      {
+        "name": "Azúcar o miel",
+        "qty": "2",
+        "unit": "cda",
+        "price": ""
+      }
+    ],
+    "steps": "⚠️ Antes de recolectar nada: identifica el árbol con total seguridad (con una guía de campo o una persona adulta que lo conozca). Las acículas de abeto, pino o picea son las que sirven; las hojas del tejo (Taxus baccata) son muy parecidas de lejos y son altamente tóxicas. Si tienes la más mínima duda de qué árbol es, no lo uses.\nRecoger acículas de abeto blanco, abeto de Douglas o pino silvestre; mejor si son brotes y ramitas jóvenes (se pueden conservar para más adelante).\nPonerlas en una gamela grande con el agua. Poner a calentar y hervir unos 15 minutos.\nAñadir azúcar o miel al gusto.\nConsejo: ideal para bivouacs de invierno fríos y húmedos, pero también se puede tomar en verano como acompañamiento de un buen postre."
+  },
+  {
+    "id": "inf-manzanilla",
+    "name": "Infusión de manzanilla",
+    "corto": "Manzanilla",
+    "servings": 8,
+    "categories": [
+      "Merienda",
+      "Casa",
+      "Acampada"
+    ],
+    "source": {
+      "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
+    },
+    "ingredients": [
+      {
+        "name": "Manzanilla seca (flores, hierbas para infusión)",
+        "qty": "3",
+        "unit": "cda",
+        "price": ""
+      },
+      {
+        "name": "Agua",
+        "qty": "1.5",
+        "unit": "l",
+        "price": ""
+      },
+      {
+        "name": "Miel (opcional)",
+        "qty": "2",
+        "unit": "cda",
+        "price": ""
+      }
+    ],
+    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego y añadir la manzanilla seca. Dejar reposar tapada de 5 a 8 minutos.\nColar y endulzar con miel si se quiere.\nConsejo: compra la manzanilla ya seca en el supermercado o herbolario; es la forma más segura de tenerla siempre identificada."
+  },
+  {
+    "id": "inf-menta",
+    "name": "Infusión de menta o hierbabuena",
+    "corto": "Menta",
+    "servings": 8,
+    "categories": [
+      "Merienda",
+      "Casa",
+      "Acampada",
+      "Verano"
+    ],
+    "source": {
+      "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
+    },
+    "ingredients": [
+      {
+        "name": "Menta o hierbabuena fresca",
+        "qty": "20",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Agua",
+        "qty": "1.5",
+        "unit": "l",
+        "price": ""
+      },
+      {
+        "name": "Azúcar o miel (opcional)",
+        "qty": "2",
+        "unit": "cda",
+        "price": ""
+      }
+    ],
+    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego, añadir las hojas de menta o hierbabuena (lavadas) y dejar reposar de 5 a 10 minutos.\nColar y endulzar al gusto. También se puede tomar fría, con hielo.\nConsejo: la menta y la hierbabuena de huerto o maceta son fáciles de identificar con seguridad; si es una menta silvestre que no conoces bien, mejor no arriesgarse y usar la comprada."
   }
 ]
