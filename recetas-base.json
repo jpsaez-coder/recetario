@@ -9486,7 +9486,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9538,7 +9539,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9579,7 +9581,8 @@
     "categories": [
       "Entrante",
       "Fuego",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9620,7 +9623,8 @@
     "categories": [
       "Principal",
       "Fuego",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9661,7 +9665,8 @@
     "categories": [
       "Entrante",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9726,7 +9731,8 @@
     "categories": [
       "Entrante",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9774,7 +9780,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Ruta"
+      "Ruta",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9821,7 +9828,8 @@
     "categories": [
       "Principal",
       "Casa",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9892,7 +9900,8 @@
     "categories": [
       "Entrante",
       "Casa",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9950,7 +9959,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10003,7 +10013,8 @@
     "categories": [
       "Postre y masas",
       "Casa",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10056,7 +10067,8 @@
     "categories": [
       "Entrante",
       "Acampada",
-      "Fuego"
+      "Fuego",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10097,7 +10109,8 @@
     "categories": [
       "Merienda",
       "Fuego",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10132,7 +10145,8 @@
     "categories": [
       "Merienda",
       "Casa",
-      "Acampada"
+      "Acampada",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10168,7 +10182,8 @@
       "Merienda",
       "Casa",
       "Acampada",
-      "Verano"
+      "Verano",
+      "Libro de PA COCINA francés"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10473,5 +10488,76 @@
       }
     ],
     "steps": "En una olla ancha pon la leche, el arroz, las pieles de los cítricos y la canela a fuego medio. Cuando rompa a hervir, baja al mínimo y cuece 40-45 min, removiendo cada pocos minutos para que suelte el almidón\nCuando el arroz esté tierno y la leche tenga textura de crema, añade el azúcar y la mantequilla y remueve sin parar 5 min más (no eches el azúcar antes, o el grano queda duro)\nQuita las pieles y la canela y deja enfriar"
+  },
+  {
+    "id": "crema-de-setas",
+    "name": "Crema de setas",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Casa",
+      "Invierno"
+    ],
+    "source": {
+      "name": "Thermorecetas",
+      "url": "https://www.thermorecetas.com/receta-thermomix-crema-de-setas/"
+    },
+    "ingredients": [
+      {
+        "name": "Setas o champiñones",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.20"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Puerros",
+        "qty": "2",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Pastilla de caldo de verduras",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.06"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "40",
+        "unit": "ml",
+        "price": "0.15"
+      },
+      {
+        "name": "Nata para cocinar",
+        "qty": "175",
+        "unit": "ml",
+        "price": "0.55"
+      },
+      {
+        "name": "Agua",
+        "qty": "500",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Pica la cebolla, los puerros, el ajo y las setas, y sofríelo todo en una olla con el aceite a fuego medio unos 8 min, hasta que esté blando\nAñade el agua, la pastilla de caldo y media cucharadita de sal. Deja cocer tapado a fuego medio-bajo unos 25 min\nIncorpora la nata (reserva un par de cucharadas para decorar) y cuece 1 min más\nDeja templar un poco y tritura con la batidora hasta que quede fina\nSirve con un chorrito de la nata reservada por encima"
   }
 ]
