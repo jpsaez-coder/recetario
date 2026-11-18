@@ -10194,5 +10194,284 @@
       }
     ],
     "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego, añadir las hojas de menta o hierbabuena (lavadas) y dejar reposar de 5 a 10 minutos.\nColar y endulzar al gusto. También se puede tomar fría, con hielo.\nConsejo: la menta y la hierbabuena de huerto o maceta son fáciles de identificar con seguridad; si es una menta silvestre que no conoces bien, mejor no arriesgarse y usar la comprada."
+  },
+  {
+    "id": "ca-crema-inglesa",
+    "name": "Crema inglesa (salsa madre dulce)",
+    "corto": "Crema inglesa madre",
+    "servings": 4,
+    "categories": [
+      "Postre y masas",
+      "Casa"
+    ],
+    "source": {
+      "name": "guiasparaguias · Arte culinario",
+      "url": "https://guiasparaguias.org/cocina/arte-culinario"
+    },
+    "ingredients": [
+      {
+        "name": "Leche entera",
+        "qty": "500",
+        "unit": "ml",
+        "price": "0.40"
+      },
+      {
+        "name": "Yemas de huevo",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "70",
+        "unit": "g",
+        "price": "0.05"
+      },
+      {
+        "name": "Vainilla (vaina)",
+        "qty": "1",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta la leche con las semillas de vainilla hasta que rompa a hervir. Retira, tapa y deja reposar 10 min\nBate las yemas con el azúcar hasta que aclaren. Vierte un cazo de la leche tibia sobre las yemas poco a poco, sin parar de remover, y junta todo en el cazo\nCocina a fuego muy bajo removiendo en «ochos», sin que hierva. Cuando cubra el dorso de la cuchara y al pasar el dedo quede un surco limpio, retira y enfría de inmediato"
+  },
+  {
+    "id": "ca-crema-pastelera-firme",
+    "name": "Crema pastelera (firme y ligada)",
+    "corto": "Crema pastelera firme",
+    "servings": 4,
+    "categories": [
+      "Postre y masas",
+      "Casa"
+    ],
+    "source": {
+      "name": "guiasparaguias · Arte culinario",
+      "url": "https://guiasparaguias.org/cocina/arte-culinario"
+    },
+    "ingredients": [
+      {
+        "name": "Leche entera",
+        "qty": "500",
+        "unit": "ml",
+        "price": "0.40"
+      },
+      {
+        "name": "Yemas de huevo",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.09"
+      },
+      {
+        "name": "Maicena",
+        "qty": "40",
+        "unit": "g",
+        "price": "0.12"
+      },
+      {
+        "name": "Canela en rama",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.15"
+      },
+      {
+        "name": "Limón (la piel)",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.41"
+      }
+    ],
+    "steps": "Hierve la leche con la canela y el limón, reservando medio vaso en frío. En ese vaso frío disuelve la maicena y el azúcar, añade las yemas y bate bien\nCuela la leche caliente sobre las yemas, remueve y devuelve todo al cazo. Cocina a fuego medio sin parar de remover. Cuando espese y dé el primer hervor, cuenta 1 minuto entero para quitar el sabor a crudo\nRetira del fuego, añade la mantequilla y remueve hasta que se funda. Tápala con film a piel para que no haga costra"
+  },
+  {
+    "id": "ca-tortitas-americanas",
+    "name": "Tortitas (pancakes americanos)",
+    "corto": "Pancakes americanos",
+    "servings": 4,
+    "categories": [
+      "Desayuno",
+      "Merienda",
+      "Casa"
+    ],
+    "source": {
+      "name": "guiasparaguias · Arte culinario",
+      "url": "https://guiasparaguias.org/cocina/arte-culinario"
+    },
+    "ingredients": [
+      {
+        "name": "Harina",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.15"
+      },
+      {
+        "name": "Levadura química",
+        "qty": "2",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.03"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Leche entera",
+        "qty": "200",
+        "unit": "ml",
+        "price": "0.17"
+      },
+      {
+        "name": "Huevo",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.22"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.25"
+      }
+    ],
+    "steps": "Mezcla en un bol grande los secos: harina, levadura, azúcar y sal. En otro cuenco bate el huevo con la leche y la mantequilla derretida\nVierte los líquidos sobre los secos y mezcla con un tenedor solo lo justo para que la harina se humedezca, sin batir de más. Deja reposar la masa 5 min\nEngrasa una sartén a fuego medio y vierte un cucharón de masa. Cuando salgan burbujas en la superficie y empiecen a romperse, dale la vuelta y cocina 1 min más"
+  },
+  {
+    "id": "ca-bunuelos-viento",
+    "name": "Buñuelos de viento",
+    "corto": "Buñuelos de viento",
+    "servings": 6,
+    "categories": [
+      "Postre y masas",
+      "Casa"
+    ],
+    "source": {
+      "name": "guiasparaguias · Arte culinario",
+      "url": "https://guiasparaguias.org/cocina/arte-culinario"
+    },
+    "ingredients": [
+      {
+        "name": "Agua",
+        "qty": "125",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.41"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "15",
+        "unit": "g",
+        "price": "0.01"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Harina",
+        "qty": "85",
+        "unit": "g",
+        "price": "0.06"
+      },
+      {
+        "name": "Huevos",
+        "qty": "3",
+        "unit": "ud",
+        "price": "0.65"
+      },
+      {
+        "name": "Aceite de girasol para freír",
+        "qty": "300",
+        "unit": "ml",
+        "price": "0.55"
+      }
+    ],
+    "steps": "Hierve el agua con la mantequilla, el azúcar y la sal. Fuera del fuego echa la harina de golpe y remueve con una cuchara de madera hasta hacer una bola. Vuelve al fuego 1 min para secarla\nDeja templar. Añade los huevos uno a uno, integrando por completo cada uno antes del siguiente. Está lista cuando, al levantar la cuchara, la masa cae formando un triángulo limpio\nFríe porciones con dos cucharas en abundante aceite a 160 °C: se inflarán y girarán solas. Sácalos dorados y rebózalos en azúcar"
+  },
+  {
+    "id": "ca-arroz-leche-asturiano",
+    "name": "Arroz con leche cremoso (estilo asturiano)",
+    "corto": "Arroz leche asturiano",
+    "servings": 4,
+    "categories": [
+      "Postre y masas",
+      "Casa",
+      "Invierno"
+    ],
+    "source": {
+      "name": "guiasparaguias · Arte culinario",
+      "url": "https://guiasparaguias.org/cocina/arte-culinario"
+    },
+    "ingredients": [
+      {
+        "name": "Leche entera",
+        "qty": "1",
+        "unit": "l",
+        "price": "0.83"
+      },
+      {
+        "name": "Arroz redondo",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.12"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "70",
+        "unit": "g",
+        "price": "0.06"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.41"
+      },
+      {
+        "name": "Limón (la piel)",
+        "qty": "0.5",
+        "unit": "ud",
+        "price": "0.15"
+      },
+      {
+        "name": "Naranja (la piel)",
+        "qty": "0.5",
+        "unit": "ud",
+        "price": "0.15"
+      },
+      {
+        "name": "Canela en rama",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.15"
+      }
+    ],
+    "steps": "En una olla ancha pon la leche, el arroz, las pieles de los cítricos y la canela a fuego medio. Cuando rompa a hervir, baja al mínimo y cuece 40-45 min, removiendo cada pocos minutos para que suelte el almidón\nCuando el arroz esté tierno y la leche tenga textura de crema, añade el azúcar y la mantequilla y remueve sin parar 5 min más (no eches el azúcar antes, o el grano queda duro)\nQuita las pieles y la canela y deja enfriar"
   }
 ]
