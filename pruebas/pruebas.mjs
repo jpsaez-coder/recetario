@@ -189,7 +189,8 @@ caso("ajustar: ya no hay botón «Ajustar» suelto",/>Ajustar<\/button>/.test(v)
 Object.assign(T.S,JSON.parse(S0));Object.assign(T.U,U0);}
 // variantes de color o tamaño: una línea con desglose; lo que es otro producto, aparte
 {const it=T.shopList(base,8),cuenta=re=>it.filter(i=>re.test(i.name)).length;
-caso("variantes: pimientos frescos en una línea",it.filter(i=>/^pimientos?\b/i.test(i.name)&&!/piquillo/i.test(i.name)).map(i=>i.name).length,1);
+caso("variantes: pimientos frescos en una línea",it.filter(i=>/^pimientos?\b/i.test(i.name)&&!/piquillo|padr[oó]n/i.test(i.name)).map(i=>i.name).length,1);
+caso("variantes: los de Padrón siguen aparte",it.filter(i=>/padr[oó]n/i.test(i.name)).length,1);
 caso("variantes: los del piquillo siguen aparte",cuenta(/piquillo/i),1);
 caso("variantes: patatas en una línea",cuenta(/^patatas?\b/i),1);
 caso("variantes: galletas en una línea",cuenta(/^galletas?\b/i),1);

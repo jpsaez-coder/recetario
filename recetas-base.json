@@ -10559,5 +10559,236 @@
       }
     ],
     "steps": "Pica la cebolla, los puerros, el ajo y las setas, y sofríelo todo en una olla con el aceite a fuego medio unos 8 min, hasta que esté blando\nAñade el agua, la pastilla de caldo y media cucharadita de sal. Deja cocer tapado a fuego medio-bajo unos 25 min\nIncorpora la nata (reserva un par de cucharadas para decorar) y cuece 1 min más\nDeja templar un poco y tritura con la batidora hasta que quede fina\nSirve con un chorrito de la nata reservada por encima"
+  },
+  {
+    "id": "crumble-manzana-sarten",
+    "name": "Crumble de manzana a la sartén",
+    "corto": "Crumble de manzana",
+    "servings": 4,
+    "categories": [
+      "Postre y masas",
+      "Acampada",
+      "Casa",
+      "Otoño"
+    ],
+    "ingredients": [
+      {
+        "name": "Manzanas",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.20"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.65"
+      },
+      {
+        "name": "Azúcar moreno",
+        "qty": "60",
+        "unit": "g",
+        "price": "0.15"
+      },
+      {
+        "name": "Canela",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Galletas María",
+        "qty": "150",
+        "unit": "g",
+        "price": "0.25"
+      },
+      {
+        "name": "Zumo de limón",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.10"
+      }
+    ],
+    "steps": "Pela las manzanas, quita el corazón y córtalas en dados. Rocíalas con el zumo de limón para que no se oscurezcan\nMete las galletas en una bolsa y cháscalas con las manos o un rodillo hasta dejarlas en trozos gruesos, no polvo\nFunde la mitad de la mantequilla (40 g) en la sartén a fuego medio. Añade la manzana, el azúcar y la canela, y rehógala 8-10 min, removiendo de vez en cuando, hasta que esté tierna pero entera\nAparta la manzana a un lado de la sartén o pásala a un plato. En la misma sartén, funde el resto de la mantequilla y tuesta las galletas troceadas 2-3 min, removiendo, hasta que doren y huelan a tostado\nJunta la manzana con las galletas tostadas por encima (o alterna capas en el plato) y sirve templado",
+    "nota": "Sin horno, de principio a fin en una sola sartén: va bien para acampada o ruta con un hornillo."
+  },
+  {
+    "id": "calabacin-queso-sarten",
+    "name": "Calabacín con queso a la sartén",
+    "corto": "Calabacín con queso",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Calabacines",
+        "qty": "2",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.10"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Queso rallado",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.48"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Corta los calabacines en rodajas no muy finas\nSofríe el ajo picado en el aceite a fuego medio 1 min, añade el calabacín y la sal, y cocina 8-10 min, dándole la vuelta, hasta que esté dorado y tierno\nReparte el queso rallado por encima, tapa la sartén y deja a fuego bajo hasta que se funda\nEspolvorea orégano y sirve caliente"
+  },
+  {
+    "id": "berenjena-queso-sarten",
+    "name": "Berenjena con queso a la sartén",
+    "corto": "Berenjena con queso",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Berenjenas",
+        "qty": "2",
+        "unit": "ud",
+        "price": "1.20"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.15"
+      },
+      {
+        "name": "Tomate frito",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.11"
+      },
+      {
+        "name": "Queso rallado",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.48"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Corta las berenjenas en rodajas de medio dedo y sálalas; déjalas 10 min para que suelten el amargor y sécalas con papel\nFríelas en el aceite a fuego medio-alto por ambos lados hasta que estén doradas y tiernas\nCubre cada rodaja con una cucharada de tomate frito y el queso rallado, tapa la sartén y deja a fuego bajo hasta que el queso se funda\nEspolvorea orégano y sirve caliente"
+  },
+  {
+    "id": "champinones-ajillo-sarten",
+    "name": "Champiñones al ajillo a la sartén",
+    "corto": "Champiñones al ajillo",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa"
+    ],
+    "ingredients": [
+      {
+        "name": "Champiñones",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.20"
+      },
+      {
+        "name": "Ajo",
+        "qty": "2",
+        "unit": "diente",
+        "price": "0.10"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.15"
+      },
+      {
+        "name": "Perejil",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Limpia los champiñones y pártelos en láminas gruesas o en cuartos\nDora el ajo laminado en el aceite a fuego medio, sin que llegue a quemarse\nSube el fuego, añade los champiñones y saltea 5-6 min, removiendo, hasta que suelten el agua y se doren\nSala, espolvorea perejil picado y sirve bien caliente"
+  },
+  {
+    "id": "pimientos-padron-fritos",
+    "name": "Pimientos de Padrón fritos",
+    "corto": "Pimientos de Padrón",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Pimientos de Padrón",
+        "qty": "250",
+        "unit": "g",
+        "price": "2.00"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "4",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Lava los pimientos y sécalos muy bien (si quedan húmedos, el aceite salta al freírlos)\nCalienta abundante aceite en la sartén a fuego fuerte\nFríe los pimientos enteros 2-3 min, removiendo, hasta que la piel arrugue y estén blandos por dentro\nEscúrrelos y sala al momento, a poder ser con sal gruesa"
   }
 ]
