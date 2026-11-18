@@ -1055,7 +1055,7 @@ const NUTRI=[
  [["pasta","macarron","espagueti","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
  [["lenteja","garbanzo","alubia"],330,22,50,3],[["patata"],80,2,17,0.1],[["pan"],260,9,51,2.5],[["harina"],350,10,73,1.2],
  [["tomate frito"],80,1.5,10,3.5],[["tomate triturado","tomate natural"],30,1.3,5,0.2],[["tomate"],18,0.9,3.9,0.2],
- [["pepino"],12,0.6,2.2,0.1],[["lechuga"],15,1.3,2,0.2],[["pimiento"],25,1,4.5,0.3],[["cebolla"],40,1.1,9,0.1],
+ [["pepino"],12,0.6,2.2,0.1],[["lechuga"],15,1.3,2,0.2],[["pimiento"],25,1,4.5,0.3],[["cebolla"],40,1.1,9,0.1],[["col","repollo","lombarda"],25,1.3,5.8,0.1],[["salsa de ostras"],51,1.4,11,0.3],
  [["zanahoria"],41,0.9,9.6,0.2],[["calabaza"],26,1,6.5,0.1],[["calabacin"],17,1.2,3.1,0.3],[["berenjena","berenjenas"],25,1,6,0.2],[["ajo"],149,6.4,33,0.5],[["limon"],29,1.1,9,0.3],
  [["sandia"],30,0.6,7.6,0.2],[["melon"],34,0.8,8,0.2],[["barrita","barritas de cereales"],400,6,68,12],
  [["manzana","fruta"],52,0.3,14,0.2],[["platano"],89,1.1,23,0.3],
@@ -1066,7 +1066,7 @@ const NUTRI=[
  [["azucar"],400,0,100,0],[["chocolate"],530,6,50,32],[["galleta"],450,7,70,16],[["frutos secos","nuez","nueces","almendra","cacahuete"],600,20,15,52],
  [["mermelada","compota"],250,0.4,62,0],[["ketchup"],110,1,26,0],[["avena","copos de avena"],370,13,60,7],[["miel"],305,0.3,82,0]];
 /* lo que no aporta casi nada: cuenta como «con datos» y suma cero */
-const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza|bicarbonato)([^a-z]|$)/;
+const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agua|vinagre|pastillas? de caldo|caldo|perejil|estragon|albahaca|tomillo|romero|salvia|cilantro|hierbas?|vainilla|azafran|nuez moscada|canela|curri|curry|jengibre|levadura|cafe|cafe soluble|azucar vainillado|mostaza|bicarbonato|curcuma)([^a-z]|$)/;
 /* gramos por unidad de lo que se cuenta en piezas */
 const PIEZA=[[["huevo"],60],[["anchoa","anchoas"],4],[["puerro","puerros"],150],[["datil","datiles"],8],[["menta"],0.5],[["quesito","quesitos"],16],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],[["berenjena","berenjenas"],250],

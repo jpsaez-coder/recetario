@@ -10865,5 +10865,202 @@
       }
     ],
     "steps": "Lava los tomates y córtalos en rodajas o en gajos\nColócalos en una fuente y riégalos con el aceite de oliva\nEspolvorea con orégano y sal justo antes de servir"
+  },
+  {
+    "id": "chow-mein-pollo-verduras",
+    "name": "Chow mein de pollo y verduras",
+    "corto": "Chow mein de pollo",
+    "servings": 2,
+    "categories": [
+      "Principal",
+      "Casa"
+    ],
+    "source": {
+      "name": "Receta tradicional china, adaptada",
+      "url": ""
+    },
+    "ingredients": [
+      {
+        "name": "Fideos chinos de huevo o trigo",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Pechuga de pollo",
+        "qty": "1",
+        "unit": "ud",
+        "price": "1.50"
+      },
+      {
+        "name": "Zanahoria",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.20"
+      },
+      {
+        "name": "Col",
+        "qty": "150",
+        "unit": "g",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Jengibre (opcional)",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.15"
+      },
+      {
+        "name": "Salsa de soja",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Salsa de ostras",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Azúcar moreno",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Aceite de sésamo",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.40"
+      },
+      {
+        "name": "Aceite de girasol",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.10"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Cuece los fideos siguiendo el paquete, dejándolos 1 min menos para que queden firmes. Escúrrelos y pásalos por agua fría\nMezcla en un vasito la salsa de soja, la salsa de ostras, el azúcar y 2 cucharadas de agua\nCorta el pollo en tiras finas y salpiméntalo. Calienta el aceite de girasol en una sartén amplia o wok a fuego fuerte y dóralo 3 min. Retíralo y resérvalo\nEn la misma sartén a fuego alto, añade un poco más de aceite, el ajo picado, el jengibre, la zanahoria en juliana y la col en tiras. Saltea sin parar 3-4 min, hasta que queden tiernas pero crujientes\nDevuelve el pollo a la sartén, incorpora los fideos escurridos y vierte la salsa y el aceite de sésamo por encima. Remueve a fuego vivo 2 min, hasta que los fideos se impregnen y queden brillantes",
+    "nota": "También puedes sustituir el pollo por tortilla francesa cortada en trozos, para una versión vegetariana."
+  },
+  {
+    "id": "cuscus-tfaya-pollo",
+    "name": "Cuscús tfaya con pollo",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Casa",
+      "Invierno"
+    ],
+    "source": {
+      "name": "Receta tradicional marroquí, adaptada",
+      "url": ""
+    },
+    "ingredients": [
+      {
+        "name": "Cuscús (sémola de trigo precocida)",
+        "qty": "250",
+        "unit": "g",
+        "price": "0.33"
+      },
+      {
+        "name": "Muslos de pollo",
+        "qty": "600",
+        "unit": "g",
+        "price": "2.00"
+      },
+      {
+        "name": "Cúrcuma",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.15"
+      },
+      {
+        "name": "Jengibre en polvo",
+        "qty": "0.5",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.15"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "15",
+        "unit": "g",
+        "price": "0.12"
+      },
+      {
+        "name": "Caldo de pollo o de verduras",
+        "qty": "250",
+        "unit": "ml",
+        "price": "0.10"
+      },
+      {
+        "name": "Cebollas",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.90"
+      },
+      {
+        "name": "Garbanzos cocidos",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Pasas sultanas",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.32"
+      },
+      {
+        "name": "Canela",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Miel",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.14"
+      }
+    ],
+    "steps": "Pon a hidratar las pasas en agua templada 10 min y escúrrelas\nEn una cazuela, dora los muslos de pollo salpimentados con un poco de aceite. Añade la cúrcuma, el jengibre y el caldo, tapa y cocina a fuego bajo 25-30 min, hasta que el pollo esté tierno\nMientras, pocha las cebollas cortadas en juliana fina con un chorrito de aceite a fuego bajo 15-20 min, removiendo de vez en cuando, hasta que estén muy blandas y doradas\nAñade a la cebolla los garbanzos, las pasas escurridas, la canela y la miel, y cocina 5 min más removiendo, hasta que quede meloso (la tfaya)\nPon el cuscús en un bol amplio, cúbrelo con caldo caliente de la cocción del pollo (o agua), tapa y deja reposar 5 min hasta que lo absorba. Destápalo, suéltalo con un tenedor y añade la mantequilla para que quede brillante\nSirve el cuscús en una fuente, el pollo encima o al lado, y cubre todo con la tfaya de cebolla, garbanzos y pasas"
   }
 ]
