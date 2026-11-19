@@ -893,6 +893,23 @@ function vList(){
 /* Sueltos: lo que se compra sin receta (una sandía, barritas para media mañana). Fijos o por persona. */
 /* sueltos en el menú: se ponen en las comidas como una receta («x:<id>»); cada vez que se pone cuenta su cantidad.
    Los que no están en ningún día se suman una vez (sueltosRecipe), como antes. */
+/* Atajos: cosas sueltas típicas, con precio orientativo ya puesto, para no rellenar el formulario cada vez. Se puede editar a mano después, como cualquier suelto. */
+const ATAJOS=[
+ ["Para café con leche",[
+  ["Leche","1","l","persona","0.90"],
+  ["Café soluble","25","g","persona","0.60"],
+  ["Azúcar","50","g","persona","0.05"],
+  ["Cacao soluble","100","g","persona","0.70"],
+  ["Infusiones (manzanilla, poleo…)","1","paquete","fijo","1.50"],
+ ]],
+ ["Despensa de salida",[
+  ["Fruta de postre","1","ud","persona","0.40"],
+  ["Barritas de cereales","1","ud","persona","0.50"],
+  ["Pan (barra)","1","barra","fijo","1.00"],
+  ["Agua embotellada","1.5","l","persona","0.60"],
+  ["Sandía","1","ud","fijo","4.00"],
+ ]],
+];
 function sueltoR(id){
   const e=(S.extras||[]).find(x=>"x:"+x.id===id);if(!e)return null;
   const k=e.per==="persona"?HEADS():1;
@@ -911,6 +928,8 @@ function vSueltos(n,H){
   return pleg("sue","Sueltos",ex.length?`${ex.length} cosa${ex.length===1?"":"s"}`:"fruta, pan, barritas…",`<p class="msg">Lo que se compra sin receta: fruta de postre, barritas para media mañana, pan… Se puede poner en las comidas con «+ añadir», como una receta: cada vez que está puesto cuenta su cantidad. Si no está en ningún día, cuenta una vez. Entra en la compra, el presupuesto y los macros.</p>
   ${ex.length?`<table>${ex.map(e=>`<tr><td><b>${esc(e.name)}</b><br><small style="color:var(--mute)">${e.per==="persona"?`${fmtQ(num(e.qty),e.unit)} por persona → ${fmtQ(num(e.qty)*H,e.unit)}`:fmtQ(num(e.qty),e.unit)}${e.price===""?" · sin precio":""} · ${sueltoVeces(e)?`en ${sueltoVeces(e)} comida${sueltoVeces(e)===1?"":"s"}`:"sin día: cuenta una vez"}</small></td>
     <td class="p">${e.price===""?"":eur(num(e.price)*(e.per==="persona"?H:1))}</td><td class="p"><button class="btn ghost sm" data-act="exDel" data-id="${e.id}" aria-label="Quitar ${esc(e.name)}">Quitar</button></td></tr>`).join("")}</table>`:""}
+  <p class="msg">Atajos con precio orientativo ya puesto (lo puedes editar luego, como cualquier suelto):</p>
+  ${ATAJOS.map(([grupo,items])=>`<p class="msg" style="margin:4px 0 2px"><b>${esc(grupo)}</b></p><div class="row" style="flex-wrap:wrap;gap:6px;margin-bottom:8px">${items.map((it,i)=>`<button class="btn ghost sm" data-act="exQuick" data-g="${esc(grupo)}" data-i="${i}">+ ${esc(it[0])}</button>`).join("")}</div>`).join("")}
   <div class="exf"><input id="exName" placeholder="Qué (p. ej. Sandía)" aria-label="Qué"><input id="exQty" inputmode="decimal" placeholder="Cant." aria-label="Cantidad" value="1">
   <select id="exUnit" aria-label="Unidad">${UNITS.map(u=>`<option ${u==="ud"?"selected":""}>${u}</option>`).join("")}</select>
   <select id="exPer" aria-label="Fijo o por persona"><option value="fijo">en total</option><option value="persona">por persona</option></select>
@@ -1048,7 +1067,7 @@ const NUTRI=[
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
  [["tortilla de trigo","tortillas de trigo","fajita"],300,8,50,7],[["crema de cacahuete"],600,25,15,50],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
- [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["membrillo"],215,0.4,55,0.1],[["datil","datiles"],280,2.5,75,0.4],[["sopa de fideos"],350,12,60,6],[["frutos rojos"],45,1,10,0.4],[["judia verde","judias verdes"],31,1.8,7,0.2],[["pinon","pinones"],670,14,13,68],[["anchoa","anchoas"],210,29,0,10],[["worcestershire"],78,0,19,0],[["hojaldre"],560,7,46,38],[["puerro","puerros"],30,2,5,0.3],[["apio"],16,0.7,3,0.2],[["gamba","gambas"],85,18,0.5,1],[["cebollino"],30,3,4,0.7],[["masa de empanada"],300,8,45,10],[["menta"],44,3.3,8,0.7],[["queso para fundir"],300,15,6,24],
+ [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["membrillo"],215,0.4,55,0.1],[["datil","datiles"],280,2.5,75,0.4],[["sopa de fideos"],350,12,60,6],[["frutos rojos"],45,1,10,0.4],[["judia verde","judias verdes"],31,1.8,7,0.2],[["pinon","pinones"],670,14,13,68],[["anchoa","anchoas"],210,29,0,10],[["worcestershire"],78,0,19,0],[["hojaldre"],560,7,46,38],[["puerro","puerros"],30,2,5,0.3],[["apio"],16,0.7,3,0.2],[["seitan"],370,75,14,2],[["gamba","gambas"],85,18,0.5,1],[["cebollino"],30,3,4,0.7],[["masa de empanada"],300,8,45,10],[["menta"],44,3.3,8,0.7],[["queso para fundir"],300,15,6,24],
  [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
  [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
@@ -1787,6 +1806,9 @@ document.addEventListener("click",async e=>{
   else if(a==="exAdd"){const name=$("#exName").value.trim(),qty=num($("#exQty").value),pr=$("#exPrice").value.trim();
     if(!name||!(qty>0)){U.exMsg="Pon qué es y una cantidad.";render();return}
     S.extras=[...(S.extras||[]),{id:uid(),name:name.slice(0,60),qty:String(qty),unit:$("#exUnit").value,per:$("#exPer").value,price:pr?String(num(pr)):""}];U.exMsg="";persist()}
+  else if(a==="exQuick"){const grupo=(ATAJOS.find(([g])=>g===b.dataset.g)||[,[]])[1],it=grupo[Number(b.dataset.i)];if(!it)return;
+    const [name,qty,unit,per,price]=it;
+    S.extras=[...(S.extras||[]),{id:uid(),name,qty,unit,per,price}];U.exMsg="";persist()}
   else if(a==="exDel"){const id=b.dataset.id;S.extras=(S.extras||[]).filter(e=>e.id!==id);for(const k in S.plan||{})S.plan[k]=S.plan[k].filter(x=>x!=="x:"+id);persist()}
   else if(a==="bclear"){S.check={};persist()}
   else if(a==="alg"){const k=b.dataset.k;S.alergias=(S.alergias||[]).includes(k)?S.alergias.filter(x=>x!==k):[...(S.alergias||[]),k];persist()}

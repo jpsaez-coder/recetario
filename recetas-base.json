@@ -11573,9 +11573,9 @@
     "nota": "Usa pimentón ahumado si lo prefieres más intenso."
   },
   {
-    "id": "gpg-estofado-rustico-al-fuego",
-    "name": "Estofado rústico al fuego (carne o seitán)",
-    "corto": "Estofado rústico",
+    "id": "gpg-estofado-rustico-al-fuego-ternera",
+    "name": "Estofado rústico al fuego (con ternera)",
+    "corto": "Estofado con ternera",
     "servings": 6,
     "categories": [
       "Principal",
@@ -11689,6 +11689,131 @@
       }
     ],
     "steps": "Calienta el aceite en una olla (de hierro sobre las brasas, o a fuego medio-alto en casa) y dora bien los dados de ternera por tandas, 5-6 min, hasta sellarlos. Salpimienta antes de dorar. Retíralos a un plato\nEn la misma olla, añade la cebolla y el apio con una pizca de sal, y sofríe 6-8 min hasta que se ablanden. Incorpora el ajo, el pimentón, el tomillo, el orégano y el concentrado de tomate, y remueve 1 min\nDevuelve la ternera a la olla junto con las zanahorias, las patatas, el tomate triturado, el laurel, el caldo y el agua (o el vino tinto). Tapa y cocina a fuego lento 1 h 30 - 2 h, removiendo de vez en cuando, hasta que la carne esté tierna\nRectifica de sal y pimienta. Si quieres el caldo más espeso, aplasta un par de trozos de patata contra la pared de la olla con el cucharón. Retira del fuego, deja reposar 10 min tapado y sirve bien caliente con pan rústico",
-    "nota": "Versión sin carne: cambia la ternera por 650-750 g de seitán (fresco, de bote o casero, ya cocido), escurrido y troceado a mano, y el caldo de carne por caldo de verduras oscuro o de setas, con 2 cucharadas de salsa de soja de más (así no hace falta tanta sal). Dora el seitán solo con pimienta (sin sal, la dará la soja), 4-5 min. Luego cuece primero solo las verduras, el tomate triturado, el laurel, la soja, el caldo y el agua 20 min, hasta que estén casi tiernas; añade el seitán dorado y cocina 10-15 min más, destapado o semitapado."
+    "nota": "Versión vegetal: mira «Estofado rústico al fuego (con seitán)», hecha con las mismas verduras y especias."
+  },
+  {
+    "id": "gpg-estofado-rustico-al-fuego-seitan",
+    "name": "Estofado rústico al fuego (con seitán)",
+    "corto": "Estofado con seitán",
+    "servings": 6,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Fuego",
+      "Invierno"
+    ],
+    "ingredients": [
+      {
+        "name": "Seitán (fresco, de bote o casero, ya cocido), escurrido y troceado",
+        "qty": "700",
+        "unit": "g",
+        "price": "5.50"
+      },
+      {
+        "name": "Zanahorias",
+        "qty": "4",
+        "unit": "ud",
+        "price": "0.80"
+      },
+      {
+        "name": "Patatas pequeñas",
+        "qty": "500",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Apio",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.35"
+      },
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": "0.15"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Concentrado de tomate",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "1",
+        "unit": "lata",
+        "price": "1.00"
+      },
+      {
+        "name": "Salsa de soja",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Pimentón",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Tomillo",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Laurel",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Caldo de verduras oscuro o de setas",
+        "qty": "750",
+        "unit": "ml",
+        "price": "0.60"
+      },
+      {
+        "name": "Agua (o vino tinto)",
+        "qty": "250",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en una olla (de hierro sobre las brasas, o a fuego medio-alto en casa) y dora el seitán troceado 4-5 min, solo con pimienta (la sal la pone luego la soja). Retíralo a un plato\nEn la misma olla, añade la cebolla y el apio con una pizca de sal, y sofríe 6-8 min hasta que se ablanden. Incorpora el ajo, el pimentón, el tomillo, el orégano y el concentrado de tomate, y remueve 1 min\nAñade las zanahorias, las patatas, el tomate triturado, el laurel, la salsa de soja, el caldo y el agua (o el vino tinto). Tapa y cocina a fuego lento 20 min, hasta que las verduras estén casi tiernas\nIncorpora el seitán dorado y cocina 10-15 min más, destapado o semitapado\nRectifica de sal y pimienta. Si quieres el caldo más espeso, aplasta un par de trozos de patata contra la pared de la olla con el cucharón. Retira del fuego, deja reposar 10 min tapado y sirve bien caliente con pan rústico",
+    "nota": "Versión con carne: mira «Estofado rústico al fuego (con ternera)», hecha con las mismas verduras y especias."
   }
 ]
