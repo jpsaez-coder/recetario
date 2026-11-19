@@ -2980,9 +2980,9 @@
       },
       {
         "name": "Nata fresca",
-        "qty": "250",
+        "qty": "75",
         "unit": "ml",
-        "price": "1.20"
+        "price": "0.36"
       },
       {
         "name": "Mantequilla",
@@ -3008,7 +3008,8 @@
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
     },
-    "altVeg": "ej-san-jacobo-setas"
+    "altVeg": "ej-san-jacobo-setas",
+    "nota": "Con 250 ml de nata (la cantidad que traía la receta) salía demasiado cremoso para una sola ración; se queda en 75 ml por persona, lo justo para la salsa."
   },
   {
     "id": "gpg-arroz-gratinado-al-horno",

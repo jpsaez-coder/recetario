@@ -1210,8 +1210,9 @@ const getM=id=>typeof id==="string"&&id.startsWith("x:")?sueltoR(id):ajustar(get
 function vAjuste(id){
   const r=getR(id);if(!r)return "";
   const a=(S.ajustes||{})[id]||{},q=a.quitar||[],mas=a.mas||[];
-  const cant=i=>num(i.qty)>0?fmtQ(num(i.qty),i.unit):"al gusto";
-  return `<div class="ajuste"><b>Ajustar: ${esc(r.name)}</b><p class="msg">Solo para este menú; la receta no cambia. Cantidades para ${r.servings}: se escalan al grupo.</p>
+  const f=factor(r,RAC());
+  const cant=i=>{if(!(num(i.qty)>0))return "al gusto";const base=fmtQ(num(i.qty),i.unit);if(Math.abs(f-1)<0.01)return base;return `${base} (${fmtQ(num(i.qty)*f,i.unit)} para tu grupo)`};
+  return `<div class="ajuste"><b>Ajustar: ${esc(r.name)}</b><p class="msg">Solo para este menú; la receta no cambia. Cantidades para ${r.servings}: se escalan al grupo${Math.abs(f-1)<0.01?"":` (${RAC().toLocaleString("es-ES")} raciones)`}.</p>
   ${r.ingredients.filter(i=>i.name.trim()).map(i=>`<label class="chkb"><input type="checkbox" data-act="ajChk" data-id="${esc(id)}" data-k="${esc(nkey(i.name))}" ${q.includes(nkey(i.name))?"":"checked"}><span>${esc(i.name)} <small style="color:var(--mute)">${cant(i)}</small></span></label>`).join("")}
   ${mas.map((m,k)=>`<div class="chkb"><span>+ ${esc(m.name)} <small style="color:var(--mute)">${cant(m)}</small></span><button class="x" data-act="ajDel" data-id="${esc(id)}" data-i="${k}" aria-label="Quitar ${esc(m.name)}">✕</button></div>`).join("")}
   <div class="exf"><input id="ajName" placeholder="Añadir ingrediente (p. ej. Orégano)" aria-label="Ingrediente"><input id="ajQty" inputmode="decimal" placeholder="Cant. (opcional)" aria-label="Cantidad">
