@@ -11855,5 +11855,51 @@
     ],
     "steps": "Forra el fondo de una sartén o cazuela con tapa (que no sea de las buenas) con papel de horno cortado a medida\nEstira el hojaldre en un disco algo más pequeño que el fondo de la sartén y pínchalo con un tenedor, dejando 1 cm de borde sin pinchar para que suba\nColócalo dentro de la sartén forrada. Pela las manzanas, quítales el centro y córtalas en láminas finas; colócalas solapadas por encima. Reparte dados de mantequilla y espolvorea el azúcar\nTapa la sartén y ponla sobre un lecho de brasas suaves, sin llama, apoyada en tres piedras o bolas de aluminio para que el fondo no se queme. Reparte también algunas brasas sobre la tapa, para que haga calor por arriba y por abajo, como un horno\nCocina 20-25 min, vigilando que no se queme por abajo, hasta que el hojaldre esté dorado e hinchado y las manzanas tiernas\nRetírala del fuego, deja templar y pinta con la mermelada de albaricoque tibia para que brille\nConsejo: más brasas arriba que abajo, y siempre sin llama directa debajo: si no, el fondo se quema antes de que el hojaldre esté hecho por dentro",
     "nota": "Es la versión al fuego de «Tarta fina de manzana y hojaldre»: usa brasas arriba y abajo, como en el pan de olla, para que la sartén tapada haga de horno. Usa guantes gruesos para moverla y no hagas fuego si no está permitido en el campamento."
+  },
+  {
+    "id": "pf-pasta-fresca-campamento",
+    "name": "Pasta fresca al huevo (de campamento)",
+    "corto": "Pasta fresca al huevo",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Harina",
+        "qty": "400",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Huevos",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.10"
+      },
+      {
+        "name": "Harina para espolvorear",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.05"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Haz un volcán con la harina sobre una tabla o en una gamela grande. Casca los huevos en el centro y añade el aceite y una pizca de sal\nBate los huevos en el hueco con un tenedor y ve arrastrando harina desde el borde hacia dentro, hasta que se junte todo\nAmasa 10 min, apretando con la base de la mano y doblando la masa sobre sí misma, hasta que esté lisa, elástica y no se pegue. Si se pega, espolvorea algo más de harina\nHaz una bola, métela en una bolsa o envuélvela en un paño y déjala reposar 30 min: es buen momento para preparar las brasas y poner el agua\nEspolvorea la tabla con harina y estira la masa con una botella limpia (o un palo liso), lo más fina que puedas, casi transparente\nEnharina bien la lámina, enróllala sin apretar y corta tiras de un dedo de ancho con un cuchillo. Desenróllalas y espolvoréalas con harina para que no se peguen entre sí\nCuécelas en abundante agua hirviendo con sal, 2-3 min: están listas en cuanto suben a la superficie\nEscúrrelas y alíñalas al momento, con lo que tengas: aceite y ajo, tomate, o mantequilla y queso\nConsejo: en campamento sale a cuenta, porque la pasta fresca cuece en 2-3 min en vez de 10-12, y se gasta mucha menos leña\nOjo: la masa tiene que reposar; sin reposo se encoge al estirarla y no hay manera de dejarla fina",
+    "nota": "Se puede llevar amasada de casa en una bolsa y estirarla y cortarla allí. Si no quieres gastar huevos, sale igual con 400 g de harina y unos 180 ml de agua tibia: queda más rústica pero aguanta mejor el transporte."
   }
 ]
