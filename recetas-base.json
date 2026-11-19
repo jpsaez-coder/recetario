@@ -11901,5 +11901,533 @@
     ],
     "steps": "Haz un volcán con la harina sobre una tabla o en una gamela grande. Casca los huevos en el centro y añade el aceite y una pizca de sal\nBate los huevos en el hueco con un tenedor y ve arrastrando harina desde el borde hacia dentro, hasta que se junte todo\nAmasa 10 min, apretando con la base de la mano y doblando la masa sobre sí misma, hasta que esté lisa, elástica y no se pegue. Si se pega, espolvorea algo más de harina\nHaz una bola, métela en una bolsa o envuélvela en un paño y déjala reposar 30 min: es buen momento para preparar las brasas y poner el agua\nEspolvorea la tabla con harina y estira la masa con una botella limpia (o un palo liso), lo más fina que puedas, casi transparente\nEnharina bien la lámina, enróllala sin apretar y corta tiras de un dedo de ancho con un cuchillo. Desenróllalas y espolvoréalas con harina para que no se peguen entre sí\nCuécelas en abundante agua hirviendo con sal, 2-3 min: están listas en cuanto suben a la superficie\nEscúrrelas y alíñalas al momento, con lo que tengas: aceite y ajo, tomate, o mantequilla y queso\nConsejo: en campamento sale a cuenta, porque la pasta fresca cuece en 2-3 min en vez de 10-12, y se gasta mucha menos leña\nOjo: la masa tiene que reposar; sin reposo se encoge al estirarla y no hay manera de dejarla fina",
     "nota": "Se puede llevar amasada de casa en una bolsa y estirarla y cortarla allí. Si no quieres gastar huevos, sale igual con 400 g de harina y unos 180 ml de agua tibia: queda más rústica pero aguanta mejor el transporte."
+  },
+  {
+    "id": "chili-con-carne",
+    "name": "Chili con carne",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Otoño",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Carne picada mixta",
+        "qty": "600",
+        "unit": "g",
+        "price": "4.20"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.60"
+      },
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": "0.15"
+      },
+      {
+        "name": "Pimiento rojo",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.50"
+      },
+      {
+        "name": "Alubias cocidas",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "1",
+        "unit": "lata",
+        "price": "1.00"
+      },
+      {
+        "name": "Concentrado de tomate",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.15"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Pimentón",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.10"
+      },
+      {
+        "name": "Comino molido",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Laurel",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Chocolate negro (opcional)",
+        "qty": "20",
+        "unit": "g",
+        "price": "0.20"
+      },
+      {
+        "name": "Arroz",
+        "qty": "240",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en una olla a fuego medio-alto. Dora la carne picada desmenuzándola con la cuchara, 6-8 min, hasta que pierda el color crudo. Salpimienta\nAñade la cebolla y el pimiento picados y sofríe 8 min hasta que se ablanden. Incorpora el ajo picado y cocina 1 min\nEcha el pimentón (picante, si te gusta que pique), el comino, el orégano y el concentrado de tomate, y remueve 1 min para que se tuesten las especias sin quemarse\nVierte el tomate triturado y 200 ml de agua, añade el laurel y lleva a ebullición. Baja el fuego, tapa y cocina 30 min removiendo de vez en cuando\nAñade las alubias escurridas y aclaradas (rojas, si las encuentras) y cocina 10-15 min más, hasta que espese. Si usas chocolate, derrítelo ahora en el guiso\nMientras tanto, cuece el arroz en agua con sal, 12 min. Sirve el chili sobre el arroz o con pan\nConsejo: sale todavía mejor de un día para otro, así que es ideal para dejarlo hecho antes de la ruta y recalentarlo en el campamento",
+    "nota": "El chocolate negro es opcional: redondea el sabor. Para una versión sin carne, cambia la carne por 400 g más de alubias y una lata de maíz."
+  },
+  {
+    "id": "dal-lentejas-curri",
+    "name": "Dal de lentejas al curri",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Otoño",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Lentejas rojas",
+        "qty": "250",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "2",
+        "unit": "diente",
+        "price": "0.10"
+      },
+      {
+        "name": "Jengibre",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "1",
+        "unit": "lata",
+        "price": "1.00"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Curri",
+        "qty": "2",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Cúrcuma",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Comino molido",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Agua",
+        "qty": "750",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Limón",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.25"
+      },
+      {
+        "name": "Arroz",
+        "qty": "240",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en una olla a fuego medio y sofríe la cebolla picada 6-8 min, hasta que esté blanda y dorada\nAñade el ajo picado y el jengibre rallado, y cocina 1 min. Echa el curri, la cúrcuma y el comino y remueve 30 segundos para que suelten el aroma\nIncorpora el tomate triturado y cocina 3 min\nAñade las lentejas rojas (no hace falta remojarlas; solo aclararlas), el agua y una pizca de sal. Lleva a ebullición, baja el fuego y cocina 15-20 min removiendo de vez en cuando, hasta que se deshagan y quede una crema espesa\nMientras tanto, cuece el arroz en agua con sal, 12 min\nRectifica de sal, exprime el limón por encima y sirve el dal sobre el arroz\nConsejo: si espesa demasiado, añade un poco más de agua caliente; las lentejas rojas siguen absorbiendo al reposar",
+    "nota": "Es un plato muy barato, sin carne y de una sola olla. Si no tienes lentejas rojas, sirven las pardinas, pero necesitan 30-35 min de cocción y más agua."
+  },
+  {
+    "id": "hummus",
+    "name": "Hummus",
+    "servings": 6,
+    "categories": [
+      "Entrante",
+      "Ruta",
+      "Acampada",
+      "Casa",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Garbanzos cocidos",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Tahini",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.60"
+      },
+      {
+        "name": "Limón",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.25"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Comino molido",
+        "qty": "0.5",
+        "unit": "cdta",
+        "price": "0.03"
+      },
+      {
+        "name": "Agua",
+        "qty": "3",
+        "unit": "cda",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Escurre los garbanzos y guarda un poco del líquido del bote\nMachaca los garbanzos con un tenedor o un mortero (o tritúralos, si tienes batidora) hasta hacer un puré lo más fino posible\nAñade el tahini, el zumo del limón, el ajo muy picado, el comino, la sal y 2 cucharadas de aceite. Mezcla bien\nAligera con el agua o el líquido de los garbanzos, de cucharada en cucharada, hasta que quede cremoso y untable\nSírvelo en un plato hondo con un hilo de aceite por encima, con pan, palitos de zanahoria o tortillas\nConsejo: con un par de horas de reposo sabe más; aguanta bien en la nevera 3-4 días",
+    "nota": "Sin batidora sale algo más rústico, y está igual de bueno. Si no encuentras tahini, sirve una cucharada de crema de cacahuete natural, aunque cambia el sabor."
+  },
+  {
+    "id": "crema-calabaza",
+    "name": "Crema de calabaza",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Otoño",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Calabaza",
+        "qty": "1",
+        "unit": "kg",
+        "price": "1.50"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Zanahoria",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.20"
+      },
+      {
+        "name": "Patata",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.25"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Caldo de verduras o de pollo",
+        "qty": "750",
+        "unit": "ml",
+        "price": "0.50"
+      },
+      {
+        "name": "Nuez moscada",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Pela la calabaza, quítale las pepitas y córtala en trozos. Pela y trocea la patata y la zanahoria\nCalienta el aceite en una olla a fuego medio y pocha la cebolla picada 5 min\nAñade la calabaza, la zanahoria y la patata, y rehoga 3 min\nVierte el caldo caliente, sazona y cuece tapado a fuego medio-bajo 25 min, hasta que todo esté muy blando\nTritura con la batidora hasta que quede fina. Si no tienes, aplasta con un tenedor o un pasapurés y remueve bien: queda más rústica\nRectifica de sal, añade pimienta y una pizca de nuez moscada, y sirve caliente\nConsejo: con una cucharada de nata o unos picatostes por encima queda más completa",
+    "nota": "Cortar la calabaza cruda cuesta: si la pelas con dificultad, cuécela unos minutos entera con cáscara y se ablanda."
+  },
+  {
+    "id": "tarta-queso-sin-horno",
+    "name": "Tarta de queso sin horno",
+    "servings": 8,
+    "categories": [
+      "Postre y masas",
+      "Casa",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Galletas María",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.60"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.60"
+      },
+      {
+        "name": "Queso crema",
+        "qty": "400",
+        "unit": "g",
+        "price": "2.80"
+      },
+      {
+        "name": "Nata para montar",
+        "qty": "200",
+        "unit": "ml",
+        "price": "0.90"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.12"
+      },
+      {
+        "name": "Leche",
+        "qty": "100",
+        "unit": "ml",
+        "price": "0.10"
+      },
+      {
+        "name": "Gelatina neutra en láminas",
+        "qty": "10",
+        "unit": "g",
+        "price": "0.50"
+      },
+      {
+        "name": "Limón",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.25"
+      }
+    ],
+    "steps": "Tritura las galletas hasta hacerlas polvo (con un rodillo dentro de una bolsa si no tienes batidora). Mézclalas con la mantequilla derretida\nExtiende esa mezcla en el fondo de un molde y aprieta con el dorso de una cuchara. Mételo en la nevera mientras haces el relleno\nPon las láminas de gelatina en agua fría 5 min, hasta que se ablanden\nCalienta la leche sin que hierva, apártala del fuego y disuelve en ella la gelatina bien escurrida\nBate el queso crema con el azúcar y el zumo del limón hasta que no queden grumos. Añade la leche con la gelatina y mezcla\nMonta la nata bien fría e incorpórala al queso con movimientos envolventes, para que no se baje\nVierte el relleno sobre la base y alisa. Deja cuajar en la nevera 4-6 horas, mejor de un día para otro\nSírvela con mermelada o fruta por encima",
+    "nota": "No lleva horno ni huevo, pero necesita nevera. La nata tiene que ser para montar (mínimo 35 % de grasa)."
+  },
+  {
+    "id": "flan-huevo",
+    "name": "Flan de huevo",
+    "servings": 6,
+    "categories": [
+      "Postre y masas",
+      "Acampada",
+      "Casa",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Huevos",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.00"
+      },
+      {
+        "name": "Leche entera",
+        "qty": "500",
+        "unit": "ml",
+        "price": "0.55"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "160",
+        "unit": "g",
+        "price": "0.20"
+      },
+      {
+        "name": "Vainilla",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Haz el caramelo: pon 60 g de azúcar con un chorrito de agua en un cazo a fuego medio, sin remover, hasta que se dore. Repártelo rápido en el fondo de los moldes (vasos de metal o latas limpias, o un molde único)\nBate los huevos con los 100 g de azúcar restantes sin hacer espuma. Añade la leche y la vainilla y mezcla\nColoca el flan colado en los moldes, por encima del caramelo\nPon los moldes dentro de una olla grande con agua caliente hasta la mitad de su altura (baño maría) y tápala\nCuece a fuego bajo 35-40 min, hasta que al pinchar con un palillo salga limpio\nDeja enfriar y llévalo a la nevera al menos 4 horas. Para servirlo, pasa un cuchillo por el borde y dale la vuelta sobre un plato\nConsejo: el agua del baño maría no debe hervir fuerte, solo temblar; si hierve, el flan se llena de agujeritos",
+    "nota": "En el campamento, la olla con brasas suaves por debajo y la tapa puesta hace de baño maría. Pon un trapo doblado en el fondo para que los moldes no toquen el metal."
+  },
+  {
+    "id": "alioli",
+    "name": "Alioli",
+    "servings": 8,
+    "categories": [
+      "Salsa",
+      "Casa"
+    ],
+    "ingredients": [
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": "0.15"
+      },
+      {
+        "name": "Huevo",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.25"
+      },
+      {
+        "name": "Aceite de oliva suave",
+        "qty": "200",
+        "unit": "ml",
+        "price": "1.20"
+      },
+      {
+        "name": "Limón",
+        "qty": "0.5",
+        "unit": "ud",
+        "price": "0.10"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Machaca los ajos pelados con la sal en un mortero hasta hacer una pasta fina (o pica muy fino, si no tienes mortero)\nEn un vaso alto, pon el huevo, el ajo, la sal y el zumo del limón, y después el aceite de golpe\nMete la batidora apagada hasta el fondo y enciéndela. Mantenla quieta 15 s hasta que empiece a emulsionar y levántala despacio\nPrueba y rectifica de sal. Guárdalo en la nevera\nConsejo: si se corta, bate un huevo nuevo en un vaso limpio y añade el alioli cortado poco a poco, sin parar de batir\nOjo: lleva huevo crudo: guárdalo en nevera y consúmelo en 24 h. Para el campamento, mejor llevar el de bote",
+    "nota": "El alioli tradicional lleva solo ajo, aceite y sal, machacados en mortero con paciencia. Esta versión con huevo es más fácil y no se corta tanto."
+  },
+  {
+    "id": "chocolate-a-la-taza",
+    "name": "Chocolate a la taza",
+    "servings": 4,
+    "categories": [
+      "Desayuno",
+      "Merienda",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Leche",
+        "qty": "1",
+        "unit": "l",
+        "price": "0.95"
+      },
+      {
+        "name": "Chocolate negro",
+        "qty": "100",
+        "unit": "g",
+        "price": "1.10"
+      },
+      {
+        "name": "Maicena",
+        "qty": "20",
+        "unit": "g",
+        "price": "0.05"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.05"
+      }
+    ],
+    "steps": "Disuelve la maicena en un vaso con un poco de leche fría, removiendo hasta que no queden grumos\nCalienta el resto de la leche en un cazo a fuego medio con el chocolate en trozos y el azúcar, removiendo hasta que se derrita\nAñade la maicena disuelta y remueve sin parar 3-5 min a fuego suave, hasta que espese y hierva suavemente\nSirve bien caliente, en taza pequeña\nConsejo: no dejes de remover y baja el fuego si sube mucho; se pega fácilmente al fondo",
+    "nota": "Si lo quieres más espeso, añade otra cucharada de maicena; si prefieres menos dulce, reduce el azúcar o quítalo."
   }
 ]
