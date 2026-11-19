@@ -11809,5 +11809,50 @@
     ],
     "steps": "Calienta el aceite en una olla (de hierro sobre las brasas, o a fuego medio-alto en casa) y dora el seitán troceado 4-5 min, solo con pimienta (la sal la pone luego la soja). Retíralo a un plato\nEn la misma olla, añade la cebolla y el apio con una pizca de sal, y sofríe 6-8 min hasta que se ablanden. Incorpora el ajo, el pimentón, el tomillo, el orégano y el concentrado de tomate, y remueve 1 min\nAñade las zanahorias, las patatas, el tomate triturado, el laurel, la salsa de soja, el caldo y el agua (o el vino tinto). Tapa y cocina a fuego lento 20 min, hasta que las verduras estén casi tiernas\nIncorpora el seitán dorado y cocina 10-15 min más, destapado o semitapado\nRectifica de sal y pimienta. Si quieres el caldo más espeso, aplasta un par de trozos de patata contra la pared de la olla con el cucharón. Retira del fuego, deja reposar 10 min tapado y sirve bien caliente con pan rústico",
     "nota": "Versión con carne: mira «Estofado rústico al fuego (con ternera)», hecha con las mismas verduras y especias."
+  },
+  {
+    "id": "ca-tarta-manzana-al-fuego",
+    "name": "Tarta fina de manzana al fuego",
+    "corto": "Tarta manzana al fuego",
+    "servings": 6,
+    "categories": [
+      "Postre y masas",
+      "Acampada",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Hojaldre en lámina",
+        "qty": "1",
+        "unit": "paquete",
+        "price": "1.50"
+      },
+      {
+        "name": "Manzanas reineta",
+        "qty": "3",
+        "unit": "ud",
+        "price": "0.90"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.30"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.05"
+      },
+      {
+        "name": "Mermelada de albaricoque",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.40"
+      }
+    ],
+    "steps": "Forra el fondo de una sartén o cazuela con tapa (que no sea de las buenas) con papel de horno cortado a medida\nEstira el hojaldre en un disco algo más pequeño que el fondo de la sartén y pínchalo con un tenedor, dejando 1 cm de borde sin pinchar para que suba\nColócalo dentro de la sartén forrada. Pela las manzanas, quítales el centro y córtalas en láminas finas; colócalas solapadas por encima. Reparte dados de mantequilla y espolvorea el azúcar\nTapa la sartén y ponla sobre un lecho de brasas suaves, sin llama, apoyada en tres piedras o bolas de aluminio para que el fondo no se queme. Reparte también algunas brasas sobre la tapa, para que haga calor por arriba y por abajo, como un horno\nCocina 20-25 min, vigilando que no se queme por abajo, hasta que el hojaldre esté dorado e hinchado y las manzanas tiernas\nRetírala del fuego, deja templar y pinta con la mermelada de albaricoque tibia para que brille\nConsejo: más brasas arriba que abajo, y siempre sin llama directa debajo: si no, el fondo se quema antes de que el hojaldre esté hecho por dentro",
+    "nota": "Es la versión al fuego de «Tarta fina de manzana y hojaldre»: usa brasas arriba y abajo, como en el pan de olla, para que la sartén tapada haga de horno. Usa guantes gruesos para moverla y no hagas fuego si no está permitido en el campamento."
   }
 ]
