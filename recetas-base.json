@@ -11062,5 +11062,632 @@
       }
     ],
     "steps": "Pon a hidratar las pasas en agua templada 10 min y escúrrelas\nEn una cazuela, dora los muslos de pollo salpimentados con un poco de aceite. Añade la cúrcuma, el jengibre y el caldo, tapa y cocina a fuego bajo 25-30 min, hasta que el pollo esté tierno\nMientras, pocha las cebollas cortadas en juliana fina con un chorrito de aceite a fuego bajo 15-20 min, removiendo de vez en cuando, hasta que estén muy blandas y doradas\nAñade a la cebolla los garbanzos, las pasas escurridas, la canela y la miel, y cocina 5 min más removiendo, hasta que quede meloso (la tfaya)\nPon el cuscús en un bol amplio, cúbrelo con caldo caliente de la cocción del pollo (o agua), tapa y deja reposar 5 min hasta que lo absorba. Destápalo, suéltalo con un tenedor y añade la mantequilla para que quede brillante\nSirve el cuscús en una fuente, el pollo encima o al lado, y cubre todo con la tfaya de cebolla, garbanzos y pasas"
+  },
+  {
+    "id": "gpg-arancini-risotto",
+    "name": "Arancini de risotto rellenos",
+    "corto": "Arancini de risotto",
+    "servings": 6,
+    "categories": [
+      "Entrante",
+      "Casa"
+    ],
+    "ingredients": [
+      {
+        "name": "Arroz para risotto (Arborio o Carnaroli)",
+        "qty": "300",
+        "unit": "g",
+        "price": "0.75"
+      },
+      {
+        "name": "Caldo de verduras o de pollo",
+        "qty": "1",
+        "unit": "l",
+        "price": "0.50"
+      },
+      {
+        "name": "Queso parmesano rallado",
+        "qty": "60",
+        "unit": "g",
+        "price": "1.20"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.25"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "0.5",
+        "unit": "ud",
+        "price": "0.15"
+      },
+      {
+        "name": "Vino blanco (opcional)",
+        "qty": "50",
+        "unit": "ml",
+        "price": "0.30"
+      },
+      {
+        "name": "Queso mozzarella fresca",
+        "qty": "150",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Jamón cocido en dados",
+        "qty": "100",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Huevos",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.50"
+      },
+      {
+        "name": "Pan rallado (mejor panko)",
+        "qty": "150",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Harina para rebozar",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.05"
+      },
+      {
+        "name": "Aceite de girasol para freír",
+        "qty": "300",
+        "unit": "ml",
+        "price": "0.80"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Azafrán o cúrcuma (opcional, para el dorado)",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.10"
+      }
+    ],
+    "steps": "Pocha la cebolla picada muy fina con la mantequilla en una cazuela amplia a fuego medio hasta que esté transparente\nAñade el arroz y remueve 1 minuto. Si usas vino blanco, échalo ahora y deja que se evapore el alcohol\nVe añadiendo el caldo caliente poco a poco, cazo a cazo, removiendo con frecuencia a medida que el arroz lo absorba (unos 18 minutos)\nCuando el arroz esté tierno pero cremoso, retíralo del fuego, mezcla el queso parmesano y salpimienta. Extiéndelo en una bandeja amplia y déjalo enfriar por completo (al menos 2 horas en la nevera, mejor de un día para otro)\nCon las manos ligeramente húmedas, toma una porción de arroz frío (tamaño de una pelota de golf) y aplánala en la palma de la mano\nColoca un par de dados de mozzarella y de jamón en el centro\nCierra el arroz alrededor del relleno formando una bola compacta, sin que queden grietas por donde se escape el queso al freír\nPasa cada bola por harina (sacudiendo el exceso), luego por huevo batido y por último por pan rallado. Para una capa extra crujiente, repite el paso del huevo y el pan rallado\nCalienta abundante aceite en un cazo hondo a 170-180 °C. Fríe los arancini en tandas pequeñas, 3-4 minutos, hasta que estén bien dorados\nEscúrrelos sobre papel absorbente y sírvelos calientes, solos o con salsa marinara o un poco de rúcula fresca",
+    "nota": "Salen unas 10-12 bolas (2 por persona para 6). El azafrán o la cúrcuma son opcionales, solo para que queden más doradas por dentro; el vino blanco también se puede omitir."
+  },
+  {
+    "id": "pf-pizza-al-fuego",
+    "name": "Pizza al fuego",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Harina",
+        "qty": "300",
+        "unit": "g",
+        "price": "0.30"
+      },
+      {
+        "name": "Levadura química",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Sal",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.02"
+      },
+      {
+        "name": "Agua",
+        "qty": "180",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Tomate frito",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.60"
+      },
+      {
+        "name": "Queso rallado",
+        "qty": "150",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Jamón cocido en rodajas (opcional)",
+        "qty": "100",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Aceitunas negras (opcional)",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.30"
+      }
+    ],
+    "steps": "Mezcla la harina, la levadura química y la sal. Añade el agua y 1 cucharada de aceite, y amasa 3 min hasta que no se pegue\nDeja reposar la masa 10 min tapada\nDivídela en 2 o 4 porciones, según el tamaño de tu sartén, y estíralas con las manos en discos finos\nCalienta una sartén con tapa (o cúbrela con papel de aluminio) sobre brasas sin llama, con un chorrito de aceite\nCocina cada disco 2-3 min por un lado, hasta que se dore\nDale la vuelta y reparte sobre la cara ya cocinada el tomate frito, el queso rallado, el orégano y los toppings que quieras\nTapa la sartén (o cierra el aluminio) y deja 4-5 min a fuego bajo, hasta que la base se dore por debajo y el queso se funda con el calor de dentro\nSírvela recién hecha, cortada en porciones",
+    "nota": "La masa se puede llevar amasada de casa en una bolsa, y cocinarla al momento junto al fuego. Cambia los toppings por lo que tengas a mano.",
+    "source": {
+      "name": "guiasparaguias · Pan plano de sartén",
+      "url": "https://jpsaez-coder.github.io/recetario"
+    }
+  },
+  {
+    "id": "gpg-sopa-de-puerros-rustica",
+    "name": "Sopa de puerros (estilo rústico al fuego)",
+    "corto": "Sopa de puerros rústica",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Puerros",
+        "qty": "4",
+        "unit": "ud",
+        "price": "1.60"
+      },
+      {
+        "name": "Patatas",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.40"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.25"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Caldo de verduras o de pollo",
+        "qty": "1",
+        "unit": "l",
+        "price": "0.50"
+      },
+      {
+        "name": "Laurel",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Nuez moscada",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Picatostes de pan (opcional)",
+        "qty": "30",
+        "unit": "g",
+        "price": "0.20"
+      }
+    ],
+    "steps": "Derrite la mantequilla (o calienta aceite de oliva) en una olla a fuego medio-bajo. Añade los puerros en rodajas con una pizca de sal y pochalos despacio 12-15 min, sin que se quemen, hasta que estén muy blandos y dulces\nAñade el ajo picado y cocina 1 min. Incorpora las patatas peladas y chascadas en trozos pequeños, y rehoga todo junto 2 min más\nVierte el caldo caliente, añade el laurel y una pizca de nuez moscada. Cocina a fuego medio-bajo 20 min, hasta que la patata se deshaga un poco al pincharla\nRetira el laurel. Sírvela tal cual, rústica con tropezones, o aplasta un par de patatas con el cucharón para espesarla. Añade los picatostes al servir",
+    "nota": "Puedes cambiar la mantequilla por aceite de oliva, y los picatostes por cebollino picado."
+  },
+  {
+    "id": "gpg-sopa-de-tomate-asado",
+    "name": "Sopa de tomate asado al fuego",
+    "corto": "Sopa de tomate asado",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Tomates",
+        "qty": "1",
+        "unit": "kg",
+        "price": "1.50"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": "0.15"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.02"
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Caldo de verduras",
+        "qty": "750",
+        "unit": "ml",
+        "price": "0.40"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Albahaca",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en una olla ancha a fuego medio-alto. Coloca los tomates partidos por la mitad con el corte hacia abajo, junto con la cebolla y los ajos enteros. Déjalos dorar 6-8 min, hasta que cojan un tono tostado\nDales la vuelta, añade el azúcar, el orégano, sal y pimienta. Baja a fuego medio y cocina 10 min, aplastando los tomates con una cuchara de madera\nVierte el caldo y deja hervir suavemente 15 min más\nTritura con la batidora hasta dejarla fina (o déjala más rústica, con trozos) y sirve con un hilo de aceite crudo y hojas de albahaca",
+    "nota": "Si no tienes tomates maduros de temporada, usa 800 g de tomate entero pelado en conserva."
+  },
+  {
+    "id": "gpg-sopa-tradicional-de-pollo",
+    "name": "Sopa tradicional de pollo",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Invierno"
+    ],
+    "ingredients": [
+      {
+        "name": "Contramuslos de pollo con hueso y piel",
+        "qty": "400",
+        "unit": "g",
+        "price": "2.00"
+      },
+      {
+        "name": "Zanahorias",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.40"
+      },
+      {
+        "name": "Apio",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.20"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "1",
+        "unit": "diente",
+        "price": "0.05"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Agua o caldo suave",
+        "qty": "1.5",
+        "unit": "l",
+        "price": "0.50"
+      },
+      {
+        "name": "Fideos finos",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.30"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Perejil",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en la olla a fuego medio-alto y dora las piezas de pollo salpimentadas unos 3 min por cada lado, para sellar el sabor\nIncorpora la cebolla partida por la mitad, la zanahoria, el apio y el ajo aplastado. Cubre con el agua o el caldo y lleva a ebullición\nEspuma la superficie si sale espuma, baja el fuego al mínimo, tapa y cocina suavemente 35-40 min\nSaca el pollo y la media cebolla. Desmenuza la carne (desechando piel y huesos) y devuélvela a la olla. Añade los fideos, cocina el tiempo del paquete (3-5 min) y sirve con perejil picado",
+    "nota": "También puedes usar 1 pechuga y 1 muslo de pollo, o sustituir los fideos por arroz."
+  },
+  {
+    "id": "gpg-sopa-de-lentejas-al-fuego",
+    "name": "Sopa de lentejas al fuego",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Invierno",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Lentejas pardinas secas",
+        "qty": "200",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Zanahoria",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.20"
+      },
+      {
+        "name": "Pimiento rojo",
+        "qty": "0.5",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "2",
+        "unit": "diente",
+        "price": "0.10"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Pimentón",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Comino molido",
+        "qty": "0.5",
+        "unit": "cdta",
+        "price": "0.05"
+      },
+      {
+        "name": "Caldo de verduras",
+        "qty": "1.2",
+        "unit": "l",
+        "price": "0.60"
+      },
+      {
+        "name": "Laurel",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en la olla a fuego medio. Sofríe la cebolla, la zanahoria y el pimiento con una pizca de sal durante 8-10 min, hasta que estén tiernos\nAñade el ajo picado, el comino y el pimentón, y remueve 30 segundos con cuidado de que no se queme el pimentón\nAgrega las lentejas, el laurel y el caldo. Lleva a ebullición, baja el fuego al mínimo y cocina tapado 30-35 min, hasta que estén tiernas\nRectifica de sal, retira el laurel y sirve bien caliente (un chorrito de vinagre o limón en el plato le sienta genial)",
+    "nota": "Usa pimentón ahumado si lo prefieres más intenso."
+  },
+  {
+    "id": "gpg-estofado-rustico-al-fuego",
+    "name": "Estofado rústico al fuego (carne o seitán)",
+    "corto": "Estofado rústico",
+    "servings": 6,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Fuego",
+      "Invierno"
+    ],
+    "ingredients": [
+      {
+        "name": "Ternera para guisar (morcillo, aguja o espaldilla) en dados grandes",
+        "qty": "1",
+        "unit": "kg",
+        "price": "9.00"
+      },
+      {
+        "name": "Zanahorias",
+        "qty": "4",
+        "unit": "ud",
+        "price": "0.80"
+      },
+      {
+        "name": "Patatas pequeñas",
+        "qty": "500",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Apio",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.35"
+      },
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": "0.15"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Concentrado de tomate",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "1",
+        "unit": "lata",
+        "price": "1.00"
+      },
+      {
+        "name": "Pimentón",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Tomillo",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Orégano",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Laurel",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Caldo de carne",
+        "qty": "750",
+        "unit": "ml",
+        "price": "1.00"
+      },
+      {
+        "name": "Agua (o vino tinto)",
+        "qty": "250",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Calienta el aceite en una olla (de hierro sobre las brasas, o a fuego medio-alto en casa) y dora bien los dados de ternera por tandas, 5-6 min, hasta sellarlos. Salpimienta antes de dorar. Retíralos a un plato\nEn la misma olla, añade la cebolla y el apio con una pizca de sal, y sofríe 6-8 min hasta que se ablanden. Incorpora el ajo, el pimentón, el tomillo, el orégano y el concentrado de tomate, y remueve 1 min\nDevuelve la ternera a la olla junto con las zanahorias, las patatas, el tomate triturado, el laurel, el caldo y el agua (o el vino tinto). Tapa y cocina a fuego lento 1 h 30 - 2 h, removiendo de vez en cuando, hasta que la carne esté tierna\nRectifica de sal y pimienta. Si quieres el caldo más espeso, aplasta un par de trozos de patata contra la pared de la olla con el cucharón. Retira del fuego, deja reposar 10 min tapado y sirve bien caliente con pan rústico",
+    "nota": "Versión sin carne: cambia la ternera por 650-750 g de seitán (fresco, de bote o casero, ya cocido), escurrido y troceado a mano, y el caldo de carne por caldo de verduras oscuro o de setas, con 2 cucharadas de salsa de soja de más (así no hace falta tanta sal). Dora el seitán solo con pimienta (sin sal, la dará la soja), 4-5 min. Luego cuece primero solo las verduras, el tomate triturado, el laurel, la soja, el caldo y el agua 20 min, hasta que estén casi tiernas; añade el seitán dorado y cocina 10-15 min más, destapado o semitapado."
   }
 ]
