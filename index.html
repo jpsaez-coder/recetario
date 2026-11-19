@@ -1283,10 +1283,11 @@ const CASA="__casa";
 const planIds=()=>planEntries().map(e=>e.id).filter(id=>id!==CASA);
 function addPlan(id,d,m){S.plan=S.plan||{};const k=d+"|"+m;S.plan[k]=[...(S.plan[k]||[]),id];persist()}
 function optRecetas(m){
-  /* solo las elegidas para el menú; primero las que pegan con ese momento */
+  /* solo las elegidas para el menú; primero las que pegan con ese momento; dentro de cada grupo, orden alfabético */
+  const abc=(a,b)=>a.name.localeCompare(b.name,"es",{sensitivity:"base"});
   const sel=(S.menu||[]).map(getR).filter(Boolean),pega=r=>MOM_DE[r.categories.find(c=>MOM_DE[c])]===m;
-  const ex=S.extras||[];
-  return [...sel.filter(pega),...sel.filter(r=>!pega(r))].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("")
+  const ex=[...(S.extras||[])].sort(abc);
+  return [...sel.filter(pega).sort(abc),...sel.filter(r=>!pega(r)).sort(abc)].map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("")
     +(ex.length?`<optgroup label="Sueltos">${ex.map(e=>`<option value="x:${esc(e.id)}">${esc(e.name)}</option>`).join("")}</optgroup>`:"");
 }
 /* ---------- energía según la actividad del día ----------
