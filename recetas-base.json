@@ -11903,6 +11903,491 @@
     "nota": "Se puede llevar amasada de casa en una bolsa y estirarla y cortarla allí. Si no quieres gastar huevos, sale igual con 400 g de harina y unos 180 ml de agua tibia: queda más rústica pero aguanta mejor el transporte."
   },
   {
+    "id": "pin-tagliatelle-boloñesa-fuego",
+    "name": "Tagliatelle a la boloñesa al fuego",
+    "corto": "Tagliatelle boloñesa",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Fuego",
+      "Invierno"
+    ],
+    "ingredients": [
+      {
+        "name": "Tagliatelle (frescos o secos)",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.20"
+      },
+      {
+        "name": "Carne picada de ternera",
+        "qty": "500",
+        "unit": "g",
+        "price": "4.50"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "2",
+        "unit": "diente",
+        "price": "0.10"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "400",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Cuelga la olla o pon la sartén sobre las brasas con el aceite, y sofríe la cebolla y el ajo picados 5 min, hasta que estén blandos\nAñade la carne picada y dórala bien, deshaciendo los grumos con la cuchara, 6-8 min\nIncorpora el tomate triturado, sal y pimienta, y deja cocer a fuego medio 15 min, removiendo de vez en cuando\nCuece los tagliatelle en otra olla con agua hirviendo y sal, según el tiempo del paquete\nEscurre la pasta y mézclala con la salsa directamente en la sartén, o sirve la salsa por encima",
+    "nota": "Si llevas la pasta fresca, cuece solo 2-3 min: está lista en cuanto sube a la superficie."
+  },
+  {
+    "id": "pin-rollitos-canela-rescoldo",
+    "name": "Rollitos de canela al rescoldo",
+    "corto": "Rollitos de canela",
+    "servings": 6,
+    "categories": [
+      "Postre y masas",
+      "Desayuno",
+      "Acampada",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Harina",
+        "qty": "400",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Leche",
+        "qty": "200",
+        "unit": "ml",
+        "price": "0.30"
+      },
+      {
+        "name": "Levadura de panadería",
+        "qty": "7",
+        "unit": "g",
+        "price": "0.20"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "60",
+        "unit": "g",
+        "price": "0.50"
+      },
+      {
+        "name": "Azúcar",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.10"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Azúcar moreno (relleno)",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.20"
+      },
+      {
+        "name": "Canela molida",
+        "qty": "1",
+        "unit": "cda",
+        "price": "0.10"
+      }
+    ],
+    "steps": "Mezcla la harina, la leche templada, la levadura, el azúcar, una pizca de sal y la mitad de la mantequilla derretida. Amasa 10 min hasta que esté lisa y elástica\nDeja reposar la masa tapada 45-60 min, hasta que doble su tamaño\nEstira la masa en un rectángulo, unta con el resto de la mantequilla derretida y espolvorea el azúcar moreno mezclado con la canela\nEnrolla la masa sobre sí misma y corta en rodajas gruesas; colócalas juntas en una olla de hierro forrada con papel de horno\nTapa la olla, ponla sobre un lecho de brasas suaves y reparte brasas también sobre la tapa, para que haga de horno por arriba y por abajo\nCocina 20-25 min, vigilando que no se queme por abajo, hasta que estén doradas y hechas por dentro",
+    "nota": "Se puede llevar la masa ya amasada y reposada de casa, envuelta en un paño, para montar los rollitos directamente en el campamento."
+  },
+  {
+    "id": "pin-patatas-papillote-fuego",
+    "name": "Patatas asadas en papillote al fuego",
+    "corto": "Patatas en papillote",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Ruta",
+      "Fuego",
+      "Verano"
+    ],
+    "sencilla": true,
+    "ingredients": [
+      {
+        "name": "Patatas baby",
+        "qty": "700",
+        "unit": "g",
+        "price": "1.00"
+      },
+      {
+        "name": "Ajo",
+        "qty": "4",
+        "unit": "diente",
+        "price": "0.20"
+      },
+      {
+        "name": "Romero fresco",
+        "qty": "1",
+        "unit": "ramita",
+        "price": "0.20"
+      },
+      {
+        "name": "Tomillo fresco",
+        "qty": "1",
+        "unit": "ramita",
+        "price": "0.20"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "3",
+        "unit": "cda",
+        "price": "0.30"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Lava las patatas y córtalas por la mitad (o en cuartos si son grandes)\nColócalas sobre una lámina grande de papel de aluminio, con el ajo chafado, el romero, el tomillo, el aceite y sal\nCierra bien el papillote para que no se escape el vapor\nEntierra el paquete entre las brasas, o apóyalo sobre la parrilla cerca del fuego, 25-30 min, dándole la vuelta a mitad de cocción\nAbre con cuidado (sale vapor caliente) y comprueba que las patatas están tiernas antes de servir"
+  },
+  {
+    "id": "pin-shakshuka-campera",
+    "name": "Huevos al plato con tomate (shakshuka campera)",
+    "corto": "Shakshuka campera",
+    "servings": 4,
+    "categories": [
+      "Desayuno",
+      "Principal",
+      "Acampada",
+      "Fuego",
+      "Verano"
+    ],
+    "ingredients": [
+      {
+        "name": "Tomates cherry",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Ajo",
+        "qty": "2",
+        "unit": "diente",
+        "price": "0.10"
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "200",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Pimentón",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.10"
+      },
+      {
+        "name": "Huevos",
+        "qty": "6",
+        "unit": "ud",
+        "price": "1.50"
+      },
+      {
+        "name": "Queso feta",
+        "qty": "100",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Pon la sartén sobre el fuego con el aceite y sofríe la cebolla y el ajo picados 5-6 min\nAñade los tomates cherry enteros, el tomate triturado y el pimentón, y cocina a fuego medio 10 min hasta que los cherry empiecen a deshacerse\nSalpimienta, y haz pequeños huecos en la salsa con la cuchara\nCasca un huevo en cada hueco, tapa la sartén y cocina 6-8 min hasta que las claras cuajen y la yema quede como más te guste\nReparte el queso feta desmenuzado por encima y sirve directamente en la sartén, con pan para mojar"
+  },
+  {
+    "id": "pin-nachos-campamento",
+    "name": "Nachos de campamento",
+    "corto": "Nachos de campamento",
+    "servings": 6,
+    "categories": [
+      "Merienda",
+      "Entrante",
+      "Acampada",
+      "Fuego"
+    ],
+    "sencilla": true,
+    "ingredients": [
+      {
+        "name": "Nachos de maíz",
+        "qty": "250",
+        "unit": "g",
+        "price": "1.80"
+      },
+      {
+        "name": "Judías negras cocidas",
+        "qty": "1",
+        "unit": "lata",
+        "price": "1.00"
+      },
+      {
+        "name": "Queso rallado (mezcla fundente)",
+        "qty": "200",
+        "unit": "g",
+        "price": "2.00"
+      },
+      {
+        "name": "Tomate",
+        "qty": "2",
+        "unit": "ud",
+        "price": "0.60"
+      },
+      {
+        "name": "Cebolla morada",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Jalapeños en rodajas",
+        "qty": "50",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Nata agria o yogur griego",
+        "qty": "100",
+        "unit": "g",
+        "price": "0.70"
+      },
+      {
+        "name": "Cilantro fresco",
+        "qty": "1",
+        "unit": "manojo",
+        "price": "0.50"
+      }
+    ],
+    "steps": "Reparte una capa de nachos en una sartén de hierro, cubre con las judías escurridas y la mitad del queso\nRepite con otra capa de nachos y el resto del queso\nPon la sartén cerca del fuego (sin llama directa) o tápala con otra olla a modo de tapa, hasta que el queso funde, 8-10 min\nPica el tomate y la cebolla morada en daditos\nRetira del fuego y reparte por encima el jalapeño, el tomate, la cebolla, una cucharada de nata agria y el cilantro picado"
+  },
+  {
+    "id": "pin-crema-champinones-hogaza",
+    "name": "Crema de champiñones en hogaza",
+    "corto": "Crema de champiñones en pan",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Entrante",
+      "Acampada",
+      "Casa",
+      "Otoño",
+      "Invierno"
+    ],
+    "ingredients": [
+      {
+        "name": "Champiñones",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.80"
+      },
+      {
+        "name": "Patata",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Zanahoria",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.20"
+      },
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": "0.30"
+      },
+      {
+        "name": "Caldo de verduras",
+        "qty": "600",
+        "unit": "ml",
+        "price": "0.50"
+      },
+      {
+        "name": "Nata para cocinar",
+        "qty": "100",
+        "unit": "ml",
+        "price": "0.80"
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": "0.20"
+      },
+      {
+        "name": "Panecillos redondos",
+        "qty": "4",
+        "unit": "ud",
+        "price": "2.00"
+      },
+      {
+        "name": "Perejil fresco",
+        "qty": "1",
+        "unit": "manojo",
+        "price": "0.30"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Sofríe en la olla la cebolla, la zanahoria y la patata troceadas con el aceite, 8 min\nAñade los champiñones laminados (reserva unos pocos para decorar) y rehoga 5 min más\nCubre con el caldo, salpimienta y cuece 15-20 min hasta que las verduras estén tiernas\nTritura todo con la batidora y añade la nata, mezclando bien; ajusta de sal\nSaltea aparte los champiñones reservados con una pizca de sal hasta que se doren\nCorta la tapa a los panecillos y vacíalos con cuidado, dejando una pared gruesa; vierte la crema caliente dentro y decora con los champiñones salteados y el perejil picado"
+  },
+  {
+    "id": "pin-mazorcas-brasa",
+    "name": "Mazorcas de maíz a la brasa",
+    "corto": "Mazorcas a la brasa",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Acampada",
+      "Ruta",
+      "Fuego",
+      "Verano"
+    ],
+    "sencilla": true,
+    "ingredients": [
+      {
+        "name": "Mazorcas de maíz",
+        "qty": "4",
+        "unit": "ud",
+        "price": "2.40"
+      },
+      {
+        "name": "Mantequilla",
+        "qty": "40",
+        "unit": "g",
+        "price": "0.40"
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimentón o chile en polvo",
+        "qty": "1",
+        "unit": "cdta",
+        "price": "0.10"
+      }
+    ],
+    "steps": "Retira las hojas y los pelos de las mazorcas\nColócalas directamente sobre las brasas (sin llama) y ásalas 10-12 min, girándolas cada 2-3 min para que se tuesten por todos lados\nRetíralas cuando estén doradas y algo tostadas en varias zonas\nUnta con mantequilla y espolvorea sal y pimentón o chile al gusto antes de servir"
+  },
+  {
+    "id": "pin-salchichas-pan-brasa",
+    "name": "Salchichas envueltas en masa de pan a la brasa",
+    "corto": "Salchichas en pan a la brasa",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Merienda",
+      "Acampada",
+      "Ruta",
+      "Fuego"
+    ],
+    "ingredients": [
+      {
+        "name": "Salchichas tipo frankfurt",
+        "qty": "8",
+        "unit": "ud",
+        "price": "2.50"
+      },
+      {
+        "name": "Masa de pan o de brioche",
+        "qty": "400",
+        "unit": "g",
+        "price": "1.50"
+      },
+      {
+        "name": "Queso rallado",
+        "qty": "80",
+        "unit": "g",
+        "price": "0.80"
+      },
+      {
+        "name": "Especias al gusto (ajo en polvo, pimentón)",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Divide la masa en tiras largas y finas\nEnrolla cada tira en espiral alrededor de una salchicha, dejando que se solapen un poco\nEspolvorea queso rallado y las especias por encima de cada una\nEnsarta en un palo limpio y sostenlas cerca de las brasas, girando, hasta que la masa esté dorada por fuera y cocida por dentro, 10-12 min\nDéjalas templar un par de minutos antes de comerlas: el centro quema"
+  },
+  {
     "id": "chili-con-carne",
     "name": "Chili con carne",
     "servings": 4,
