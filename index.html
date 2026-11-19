@@ -1061,18 +1061,18 @@ function vAmortiza(items,rs){
    Valores orientativos por 100 g (kcal, proteína, hidratos, grasa), redondeados de tablas de composición
    habituales (BEDCA/USDA). Se busca por palabra entera, en orden: lo más concreto primero. */
 const NUTRI=[
- [["garbanzos cocidos","lentejas cocidas","alubias cocidas","judias blancas cocidas","judias cocidas","legumbre cocida"],110,7,15,1.5],
+ [["garbanzos cocidos","lentejas cocidas","alubias cocidas","judias blancas cocidas","judias negras cocidas","judias cocidas","legumbre cocida"],110,7,15,1.5],
  [["garrofon"],120,7,20,0.5],[["guisante"],80,5,14,0.4],[["maiz dulce"],85,3,17,1],[["maiz para palomitas","palomitas"],375,11,74,4],[["nubes","nube"],330,2.5,80,0.2],[["copos de maiz"],380,7,84,1],[["maicena"],380,0.3,91,0.1],
  [["pan de molde"],265,8,49,4],[["masa de pizza"],270,8,50,4],[["masa quebrada"],450,6,50,25],[["bizcocho","bizcochos de soletilla"],390,8,80,4],
  [["pure de patata en copos","pure en copos"],350,8,78,0.5],[["cacao"],380,6,79,3],[["pasas"],300,3,79,0.5],
  [["jamon cocido"],110,18,1,4],[["lomo curado","lomo embuchado"],300,40,1,15],[["carne picada","picada"],250,17,0,20],[["magro"],150,20,1,7],
  [["tortilla de trigo","tortillas de trigo","fajita"],300,8,50,7],[["crema de cacahuete"],600,25,15,50],[["bacon","panceta","tocino"],420,14,1,40],[["morcilla"],380,15,10,32],[["arenque"],210,24,0,13],
- [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["membrillo"],215,0.4,55,0.1],[["datil","datiles"],280,2.5,75,0.4],[["sopa de fideos"],350,12,60,6],[["frutos rojos"],45,1,10,0.4],[["judia verde","judias verdes"],31,1.8,7,0.2],[["pinon","pinones"],670,14,13,68],[["anchoa","anchoas"],210,29,0,10],[["worcestershire"],78,0,19,0],[["hojaldre"],560,7,46,38],[["puerro","puerros"],30,2,5,0.3],[["apio"],16,0.7,3,0.2],[["tahini","tahin"],595,17,21,54],[["gelatina"],335,85,0,0.1],[["seitan"],370,75,14,2],[["gamba","gambas"],85,18,0.5,1],[["cebollino"],30,3,4,0.7],[["masa de empanada"],300,8,45,10],[["menta"],44,3.3,8,0.7],[["queso para fundir"],300,15,6,24],
+ [["vieira"],90,17,3,1],[["pavo"],110,24,0,1.5],[["escalope","entrecot"],170,22,0,9],[["mayonesa"],680,1,1,75],[["espinaca","espinacas"],23,2.9,3.6,0.4],[["salsa de soja"],60,8,5,0.1],[["alcaparra","alcaparras"],23,2,5,0.9],[["quesito","quesitos"],250,11,6,20],[["membrillo"],215,0.4,55,0.1],[["datil","datiles"],280,2.5,75,0.4],[["sopa de fideos"],350,12,60,6],[["frutos rojos"],45,1,10,0.4],[["judia verde","judias verdes"],31,1.8,7,0.2],[["pinon","pinones"],670,14,13,68],[["anchoa","anchoas"],210,29,0,10],[["worcestershire"],78,0,19,0],[["hojaldre"],560,7,46,38],[["puerro","puerros"],30,2,5,0.3],[["apio"],16,0.7,3,0.2],[["nachos","totopos"],490,7,63,24],[["jalapeno","jalapenos"],29,1,6,0.4],[["mazorca","mazorcas"],90,3.2,19,1.2],[["tahini","tahin"],595,17,21,54],[["gelatina"],335,85,0,0.1],[["seitan"],370,75,14,2],[["gamba","gambas"],85,18,0.5,1],[["cebollino"],30,3,4,0.7],[["masa de empanada"],300,8,45,10],[["menta"],44,3.3,8,0.7],[["queso para fundir"],300,15,6,24],
  [["champinon","seta","setas","portobello"],22,3,3,0.3],[["chalota"],72,2.5,17,0.1],[["aguacate"],160,2,9,15],[["kiwi"],61,1.1,15,0.5],[["mandarina"],53,0.8,13,0.3],
  [["naranja"],47,0.9,12,0.1],[["melocoton"],39,0.9,10,0.3],[["pina"],50,0.5,13,0.1],
  [["vino"],82,0.1,2.6,0],[["sidra"],45,0,5,0],
- [["pasta","macarron","espagueti","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
- [["lenteja","garbanzo","alubia"],330,22,50,3],[["patata"],80,2,17,0.1],[["pan"],260,9,51,2.5],[["harina"],350,10,73,1.2],
+ [["pasta","macarron","espagueti","tagliatelle","fideo","tallarin"],360,12,72,1.5],[["arroz"],355,7,79,0.6],[["cuscus","semola"],360,12.5,72,1.5],
+ [["lenteja","garbanzo","alubia"],330,22,50,3],[["patata"],80,2,17,0.1],[["pan","panecillo","panecillos"],260,9,51,2.5],[["harina"],350,10,73,1.2],
  [["tomate frito"],80,1.5,10,3.5],[["tomate triturado","tomate natural"],30,1.3,5,0.2],[["tomate"],18,0.9,3.9,0.2],
  [["pepino"],12,0.6,2.2,0.1],[["lechuga"],15,1.3,2,0.2],[["pimiento"],25,1,4.5,0.3],[["cebolla"],40,1.1,9,0.1],[["col","repollo","lombarda"],25,1.3,5.8,0.1],[["salsa de ostras"],51,1.4,11,0.3],
  [["zanahoria"],41,0.9,9.6,0.2],[["calabaza"],26,1,6.5,0.1],[["calabacin"],17,1.2,3.1,0.3],[["berenjena","berenjenas"],25,1,6,0.2],[["ajo"],149,6.4,33,0.5],[["limon"],29,1.1,9,0.3],
@@ -1089,7 +1089,7 @@ const NADA=/(^|[^a-z])(sal|pimienta|pimenton|oregano|comino|laurel|especias?|agu
 /* gramos por unidad de lo que se cuenta en piezas */
 const PIEZA=[[["huevo"],60],[["anchoa","anchoas"],4],[["puerro","puerros"],150],[["datil","datiles"],8],[["menta"],0.5],[["quesito","quesitos"],16],[["hamburguesa vegetal"],80],[["galleta"],7],[["nubes","nube"],7],[["pepino"],300],[["limon"],120],[["cebolla"],150],[["pimiento"],150],[["tomate"],150],[["zanahoria"],80],
  [["pan de hamburguesa","pan de perrito"],60],[["patata"],200],[["tortilla de trigo","tortillas de trigo"],40],[["sandia"],3000],[["melon"],1500],[["barrita"],25],[["aguacate"],200],[["chalota"],30],[["escalope"],150],[["filete"],120],[["kiwi"],75],[["mandarina"],70],[["naranja"],200],[["berenjena","berenjenas"],250],
- [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
+ [["melocoton"],150],[["morcilla"],100],[["chorizo"],100],[["jamon cocido"],25],[["pan de molde"],25],[["panecillo","panecillos"],90],[["mazorca","mazorcas"],200],[["pan"],30],[["queso para fundir"],20],[["queso en lonchas"],20],[["vieira"],30],[["cocida"],400],[["manzana"],180],[["platano"],120],[["lechuga"],400],[["calabacin"],250],[["yogur"],125],[["pechuga"],200],[["chuleta"],150],[["salchicha"],50]];
 /* gramos de un paquete típico */
 const PAQ=[[["hojaldre"],230],[["masa de empanada"],300],[["sopa de fideos"],70],[["levadura"],16],[["masa de pizza"],400],[["masa quebrada"],230],[["galleta"],200],[["pure"],230],[["pasta","arroz"],500]];
 /* lo que la receta pone «al gusto»: se cuenta una cantidad típica por persona; el resto se avisa */
@@ -1428,7 +1428,7 @@ const PACKS=[
   [["maicena"],400,"g"],[["pan rallado"],500,"g"],[["queso rallado","queso emmental rallado"],200,"g"],[["queso en lonchas","jamon cocido"],250,"g"],
   [["bacon","panceta","lomo curado"],200,"g"],[["caldo"],1000,"ml"],[["cafe soluble"],200,"g"],[["mayonesa"],450,"g"],
   [["champinon","setas"],250,"g"],[["levadura"],16,"g"],[["almendra laminada"],100,"g"],
-  [["pasta","macarron","espagueti","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
+  [["pasta","macarron","espagueti","tagliatelle","fideo","tallarin"],500,"g"],[["arroz"],1000,"g"],[["cuscus","semola"],500,"g"],
   [["lenteja","garbanzo","alubia"],1000,"g"],[["atun","sardina","caballa"],3,"lata"],[["tomate triturado","tomate frito"],400,"g"],
   [["leche"],1000,"ml"],[["huevo"],12,"ud"],[["aceite"],1000,"ml"],[["vinagre"],1000,"ml"],[["sal"],1000,"g"],[["azucar"],1000,"g"],
   [["harina"],1000,"g"],[["chorizo","salchichon"],250,"g"],[["pastilla de caldo","pastillas de caldo"],10,"ud"],[["pimenton"],75,"g"],

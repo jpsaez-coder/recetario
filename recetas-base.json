@@ -12045,7 +12045,7 @@
     "sencilla": true,
     "ingredients": [
       {
-        "name": "Patatas baby",
+        "name": "Patatas",
         "qty": "700",
         "unit": "g",
         "price": "1.00"
@@ -12057,16 +12057,16 @@
         "price": "0.20"
       },
       {
-        "name": "Romero fresco",
-        "qty": "1",
-        "unit": "ramita",
-        "price": "0.20"
+        "name": "Romero",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
       },
       {
-        "name": "Tomillo fresco",
-        "qty": "1",
-        "unit": "ramita",
-        "price": "0.20"
+        "name": "Tomillo",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
       },
       {
         "name": "Aceite de oliva",
@@ -12081,7 +12081,8 @@
         "price": ""
       }
     ],
-    "steps": "Lava las patatas y córtalas por la mitad (o en cuartos si son grandes)\nColócalas sobre una lámina grande de papel de aluminio, con el ajo chafado, el romero, el tomillo, el aceite y sal\nCierra bien el papillote para que no se escape el vapor\nEntierra el paquete entre las brasas, o apóyalo sobre la parrilla cerca del fuego, 25-30 min, dándole la vuelta a mitad de cocción\nAbre con cuidado (sale vapor caliente) y comprueba que las patatas están tiernas antes de servir"
+    "steps": "Lava las patatas y córtalas por la mitad (o en cuartos si son grandes)\nColócalas sobre una lámina grande de papel de aluminio, con el ajo chafado, el romero, el tomillo, el aceite y sal\nCierra bien el papillote para que no se escape el vapor\nEntierra el paquete entre las brasas, o apóyalo sobre la parrilla cerca del fuego, 25-30 min, dándole la vuelta a mitad de cocción\nAbre con cuidado (sale vapor caliente) y comprueba que las patatas están tiernas antes de servir",
+    "nota": "Mejor con patatas pequeñas (tipo baby), para que se hagan igual de rápido. Romero y tomillo, mejor frescos: una ramita de cada."
   },
   {
     "id": "pin-shakshuka-campera",
@@ -12216,8 +12217,8 @@
       },
       {
         "name": "Cilantro fresco",
-        "qty": "1",
-        "unit": "manojo",
+        "qty": "10",
+        "unit": "g",
         "price": "0.50"
       }
     ],
@@ -12226,7 +12227,7 @@
   {
     "id": "pin-crema-champinones-hogaza",
     "name": "Crema de champiñones en hogaza",
-    "corto": "Crema de champiñones en pan",
+    "corto": "Crema champiñones hogaza",
     "servings": 4,
     "categories": [
       "Principal",
@@ -12286,10 +12287,10 @@
         "price": "2.00"
       },
       {
-        "name": "Perejil fresco",
-        "qty": "1",
-        "unit": "manojo",
-        "price": "0.30"
+        "name": "Perejil",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
       },
       {
         "name": "Sal",
@@ -12339,18 +12340,19 @@
         "price": ""
       },
       {
-        "name": "Pimentón o chile en polvo",
+        "name": "Pimentón",
         "qty": "1",
         "unit": "cdta",
         "price": "0.10"
       }
     ],
-    "steps": "Retira las hojas y los pelos de las mazorcas\nColócalas directamente sobre las brasas (sin llama) y ásalas 10-12 min, girándolas cada 2-3 min para que se tuesten por todos lados\nRetíralas cuando estén doradas y algo tostadas en varias zonas\nUnta con mantequilla y espolvorea sal y pimentón o chile al gusto antes de servir"
+    "steps": "Retira las hojas y los pelos de las mazorcas\nColócalas directamente sobre las brasas (sin llama) y ásalas 10-12 min, girándolas cada 2-3 min para que se tuesten por todos lados\nRetíralas cuando estén doradas y algo tostadas en varias zonas\nUnta con mantequilla y espolvorea sal y pimentón o chile al gusto antes de servir",
+    "nota": "En lugar de pimentón, puedes usar chile en polvo si te gusta que pique."
   },
   {
     "id": "pin-salchichas-pan-brasa",
     "name": "Salchichas envueltas en masa de pan a la brasa",
-    "corto": "Salchichas en pan a la brasa",
+    "corto": "Salchichas en pan brasa",
     "servings": 4,
     "categories": [
       "Principal",
@@ -12379,13 +12381,14 @@
         "price": "0.80"
       },
       {
-        "name": "Especias al gusto (ajo en polvo, pimentón)",
+        "name": "Especias",
         "qty": "",
         "unit": "ud",
         "price": ""
       }
     ],
-    "steps": "Divide la masa en tiras largas y finas\nEnrolla cada tira en espiral alrededor de una salchicha, dejando que se solapen un poco\nEspolvorea queso rallado y las especias por encima de cada una\nEnsarta en un palo limpio y sostenlas cerca de las brasas, girando, hasta que la masa esté dorada por fuera y cocida por dentro, 10-12 min\nDéjalas templar un par de minutos antes de comerlas: el centro quema"
+    "steps": "Divide la masa en tiras largas y finas\nEnrolla cada tira en espiral alrededor de una salchicha, dejando que se solapen un poco\nEspolvorea queso rallado y las especias por encima de cada una\nEnsarta en un palo limpio y sostenlas cerca de las brasas, girando, hasta que la masa esté dorada por fuera y cocida por dentro, 10-12 min\nDéjalas templar un par de minutos antes de comerlas: el centro quema",
+    "nota": "Especias al gusto: ajo en polvo y pimentón."
   },
   {
     "id": "chili-con-carne",
