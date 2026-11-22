@@ -1966,11 +1966,9 @@ document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches(
 document.addEventListener("change",e=>{if(e.target.id==="impfile"&&e.target.files&&e.target.files[0]){const f=e.target.files[0];e.target.value="";importFile(f).then(m=>{if(m&&m.receta)return abrirLeida(m.receta,m.origen);U.ioMsg=m;U.tab="recetas";U.det=U.det||{};U.det.tus=true;render()})}});
 /* «Cómo usar esta app»: unos pasos al abrirla por primera vez, con «Omitir». Se vuelve a ver desde la Guía. (JPS, 21-10-2026) */
 const INTRO=[
-  ["grupo","Elige cuántos sois","Arriba, en «Personas», pon los mayores de 12 años y los niños. Todas las cantidades, la compra y el precio se ajustan solos."],
-  ["buscar","Busca recetas","En «Recetas» tienes el buscador y los filtros (plato, temporada…). Toca el nombre de una receta para ver ingredientes, pasos y precio por persona."],
-  ["calendario","Monta el menú","Con el «+» de cada receta la pones en la pestaña «Menú». Allí la repartes por días y comidas, y te salen la lista de la compra y el presupuesto."],
-  ["libro","Consulta la Guía","Cantidades por persona, tiempos de cocción, medidas útiles, el menú equilibrado en 4 pasos y las normas del fuego."],
-  ["lapiz","Tus recetas","En «Mis recetas» creas, copias o importas las tuyas. Se guardan solo en este móvil: guarda una copia de vez en cuando. Consejo: añade la app a la pantalla de inicio para usarla sin conexión."],
+  ["grupo","Di cuántos sois","Arriba, en «Personas», pon cuántos mayores de 12 años y cuántos niños sois. Las cantidades, la compra y el precio se ajustan solos."],
+  ["buscar","Elige recetas","En «Recetas» busca por nombre o ingrediente, o filtra por plato y dónde las vas a hacer. Toca el nombre para ver ingredientes y pasos, y el «+» para llevarla al menú."],
+  ["calendario","Saca tu lista de la compra","En «Menú» repartes las recetas por días y comidas, y te salen la lista de la compra y el presupuesto. Más ayuda en la Guía: cantidades, tiempos de cocción y normas del fuego."],
 ];
 function intro(n){
   let d=document.getElementById("intro");
@@ -1979,10 +1977,10 @@ function intro(n){
   const [ico,t,txt]=INTRO[n],ult=n===INTRO.length-1;
   d.innerHTML=`<div class="caja"><p class="paso">Cómo usar esta app · ${n+1} de ${INTRO.length}</p><div class="ico" aria-hidden="true">${ic(ico,"ic-g")}</div><h2>${t}</h2><p>${txt}</p>
   <div class="puntos" aria-hidden="true">${INTRO.map((_,k)=>`<i class="${k===n?"on":""}"></i>`).join("")}</div>
-  <div class="row"><button class="btn ghost sm" data-intro="fin">${ult?"":"Omitir"}</button><div class="row">${n?`<button class="btn alt sm" data-intro="${n-1}">Anterior</button>`:""}<button class="btn sm" data-intro="${ult?"fin":n+1}">${ult?"Empezar":"Siguiente"}</button></div></div></div>`;
+  <div class="row"><button class="btn ghost sm" data-intro="fin">${ult?"":"Omitir"}</button><div class="row">${n?`<button class="btn alt sm" data-intro="${n-1}">Anterior</button>`:""}<button class="btn sm" data-intro="${ult?"empezar":n+1}">${ult?"Empezar":"Siguiente"}</button></div></div></div>`;
   d.querySelector("[data-intro]:last-child")?.focus?.();
 }
-document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;intro(v==="fin"?null:+v)});
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;if(v==="empezar"){intro(null);U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}intro(v==="fin"?null:+v)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("intro"))intro(null)});
 const verIntro=()=>{try{if(!localStorage.getItem("recetario_intro"))intro(0)}catch(e){}};
 initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
