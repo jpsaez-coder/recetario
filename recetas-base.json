@@ -63,7 +63,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -121,7 +122,8 @@
         "price": "0"
       }
     ],
-    "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego"
+    "steps": "En la olla, sofríe con el aceite la cebolla y el pimiento picados, 5 min\nAñade el chorizo en rodajas y el pimentón; remueve 1 min sin que se queme\nEcha el tomate y deja 5 min\nAñade el arroz, el agua y la pastilla de caldo desmenuzada\nCuece a fuego medio unos 18 min sin remover, hasta que se absorba el agua\nTapa y deja reposar 5 min fuera del fuego",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Cuando el arroz haya absorbido el agua, tapa y déjalo reposar 5 minutos fuera del fuego."
   },
   {
     "id": "ej-pan-tomate",
@@ -245,7 +247,8 @@
       "Desayuno",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -273,7 +276,8 @@
         "price": ""
       }
     ],
-    "steps": "Pon la leche y la avena en la olla a fuego medio\nRemueve unos 5 min hasta que espese\nSirve con el plátano en rodajas y una pizca de canela"
+    "steps": "Pon la leche y la avena en la olla a fuego medio\nRemueve unos 5 min hasta que espese\nSirve con el plátano en rodajas y una pizca de canela",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor."
   },
   {
     "id": "ej-yogur-cereales",
@@ -404,7 +408,8 @@
       "Merienda",
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -432,7 +437,8 @@
         "price": "0.16"
       }
     ],
-    "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso"
+    "steps": "Monta cada sándwich con jamón y queso entre dos rebanadas\nUnta un poco de mantequilla por fuera\nDóralos en la sartén a fuego medio, 2-3 min por lado, hasta que se funda el queso",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Dale la vuelta cuando se dore por abajo y el queso empiece a fundirse. También puedes hacerlo en una parrilla de mano sobre las brasas."
   },
   {
     "id": "mr-crepes-pavo-queso",
@@ -442,7 +448,8 @@
     "categories": [
       "Desayuno",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -483,6 +490,7 @@
       }
     ],
     "steps": "Bate la harina con la leche y una pizca de sal hasta tener una masa fluida\nCalienta la sartén con unas gotas de aceite y echa un cazo de masa, extendiéndola\nDora 1 min por cada lado\nPon queso y pavo, dobla y sirve; repite hasta acabar la masa",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. La primera crepe sirve para probar el calor: si se quema, baja la sartén.",
     "source": {
       "name": "Menú de ruta (Ahorramás)",
       "url": ""
@@ -495,7 +503,8 @@
     "servings": 16,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -548,6 +557,7 @@
       }
     ],
     "steps": "Fogón 1: sofríe la cebolla y el pimiento picados\nAñade la carne picada y dórala bien; sal y especias\nFogón 2: hierve el agua con sal y un chorro de aceite\nApaga, echa el cuscús, tapa y deja 5 min; suéltalo con un tenedor\nSirve el cuscús de base y la carne encima\nLa carne, comprada fresca y congelada el día antes: llega fría al primer día",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir.",
     "source": {
       "name": "Menú de ruta (Ahorramás)",
       "url": ""
@@ -560,7 +570,8 @@
     "servings": 16,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -601,6 +612,7 @@
       }
     ],
     "steps": "Fogón 1: cuece la pasta en el agua con sal el tiempo del paquete y escurre\nFogón 2: desmenuza el magro y caliéntalo en la sartén; añade el tomate frito\nMezcla la salsa con la pasta y echa el queso rallado por encima",
+    "fuego": "Fuego directo (llama baja o media): pon el agua en una olla grande sobre llama viva hasta que hierva fuerte. La salsa o el sofrito, en sartén aparte sobre brasas fuertes; si se seca, baja la sartén a brasas suaves.",
     "source": {
       "name": "Menú de ruta (Ahorramás)",
       "url": ""
@@ -715,7 +727,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -732,6 +745,7 @@
       }
     ],
     "steps": "Calienta el caldo hasta que hierva\nEcha los fideos y cuécelos 3 min\nSirve al momento, en taza o cuenco pequeño",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue.",
     "source": {
       "name": "Menú de ruta (Ahorramás)",
       "url": ""
@@ -744,7 +758,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -779,6 +794,7 @@
       }
     ],
     "steps": "Saltea en la sartén los pimientos verdes en tiras y los tacos de lomo unos minutos\nCalienta las tortillas un momento en la sartén para que se doblen sin romperse\nRellena con la carne, los pimientos y unas tiras de queso, y enrolla",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Puedes calentar las tortillas un momento sobre la parrilla, sin quemarlas.",
     "source": {
       "name": "Menú de ruta (Ahorramás)",
       "url": ""
@@ -819,7 +835,8 @@
         "price": ""
       }
     ],
-    "steps": "Lava las patatas sin pelarlas y pínchalas con un tenedor\nUnta cada una con un poco de aceite y sal y envuélvela bien en papel de aluminio\nEntiérralas en las brasas, no muy vivas, y dales la vuelta de vez en cuando\nEstán cuando el cuchillo entra sin esfuerzo: unos 30-45 min según el tamaño"
+    "steps": "Lava las patatas sin pelarlas y pínchalas con un tenedor\nUnta cada una con un poco de aceite y sal y envuélvela bien en papel de aluminio\nEntiérralas en las brasas, no muy vivas, y dales la vuelta de vez en cuando\nEstán cuando el cuchillo entra sin esfuerzo: unos 30-45 min según el tamaño",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 30-45 minutos."
   },
   {
     "id": "tr-huevo-patata",
@@ -854,7 +871,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta la parte de arriba de cada patata, sin pelar, y guárdala como tapa\nVacía la patata con una cuchara dejando una pared gruesa\nCasca un huevo dentro, sala y pon la tapa\nEnvuélvela en papel de aluminio de pie y ásala junto a las brasas hasta que la patata esté tierna (unos 40 min)"
+    "steps": "Corta la parte de arriba de cada patata, sin pelar, y guárdala como tapa\nVacía la patata con una cuchara dejando una pared gruesa\nCasca un huevo dentro, sala y pon la tapa\nEnvuélvela en papel de aluminio de pie y ásala junto a las brasas hasta que la patata esté tierna (unos 40 min)",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Déjala de pie, derecha, unos 40 minutos."
   },
   {
     "id": "tr-pinchitos",
@@ -1053,7 +1071,8 @@
         "price": "0.68"
       }
     ],
-    "steps": "Haz un corte a lo largo del plátano sin pelarlo y sin llegar al otro lado\nMete onzas de chocolate en el corte\nEnvuélvelo en papel de aluminio y déjalo en las brasas 5-8 min\nSe come con cuchara, directamente de la piel"
+    "steps": "Haz un corte a lo largo del plátano sin pelarlo y sin llegar al otro lado\nMete onzas de chocolate en el corte\nEnvuélvelo en papel de aluminio y déjalo en las brasas 5-8 min\nSe come con cuchara, directamente de la piel",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Entre 5 y 8 minutos."
   },
   {
     "id": "tr-palomitas",
@@ -1146,6 +1165,7 @@
       }
     ],
     "steps": "Corta la parte de arriba de cada naranja y vacíala con una cuchara sin romper la piel; la pulpa se come o se exprime\nEn un táper bate el huevo con el azúcar, la leche y el aceite; añade la harina y la levadura y mezcla hasta que no queden grumos\nLlena cada naranja hasta 2/3: la masa sube\nTápala con su «sombrero» y envuélvela en dos capas de papel de aluminio\nDéjala de pie entre las brasas (no sobre la llama) unos 20 min, girándola cada 5 min\nPincha con un palillo a través del papel: si sale seco, está; si no, 5 min más. Abre con cuidado, que sale vapor\nAtajo: con masa de magdalenas comprada tarda unos 10 min",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Déjala de pie unos 20 minutos.",
     "source": {
       "name": "Macaroni Kid · Campfire orange cakes",
       "url": "https://athens.macaronikid.com/articles/59dd09f9d083650291e14c81/campfire-orange-cakes"
@@ -1237,7 +1257,8 @@
         "price": "0.4"
       }
     ],
-    "steps": "Quita el corazón de cada manzana con una navaja, sin llegar al fondo, para que no se salga el relleno\nRellena el hueco con azúcar, canela, un trozo de mantequilla y nueces picadas\nEnvuélvela en papel de aluminio dejando el agujero hacia arriba\nPonla de pie entre las brasas 20-30 min: está cuando un palillo entra sin esfuerzo\nSe come caliente con cuchara"
+    "steps": "Quita el corazón de cada manzana con una navaja, sin llegar al fondo, para que no se salga el relleno\nRellena el hueco con azúcar, canela, un trozo de mantequilla y nueces picadas\nEnvuélvela en papel de aluminio dejando el agujero hacia arriba\nPonla de pie entre las brasas 20-30 min: está cuando un palillo entra sin esfuerzo\nSe come caliente con cuchara",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 20-30 minutos."
   },
   {
     "id": "tr-nubes-galleta",
@@ -1838,7 +1859,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -1891,6 +1913,7 @@
       }
     ],
     "steps": "Dora los ajos en una cazuela con aceite caliente y sácalos\nDora el pollo por las dos caras en ese aceite\nMoja con el vino, añade laurel, sal y pimienta\nDevuelve los ajos, tapa y cuece 30 minutos a fuego medio",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Dora el pollo a brasas fuertes y después pasa la cazuela a brasas suaves, tapada, hasta que quede tierno.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -1904,7 +1927,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -1963,6 +1987,7 @@
       }
     ],
     "steps": "Pica cebolla y ajo y sofríelos en una olla con aceite\nDora un poco la morcilla en trozos de 3 cm y apártala\nDora en la misma olla el chorizo en rodajas y el tocino\nEcha las judías con su caldo y el azafrán y cuece 30 minutos a fuego suave\nVuelve a poner la morcilla al final para calentarla",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Remueve poco, que se rompen las fabes: mejor mover la olla que la cuchara.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -1975,7 +2000,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2016,6 +2042,7 @@
       }
     ],
     "steps": "Trocea el atún en dados y sálalo un poco\nPocha la cebolla en juliana con aceite a fuego lento en una olla grande\nCuando esté dorada, añade las patatas peladas y chascadas, rehoga y cubre de agua\nSala con moderación y cuece a fuego medio hasta que la patata esté tierna\nPon el atún encima, apaga o deja al mínimo y tapa 10-15 minutos",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Cuando pongas el atún, aparta la olla del fuego y tápala: se hace con el calor que guarda.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2028,7 +2055,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2111,6 +2139,7 @@
       }
     ],
     "steps": "Dora el pollo en la paella con un buen chorro de aceite y sácalo\nSofríe tomate y pimiento picados 7-8 minutos\nSala, devuelve el pollo y añade pimentón, azafrán y romero; rehoga 1 minuto\nEcha el agua y hierve unos 20 minutos a fuego medio\nAñade judías, guisantes y el arroz repartido; remueve una sola vez\nCuece a fuego medio hasta que el arroz absorba el caldo",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Usa la paellera o una sartén grande sobre trébedes, con las brasas repartidas por igual: si se hace más por un lado, gírala un cuarto de vuelta. Cuando añadas el arroz, no lo remuevas más.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2123,7 +2152,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2182,6 +2212,7 @@
       }
     ],
     "steps": "Si los guisantes son frescos, escáldalos unos minutos y enfríalos\nDora el chorizo en dados de 1 cm y apártalo\nSofríe en su grasa el ajo picado y la cebolla en rodajas\nAñade el tomate frito, sala y cuece 5 minutos a fuego suave\nReparte chorizo y guisantes, haz huecos y casca en ellos los huevos\nTapa y deja a fuego lento hasta que cuajen las claras",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Cuando casques los huevos, tapa la cazuela: se hacen con el vapor y las claras cuajan sin que se rompan las yemas.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2193,7 +2224,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2252,6 +2284,7 @@
       }
     ],
     "steps": "Abre cada filete en dos capas finas y salpimienta\nMonta jamón, queso y jamón entre dos capas de pavo\nPrepara tres platos: harina, huevo batido y pan rallado\nPasa cada pieza por los tres, por ese orden, apretando el pan\nFríe en abundante aceite muy caliente hasta dorar por ambos lados",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Pasa los filetes por la sartén con el aceite caliente, no hirviendo, dos minutos por lado.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2265,7 +2298,8 @@
     "categories": [
       "Principal",
       "Casa",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2311,7 +2345,8 @@
         "price": ""
       }
     ],
-    "steps": "Limpia las setas con un paño (sin mojarlas) y quítales el pie\nJunta las setas de dos en dos con una loncha de queso en medio, como un bocadillo\nPásalas por harina, huevo batido y pan rallado, apretando para que no se abran\nFríelas en la sartén con un dedo de aceite caliente, 3-4 min por lado, hasta que estén doradas y el queso fundido\nDéjalas escurrir en papel de cocina y sala al final"
+    "steps": "Limpia las setas con un paño (sin mojarlas) y quítales el pie\nJunta las setas de dos en dos con una loncha de queso en medio, como un bocadillo\nPásalas por harina, huevo batido y pan rallado, apretando para que no se abran\nFríelas en la sartén con un dedo de aceite caliente, 3-4 min por lado, hasta que estén doradas y el queso fundido\nDéjalas escurrir en papel de cocina y sala al final",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Dos minutos por lado en aceite caliente, sin que humee."
   },
   {
     "id": "ej-hamburguesas",
@@ -2467,7 +2502,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2544,6 +2580,7 @@
       }
     ],
     "steps": "Hierve los pimientos en tiras en agua con sal, sácalos y guarda el agua\nDora los plátanos pelados en sartén con mantequilla y resérvalos\nSofríe la cebolla picada con aceite y curri, añade el arroz y rehoga 2 minutos\nCuece el arroz con el agua de los pimientos\nEn el agua sobrante, con un chorro de vinagre y a fuego mínimo, escalfa los huevos 3 minutos\nSirve arroz con un plátano, un huevo y tomate frito caliente",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. El arroz, en olla tapada a llama baja. Los huevos fritos y el plátano, en sartén aparte sobre brasas fuertes.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2557,7 +2594,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2604,6 +2642,7 @@
       }
     ],
     "steps": "Lamina los ajos y sofríelos en una olla con el aceite\nAñade el jamón y el pan para que se tueste un poco\nEcha el agua y el pimentón y hierve 5-10 minutos hasta que el pan se deshaga\nCasca los huevos en la sopa hirviendo y remueve en círculos para hacer hebras\nSirve enseguida, bien caliente",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue. Los huevos escalfados, al final y con la olla fuera de la llama.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2615,7 +2654,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2692,6 +2732,7 @@
       }
     ],
     "steps": "Pela las patatas y chascalas en trozos de unos 4 cm\nPica ajo y cebolla; corta el pimiento en dados y el chorizo en rodajas de 1 cm\nRehoga todo eso en una olla con el aceite hasta que se dore\nAñade tomate, caldo, laurel, sal y pimienta y lleva a hervor\nEcha las patatas y cuece 20-25 minutos a fuego medio sin que se deshagan",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2704,7 +2745,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2787,6 +2829,7 @@
       }
     ],
     "steps": "Pica cebolla y ajo y póchalos con el aceite a fuego muy suave, sin que tomen color\nAñade el pimentón y remueve deprisa\nPon las vieiras y hazlas unos 2 minutos por cara\nAparta del fuego y deja tapado\nPica las verduras del fricasé y saltéalas aparte hasta que estén tiernas\nSirve las vieiras sobre las verduras con perejil picado",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén sobre brasas suaves para pochar la cebolla; las vieiras, 2 minutos por cara a brasas fuertes; las verduras, aparte en otra sartén.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2799,7 +2842,8 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2846,6 +2890,7 @@
       }
     ],
     "steps": "Pela y lamina las patatas; chafa los ajos con piel\nCalienta 1 cm de aceite con los ajos y fríe la patata 15 minutos a fuego medio\nAñade la cebolla en juliana y sigue 5 minutos más\nBate los huevos con sal y pimienta\nQuita los ajos, escurre patata y cebolla, júntalas con el huevo y deja reposar un poco\nCuaja en la sartén con poco aceite a fuego medio-bajo\nDale la vuelta con un plato y termina por el otro lado",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Las patatas, a fuego flojo para que se pochen sin dorarse. Para darle la vuelta, un plato grande y guantes gruesos.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2857,7 +2902,8 @@
     "servings": 6,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2898,6 +2944,7 @@
       }
     ],
     "steps": "Unta un molde con mantequilla y forra con la masa\nBate en un bol los huevos con la nata, el tomate y el atún escurrido y desmigado\nVierte la mezcla sobre la masa\nHornea a 180 °C unos 30 minutos, hasta que cuaje y se dore",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Cuenta el tiempo del horno (unos 30 minutos) más 10-15; está lista cuando cuaja al moverla y se dora arriba.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -2910,7 +2957,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -2951,6 +2999,7 @@
       }
     ],
     "steps": "Pela las patatas, lamínalas muy finas y sécalas con un paño\nDora la panceta en una sartén grande y sácala; añade el aceite a la grasa\nEcha las patatas, salpimienta, tapa y cuece a fuego muy lento girándolas a menudo\nA los 30 minutos añade los tomates pelados en rodajas y la panceta\nSigue 10 minutos más sin tapa y sirve caliente",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Es una cocción lenta y tapada: ponla donde no se queme, y gira las patatas a menudo.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -3018,7 +3067,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3059,6 +3109,7 @@
       }
     ],
     "steps": "Hierve el arroz en mucha agua con sal y escúrrelo\nMézclalo con la leche, los huevos batidos, la mantequilla fundida y perejil\nPásalo a una fuente de horno o cazuela de barro\nCuécelo en horno medio, o tapado a fuego muy lento, hasta que se absorba el líquido y se dore",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Pon más brasas arriba que abajo para que se gratine; el arroz ya va cocido, así que solo necesita absorber el líquido.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -3070,7 +3121,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3129,6 +3181,7 @@
       }
     ],
     "steps": "Prepara el puré solo con la leche caliente, para que quede espeso\nAñade cebolla muy picada, huevos, harina, sal, pimienta y nuez moscada\nMezcla hasta tener una masa compacta\nForma tortitas planas de unos 10 cm\nFríelas con un poco de aceite 4-5 minutos por cara hasta que crujan",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Si se doran muy rápido por fuera, apártalas del centro de las brasas.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -3219,7 +3272,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3260,6 +3314,7 @@
       }
     ],
     "steps": "Cuece la pasta en agua con sal el tiempo del paquete y escúrrela\nEn una fuente, alterna capas de pasta, atún y maíz\nCubre con la nata y salpimienta\nCuece 10 minutos en horno fuerte o en cazuela tapada a fuego muy suave",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Pon más brasas arriba que abajo para gratinar. Como la pasta ya va cocida, bastan 10-15 minutos.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -3351,7 +3406,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3428,6 +3484,7 @@
       }
     ],
     "steps": "Pocha en mantequilla las chalotas, las cebollas y el ajo picados\nSalpimienta la carne, enharínala y dórala en la cazuela\nEspolvorea el resto de la harina, remueve 1 minuto y moja con el agua o vino rascando el fondo\nAñade salvia y tomillo, tapa y cuece 1 hora y 30 minutos a fuego muy lento\nAl final, incorpora la nata, remueve hasta que espese y sirve",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Dora primero la carne a llama media, tapa y deja cocer despacio hasta que esté tierna.",
     "source": {
       "name": "guiasparaguias · Platos principales",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=principales"
@@ -3488,7 +3545,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3541,6 +3599,7 @@
       }
     ],
     "steps": "Bate los huevos con el azúcar y el azúcar vainillado\nAñade el yogur y luego la harina alternando con la leche, sin dejar grumos\nRemueve con cuchara de madera hasta que la masa tome cuerpo\nFunde la mitad de la mantequilla en una sartén a fuego muy suave y cuaja la masa\nPásala a un plato, funde el resto de mantequilla y dórala por el otro lado\nEspolvorea canela al gusto",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Cuaja tapada y a fuego muy suave; solo se le da la vuelta cuando la base esté dorada.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3553,7 +3612,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3612,6 +3672,7 @@
       }
     ],
     "steps": "Mezcla harina, levadura y un par de cucharadas de azúcar\nAbre un hueco, echa los huevos, la mantequilla fundida y canela\nIncorpora la leche poco a poco batiendo hasta tener una masa lisa\nTápala y déjala reposar 30 minutos\nCalienta mucho aceite a unos 170 °C\nFríe porciones hechas con dos cucharillas hasta que se inflen y doren\nEscúrrelos y rebózalos en azúcar en caliente",
+    "fuego": "Brasas fuertes (rojas, sin llama): fríe en sartén o cazuela honda con 1-2 cm de aceite, sin que quede sumergido, y en tandas pequeñas para que no baje el calor. Ten una tapa a mano para ahogar el aceite si prende (nunca eches agua) y no dejes la sartén sola. Si humea, aparta la sartén del calor. Fríe tres o cuatro buñuelos a la vez y dales la vuelta cuando se doren.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3624,7 +3685,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3665,6 +3727,7 @@
       }
     ],
     "steps": "Pon la harina en corona en un bol y casca los huevos en medio\nAñade azúcar, sal y aceite\nMezcla incorporando la leche fría poco a poco con varillas hasta quitar los grumos\nTapa y deja reposar la masa 1 hora\nHaz las crepes en sartén antiadherente muy caliente con una gota de aceite\nVersión salada (galette bretona): en el menú, «Ajustar», quita el azúcar y rellena con jamón, queso o huevo",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. La primera crepe sirve para probar el calor: si se quema, baja la sartén.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3677,7 +3740,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3700,6 +3764,7 @@
       }
     ],
     "steps": "Junta todo en un cazo\nCalienta hasta que caramelice\nExtiéndelo caliente en una placa aceitada\nCórtalo en trozos antes de que se enfríe",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): cazo de mango largo sobre brasas sin llama. Cuidado: el azúcar caliente quema mucho y salpica; usa guantes y no te apartes del cazo.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3844,7 +3909,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3879,6 +3945,7 @@
       }
     ],
     "steps": "Pela las manzanas, pártelas por la mitad y quita el corazón\nPonlas en un cazo con la parte curva abajo\nAñade agua, azúcar y vainilla, tapa y cuece 8-10 minutos a fuego medio\nCuando clareen, dales la vuelta y cuece otros 8-10 minutos\nSácalas y reduce el líquido a fuego vivo 6-7 minutos\nAñade el zumo de limón y sirve el almíbar sobre las manzanas, templadas o frías",
+    "fuego": "Fuego directo (llama baja o media): cazo con tapa sobre trébedes. Cuece a llama media y, para reducir el líquido, déjalo destapado a llama viva unos minutos; no te apartes, porque se pega.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3890,7 +3957,8 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3925,6 +3993,7 @@
       }
     ],
     "steps": "Haz una masa flexible con harina, mantequilla blanda y un poco de leche; deja reposar 2 horas\nPela las manzanas enteras y vacíales el corazón\nRellena el hueco con una cucharada de mermelada\nEstira la masa y envuelve con ella cada manzana\nHornéalas en una fuente con mantequilla a fuego medio hasta dorar",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Pon las manzanas sobre una cama de mantequilla y cuenta unos 45 minutos; la masa se dora arriba y las manzanas deben quedar tiernas.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -3937,7 +4006,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -3978,6 +4048,7 @@
       }
     ],
     "steps": "Pela los melocotones, deshuésalos y córtalos en gajos\nPon la miel en un plato y en otro el pan rallado con jengibre y canela\nFunde la mantequilla en la sartén hasta que espume\nPasa los gajos por miel y luego por el pan especiado\nDóralos a fuego vivo unos 5 minutos",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. También puedes ponerlos directamente sobre la parrilla, con la cara cortada hacia abajo.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -4088,7 +4159,8 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4129,6 +4201,7 @@
       }
     ],
     "steps": "Pon la leche en un plato hondo y los huevos batidos en otro\nPasa cada rebanada rápido por la leche y luego por el huevo\nCalienta mantequilla o aceite en una sartén\nFríe las rebanadas hasta dorar por los dos lados\nSírvelas espolvoreadas de azúcar",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Mejor con un poco de mantequilla o aceite y calor medio-fuerte; se queman fácil.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -4141,7 +4214,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4182,6 +4256,7 @@
       }
     ],
     "steps": "Hierve 450 ml de leche con la vainilla\nMientras, bate las yemas con el azúcar hasta que blanqueen\nAñade harina y maicena tamizadas y los 50 ml de leche fría restantes; deja lisa la pasta\nVierte encima la leche hirviendo removiendo, vuelve al cazo y lleva a hervor sin dejar de mover\nHierve unos 15 segundos, retira y pásala a un recipiente frío",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -4194,7 +4269,8 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4216,7 +4292,7 @@
         "price": "0.15"
       },
       {
-        "name": "Nata",
+        "name": "Nata para montar",
         "qty": "700",
         "unit": "ml",
         "price": "3.50"
@@ -4229,10 +4305,12 @@
       }
     ],
     "steps": "Hierve la leche con la vainilla; aparte, bate yemas y azúcar hasta que aclaren\nVierte sobre las yemas un tercio de la leche, remueve, y luego otro tercio\nDevuélvelo todo al cazo con el resto de leche\nCalienta a fuego muy suave removiendo hasta que nape la espátula, sin que hierva\nCuélala y enfríala al baño maría frío, removiendo a ratos\nTómala el mismo día",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor. No debe hervir: cuando la crema nape la cuchara, sácala del calor.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
-    }
+    },
+    "nota": "Usa nata para montar (con un 35 % de grasa), que es la «crema» de la receta original. Con nata para cocinar también sale, pero queda menos untuosa."
   },
   {
     "id": "gpg-platanos-martiniqueses",
@@ -4240,7 +4318,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4281,6 +4360,7 @@
       }
     ],
     "steps": "Pela los plátanos y dóralos enteros en mantequilla unos 5 minutos por lado\nMezcla el zumo de naranja con los dos azúcares\nAñádelo a la sartén con las pasas\nCuando hierva, deja 5 minutos a fuego suave y sirve templado",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Cuida la salsa de naranja y azúcar al final: se quema rápido.",
     "source": {
       "name": "guiasparaguias · Masas y postres",
       "url": "https://guiasparaguias.org/cocina/recetas?tipo=postres"
@@ -4790,7 +4870,8 @@
     "categories": [
       "Salsa",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Salsas y aderezos",
@@ -4840,7 +4921,8 @@
         "price": ""
       }
     ],
-    "steps": "Pocha la cebolla picada en el aceite a fuego suave unos 8 min, hasta que esté transparente. Añade el ajo picado 1 min\nAñade el tomate, la sal y el azúcar, que quita la acidez\nCocina a fuego bajo de 25 a 30 min, hasta que espese. Echa la albahaca u orégano al final\nTritúrala si la quieres fina\nConsejo: En frío dura 4 días en un tarro cerrado. También se puede congelar en raciones"
+    "steps": "Pocha la cebolla picada en el aceite a fuego suave unos 8 min, hasta que esté transparente. Añade el ajo picado 1 min\nAñade el tomate, la sal y el azúcar, que quita la acidez\nCocina a fuego bajo de 25 a 30 min, hasta que espese. Echa la albahaca u orégano al final\nTritúrala si la quieres fina\nConsejo: En frío dura 4 días en un tarro cerrado. También se puede congelar en raciones",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): cazo o sartén sobre brasas sin llama, a fuego medio-suave. Remueve de vez en cuando y aparta del calor antes de triturar o servir."
   },
   {
     "id": "nv-macarrones-atun",
@@ -4850,7 +4932,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4896,7 +4979,8 @@
         "price": ""
       }
     ],
-    "steps": "Cuece los macarrones en agua abundante con sal el tiempo que diga el paquete y escúrrelos\nMientras, sofríe la cebolla picada en el aceite 5 min\nAñade el tomate frito y el atún escurrido y calienta 3 min\nMezcla con la pasta y sirve con el queso por encima"
+    "steps": "Cuece los macarrones en agua abundante con sal el tiempo que diga el paquete y escúrrelos\nMientras, sofríe la cebolla picada en el aceite 5 min\nAñade el tomate frito y el atún escurrido y calienta 3 min\nMezcla con la pasta y sirve con el queso por encima",
+    "fuego": "Fuego directo (llama baja o media): pon el agua en una olla grande sobre llama viva hasta que hierva fuerte. La salsa o el sofrito, en sartén aparte sobre brasas fuertes; si se seca, baja la sartén a brasas suaves."
   },
   {
     "id": "nv-lentejas",
@@ -4907,7 +4991,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -4977,7 +5062,8 @@
         "price": ""
       }
     ],
-    "steps": "Lava las lentejas bajo el grifo y quita las piedrecitas\nEn la olla, sofríe con el aceite la cebolla, el pimiento y el ajo picados, 5 min\nAñade la zanahoria en rodajas y el chorizo en trozos, 2 min; aparta la olla del fuego y echa el pimentón\nAñade las lentejas, el laurel y agua hasta cubrir dos dedos por encima\nCuece a fuego medio 25 min, añade la patata en trozos pequeños y cuece 15 min más, hasta que todo esté tierno. Sala al final"
+    "steps": "Lava las lentejas bajo el grifo y quita las piedrecitas\nEn la olla, sofríe con el aceite la cebolla, el pimiento y el ajo picados, 5 min\nAñade la zanahoria en rodajas y el chorizo en trozos, 2 min; aparta la olla del fuego y echa el pimentón\nAñade las lentejas, el laurel y agua hasta cubrir dos dedos por encima\nCuece a fuego medio 25 min, añade la patata en trozos pequeños y cuece 15 min más, hasta que todo esté tierno. Sala al final",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue."
   },
   {
     "id": "nv-garbanzos-espinacas",
@@ -4986,7 +5072,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5044,7 +5131,8 @@
         "price": ""
       }
     ],
-    "steps": "Escurre y lava los garbanzos\nEn la sartén, fríe en el aceite los ajos en láminas y una rebanada de pan hasta que estén dorados; sácalos y machácalos con el comino, el pimentón y el vinagre\nEn el mismo aceite, saltea las espinacas hasta que bajen\nAñade los garbanzos, el majado y un vaso de agua y cuece 10 min a fuego suave. Sala al final"
+    "steps": "Escurre y lava los garbanzos\nEn la sartén, fríe en el aceite los ajos en láminas y una rebanada de pan hasta que estén dorados; sácalos y machácalos con el comino, el pimentón y el vinagre\nEn el mismo aceite, saltea las espinacas hasta que bajen\nAñade los garbanzos, el majado y un vaso de agua y cuece 10 min a fuego suave. Sala al final",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue."
   },
   {
     "id": "nv-espaguetis-bolonesa",
@@ -5054,7 +5142,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5124,7 +5213,8 @@
         "price": ""
       }
     ],
-    "steps": "Sofríe en el aceite la cebolla, la zanahoria y el ajo muy picados, 8 min\nAñade la carne, sálala y deshazla con la cuchara hasta que pierda el color rosa\nEcha el tomate y el orégano y cuece 15 min a fuego suave\nCuece los espaguetis en agua con sal el tiempo del paquete y escúrrelos\nSirve la salsa por encima con el queso rallado"
+    "steps": "Sofríe en el aceite la cebolla, la zanahoria y el ajo muy picados, 8 min\nAñade la carne, sálala y deshazla con la cuchara hasta que pierda el color rosa\nEcha el tomate y el orégano y cuece 15 min a fuego suave\nCuece los espaguetis en agua con sal el tiempo del paquete y escúrrelos\nSirve la salsa por encima con el queso rallado",
+    "fuego": "Fuego directo (llama baja o media): pon el agua en una olla grande sobre llama viva hasta que hierva fuerte. La salsa o el sofrito, en sartén aparte sobre brasas fuertes; si se seca, baja la sartén a brasas suaves. Deja la salsa cocer 20-30 minutos a brasas suaves, tapada."
   },
   {
     "id": "nv-arroz-salteado",
@@ -5134,7 +5224,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5186,7 +5277,8 @@
         "price": ""
       }
     ],
-    "steps": "Cuece el arroz en agua con sal 15 min, escúrrelo y déjalo enfriar (mejor del día anterior)\nBate los huevos, cuájalos en la sartén con un poco de aceite como una tortilla fina y córtala en tiras\nSaltea en el resto del aceite la zanahoria rallada y los guisantes 5 min, y luego el jamón 1 min\nAñade el arroz y la soja y saltea a fuego vivo 3 min. Mezcla con el huevo y sirve"
+    "steps": "Cuece el arroz en agua con sal 15 min, escúrrelo y déjalo enfriar (mejor del día anterior)\nBate los huevos, cuájalos en la sartén con un poco de aceite como una tortilla fina y córtala en tiras\nSaltea en el resto del aceite la zanahoria rallada y los guisantes 5 min, y luego el jamón 1 min\nAñade el arroz y la soja y saltea a fuego vivo 3 min. Mezcla con el huevo y sirve",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. El arroz, ya cocido de antes, va a la sartén al final y solo para calentarlo."
   },
   {
     "id": "nv-pure-salchichas",
@@ -5196,7 +5288,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5242,7 +5335,8 @@
         "price": ""
       }
     ],
-    "steps": "Pela las patatas, córtalas en trozos iguales y cuécelas en agua con sal 20 min, hasta que se deshagan al pincharlas\nEscúrrelas y aplástalas con un tenedor o un pasapurés, nunca con batidora (queda como chicle)\nAñade la mantequilla y la leche caliente poco a poco, sal y una pizca de nuez moscada\nMientras, haz las salchichas en la sartén o la parrilla con el aceite hasta que estén doradas por todos lados"
+    "steps": "Pela las patatas, córtalas en trozos iguales y cuécelas en agua con sal 20 min, hasta que se deshagan al pincharlas\nEscúrrelas y aplástalas con un tenedor o un pasapurés, nunca con batidora (queda como chicle)\nAñade la mantequilla y la leche caliente poco a poco, sal y una pizca de nuez moscada\nMientras, haz las salchichas en la sartén o la parrilla con el aceite hasta que estén doradas por todos lados",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Las patatas se cuecen en la olla; las salchichas, en sartén aparte sobre brasas fuertes."
   },
   {
     "id": "nv-crema-calabacin",
@@ -5251,7 +5345,8 @@
     "categories": [
       "Entrante",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5291,7 +5386,8 @@
         "price": ""
       }
     ],
-    "steps": "Pocha la cebolla picada en el aceite 5 min\nAñade el calabacín y la patata troceados y cubre justo con agua\nCuece 20 min con sal\nTritura con los quesitos hasta que quede fina"
+    "steps": "Pocha la cebolla picada en el aceite 5 min\nAñade el calabacín y la patata troceados y cubre justo con agua\nCuece 20 min con sal\nTritura con los quesitos hasta que quede fina",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada para cocer las verduras. Para triturar sin batidora, aplasta con un tenedor o un pasapurés y pasa por un colador."
   },
   {
     "id": "nv-gazpacho",
@@ -5501,7 +5597,8 @@
       "Desayuno",
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5541,7 +5638,8 @@
         "price": ""
       }
     ],
-    "steps": "Bate los huevos con la leche y poca sal (el jamón ya es salado)\nDora el jamón en la sartén con el aceite 1 min\nEcha los huevos a fuego bajo y remueve sin parar con una cuchara de madera\nRetíralos cuando aún estén jugosos: se terminan de hacer solos. Sirve con pan"
+    "steps": "Bate los huevos con la leche y poca sal (el jamón ya es salado)\nDora el jamón en la sartén con el aceite 1 min\nEcha los huevos a fuego bajo y remueve sin parar con una cuchara de madera\nRetíralos cuando aún estén jugosos: se terminan de hacer solos. Sirve con pan",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Quita la sartén del calor antes de que el huevo cuaje del todo: se termina con el calor que guarda."
   },
   {
     "id": "nv-tortitas",
@@ -5552,7 +5650,8 @@
       "Desayuno",
       "Merienda",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5604,7 +5703,8 @@
         "price": ""
       }
     ],
-    "steps": "Mezcla en un bol la harina, el azúcar, la levadura y una pizca de sal\nAñade los huevos y la leche y bate con unas varillas o un tenedor hasta que no haya grumos\nUnta la sartén con un poco de mantequilla y ponla a fuego medio\nEcha un cazo de masa; cuando salgan burbujas por encima, dale la vuelta y cuécela 1 min más\nSírvelas con miel (o sirope o crema de cacao)"
+    "steps": "Mezcla en un bol la harina, el azúcar, la levadura y una pizca de sal\nAñade los huevos y la leche y bate con unas varillas o un tenedor hasta que no haya grumos\nUnta la sartén con un poco de mantequilla y ponla a fuego medio\nEcha un cazo de masa; cuando salgan burbujas por encima, dale la vuelta y cuécela 1 min más\nSírvelas con miel (o sirope o crema de cacao)",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. La primera tortita sirve para probar el calor: si se quema, baja la sartén."
   },
   {
     "id": "nv-arroz-con-leche",
@@ -5613,7 +5713,8 @@
     "categories": [
       "Postre y masas",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -5653,7 +5754,8 @@
         "price": ""
       }
     ],
-    "steps": "Calienta la leche con la piel del limón (sin lo blanco) y la canela en rama\nCuando hierva, añade el arroz y baja el fuego\nCuece 35 a 40 min a fuego suave, removiendo a menudo para que no se pegue\nAñade el azúcar y cuece 5 min más. Quita la piel y la canela, deja enfriar y espolvorea canela molida"
+    "steps": "Calienta la leche con la piel del limón (sin lo blanco) y la canela en rama\nCuando hierva, añade el arroz y baja el fuego\nCuece 35 a 40 min a fuego suave, removiendo a menudo para que no se pegue\nAñade el azúcar y cuece 5 min más. Quita la piel y la canela, deja enfriar y espolvorea canela molida",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor. Es una cocción larga: ponla a la derecha del fuego, donde casi no llegue calor."
   },
   {
     "id": "nv-bolitas-avena",
@@ -6229,7 +6331,8 @@
     "categories": [
       "Salsa",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6279,7 +6382,8 @@
         "price": ""
       }
     ],
-    "steps": "Pica la cebolla muy fina y póchala en un cazo con el aceite y una pizca de sal a fuego medio, hasta que esté transparente\nAñade la harina y remueve 1 min. Retira el cazo del fuego, echa los pimentones y remueve rápido para que no se quemen\nVuelve al fuego y vierte el caldo caliente poco a poco sin dejar de remover. Deja hervir suave 10 min\nSi tienes batidora, pásala para dejarla fina; sin ella queda rústica y está igual de buena\nConsejo: No lleva tomate, como la de las tabernas madrileñas. Va con patatas cocidas o asadas en dados"
+    "steps": "Pica la cebolla muy fina y póchala en un cazo con el aceite y una pizca de sal a fuego medio, hasta que esté transparente\nAñade la harina y remueve 1 min. Retira el cazo del fuego, echa los pimentones y remueve rápido para que no se quemen\nVuelve al fuego y vierte el caldo caliente poco a poco sin dejar de remover. Deja hervir suave 10 min\nSi tienes batidora, pásala para dejarla fina; sin ella queda rústica y está igual de buena\nConsejo: No lleva tomate, como la de las tabernas madrileñas. Va con patatas cocidas o asadas en dados",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): cazo o sartén sobre brasas sin llama, a fuego medio-suave. Remueve de vez en cuando y aparta del calor antes de triturar o servir."
   },
   {
     "id": "ac-vinagreta-mostaza",
@@ -6397,7 +6501,8 @@
     "categories": [
       "Postre y masas",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6447,7 +6552,8 @@
         "price": "0.20"
       }
     ],
-    "steps": "Separa 4 cucharadas de leche fría en un vaso. Calienta el resto con la canela y la piel de limón; cuando hierva, apaga, tapa y deja reposar 10 min. Cuela la leche\nEn un bol, disuelve la maicena en la leche fría y añade las yemas y el azúcar, batiendo\nEcha la leche caliente poco a poco sobre las yemas, sin parar de remover\nVuelve a ponerlo todo en el cazo a fuego bajo y remueve sin parar, haciendo ochos, hasta que cubra el dorso de la cuchara. Que no llegue a hervir: el huevo se corta\nRepártelas en vasos y, al templarse, pon una galleta y canela en polvo por encima\nConsejo: Las claras que sobran sirven para una tortilla; en el campamento, cómelas el mismo día"
+    "steps": "Separa 4 cucharadas de leche fría en un vaso. Calienta el resto con la canela y la piel de limón; cuando hierva, apaga, tapa y deja reposar 10 min. Cuela la leche\nEn un bol, disuelve la maicena en la leche fría y añade las yemas y el azúcar, batiendo\nEcha la leche caliente poco a poco sobre las yemas, sin parar de remover\nVuelve a ponerlo todo en el cazo a fuego bajo y remueve sin parar, haciendo ochos, hasta que cubra el dorso de la cuchara. Que no llegue a hervir: el huevo se corta\nRepártelas en vasos y, al templarse, pon una galleta y canela en polvo por encima\nConsejo: Las claras que sobran sirven para una tortilla; en el campamento, cómelas el mismo día",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor."
   },
   {
     "id": "ac-fondue",
@@ -6457,7 +6563,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6513,7 +6620,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta el pan en dados con corteza\nParte el ajo por la mitad y frota con él el interior del cazo. Echa el vino y llévalo a hervor suave\nBaja el fuego y añade el queso en tandas, removiendo sin parar en ochos; espera a que se funda cada tanda\nDisuelve la maicena en un chorrito de agua, añádela y cocina 1 min más removiendo. Echa pimienta y nuez moscada\nMantenla al mínimo en el hornillo mientras se come, y moja los dados de pan pinchados en un tenedor largo"
+    "steps": "Corta el pan en dados con corteza\nParte el ajo por la mitad y frota con él el interior del cazo. Echa el vino y llévalo a hervor suave\nBaja el fuego y añade el queso en tandas, removiendo sin parar en ochos; espera a que se funda cada tanda\nDisuelve la maicena en un chorrito de agua, añádela y cocina 1 min más removiendo. Echa pimienta y nuez moscada\nMantenla al mínimo en el hornillo mientras se come, y moja los dados de pan pinchados en un tenedor largo",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): cazuela sobre brasas muy suaves, casi sin calor. Si se calienta de más, el queso se corta y se pega: aparta la cazuela a menudo. Sin llama y con brasas pequeñas."
   },
   {
     "id": "ac-trufas",
@@ -6740,7 +6848,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -6792,7 +6901,8 @@
         "price": "0.60"
       }
     ],
-    "steps": "Pon a hervir abundante agua con sal\nPica la cebolla y córtala con el chorizo en rodajas o dados\nEn una sartén u olla, sofríe la cebolla con el aceite 5 min, añade el chorizo y deja que suelte la grasa 2 min\nEcha el tomate, el azúcar (quita la acidez) y un poco de sal, y cocina a fuego suave 10 min\nCuece los macarrones el tiempo del paquete, escúrrelos y mézclalos con la salsa\nSirve con queso rallado por encima si hay\nConsejo: Guarda un vaso del agua de cocer la pasta: si la salsa queda espesa, un chorrito la suelta"
+    "steps": "Pon a hervir abundante agua con sal\nPica la cebolla y córtala con el chorizo en rodajas o dados\nEn una sartén u olla, sofríe la cebolla con el aceite 5 min, añade el chorizo y deja que suelte la grasa 2 min\nEcha el tomate, el azúcar (quita la acidez) y un poco de sal, y cocina a fuego suave 10 min\nCuece los macarrones el tiempo del paquete, escúrrelos y mézclalos con la salsa\nSirve con queso rallado por encima si hay\nConsejo: Guarda un vaso del agua de cocer la pasta: si la salsa queda espesa, un chorrito la suelta",
+    "fuego": "Fuego directo (llama baja o media): pon el agua en una olla grande sobre llama viva hasta que hierva fuerte. La salsa o el sofrito, en sartén aparte sobre brasas fuertes; si se seca, baja la sartén a brasas suaves."
   },
   {
     "id": "c4-pisto-huevo",
@@ -6802,7 +6912,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Verano"
+      "Verano",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -6860,7 +6971,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta la cebolla, los pimientos y el calabacín en dados pequeños\nEn una sartén grande u olla baja, pocha la cebolla con el aceite 5 min a fuego medio\nAñade los pimientos y cocina 10 min más; después el calabacín, otros 10 min, removiendo de vez en cuando\nEcha el tomate, el azúcar y la sal y deja a fuego suave 10 min, hasta que espese\nHaz cuatro huecos en el pisto, casca un huevo en cada uno, tapa y deja 4 o 5 min, hasta que la clara cuaje"
+    "steps": "Corta la cebolla, los pimientos y el calabacín en dados pequeños\nEn una sartén grande u olla baja, pocha la cebolla con el aceite 5 min a fuego medio\nAñade los pimientos y cocina 10 min más; después el calabacín, otros 10 min, removiendo de vez en cuando\nEcha el tomate, el azúcar y la sal y deja a fuego suave 10 min, hasta que espese\nHaz cuatro huecos en el pisto, casca un huevo en cada uno, tapa y deja 4 o 5 min, hasta que la clara cuaje",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. El pisto, a brasas suaves y tapado; los huevos, al final y con la cazuela tapada."
   },
   {
     "id": "c4-albondigas",
@@ -6869,7 +6981,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -6939,7 +7052,8 @@
         "price": ""
       }
     ],
-    "steps": "Mezcla la carne con el huevo, el pan rallado, un ajo picado, el perejil y sal\nHaz bolas del tamaño de una nuez y pásalas por harina\nDóralas en la sartén con el aceite, en tandas, unos 3 min dándoles la vuelta. Apártalas\nEn el mismo aceite, pocha la cebolla y el otro ajo picados 5 min\nAñade el tomate y el agua, sala y mete las albóndigas. Tapa y cuece a fuego suave 15 min, moviendo la olla de vez en cuando\nConsejo: Con las manos mojadas, las bolas no se pegan"
+    "steps": "Mezcla la carne con el huevo, el pan rallado, un ajo picado, el perejil y sal\nHaz bolas del tamaño de una nuez y pásalas por harina\nDóralas en la sartén con el aceite, en tandas, unos 3 min dándoles la vuelta. Apártalas\nEn el mismo aceite, pocha la cebolla y el otro ajo picados 5 min\nAñade el tomate y el agua, sala y mete las albóndigas. Tapa y cuece a fuego suave 15 min, moviendo la olla de vez en cuando\nConsejo: Con las manos mojadas, las bolas no se pegan",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Dora las albóndigas en sartén a brasas fuertes y termínalas en la salsa, a fuego suave."
   },
   {
     "id": "c4-pollo-patatas",
@@ -6949,7 +7063,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7019,7 +7134,8 @@
         "price": ""
       }
     ],
-    "steps": "Sala el pollo y dóralo en la olla con el aceite, por todos los lados, unos 8 min. Apártalo\nEn la misma olla, pocha la cebolla, el pimiento y el ajo picados 5 min\nAñade el tomate y, fuera del fuego, el pimentón; remueve para que no se queme\nVuelve a meter el pollo, añade el laurel y el agua, tapa y cuece 20 min a fuego suave\nPela las patatas, cháscalas en trozos (corta un poco y rompe el trozo con el cuchillo: así sueltan almidón y espesan el caldo) y añádelas con un poco de sal\nCuece 20 min más, hasta que las patatas estén tiernas\nOjo: El pollo, bien hecho: sin nada rosa junto al hueso"
+    "steps": "Sala el pollo y dóralo en la olla con el aceite, por todos los lados, unos 8 min. Apártalo\nEn la misma olla, pocha la cebolla, el pimiento y el ajo picados 5 min\nAñade el tomate y, fuera del fuego, el pimentón; remueve para que no se queme\nVuelve a meter el pollo, añade el laurel y el agua, tapa y cuece 20 min a fuego suave\nPela las patatas, cháscalas en trozos (corta un poco y rompe el trozo con el cuchillo: así sueltan almidón y espesan el caldo) y añádelas con un poco de sal\nCuece 20 min más, hasta que las patatas estén tiernas\nOjo: El pollo, bien hecho: sin nada rosa junto al hueso",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue."
   },
   {
     "id": "c4-estofado-ternera",
@@ -7029,7 +7145,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7105,7 +7222,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta la carne en dados, sálala, pásala por la harina y dórala en la olla con el aceite. Apártala\nPocha en la misma olla la cebolla y el ajo picados 5 min\nAñade el tomate, la carne, el vino y el laurel y deja que el vino hierva 2 min\nCubre con el agua, tapa y cuece a fuego suave 1 h, removiendo de vez en cuando\nAñade las patatas y las zanahorias en trozos y un poco de sal, y cuece 25 o 30 min más, hasta que todo esté tierno\nConsejo: Con olla exprés, la carne está en 25 min; luego las patatas, 5 min más"
+    "steps": "Corta la carne en dados, sálala, pásala por la harina y dórala en la olla con el aceite. Apártala\nPocha en la misma olla la cebolla y el ajo picados 5 min\nAñade el tomate, la carne, el vino y el laurel y deja que el vino hierva 2 min\nCubre con el agua, tapa y cuece a fuego suave 1 h, removiendo de vez en cuando\nAñade las patatas y las zanahorias en trozos y un poco de sal, y cuece 25 o 30 min más, hasta que todo esté tierno\nConsejo: Con olla exprés, la carne está en 25 min; luego las patatas, 5 min más",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. Cuece tapado y a poca llama: cuanto más despacio, más tierna queda la carne."
   },
   {
     "id": "c4-lentejas-verduras",
@@ -7115,7 +7233,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7191,7 +7310,8 @@
         "price": ""
       }
     ],
-    "steps": "Lava las lentejas (las pardinas no hace falta ponerlas en remojo)\nPocha en la olla la cebolla, el pimiento y el ajo picados con el aceite 5 min\nAñade el tomate y, fuera del fuego, el pimentón\nEcha las lentejas, la zanahoria y la patata en trozos, el laurel y el agua fría\nCuece tapado a fuego suave 35 a 40 min, hasta que estén tiernas. Sala al final y añade agua si se quedan secas\nConsejo: Comprueba que la pastilla de caldo, si la usas, es de verduras: muchas llevan carne"
+    "steps": "Lava las lentejas (las pardinas no hace falta ponerlas en remojo)\nPocha en la olla la cebolla, el pimiento y el ajo picados con el aceite 5 min\nAñade el tomate y, fuera del fuego, el pimentón\nEcha las lentejas, la zanahoria y la patata en trozos, el laurel y el agua fría\nCuece tapado a fuego suave 35 a 40 min, hasta que estén tiernas. Sala al final y añade agua si se quedan secas\nConsejo: Comprueba que la pastilla de caldo, si la usas, es de verduras: muchas llevan carne",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue."
   },
   {
     "id": "c4-francesa-atun",
@@ -7201,7 +7321,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Ruta"
+      "Ruta",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7229,7 +7350,8 @@
         "price": ""
       }
     ],
-    "steps": "Escurre el atún y desmígalo\nBate los huevos de dos en dos con una pizca de sal\nCalienta un poco de aceite en la sartén, echa los huevos y, cuando empiecen a cuajar, pon una cuarta parte del atún en el centro\nDobla la tortilla en tres y déjala 1 min más. Repite con las demás"
+    "steps": "Escurre el atún y desmígalo\nBate los huevos de dos en dos con una pizca de sal\nCalienta un poco de aceite en la sartén, echa los huevos y, cuando empiecen a cuajar, pon una cuarta parte del atún en el centro\nDobla la tortilla en tres y déjala 1 min más. Repite con las demás",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Usa una sartén bien engrasada y pequeña, y el fuego suave: el huevo se hace rápido."
   },
   {
     "id": "c4-revuelto-champinones",
@@ -7238,7 +7360,8 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7278,7 +7401,8 @@
         "price": ""
       }
     ],
-    "steps": "Saltea los champiñones con el ajo picado y el aceite a fuego fuerte 5 min, hasta que suelten el agua y se doren\nAñade el jamón y dale una vuelta de 1 min\nBaja el fuego, echa los huevos batidos con poca sal (el jamón ya sala) y remueve sin parar\nRetira cuando estén cuajados pero jugosos: se terminan de hacer fuera del fuego"
+    "steps": "Saltea los champiñones con el ajo picado y el aceite a fuego fuerte 5 min, hasta que suelten el agua y se doren\nAñade el jamón y dale una vuelta de 1 min\nBaja el fuego, echa los huevos batidos con poca sal (el jamón ya sala) y remueve sin parar\nRetira cuando estén cuajados pero jugosos: se terminan de hacer fuera del fuego",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Los champiñones, a brasas fuertes para dorarlos; el huevo, ya a brasas suaves."
   },
   {
     "id": "c4-crema-verduras",
@@ -7288,7 +7412,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7346,7 +7471,8 @@
         "price": ""
       }
     ],
-    "steps": "Pocha la cebolla picada con el aceite 5 min\nAñade las patatas, las zanahorias y el calabacín en trozos pequeños, el agua y la pastilla de caldo\nCuece tapado 20 o 25 min, hasta que todo esté muy tierno\nTritura con batidora; sin ella, aplasta con un tenedor o un pasapurés hasta que quede fina\nAñade los quesitos, remueve hasta que se fundan y prueba de sal"
+    "steps": "Pocha la cebolla picada con el aceite 5 min\nAñade las patatas, las zanahorias y el calabacín en trozos pequeños, el agua y la pastilla de caldo\nCuece tapado 20 o 25 min, hasta que todo esté muy tierno\nTritura con batidora; sin ella, aplasta con un tenedor o un pasapurés hasta que quede fina\nAñade los quesitos, remueve hasta que se fundan y prueba de sal",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada para cocer las verduras. Para triturar sin batidora, aplasta con un tenedor o un pasapurés y pasa por un colador."
   },
   {
     "id": "c4-sopa-sobre",
@@ -7357,7 +7483,8 @@
       "Ruta",
       "Acampada",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -7397,7 +7524,8 @@
         "price": "0.20"
       }
     ],
-    "steps": "Corta el pan en dados y tuéstalo en la sartén con el aceite hasta que esté dorado\nHierve el agua, echa los sobres y el jamón y cuece el tiempo que indique el paquete\nBate los huevos y échalos en hilo en la sopa hirviendo, removiendo: se cuajan en hebras\nSirve con los picatostes por encima en el momento, para que no se ablanden"
+    "steps": "Corta el pan en dados y tuéstalo en la sartén con el aceite hasta que esté dorado\nHierve el agua, echa los sobres y el jamón y cuece el tiempo que indique el paquete\nBate los huevos y échalos en hilo en la sopa hirviendo, removiendo: se cuajan en hebras\nSirve con los picatostes por encima en el momento, para que no se ablanden",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue."
   },
   {
     "id": "c4-ensaladilla",
@@ -7739,7 +7867,8 @@
     "servings": 4,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -7783,7 +7912,8 @@
         "price": ""
       }
     ],
-    "steps": "Derrite la mantequilla en un cazo a fuego medio. Echa la harina de golpe y remueve con varillas 2 min, hasta que burbujee y huela a tostado\nBaja el fuego al mínimo y añade la leche tibia en chorro fino, batiendo con fuerza. No eches más hasta que la anterior se haya absorbido\nSube a fuego medio hasta que hierva suave. Echa la sal, la pimienta y la nuez moscada y cocina 8 o 10 min sin parar de remover\nConsejo: Cocinarla el tiempo suficiente evita que sepa a harina cruda"
+    "steps": "Derrite la mantequilla en un cazo a fuego medio. Echa la harina de golpe y remueve con varillas 2 min, hasta que burbujee y huela a tostado\nBaja el fuego al mínimo y añade la leche tibia en chorro fino, batiendo con fuerza. No eches más hasta que la anterior se haya absorbido\nSube a fuego medio hasta que hierva suave. Echa la sal, la pimienta y la nuez moscada y cocina 8 o 10 min sin parar de remover\nConsejo: Cocinarla el tiempo suficiente evita que sepa a harina cruda",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor. La harina se tuesta a brasas suaves 1 minuto, y luego la leche se añade en hilo, sin dejar de remover."
   },
   {
     "id": "ca-holandesa",
@@ -8261,7 +8391,8 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8312,6 +8443,7 @@
       }
     ],
     "steps": "Corta la cebolla en juliana fina y cocínala a fuego muy bajo con un chorro de aceite y sal 25 min, hasta que esté tierna y oscura. Añade el azúcar moreno y remueve 5 min más. Déjala enfriar\nCorta el hojaldre en cuadrados de unos 4 × 4 cm, ponlos en una bandeja y pínchalos en el centro con un tenedor\nPon encima una cucharadita de cebolla y una rodaja fina de queso de cabra. Pinta los bordes con huevo batido\nHornea a 200 °C de 12 a 15 min, hasta que los bordes suban y se doren. Sírvelos templados",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Hazlos en tandas pequeñas y vigílalos desde los 10 minutos: el hojaldre se quema rápido con brasas encima.",
     "corto": "Canapés de hojaldre"
   },
   {
@@ -8484,7 +8616,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8523,6 +8656,7 @@
       }
     ],
     "steps": "En una cazuela pequeña apta para horno, extiende el tomate en el fondo para que el queso no se pegue\nPon encima la rodaja de provolone (de unos 2 cm), espolvorea el orégano y el pimentón y añade un hilo de aceite\nHornea a 200 °C con el gratinador encendido de 10 a 12 min, hasta que esté fundido y dorado. Sírvelo con pan tostado",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Es una receta de parrilla: cazuela pequeña de hierro sobre la rejilla, con brasas fuertes por debajo, hasta que se funda y se dore. Sirve en la misma cazuela.",
     "corto": "Provoleta al horno"
   },
   {
@@ -8742,7 +8876,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8835,6 +8970,7 @@
       }
     ],
     "steps": "Cuece las patatas peladas en trozos 20 min, hasta que estén tiernas\nEn una sartén ancha, pocha con aceite la cebolla, las zanahorias y el puerro picados finos. Añade la carne, sazona y dórala\nAñade el tomate concentrado, el vino tinto (deja que se evapore el alcohol) y el caldo, y cocina a fuego lento 15 min, hasta que espese. Pásalo a una fuente de horno\nChafa las patatas calientes con la mantequilla, la leche, la yema, sal y pimienta, hasta un puré espeso. Extiéndelo sobre la carne y haz surcos con un tenedor\nHornea a 200 °C unos 20 min, hasta que el puré se dore y el guiso burbujee por los bordes. Deja reposar unos minutos",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Pon más brasas arriba para dorar el puré. Con una cazuela, el relleno ya va hecho: solo hay que calentarlo y gratinarlo.",
     "corto": "Pastel de carne"
   },
   {
@@ -9021,7 +9157,8 @@
         "price": "0.10"
       }
     ],
-    "steps": "Disuelve la levadura y el azúcar en el agua tibia (que no queme) y déjala 5 min, hasta que haga espuma\nMezcla la harina con la sal, echa el agua con la levadura y el aceite y une con las manos. Amasa 8 o 10 min, hasta que esté lisa y no se pegue\nHaz una bola, ponla en un bol tapado con un paño o en una bolsa y déjala fermentar 1 h en un sitio cálido, hasta que doble su volumen\nMientras tanto, prepara las brasas: madera de leña dura (encina, roble) hecha ascua, sin llama\nForra el fondo de una olla con tapa con papel de aluminio o de horno. Pon la masa dentro, forma de bola, y haz un corte en cruz por encima\nColoca la olla sobre un lecho de brasas apoyada en tres piedras o bolas de aluminio, para que el fondo no se queme. Pon la tapa y reparte brasas encima de la tapa\nHornea de 35 a 45 min, renovando las brasas de arriba a mitad. Debe quedar dorado y sonar hueco al golpearlo por debajo\nDéjalo enfriar unos 15 min sobre una rejilla o un paño antes de cortarlo\nConsejo: Más brasas arriba que abajo: si no, el fondo se quema antes de que el centro esté hecho\nOjo: Usa guantes gruesos para mover la olla y no hagas el fuego en el campamento si no está permitido"
+    "steps": "Disuelve la levadura y el azúcar en el agua tibia (que no queme) y déjala 5 min, hasta que haga espuma\nMezcla la harina con la sal, echa el agua con la levadura y el aceite y une con las manos. Amasa 8 o 10 min, hasta que esté lisa y no se pegue\nHaz una bola, ponla en un bol tapado con un paño o en una bolsa y déjala fermentar 1 h en un sitio cálido, hasta que doble su volumen\nMientras tanto, prepara las brasas: madera de leña dura (encina, roble) hecha ascua, sin llama\nForra el fondo de una olla con tapa con papel de aluminio o de horno. Pon la masa dentro, forma de bola, y haz un corte en cruz por encima\nColoca la olla sobre un lecho de brasas apoyada en tres piedras o bolas de aluminio, para que el fondo no se queme. Pon la tapa y reparte brasas encima de la tapa\nHornea de 35 a 45 min, renovando las brasas de arriba a mitad. Debe quedar dorado y sonar hueco al golpearlo por debajo\nDéjalo enfriar unos 15 min sobre una rejilla o un paño antes de cortarlo\nConsejo: Más brasas arriba que abajo: si no, el fondo se quema antes de que el centro esté hecho\nOjo: Usa guantes gruesos para mover la olla y no hagas el fuego en el campamento si no está permitido",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Es la técnica base de las recetas «arriba y abajo»."
   },
   {
     "id": "pf-pan-sarten",
@@ -9342,7 +9479,8 @@
         "price": ""
       }
     ],
-    "steps": "Pela las patatas y córtalas en rodajas de medio dedo. Corta la cebolla y el pimiento en tiras\nReparte todo en 4 trozos grandes de papel de aluminio doble. Echa un chorro de aceite, sal y orégano a cada uno y mezcla\nCierra bien cada paquete, doblando los bordes, para que no escape el vapor\nPon los paquetes entre las brasas (no sobre la llama) de 30 a 40 min, dándoles la vuelta a mitad. Las patatas deben estar tiernas al pinchar\nÁbrelos con cuidado, que sale vapor muy caliente\nOjo: Usa guantes gruesos o pinzas para sacarlos del fuego"
+    "steps": "Pela las patatas y córtalas en rodajas de medio dedo. Corta la cebolla y el pimiento en tiras\nReparte todo en 4 trozos grandes de papel de aluminio doble. Echa un chorro de aceite, sal y orégano a cada uno y mezcla\nCierra bien cada paquete, doblando los bordes, para que no escape el vapor\nPon los paquetes entre las brasas (no sobre la llama) de 30 a 40 min, dándoles la vuelta a mitad. Las patatas deben estar tiernas al pinchar\nÁbrelos con cuidado, que sale vapor muy caliente\nOjo: Usa guantes gruesos o pinzas para sacarlos del fuego",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 30-40 minutos; dale la vuelta a mitad."
   },
   {
     "id": "pf-calabacin-relleno",
@@ -9656,7 +9794,8 @@
         "price": ""
       }
     ],
-    "steps": "Preparar el fuego antes de empezar (mismo principio que las patatas tramperas).\nEn naranja: cortar el tercio superior de la naranja y retirar con cuidado la pulpa. Volver a poner la \"tapa\" y envolver con cuidado en una doble capa de papel de aluminio.\nCascar el huevo dentro de la naranja y sazonar.\nColocar en las brasas bien recta. Cocer unos 10 minutos.\nEn patata: cocinar antes la patata entera envuelta en aluminio en las brasas; cortar el tercio superior, retirar con cuidado la carne y sazonar (sal, pimienta, un poco de queso gruyère si se quiere).\nCascar el huevo dentro sin pinchar la piel. Volver a poner en las brasas bien recta. Cocer unos 10 minutos.\nConsejo: sea cual sea el método, cuidado con no pinchar la piel (de la naranja o de la patata): si se raja, se sale el huevo."
+    "steps": "Preparar el fuego antes de empezar (mismo principio que las patatas tramperas).\nEn naranja: cortar el tercio superior de la naranja y retirar con cuidado la pulpa. Volver a poner la \"tapa\" y envolver con cuidado en una doble capa de papel de aluminio.\nCascar el huevo dentro de la naranja y sazonar.\nColocar en las brasas bien recta. Cocer unos 10 minutos.\nEn patata: cocinar antes la patata entera envuelta en aluminio en las brasas; cortar el tercio superior, retirar con cuidado la carne y sazonar (sal, pimienta, un poco de queso gruyère si se quiere).\nCascar el huevo dentro sin pinchar la piel. Volver a poner en las brasas bien recta. Cocer unos 10 minutos.\nConsejo: sea cual sea el método, cuidado con no pinchar la piel (de la naranja o de la patata): si se raja, se sale el huevo.",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 10 minutos, siempre bien recta."
   },
   {
     "id": "cc-sopa-verduras",
@@ -9667,7 +9806,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9722,7 +9862,8 @@
         "price": ""
       }
     ],
-    "steps": "Pelar, lavar y cortar las verduras en trozos pequeños.\nRehogar los puerros con la mantequilla 10 minutos.\nMientras tanto, poner el resto de las verduras en una gamela y cubrirlas de agua.\nPoner a calentar 30 minutos.\nOpcional: añadir una pastilla de caldo para dar más sabor.\nUna vez cocidas las verduras, triturarlas (o chafarlas con el tenedor) y sazonar al gusto.\nConsejo: tapar la gamela para que la cocción sea más rápida. Si tienes nabos, puedes añadir 2 junto al resto de verduras."
+    "steps": "Pelar, lavar y cortar las verduras en trozos pequeños.\nRehogar los puerros con la mantequilla 10 minutos.\nMientras tanto, poner el resto de las verduras en una gamela y cubrirlas de agua.\nPoner a calentar 30 minutos.\nOpcional: añadir una pastilla de caldo para dar más sabor.\nUna vez cocidas las verduras, triturarlas (o chafarlas con el tenedor) y sazonar al gusto.\nConsejo: tapar la gamela para que la cocción sea más rápida. Si tienes nabos, puedes añadir 2 junto al resto de verduras.",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue."
   },
   {
     "id": "cc-ensalada-campesina",
@@ -9830,7 +9971,8 @@
       "Principal",
       "Casa",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9891,7 +10033,8 @@
         "price": ""
       }
     ],
-    "steps": "Pelar y picar finas las cebollas. Pelar las patatas y cortarlas en dados pequeños.\nCalentar la mantequilla en una sartén grande; rehogar las patatas y la panceta. Añadir las cebollas y remover de vez en cuando.\nCascar y batir los huevos en una gamela. Añadir la nata, sazonar al gusto y añadir el queso. Batir.\nVerter los huevos sobre las patatas. Dejar cuajar de 5 a 10 minutos, removiendo un poco al principio."
+    "steps": "Pelar y picar finas las cebollas. Pelar las patatas y cortarlas en dados pequeños.\nCalentar la mantequilla en una sartén grande; rehogar las patatas y la panceta. Añadir las cebollas y remover de vez en cuando.\nCascar y batir los huevos en una gamela. Añadir la nata, sazonar al gusto y añadir el queso. Batir.\nVerter los huevos sobre las patatas. Dejar cuajar de 5 a 10 minutos, removiendo un poco al principio.",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Para darle la vuelta, usa un plato o una tapa grande y guantes gruesos."
   },
   {
     "id": "cc-tortitas-patata",
@@ -9902,7 +10045,8 @@
       "Entrante",
       "Casa",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9951,7 +10095,8 @@
         "price": ""
       }
     ],
-    "steps": "Pelar las patatas, lavarlas y rallarlas gruesas. Cortar las cebollas en láminas cortas y finas.\nPoner las patatas ralladas en una gamela grande. Cascar los huevos encima, añadir las cebollas y mezclar con sal y pimienta.\nCalentar la sartén con la mantequilla y el aceite. Formar tortitas individuales pequeñas. Cocer 5 minutos por cada lado.\nConsejo: evitar las patatas grandes y muy alargadas, que tardan mucho en cocer."
+    "steps": "Pelar las patatas, lavarlas y rallarlas gruesas. Cortar las cebollas en láminas cortas y finas.\nPoner las patatas ralladas en una gamela grande. Cascar los huevos encima, añadir las cebollas y mezclar con sal y pimienta.\nCalentar la sartén con la mantequilla y el aceite. Formar tortitas individuales pequeñas. Cocer 5 minutos por cada lado.\nConsejo: evitar las patatas grandes y muy alargadas, que tardan mucho en cocer.",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Si se doran muy rápido por fuera, apártalas del centro de las brasas."
   },
   {
     "id": "cc-quiche-sin-masa",
@@ -9961,7 +10106,8 @@
     "categories": [
       "Principal",
       "Casa",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10004,7 +10150,8 @@
         "price": ""
       }
     ],
-    "steps": "Poner todos los ingredientes en un bol grande y mezclar bien. Salpimentar al gusto.\nVerter en un molde para tarta y hornear durante 30 minutos."
+    "steps": "Poner todos los ingredientes en un bol grande y mezclar bien. Salpimentar al gusto.\nVerter en un molde para tarta y hornear durante 30 minutos.",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Cuenta el tiempo del horno (30 minutos) más 10; está lista cuando cuaja al mover el molde."
   },
   {
     "id": "cc-bizcocho-yogur",
@@ -10015,7 +10162,8 @@
       "Postre y masas",
       "Casa",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10058,7 +10206,8 @@
         "price": ""
       }
     ],
-    "steps": "Vaciar el yogur en una gamela grande; rascar bien el vaso para usarlo como medida.\nAñadir los ingredientes en el orden de la lista, mezclando bien después de cada uno.\nEngrasar el molde con aceite o mantequilla. Verter la masa y hornear de 25 a 30 minutos.\nConsejo: para saber si está cocido, clava la punta de un cuchillo en el centro; debe salir limpia. Si no, déjalo unos minutos más."
+    "steps": "Vaciar el yogur en una gamela grande; rascar bien el vaso para usarlo como medida.\nAñadir los ingredientes en el orden de la lista, mezclando bien después de cada uno.\nEngrasar el molde con aceite o mantequilla. Verter la masa y hornear de 25 a 30 minutos.\nConsejo: para saber si está cocido, clava la punta de un cuchillo en el centro; debe salir limpia. Si no, déjalo unos minutos más.",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. No abras la tapa en los primeros 15 minutos. Cuenta el tiempo del horno más 10-15 y pincha con un palillo: debe salir limpio."
   },
   {
     "id": "cc-pure-ortigas",
@@ -10147,7 +10296,8 @@
       "Merienda",
       "Casa",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10172,7 +10322,8 @@
         "price": ""
       }
     ],
-    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego y añadir la manzanilla seca. Dejar reposar tapada de 5 a 8 minutos.\nColar y endulzar con miel si se quiere.\nConsejo: compra la manzanilla ya seca en el supermercado o herbolario; es la forma más segura de tenerla siempre identificada."
+    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego y añadir la manzanilla seca. Dejar reposar tapada de 5 a 8 minutos.\nColar y endulzar con miel si se quiere.\nConsejo: compra la manzanilla ya seca en el supermercado o herbolario; es la forma más segura de tenerla siempre identificada.",
+    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos."
   },
   {
     "id": "inf-menta",
@@ -10184,7 +10335,8 @@
       "Casa",
       "Acampada",
       "Verano",
-      "Libro de PA COCINA francés"
+      "Libro de PA COCINA francés",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10209,7 +10361,8 @@
         "price": ""
       }
     ],
-    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego, añadir las hojas de menta o hierbabuena (lavadas) y dejar reposar de 5 a 10 minutos.\nColar y endulzar al gusto. También se puede tomar fría, con hielo.\nConsejo: la menta y la hierbabuena de huerto o maceta son fáciles de identificar con seguridad; si es una menta silvestre que no conoces bien, mejor no arriesgarse y usar la comprada."
+    "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego, añadir las hojas de menta o hierbabuena (lavadas) y dejar reposar de 5 a 10 minutos.\nColar y endulzar al gusto. También se puede tomar fría, con hielo.\nConsejo: la menta y la hierbabuena de huerto o maceta son fáciles de identificar con seguridad; si es una menta silvestre que no conoces bien, mejor no arriesgarse y usar la comprada.",
+    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos."
   },
   {
     "id": "ca-crema-inglesa",
@@ -10218,7 +10371,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10250,7 +10404,8 @@
         "price": ""
       }
     ],
-    "steps": "Calienta la leche con las semillas de vainilla hasta que rompa a hervir. Retira, tapa y deja reposar 10 min\nBate las yemas con el azúcar hasta que aclaren. Vierte un cazo de la leche tibia sobre las yemas poco a poco, sin parar de remover, y junta todo en el cazo\nCocina a fuego muy bajo removiendo en «ochos», sin que hierva. Cuando cubra el dorso de la cuchara y al pasar el dedo quede un surco limpio, retira y enfría de inmediato"
+    "steps": "Calienta la leche con las semillas de vainilla hasta que rompa a hervir. Retira, tapa y deja reposar 10 min\nBate las yemas con el azúcar hasta que aclaren. Vierte un cazo de la leche tibia sobre las yemas poco a poco, sin parar de remover, y junta todo en el cazo\nCocina a fuego muy bajo removiendo en «ochos», sin que hierva. Cuando cubra el dorso de la cuchara y al pasar el dedo quede un surco limpio, retira y enfría de inmediato",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor. No debe hervir: cuando la crema nape la cuchara, sácala del calor."
   },
   {
     "id": "ca-crema-pastelera-firme",
@@ -10259,7 +10414,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10309,7 +10465,8 @@
         "price": "0.41"
       }
     ],
-    "steps": "Hierve la leche con la canela y el limón, reservando medio vaso en frío. En ese vaso frío disuelve la maicena y el azúcar, añade las yemas y bate bien\nCuela la leche caliente sobre las yemas, remueve y devuelve todo al cazo. Cocina a fuego medio sin parar de remover. Cuando espese y dé el primer hervor, cuenta 1 minuto entero para quitar el sabor a crudo\nRetira del fuego, añade la mantequilla y remueve hasta que se funda. Tápala con film a piel para que no haga costra"
+    "steps": "Hierve la leche con la canela y el limón, reservando medio vaso en frío. En ese vaso frío disuelve la maicena y el azúcar, añade las yemas y bate bien\nCuela la leche caliente sobre las yemas, remueve y devuelve todo al cazo. Cocina a fuego medio sin parar de remover. Cuando espese y dé el primer hervor, cuenta 1 minuto entero para quitar el sabor a crudo\nRetira del fuego, añade la mantequilla y remueve hasta que se funda. Tápala con film a piel para que no haga costra",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor."
   },
   {
     "id": "ca-tortitas-americanas",
@@ -10319,7 +10476,8 @@
     "categories": [
       "Desayuno",
       "Merienda",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10369,7 +10527,8 @@
         "price": "0.25"
       }
     ],
-    "steps": "Mezcla en un bol grande los secos: harina, levadura, azúcar y sal. En otro cuenco bate el huevo con la leche y la mantequilla derretida\nVierte los líquidos sobre los secos y mezcla con un tenedor solo lo justo para que la harina se humedezca, sin batir de más. Deja reposar la masa 5 min\nEngrasa una sartén a fuego medio y vierte un cucharón de masa. Cuando salgan burbujas en la superficie y empiecen a romperse, dale la vuelta y cocina 1 min más"
+    "steps": "Mezcla en un bol grande los secos: harina, levadura, azúcar y sal. En otro cuenco bate el huevo con la leche y la mantequilla derretida\nVierte los líquidos sobre los secos y mezcla con un tenedor solo lo justo para que la harina se humedezca, sin batir de más. Deja reposar la masa 5 min\nEngrasa una sartén a fuego medio y vierte un cucharón de masa. Cuando salgan burbujas en la superficie y empiecen a romperse, dale la vuelta y cocina 1 min más",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. La primera tortita sirve para probar el calor: si se quema, baja la sartén."
   },
   {
     "id": "ca-bunuelos-viento",
@@ -10438,7 +10597,8 @@
     "categories": [
       "Postre y masas",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10488,7 +10648,8 @@
         "price": "0.15"
       }
     ],
-    "steps": "En una olla ancha pon la leche, el arroz, las pieles de los cítricos y la canela a fuego medio. Cuando rompa a hervir, baja al mínimo y cuece 40-45 min, removiendo cada pocos minutos para que suelte el almidón\nCuando el arroz esté tierno y la leche tenga textura de crema, añade el azúcar y la mantequilla y remueve sin parar 5 min más (no eches el azúcar antes, o el grano queda duro)\nQuita las pieles y la canela y deja enfriar"
+    "steps": "En una olla ancha pon la leche, el arroz, las pieles de los cítricos y la canela a fuego medio. Cuando rompa a hervir, baja al mínimo y cuece 40-45 min, removiendo cada pocos minutos para que suelte el almidón\nCuando el arroz esté tierno y la leche tenga textura de crema, añade el azúcar y la mantequilla y remueve sin parar 5 min más (no eches el azúcar antes, o el grano queda duro)\nQuita las pieles y la canela y deja enfriar",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): el cazo sobre brasas sin llama, con calor flojo. Remueve sin parar: la leche se pega y se sale si hierve fuerte. Si sube, aparta el cazo del calor. Es una cocción larga: ponla a la derecha del fuego, donde casi no llegue calor."
   },
   {
     "id": "crema-de-setas",
@@ -10497,7 +10658,8 @@
     "categories": [
       "Entrante",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "source": {
       "name": "Thermorecetas",
@@ -10559,7 +10721,8 @@
         "price": ""
       }
     ],
-    "steps": "Pica la cebolla, los puerros, el ajo y las setas, y sofríelo todo en una olla con el aceite a fuego medio unos 8 min, hasta que esté blando\nAñade el agua, la pastilla de caldo y media cucharadita de sal. Deja cocer tapado a fuego medio-bajo unos 25 min\nIncorpora la nata (reserva un par de cucharadas para decorar) y cuece 1 min más\nDeja templar un poco y tritura con la batidora hasta que quede fina\nSirve con un chorrito de la nata reservada por encima"
+    "steps": "Pica la cebolla, los puerros, el ajo y las setas, y sofríelo todo en una olla con el aceite a fuego medio unos 8 min, hasta que esté blando\nAñade el agua, la pastilla de caldo y media cucharadita de sal. Deja cocer tapado a fuego medio-bajo unos 25 min\nIncorpora la nata (reserva un par de cucharadas para decorar) y cuece 1 min más\nDeja templar un poco y tritura con la batidora hasta que quede fina\nSirve con un chorrito de la nata reservada por encima",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada para cocer las verduras. Para triturar sin batidora, aplasta con un tenedor o un pasapurés y pasa por un colador."
   },
   {
     "id": "crumble-manzana-sarten",
@@ -10570,7 +10733,8 @@
       "Postre y masas",
       "Acampada",
       "Casa",
-      "Otoño"
+      "Otoño",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -10605,6 +10769,7 @@
       }
     ],
     "steps": "Pela las manzanas y córtalas en dados medianos\nEn una sartén, cocina la manzana con la mitad del azúcar (unos 40 g) y algo de canela a fuego medio, 4-6 min, hasta que esté «al dente» (depende de la variedad). Resérvala\nMezcla la harina con el resto del azúcar y algo de canela. Añade la mantequilla fría en trocitos y trabájala con los dedos hasta que quede una textura grumosa, como migas gruesas\nEn otra sartén (o en la misma, limpia), tuesta las migas de harina y mantequilla a fuego medio-bajo, removiendo sin parar, 6-8 min, hasta que doren y huelan a tostado. Vigila que no se quemen\nReparte la manzana en platos o cuencos y cubre con las migas tostadas, calientes, justo antes de servir",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Tápala 1-2 minutos para que el relleno quede tierno.",
     "nota": "Sin horno, de principio a fin con sartén (u hornillo): va bien para acampada, ruta o fuego. Reparte la canela a ojo entre la manzana y las migas, como más te guste."
   },
   {
@@ -10616,7 +10781,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano"
+      "Verano",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -10656,7 +10822,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta los calabacines en rodajas no muy finas\nSofríe el ajo picado en el aceite a fuego medio 1 min, añade el calabacín y la sal, y cocina 8-10 min, dándole la vuelta, hasta que esté dorado y tierno\nReparte el queso rallado por encima, tapa la sartén y deja a fuego bajo hasta que se funda\nEspolvorea orégano y sirve caliente"
+    "steps": "Corta los calabacines en rodajas no muy finas\nSofríe el ajo picado en el aceite a fuego medio 1 min, añade el calabacín y la sal, y cocina 8-10 min, dándole la vuelta, hasta que esté dorado y tierno\nReparte el queso rallado por encima, tapa la sartén y deja a fuego bajo hasta que se funda\nEspolvorea orégano y sirve caliente",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Tápala unos minutos al final para que el queso se funda."
   },
   {
     "id": "berenjena-queso-sarten",
@@ -10667,7 +10834,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano"
+      "Verano",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -10707,7 +10875,8 @@
         "price": ""
       }
     ],
-    "steps": "Corta las berenjenas en rodajas de medio dedo y sálalas; déjalas 10 min para que suelten el amargor y sécalas con papel\nFríelas en el aceite a fuego medio-alto por ambos lados hasta que estén doradas y tiernas\nCubre cada rodaja con una cucharada de tomate frito y el queso rallado, tapa la sartén y deja a fuego bajo hasta que el queso se funda\nEspolvorea orégano y sirve caliente"
+    "steps": "Corta las berenjenas en rodajas de medio dedo y sálalas; déjalas 10 min para que suelten el amargor y sécalas con papel\nFríelas en el aceite a fuego medio-alto por ambos lados hasta que estén doradas y tiernas\nCubre cada rodaja con una cucharada de tomate frito y el queso rallado, tapa la sartén y deja a fuego bajo hasta que el queso se funda\nEspolvorea orégano y sirve caliente",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Tápala unos minutos al final para que el queso se funda."
   },
   {
     "id": "champinones-ajillo-sarten",
@@ -10717,7 +10886,8 @@
     "categories": [
       "Entrante",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -10751,7 +10921,8 @@
         "price": ""
       }
     ],
-    "steps": "Limpia los champiñones y pártelos en láminas gruesas o en cuartos\nDora el ajo laminado en el aceite a fuego medio, sin que llegue a quemarse\nSube el fuego, añade los champiñones y saltea 5-6 min, removiendo, hasta que suelten el agua y se doren\nSala, espolvorea perejil picado y sirve bien caliente"
+    "steps": "Limpia los champiñones y pártelos en láminas gruesas o en cuartos\nDora el ajo laminado en el aceite a fuego medio, sin que llegue a quemarse\nSube el fuego, añade los champiñones y saltea 5-6 min, removiendo, hasta que suelten el agua y se doren\nSala, espolvorea perejil picado y sirve bien caliente",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir."
   },
   {
     "id": "pimientos-padron-fritos",
@@ -10762,7 +10933,8 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano"
+      "Verano",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -10784,7 +10956,8 @@
         "price": ""
       }
     ],
-    "steps": "Lava los pimientos y sécalos muy bien (si quedan húmedos, el aceite salta al freírlos)\nCalienta abundante aceite en la sartén a fuego fuerte\nFríe los pimientos enteros 2-3 min, removiendo, hasta que la piel arrugue y estén blandos por dentro\nEscúrrelos y sala al momento, a poder ser con sal gruesa"
+    "steps": "Lava los pimientos y sécalos muy bien (si quedan húmedos, el aceite salta al freírlos)\nCalienta abundante aceite en la sartén a fuego fuerte\nFríe los pimientos enteros 2-3 min, removiendo, hasta que la piel arrugue y estén blandos por dentro\nEscúrrelos y sala al momento, a poder ser con sal gruesa",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Es freír con poco aceite y a fuego fuerte; no hace falta llama."
   },
   {
     "id": "pan-casero-mantequilla-miel",
@@ -10868,7 +11041,8 @@
     "servings": 2,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "source": {
       "name": "Receta tradicional china, adaptada",
@@ -10955,6 +11129,7 @@
       }
     ],
     "steps": "Cuece los fideos siguiendo el paquete, dejándolos 1 min menos para que queden firmes. Escúrrelos y pásalos por agua fría\nMezcla en un vasito la salsa de soja, la salsa de ostras, el azúcar y 2 cucharadas de agua\nCorta el pollo en tiras finas y salpiméntalo. Calienta el aceite de girasol en una sartén amplia o wok a fuego fuerte y dóralo 3 min. Retíralo y resérvalo\nEn la misma sartén a fuego alto, añade un poco más de aceite, el ajo picado, el jengibre, la zanahoria en juliana y la col en tiras. Saltea sin parar 3-4 min, hasta que queden tiernas pero crujientes\nDevuelve el pollo a la sartén, incorpora los fideos escurridos y vierte la salsa y el aceite de sésamo por encima. Remueve a fuego vivo 2 min, hasta que los fideos se impregnen y queden brillantes",
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Es plato de fuego fuerte y rápido: la sartén caliente al máximo, y las verduras casi sin remover.",
     "nota": "También puedes sustituir el pollo por tortilla francesa cortada en trozos, para una versión vegetariana."
   },
   {
@@ -10964,7 +11139,8 @@
     "categories": [
       "Principal",
       "Casa",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "source": {
       "name": "Receta tradicional marroquí, adaptada",
@@ -11056,7 +11232,8 @@
         "price": "0.14"
       }
     ],
-    "steps": "Pon a hidratar las pasas en agua templada 10 min y escúrrelas\nEn una cazuela, dora los muslos de pollo salpimentados con un poco de aceite. Añade la cúrcuma, el jengibre y el caldo, tapa y cocina a fuego bajo 25-30 min, hasta que el pollo esté tierno\nMientras, pocha las cebollas cortadas en juliana fina con un chorrito de aceite a fuego bajo 15-20 min, removiendo de vez en cuando, hasta que estén muy blandas y doradas\nAñade a la cebolla los garbanzos, las pasas escurridas, la canela y la miel, y cocina 5 min más removiendo, hasta que quede meloso (la tfaya)\nPon el cuscús en un bol amplio, cúbrelo con caldo caliente de la cocción del pollo (o agua), tapa y deja reposar 5 min hasta que lo absorba. Destápalo, suéltalo con un tenedor y añade la mantequilla para que quede brillante\nSirve el cuscús en una fuente, el pollo encima o al lado, y cubre todo con la tfaya de cebolla, garbanzos y pasas"
+    "steps": "Pon a hidratar las pasas en agua templada 10 min y escúrrelas\nEn una cazuela, dora los muslos de pollo salpimentados con un poco de aceite. Añade la cúrcuma, el jengibre y el caldo, tapa y cocina a fuego bajo 25-30 min, hasta que el pollo esté tierno\nMientras, pocha las cebollas cortadas en juliana fina con un chorrito de aceite a fuego bajo 15-20 min, removiendo de vez en cuando, hasta que estén muy blandas y doradas\nAñade a la cebolla los garbanzos, las pasas escurridas, la canela y la miel, y cocina 5 min más removiendo, hasta que quede meloso (la tfaya)\nPon el cuscús en un bol amplio, cúbrelo con caldo caliente de la cocción del pollo (o agua), tapa y deja reposar 5 min hasta que lo absorba. Destápalo, suéltalo con un tenedor y añade la mantequilla para que quede brillante\nSirve el cuscús en una fuente, el pollo encima o al lado, y cubre todo con la tfaya de cebolla, garbanzos y pasas",
+    "fuego": "Fuego directo (llama baja o media): olla con tapa sobre trébedes o colgada. Sofríe con la llama media y, cuando hierva, aparta la olla del centro o pásala a brasas suaves para que cueza despacio. Remueve de vez en cuando para que no se pegue. El cuscús se hidrata fuera del fuego, con agua caliente y tapado."
   },
   {
     "id": "gpg-arancini-risotto",
@@ -11065,7 +11242,8 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -11160,6 +11338,7 @@
       }
     ],
     "steps": "Pocha la cebolla picada muy fina con la mantequilla en una cazuela amplia a fuego medio hasta que esté transparente\nAñade el arroz y remueve 1 minuto. Si usas vino blanco, échalo ahora y deja que se evapore el alcohol\nVe añadiendo el caldo caliente poco a poco, cazo a cazo, removiendo con frecuencia a medida que el arroz lo absorba (unos 18 minutos)\nCuando el arroz esté tierno pero cremoso, retíralo del fuego, mezcla el queso parmesano y salpimienta. Extiéndelo en una bandeja amplia y déjalo enfriar por completo (al menos 2 horas en la nevera, mejor de un día para otro)\nCon las manos ligeramente húmedas, toma una porción de arroz frío (tamaño de una pelota de golf) y aplánala en la palma de la mano\nColoca un par de dados de mozzarella y de jamón en el centro\nCierra el arroz alrededor del relleno formando una bola compacta, sin que queden grietas por donde se escape el queso al freír\nPasa cada bola por harina (sacudiendo el exceso), luego por huevo batido y por último por pan rallado. Para una capa extra crujiente, repite el paso del huevo y el pan rallado\nCalienta abundante aceite en un cazo hondo a 170-180 °C. Fríe los arancini en tandas pequeñas, 3-4 minutos, hasta que estén bien dorados\nEscúrrelos sobre papel absorbente y sírvelos calientes, solos o con salsa marinara o un poco de rúcula fresca",
+    "fuego": "Brasas fuertes (rojas, sin llama): fríe en sartén o cazuela honda con 1-2 cm de aceite, sin que quede sumergido, y en tandas pequeñas para que no baje el calor. Ten una tapa a mano para ahogar el aceite si prende (nunca eches agua) y no dejes la sartén sola. Si humea, aparta la sartén del calor. Fríe de tres en tres, dándoles la vuelta con cuidado; el arroz ya va cocido, así que solo se doran por fuera. El risotto se hace antes en olla a llama baja, con calor flojo.",
     "nota": "Salen unas 10-12 bolas (2 por persona para 6). El azafrán o la cúrcuma son opcionales, solo para que queden más doradas por dentro; el vino blanco también se puede omitir."
   },
   {
@@ -11854,6 +12033,7 @@
       }
     ],
     "steps": "Forra el fondo de una sartén o cazuela con tapa (que no sea de las buenas) con papel de horno cortado a medida\nEstira el hojaldre en un disco algo más pequeño que el fondo de la sartén y pínchalo con un tenedor, dejando 1 cm de borde sin pinchar para que suba\nColócalo dentro de la sartén forrada. Pela las manzanas, quítales el centro y córtalas en láminas finas; colócalas solapadas por encima. Reparte dados de mantequilla y espolvorea el azúcar\nTapa la sartén y ponla sobre un lecho de brasas suaves, sin llama, apoyada en tres piedras o bolas de aluminio para que el fondo no se queme. Reparte también algunas brasas sobre la tapa, para que haga calor por arriba y por abajo, como un horno\nCocina 20-25 min, vigilando que no se queme por abajo, hasta que el hojaldre esté dorado e hinchado y las manzanas tiernas\nRetírala del fuego, deja templar y pinta con la mermelada de albaricoque tibia para que brille\nConsejo: más brasas arriba que abajo, y siempre sin llama directa debajo: si no, el fondo se quema antes de que el hojaldre esté hecho por dentro",
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Vigila desde los 20 minutos: si el hojaldre se oscurece, quita brasas de la tapa.",
     "nota": "Es la versión al fuego de «Tarta fina de manzana y hojaldre»: usa brasas arriba y abajo, como en el pan de olla, para que la sartén tapada haga de horno. Usa guantes gruesos para moverla y no hagas fuego si no está permitido en el campamento."
   },
   {
@@ -12082,6 +12262,7 @@
       }
     ],
     "steps": "Lava las patatas y córtalas por la mitad (o en cuartos si son grandes)\nColócalas sobre una lámina grande de papel de aluminio, con el ajo chafado, el romero, el tomillo, el aceite y sal\nCierra bien el papillote para que no se escape el vapor\nEntierra el paquete entre las brasas, o apóyalo sobre la parrilla cerca del fuego, 25-30 min, dándole la vuelta a mitad de cocción\nAbre con cuidado (sale vapor caliente) y comprueba que las patatas están tiernas antes de servir",
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 25-30 minutos; abre con cuidado, que sale vapor.",
     "nota": "Mejor con patatas pequeñas (tipo baby), para que se hagan igual de rápido. Romero y tomillo, mejor frescos: una ramita de cada."
   },
   {
@@ -12235,7 +12416,8 @@
       "Acampada",
       "Casa",
       "Otoño",
-      "Invierno"
+      "Invierno",
+      "Fuego"
     ],
     "ingredients": [
       {
@@ -12305,7 +12487,8 @@
         "price": ""
       }
     ],
-    "steps": "Sofríe en la olla la cebolla, la zanahoria y la patata troceadas con el aceite, 8 min\nAñade los champiñones laminados (reserva unos pocos para decorar) y rehoga 5 min más\nCubre con el caldo, salpimienta y cuece 15-20 min hasta que las verduras estén tiernas\nTritura todo con la batidora y añade la nata, mezclando bien; ajusta de sal\nSaltea aparte los champiñones reservados con una pizca de sal hasta que se doren\nCorta la tapa a los panecillos y vacíalos con cuidado, dejando una pared gruesa; vierte la crema caliente dentro y decora con los champiñones salteados y el perejil picado"
+    "steps": "Sofríe en la olla la cebolla, la zanahoria y la patata troceadas con el aceite, 8 min\nAñade los champiñones laminados (reserva unos pocos para decorar) y rehoga 5 min más\nCubre con el caldo, salpimienta y cuece 15-20 min hasta que las verduras estén tiernas\nTritura todo con la batidora y añade la nata, mezclando bien; ajusta de sal\nSaltea aparte los champiñones reservados con una pizca de sal hasta que se doren\nCorta la tapa a los panecillos y vacíalos con cuidado, dejando una pared gruesa; vierte la crema caliente dentro y decora con los champiñones salteados y el perejil picado",
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada para cocer las verduras. Para triturar sin batidora, aplasta con un tenedor o un pasapurés y pasa por un colador."
   },
   {
     "id": "pin-mazorcas-brasa",
@@ -12832,6 +13015,7 @@
       }
     ],
     "steps": "Haz el caramelo: pon 60 g de azúcar con un chorrito de agua en un cazo a fuego medio, sin remover, hasta que se dore. Repártelo rápido en el fondo de los moldes (vasos de metal o latas limpias, o un molde único)\nBate los huevos con los 100 g de azúcar restantes sin hacer espuma. Añade la leche y la vainilla y mezcla\nColoca el flan colado en los moldes, por encima del caramelo\nPon los moldes dentro de una olla grande con agua caliente hasta la mitad de su altura (baño maría) y tápala\nCuece a fuego bajo 35-40 min, hasta que al pinchar con un palillo salga limpio\nDeja enfriar y llévalo a la nevera al menos 4 horas. Para servirlo, pasa un cuchillo por el borde y dale la vuelta sobre un plato\nConsejo: el agua del baño maría no debe hervir fuerte, solo temblar; si hierve, el flan se llena de agujeritos",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): olla grande tapada, con un trapo doblado en el fondo y agua hasta la mitad de los moldes: hace de baño maría. Que el agua no hierva fuerte, o el flan se llena de agujeros.",
     "nota": "En el campamento, la olla con brasas suaves por debajo y la tapa puesta hace de baño maría. Pon un trapo doblado en el fondo para que los moldes no toquen el metal."
   },
   {

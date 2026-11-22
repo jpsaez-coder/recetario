@@ -345,7 +345,7 @@ function migCats(cs){
   return out;
 }
 const facetOf=c=>FACETS.find(f=>f.v.includes(c));
-const CAT_DESC={Fuego:"Se hace bien en brasas o al fuego directo: parrilla, papel de aluminio, brochetas o piedra. Solo donde el fuego esté permitido; si no, sartén u hornillo.",Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
+const CAT_DESC={Fuego:"Se puede hacer en brasas o al fuego: parrilla, olla, sartén, papel de aluminio o brochetas. Cada receta explica cómo (fuego directo, brasas fuertes o suaves, brasas arriba y abajo). Solo donde el fuego esté permitido; si no, sartén u hornillo.",Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
 const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v)}; una o varias de ${JSON.stringify(FACETS[1].v)}; y como mucho una de ${JSON.stringify(FACETS[2].v)} (ninguna si vale todo el año). Significado: `+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ")+".";
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
@@ -868,6 +868,7 @@ function vList(){
     /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
     const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
     if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>${lineaAlt(r,RAC())}`,true)}
+    ${r.fuego?`<p class="msg"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="msg">${esc(r.nota)}</p>`:""}
     ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
     ${r.aporte?`<p class="msg">Aportada por ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}. ¡Gracias!</p>`:""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
@@ -994,7 +995,7 @@ function vImprimirReceta(r){
     <div class="pdat"><span>Para ${n} ${n===1?"ración":"raciones"}</span>${cats.length?`<span>${esc(cats.join(" · "))}</span>`:""}<span>${hoy}</span></div></header>
   <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
     <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}</div>
-    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}</div></article>
+    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}${r.fuego?`<p class="sub"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="sub">${esc(r.nota)}</p>`:""}</div></article>
   ${r.aporte?`<p class="psin"><b>Aportada por</b> ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}</p>`:""}
   ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
