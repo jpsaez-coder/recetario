@@ -1517,11 +1517,18 @@ function notaVeg(r,i,f){
 /* ---------- un ingrediente, una línea en la compra ----------
    «Cebolla» y «Cebollas», «Aceite» y «Aceite de oliva virgen extra», «Sal» al gusto y «Sal» 5 g son lo mismo
    en la tienda: se comparan sin acentos, en singular y con sinónimos, y se pasan a la misma unidad. */
-const MISMO=[[/^aceite( de oliva( virgen( extra)?)?)?$/,"Aceite de oliva"],[/^leche (entera|fresca)$/,"Leche"],
-  [/^nata( liquida| para cocinar)?$/,"Nata líquida"],[/^huevos?$/,"Huevos"],[/^canela( molida)?$/,"Canela"]];
+const MISMO=[[/^aceite( de oliva( suave| virgen( extra)?)?)?$/,"Aceite de oliva"],[/^aceite de girasol( para freir)?$/,"Aceite de girasol"],[/^leche (entera|fresca)$/,"Leche"],
+  [/^nata( liquida| para cocinar| fresca| espesa| fresca espesa)?$/,"Nata líquida"],[/^huevos?( cocidos?)?$/,"Huevos"],[/^canela( molida| en polvo)?$/,"Canela"],
+  [/^mantequilla( muy fria| fria| a punto de pomada| blanda| derretida)?$/,"Mantequilla"],[/^perejil( fresco| picado)?$/,"Perejil"],[/^albahaca( fresca)?$/,"Albahaca"],
+  [/^menta( o hierbabuena)?( fresca)?$/,"Menta fresca"],[/^oregano( seco)?$/,"Orégano"],[/^guisantes?( congelados?)?$/,"Guisantes"],[/^arroz( redondo)?$/,"Arroz"],
+  [/^jengibre( en polvo| molido)?$/,"Jengibre"],[/^levadura de (panadero|panaderia)$/,"Levadura de panadería"],[/^pasas?( sultanas?)?$/,"Pasas"],
+  [/^lentejas pardinas( secas)?$/,"Lentejas pardinas"],[/^harina( para (empanar|rebozar|espolvorear))?$/,"Harina"]];
+/* el mismo producto escrito con una nota: «(opcional)», «en dados», «en lonchas»… se compra igual.
+   Se dejan las notas de medida con vaso de yogur y «por persona», que cambian la unidad. */
+const sinNota=name=>{const x=name.replace(/\s*\((?![^)]*medida)[^)]*\)/g,"").replace(/\s+en (dados|tacos|taquitos|lonchas|rodajas|filetes|tiras|cubos|trozos)( grandes| pequeños| medianos)?\b/gi,"").replace(/\s+/g," ").trim();return x||name.trim()};
 const singular=w=>w.length<=3||/^(de|del|la|las|los|con|en|al|y|o|u|gas|atun|maiz|arroz)$/.test(w)?w:/ces$/.test(w)?w.slice(0,-3)+"z":/[lnr]es$/.test(w)?w.slice(0,-2):/[^s]s$/.test(w)?w.slice(0,-1):w;
 const canon=name=>norm(name).trim().split(/\s+/).map(singular).join(" ");
-function nombreCompra(name){const n=norm(name).trim();for(const [re,to] of MISMO)if(re.test(n))return to;return name.trim()}
+function nombreCompra(name){const c=sinNota(name),n=norm(c).trim();for(const [re,to] of MISMO)if(re.test(n))return to;return c}
 const packKey=(name,u)=>canon(nombreCompra(name))+"|"+u;
 /* junta lo que solo se diferencia en la unidad o en estar «al gusto» */
 function unificar(items){
@@ -1534,7 +1541,7 @@ function unificar(items){
       const cp=prodDe(con[0].name),u=cp&&con.some(x=>x.unit===cp.unit)?cp.unit:con.some(x=>x.unit==="g")?"g":con[0].unit;
       const destino=con.find(x=>x.unit===u)||con[0],resto=[];
       for(const x of con){if(x===destino)continue;const q=pasar(x,destino.unit);
-        if(q==null){resto.push(x);continue}destino.q+=q;destino.p+=x.p;for(const [k,v] of Object.entries(x._n))destino._n[k]=(destino._n[k]||0)+v}
+        if(q==null){destino.p+=x.p;destino.det=(destino.det?destino.det+", ":"")+"+ "+fmtQ(x.q,x.unit);for(const [k,v] of Object.entries(x._n))destino._n[k]=(destino._n[k]||0)+v;continue}destino.q+=q;destino.p+=x.p;for(const [k,v] of Object.entries(x._n))destino._n[k]=(destino._n[k]||0)+v}
       con=[destino,...resto];
     }
     out.push(...con.map(nombrar));

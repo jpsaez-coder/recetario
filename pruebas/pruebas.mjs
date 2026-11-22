@@ -150,6 +150,14 @@ caso("nombre del PDF sin barras ni dos puntos",T.nombrePDF("Ruta: día 1/2"),"Me
 // compra: un mismo ingrediente sale en una sola línea (plural, sinónimo, otra unidad o «al gusto»)
 {const it=T.shopList(base,8),k=it.map(i=>i.key.split("|")[0]);
 caso("compra: ningún ingrediente repetido",k.filter((x,i)=>k.indexOf(x)!==i),[]);
+// el mismo producto con una nota («fría», «en dados», «(opcional)») es una sola línea; la nata para montar no se mezcla con la de cocinar
+{const L=(...ings)=>T.shopList([{id:"t-c",name:"t",servings:4,categories:["Principal"],steps:"",ingredients:ings.map(([n,q,u])=>({name:n,qty:String(q),unit:u,price:""}))}],4).map(i=>i.name);
+caso("compra: mantequilla y mantequilla fría, una línea",L(["Mantequilla",100,"g"],["Mantequilla fría",150,"g"],["Mantequilla a punto de pomada",50,"g"]).length,1);
+caso("compra: nata para cocinar, nata y nata fresca, una línea",L(["Nata",100,"ml"],["Nata para cocinar",100,"ml"],["Nata fresca",100,"ml"]).length,1);
+caso("compra: nata para montar va aparte",L(["Nata para montar",200,"ml"],["Nata para cocinar",100,"ml"]).length,2);
+caso("compra: huevo cocido junto a los huevos",L(["Huevos",4,"ud"],["Huevo cocido",2,"ud"]).length,1);
+caso("compra: nota entre paréntesis no separa",L(["Queso rallado",100,"g"],["Queso rallado (opcional)",50,"g"]).length,1);
+caso("compra: «en dados» no separa",L(["Panceta",100,"g"],["Panceta en dados",100,"g"],["Panceta en tacos (lardons)",100,"g"]).length,1);}
 const ac=it.filter(i=>/^aceite de oliva$/i.test(i.name));caso("compra: aceite de oliva en una línea y con cantidad",ac.length===1&&ac[0].q>0,true);
 caso("compra: sin «aceite» suelto al gusto",it.some(i=>/^aceite$/i.test(i.name)),false);
 caso("compra: sal, una línea",it.filter(i=>/^sal$/i.test(i.name)).length,1);
