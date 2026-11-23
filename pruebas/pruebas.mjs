@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -369,4 +369,11 @@ caso("recoger: avisa si ya existe una parecida",rc.masParecida({name:"Paella de 
 const sw=fs.readFileSync(path.join(raiz,"sw.js"),"utf8").match(/^\/\/ versión (\S+)/m)?.[1];
 caso("versión de sw.js = version.js",sw,T.APP_VERSION);
 caso("el service worker guarda precios.json",/"precios\.json"/.test(fs.readFileSync(path.join(raiz,"sw.js"),"utf8")),true);
+// Inicio reúne los ajustes del grupo y la salida; Menú solo los resume
+{T.S.salida="ruta";T.S.dias=2;T.S.veg=1;T.S.alergias=["Gluten"];T.U.f={};
+T.S.menu=[T.all()[0].id];const ini=T.vInicio(),men=T.vMenu();
+caso("Inicio tiene vegetarianos, alergias y dónde",[/Vegetarianos/.test(ini),/Alergias e intolerancias/.test(ini),/data-act="salida"/.test(ini),/Ver \d+ receta/.test(ini)],[true,true,true,true]);
+caso("Menú ya no repite los controles",[/data-act="salida"/.test(men),/data-act="algChk"/.test(men),/data-act="veg"/.test(men)],[false,false,false]);
+caso("Menú resume lo elegido",(men.match(/class="resumen"><span>([^<]*)/)||[])[1],"Ruta · 2 días · 1 vegetariano · sin gluten");
+T.S.salida="finde";T.S.dias=1;T.S.veg=0;T.S.alergias=[];T.S.menu=[]}
 console.log(`\n${ok} bien, ${fallos} mal`);process.exit(fallos?1:0);

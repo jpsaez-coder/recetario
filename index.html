@@ -300,6 +300,10 @@ input,select,textarea{border:1px solid var(--line);border-radius:10px;background
 .ini b{display:block;font-size:16px}.ini small{display:block;color:var(--mute);font-size:13.5px;margin-top:1px}
 .inicio .btn.big{display:block;width:100%;border-radius:999px;padding:14px;font-size:17px;min-height:48px;margin-top:14px}
 .inicio .btn.alt.big{margin-top:8px;background:transparent;color:var(--pine);border:2px solid var(--pine)}
+.isec{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:20px 0 4px}
+.ifila{padding:12px 0;border-top:1px solid var(--line)}.ifila>label{display:block;font-weight:600;margin-bottom:8px}
+.chips.wr{flex-wrap:wrap;overflow:visible}
+.resumen{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}.resumen span{font-weight:600}
 .inicio .cnt2{text-align:center;color:var(--mute);font-size:13px;margin:12px 0 2px}
 .busc{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
 .busc input{border:2px solid var(--pine);border-radius:999px;font-size:17px;padding:12px 14px 12px 44px;min-height:48px;box-shadow:0 1px 4px rgba(50,34,24,.18);background:var(--campo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23482413' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E") no-repeat 14px center/22px}
@@ -854,21 +858,24 @@ const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" o
   <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
   <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
-const vInicio=()=>{U.f=U.f||{};const t=all(),f=t.filter(r=>(r.categories||[]).includes("Fuego")).length,
-  n=t.filter(r=>FACETS.every(x=>!U.f[x.k]||(r.categories||[]).includes(U.f[x.k]))).length,m=planIds().length,
-  ch=(k,v)=>`<button class="chip" aria-pressed="${U.f[k]===v}" data-act="inicioF" data-k="${k}" data-v="${esc(v)}">${esc(v)}</button>`;
-  return `<div class="card inicio"><h2>Prepara tu comida en 3 pasos</h2>
-  <div class="ini"><span class="n">1</span><div><b>¿Qué vais a hacer?</b><small>Dónde y cómo vais a cocinar</small>
-   <div class="chips" style="flex-wrap:wrap;overflow:visible;margin-top:8px">${FACETS[1].v.map(v=>ch("donde",v)).join("")}</div>
-   <div class="chips" style="flex-wrap:wrap;overflow:visible;margin-top:6px">${FACETS[2].v.map(v=>ch("coc",v)).join("")}</div></div></div>
-  <div class="ini"><span class="n">2</span><div style="flex:1"><b>¿Cuántos sois y cuántos días?</b><small>Las cantidades, la compra y el precio se ajustan solos</small>
-   <div class="grp" style="margin-top:8px"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
-   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
-   <div class="people"><small>Días</small><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b class="cnt" style="text-align:center">${S.dias||1}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div></div></div>
-  <div class="ini"><span class="n">3</span><div><b>Elige recetas</b><small>Te saco el menú y la lista de la compra</small></div></div>
+const vInicio=()=>{U.f=U.f||{};const t=all(),m=planIds().length,sal=SALIDAS[S.salida]?S.salida:"finde",
+  f2=Object.assign({},U.f,{donde:U.f.donde==null?DONDE[sal]:U.f.donde}),
+  n=t.filter(r=>FACETS.every(x=>!f2[x.k]||(r.categories||[]).includes(f2[x.k]))).length,
+  ch=v=>`<button class="chip" aria-pressed="${U.f.coc===v}" data-act="inicioF" data-k="coc" data-v="${esc(v)}">${esc(v)}</button>`;
+  return `<div class="card inicio"><h2>Prepara tu comida</h2>
+  <p class="msg" style="margin-top:0">Cuéntanos la salida y las recetas, las cantidades y la compra se ajustan solas.</p>
+  <h3 class="isec">La salida</h3>
+  <div class="ifila"><label>¿Dónde?</label><div class="chips wr">${vSalida(null,"ctl")}</div></div>
+  <div class="ifila"><label>¿Cómo cocináis?</label><div class="chips wr">${FACETS[2].v.map(ch).join("")}</div></div>
+  <div class="ifila"><label>Días</label><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b class="cnt" style="text-align:center">${S.dias||1}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>
+  <h3 class="isec">El grupo</h3>
+  <div class="ifila"><label>Personas</label><div class="grp" style="margin-top:0"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
+   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div></div></div>
+  <div class="ifila"><label>Vegetarianos</label>${vVeg(null,"ctl")}</div>
+  <div class="ifila"><label>Alergias e intolerancias</label>${vAlergias(null,"ctl")}</div>
   <button class="btn big" data-act="inicioGo">Ver ${n} receta${n===1?"":"s"}</button>
   <button class="btn alt big" data-act="tab" data-k="menu">${m?`Ir a mi menú (${m})`:"Ir a mi menú"}</button>
-  <p class="cnt2">${f} recetas con fuego · ${t.length} en total</p></div>`};
+  <p class="cnt2">${t.length} recetas en total</p></div>`};
 function vList(){
   U.f=U.f||{};
   const al=S.alergias||[];
@@ -1065,7 +1072,7 @@ function vMenu(){
   ${U.prMsg?`<p class="msg ${U.prErr?"err":""}">${esc(U.prMsg)}</p>`:""}
   ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}`;
   const resP=`${eur(total)}${B>0?` · <span class="${left>=0?"ok":"over"}">${left>=0?"sobran":"te pasas"} ${eur(Math.abs(left))}</span>`:""}`;
-  return `<div class="card">${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div>${vDias()}${vSueltos(n,H)}
+  return `<div class="card">${resumenInicio()}${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div>${vDias()}${vSueltos(n,H)}
   ${vCompra(items)}${pleg("pres","Presupuesto",resP,presu)}${vCarga(items)}${vAmortiza(items,rs)}${vTopMenu()}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
@@ -1220,6 +1227,7 @@ const EVITA=[[["ternera"],"cerdo magro, lomo o carne picada"],[["pescado fresco"
 function evitaEn(r){const out=[];for(const i of r.ingredients){const nm=norm(i.name);const e=EVITA.find(([ks])=>ks.some(k=>wordRe(k).test(nm)));if(e)out.push([i.name.trim(),e[1]])}return out}
 /* Paso 1: lo que necesita frío */
 const FRIO=/(^|[^a-z])(pollo|pechuga|carne|picada|cerdo|lomo|ternera|pescado|merluza|nata|yogur|queso fresco|leche fresca|mantequilla|salchicha|bacon)(s|es)?([^a-z]|$)/;
+const DONDE={ruta:"Ruta",finde:"Acampada",reunion:"Casa"};
 const SALIDAS={ruta:{n:"Ruta",txt:"Todo va en la mochila: sin nevera ni cocina, o con un hornillo como mucho. Nada que se estropee con calor, comida ligera y fácil de comer andando, y agua de sobra. Mira la categoría Ruta."},
   reunion:{n:"Reunión",txt:"Unas horas en el local: merienda o comida sencilla que se toma en el día. Si el local tiene cocina, se usa; los frescos no dan problema si se compran ese mismo día."},
   finde:{n:"Acampada",txt:"Se puede llevar fresco que aguante 24 h en la caja de intendencia; mejor congelado para la primera noche. Del segundo día en adelante, sobre todo con calor, sin frescos. Los días se ponen en «Menú por días»."}};
@@ -1394,34 +1402,40 @@ function vDias(){
 }
 /* Alergias del grupo: se marcan una vez y avisan en recetas y menú. Se detectan por el nombre del ingrediente:
    no ven trazas ni la etiqueta del envase. */
-function vVeg(rs){
+function vVeg(rs,mode){
   const v=S.veg||0,H=HEADS();
+  if(mode==="ctl")return `<div class="row"><div class="people"><button class="step" data-act="veg" data-d="-1" aria-label="Menos vegetarianos">−</button><b>${v}</b><button class="step" data-act="veg" data-d="1" aria-label="Más vegetarianos">+</button></div><span class="msg" style="margin:0">de ${H} personas</span></div>`;
   const nad=v?[...new Map(rs.filter(r=>vegAdapta(r)===false).map(r=>[r.id,r])).values()]:[],no=nad.filter(r=>!altVeg(r)),con=nad.filter(r=>altVeg(r));
-  return `${fl("Vegetarianos","veg","En las recetas con carne que se puede cambiar, su parte se compra en vegetal (picada vegetal, tiras vegetales…) y la carne que es solo un toque (bacon, jamón) se les quita. Las que no se pueden adaptar (entrecot, pollo al ajillo…) llevan otro plato para ellos, que entra en la compra y en la hoja impresa.")}
-  <div class="row"><div class="people"><button class="step" data-act="veg" data-d="-1" aria-label="Menos vegetarianos">−</button><b>${v}</b><button class="step" data-act="veg" data-d="1" aria-label="Más vegetarianos">+</button></div><span class="msg" style="margin:0">de ${H} personas</span></div>
-  ${con.length?`<p class="msg">En su lugar, para ${v}: ${con.map(r=>`${esc(corto(r))} → <b>${esc(corto(altVeg(r)))}</b>`).join(" · ")}</p>`:""}
+  return `${con.length?`<p class="msg">En su lugar, para ${v}: ${con.map(r=>`${esc(corto(r))} → <b>${esc(corto(altVeg(r)))}</b>`).join(" · ")}</p>`:""}
   ${no.length?`<p class="msg warn">Sin opción vegetariana: ${esc(no.map(r=>r.name).join(", "))}. Para ${v} hace falta otra cosa en esa comida.</p>`:""}`;
 }
-function vAlergias(rs){
+function vAlergias(rs,mode){
   const al=S.alergias||[];
+  if(mode==="ctl")return `<details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
+  <div class="ddm-l">${[...ALERG].sort((x,y)=>x[0].localeCompare(y[0],"es")).map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>`;
   const hits=rs.flatMap(r=>etiquetas(r).alerg.filter(a=>al.includes(a)).map(a=>[a,r.name]));
   const by={};hits.forEach(([a,n])=>{(by[a]=by[a]||new Set()).add(n)});
-  return `${fl("Alergias e intolerancias","alg","Se mira el nombre de cada ingrediente. Revisa siempre la etiqueta del envase: las trazas no se ven aquí.")}
-  <details class="ddm" data-k="alg"${U.det&&U.det.alg?" open":""}><summary class="dd${al.length?" on":""}"><span>Alergias</span><b>${al.length?esc(al.join(", ")):"Ninguna"}</b></summary>
-  <div class="ddm-l">${[...ALERG].sort((x,y)=>x[0].localeCompare(y[0],"es")).map(([a])=>`<label class="chkb"><input type="checkbox" data-act="algChk" data-k="${esc(a)}" ${al.includes(a)?"checked":""}><span>${esc(a)}</span></label>`).join("")}</div></details>
-  ${al.length?(Object.keys(by).length?`<div class="fl">${Object.entries(by).map(([a,ns])=>`<span class="warn">⚠︎ ${esc(a)} en ${ns.size} receta${ns.size===1?"":"s"}</span>`).join(" · ")}${inf("algr",Object.entries(by).map(([a,ns])=>`<b>${esc(a)}</b>: ${esc([...ns].join(", "))}.`).join("<br>"))}</div>`:`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`):""}`;
+  return al.length?(Object.keys(by).length?`<div class="fl">${Object.entries(by).map(([a,ns])=>`<span class="warn">⚠︎ ${esc(a)} en ${ns.size} receta${ns.size===1?"":"s"}</span>`).join(" · ")}${inf("algr",Object.entries(by).map(([a,ns])=>`<b>${esc(a)}</b>: ${esc([...ns].join(", "))}.`).join("<br>"))}</div>`:`<p class="msg">✓ Nada del menú lleva ${esc(al.join(", ").toLowerCase())}.</p>`):"";
 }
-function vSalida(rs){
+function vSalida(rs,mode){
   const s=SALIDAS[S.salida]?S.salida:"finde";
+  if(mode==="ctl")return `${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${k==="reunion"?"Reunión o casa":v.n}</button>`).join("")}
+  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}`;
   const ent=planEntries().map(e=>({...e,r:getM(e.id)})).filter(e=>e.r);
   const sr=sueltosRecipe(RAC(),HEADS());if(sr)ent.push({r:sr,d:0});
   const fr=s==="reunion"?[]:ent.filter(e=>!(s==="finde"&&e.d===1)).flatMap(({r,d})=>r.ingredients.filter(i=>FRIO.test(norm(i.name))).map(i=>`${i.name.trim()} (${d?"día "+d+", ":""}${r.name})`));
   /* en la mochila no hay nevera, la marques o no */
   const sinFrio=s==="ruta"||!S.nevera;
   const fix={ruta:"mejor conserva o curado",finde:"pásalo al día 1 o a conserva"}[s];
-  const warn=fr.length&&sinFrio?`<p class="msg warn">❄︎ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
-  return `${fl("¿Qué actividad es?","sal",esc(SALIDAS[s].txt))}<div class="chips" style="flex-wrap:wrap;overflow:visible;padding-bottom:4px">${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${v.n}</button>`).join("")}
-  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}</div>${warn}`;
+  return fr.length&&sinFrio?`<p class="msg warn">❄︎ Necesita frío: ${esc([...new Set(fr)].join(", "))} → ${fix}.</p>`:"";
+}
+/* resumen de lo elegido en Inicio, para no repetir los controles en Menú */
+function resumenInicio(){
+  const s=SALIDAS[S.salida]?S.salida:"finde",D=S.dias||1,al=S.alergias||[],v=S.veg||0;
+  const p=[SALIDAS[s].n+(s==="finde"?(S.nevera?" con nevera":" sin nevera"):""),D+(D===1?" día":" días")];
+  if(v)p.push(v+(v===1?" vegetariano":" vegetarianos"));
+  if(al.length)p.push("sin "+al.join(", ").toLowerCase());
+  return `<div class="resumen"><span>${esc(p.join(" · "))}</span><button class="chip" data-act="tab" data-k="inicio">Cambiar</button></div>`;
 }
 /* ---------- precios reales por cadena (precios.json, con fecha) ----------
    Si el súper elegido en Menú tiene catálogo, la compra usa su producto, su formato y su precio;
@@ -1825,7 +1839,7 @@ document.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;
   const a=b.dataset.act;sync();
   if(a==="intro"){intro(0);return}
-  if(a==="inicioGo"){U.tab="recetas";render();window.scrollTo&&window.scrollTo(0,0);return}
+  if(a==="inicioGo"){U.f=U.f||{};if(U.f.donde==null)U.f.donde=DONDE[SALIDAS[S.salida]?S.salida:"finde"];U.tab="recetas";render();window.scrollTo&&window.scrollTo(0,0);return}
   if(a==="quitaF"){U.f=U.f||{};U.f[b.dataset.k]="";render();return}
   if(a==="inicioF"){U.f=U.f||{};const k=b.dataset.k,v=b.dataset.v;U.f[k]=U.f[k]===v?"":v;render();return}
   if(a==="irBas"){U.tab="menu";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
@@ -1853,7 +1867,7 @@ document.addEventListener("click",async e=>{
   else if(a==="bclear"){S.check={};persist()}
   else if(a==="alg"){const k=b.dataset.k;S.alergias=(S.alergias||[]).includes(k)?S.alergias.filter(x=>x!==k):[...(S.alergias||[]),k];persist()}
   else if(a==="apta"){U.apta=!U.apta}
-  else if(a==="salida"){S.salida=b.dataset.k;persist()}
+  else if(a==="salida"){S.salida=b.dataset.k;U.f=U.f||{};U.f.donde=DONDE[S.salida];persist()}
   else if(a==="nevera"){S.nevera=!S.nevera;persist()}
   else if(a==="row"){U.row=U.row===b.dataset.k?"":b.dataset.k}
   else if(a==="verFuego"){U.tab="guia";U.det=U.det||{};U.det.fue=true;render();document.querySelector('details[data-k=fue]')?.scrollIntoView({block:"start"});return}
