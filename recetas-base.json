@@ -12652,6 +12652,94 @@
     "steps": "Reparte una capa de nachos en una sartén de hierro, cubre con las judías escurridas y la mitad del queso\nRepite con otra capa de nachos y el resto del queso\nPon la sartén cerca del fuego (sin llama directa) o tápala con otra olla a modo de tapa, hasta que el queso funde, 8-10 min\nPica el tomate y la cebolla morada en daditos\nRetira del fuego y reparte por encima el jalapeño, el tomate, la cebolla, una cucharada de nata agria y el cilantro picado"
   },
   {
+    "id": "ig-chile-con-queso",
+    "name": "Chile con queso (salsa de queso con totopos)",
+    "corto": "Chile con queso",
+    "servings": 4,
+    "categories": [
+      "Entrante",
+      "Merienda",
+      "Acampada",
+      "Casa",
+      "Hornillo",
+      "Fuego"
+    ],
+    "source": {
+      "name": "Vídeo de Instagram de cocina de campamento (receta adaptada)"
+    },
+    "ingredients": [
+      {
+        "name": "Mantequilla",
+        "qty": "30",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Harina de trigo",
+        "qty": "20",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Leche entera",
+        "qty": "300",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Queso cheddar",
+        "qty": "250",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Queso gouda (o Colby Jack)",
+        "qty": "250",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Tomate troceado con chiles verdes",
+        "qty": "1",
+        "unit": "lata",
+        "price": ""
+      },
+      {
+        "name": "Comino molido",
+        "qty": "1",
+        "unit": "cdta",
+        "price": ""
+      },
+      {
+        "name": "Pimentón picante",
+        "qty": "1",
+        "unit": "cdta",
+        "price": ""
+      },
+      {
+        "name": "Totopos (tortilla chips)",
+        "qty": "200",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Sal",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Pimienta",
+        "qty": "",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Ralla los dos quesos\nFunde la mantequilla en una olla a fuego medio, añade la harina y remueve 1 minuto sin que se dore (es un roux)\nEcha la leche poco a poco, removiendo sin parar, hasta que espese\nBaja el calor y añade el queso en tandas; espera a que se funda cada una antes de echar la siguiente\nIncorpora el tomate con los chiles, el comino, el pimentón picante (o chile en polvo), la sal y la pimienta. Calienta unos minutos sin dejar que hierva fuerte\nSirve caliente en la propia olla y moja los totopos",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): olla sobre brasas sin llama, con calor medio-bajo. Remueve siempre y aparta la olla del calor si se empieza a pegar, porque el queso se quema con facilidad. Para mantenerla caliente al servir, déjala en el borde de las brasas.",
+    "nota": "Si no encuentras queso Colby Jack, usa gouda o un queso parecido que funda bien."
+  },
+  {
     "id": "pin-crema-champinones-hogaza",
     "name": "Crema de champiñones en hogaza",
     "corto": "Crema champiñones hogaza",
