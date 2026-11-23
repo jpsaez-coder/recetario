@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,vPick,vCompra,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,vPick,vCompra,vSalida,tipoSlot,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -399,4 +399,14 @@ T.S.check={};const it=T.shopList([a,b],4);T.U.vistaCompra="rec";const h=T.vCompr
 caso("por receta: una sección por receta",[/>Receta A</.test(h),/>Receta B</.test(h)],[true,true]);
 caso("por receta: la cebolla dice dónde más se usa",/Cebolla<\/b><small class="d"> también en Receta B/.test(h),true);
 T.U.vistaCompra="sec";caso("por sección: sin recetas como títulos",/>Receta A</.test(T.vCompra(it,[a,b],4)),false)}
+// tipo de salida por comida
+{const r=T.all().find(x=>x.ingredients.some(i=>/pollo/.test(T.norm(i.name))));
+T.S.salida="finde";T.S.nevera=false;T.S.dias=2;T.S.menu=[r.id];T.S.tipos={};
+caso("tipo por defecto = el de Inicio",T.tipoSlot(2,"Cena"),{s:"finde",c:"",o:""});
+T.S.plan={"1|Comida":[r.id]};caso("acampada, día 1: sin aviso de frío",T.vSalida([r],"av"),"");
+T.S.plan={"2|Cena":[r.id]};caso("acampada, día 2 sin nevera: aviso de frío",/Necesita frío: /.test(T.vSalida([r],"av")),true);
+T.S.tipos={"2|Cena":"reunion"};caso("esa cena como reunión o casa: sin aviso",T.vSalida([r],"av"),"");
+T.S.plan={"1|Comida":[r.id]};T.S.tipos={"1|Comida":"ruta"};caso("comida en ruta, aunque sea el día 1: aviso en ruta",/Necesita frío en ruta/.test(T.vSalida([r],"av")),true);
+T.S.tipos={"2|Cena":"finde-fuego"};caso("cena con fuego: tipo y cómo",[T.tipoSlot(2,"Cena").s,T.tipoSlot(2,"Cena").c],["finde","Fuego"]);
+T.S.tipos={};T.S.plan={};T.S.menu=[];T.S.dias=1}
 console.log(`\n${ok} bien, ${fallos} mal`);process.exit(fallos?1:0);
