@@ -381,4 +381,8 @@ T.S.salida="finde";T.S.dias=1;T.S.veg=0;T.S.alergias=[];T.S.menu=[]}
 caso("selector: 2 días × 4 comidas",(h.match(/data-act="pickSlot"/g)||[]).length,8);
 T.S.plan={"1|Cena":[id]};caso("selector marca lo asignado",/aria-pressed="true" data-act="pickSlot" data-k="1\|Cena"/.test(T.vPick(id)),true);
 T.S.dias=1;T.S.plan={}}
+// elegir receta desde un hueco del menú
+{T.U.target={d:1,m:"Cena"};const h=T.vList();
+caso("Recetas dice para qué hueco eliges",/Eligiendo para <b>Día 1 · Cena<\/b>/.test(h),true);
+T.U.target=null;caso("sin hueco no hay banner",/Eligiendo para/.test(T.vList()),false)}
 console.log(`\n${ok} bien, ${fallos} mal`);process.exit(fallos?1:0);
