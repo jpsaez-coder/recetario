@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,vPick,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,vPick,vCompra,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -385,4 +385,18 @@ T.S.dias=1;T.S.plan={}}
 {T.U.target={d:1,m:"Cena"};const h=T.vList();
 caso("Recetas dice para qué hueco eliges",/Eligiendo para <b>Día 1 · Cena<\/b>/.test(h),true);
 T.U.target=null;caso("sin hueco no hay banner",/Eligiendo para/.test(T.vList()),false)}
+// el checklist de intendencia quita de la compra lo que ya tienes
+{const rec=R("checklist",[["Aceite de oliva",50,"ml"],["Sal",5,"g"],["Azúcar glas",30,"g"],["Cebolla",200,"g"]]);
+T.S.check={};const sin=T.shopList([rec],4).filter(i=>i.have).length;
+T.S.check={"Sal":true,"Aceite de oliva":true};const l=T.shopList([rec],4);
+caso("checklist: sin marcar, todo se compra",sin,0);
+caso("checklist: sal y aceite pasan a «en casa»",l.filter(i=>i.have).map(i=>i.name).sort(),["Aceite de oliva","Sal"]);
+caso("checklist: azúcar glas y cebolla se siguen comprando",l.filter(i=>!i.have).length,2);
+T.S.check={}}
+// compra por receta
+{const a=R("Receta A",[["Arroz",200,"g"],["Cebolla",100,"g"]]),b=R("Receta B",[["Cebolla",150,"g"],["Atún en aceite",100,"g"]]);
+T.S.check={};const it=T.shopList([a,b],4);T.U.vistaCompra="rec";const h=T.vCompra(it,[a,b],4);
+caso("por receta: una sección por receta",[/>Receta A</.test(h),/>Receta B</.test(h)],[true,true]);
+caso("por receta: la cebolla dice dónde más se usa",/Cebolla<\/b><small class="d"> también en Receta B/.test(h),true);
+T.U.vistaCompra="sec";caso("por sección: sin recetas como títulos",/>Receta A</.test(T.vCompra(it,[a,b],4)),false)}
 console.log(`\n${ok} bien, ${fallos} mal`);process.exit(fallos?1:0);

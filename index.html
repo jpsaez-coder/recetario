@@ -228,7 +228,7 @@ textarea{min-height:90px;resize:vertical}
   #imprimir .rsola{border-left:0;padding-left:0}#imprimir .ring{flex:0 0 38%}#imprimir .rpas{flex:1}#imprimir .ring table{width:100%;font-size:10pt}#imprimir .rpas ol{margin:0;padding-left:15pt;font-size:10.5pt}#imprimir .rsola h4{font:700 8pt "Inter",sans-serif;letter-spacing:.8pt;text-transform:uppercase;color:#B97A12;margin:0 0 4pt}
   #imprimir .rec h3{font-size:11.5pt;margin:0}#imprimir .sub{color:#6E5A4B;margin:0 0 4pt;font-size:8.5pt}
   #imprimir .rcol{display:flex;gap:14pt;align-items:flex-start}
-  #imprimir .rcol table{flex:0 0 38%;font-size:9pt}#imprimir .rcol td{border-top:1px solid #E6EBE1;padding:1.5pt 0}#imprimir .rcol tr:first-child td{border-top:0}
+  #imprimir .rcol .ring{flex:0 0 36%;min-width:0}#imprimir .rcol table{width:100%;font-size:9pt}#imprimir .ring .sub{margin:4pt 0 0;font-size:8pt}#imprimir .rcol td{border-top:1px solid #E6EBE1;padding:1.5pt 0}#imprimir .rcol tr:first-child td{border-top:0}
   #imprimir td.q{text-align:right;white-space:nowrap;padding-left:6pt;color:#6E5A4B}
   #imprimir .nveg{color:#482413;font-size:8pt}
   #imprimir .rcol ol{flex:1;margin:0;padding-left:13pt;font-size:9.5pt}#imprimir .rcol ol li{margin-bottom:2pt}
@@ -679,7 +679,11 @@ function heatNote(r){
   ${L>6&&h==="hornillo"?`<p class="msg">Con tanta agua, mejor dos ollas o dos hornillos.</p>`:""}${tip}`;
 }
 const heatTxt=()=>` Se cocinará en: ${HEAT[heatName()].name}. Adapta los pasos y los tiempos a ese fuego.`;
-const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal, aceite de oliva y azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Especias: pimienta, pimentón, orégano, pastillas de caldo, ajos, cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
+const BASICOS=[["Imprescindible", ["Agua potable (o pastillas potabilizadoras), garrafa y bidón de agua", "Sal", "Aceite de oliva", "Azúcar", "Olla con tapa, sartén, cuchillo, tabla, cazo para servir y abrelatas", "Hornillo, bombona, paravientos y mechero (las cerillas, en bolsa estanca)", "Nevera portátil con acumuladores de frío para carne, huevos y lácteos", "Jabón o gel de manos: antes de cocinar y de comer", "Fairy biodegradable, estropajo, paño y bolsas de basura (lo que llevas, lo traes)"]], ["Útil", ["Pimienta", "Pimentón", "Orégano", "Pastillas de caldo", "Ajos", "Cebollas", "Agarradores, pelador, papel de cocina y papel de aluminio", "Táperes o botes de plástico con cierre y bolsas zip contra la humedad", "Bolsa colgable para el pan, lejos de bichos", "Linterna frontal para cocinar de noche"]], ["Si hay fuego (solo donde esté permitido)", ["Trébedes y parrilla, guantes gruesos y cubo de agua o arena a mano"]]];
+/* lo marcado en el checklist se da por tenido en la lista de la compra */
+const CHK_COMPRA=[["Sal",/^sal( fina| gorda)?$/],["Aceite de oliva",/^aceite/],["Azúcar",/^azucar( blanco| moreno| de cana)?$/],["Pimienta",/^pimienta/],["Pimentón",/^pimenton/],["Orégano",/^oregano/],["Pastillas de caldo",/^(pastillas? de caldo|caldo en pastillas?)/],["Ajos",/^ajos?$/],["Cebollas",/^cebollas?$/]];
+const checkTengo=name=>{const n=norm(name).trim();return CHK_COMPRA.some(([l,re])=>S.check&&S.check[l]&&re.test(n))};
+const migCheck=()=>{const c=S.check;if(!c)return;const M={"Sal, aceite de oliva y azúcar":["Sal","Aceite de oliva","Azúcar"],"Especias: pimienta, pimentón, orégano, pastillas de caldo, ajos, cebollas":["Pimienta","Pimentón","Orégano","Pastillas de caldo","Ajos","Cebollas"]};for(const [o,ns] of Object.entries(M))if(c[o]){ns.forEach(x=>{c[x]=true});delete c[o]}};
 const EQUIV=[["Arroz: agua","2 vasos por 1 de arroz (paella, 2,5-3)"],["Pasta: agua","1 l por cada 100 g"],["Cuscús: agua","el mismo volumen que de cuscús"],
  ["Taza de campamento (250 ml): harina","130 g"],["Taza: azúcar glas","130 g"],["Taza: arroz","230 g"],["Taza: pasas, sal fina","225 g"],["Taza: chocolate en polvo","150 g"],
  ["Brik de leche (1 l)","5 vasos"],["Cucharada de aceite","10-15 ml"],["Cucharadita de sal","5 g"],
@@ -750,7 +754,7 @@ function vTemporada(){
 /* Básicos: casillas para preparar la caja; se recuerdan en este dispositivo */
 function vBasicos(){
   const all=BASICOS.flatMap(([,xs])=>xs),done=all.filter(x=>S.check&&S.check[x]).length;
-  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary>${ic(done===all.length?"hecho":"cesta","ic-s")}<h2>Checklist de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
+  return `<details class="card plg" data-k="bas"${U.det&&U.det.bas?" open":""}><summary>${ic(done===all.length?"hecho":"cesta","ic-s")}<h2>Checklist de intendencia</h2><small class="sumx">${done} de ${all.length}</small></summary><p class="msg">${done} de ${all.length} en la caja. Lo que marques de sal, aceite, azúcar, especias, ajos y cebollas no sale en la compra.${done?` <button class="btn ghost sm" data-act="bclear">Empezar de cero</button>`:""}</p>
   ${BASICOS.map(([g,xs])=>`<label class="f">${esc(g)}</label>${xs.map(b=>`<label class="chkb bas"><input type="checkbox" data-act="bchk" data-k="${esc(b)}" ${S.check&&S.check[b]?"checked":""}><span>${esc(b)}</span></label>`).join("")}`).join("")}</details>`;
 }
 function vGuia(){
@@ -897,7 +901,7 @@ function vList(){
   const DIA=864e5,dias=S.lastExport?Math.floor((Date.now()-S.lastExport)/DIA):null;
   const aviso=S.recipes.length&&(dias===null||dias>30)&&!(S.remindAt&&Date.now()<S.remindAt);
   let h=`${U.target?`<div class="resumen"><span>Eligiendo para <b>Día ${U.target.d} · ${esc(U.target.m)}</b></span><button class="chip" data-act="tab" data-k="menu">Cancelar</button></div>`:""}${aviso?`<div class="remind"><span>${S.recipes.length} receta${S.recipes.length===1?"":"s"} tuya${S.recipes.length===1?"":"s"} ${dias===null?"sin copia todavía":`sin copia desde hace ${dias} días`}. Solo están en este móvil: guarda una copia por si lo pierdes o lo cambias.</span><div class="row"><button class="btn sm" data-act="export">Guardar copia</button><button class="btn ghost sm" data-act="remindLater">Luego</button></div></div>`:""}${vTus()}<div class="busc"><input id="q" type="search" data-act="q" value="${esc(U.q)}" placeholder="Buscar receta o ingrediente" aria-label="Buscar recetas por nombre, ingrediente o tipo (sopa, pescado, vegetariana…)"><select data-act="ord" aria-label="Ordenar recetas">${[["plato","Por plato"],["nombre","Por nombre"],["precio","Más baratas"]].map(([k,n])=>`<option value="${k}" ${(U.ord||"plato")===k?"selected":""}>${n}</option>`).join("")}</select></div>`+fil+(al.length?`<label class="chkb" style="border:0;padding-top:0"><input type="checkbox" data-act="aptaChk" ${U.apta?"checked":""}><span>Solo aptas para el grupo (sin ${esc(al.join(", ").toLowerCase())})</span></label>`:"");
-  sel.filter(c=>CAT_DESC[c]).forEach(c=>{h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">${esc(CAT_DESC[c])}</p>`});
+  if(sel.includes("Fuego"))h+=`<p style="margin:4px 0 12px;color:var(--mute);font-size:14px">Solo donde el fuego esté permitido.</p>`;
   if(!list.length)h+=`<div class="empty">${U.q.trim()&&all().length?`Ninguna receta coincide con «${esc(U.q.trim())}»${sel.length?" en "+esc(sel.join(" + ")):""}.`:all().length?"No hay recetas en esta categoría.":"Aún no tienes recetas."}${all().length?"":`<br><br><button class="btn" data-act="tab" data-k="nueva">Crear la primera receta</button>`}</div>`;
   /* orden: por plato (con su título) y, dentro, de la A a la Z; o por nombre o precio */
   const ord=["plato","nombre","precio"].includes(U.ord)?U.ord:"plato",PL=FACETS[0].v,platoDe=r=>r.categories.find(c=>PL.includes(c))||"Principal";
@@ -1015,11 +1019,11 @@ function vImprimir(){
   ${enCasa.length?`<p class="psin"><b>Ya en casa o en el baúl</b> ${enCasa.map(i=>esc(i.name)).join(" · ")}</p>`:""}
   ${faltan.length?`<h2 class="pt">Básicos que faltan en la caja</h2>${tres(faltan.map(x=>[`<ul><li>${cb}<span>${esc(x)}</span></li></ul>`,Math.ceil(x.length/34)]))}`:""}
   ${unicas.length?`<h2 class="pt precs">Recetas</h2>`:""}${unicas.map(r=>{const f=factor(r,n),v=veces(r.id);return `<article class="rec"><h3>${esc(r.name)}</h3><p class="sub">Para ${n} ${n===1?"ración":"raciones"}${v>1?` · se hace ${v} veces: cantidades de una`:""}</p>
-    <div class="rcol"><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}
+    <div class="rcol"><div class="ring"><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}${notasImp(r)}</div>
     ${r.steps?`<ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")}
   ${(()=>{const fv=fracVeg(),al=new Map();if(fv)for(const r of todas){const a=altVeg(r);if(a)al.set(a.id,[a,[...((al.get(a.id)||[])[1]||[]),r.name]])}
     return [...al.values()].map(([a,orig])=>{const na=n*fv,f=factor(a,na);return `<article class="rec"><h3>${esc(a.name)}</h3><p class="sub">Para ${String(Math.round(na*10)/10).replace(".",",")} raciones · vegetarianos, en lugar de ${esc(orig.join(" y "))}</p>
-    <div class="rcol"><table>${ingsVeg(a).map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table>
+    <div class="rcol"><div class="ring"><table>${ingsVeg(a).map(i=>`<tr><td>${esc(i.name)}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto"}</td></tr>`).join("")}</table></div>
     ${a.steps?`<ol>${a.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div></article>`}).join("")})()}
   ${montar.length?`<p class="psin"><b>Se montan en el momento</b> (sin receta): ${montar.map(r=>esc(r.name)).join(" · ")}</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
@@ -1033,8 +1037,8 @@ function vImprimirReceta(r){
   return `<header class="pcab"><div><small>RECETARIO</small><h1>${esc(r.name)}</h1></div>
     <div class="pdat"><span>Para ${n} ${n===1?"ración":"raciones"}</span>${cats.length?`<span>${esc(cats.join(" · "))}</span>`:""}<span>${hoy}</span></div></header>
   <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
-    <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}</div>
-    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}${r.fuego?`<p class="sub"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="sub">${esc(r.nota)}</p>`:""}${r.fuente?`<p class="sub">Fuente: ${esc(r.fuente)}</p>`:""}</div></article>
+    <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}${notasImp(r)}</div>
+    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}</div></article>
   ${r.aporte?`<p class="psin"><b>Aportada por</b> ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}</p>`:""}
   ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
@@ -1078,7 +1082,7 @@ function vMenu(){
   ${S.priceInfo?`<p class="msg">Precios estimados por Claude para ${esc(S.priceInfo.super)} el ${esc(S.priceInfo.date)}.</p>`:""}`;
   const resP=`${eur(total)}${B>0?` · <span class="${left>=0?"ok":"over"}">${left>=0?"sobran":"te pasas"} ${eur(Math.abs(left))}</span>`:""}`;
   return `<div class="card">${resumenInicio()}${vSalida(rs)}${vAlergias(rs)}${vVeg(rs)}</div>${vDias()}${vSueltos(n,H)}
-  ${vCompra(items)}${pleg("pres","Presupuesto",resP,presu)}${vCarga(items)}${vAmortiza(items,rs)}${vTopMenu()}`;
+  ${vCompra(items,rs,n)}${pleg("pres","Presupuesto",resP,presu)}${vCarga(items)}${vAmortiza(items,rs)}${vTopMenu()}`;
 }
 /* Amortizar la compra: lo que sobra de un paquete se gasta en otra receta que lo lleve. */
 function vAmortiza(items,rs){
@@ -1524,6 +1528,7 @@ function altVeg(r){
 }
 /* parte de la receta que se hace con carne: toda, salvo lo de los vegetarianos */
 const kVeg=(r,nv)=>nv||(S.veg&&altVeg(r))?1-fracVeg():1;
+const notasImp=r=>`${r.fuego?`<p class="sub"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="sub">${esc(r.nota)}</p>`:""}${r.fuente?`<p class="sub">Fuente: ${esc(r.fuente)}</p>`:""}`;
 function lineaAlt(r,n){
   const v=S.veg||0,a=v?altVeg(r):null;if(!a)return "";
   return `<p class="nveg alt">Para ${v} vegetariano${v===1?"":"s"}: <b>${esc(a.name)}</b> en su lugar, para ${String(Math.round(n*fracVeg()*10)/10).replace(".",",")} raciones</p>`;
@@ -1637,6 +1642,7 @@ function shopList(rs,n){
   })});
   return unificar(Object.values(agg)).sort((a,b)=>a.name.localeCompare(b.name,"es")).map(it=>{
     if(S.have&&S.have[it.key])return {...it,have:true,pk:null,k:0,cost:0,left:0};
+    if(checkTengo(it.name))return {...it,have:true,viaCheck:true,pk:null,k:0,cost:0,left:0};
     const pk=packFor(it.name,it.unit),cp=prodDe(it.name),gr=cp&&cp.granel&&cp.unit===it.unit;
     const per=gr?cp.precio/cp.size:it.q>0?it.p/it.q:0; // a granel: precio por kilo o por pieza de la cadena
     if(gr)it.granel=cp;
@@ -1657,13 +1663,26 @@ const SECC=[["Conservas",/(^|[^a-z])(atun|sardin|caballa|tomate triturado|tomate
   ["Panadería",/(^|[^a-z])(pan(?:es)?(?![a-z])|pan de molde|barra|masa)/],
   ["Fruta y verdura",/(^|[^a-z])(tomate|pepino|lechuga|cebolla|ajo|patata|zanahoria|pimiento|limon|manzana|platano|naranja|fruta|calabac|calabaza|puerro|chalota|kiwi|melocoton|sandia|melon|pera|champinon|perejil|albahaca|aguacate|mandarina|pina|brocoli|coliflor|judia verde|espinaca)/]];
 const seccion=n=>{const x=norm(n);const s=SECC.find(([,re])=>re.test(x));return s?s[0]:"Otros"};
-function vCompra(items){
-  const b=S.bought||{},vivos=items.filter(i=>!i.have),hechos=vivos.filter(i=>b[i.key]).length;
+/* compra por receta: cada receta con sus ingredientes y cantidades; lo marcado vale para todas las recetas que lo usan */
+function compraPorReceta(items,rs,n){
+  const b=S.bought||{},ur=[...new Map(rs.map(r=>[r.id,r])).values()],lineas=r=>{const f=factor(r,n),out=[];
+    ingsVeg(r).forEach(i=>{if(!i.name.trim()||/^agua( del grifo)?$/.test(norm(i.name).trim()))return;
+      let nm=i.name;if((S.alergias||[]).includes("Lactosa")&&/^leche( (entera|semidesnatada|desnatada|fresca))?$/.test(norm(nm).trim()))nm="Leche sin lactosa";
+      const h=canon(nombreCompra(nm)),it=items.find(x=>x.key.split("|")[0]===h);
+      out.push({name:nombreCompra(nm),q:num(i.qty)>0?fmtQ(num(i.qty)*f,i.unit):"al gusto",it,h})});return out},
+    L=ur.map(r=>[r,lineas(r)]),usos={};
+  L.forEach(([r,ls])=>ls.forEach(l=>{(usos[l.h]=usos[l.h]||new Set()).add(r.name)}));
+  return L.map(([r,ls])=>`<h3 class="secc">${esc(r.name)}</h3><table>${ls.map(l=>{const it=l.it,have=it&&it.have,got=it&&!have&&b[it.key],otras=[...(usos[l.h]||[])].filter(x=>x!==r.name);
+    return `<tr class="${got?"got":""}${have?" home":""}"><td><label class="buy">${it&&!have?`<input type="checkbox" data-act="buyChk" data-k="${esc(it.key)}" ${got?"checked":""} aria-label="En el carro">`:""}<span><b>${esc(l.name)}</b>${otras.length?`<small class="d"> también en ${esc(otras.join(", "))}</small>`:""}</span></label></td><td class="q">${l.q}${have?" · en casa":""}</td></tr>`}).join("")}</table>`).join("");
+}
+function vCompra(items,rs,n){
+  const b=S.bought||{},vivos=items.filter(i=>!i.have),hechos=vivos.filter(i=>b[i.key]).length,vista=U.vistaCompra==="rec"?"rec":"sec";
   const grupos=[...SECC.map(([s])=>s),"Otros"].map(s=>[s,items.filter(i=>seccion(i.name)===s)]).filter(([,xs])=>xs.length);
   return `<div class="card"><h2>Lista de la compra</h2>
-  ${fl(`${hechos} de ${vivos.length} en el carro`,"com","Toca ⋯ en una fila para ver lo que necesitas, lo que sobra y el producto, o para marcar «Lo tengo» o cambiar el formato si tu súper lo vende distinto.")}
+  ${fl(`${hechos} de ${vivos.length} en el carro`,"com","Toca ⋯ en una fila para ver lo que necesitas, lo que sobra y el producto, o para marcar «Lo tengo» o cambiar el formato si tu súper lo vende distinto. «Por receta» muestra lo que lleva cada una; para ver envases y precios, usa «Por sección».")}
+  <div class="chips wr" style="margin-bottom:6px"><button class="chip" aria-pressed="${vista==="sec"}" data-act="vistaCompra" data-k="sec">Por sección</button><button class="chip" aria-pressed="${vista==="rec"}" data-act="vistaCompra" data-k="rec">Por receta</button></div>
   <div class="row"><button class="btn sm" data-act="waShare">Enviar por WhatsApp</button>${hechos?`<button class="btn ghost sm" data-act="boughtClear">Desmarcar todo</button>`:""}</div>
-  ${grupos.map(([s,xs])=>`<h3 class="secc">${esc(s)}</h3><table>${xs.map(shopRow).join("")}</table>`).join("")}</div>`;
+  ${vista==="rec"&&rs?compraPorReceta(items,rs,n):grupos.map(([s,xs])=>`<h3 class="secc">${esc(s)}</h3><table>${xs.map(shopRow).join("")}</table>`).join("")}</div>`;
 }
 function compraTexto(items){
   const vivos=items.filter(i=>!i.have);
@@ -1684,7 +1703,7 @@ function shopRow(i){
   if(open){
     const det=[`necesitas ${need}`,i.pk&&!i.have&&i.left>=(i.unit==="g"||i.unit==="ml"?10:1)?`sobran ${fmtQ(i.left,i.unit)}`:"",i.pk&&i.pk.own?"tu formato":"",
       (i.pk&&i.pk.producto)?`${esc(i.pk.cadena)}: ${esc(i.pk.producto)}`:i.granel?`a granel · ${esc(i.granel.cadena)}: ${esc(i.granel.producto)}`:""].filter(Boolean).join(" · ");
-    h+=`<tr class="rowd"><td colspan="4"><small>${det}</small><div class="row">${i.have?`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button>`:`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button>`}</div></td></tr>`;
+    h+=`<tr class="rowd"><td colspan="4"><small>${det}</small><div class="row">${i.viaCheck?`<small>Marcado en el checklist de intendencia: desmárcalo allí para comprarlo.</small>`:i.have?`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Comprarlo</button>`:`<button class="btn ghost sm" data-act="have" data-k="${esc(i.key)}">Lo tengo</button><button class="btn ghost sm" data-act="packEdit" data-k="${esc(i.key)}">Formato</button>`}</div></td></tr>`;
   }
   if(edit){const pk=i.pk||{size:"",price:null};h+=`<tr><td colspan="4"><div class="row" style="padding:4px 0 8px">
     <label class="f" style="margin:0">Se vende en</label><input id="pkSize" inputmode="decimal" value="${esc(pk.size)}" style="width:80px"> ${esc(i.unit)}
@@ -1854,6 +1873,7 @@ document.addEventListener("click",async e=>{
     S.menu=[];S.plan={};S.extras=[];S.ajustes={};S.bought={};S.have={};S.act={};S.clima={};U.aj="";persist();render();window.scrollTo(0,0);return}
   if(a==="menuDeshacer"){const u=S.ultimoMenu;if(u){for(const k of ["menu","plan","extras","ajustes","bought","have","act","clima","dias"])S[k]=u[k];delete S.ultimoMenu;persist();render()}return}
   if(a==="verMenu"){U.pick=null;U.target=null;U.tab="menu";render();window.scrollTo&&window.scrollTo(0,0);return}
+  if(a==="vistaCompra"){U.vistaCompra=b.dataset.k;render();return}
   if(a==="mas"){const id=b.dataset.id;if(!S.menu.includes(id))S.menu=[...S.menu,id];
     if(U.target){const k=U.target.d+"|"+U.target.m;S.plan=S.plan||{};if(!(S.plan[k]||[]).includes(id))S.plan[k]=[...(S.plan[k]||[]),id];U.target=null;U.pick=null;U.tab="menu";persist();render();window.scrollTo&&window.scrollTo(0,0);return}
     U.pick=id;persist();render();return}
@@ -2032,7 +2052,7 @@ function intro(n){
 }
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;if(v==="empezar"){intro(null);U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}intro(v==="fin"?null:+v)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("intro"))intro(null)});
-const abrirInicio=()=>{try{if(!planIds().length){U.tab="inicio";localStorage.setItem("recetario_intro","1")}else U.tab="menu";localStorage.setItem("recetario_inicio","1")}catch(e){}};
+const abrirInicio=()=>{migCheck();try{if(!planIds().length){U.tab="inicio";localStorage.setItem("recetario_intro","1")}else U.tab="menu";localStorage.setItem("recetario_inicio","1")}catch(e){}};
 const verIntro=()=>{try{if(!localStorage.getItem("recetario_intro"))intro(0)}catch(e){}};
 initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(()=>{abrirInicio()}).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
