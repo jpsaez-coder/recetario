@@ -295,6 +295,12 @@ nav.tabs button[aria-selected="true"]{color:var(--tabon);background:transparent}
 .btn.ghost{background:transparent;color:var(--mute);border:0}
 .btn.danger{color:var(--danger)}
 input,select,textarea{border:1px solid var(--line);border-radius:10px;background:var(--campo)}
+.ini{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 8px}
+.ini .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:flex;align-items:center;justify-content:center;font-weight:700}
+.ini b{display:block;font-size:16px}.ini small{display:block;color:var(--mute);font-size:13.5px;margin-top:1px}
+.inicio .btn.big{display:block;width:100%;border-radius:999px;padding:14px;font-size:17px;min-height:48px;margin-top:14px}
+.inicio .btn.alt.big{margin-top:8px;background:transparent;color:var(--pine);border:2px solid var(--pine)}
+.inicio .cnt2{text-align:center;color:var(--mute);font-size:13px;margin:12px 0 2px}
 .busc{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
 .busc input{border:2px solid var(--pine);border-radius:999px;font-size:17px;padding:12px 14px 12px 44px;min-height:48px;box-shadow:0 1px 4px rgba(50,34,24,.18);background:var(--campo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23482413' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E") no-repeat 14px center/22px}
 .busc input:focus{outline:3px solid var(--ochre);outline-offset:1px}
@@ -338,9 +344,10 @@ a.web{background:var(--noche);color:#FFFFFF;border-radius:14px}a.web b{font-fami
 /* Categorías en tres filas que se combinan: qué plato es, dónde se come y cuándo apetece.
    Plato: una. Dónde: una o varias. Temporada: ninguna (todo el año) o una. Lo demás, etiqueta libre. */
 const FACETS=[{k:"plato",n:"Plato",one:false,v:["Desayuno","Entrante","Principal","Postre y masas","Merienda","Salsa"]},
-  {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa","Fuego"]},
-  {k:"temp",n:"Temporada",one:true,v:["Invierno","Verano"]}];
-const BASE_CATS=FACETS.flatMap(f=>f.v);
+  {k:"donde",n:"Dónde",one:false,v:["Ruta","Acampada","Casa"]},
+  {k:"coc",n:"Cómo se cocina",one:false,v:["Sin cocinar","Hornillo","Fuego","Horno"]}];
+/* la temporada ya no es un filtro, pero las recetas que la llevan la conservan (Invierno, Verano) */
+const BASE_CATS=[...FACETS.flatMap(f=>f.v),"Invierno","Verano"];
 /* nombres antiguos → nuevos; Comida y Cena pasan a Principal (la app ya dice para cuál encaja) */
 const CAT_OLD={Trampera:"Fuego",Rutas:"Ruta",Acampadas:"Acampada",Entrantes:"Entrante","Platos principales":"Principal","Masas y postres":"Postre y masas",Comida:"Principal",Cena:"Principal"};
 function migCats(cs){
@@ -349,8 +356,8 @@ function migCats(cs){
   return out;
 }
 const facetOf=c=>FACETS.find(f=>f.v.includes(c));
-const CAT_DESC={Fuego:"Se puede hacer en brasas o al fuego: parrilla, olla, sartén, papel de aluminio o brochetas. Cada receta explica cómo (fuego directo, brasas fuertes o suaves, brasas arriba y abajo). Solo donde el fuego esté permitido; si no, sartén u hornillo.",Ruta:"Comida para cocinar o comer durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin fuego o con un hornillo)."};
-const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v)}; una o varias de ${JSON.stringify(FACETS[1].v)}; y como mucho una de ${JSON.stringify(FACETS[2].v)} (ninguna si vale todo el año). Significado: `+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ")+".";
+const CAT_DESC={"Sin cocinar":"no hace falta calor donde se come: se sirve frío o ya hecha de casa (bocadillos, ensaladas, postres fríos, salsas en frío).",Hornillo:"se cocina en un hornillo de camping o en la cocina, con sartén u olla.",Fuego:"Se puede hacer en brasas o al fuego: parrilla, olla, sartén, papel de aluminio o brochetas. Cada receta explica cómo (fuego directo, brasas fuertes o suaves, brasas arriba y abajo, rescoldo). Solo donde el fuego esté permitido.",Horno:"necesita horno (en el campamento, algunas se hacen en una olla con brasas arriba y abajo).",Ruta:"Comida para llevar o cocinar durante una ruta: ligera, que aguante sin nevera, fácil de llevar en la mochila y de preparar con lo mínimo (sin cocinar o con un hornillo).",Acampada:"Comida para un campamento o una acampada, con la cocina que haya (hornillo o fuego).",Casa:"Receta para cocinar en casa."};
+const catsTxt=()=>`estas listas: exactamente una de ${JSON.stringify(FACETS[0].v)}; una o varias de ${JSON.stringify(FACETS[1].v)}; una o varias de ${JSON.stringify(FACETS[2].v)} (cómo se cocina); y "Invierno" o "Verano" solo si la receta es claramente de esa temporada (ninguna si vale todo el año). Significado: `+Object.entries(CAT_DESC).map(([k,v])=>`"${k}" = ${v}`).join(" ")+".";
 const SUPERS=["Mercadona","Lidl","Carrefour","Dia","Alcampo","Aldi","Eroski","Consum","Ahorramás","Hipercor / El Corte Inglés"];
 const superTxt=()=>S.super?`en ${S.super} (España), a su precio habitual`:"en un supermercado de España";
 const norm=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
@@ -829,7 +836,7 @@ async function initStorage(){
 
 /* ---------- vistas ---------- */
 function render(){
-  const tabs=[["menu","Menú ("+planIds().length+")"],["recetas","Recetas"],["guia","Guía"]];
+  const tabs=[["inicio","Inicio"],["menu","Menú ("+planIds().length+")"],["recetas","Recetas"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top banda"><div><div class="marca">${LOGO}<h1>Receta<b>rio</b></h1></div></div>
   <details class="ppl" data-k="ppl"${U.det&&U.det.ppl?" open":""}><summary><span class="pplk">Personas</span><b>${S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} personas`}</b></summary>
@@ -837,7 +844,7 @@ function render(){
   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
   ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header>`;
   const aviso=U.nueva?`<div class="nueva"><span>Hay una versión nueva del Recetario (${esc(U.nueva)}).</span><button class="btn sm" data-act="actualizar"${U.actualizando?" disabled":""}>${U.actualizando?"Actualizando…":"Actualizar"}</button></div>`:"";
-  $("#app").innerHTML=head+aviso+(U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
+  $("#app").innerHTML=head+aviso+(U.tab==="inicio"?vInicio():U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
   montarTS();
 }
 const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Mis recetas</h2><small>crear, copiar e importar</small></summary>
@@ -847,6 +854,14 @@ const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" o
   <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
   <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
+const vInicio=()=>{const t=all(),f=t.filter(r=>(r.categories||[]).includes("Fuego")).length;
+  return `<div class="card inicio"><h2>Prepara tu comida en 3 pasos</h2>
+  <div class="ini"><span class="n">1</span><div><b>¿Qué vais a hacer?</b><small>Ruta, acampada o cocina en casa: filtra las recetas por dónde las harás</small></div></div>
+  <div class="ini"><span class="n">2</span><div><b>¿Cuántos sois?</b><small>Las cantidades, la compra y el precio se ajustan solos</small></div></div>
+  <div class="ini"><span class="n">3</span><div><b>Elige recetas</b><small>Te saco el menú y la lista de la compra</small></div></div>
+  <button class="btn big" data-act="inicioGo">Empezar</button>
+  <button class="btn alt big" data-act="tab" data-k="recetas">Ver todas las recetas</button>
+  <p class="cnt2">${f} recetas con fuego · ${t.length} en total</p></div>`};
 function vList(){
   U.f=U.f||{};
   const al=S.alergias||[];
@@ -872,7 +887,7 @@ function vList(){
     /* tres plegables: ingredientes (abierto de entrada), pasos y nutrición y cocina */
     const pl=(k,t,body,abierto)=>`<details class="plg2" data-k="${k}-${esc(r.id)}"${(U.det&&(k+"-"+r.id) in U.det?U.det[k+"-"+r.id]:abierto)?" open":""}><summary>${t}</summary>${body}</details>`;
     if(open)d=`${pl("g","Ingredientes",`<table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td><td class="p">${num(i.price)?eur(sPrice(i,f)):""}</td></tr>`}).join("")}</table>${lineaAlt(r,RAC())}`,true)}
-    ${r.fuego?`<p class="msg"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="msg">${esc(r.nota)}</p>`:""}
+    ${r.fuego?`<p class="msg"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="msg">${esc(r.nota)}</p>`:""}${r.fuente?`<p class="msg">Fuente: ${esc(r.fuente)}</p>`:""}
     ${r.steps?pl("s","Pasos",`<ol>${r.steps.split("\n").filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`,false):""}
     ${r.aporte?`<p class="msg">Aportada por ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}. ¡Gracias!</p>`:""}
     ${r.source&&r.source.url?`<p class="msg">Fuente: <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name||"enlace")}</a> (adaptada)</p>`:""}
@@ -999,7 +1014,7 @@ function vImprimirReceta(r){
     <div class="pdat"><span>Para ${n} ${n===1?"ración":"raciones"}</span>${cats.length?`<span>${esc(cats.join(" · "))}</span>`:""}<span>${hoy}</span></div></header>
   <article class="rec rsola"><p class="sub">Unas ${Math.round(m.kcal)} kcal por persona${r.servings!==n?` · la receta original es para ${r.servings}`:""}</p>
     <div class="rcol"><div class="ring"><h4>Ingredientes</h4><table>${r.ingredients.map(i=>{const nv=notaVeg(r,i,f),k=kVeg(r,nv);return `<tr><td>${esc(i.name)}${nv?`<br><small class="nveg">${esc(nv)}</small>`:""}</td><td class="q">${num(i.qty)>0?fmtQ(num(i.qty)*f*k,i.unit):"al gusto"}</td></tr>`}).join("")}</table>${lineaAlt(r,n)}</div>
-    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}${r.fuego?`<p class="sub"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="sub">${esc(r.nota)}</p>`:""}</div></article>
+    ${r.steps?`<div class="rpas"><h4>Pasos</h4><ol>${r.steps.split("\n").filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`:""}${r.fuego?`<p class="sub"><b>Al fuego:</b> ${esc(r.fuego)}</p>`:""}${r.nota?`<p class="sub">${esc(r.nota)}</p>`:""}${r.fuente?`<p class="sub">Fuente: ${esc(r.fuente)}</p>`:""}</div></article>
   ${r.aporte?`<p class="psin"><b>Aportada por</b> ${esc(r.aporte.autor||"la comunidad")}${r.aporte.origen?` · ${esc(r.aporte.origen)}`:""}</p>`:""}
   ${r.source&&r.source.name?`<p class="psin"><b>Fuente</b> ${esc(r.source.name)} (adaptada)</p>`:""}
   <footer class="ppie">Recetario ${esc(APP_VERSION)} · ${hoy}</footer>`;
@@ -1673,7 +1688,7 @@ function vForm(){
   <label class="f">Foto</label>${(()=>{const src=U.draftFotoURL||(d.id&&d.foto==="idb"?FOTO_URL[d.id]:null);
     return `${src?`<img class="foto-ed" src="${esc(src)}" alt="Foto de la receta">`:""}<div class="row"><label class="btn alt sm">${src?"Cambiar foto":"Añadir foto"}<input type="file" accept="image/*" data-act="fotoIn" hidden></label>${src?`<button class="btn ghost sm" data-act="fotoQuitar">Quitar foto</button>`:""}</div>`})()}
   <label class="f" for="sv">Raciones que salen con estas cantidades (personas)</label><input id="sv" type="number" min="1" value="${d.servings}">
-  ${FACETS.map(f=>`<label class="f">${f.n}${f.one?(f.k==="temp"?" (si no marcas, todo el año)":""):" (una o varias)"}</label><div class="chips" style="flex-wrap:wrap;overflow:visible">${f.v.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`).join("")}
+  ${FACETS.map(f=>`<label class="f">${f.n}${f.one?"":" (una o varias)"}</label><div class="chips" style="flex-wrap:wrap;overflow:visible">${f.v.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}"${CAT_DESC[c]?` title="${esc(CAT_DESC[c])}"`:""}>${esc(c)}</button>`).join("")}</div>`).join("")}
   <label class="f">Otras etiquetas</label>
   <div class="chips" style="flex-wrap:wrap;overflow:visible">${S.cats.map(c=>`<button class="chip" aria-pressed="${d.categories.includes(c)}" data-act="dcat" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div>
   <div class="row"><input id="newcat" placeholder="Nueva etiqueta (p. ej. Sin gluten)" aria-label="Nueva etiqueta" style="flex:1"><button class="btn alt sm" data-act="addcat">Añadir</button></div>
@@ -1802,6 +1817,7 @@ document.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;
   const a=b.dataset.act;sync();
   if(a==="intro"){intro(0);return}
+  if(a==="inicioGo"){U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}
   if(a==="irBas"){U.tab="menu";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
   if(a==="pdfReceta"){const r=getR(b.dataset.id);if(r)imprimir(r);return}
@@ -1982,8 +1998,9 @@ function intro(n){
 }
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;if(v==="empezar"){intro(null);U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}intro(v==="fin"?null:+v)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("intro"))intro(null)});
+const abrirInicio=()=>{try{if(!localStorage.getItem("recetario_inicio")&&!planIds().length&&!(S.recipes||[]).length){U.tab="inicio";localStorage.setItem("recetario_intro","1")}localStorage.setItem("recetario_inicio","1")}catch(e){}};
 const verIntro=()=>{try{if(!localStorage.getItem("recetario_intro"))intro(0)}catch(e){}};
-initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
+initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(()=>{abrirInicio()}).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
 if("serviceWorker" in navigator&&location.protocol!=="file:"&&!window.claude){
   /* si ya había una versión guardada y entra otra, recargar una vez para verla ya (si no, salía la vieja hasta la siguiente apertura) */

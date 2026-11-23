@@ -7,6 +7,7 @@
     "categories": [
       "Principal",
       "Ruta",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -63,8 +64,9 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -134,6 +136,7 @@
       "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "sencilla": true,
@@ -178,8 +181,10 @@
     "servings": 4,
     "categories": [
       "Desayuno",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "sencilla": true,
@@ -212,8 +217,10 @@
     "servings": 4,
     "categories": [
       "Desayuno",
+      "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "sencilla": true,
     "ingredients": [
@@ -245,10 +252,12 @@
     "servings": 4,
     "categories": [
       "Desayuno",
+      "Ruta",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -286,7 +295,9 @@
     "servings": 4,
     "categories": [
       "Desayuno",
-      "Casa"
+      "Ruta",
+      "Casa",
+      "Sin cocinar"
     ],
     "sencilla": true,
     "ingredients": [
@@ -319,7 +330,8 @@
       "Merienda",
       "Principal",
       "Ruta",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "sencilla": true,
     "ingredients": [
@@ -348,7 +360,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "sencilla": true,
     "ingredients": [
@@ -381,7 +394,8 @@
       "Merienda",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "sencilla": true,
     "ingredients": [
@@ -407,8 +421,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -447,8 +463,10 @@
     "servings": 16,
     "categories": [
       "Desayuno",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -503,7 +521,9 @@
     "servings": 16,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -570,7 +590,9 @@
     "servings": 16,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -628,7 +650,8 @@
       "Merienda",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "sencilla": true,
     "ingredients": [
@@ -666,6 +689,7 @@
       "Principal",
       "Ruta",
       "Acampada",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -725,10 +749,12 @@
     "servings": 16,
     "categories": [
       "Entrante",
+      "Ruta",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -759,6 +785,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -993,7 +1020,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -1299,7 +1327,9 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Ruta",
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1369,7 +1399,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1415,7 +1446,9 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Ruta",
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1455,7 +1488,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1502,6 +1536,7 @@
     "categories": [
       "Entrante",
       "Acampada",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -1554,7 +1589,8 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1625,7 +1661,9 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Ruta",
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1683,7 +1721,8 @@
     "servings": 6,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1748,7 +1787,9 @@
     "servings": 6,
     "categories": [
       "Entrante",
+      "Ruta",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -1813,7 +1854,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -1860,6 +1902,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -1928,6 +1971,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2001,6 +2045,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2056,6 +2101,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2153,6 +2199,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2225,6 +2272,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2297,8 +2345,9 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Casa",
       "Acampada",
+      "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2357,6 +2406,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "vegetal": {
@@ -2429,7 +2479,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -2503,6 +2554,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2594,8 +2646,9 @@
     "categories": [
       "Principal",
       "Acampada",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -2655,6 +2708,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2746,6 +2800,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2843,6 +2898,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -2902,8 +2958,10 @@
     "servings": 6,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -2958,6 +3016,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3012,7 +3071,8 @@
     "servings": 1,
     "categories": [
       "Principal",
-      "Acampada"
+      "Acampada",
+      "Hornillo"
     ],
     "ingredients": [
       {
@@ -3067,8 +3127,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -3122,6 +3184,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3194,6 +3257,7 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
       "Fuego"
     ],
@@ -3272,8 +3336,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -3328,6 +3394,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3407,6 +3474,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3497,8 +3565,10 @@
     "servings": 1,
     "categories": [
       "Postre y masas",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -3546,6 +3616,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3613,6 +3684,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3686,6 +3758,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3741,6 +3814,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3777,7 +3851,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -3823,7 +3898,8 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -3857,7 +3933,8 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -3910,6 +3987,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -3957,8 +4035,10 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -4007,6 +4087,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4061,7 +4142,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Hornillo"
     ],
     "ingredients": [
       {
@@ -4113,7 +4195,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -4160,6 +4243,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4215,6 +4299,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4270,6 +4355,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4319,6 +4405,7 @@
     "categories": [
       "Postre y masas",
       "Acampada",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4373,7 +4460,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -4420,7 +4508,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "ingredients": [
       {
@@ -4455,7 +4544,8 @@
     "servings": 7,
     "categories": [
       "Postre y masas",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -4507,7 +4597,9 @@
     "servings": 5,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Ruta",
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -4549,6 +4641,7 @@
       "Salsa",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "source": {
@@ -4609,6 +4702,7 @@
       "Salsa",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -4679,7 +4773,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Salsas y aderezos",
@@ -4744,7 +4839,8 @@
     "categories": [
       "Salsa",
       "Principal",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Salsas y aderezos",
@@ -4811,6 +4907,7 @@
       "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "source": {
@@ -4871,6 +4968,7 @@
       "Salsa",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -4931,8 +5029,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -4991,8 +5091,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -5073,6 +5174,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5143,6 +5245,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5223,8 +5326,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5289,6 +5394,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5344,9 +5450,11 @@
     "servings": 4,
     "categories": [
       "Entrante",
+      "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -5397,6 +5505,7 @@
     "categories": [
       "Entrante",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -5460,6 +5569,7 @@
       "Principal",
       "Ruta",
       "Acampada",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -5528,7 +5638,8 @@
     "categories": [
       "Principal",
       "Ruta",
-      "Acampada"
+      "Acampada",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -5596,8 +5707,10 @@
     "categories": [
       "Desayuno",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5649,8 +5762,10 @@
     "categories": [
       "Desayuno",
       "Merienda",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5714,6 +5829,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -5766,7 +5882,8 @@
       "Merienda",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -5810,6 +5927,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -5874,7 +5992,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -5924,8 +6043,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "ingredients": [
@@ -5972,7 +6093,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -6021,8 +6143,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "ingredients": [
@@ -6086,7 +6210,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -6129,8 +6254,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -6180,8 +6307,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "ingredients": [
@@ -6228,7 +6357,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -6261,7 +6391,8 @@
       "Principal",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -6298,8 +6429,10 @@
     "categories": [
       "Merienda",
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Fuego"
     ],
     "ingredients": [
@@ -6332,6 +6465,7 @@
       "Salsa",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -6394,6 +6528,7 @@
       "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "source": {
@@ -6448,6 +6583,7 @@
       "Salsa",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "source": {
@@ -6502,6 +6638,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -6563,8 +6700,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6630,8 +6768,10 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
+      "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6674,6 +6814,7 @@
       "Entrante",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -6709,7 +6850,8 @@
     "categories": [
       "Salsa",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6758,7 +6900,8 @@
       "Salsa",
       "Ruta",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6806,7 +6949,8 @@
       "Salsa",
       "Postre y masas",
       "Acampada",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -6848,8 +6992,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -6912,8 +7057,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Verano",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Verano"
     ],
     "ingredients": [
       {
@@ -6982,6 +7128,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -7063,8 +7210,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -7145,8 +7293,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -7233,8 +7382,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -7319,9 +7469,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
-      "Ruta",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -7359,8 +7510,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -7412,8 +7565,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -7483,8 +7637,9 @@
       "Ruta",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -7535,6 +7690,7 @@
       "Entrante",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -7598,6 +7754,7 @@
       "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -7658,8 +7815,10 @@
     "servings": 4,
     "categories": [
       "Desayuno",
+      "Ruta",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -7705,6 +7864,7 @@
       "Desayuno",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -7756,6 +7916,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -7786,7 +7947,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -7826,7 +7988,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -7867,7 +8030,9 @@
     "servings": 4,
     "categories": [
       "Salsa",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -7921,7 +8086,8 @@
     "servings": 4,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -7961,7 +8127,8 @@
     "servings": 4,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8019,7 +8186,8 @@
     "servings": 4,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8077,7 +8245,8 @@
     "servings": 4,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8135,7 +8304,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8181,7 +8351,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8233,7 +8404,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8273,7 +8445,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8326,7 +8499,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8391,8 +8565,10 @@
     "servings": 6,
     "categories": [
       "Entrante",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8452,7 +8628,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8480,7 +8657,8 @@
     "servings": 8,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8551,7 +8729,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8616,8 +8795,10 @@
     "servings": 4,
     "categories": [
       "Entrante",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8665,7 +8846,8 @@
     "servings": 12,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8736,7 +8918,8 @@
     "servings": 8,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8788,7 +8971,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8835,7 +9019,8 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8876,8 +9061,10 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -8979,7 +9166,8 @@
     "servings": 6,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -9044,7 +9232,8 @@
     "servings": 6,
     "categories": [
       "Principal",
-      "Casa"
+      "Casa",
+      "Horno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -9117,7 +9306,8 @@
       "Postre y masas",
       "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -9168,6 +9358,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -9212,6 +9403,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -9288,6 +9480,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -9368,6 +9561,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -9626,7 +9820,7 @@
     "categories": [
       "Salsa",
       "Casa",
-      "Libro de PA COCINA francés"
+      "Hornillo"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9669,7 +9863,8 @@
         "price": ""
       }
     ],
-    "steps": "Pelar las chalotas y picarlas finas.\nDorarlas en la sartén. Añadir un poco de vinagre.\nAñadir la mostaza y la nata.\nDejar cocer a fuego lento unos minutos. Sazonar al gusto.\nConsejo: se puede usar mitad leche y mitad nata para que quede más ligera."
+    "steps": "Pelar las chalotas y picarlas finas.\nDorarlas en la sartén. Añadir un poco de vinagre.\nAñadir la mostaza y la nata.\nDejar cocer a fuego lento unos minutos. Sazonar al gusto.\nConsejo: se puede usar mitad leche y mitad nata para que quede más ligera.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "sa-roquefort",
@@ -9679,7 +9874,7 @@
     "categories": [
       "Salsa",
       "Casa",
-      "Libro de PA COCINA francés"
+      "Hornillo"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9710,7 +9905,8 @@
         "price": ""
       }
     ],
-    "steps": "Desmenuzar el roquefort.\nCalentar la nata fresca. Añadir el roquefort y remover sin parar.\nDejar cocer a fuego lento unos minutos. Sazonar al gusto.\nConsejo: acompaña carnes y aves."
+    "steps": "Desmenuzar el roquefort.\nCalentar la nata fresca. Añadir el roquefort y remover sin parar.\nDejar cocer a fuego lento unos minutos. Sazonar al gusto.\nConsejo: acompaña carnes y aves.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-pan-campamento",
@@ -9719,9 +9915,8 @@
     "servings": 1,
     "categories": [
       "Entrante",
-      "Fuego",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9752,7 +9947,8 @@
         "price": ""
       }
     ],
-    "steps": "Mezclar la levadura en un poco de agua tibia y dejar reposar 10 minutos.\nMientras tanto, poner la harina (¼ de taza de campamento, unos 32,5 g) en un recipiente y añadir la sal.\nAñadir la levadura y el resto del agua poco a poco. Amasar.\nEl secreto está en amasar mucho rato, levantando la masa con las manos ligeramente enharinadas, hasta que quede suave, elástica y no pegajosa.\nDejar levar la masa 2 horas al abrigo del aire y a temperatura ambiente; lo ideal es dentro de un recipiente cerrado, metido en una bolsa de plástico.\nCocción en bola: forma una bola que se irá aplanando. Se mete ya muy caliente junto al fuego (con un reflector, sobre una piedra plana enfrente de las llamas, o sobre hojas grandes cubierta de brasas).\nCocción a la broche: se presenta como un asado, pinchada en una rama o enrollada en espiral alrededor de ella; así la masa sube muy poco.\nCocción a la brasa: se hacen tortitas finas y planas (no bolas), sobre un lecho de brasas bien rojas, aplastando la masa entre las manos enharinadas. Se da la vuelta varias veces; queda crujiente y sabrosa.\nConsejo: si la OCR de la foto original no deja claras algunas cantidades u pasos de este libro, conviene revisarlas contra el cuaderno en papel antes de darlas por buenas."
+    "steps": "Mezclar la levadura en un poco de agua tibia y dejar reposar 10 minutos.\nMientras tanto, poner la harina (¼ de taza de campamento, unos 32,5 g) en un recipiente y añadir la sal.\nAñadir la levadura y el resto del agua poco a poco. Amasar.\nEl secreto está en amasar mucho rato, levantando la masa con las manos ligeramente enharinadas, hasta que quede suave, elástica y no pegajosa.\nDejar levar la masa 2 horas al abrigo del aire y a temperatura ambiente; lo ideal es dentro de un recipiente cerrado, metido en una bolsa de plástico.\nCocción en bola: forma una bola que se irá aplanando. Se mete ya muy caliente junto al fuego (con un reflector, sobre una piedra plana enfrente de las llamas, o sobre hojas grandes cubierta de brasas).\nCocción a la broche: se presenta como un asado, pinchada en una rama o enrollada en espiral alrededor de ella; así la masa sube muy poco.\nCocción a la brasa: se hacen tortitas finas y planas (no bolas), sobre un lecho de brasas bien rojas, aplastando la masa entre las manos enharinadas. Se da la vuelta varias veces; queda crujiente y sabrosa.\nConsejo: si la OCR de la foto original no deja claras algunas cantidades u pasos de este libro, conviene revisarlas contra el cuaderno en papel antes de darlas por buenas.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-huevo-trampero-naranja",
@@ -9761,9 +9957,8 @@
     "servings": 1,
     "categories": [
       "Principal",
-      "Fuego",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9795,7 +9990,8 @@
       }
     ],
     "steps": "Preparar el fuego antes de empezar (mismo principio que las patatas tramperas).\nEn naranja: cortar el tercio superior de la naranja y retirar con cuidado la pulpa. Volver a poner la \"tapa\" y envolver con cuidado en una doble capa de papel de aluminio.\nCascar el huevo dentro de la naranja y sazonar.\nColocar en las brasas bien recta. Cocer unos 10 minutos.\nEn patata: cocinar antes la patata entera envuelta en aluminio en las brasas; cortar el tercio superior, retirar con cuidado la carne y sazonar (sal, pimienta, un poco de queso gruyère si se quiere).\nCascar el huevo dentro sin pinchar la piel. Volver a poner en las brasas bien recta. Cocer unos 10 minutos.\nConsejo: sea cual sea el método, cuidado con no pinchar la piel (de la naranja o de la patata): si se raja, se sale el huevo.",
-    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 10 minutos, siempre bien recta."
+    "fuego": "Rescoldo (ceniza caliente y brasas casi apagadas, sin llama): entierra el paquete en la ceniza o déjalo pegado a las brasas y cúbrelo con más brasas: el calor es suave, parejo y lento. Dale la vuelta de vez en cuando. Unos 10 minutos, siempre bien recta.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-sopa-verduras",
@@ -9806,7 +10002,7 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Libro de PA COCINA francés",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -9863,7 +10059,8 @@
       }
     ],
     "steps": "Pelar, lavar y cortar las verduras en trozos pequeños.\nRehogar los puerros con la mantequilla 10 minutos.\nMientras tanto, poner el resto de las verduras en una gamela y cubrirlas de agua.\nPoner a calentar 30 minutos.\nOpcional: añadir una pastilla de caldo para dar más sabor.\nUna vez cocidas las verduras, triturarlas (o chafarlas con el tenedor) y sazonar al gusto.\nConsejo: tapar la gamela para que la cocción sea más rápida. Si tienes nabos, puedes añadir 2 junto al resto de verduras.",
-    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue."
+    "fuego": "Fuego directo (llama baja o media): olla sobre trébedes o colgada. Hiérvela con llama media y, cuando esté lista, apártala a un lado del fuego para mantenerla caliente sin que se pegue.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-ensalada-campesina",
@@ -9874,7 +10071,7 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Libro de PA COCINA francés"
+      "Sin cocinar"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9911,7 +10108,8 @@
         "price": ""
       }
     ],
-    "steps": "Cocer las patatas en agua.\nMientras tanto, limpiar la lechuga. Cortar el queso y las manzanas en dados. Pelar las nueces.\nUna vez cocidas las patatas, pelarlas, cortarlas en dados y añadirlas al resto de la ensalada.\nOpcional: si tienes mollejas de ave, dóralas en la sartén y añádelas."
+    "steps": "Cocer las patatas en agua.\nMientras tanto, limpiar la lechuga. Cortar el queso y las manzanas en dados. Pelar las nueces.\nUna vez cocidas las patatas, pelarlas, cortarlas en dados y añadirlas al resto de la ensalada.\nOpcional: si tienes mollejas de ave, dóralas en la sartén y añádelas.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-ensalada-compuesta",
@@ -9920,10 +10118,10 @@
     "servings": 8,
     "categories": [
       "Entrante",
+      "Ruta",
       "Acampada",
       "Casa",
-      "Ruta",
-      "Libro de PA COCINA francés"
+      "Sin cocinar"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -9960,7 +10158,8 @@
         "price": ""
       }
     ],
-    "steps": "Cocer el arroz en agua hirviendo con sal. Una vez cocido, pasarlo por agua fría para enfriarlo.\nCortar las manzanas en dados y la cebolla en láminas finas; si tienes un cuarto de col blanca, córtala muy fina y añádela también. Cortar el queso en dados.\nMezclar todos los ingredientes.\nAñadir una vinagreta al gusto."
+    "steps": "Cocer el arroz en agua hirviendo con sal. Una vez cocido, pasarlo por agua fría para enfriarlo.\nCortar las manzanas en dados y la cebolla en láminas finas; si tienes un cuarto de col blanca, córtala muy fina y añádela también. Cortar el queso en dados.\nMezclar todos los ingredientes.\nAñadir una vinagreta al gusto.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-tortilla-completa",
@@ -9969,9 +10168,10 @@
     "servings": 8,
     "categories": [
       "Principal",
-      "Casa",
+      "Ruta",
       "Acampada",
-      "Libro de PA COCINA francés",
+      "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10034,7 +10234,8 @@
       }
     ],
     "steps": "Pelar y picar finas las cebollas. Pelar las patatas y cortarlas en dados pequeños.\nCalentar la mantequilla en una sartén grande; rehogar las patatas y la panceta. Añadir las cebollas y remover de vez en cuando.\nCascar y batir los huevos en una gamela. Añadir la nata, sazonar al gusto y añadir el queso. Batir.\nVerter los huevos sobre las patatas. Dejar cuajar de 5 a 10 minutos, removiendo un poco al principio.",
-    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Para darle la vuelta, usa un plato o una tapa grande y guantes gruesos."
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén o cazuela sobre una parrilla baja y, si se dora de más, apártala unos minutos. Así no se quema por fuera y se hace por dentro. Para darle la vuelta, usa un plato o una tapa grande y guantes gruesos.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-tortitas-patata",
@@ -10043,9 +10244,9 @@
     "servings": 8,
     "categories": [
       "Entrante",
-      "Casa",
       "Acampada",
-      "Libro de PA COCINA francés",
+      "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10096,7 +10297,8 @@
       }
     ],
     "steps": "Pelar las patatas, lavarlas y rallarlas gruesas. Cortar las cebollas en láminas cortas y finas.\nPoner las patatas ralladas en una gamela grande. Cascar los huevos encima, añadir las cebollas y mezclar con sal y pimienta.\nCalentar la sartén con la mantequilla y el aceite. Formar tortitas individuales pequeñas. Cocer 5 minutos por cada lado.\nConsejo: evitar las patatas grandes y muy alargadas, que tardan mucho en cocer.",
-    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Si se doran muy rápido por fuera, apártalas del centro de las brasas."
+    "fuego": "Brasas fuertes (rojas, sin llama): sartén sobre parrilla o trébedes encima de las brasas. Quita la sartén del calor si el aceite humea y espera a que baje antes de seguir. Si se doran muy rápido por fuera, apártalas del centro de las brasas.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-quiche-sin-masa",
@@ -10105,9 +10307,10 @@
     "servings": 8,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Libro de PA COCINA francés",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10151,7 +10354,8 @@
       }
     ],
     "steps": "Poner todos los ingredientes en un bol grande y mezclar bien. Salpimentar al gusto.\nVerter en un molde para tarta y hornear durante 30 minutos.",
-    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Cuenta el tiempo del horno (30 minutos) más 10; está lista cuando cuaja al mover el molde."
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. Cuenta el tiempo del horno (30 minutos) más 10; está lista cuando cuaja al mover el molde.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-bizcocho-yogur",
@@ -10160,10 +10364,10 @@
     "servings": 7,
     "categories": [
       "Postre y masas",
-      "Casa",
       "Acampada",
-      "Libro de PA COCINA francés",
-      "Fuego"
+      "Casa",
+      "Fuego",
+      "Horno"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10207,7 +10411,8 @@
       }
     ],
     "steps": "Vaciar el yogur en una gamela grande; rascar bien el vaso para usarlo como medida.\nAñadir los ingredientes en el orden de la lista, mezclando bien después de cada uno.\nEngrasar el molde con aceite o mantequilla. Verter la masa y hornear de 25 a 30 minutos.\nConsejo: para saber si está cocido, clava la punta de un cuchillo en el centro; debe salir limpia. Si no, déjalo unos minutos más.",
-    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. No abras la tapa en los primeros 15 minutos. Cuenta el tiempo del horno más 10-15 y pincha con un palillo: debe salir limpio."
+    "fuego": "Brasas arriba y abajo (olla con tapa, brasas debajo y encima de la tapa): usa una olla o cazuela de hierro con tapa que aguante brasas encima. Pon una cama de brasas suaves, apoya la olla y cubre la tapa con más brasas, repartidas por igual. Forra el fondo con papel de horno para que no se queme la base, gira la olla un cuarto de vuelta cada 10 minutos y repón brasas. Usa guantes gruesos. No abras la tapa en los primeros 15 minutos. Cuenta el tiempo del horno más 10-15 y pincha con un palillo: debe salir limpio.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "cc-pure-ortigas",
@@ -10217,8 +10422,8 @@
     "categories": [
       "Entrante",
       "Acampada",
-      "Fuego",
-      "Libro de PA COCINA francés"
+      "Hornillo",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10249,7 +10454,8 @@
         "price": ""
       }
     ],
-    "steps": "Recolectar las ortigas con guantes o con cuidado; cortarlas y dejarlas un rato en el suelo ayuda a que pinchen menos. Elegir brotes jóvenes y tiernos, de un lugar limpio.\nPoner el agua a calentar hasta que hierva.\nEn una gamela grande, derretir la mantequilla removiendo. Quitar los tallos de las ortigas, lavarlas y picar las hojas.\nAñadir el agua hirviendo poco a poco y dejar cocer un poco más.\nAñadir la nata y mezclar."
+    "steps": "Recolectar las ortigas con guantes o con cuidado; cortarlas y dejarlas un rato en el suelo ayuda a que pinchen menos. Elegir brotes jóvenes y tiernos, de un lugar limpio.\nPoner el agua a calentar hasta que hierva.\nEn una gamela grande, derretir la mantequilla removiendo. Quitar los tallos de las ortigas, lavarlas y picar las hojas.\nAñadir el agua hirviendo poco a poco y dejar cocer un poco más.\nAñadir la nata y mezclar.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "inf-te-lenador",
@@ -10258,9 +10464,10 @@
     "servings": 8,
     "categories": [
       "Merienda",
-      "Fuego",
+      "Ruta",
       "Acampada",
-      "Libro de PA COCINA francés"
+      "Hornillo",
+      "Fuego"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10285,7 +10492,8 @@
         "price": ""
       }
     ],
-    "steps": "⚠️ Antes de recolectar nada: identifica el árbol con total seguridad (con una guía de campo o una persona adulta que lo conozca). Las acículas de abeto, pino o picea son las que sirven; las hojas del tejo (Taxus baccata) son muy parecidas de lejos y son altamente tóxicas. Si tienes la más mínima duda de qué árbol es, no lo uses.\nRecoger acículas de abeto blanco, abeto de Douglas o pino silvestre; mejor si son brotes y ramitas jóvenes (se pueden conservar para más adelante).\nPonerlas en una gamela grande con el agua. Poner a calentar y hervir unos 15 minutos.\nAñadir azúcar o miel al gusto.\nConsejo: ideal para bivouacs de invierno fríos y húmedos, pero también se puede tomar en verano como acompañamiento de un buen postre."
+    "steps": "⚠️ Antes de recolectar nada: identifica el árbol con total seguridad (con una guía de campo o una persona adulta que lo conozca). Las acículas de abeto, pino o picea son las que sirven; las hojas del tejo (Taxus baccata) son muy parecidas de lejos y son altamente tóxicas. Si tienes la más mínima duda de qué árbol es, no lo uses.\nRecoger acículas de abeto blanco, abeto de Douglas o pino silvestre; mejor si son brotes y ramitas jóvenes (se pueden conservar para más adelante).\nPonerlas en una gamela grande con el agua. Poner a calentar y hervir unos 15 minutos.\nAñadir azúcar o miel al gusto.\nConsejo: ideal para bivouacs de invierno fríos y húmedos, pero también se puede tomar en verano como acompañamiento de un buen postre.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "inf-manzanilla",
@@ -10294,9 +10502,10 @@
     "servings": 8,
     "categories": [
       "Merienda",
-      "Casa",
+      "Ruta",
       "Acampada",
-      "Libro de PA COCINA francés",
+      "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10323,7 +10532,8 @@
       }
     ],
     "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego y añadir la manzanilla seca. Dejar reposar tapada de 5 a 8 minutos.\nColar y endulzar con miel si se quiere.\nConsejo: compra la manzanilla ya seca en el supermercado o herbolario; es la forma más segura de tenerla siempre identificada.",
-    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos."
+    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "inf-menta",
@@ -10332,11 +10542,12 @@
     "servings": 8,
     "categories": [
       "Merienda",
-      "Casa",
+      "Ruta",
       "Acampada",
-      "Verano",
-      "Libro de PA COCINA francés",
-      "Fuego"
+      "Casa",
+      "Hornillo",
+      "Fuego",
+      "Verano"
     ],
     "source": {
       "name": "Cuaderno de recetas de campamento (foto aportada por Paula)"
@@ -10362,7 +10573,8 @@
       }
     ],
     "steps": "Poner el agua a calentar hasta que hierva.\nRetirar del fuego, añadir las hojas de menta o hierbabuena (lavadas) y dejar reposar de 5 a 10 minutos.\nColar y endulzar al gusto. También se puede tomar fría, con hielo.\nConsejo: la menta y la hierbabuena de huerto o maceta son fáciles de identificar con seguridad; si es una menta silvestre que no conoces bien, mejor no arriesgarse y usar la comprada.",
-    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos."
+    "fuego": "Fuego directo (llama baja o media): calienta el agua en un cazo o una olla sobre llama media, hasta que empiece a hervir, y apártala del fuego antes de echar las hierbas. Déjalas infusionar tapadas unos minutos.",
+    "fuente": "Libro de PA COCINA (francés)"
   },
   {
     "id": "ca-crema-inglesa",
@@ -10371,7 +10583,9 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10414,7 +10628,9 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10476,7 +10692,9 @@
     "categories": [
       "Desayuno",
       "Merienda",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -10537,7 +10755,8 @@
     "servings": 6,
     "categories": [
       "Postre y masas",
-      "Casa"
+      "Casa",
+      "Hornillo"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10596,9 +10815,11 @@
     "servings": 4,
     "categories": [
       "Postre y masas",
+      "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "source": {
       "name": "guiasparaguias · Arte culinario",
@@ -10657,9 +10878,11 @@
     "servings": 4,
     "categories": [
       "Entrante",
+      "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "source": {
       "name": "Thermorecetas",
@@ -10733,7 +10956,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
-      "Otoño",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -10781,8 +11004,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Verano"
     ],
     "ingredients": [
       {
@@ -10834,8 +11058,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Verano"
     ],
     "ingredients": [
       {
@@ -10887,6 +11112,7 @@
       "Entrante",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -10933,8 +11159,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Verano",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Verano"
     ],
     "ingredients": [
       {
@@ -10969,6 +11196,7 @@
       "Merienda",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "sencilla": true,
@@ -11003,6 +11231,7 @@
       "Entrante",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "sencilla": true,
@@ -11041,7 +11270,9 @@
     "servings": 2,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "source": {
@@ -11138,9 +11369,11 @@
     "servings": 4,
     "categories": [
       "Principal",
+      "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "source": {
       "name": "Receta tradicional marroquí, adaptada",
@@ -11242,7 +11475,9 @@
     "servings": 6,
     "categories": [
       "Entrante",
+      "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -11349,7 +11584,8 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -11429,8 +11665,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -11506,8 +11743,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -11583,8 +11821,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -11666,8 +11905,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -11755,6 +11995,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -11874,6 +12115,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -11998,7 +12240,8 @@
     "categories": [
       "Postre y masas",
       "Acampada",
-      "Fuego"
+      "Fuego",
+      "Horno"
     ],
     "ingredients": [
       {
@@ -12045,6 +12288,7 @@
       "Principal",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -12090,6 +12334,7 @@
     "categories": [
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego",
       "Invierno"
     ],
@@ -12217,8 +12462,8 @@
     "servings": 4,
     "categories": [
       "Principal",
-      "Acampada",
       "Ruta",
+      "Acampada",
       "Fuego",
       "Verano"
     ],
@@ -12274,6 +12519,7 @@
       "Desayuno",
       "Principal",
       "Acampada",
+      "Hornillo",
       "Fuego",
       "Verano"
     ],
@@ -12415,9 +12661,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Otoño",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -12497,8 +12743,8 @@
     "servings": 4,
     "categories": [
       "Entrante",
-      "Acampada",
       "Ruta",
+      "Acampada",
       "Fuego",
       "Verano"
     ],
@@ -12540,8 +12786,8 @@
     "categories": [
       "Principal",
       "Merienda",
-      "Acampada",
       "Ruta",
+      "Acampada",
       "Fuego"
     ],
     "ingredients": [
@@ -12581,9 +12827,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Otoño",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -12694,9 +12940,9 @@
       "Principal",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Otoño",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -12790,6 +13036,7 @@
       "Ruta",
       "Acampada",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -12853,9 +13100,9 @@
       "Entrante",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Otoño",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {
@@ -12923,6 +13170,7 @@
     "categories": [
       "Postre y masas",
       "Casa",
+      "Sin cocinar",
       "Verano"
     ],
     "ingredients": [
@@ -12986,6 +13234,7 @@
       "Postre y masas",
       "Acampada",
       "Casa",
+      "Hornillo",
       "Fuego"
     ],
     "ingredients": [
@@ -13024,7 +13273,8 @@
     "servings": 8,
     "categories": [
       "Salsa",
-      "Casa"
+      "Casa",
+      "Sin cocinar"
     ],
     "ingredients": [
       {
@@ -13068,10 +13318,12 @@
     "categories": [
       "Desayuno",
       "Merienda",
+      "Ruta",
       "Acampada",
       "Casa",
-      "Invierno",
-      "Fuego"
+      "Hornillo",
+      "Fuego",
+      "Invierno"
     ],
     "ingredients": [
       {

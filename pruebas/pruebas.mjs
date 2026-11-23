@@ -123,8 +123,9 @@ caso("en dos días, cada día su coste",T.costeSlot(1,"Desayuno")>0&&T.costeSlot
 T.S.plan={"1|Desayuno":[g],"3|Desayuno":[g]};caso("un día por encima de los días del menú no cuenta",Math.round(avena()/una*100)/100,1);
 Object.assign(T.S,JSON.parse(S0));}
 // temporada: lo que no está marcado sale en invierno y en verano; lo de verano no sale en invierno
-{T.U.q="";T.U.f={temp:"Invierno"};const h=T.vList();caso("en invierno salen los postres de todo el año",/Torrijas/.test(h)&&/Bizcocho dentro de una naranja/.test(h),true);
-caso("en invierno no sale lo de verano",/Ensalada de cuscús para la mochila/.test(h),false);caso("en invierno sale lo de invierno",/Sopa de ajo castellana/.test(h),true);T.U.f={};}
+{T.U.q="";T.U.f={coc:"Fuego"};const h=T.vList();caso("filtro Fuego: salen las torrijas y el bizcocho en naranja",/Torrijas/.test(h)&&/Bizcocho dentro de una naranja/.test(h),true);
+caso("filtro Fuego: no sale un bocadillo",/Bocadillo de chorizo/.test(h),false);T.U.f={donde:"Ruta",coc:"Sin cocinar"};const h2=T.vList();caso("Ruta y sin cocinar: sale la ensalada de cuscús",/Ensalada de cuscús para la mochila/.test(h2),true);caso("Ruta y sin cocinar: no sale un guiso",/Sopa de ajo castellana/.test(h2),false);T.U.f={};}
+caso("toda receta base tiene dónde y cómo se cocina",base.filter(r=>!r.categories.some(c=>T.FACETS[1].v.includes(c))||!r.categories.some(c=>T.FACETS[2].v.includes(c))).map(r=>r.name),[]);
 // hoja para imprimir: días, receta con pasos, repetida avisada, básicos que faltan; arriba del menú, el recuento de básicos
 {const S0=JSON.stringify({menu:T.S.menu,plan:T.S.plan,dias:T.S.dias,check:T.S.check});const g="ej-gachas-avena";
 T.S.dias=2;T.S.menu=[g];T.S.plan={"1|Desayuno":[g],"2|Desayuno":[g]};T.S.check={};const h=T.vImprimir();
