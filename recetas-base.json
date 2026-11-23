@@ -12740,6 +12740,118 @@
     "nota": "Si no encuentras queso Colby Jack, usa gouda o un queso parecido que funda bien."
   },
   {
+    "id": "ig-lasana-lentejas-champis",
+    "name": "Lasaña vegetal en una sola olla (lentejas y champiñones)",
+    "corto": "Lasaña de lentejas",
+    "servings": 4,
+    "categories": [
+      "Principal",
+      "Acampada",
+      "Casa",
+      "Hornillo",
+      "Fuego",
+      "Invierno"
+    ],
+    "source": {
+      "name": "Receta de @anotherdayof_eating, vídeo de Instagram (adaptada)"
+    },
+    "ingredients": [
+      {
+        "name": "Cebolla",
+        "qty": "1",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Ajo",
+        "qty": "3",
+        "unit": "diente",
+        "price": ""
+      },
+      {
+        "name": "Zanahoria",
+        "qty": "2",
+        "unit": "ud",
+        "price": ""
+      },
+      {
+        "name": "Champiñones",
+        "qty": "150",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Tomillo seco",
+        "qty": "2",
+        "unit": "cdta",
+        "price": ""
+      },
+      {
+        "name": "Pimentón picante",
+        "qty": "0.5",
+        "unit": "cdta",
+        "price": ""
+      },
+      {
+        "name": "Miso blanco",
+        "qty": "1",
+        "unit": "cda",
+        "price": ""
+      },
+      {
+        "name": "Concentrado de tomate",
+        "qty": "70",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Caldo de verduras",
+        "qty": "200",
+        "unit": "ml",
+        "price": ""
+      },
+      {
+        "name": "Tomate triturado",
+        "qty": "400",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Lentejas",
+        "qty": "100",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Placas de lasaña",
+        "qty": "180",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Mozzarella de búfala",
+        "qty": "125",
+        "unit": "g",
+        "price": ""
+      },
+      {
+        "name": "Aceite de oliva",
+        "qty": "2",
+        "unit": "cda",
+        "price": ""
+      },
+      {
+        "name": "Albahaca fresca",
+        "qty": "1",
+        "unit": "ud",
+        "price": ""
+      }
+    ],
+    "steps": "Tritura la cebolla con el ajo hasta tener una pasta fina, o pícalos muy finos. Haz lo mismo con las zanahorias y los champiñones\nSofríe la cebolla y el ajo con el aceite en una sartén honda grande\nAñade el tomillo y el picante y sofríe unos minutos. Echa la zanahoria y los champiñones y cocina hasta que doren. Incorpora el miso y el concentrado de tomate\nVierte el caldo y el tomate triturado y llévalo a ebullición. Añade las lentejas, baja el fuego, tapa y deja cocinar de 20 a 30 minutos\nHunde las placas de lasaña en la salsa hasta que queden casi cubiertas, tapa y cocina a fuego lento de 6 a 7 minutos\nReparte la mozzarella por encima, tapa de nuevo y deja otros 5 o 6 minutos a fuego lento\nComprueba que las placas estén hechas y termina con albahaca fresca",
+    "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): sartén honda o cazuela con tapa sobre brasas sin llama, con calor bajo y constante. Las placas se pegan si no quedan cubiertas por la salsa: remueve el fondo con cuidado y aparta la olla del calor si hierve fuerte. Para gratinar la mozzarella, puedes poner unas brasas suaves sobre la tapa (brasas arriba y abajo) si la olla es de hierro con tapa de borde.",
+    "nota": "Sin carne: apta para vegetarianos. En el vídeo usan lenteja negra beluga; sirve cualquier lenteja que no necesite remojo, como la pardina."
+  },
+  {
     "id": "pin-crema-champinones-hogaza",
     "name": "Crema de champiñones en hogaza",
     "corto": "Crema champiñones hogaza",
