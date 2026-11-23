@@ -868,6 +868,7 @@ const vInicio=()=>{U.f=U.f||{};const t=all(),m=planIds().length,sal=SALIDAS[S.sa
   <p class="msg" style="margin-top:0">Cuéntanos la salida y las recetas, las cantidades y la compra se ajustan solas.</p>
   <h3 class="isec">La salida</h3>
   <div class="ifila"><label>¿Dónde?</label><div class="chips wr">${vSalida(null,"ctl")}</div></div>
+  ${sal==="finde"?`<div class="ifila"><label>¿Tenéis nevera?</label><div class="chips wr"><button class="chip" aria-pressed="${!!S.nevera}" data-act="neveraSet" data-v="1">Sí</button><button class="chip" aria-pressed="${!S.nevera}" data-act="neveraSet" data-v="0">No</button></div><small class="msg" style="display:block;margin:6px 0 0">${S.nevera?"Se puede llevar fresco que necesite frío.":"Te aviso de lo que necesita frío en el menú."}</small></div>`:""}
   <div class="ifila"><label>¿Cómo cocináis?</label><div class="chips wr">${FACETS[2].v.map(ch).join("")}</div></div>
   <div class="ifila"><label>Días</label><div class="people"><button class="step" data-act="dias" data-d="-1" aria-label="Menos días">−</button><b class="cnt" style="text-align:center">${S.dias||1}</b><button class="step" data-act="dias" data-d="1" aria-label="Más días">+</button></div></div>
   <h3 class="isec">El grupo</h3>
@@ -1417,8 +1418,7 @@ function vAlergias(rs,mode){
 }
 function vSalida(rs,mode){
   const s=SALIDAS[S.salida]?S.salida:"finde";
-  if(mode==="ctl")return `${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${k==="reunion"?"Reunión o casa":v.n}</button>`).join("")}
-  ${s==="finde"?`<button class="chip" aria-pressed="${!!S.nevera}" data-act="nevera">Hay nevera</button>`:""}`;
+  if(mode==="ctl")return `${Object.entries(SALIDAS).map(([k,v])=>`<button class="chip" aria-pressed="${s===k}" data-act="salida" data-k="${k}">${k==="reunion"?"Reunión o casa":v.n}</button>`).join("")}`;
   const ent=planEntries().map(e=>({...e,r:getM(e.id)})).filter(e=>e.r);
   const sr=sueltosRecipe(RAC(),HEADS());if(sr)ent.push({r:sr,d:0});
   const fr=s==="reunion"?[]:ent.filter(e=>!(s==="finde"&&e.d===1)).flatMap(({r,d})=>r.ingredients.filter(i=>FRIO.test(norm(i.name))).map(i=>`${i.name.trim()} (${d?"día "+d+", ":""}${r.name})`));
@@ -1869,6 +1869,7 @@ document.addEventListener("click",async e=>{
   else if(a==="alg"){const k=b.dataset.k;S.alergias=(S.alergias||[]).includes(k)?S.alergias.filter(x=>x!==k):[...(S.alergias||[]),k];persist()}
   else if(a==="apta"){U.apta=!U.apta}
   else if(a==="salida"){S.salida=b.dataset.k;U.f=U.f||{};U.f.donde=DONDE[S.salida];persist()}
+  else if(a==="neveraSet"){S.nevera=b.dataset.v==="1";persist()}
   else if(a==="nevera"){S.nevera=!S.nevera;persist()}
   else if(a==="row"){U.row=U.row===b.dataset.k?"":b.dataset.k}
   else if(a==="verFuego"){U.tab="guia";U.det=U.det||{};U.det.fue=true;render();document.querySelector('details[data-k=fue]')?.scrollIntoView({block:"start"});return}
