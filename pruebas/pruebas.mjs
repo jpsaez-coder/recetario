@@ -14,7 +14,7 @@ const ctx={console,setTimeout:(f)=>0,clearTimeout(){},URL,Blob:class{},File:clas
 ctx.window=ctx;ctx.self=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(raiz,"version.js"),"utf8"),ctx);
-vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
+vm.runInContext(m[1]+`\n;globalThis.__T={S,U,vInicio,vPick,etiquetas,seccion,packFor,prodDe,macros,matches,aguaReceta,aguaMenu,ricoEn,shopList,all,getR,norm,vList,vMenu,compraTexto,cleanRecipe,leerReceta,corto,vImprimir,vImprimirReceta,nombreReceta,objetivo,vegAdapta,altVeg,masNueva,notaVeg,sueltosRecipe,HEADS,getM,aproxDe,packKey,comidasVacias,vDias,RAC,tres,nombrePDF,vTopMenu,planIds,costeSlot,
   setBase:b=>{BASE=b},setPrecios:p=>{PRECIOS=p},CLAVES:()=>PRECIOS&&PRECIOS.claves,FACETS,UNITS,APP_VERSION};`,ctx);
 const T=ctx.__T;
 T.setBase(JSON.parse(fs.readFileSync(path.join(raiz,"recetas-base.json"),"utf8")));
@@ -376,4 +376,9 @@ caso("Inicio tiene vegetarianos, alergias y dónde",[/Vegetarianos/.test(ini),/A
 caso("Menú ya no repite los controles",[/data-act="salida"/.test(men),/data-act="algChk"/.test(men),/data-act="veg"/.test(men)],[false,false,false]);
 caso("Menú resume lo elegido",(men.match(/class="resumen"><span>([^<]*)/)||[])[1],"Ruta · 2 días · 1 vegetariano · sin gluten");
 T.S.salida="finde";T.S.dias=1;T.S.veg=0;T.S.alergias=[];T.S.menu=[]}
+// selector «¿Cuándo la coméis?» al añadir una receta
+{T.S.dias=2;T.S.plan={};const id=T.all()[0].id,h=T.vPick(id);
+caso("selector: 2 días × 4 comidas",(h.match(/data-act="pickSlot"/g)||[]).length,8);
+T.S.plan={"1|Cena":[id]};caso("selector marca lo asignado",/aria-pressed="true" data-act="pickSlot" data-k="1\|Cena"/.test(T.vPick(id)),true);
+T.S.dias=1;T.S.plan={}}
 console.log(`\n${ok} bien, ${fallos} mal`);process.exit(fallos?1:0);
