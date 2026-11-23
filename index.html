@@ -27,6 +27,9 @@ header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items
 .grp{display:flex;gap:4px;align-items:center;flex-wrap:wrap;width:100%;margin-top:8px}
 .ppl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 10px;min-width:0}.ppl>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:15px}.ppl>summary::-webkit-details-marker{display:none}
 .ppl>summary::after{content:"▾";color:var(--mute);font-size:12px;margin-left:2px}.ppl[open]>summary::after{content:"▴"}.pplk{color:var(--mute);font-size:13px}
+button.ppl{font:inherit;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px;text-align:left}button.ppl::after{content:"›";font-size:18px;margin-left:auto;color:var(--mute)}
+.toast{position:fixed;left:12px;right:12px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:6;background:var(--pine);color:var(--pine-ink);border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}.toast span{flex:1;font-weight:600}.toast button{background:transparent;border:1px solid currentColor;color:inherit;border-radius:8px;padding:6px 10px;font-weight:600}
+@media (min-width:760px){.toast{left:50%;right:auto;width:696px;transform:translateX(-50%)}}
 .ppl[open]{width:100%}.grp .people{gap:4px;padding:5px 6px}.grp .step{width:28px;height:28px}.grp .people b{min-width:20px}.rac{color:var(--mute);font-size:13px;width:100%;text-align:right}
 header.top h1{font-size:28px;color:var(--pine)}
 header.top p{margin:2px 0 0;color:var(--mute);font-size:14px}
@@ -843,12 +846,10 @@ function render(){
   const tabs=[["inicio","Inicio"],["menu","Menú ("+planIds().length+")"],["recetas","Recetas"],["guia","Guía"]];
   $("#tabs").innerHTML=tabs.map(([k,l])=>`<button role="tab" aria-selected="${U.tab===k}" data-act="tab" data-k="${k}">${l}</button>`).join("");
   const head=`<header class="top banda"><div><div class="marca">${LOGO}<h1>Receta<b>rio</b></h1></div></div>
-  <details class="ppl" data-k="ppl"${U.det&&U.det.ppl?" open":""}><summary><span class="pplk">Personas</span><b>${S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} personas`}</b></summary>
-  <div class="grp"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
-  <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div>
-  ${S.kids?`<small class="rac">= ${String(RAC()).replace(".",",")} raciones</small>`:""}</div></details></header>`;
+  ${U.tab==="inicio"?"":`<button class="ppl" data-act="tab" data-k="inicio" aria-label="Cambiar grupo y salida en Inicio"><b>${S.kids?`${S.people} mayores + ${S.kids} niños`:`${S.people} personas`}</b><span class="pplk">· ${esc(SALIDAS[S.salida]?SALIDAS[S.salida].n:"Acampada")} · ${S.dias||1} ${(S.dias||1)===1?"día":"días"}</span></button>`}</header>`;
   const aviso=U.nueva?`<div class="nueva"><span>Hay una versión nueva del Recetario (${esc(U.nueva)}).</span><button class="btn sm" data-act="actualizar"${U.actualizando?" disabled":""}>${U.actualizando?"Actualizando…":"Actualizar"}</button></div>`:"";
-  $("#app").innerHTML=head+aviso+(U.tab==="inicio"?vInicio():U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm());
+  const toast=U.aviso&&U.tab==="recetas"?`<div class="toast" role="status"><span>${esc(U.aviso.t)}</span><button data-act="deshacerAdd" data-id="${esc(U.aviso.id)}">Deshacer</button><button data-act="verMenu">Ver menú</button></div>`:"";
+  $("#app").innerHTML=head+aviso+(U.tab==="inicio"?vInicio():U.tab==="recetas"?vList():U.tab==="menu"?vMenu():U.tab==="guia"?vGuia():vForm())+toast;
   montarTS();
 }
 const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" open":""}><summary><h2>Mis recetas</h2><small>crear, copiar e importar</small></summary>
@@ -1050,7 +1051,7 @@ function vMenu(){
   const rs0=planIds().map(getM).filter(Boolean);
   const n=RAC(),H=HEADS(),sr=sueltosRecipe(n,H);
   const rs=sr?[...rs0,sr]:rs0;
-  if(!rs.length)return `${vDias()}<div class="empty">Añade recetas a cada día con «+ añadir», o cosas sueltas, para ver la lista de la compra y el presupuesto.</div>${vSueltos(n,H)}${vTopMenu()}`;
+  if(!rs.length)return `${vDias()}<div class="empty">Añade recetas a cada día con «+ añadir», o cosas sueltas, para ver la lista de la compra y el presupuesto.<br><button class="btn sm" style="margin-top:10px" data-act="tab" data-k="recetas">Buscar recetas</button></div>${vSueltos(n,H)}${vTopMenu()}`;
   const used=rs.reduce((a,r)=>a+costF(r,factor(r,n)),0);
   const items=shopList(rs,n);
   const total=items.reduce((a,i)=>a+i.cost,0);
@@ -1851,7 +1852,9 @@ document.addEventListener("click",async e=>{
     S.ultimoMenu={t:Date.now(),n:planIds().length,menu:S.menu||[],plan:S.plan||{},extras:S.extras||[],ajustes:S.ajustes||{},bought:S.bought||{},have:S.have||{},act:S.act||{},clima:S.clima||{},dias:S.dias||1};
     S.menu=[];S.plan={};S.extras=[];S.ajustes={};S.bought={};S.have={};S.act={};S.clima={};U.aj="";persist();render();window.scrollTo(0,0);return}
   if(a==="menuDeshacer"){const u=S.ultimoMenu;if(u){for(const k of ["menu","plan","extras","ajustes","bought","have","act","clima","dias"])S[k]=u[k];delete S.ultimoMenu;persist();render()}return}
-  if(a==="tab"){if(U.tituloApp){document.title=U.tituloApp;U.tituloApp=""}U.confVaciar=false;U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
+  if(a==="verMenu"){U.aviso=null;U.tab="menu";render();window.scrollTo&&window.scrollTo(0,0);return}
+  if(a==="deshacerAdd"){const id=b.dataset.id;S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);if(S.ajustes)delete S.ajustes[id];U.aviso=null;persist();render();return}
+  if(a==="tab"){U.aviso=null;if(U.tituloApp){document.title=U.tituloApp;U.tituloApp=""}U.confVaciar=false;U.tab=b.dataset.k;if(U.tab==="nueva"&&!U.draft)U.draft=blank()}
   else if(a==="pm"){S.people=Math.max(0,S.people+num(b.dataset.d));if(!HEADS())S.people=1;persist()}
   else if(a==="pk"){S.kids=Math.max(0,(S.kids||0)+num(b.dataset.d));if(!HEADS())S.kids=1;persist()}
   else if(a==="filter"){U.f=U.f||{};U.f[b.dataset.k]=b.dataset.c}
@@ -1878,7 +1881,7 @@ document.addEventListener("click",async e=>{
     if(size>0){S.packs=S.packs||{};S.packs[b.dataset.k]={size,price:pr?num(pr):null};persist()}U.packEdit=""}
   else if(a==="packDel"){if(S.packs)delete S.packs[b.dataset.k];persist();U.packEdit=""}
   else if(a==="open")U.open=U.open===b.dataset.id?null:b.dataset.id;
-  else if(a==="menu"){const id=b.dataset.id;if(S.menu.includes(id)){S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);if(S.ajustes)delete S.ajustes[id];if(U.aj===id)U.aj=""}else S.menu=[...S.menu,id];persist()}
+  else if(a==="menu"){const id=b.dataset.id;U.aviso=null;if(!S.menu.includes(id)&&U.tab==="recetas"){const r=getR(id);U.aviso={t:"Añadida al menú"+(r?": "+corto(r):""),id};clearTimeout(U.tt);U.tt=setTimeout(()=>{U.aviso=null;const e=document.querySelector(".toast");if(e)e.remove()},5000)}if(S.menu.includes(id)){S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);if(S.ajustes)delete S.ajustes[id];if(U.aj===id)U.aj=""}else S.menu=[...S.menu,id];persist()}
   else if(a==="del"){if(confirm("¿Eliminar esta receta?")){const id=b.dataset.id;FOTOS.del(id).catch(()=>{});S.recipes=S.recipes.filter(r=>r.id!==id);S.menu=S.menu.filter(x=>x!==id);for(const k in S.plan)S.plan[k]=S.plan[k].filter(x=>x!==id);persist()}}
   else if(a==="aj"){const at=b.dataset.at||"";if(!b.dataset.id||(U.aj===b.dataset.id&&U.ajAt===at)){U.aj="";U.ajAt=""}else{U.aj=b.dataset.id;U.ajAt=at}}
   else if(a==="ajAdd"){const name=$("#ajName").value.trim();if(name){const id=b.dataset.id,qt=num($("#ajQty").value),pr=$("#ajPrice").value.trim();
