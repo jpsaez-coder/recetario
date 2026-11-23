@@ -306,6 +306,7 @@ input,select,textarea{border:1px solid var(--line);border-radius:10px;background
 .isec{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:20px 0 4px}
 .ifila{padding:12px 0;border-top:1px solid var(--line)}.ifila>label{display:block;font-weight:600;margin-bottom:8px}
 .chips.wr{flex-wrap:wrap;overflow:visible}
+.linkb{background:none;border:0;color:var(--mute);text-decoration:underline;font:inherit;font-size:14px;padding:8px 4px;cursor:pointer}
 .resumen{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}.resumen span{font-weight:600}
 .inicio .cnt2{text-align:center;color:var(--mute);font-size:13px;margin:12px 0 2px}
 .busc{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
@@ -975,10 +976,6 @@ function vSueltos(n,H){
 /* abajo del menú: la checklist de la caja (solo aquí) y lo que se hace al terminar: imprimir y vaciar */
 function vTopMenu(){
   const acc=[];
-  if(planIds().length){
-    acc.push(`<div class="tm"><span>${ic("imprimir")}<span><b>Menú para imprimir</b><small>Días, compra, recetas y pasos</small></span></span><button class="btn alt sm" data-act="imprimir">Imprimir</button></div>`);
-    acc.push(`<div class="tm"><span>${ic("vaciar")}<span><b>Menú nuevo</b><small>Vacía este menú para otra actividad</small></span></span>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="btn ghost sm" data-act="menuNuevo">Vaciar</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`);
-  }
   if(S.ultimoMenu&&!planIds().length)acc.push(`<div class="tm"><span>${ic("deshacer")}<span><b>Menú vaciado</b><small>${esc(S.ultimoMenu.n)} receta${S.ultimoMenu.n===1?"":"s"} · ${new Date(S.ultimoMenu.t).toLocaleDateString("es-ES")}</small></span></span><button class="btn ghost sm" data-act="menuDeshacer">Deshacer</button></div>`);
   return `${vBasicos()}${acc.length?`<div class="card topm">${acc.join("")}</div>`:""}`;
 }
@@ -1436,7 +1433,8 @@ function resumenInicio(){
   const p=[SALIDAS[s].n+(s==="finde"?(S.nevera?" con nevera":" sin nevera"):""),D+(D===1?" día":" días")];
   if(v)p.push(v+(v===1?" vegetariano":" vegetarianos"));
   if(al.length)p.push("sin "+al.join(", ").toLowerCase());
-  return `<div class="resumen"><span>${esc(p.join(" · "))}</span><button class="chip" data-act="tab" data-k="inicio">Cambiar</button></div>`;
+  return `<div class="resumen"><span>${esc(p.join(" · "))}</span><button class="chip" data-act="tab" data-k="inicio">Cambiar</button></div>
+  <div class="resumen"><button class="btn alt sm" data-act="imprimir">Imprimir menú</button>${U.confVaciar?`<span class="row" style="gap:6px;flex:none"><button class="btn ghost sm danger" data-act="menuNuevo">Vaciar</button><button class="btn ghost sm" data-act="menuNo">Cancelar</button></span>`:`<button class="linkb" data-act="menuNuevo">Vaciar menú</button>`}</div>${U.confVaciar?`<p class="msg warn" style="margin:0 0 8px">Se quitan las recetas, los días, los sueltos, los ajustes y lo marcado en la compra. Personas, alergias, presupuesto y checklist se quedan. Podrás deshacerlo.</p>`:""}`;
 }
 /* ---------- precios reales por cadena (precios.json, con fecha) ----------
    Si el súper elegido en Menú tiene catálogo, la compra usa su producto, su formato y su precio;
@@ -2025,7 +2023,7 @@ function intro(n){
 }
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-intro]");if(!b)return;const v=b.dataset.intro;if(v==="empezar"){intro(null);U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}intro(v==="fin"?null:+v)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("intro"))intro(null)});
-const abrirInicio=()=>{try{if(!localStorage.getItem("recetario_inicio")&&!planIds().length&&!(S.recipes||[]).length){U.tab="inicio";localStorage.setItem("recetario_intro","1")}localStorage.setItem("recetario_inicio","1")}catch(e){}};
+const abrirInicio=()=>{try{if(!planIds().length){U.tab="inicio";localStorage.setItem("recetario_intro","1")}else U.tab="menu";localStorage.setItem("recetario_inicio","1")}catch(e){}};
 const verIntro=()=>{try{if(!localStorage.getItem("recetario_intro"))intro(0)}catch(e){}};
 initStorage().then(()=>Promise.all([loadBase(),loadPrecios()])).then(()=>{abrirInicio()}).then(render).then(()=>{if(document.body&&document.body.appendChild)verIntro()});
 (async()=>{try{const s=await window.claude?.use?.("sample");if(s){U.ai=true;render()}}catch(e){}})();
