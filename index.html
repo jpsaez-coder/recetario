@@ -854,13 +854,19 @@ const vTus=()=>`<details class="card plg tus" data-k="tus"${U.det&&U.det.tus?" o
   <label class="f" for="pegar">O pega aquí una receta (de una web, un mensaje…)</label><textarea id="pegar" rows="4" placeholder="Título, ingredientes y pasos, tal cual"></textarea>
   <div class="row" style="margin-top:6px"><button class="btn alt sm" data-act="pegarLeer">Leer receta</button></div>
   ${U.ioMsg?`<p class="msg">${esc(U.ioMsg)}</p>`:""}</details>`;
-const vInicio=()=>{const t=all(),f=t.filter(r=>(r.categories||[]).includes("Fuego")).length;
+const vInicio=()=>{U.f=U.f||{};const t=all(),f=t.filter(r=>(r.categories||[]).includes("Fuego")).length,
+  n=t.filter(r=>FACETS.every(x=>!U.f[x.k]||(r.categories||[]).includes(U.f[x.k]))).length,m=planIds().length,
+  ch=(k,v)=>`<button class="chip" aria-pressed="${U.f[k]===v}" data-act="inicioF" data-k="${k}" data-v="${esc(v)}">${esc(v)}</button>`;
   return `<div class="card inicio"><h2>Prepara tu comida en 3 pasos</h2>
-  <div class="ini"><span class="n">1</span><div><b>¿Qué vais a hacer?</b><small>Ruta, acampada o cocina en casa: filtra las recetas por dónde las harás</small></div></div>
-  <div class="ini"><span class="n">2</span><div><b>¿Cuántos sois?</b><small>Las cantidades, la compra y el precio se ajustan solos</small></div></div>
+  <div class="ini"><span class="n">1</span><div><b>¿Qué vais a hacer?</b><small>Dónde y cómo vais a cocinar</small>
+   <div class="chips" style="flex-wrap:wrap;overflow:visible;margin-top:8px">${FACETS[1].v.map(v=>ch("donde",v)).join("")}</div>
+   <div class="chips" style="flex-wrap:wrap;overflow:visible;margin-top:6px">${["Sin cocinar","Hornillo","Fuego"].map(v=>ch("coc",v)).join("")}</div></div></div>
+  <div class="ini"><span class="n">2</span><div style="flex:1"><b>¿Cuántos sois?</b><small>Las cantidades, la compra y el precio se ajustan solos</small>
+   <div class="grp" style="margin-top:8px"><div class="people" aria-label="12 años o más"><small>+12 años</small><button class="step" data-act="pm" data-d="-1" aria-label="Menos mayores">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.people}" data-act="nPeople" aria-label="Número de personas de 12 años o más"><button class="step" data-act="pm" data-d="1" aria-label="Más mayores">+</button></div>
+   <div class="people" aria-label="Hasta 11 años"><small>-12 años</small><button class="step" data-act="pk" data-d="-1" aria-label="Menos niños">−</button><input class="cnt" type="number" inputmode="numeric" min="0" max="999" value="${S.kids||0}" data-act="nKids" aria-label="Número de niños hasta 11 años"><button class="step" data-act="pk" data-d="1" aria-label="Más niños">+</button></div></div></div></div>
   <div class="ini"><span class="n">3</span><div><b>Elige recetas</b><small>Te saco el menú y la lista de la compra</small></div></div>
-  <button class="btn big" data-act="inicioGo">Empezar</button>
-  <button class="btn alt big" data-act="tab" data-k="recetas">Ver todas las recetas</button>
+  <button class="btn big" data-act="inicioGo">Ver ${n} receta${n===1?"":"s"}</button>
+  <button class="btn alt big" data-act="tab" data-k="menu">${m?`Ir a mi menú (${m})`:"Ir a mi menú"}</button>
   <p class="cnt2">${f} recetas con fuego · ${t.length} en total</p></div>`};
 function vList(){
   U.f=U.f||{};
@@ -1817,7 +1823,8 @@ document.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;
   const a=b.dataset.act;sync();
   if(a==="intro"){intro(0);return}
-  if(a==="inicioGo"){U.tab="recetas";U.det=U.det||{};U.det.ppl=true;render();window.scrollTo&&window.scrollTo(0,0);return}
+  if(a==="inicioGo"){U.tab="recetas";render();window.scrollTo&&window.scrollTo(0,0);return}
+  if(a==="inicioF"){U.f=U.f||{};const k=b.dataset.k,v=b.dataset.v;U.f[k]=U.f[k]===v?"":v;render();return}
   if(a==="irBas"){U.tab="menu";U.det=U.det||{};U.det.bas=true;render();const x=document.querySelector('details[data-k="bas"]');if(x)x.scrollIntoView({block:"start"});return}
   if(a==="imprimir"){imprimir();return}
   if(a==="pdfReceta"){const r=getR(b.dataset.id);if(r)imprimir(r);return}
