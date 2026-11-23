@@ -12653,7 +12653,7 @@
   },
   {
     "id": "ig-chile-con-queso",
-    "name": "Chile con queso (salsa de queso con totopos)",
+    "name": "Chile con queso (salsa de queso con nachos)",
     "corto": "Chile con queso",
     "servings": 4,
     "categories": [
@@ -12717,7 +12717,7 @@
         "price": ""
       },
       {
-        "name": "Totopos (tortilla chips)",
+        "name": "Nachos de maíz",
         "qty": "200",
         "unit": "g",
         "price": ""
@@ -12735,7 +12735,7 @@
         "price": ""
       }
     ],
-    "steps": "Ralla los dos quesos\nFunde la mantequilla en una olla a fuego medio, añade la harina y remueve 1 minuto sin que se dore (es un roux)\nEcha la leche poco a poco, removiendo sin parar, hasta que espese\nBaja el calor y añade el queso en tandas; espera a que se funda cada una antes de echar la siguiente\nIncorpora el tomate con los chiles, el comino, el pimentón picante (o chile en polvo), la sal y la pimienta. Calienta unos minutos sin dejar que hierva fuerte\nSirve caliente en la propia olla y moja los totopos",
+    "steps": "Ralla los dos quesos\nFunde la mantequilla en una olla a fuego medio, añade la harina y remueve 1 minuto sin que se dore (es un roux)\nEcha la leche poco a poco, removiendo sin parar, hasta que espese\nBaja el calor y añade el queso en tandas; espera a que se funda cada una antes de echar la siguiente\nIncorpora el tomate con los chiles, el comino, el pimentón picante (o chile en polvo), la sal y la pimienta. Calienta unos minutos sin dejar que hierva fuerte\nSirve caliente en la propia olla y moja los nachos",
     "fuego": "Brasas suaves (cubiertas de ceniza o apartadas del centro): olla sobre brasas sin llama, con calor medio-bajo. Remueve siempre y aparta la olla del calor si se empieza a pegar, porque el queso se quema con facilidad. Para mantenerla caliente al servir, déjala en el borde de las brasas.",
     "nota": "Si no encuentras queso Colby Jack, usa gouda o un queso parecido que funda bien."
   },
